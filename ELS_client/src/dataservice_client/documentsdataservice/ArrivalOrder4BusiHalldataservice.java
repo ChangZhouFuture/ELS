@@ -1,5 +1,5 @@
 package dataservice_client.documentsdataservice;
 
-public interface ArrivalOrderdataservice {
+public interface ArrivalOrder4BusiHalldataservice {
 
 }

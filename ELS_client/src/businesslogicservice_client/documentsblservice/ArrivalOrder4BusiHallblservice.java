@@ -1,5 +1,5 @@
 package businesslogicservice_client.documentsblservice;
 
-public interface ArrivalOrderblservice {
+public interface ArrivalOrder4BusiHallblservice {
 
 }
