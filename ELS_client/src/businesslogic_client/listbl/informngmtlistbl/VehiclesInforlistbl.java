@@ -1,0 +1,7 @@
+package businesslogic_client.listbl.informngmtlistbl;
+
+import businesslogicservice_client.listblservice.informngmtlistblservice.VehiclesInforlistblservice;
+
+public class VehiclesInforlistbl implements VehiclesInforlistblservice{
+
+}

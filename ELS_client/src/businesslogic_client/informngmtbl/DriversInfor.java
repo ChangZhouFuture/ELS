@@ -7,5 +7,5 @@ import businesslogicservice_client.informngmtblservice.DriversInforblservice;
  *
  */
 public class DriversInfor implements DriversInforblservice {
-
+	
 }

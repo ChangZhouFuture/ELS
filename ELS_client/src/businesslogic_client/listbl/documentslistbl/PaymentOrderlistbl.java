@@ -1,0 +1,7 @@
+package businesslogic_client.listbl.documentslistbl;
+
+import businesslogicservice_client.listblservice.documentslistblservice.PaymentOrderlistblservice;
+
+public class PaymentOrderlistbl implements PaymentOrderlistblservice{
+
+}

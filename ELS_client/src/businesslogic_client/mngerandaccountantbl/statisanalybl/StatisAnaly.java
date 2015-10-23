@@ -1,0 +1,7 @@
+package businesslogic_client.mngerandaccountantbl.statisanalybl;
+
+import businesslogicservice_client.mngerandaccountantblservice.statisanalyblservice.StatisAnalyblservice;
+
+public class StatisAnaly implements StatisAnalyblservice {
+
+}

@@ -17,13 +17,6 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public OutBoundOrderVO initialize(long id4e, String date, String desti,
-			long id4to) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void delete(long id) {
 		// TODO Auto-generated method stub
 		
@@ -45,6 +38,12 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	public void endOBO() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public OutBoundOrderVO add(long id4e, String date, String desti, long id4to) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
