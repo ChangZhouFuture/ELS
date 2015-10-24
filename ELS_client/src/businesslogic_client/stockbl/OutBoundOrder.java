@@ -1,5 +1,7 @@
 package businesslogic_client.stockbl;
 
+import java.util.ArrayList;
+
 import vo_client.OrderVO;
 import vo_client.stockVO.OutBoundOrderVO;
 import businesslogicservice_client.stockblservice.OutBoundOrderblservice;
@@ -11,29 +13,48 @@ import businesslogicservice_client.stockblservice.OutBoundOrderblservice;
 public class OutBoundOrder implements OutBoundOrderblservice {
 
 	@Override
-	public OrderVO addExpress(long id) {
+	public OrderVO addExpress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(long id) {
+	public OutBoundOrderVO add(String id4e, String id4to, String desti) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteone(String id4obo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public OutBoundOrderVO modify(long id) {
+	public void deleteMany(ArrayList<String> id4obo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public OutBoundOrderVO modify(String id, String id4e, String id4to,
+			String desti) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquire(long id) {
+	public OutBoundOrderVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public OutBoundOrderVO inquireB(String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public void endOBO() {
 		// TODO Auto-generated method stub
@@ -41,9 +62,15 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public OutBoundOrderVO add(long id4e, String date, String desti, long id4to) {
+	public void generateId() {
 		// TODO Auto-generated method stub
-		return null;
+		
+	}
+
+	@Override
+	public void generateTime() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
