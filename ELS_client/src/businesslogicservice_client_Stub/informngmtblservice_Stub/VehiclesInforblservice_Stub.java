@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.informngmtblservice_Stub;
 
-public interface VehiclesInforblservice_Stub {
+import businesslogicservice_client.informngmtblservice.VehiclesInforblservice;
+
+public class VehiclesInforblservice_Stub implements VehiclesInforblservice{
 
 }

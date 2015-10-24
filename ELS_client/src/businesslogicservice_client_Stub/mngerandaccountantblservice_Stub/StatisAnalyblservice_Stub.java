@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.mngerandaccountantblservice_Stub;
 
-public interface StatisAnalyblservice_Stub {
+import businesslogicservice_client.mngerandaccountantblservice.StatisAnalyblservice;
+
+public class StatisAnalyblservice_Stub implements StatisAnalyblservice{
 
 }

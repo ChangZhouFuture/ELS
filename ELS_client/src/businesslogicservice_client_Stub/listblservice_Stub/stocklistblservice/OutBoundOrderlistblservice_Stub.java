@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub.stocklistblservice;
 
-public interface OutBoundOrderlistblservice_Stub {
+import businesslogicservice_client.listblservice.stocklistblservice.OutBoundOrderlistblservice;
+
+public class OutBoundOrderlistblservice_Stub implements OutBoundOrderlistblservice{
 
 }

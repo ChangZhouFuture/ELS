@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.documentsblservice_Stub;
 
-public interface ReceivablesOrderblservice_Stub {
+import businesslogicservice_client.documentsblservice.ReceivablesOrderblservice;
+
+public class ReceivablesOrderblservice_Stub implements ReceivablesOrderblservice{
 
 }

@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub.informngmtlistblservice;
 
-public interface BankAccountInforlistblservice_Stub {
+import businesslogicservice_client.listblservice.informngmtlistblservice.BankAccountInforlistblservice;
+
+public class BankAccountInforlistblservice_Stub implements BankAccountInforlistblservice{
 
 }

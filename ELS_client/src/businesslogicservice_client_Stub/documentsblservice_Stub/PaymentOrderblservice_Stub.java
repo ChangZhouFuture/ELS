@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.documentsblservice_Stub;
 
-public interface PaymentOrderblservice_Stub {
+import businesslogicservice_client.documentsblservice.PaymentOrderblservice;
+
+public class PaymentOrderblservice_Stub implements PaymentOrderblservice{
 
 }

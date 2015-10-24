@@ -1,5 +1,5 @@
 package businesslogicservice_client_Driver.listblservice_Driver.documentslistblservice;
 
-public interface DeliveryOrderlistblservice_Driver {
+public class DeliveryOrderlistblservice_Driver {
 
 }

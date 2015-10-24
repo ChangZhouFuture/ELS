@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub.documentslistblservice;
 
-public interface LoadingListlistblservice_Stub {
+import businesslogicservice_client.listblservice.documentslistblservice.LoadingListlistblservice;
+
+public class LoadingListlistblservice_Stub implements LoadingListlistblservice{
 
 }

@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.documentsblservice_Stub;
 
-public interface TransferOrderblservice_Stub {
+import businesslogicservice_client.documentsblservice.TransferOrderblservice;
+
+public class TransferOrderblservice_Stub implements TransferOrderblservice{
 
 }

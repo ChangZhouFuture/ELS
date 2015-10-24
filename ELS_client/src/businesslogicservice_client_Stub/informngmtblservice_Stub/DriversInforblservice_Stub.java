@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.informngmtblservice_Stub;
 
-public interface DriversInforblservice_Stub {
+import businesslogicservice_client.informngmtblservice.DriversInforblservice;
+
+public class DriversInforblservice_Stub implements DriversInforblservice{
 
 }

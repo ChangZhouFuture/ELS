@@ -1,5 +1,5 @@
 package businesslogicservice_client_Driver.listblservice_Driver.informngmtlistblservice;
 
-public interface BankAccountInforlistblservice_Driver {
+public class BankAccountInforlistblservice_Driver {
 
 }

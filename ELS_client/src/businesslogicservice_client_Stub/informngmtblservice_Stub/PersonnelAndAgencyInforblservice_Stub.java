@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.informngmtblservice_Stub;
 
-public interface PersonnelAndAgencyInforblservice_Stub {
+import businesslogicservice_client.informngmtblservice.PersonnelAndAgencyInforblservice;
+
+public class PersonnelAndAgencyInforblservice_Stub implements PersonnelAndAgencyInforblservice{
 
 }

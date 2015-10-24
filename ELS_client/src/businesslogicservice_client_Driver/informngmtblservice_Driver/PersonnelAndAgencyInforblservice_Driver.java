@@ -1,5 +1,5 @@
 package businesslogicservice_client_Driver.informngmtblservice_Driver;
 
-public interface PersonnelAndAgencyInforblservice_Driver {
+public class PersonnelAndAgencyInforblservice_Driver {
 
 }

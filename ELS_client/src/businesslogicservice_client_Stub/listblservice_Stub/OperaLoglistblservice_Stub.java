@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub;
 
-public interface OperaLoglistblservice_Stub {
+import businesslogicservice_client.listblservice.OperaLoglistblservice;
+
+public class OperaLoglistblservice_Stub implements OperaLoglistblservice{
 
 }

@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub.documentslistblservice;
 
-public interface ArrivalOrder4TranCenlistblservice_Stub {
+import businesslogicservice_client.listblservice.documentslistblservice.ArrivalOrder4TranCenlistblservice;
+
+public class ArrivalOrder4TranCenlistblservice_Stub implements ArrivalOrder4TranCenlistblservice{
 
 }

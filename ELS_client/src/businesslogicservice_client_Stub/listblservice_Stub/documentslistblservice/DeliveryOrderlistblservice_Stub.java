@@ -1,5 +1,7 @@
 package businesslogicservice_client_Stub.listblservice_Stub.documentslistblservice;
 
-public interface DeliveryOrderlistblservice_Stub {
+import businesslogicservice_client.listblservice.documentslistblservice.DeliveryOrderlistblservice;
+
+public class DeliveryOrderlistblservice_Stub implements DeliveryOrderlistblservice{
 
 }
