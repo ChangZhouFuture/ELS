@@ -1,7 +1,0 @@
-package businesslogic_client.listbl.documentslistbl;
-
-import businesslogicservice_client.listblservice.documentslistblservice.ArrivalOrder4BusiHalllistblservice;
-
-public class ArrivalOrder4BusiHalllistbl implements ArrivalOrder4BusiHalllistblservice{
-
-}

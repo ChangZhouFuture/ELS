@@ -1,7 +1,0 @@
-package businesslogicservice_client_Stub.listblservice_Stub.documentslistblservice;
-
-import businesslogicservice_client.listblservice.documentslistblservice.TransferOrderlistblservice;
-
-public class TransferOrderlistblservice_Stub implements TransferOrderlistblservice{
-
-}

@@ -1,5 +1,0 @@
-package businesslogicservice_client_Driver.listblservice_Driver.documentslistblservice;
-
-public class DeliveryOrderlistblservice_Driver {
-
-}

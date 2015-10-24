@@ -1,7 +1,0 @@
-package businesslogicservice_client_Stub.listblservice_Stub.informngmtlistblservice;
-
-import businesslogicservice_client.listblservice.informngmtlistblservice.VehiclesInforlistblservice;
-
-public class VehiclesInforlistblservice_Stub implements VehiclesInforlistblservice{
-
-}

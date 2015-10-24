@@ -1,5 +1,0 @@
-package businesslogicservice_client_Driver.listblservice_Driver.informngmtlistblservice;
-
-public class DriversInforlistblservice_Driver {
-
-}

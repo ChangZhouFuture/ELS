@@ -42,7 +42,8 @@ public class OutBoundOrderblservice_Stub implements OutBoundOrderblservice{
 		this.id4e = id4e;
 		this.id4to = id4to;
 		this.desti = desti;
-//		此处传入VO除id外的所有参数，并由VO类里面generateID方法生成单号，记录oboVO（PO和VO的单号是一样的）；
+	
+//		此处传入VO所有参数，记录oboVO（PO和VO的单号是一样的）；
 		oboVO = new OutBoundOrderVO(this.id4e, this.desti, this.id4to, this.id4obo, this.time);
 		
 		

@@ -1,8 +1,8 @@
-package po_client.stockPO;
+package vo_client.lineitemVO.stocklineitemVO;
 
 import java.io.Serializable;
 
-public class StorageListPO implements Serializable{
+public class StorageListlineitemVO implements Serializable{
 	String id4e;
 	
 	String desti;
@@ -20,7 +20,7 @@ public class StorageListPO implements Serializable{
 	String id4obo;
 	
 	
-	public StorageListPO(String id4e, String desti, String dis, String row, String she,String pos, String time){
+	public StorageListlineitemVO(String id4e, String desti, String dis, String row, String she,String pos, String time){
 		super();
 		this.id4e = id4e;
 		this.desti = desti;

@@ -1,7 +1,0 @@
-package businesslogicservice_client_Stub.listblservice_Stub.stocklistblservice;
-
-import businesslogicservice_client.listblservice.stocklistblservice.StorageListlistblservice;
-
-public class StorageListlistblservice_Stub implements StorageListlistblservice{
-
-}
