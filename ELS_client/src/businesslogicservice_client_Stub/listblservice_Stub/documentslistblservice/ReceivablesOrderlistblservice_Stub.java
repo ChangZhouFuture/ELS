@@ -1,0 +1,5 @@
+package businesslogicservice_client_Stub.listblservice_Stub.documentslistblservice;
+
+public interface ReceivablesOrderlistblservice_Stub {
+
+}

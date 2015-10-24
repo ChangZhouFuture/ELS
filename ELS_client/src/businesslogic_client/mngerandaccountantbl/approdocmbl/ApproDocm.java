@@ -1,7 +1,0 @@
-package businesslogic_client.mngerandaccountantbl.approdocmbl;
-
-import businesslogicservice_client.mngerandaccountantblservice.approdocmblservice.ApproDocmblservice;
-
-public class ApproDocm implements ApproDocmblservice{
-
-}

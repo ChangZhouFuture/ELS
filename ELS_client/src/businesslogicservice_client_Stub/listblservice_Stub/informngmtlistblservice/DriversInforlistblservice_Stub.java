@@ -1,0 +1,5 @@
+package businesslogicservice_client_Stub.listblservice_Stub.informngmtlistblservice;
+
+public interface DriversInforlistblservice_Stub {
+
+}

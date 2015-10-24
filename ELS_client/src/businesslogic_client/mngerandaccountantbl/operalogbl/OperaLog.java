@@ -1,7 +1,0 @@
-package businesslogic_client.mngerandaccountantbl.operalogbl;
-
-import businesslogicservice_client.mngerandaccountantblservice.operalogblservice.OperaLogblservice;
-
-public class OperaLog implements OperaLogblservice{
-
-}

@@ -1,0 +1,5 @@
+package businesslogicservice_client_Driver.listblservice_Driver.stocklistblservice;
+
+public interface StorageListlistblservice_Driver {
+
+}
