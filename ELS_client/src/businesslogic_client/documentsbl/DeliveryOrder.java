@@ -1,11 +1,13 @@
 package businesslogic_client.documentsbl;
 
+import java.util.ArrayList;
+
 import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 /**
- * 
- * @author 周畅
- *
+ * 派件单
+ * @author 朱俊文
+ *桩
  */
 public class DeliveryOrder implements DeliveryOrderblservice{
-
+	
 }
