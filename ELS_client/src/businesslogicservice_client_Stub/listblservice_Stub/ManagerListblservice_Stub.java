@@ -1,7 +1,0 @@
-package businesslogicservice_client_Stub.listblservice_Stub;
-
-import businesslogicservice_client.listblservice.ManagerListblservice;
-
-public class ManagerListblservice_Stub implements ManagerListblservice{
-
-}
