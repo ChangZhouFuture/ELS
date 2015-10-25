@@ -19,7 +19,7 @@ public interface DeliveryOrderblservice {
 	 * @param id
 	 * @return 派件员部分信息
 	 */
-	public CourierVO getDeliverier(String id);
+	public String getDeliverier(String id);
 	
 	/**
 	 * 已打开派件单输入页面

@@ -15,7 +15,7 @@ import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
-	public CourierVO getDeliverier(String id) {
+	public String getDeliverier(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

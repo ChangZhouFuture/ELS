@@ -26,8 +26,8 @@ public class DeliveryOrderblservice_Stub implements DeliveryOrderblservice{
 //		此处调用数据层的增加派件单方法，更新PO
 		return dovo;
 	}
-	public CourierVO getDeliverier(String id){
-		return new CourierVO(couriername);
+	public String getDeliverier(String id){
+		return null;
 	}
 	
 	public ResultMessage addDeliverier(String id){
