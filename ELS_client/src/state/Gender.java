@@ -1,5 +1,5 @@
 package state;
 
-public enum Gender {
+public enum Gender {MALE,FEMALE
 
 }
