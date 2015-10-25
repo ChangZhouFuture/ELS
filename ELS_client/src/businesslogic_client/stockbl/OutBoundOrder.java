@@ -2,7 +2,9 @@ package businesslogic_client.stockbl;
 
 import java.util.ArrayList;
 
+import state.ResultMessage;
 import vo_client.OrderVO;
+import vo_client.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo_client.stockVO.OutBoundOrderVO;
 import businesslogicservice_client.stockblservice.OutBoundOrderblservice;
 /**
@@ -13,7 +15,7 @@ import businesslogicservice_client.stockblservice.OutBoundOrderblservice;
 public class OutBoundOrder implements OutBoundOrderblservice {
 
 	@Override
-	public OrderVO addExpress(String id) {
+	public OutBoundOrderlineitemVO addExpress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -25,15 +27,17 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public void deleteone(String id4obo) {
+	public ResultMessage deleteone(String id4obo) {
 		// TODO Auto-generated method stub
 		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id4obo) {
+	public ResultMessage deleteMany(ArrayList<String> id4obo) {
 		// TODO Auto-generated method stub
 		
+		return null;
 	}
 
 	@Override
