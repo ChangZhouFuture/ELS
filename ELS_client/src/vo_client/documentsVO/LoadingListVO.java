@@ -1,5 +1,7 @@
 package vo_client.documentsVO;
 
-public class LoadingListVO {
+import vo_client.ParentVO;
+
+public class LoadingListVO extends ParentVO{
 
 }

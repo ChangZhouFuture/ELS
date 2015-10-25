@@ -1,5 +1,7 @@
 package vo_client.userVO;
 
-public class TranCenClerkVO {
+import vo_client.ParentVO;
+
+public class TranCenClerkVO extends ParentVO{
 
 }

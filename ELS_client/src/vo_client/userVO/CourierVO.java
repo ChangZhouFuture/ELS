@@ -1,5 +1,7 @@
 package vo_client.userVO;
 
-public class CourierVO {
+import vo_client.ParentVO;
+
+public class CourierVO extends ParentVO{
 
 }

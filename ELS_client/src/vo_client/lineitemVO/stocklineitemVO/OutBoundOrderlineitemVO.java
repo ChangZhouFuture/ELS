@@ -2,7 +2,9 @@ package vo_client.lineitemVO.stocklineitemVO;
 
 import java.io.Serializable;
 
-public class OutBoundOrderlineitemVO implements Serializable{
+import vo_client.lineitemVO.ParentlineitemVO;
+
+public class OutBoundOrderlineitemVO extends ParentlineitemVO{
 	String id4e;
 	
 	String desti;

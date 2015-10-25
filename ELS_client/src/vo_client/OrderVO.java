@@ -3,7 +3,7 @@ package vo_client;
 import java.io.Serializable;
 import state.ExpressType;
 
-public class OrderVO implements Serializable{
+public class OrderVO extends ParentVO{
 	String sender;
 	
 	String addressee;

@@ -1,5 +1,7 @@
 package vo_client.lineitemVO.userlineitemVO;
 
-public class AdministratorlineitemVO {
+import vo_client.lineitemVO.ParentlineitemVO;
+
+public class AdministratorlineitemVO extends ParentlineitemVO{
 
 }

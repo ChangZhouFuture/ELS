@@ -1,5 +1,7 @@
 package vo_client.documentsVO;
 
-public class TransferOrderVO {
+import vo_client.ParentVO;
+
+public class TransferOrderVO extends ParentVO{
 
 }

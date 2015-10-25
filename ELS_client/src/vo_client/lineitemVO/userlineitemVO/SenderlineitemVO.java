@@ -1,5 +1,7 @@
 package vo_client.lineitemVO.userlineitemVO;
 
-public class SenderlineitemVO {
+import vo_client.lineitemVO.ParentlineitemVO;
+
+public class SenderlineitemVO extends ParentlineitemVO{
 
 }

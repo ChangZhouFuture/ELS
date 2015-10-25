@@ -2,6 +2,8 @@ package vo_client.lineitemVO.documentslineitemVO;
 
 import java.io.Serializable;
 
-public class PaymentOrderlineitemVO implements Serializable{
+import vo_client.lineitemVO.ParentlineitemVO;
+
+public class PaymentOrderlineitemVO extends ParentlineitemVO{
 
 }
