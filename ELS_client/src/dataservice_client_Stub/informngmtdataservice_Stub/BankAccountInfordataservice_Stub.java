@@ -1,0 +1,7 @@
+package dataservice_client_Stub.informngmtdataservice_Stub;
+
+import dataservice_client.informngmtdataservice.BankAccountInfordataservice;
+
+public class BankAccountInfordataservice_Stub implements BankAccountInfordataservice{
+
+}

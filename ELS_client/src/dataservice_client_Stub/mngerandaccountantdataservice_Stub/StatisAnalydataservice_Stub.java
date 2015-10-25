@@ -1,0 +1,7 @@
+package dataservice_client_Stub.mngerandaccountantdataservice_Stub;
+
+import dataservice_client.mngerandaccountantdataservice.StatisAnalydataservice;
+
+public class StatisAnalydataservice_Stub implements StatisAnalydataservice{
+
+}

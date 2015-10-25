@@ -1,0 +1,7 @@
+package dataservice_client_Stub.documentsdataservice_Stub;
+
+import dataservice_client.documentsdataservice.PaymentOrderdataservice;
+
+public class PaymentOrderdataservice_Stub implements PaymentOrderdataservice{
+
+}

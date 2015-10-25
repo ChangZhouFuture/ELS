@@ -1,0 +1,7 @@
+package dataservice_client_Stub.mngerandaccountantdataservice_Stub;
+
+import dataservice_client.mngerandaccountantdataservice.OperaLogdataservice;
+
+public class OperaLogdataservice_Stub implements OperaLogdataservice{
+
+}

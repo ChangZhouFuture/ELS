@@ -1,0 +1,7 @@
+package dataservice_client_Stub.documentsdataservice_Stub;
+
+import dataservice_client.documentsdataservice.DeliveryOrderdataservice;
+
+public class DeliveryOrderdataservice_Stub implements DeliveryOrderdataservice{
+
+}

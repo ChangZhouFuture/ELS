@@ -1,0 +1,7 @@
+package dataservice_client_Stub.documentsdataservice_Stub;
+
+import dataservice_client.documentsdataservice.ArrivalOrder4TranCendataservice;
+
+public class ArrivalOrder4TranCendataservice_Stub implements ArrivalOrder4TranCendataservice{
+
+}

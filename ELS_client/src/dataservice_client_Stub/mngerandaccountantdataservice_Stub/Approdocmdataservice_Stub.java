@@ -1,0 +1,7 @@
+package dataservice_client_Stub.mngerandaccountantdataservice_Stub;
+
+import dataservice_client.mngerandaccountantdataservice.Approdocmdataservice;
+
+public class Approdocmdataservice_Stub implements Approdocmdataservice{
+
+}

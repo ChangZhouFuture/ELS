@@ -1,0 +1,7 @@
+package dataservice_client_Stub.documentsdataservice_Stub;
+
+import dataservice_client.documentsdataservice.ReceivablesOrderdataservice;
+
+public class ReceivablesOrderdataservice_Stub implements ReceivablesOrderdataservice{
+
+}

@@ -1,0 +1,7 @@
+package dataservice_client_Stub.documentsdataservice_Stub;
+
+import dataservice_client.documentsdataservice.ArrivalOrder4BusiHalldataservice;
+
+public class ArrivalOrder4BusiHalldataservice_Stub implements ArrivalOrder4BusiHalldataservice{
+
+}

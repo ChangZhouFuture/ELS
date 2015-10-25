@@ -1,0 +1,7 @@
+package dataservice_client_Stub.informngmtdataservice_Stub;
+
+import dataservice_client.informngmtdataservice.VehiclesInfordataservice;
+
+public class VehiclesInfordataservice_Stub implements VehiclesInfordataservice{
+
+}
