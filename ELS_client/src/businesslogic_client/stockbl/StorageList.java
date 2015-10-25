@@ -2,7 +2,11 @@ package businesslogic_client.stockbl;
 
 import java.util.ArrayList;
 
+import po_client.lineitemPO.stocklineitemPO.StorageListlineitemPO;
+import state.ResultMessage;
 import vo_client.OrderVO;
+import vo_client.lineitemVO.OrderlineitemVO;
+import vo_client.lineitemVO.stocklineitemVO.StorageListlineitemVO;
 import vo_client.stockVO.OutBoundOrderVO;
 import vo_client.stockVO.StorageListVO;
 import businesslogicservice_client.stockblservice.StorageListblservice;
@@ -14,7 +18,7 @@ import businesslogicservice_client.stockblservice.StorageListblservice;
 public class StorageList implements StorageListblservice {
 
 	@Override
-	public OrderVO addExpress(String id) {
+	public OrderlineitemVO addExpress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -32,45 +36,47 @@ public class StorageList implements StorageListblservice {
 	}
 
 	@Override
-	public OutBoundOrderVO add(String desti, String dis, String row,
+	public StorageListVO add(String desti, String dis, String row,
 			String she, String pos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteone(String id4obo) {
+	public ResultMessage deleteone(String id4obo) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id4obo) {
+	public ResultMessage deleteMany(ArrayList<String> id4obo) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public OutBoundOrderVO modify(String id, String desti, String dis,
+	public StorageListVO modify(String id, String desti, String dis,
 			String row, String she, String pos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquireA(String id) {
+	public StorageListVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquireB(String time) {
+	public StorageListVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void endOBO() {
+	public void endSL() {
 		// TODO Auto-generated method stub
 		
 	}

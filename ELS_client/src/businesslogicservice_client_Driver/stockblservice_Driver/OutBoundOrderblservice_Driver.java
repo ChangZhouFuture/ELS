@@ -7,7 +7,6 @@ import businesslogicservice_client_Stub.stockblservice_Stub.OutBoundOrderblservi
 public class OutBoundOrderblservice_Driver {
 	public void drive(OutBoundOrderblservice outBoundOrderblservice) {
 		outBoundOrderblservice.deleteone("");
-//		outBoundOrderblservice.endOBO();
 	}
 	
 	public static void main(String[] args) {

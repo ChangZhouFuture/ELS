@@ -3,6 +3,7 @@ package dataservice_client.stockdataservice;
 import java.util.ArrayList;
 
 import po_client.OrderPO;
+import po_client.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
 import po_client.stockPO.OutBoundOrderPO;
 import state.ResultMessage;
 import vo_client.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
@@ -23,7 +24,7 @@ public interface OutBoundOrderdataservice {
 	 * 前置条件：库存管理人员已经输入了所有出库单参数值
 	 * 后置条件：增加一个出库单，更新变动到PO
 	 */
-	public OutBoundOrderVO add(String id4e, String id4to, String desti);
+	public OutBoundOrderPO add(String id4obo, String time, String id4e, String id4to, String desti);
 	
 	/**
 	 * 
@@ -51,7 +52,7 @@ public interface OutBoundOrderdataservice {
 	 * 前置条件：要修改的出库单在PO中有记录
 	 * 后置条件:修改一个出库单，更新相关信息到PO
 	 */
-	public OutBoundOrderVO modify(String id, String id4e, String id4to, String desti);
+	public OutBoundOrderPO modify(String id, String id4e, String id4to, String desti);
 	
 	/**
 	 * 
@@ -69,7 +70,7 @@ public interface OutBoundOrderdataservice {
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据时间查询某出库单,返回出库单PO信息
 	 */
-	public OutBoundOrderPO inquireB(String time);
+	public OutBoundOrderlineitemPO inquireB(String time);
 	
 	/**
 	 * 

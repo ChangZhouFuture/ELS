@@ -2,13 +2,21 @@ package businesslogicservice_client_Stub.stockblservice_Stub;
 
 import java.util.ArrayList;
 import businesslogicservice_client.stockblservice.StorageListblservice;
-import vo_client.OrderVO;
-import vo_client.stockVO.OutBoundOrderVO;
+import state.ResultMessage;
+import vo_client.lineitemVO.OrderlineitemVO;
+import vo_client.stockVO.StorageListVO;
 
 public class StorageListblservice_Stub implements StorageListblservice{
-
+	String desti;
+	String dis;
+	String row;
+	String she;
+	String pos;
+	String id4sl;
+	String time;
+	
 	@Override
-	public OrderVO addExpress(String id) {
+	public OrderlineitemVO addExpress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -26,47 +34,58 @@ public class StorageListblservice_Stub implements StorageListblservice{
 	}
 
 	@Override
-	public OutBoundOrderVO add(String desti, String dis, String row,
+	public StorageListVO add(String desti, String dis, String row,
 			String she, String pos) {
 		// TODO Auto-generated method stub
+		
+		//此处调用数据层的A的方法
+		
+		endSL();
 		return null;
 	}
 
 	@Override
-	public void deleteone(String id4obo) {
+	public ResultMessage deleteone(String id4obo) {
 		// TODO Auto-generated method stub
 		
+		endSL();
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id4obo) {
+	public ResultMessage deleteMany(ArrayList<String> id4obo) {
 		// TODO Auto-generated method stub
 		
+		endSL();
+		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO modify(String id, String desti, String dis,
+	public StorageListVO modify(String id, String desti, String dis,
 			String row, String she, String pos) {
 		// TODO Auto-generated method stub
+		
+		endSL();
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquireA(String id) {
+	public StorageListVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquireB(String time) {
+	public StorageListVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void endOBO() {
+	public void endSL() {
 		// TODO Auto-generated method stub
 		
+		//此处调用数据层的Update方法
 	}
 	
 }
