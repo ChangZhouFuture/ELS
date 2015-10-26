@@ -9,7 +9,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 /**
  * 
- * @author Öì¿¡ÎÄ
+ * @author ÖÜ³©
  *
  */
 public class TransferOrder implements TransferOrderblservice {
@@ -27,20 +27,20 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public String generateDate() {
+	public String getDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int generateFare(String sa, String ea) {
+	public int getFare(String sa, String ea) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public TransferOrderVO addTransferOrder(String id, TransportType tst,
-			String sa, String ea, ArrayList<String> oidl, String d,
+			String sa, String ea, ArrayList<String> orderidlist, String d,
 			String hbid, String hgid, String Jzy) {
 		// TODO Auto-generated method stub
 		return null;
@@ -61,15 +61,15 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public void deleteone(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> idlist) {
+	public void deleteMany(ArrayList<String> id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override

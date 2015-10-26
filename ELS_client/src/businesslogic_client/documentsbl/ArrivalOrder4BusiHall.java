@@ -10,13 +10,13 @@ import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
 import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
 /**
  * 
- * @author Öì¿¡ÎÄ
+ * @author ÖÜ³©
  *
  */
 public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
-	public String generateStartAddress(String id) {
+	public String getStartAddress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -28,14 +28,20 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public String generateDate() {
+	public String getDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GoodState getGoodState() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id, String toid,
-			String sa, String d, GoodState gs) {
+			String sa, String d, String gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,21 +54,21 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
-			String d,GoodState gs) {
+			String d, String gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public void deleteone(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> idlist) {
+	public void deleteMany(ArrayList<String> id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override

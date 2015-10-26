@@ -10,12 +10,12 @@ import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 /**
  * ÅÉ¼þµ¥
  * @author Öì¿¡ÎÄ
- *
+ *×®
  */
 public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
-	public String generateDeliverier(String id) {
+	public String getDeliverier(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,7 +33,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public String generateDate() {
+	public String getDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -59,15 +59,15 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public void deleteone(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> idlist) {
+	public void deleteMany(ArrayList<String> id) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
