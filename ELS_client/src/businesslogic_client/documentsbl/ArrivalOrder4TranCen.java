@@ -11,7 +11,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4TranCenblserv
 public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
-	public String getStartAddress(String toid) {
+	public String generateStartAddress(String toid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -23,20 +23,14 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 	}
 
 	@Override
-	public String getDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public GoodState getGoodState() {
+	public String generateDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrivalOrder4TranCenVO addArrivalOrder4TranCen(String id,
-			String toid, String sa, String d, String gs, String tcid) {
+			String toid, String sa, String d, GoodState gs, String tcid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,21 +43,21 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
 	public ArrivalOrder4TranCenVO modify(String id, String toid, String sa,
-			String d, String gs, String tcid) {
+			String d, GoodState gs, String tcid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override

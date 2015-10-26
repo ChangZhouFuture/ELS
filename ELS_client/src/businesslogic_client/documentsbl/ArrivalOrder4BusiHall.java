@@ -16,7 +16,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
 public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
-	public String getStartAddress(String id) {
+	public String generateStartAddress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -28,20 +28,14 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public String getDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public GoodState getGoodState() {
+	public String generateDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id, String toid,
-			String sa, String d, String gs) {
+			String sa, String d, GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -54,7 +48,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
-			String d, String gs) {
+			String d,GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}

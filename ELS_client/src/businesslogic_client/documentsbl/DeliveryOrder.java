@@ -15,7 +15,7 @@ import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
-	public String getDeliverier(String id) {
+	public String generateDeliverier(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,7 +33,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public String getDate() {
+	public String generateDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
