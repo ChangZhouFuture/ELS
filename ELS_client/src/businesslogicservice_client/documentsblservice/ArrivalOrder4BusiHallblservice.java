@@ -78,15 +78,25 @@ public interface ArrivalOrder4BusiHallblservice {
 	public ArrivalOrder4BusiHallVO modify(String id,String toid,String sa,String d,String gs);
 	
 	/**
+<<<<<<< HEAD
 	 * Ç°ÖÃ£ºÆô¶¯Ò»¸öÓªÒµÌü½ÓÊÕ»ØºÏ
 	 * É¾³ıÒ»¸öÓªÒµÌüµ½´ïµ¥
+=======
+	 * Ç°ÖÃ£ºÒªÉ¾³ıµÄÓªÒµÌüµ½´ïµ¥ÔÚ³Ö¾Ã»¯Êı¾İÖĞÓĞ¼ÇÂ¼
+	 * ºóÖÃ£ºÉ¾³ıÒ»¸öÓªÒµÌüµ½´ïµ¥
+>>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
 	 * @param id
 	 */
 	public void deleteone(String id);
 	
 	/**
+<<<<<<< HEAD
 	 * Ç°ÖÃ£ºÆô¶¯Ò»¸öÓªÒµÌü½ÓÊÕ»ØºÏ
 	 * É¾³ı¶à¸öÓªÒµÌüµ½´ïµ¥
+=======
+	 * Ç°ÖÃ£ºÒªÉ¾³ıµÄÓªÒµÌüµ½´ïµ¥ÔÚ³Ö¾Ã»¯Êı¾İÖĞÓĞ¼ÇÂ¼
+	 * ºóÖÃ£ºÉ¾³ı¶à¸öÓªÒµÌüµ½´ïµ¥
+>>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
 	 * @param id
 	 */
 	public void deleteMany(ArrayList<String> id);
