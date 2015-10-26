@@ -3,35 +3,53 @@ package dataservice_client_Stub.stockdataservice_Stub;
 import java.util.ArrayList;
 
 import dataservice_client.stockdataservice.OutBoundOrderdataservice;
-import po_client.OrderPO;
+import po_client.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
 import po_client.stockPO.OutBoundOrderPO;
 import state.ResultMessage;
-import vo_client.stockVO.OutBoundOrderVO;
 
 public class OutBoundOrderdataservice_Stub implements OutBoundOrderdataservice{
-
+	String id4obo;
+	String time;
+	String id4e;
+	String id4to;
+	String desti;
+	
 	@Override
-	public OutBoundOrderVO add(String id4e, String id4to, String desti) {
+	public OutBoundOrderPO add(String id4obo, String time,String id4e, String id4to, String desti) {
 		// TODO Auto-generated method stub
+		this.id4obo = id4obo;
+		this.time = time;
+		this.id4e = id4e;
+		this.id4to = id4to;
+		this.desti = desti;
+		
+		//此处实现在PO里增加相应记录
+		
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id4obo) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("成功删除一个出库单");
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> id4obo) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("成功删除多个出库单");
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO modify(String id, String id4e, String id4to,
+	public OutBoundOrderPO modify(String id, String id4e, String id4to,
 			String desti) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("修改成功");
 		return null;
 	}
 
@@ -42,7 +60,7 @@ public class OutBoundOrderdataservice_Stub implements OutBoundOrderdataservice{
 	}
 
 	@Override
-	public OutBoundOrderPO inquireB(String time) {
+	public OutBoundOrderlineitemPO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +69,7 @@ public class OutBoundOrderdataservice_Stub implements OutBoundOrderdataservice{
 	public void update() {
 		// TODO Auto-generated method stub
 		
+		System.out.println("已经更新了PO相关信息");
 	}
 	
 }
