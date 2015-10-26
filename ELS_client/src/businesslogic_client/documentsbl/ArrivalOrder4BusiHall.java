@@ -16,7 +16,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
 public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
-	public String getStartAddress(String id) {
+	public String generateStartAddress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -28,20 +28,14 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public String getDate() {
+	public String generateDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public GoodState getGoodState() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id, String toid,
-			String sa, String d, String gs) {
+	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id,
+			String toid, String sa, String d, GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -54,21 +48,21 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
-			String d, String gs) {
+			String d, GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -88,5 +82,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

@@ -27,20 +27,20 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public String getDate() {
+	public String generateDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getFare(String sa, String ea) {
+	public int generateFare(String sa, String ea) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public TransferOrderVO addTransferOrder(String id, TransportType tst,
-			String sa, String ea, ArrayList<String> orderidlist, String d,
+			String sa, String ea, ArrayList<String> oidl, String d,
 			String hbid, String hgid, String Jzy) {
 		// TODO Auto-generated method stub
 		return null;
@@ -54,22 +54,22 @@ public class TransferOrder implements TransferOrderblservice {
 
 	@Override
 	public TransferOrderVO modify(String id, TransportType tst, String sa,
-			String ea, ArrayList<String> orderidlist, String d, String hbid,
+			String ea, ArrayList<String> oidl, String d, String hbid,
 			String hgid, String Jzy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -88,12 +88,6 @@ public class TransferOrder implements TransferOrderblservice {
 	public void end() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public int generateFare(String sa, String ea) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
