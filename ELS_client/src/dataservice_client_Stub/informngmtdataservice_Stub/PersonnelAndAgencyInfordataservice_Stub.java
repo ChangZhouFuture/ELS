@@ -1,7 +1,0 @@
-package dataservice_client_Stub.informngmtdataservice_Stub;
-
-import dataservice_client.informngmtdataservice.PersonnelAndAgencyInfordataservice;
-
-public class PersonnelAndAgencyInfordataservice_Stub implements PersonnelAndAgencyInfordataservice{
-
-}

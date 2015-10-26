@@ -1,5 +1,7 @@
 package vo_client.lineitemVO;
 
-public class OperaLoglineitemVO {
+import java.io.Serializable;
+
+public class OperaLoglineitemVO implements Serializable{
 
 }
