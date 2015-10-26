@@ -45,14 +45,11 @@ public interface TransferOrderblservice {
 	 * @param ea
 	 * @return ÔË·Ñ
 	 */
-<<<<<<< HEAD
+
 	public int getFare(String sa,String ea);
-=======
+
 	public int generateFare(String sa,String ea);
-<<<<<<< HEAD
->>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
-=======
->>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
+
 	/**
 	 * Ñ¡ÔñÔö¼ÓÖĞ×ªµ¥
 	 * Ôö¼ÓÒ»¸öÖĞ×ªµ¥£¬¸üĞÂVO£¬PO£¬·µ»ØVOĞÅÏ¢µ½Õ¹Ê¾²ã

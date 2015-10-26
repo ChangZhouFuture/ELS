@@ -9,7 +9,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 /**
  * 
- * @author ÖÜ³©
+ * @author Öì¿¡ÎÄ
  *
  */
 public class TransferOrder implements TransferOrderblservice {
@@ -88,6 +88,12 @@ public class TransferOrder implements TransferOrderblservice {
 	public void end() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int generateFare(String sa, String ea) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -1,4 +1,4 @@
-package businesslogicservice_client_Stub.documentsblservice_Stub;
+ package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import java.util.ArrayList;
 
@@ -84,6 +84,12 @@ public class TransferOrderblservice_Stub implements TransferOrderblservice{
 	public void end() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int generateFare(String sa, String ea) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
