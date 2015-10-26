@@ -9,7 +9,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 /**
  * 
- * @author ÖÜ³©
+ * @author Öì¿¡ÎÄ
  *
  */
 public class TransferOrder implements TransferOrderblservice {

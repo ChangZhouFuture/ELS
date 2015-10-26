@@ -7,7 +7,11 @@ import state.TransportType;
 import vo_client.documentsVO.TransferOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import businesslogicservice_client.documentsblservice.TransferOrderblservice;
-
+/**
+ * 
+ * @author Öì¿¡ÎÄ
+ *
+ */
 public class TransferOrderblservice_Stub implements TransferOrderblservice{
 
 	String id;

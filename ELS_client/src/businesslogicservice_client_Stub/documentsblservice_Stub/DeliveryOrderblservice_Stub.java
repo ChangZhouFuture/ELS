@@ -7,7 +7,11 @@ import vo_client.documentsVO.DeliveryOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
 import vo_client.userVO.CourierVO;
 import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
-
+/**
+ * 
+ * @author Öì¿¡ÎÄ
+ *
+ */
 public class DeliveryOrderblservice_Stub implements DeliveryOrderblservice{
 	String couriername;
 	String deliverierid;

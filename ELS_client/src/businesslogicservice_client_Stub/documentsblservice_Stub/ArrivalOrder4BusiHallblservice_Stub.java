@@ -8,7 +8,11 @@ import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
 import vo_client.documentsVO.DeliveryOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
 import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
-
+/**
+ * 
+ * @author Öì¿¡ÎÄ
+ *
+ */
 public class ArrivalOrder4BusiHallblservice_Stub implements ArrivalOrder4BusiHallblservice{
 	String id;
 	String tranorderoid;

@@ -8,7 +8,7 @@ import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
 import businesslogicservice_client.documentsblservice.LoadingListblservice;
 /**
  * 
- * @author ÖÜ³©
+ * @author Öì¿¡ÎÄ
  *
  */
 public class LoadingList implements LoadingListblservice{

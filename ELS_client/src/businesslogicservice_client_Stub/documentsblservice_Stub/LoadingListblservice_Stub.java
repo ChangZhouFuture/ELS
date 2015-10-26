@@ -6,7 +6,11 @@ import state.ResultMessage;
 import vo_client.documentsVO.LoadingListVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
 import businesslogicservice_client.documentsblservice.LoadingListblservice;
-
+/**
+ * 
+ * @author Öì¿¡ÎÄ
+ *
+ */
 public class LoadingListblservice_Stub implements LoadingListblservice{
 
 	String id;

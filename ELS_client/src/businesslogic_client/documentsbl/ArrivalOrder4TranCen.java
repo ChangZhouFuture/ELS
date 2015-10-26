@@ -7,7 +7,11 @@ import state.ResultMessage;
 import vo_client.documentsVO.ArrivalOrder4TranCenVO;
 import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4TranCenlineitemVO;
 import businesslogicservice_client.documentsblservice.ArrivalOrder4TranCenblservice;
-
+/**
+ * 
+ * @author Öì¿¡ÎÄ
+ *
+ */
 public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override

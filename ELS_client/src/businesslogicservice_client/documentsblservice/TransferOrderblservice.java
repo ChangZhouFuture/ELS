@@ -46,6 +46,7 @@ public interface TransferOrderblservice {
 	 * @return 运费
 	 */
 	public int generateFare(String sa,String ea);
+	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
 	 * 后置：增加一个中转单，更新VO，PO，返回VO信息到展示层
