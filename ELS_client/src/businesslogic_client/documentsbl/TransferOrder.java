@@ -40,7 +40,7 @@ public class TransferOrder implements TransferOrderblservice {
 
 	@Override
 	public TransferOrderVO addTransferOrder(String id, TransportType tst,
-			String sa, String ea, ArrayList<String> orderidlist, String d,
+			String sa, String ea, ArrayList<String> oidl, String d,
 			String hbid, String hgid, String Jzy) {
 		// TODO Auto-generated method stub
 		return null;
@@ -61,15 +61,15 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override

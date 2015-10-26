@@ -60,7 +60,7 @@ public interface TransferOrderblservice {
 	 * @param Jzy
 	 * @return 一个中转单
 	 */
-	public TransferOrderVO addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> orderidlist,String d,String hbid,String hgid,String Jzy);
+	public TransferOrderVO addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
 	
 	/**
 	 * 前置：已添加所有中转信息
@@ -90,14 +90,14 @@ public interface TransferOrderblservice {
 	 * 后置：删除一个中转单
 	 * @param id
 	 */
-	public void deleteone(String id);
+	public ResultMessage deleteone(String id);
 	
 	/**
 	 * 前置：要删除的中转单在持久化数据中有记录
 	 * 后置：删除多个中转单
 	 * @param id
 	 */
-	public void deleteMany(ArrayList<String> id);
+	public ResultMessage deleteMany(ArrayList<String> idlist);
 	
 	/**
 	 * 前置：要查询的中转单在持久化数据中有记录

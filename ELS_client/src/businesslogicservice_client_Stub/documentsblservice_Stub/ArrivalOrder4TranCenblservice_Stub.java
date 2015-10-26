@@ -65,6 +65,10 @@ public class ArrivalOrder4TranCenblservice_Stub implements ArrivalOrder4TranCenb
 	public ArrivalOrder4TranCenVO modify(String id, String toid, String sa,
 			String d, GoodState gs, String tcid) {
 		// TODO Auto-generated method stub
+		//调用数据层的修改方法，修改PO
+		
+		end();
+		System.out.println("Modify the ArrivalOrder4TranCen successfully!");
 		return null;
 	}
 
@@ -113,7 +117,9 @@ public class ArrivalOrder4TranCenblservice_Stub implements ArrivalOrder4TranCenb
 	@Override
 	public void end() {
 		// TODO Auto-generated method stub
+		//此处调用数据层的Update方法
 		
+		System.out.println("End the ArrivalOrder4TranCen!");
 	}
 
 }

@@ -60,13 +60,14 @@ public class DeliveryOrderblservice_Stub implements DeliveryOrderblservice{
 		return null;
 	}
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> id) {
 		// TODO Auto-generated method stub
 		//处理删除 调用数据层方法 更新 PO
 		
 		//处理删除 更新VO
 		end();
 		System.out.println("Delete the deliveries successfully!");
+		return null;
 	}
 	@Override
 	public DeliveryOrderVO inquireA(String id) {
@@ -80,13 +81,14 @@ public class DeliveryOrderblservice_Stub implements DeliveryOrderblservice{
 		return null;
 	}
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
 		//处理删除 调用数据层方法 更新 PO
 		
 		//处理删除 更新VO
 		end();
 		System.out.println("delete the delivery successfully!");
+		return null;
 	}
 	@Override
 	public DeliveryOrderlineitemVO inquireB(String time) {

@@ -75,14 +75,14 @@ public interface ArrivalOrder4BusiHallblservice {
 	 * 后置：删除一个营业厅到达单
 	 * @param id
 	 */
-	public void deleteone(String id);
+	public ResultMessage deleteone(String id);
 	
 	/**
 	 * 前置：要删除的营业厅到达单在持久化数据中有记录
 	 * 后置：删除多个营业厅到达单
 	 * @param id
 	 */
-	public void deleteMany(ArrayList<String> id);
+	public ResultMessage deleteMany(ArrayList<String> idlist);
 	
 	/**
 	 * 前置：要查询的营业厅到达单在持久化数据中有记录

@@ -59,15 +59,15 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override

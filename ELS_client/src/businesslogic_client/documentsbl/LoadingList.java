@@ -45,7 +45,7 @@ public class LoadingList implements LoadingListblservice{
 
 	@Override
 	public LoadingListVO addLoadingList(String id, String bhid, String tlid,
-			String ea, ArrayList<String> orderidlist, String d, String vid,
+			String ea, ArrayList<String> oidl, String d, String vid,
 			int f, String Jzy, String Yyy) {
 		// TODO Auto-generated method stub
 		return null;
@@ -66,15 +66,15 @@ public class LoadingList implements LoadingListblservice{
 	}
 
 	@Override
-	public void deleteone(String id) {
+	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteMany(ArrayList<String> id) {
+	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
