@@ -2,7 +2,10 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import businesslogicservice_client.documentsblservice.LoadingListblservice;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of a4837a0... data接口及VOPO（已完成）
 
 public class LoadingListblservice_Stub implements LoadingListblservice{
 

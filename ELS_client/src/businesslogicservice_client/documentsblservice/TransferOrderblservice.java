@@ -49,6 +49,9 @@ public interface TransferOrderblservice {
 	public int getFare(String sa,String ea);
 =======
 	public int generateFare(String sa,String ea);
+<<<<<<< HEAD
+>>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
+=======
 >>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
 	/**
 	 * Ñ¡ÔñÔö¼ÓÖĞ×ªµ¥

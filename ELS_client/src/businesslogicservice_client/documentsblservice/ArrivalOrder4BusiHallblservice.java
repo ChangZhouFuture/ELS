@@ -84,6 +84,9 @@ public interface ArrivalOrder4BusiHallblservice {
 =======
 	 * Ç°ÖÃ£ºÒªÉ¾³ıµÄÓªÒµÌüµ½´ïµ¥ÔÚ³Ö¾Ã»¯Êı¾İÖĞÓĞ¼ÇÂ¼
 	 * ºóÖÃ£ºÉ¾³ıÒ»¸öÓªÒµÌüµ½´ïµ¥
+<<<<<<< HEAD
+>>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
+=======
 >>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
 	 * @param id
 	 */
@@ -96,6 +99,9 @@ public interface ArrivalOrder4BusiHallblservice {
 =======
 	 * Ç°ÖÃ£ºÒªÉ¾³ıµÄÓªÒµÌüµ½´ïµ¥ÔÚ³Ö¾Ã»¯Êı¾İÖĞÓĞ¼ÇÂ¼
 	 * ºóÖÃ£ºÉ¾³ı¶à¸öÓªÒµÌüµ½´ïµ¥
+<<<<<<< HEAD
+>>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
+=======
 >>>>>>> parent of a4837a0... dataæ¥å£åŠVOPOï¼ˆå·²å®Œæˆï¼‰
 	 * @param id
 	 */
