@@ -10,7 +10,7 @@ import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
 import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
 /**
  * 
- * @author ÖÜ³©
+ * @author Öì¿¡ÎÄ
  *
  */
 public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
