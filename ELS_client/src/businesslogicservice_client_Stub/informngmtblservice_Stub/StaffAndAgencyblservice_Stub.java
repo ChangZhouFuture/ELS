@@ -21,13 +21,14 @@ public class StaffAndAgencyblservice_Stub implements StaffAndAgencyblservice {
 	@Override
 	public StaffAndAgencylineitemVO inquireList() {
 		// TODO Auto-generated method stub
+		System.out.println("显示人员机构列表：");
 		return null;
 	}
 
 	@Override
 	public StaffAndAgencyVO inquire(String id) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("显示人员信息");
 		return null;
 	}
 
@@ -55,6 +56,7 @@ public class StaffAndAgencyblservice_Stub implements StaffAndAgencyblservice {
 	public StaffAndAgencyVO modify(String id, String name, int age, Gender gender, Position position, PayType paytype,
 			double amount) {
 		// TODO Auto-generated method stub
+		System.out.println("修改成功");
 		return null;
 	}
 

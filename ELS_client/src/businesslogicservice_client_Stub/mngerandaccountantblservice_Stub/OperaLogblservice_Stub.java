@@ -27,12 +27,14 @@ public class OperaLogblservice_Stub implements OperaLogblservice{
 	@Override
 	public OperaLoglineitemVO inquireB(String id) {
 		// TODO Auto-generated method stub
+		System.out.println("该人员操作日志：");
 		return null;
 	}
 
 	@Override
 	public OperaLoglineitemVO inquireC(String date) {
 		// TODO Auto-generated method stub
+		System.out.println("该日期的操作日志：");
 		return null;
 	}
 }
