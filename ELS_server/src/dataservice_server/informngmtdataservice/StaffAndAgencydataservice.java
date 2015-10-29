@@ -1,5 +1,5 @@
 package dataservice_server.informngmtdataservice;
 
-public interface PersonnelAndAgencyInfordataservice {
+public interface StaffAndAgencydataservice {
 
 }
