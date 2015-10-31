@@ -1,0 +1,7 @@
+package data_server.mngerandaccountantdata.statisanalydata;
+
+import dataservice_server.mngerandaccountantdataservice.statisanalydataservice.StatisAnalydataservice;
+
+public class StatisAnalydata implements StatisAnalydataservice{
+
+}
