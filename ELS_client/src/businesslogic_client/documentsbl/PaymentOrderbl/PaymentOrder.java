@@ -1,4 +1,4 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.PaymentOrderbl;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package data_server.documentsdata;
+package data_server.documentsdata.PaymentOrderdata;
 
 import dataservice_server.documentsdataservice.PaymentOrderdataservice;
 

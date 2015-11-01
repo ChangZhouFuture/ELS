@@ -1,9 +1,10 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.LoadingListbl;
 
 import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo_client.documentsVO.LoadingListVO;
+import vo_client.lineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
 import businesslogicservice_client.documentsblservice.LoadingListblservice;
 /**
@@ -20,7 +21,7 @@ public class LoadingList implements LoadingListblservice{
 	}
 
 	@Override
-	public ArrayList<String> addOrder(String orderid) {
+	public OrderlineitemVO addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

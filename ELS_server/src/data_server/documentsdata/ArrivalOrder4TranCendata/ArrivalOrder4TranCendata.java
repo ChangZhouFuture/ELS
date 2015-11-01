@@ -1,4 +1,4 @@
-package data_server.documentsdata;
+package data_server.documentsdata.ArrivalOrder4TranCendata;
 
 import dataservice_server.documentsdataservice.ArrivalOrder4TranCendataservice;
 

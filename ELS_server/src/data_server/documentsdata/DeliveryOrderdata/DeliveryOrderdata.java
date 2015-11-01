@@ -1,4 +1,4 @@
-package data_server.documentsdata;
+package data_server.documentsdata.DeliveryOrderdata;
 
 import dataservice_server.documentsdataservice.DeliveryOrderdataservice;
 

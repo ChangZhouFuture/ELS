@@ -4,7 +4,7 @@ import vo_client.OperaLogVO;
 import vo_client.lineitemVO.OperaLoglineitemVO;
 import businesslogicservice_client.mngerandaccountantblservice.OperaLogblservice;
 
-public class OperaLog implements OperaLogblservice{
+public class InquireOperaLog implements OperaLogblservice{
 
 	@Override
 	public OperaLogVO inquireA(String id, String date) {

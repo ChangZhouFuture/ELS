@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo_client.documentsVO.LoadingListVO;
+import vo_client.lineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
 import businesslogicservice_client.documentsblservice.LoadingListblservice;
 
@@ -34,7 +35,7 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 	}
 
 	@Override
-	public ArrayList<String> addOrder(String orderid) {
+	public OrderlineitemVO addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		System.out.println("Add Express successfully!");
 		return null;

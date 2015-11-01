@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo_client.documentsVO.LoadingListVO;
+import vo_client.lineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
 
 /**
@@ -26,7 +27,7 @@ public interface LoadingListblservice {
 	 * @param orderid
 	 * @return 
 	 */
-	public ArrayList<String> addOrder(String orderid);
+	public OrderlineitemVO addOrder(String orderid);
 	
 	/**
 	 * 前置：已打开装车单输入页面

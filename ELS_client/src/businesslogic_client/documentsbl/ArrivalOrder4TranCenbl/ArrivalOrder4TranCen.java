@@ -1,22 +1,17 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.ArrivalOrder4TranCenbl;
 
 import java.util.ArrayList;
 
 import state.GoodState;
 import state.ResultMessage;
-import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
-import vo_client.documentsVO.DeliveryOrderVO;
-import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
-import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
-/**
- * 
- * @author Öì¿¡ÎÄ
- *
- */
-public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
+import vo_client.documentsVO.ArrivalOrder4TranCenVO;
+import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4TranCenlineitemVO;
+import businesslogicservice_client.documentsblservice.ArrivalOrder4TranCenblservice;
+
+public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
-	public String generateStartAddress(String id) {
+	public String generateStartAddress(String toid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,8 +29,8 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id,
-			String toid, String sa, String d, GoodState gs) {
+	public ArrivalOrder4TranCenVO addArrivalOrder4TranCen(String id,
+			String toid, String sa, String d, GoodState gs, String tcid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -47,8 +42,8 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
-			String d, GoodState gs) {
+	public ArrivalOrder4TranCenVO modify(String id, String toid, String sa,
+			String d, GoodState gs, String tcid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,13 +61,13 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallVO inquireA(String id) {
+	public ArrivalOrder4TranCenVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrivalOrder4BusiHalllineitemVO inquireB(String time) {
+	public ArrivalOrder4TranCenlineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -82,7 +77,5 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 }

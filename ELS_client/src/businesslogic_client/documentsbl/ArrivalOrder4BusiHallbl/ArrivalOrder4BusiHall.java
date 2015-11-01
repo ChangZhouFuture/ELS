@@ -1,33 +1,28 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.ArrivalOrder4BusiHallbl;
 
 import java.util.ArrayList;
 
+import state.GoodState;
 import state.ResultMessage;
+import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
 import vo_client.documentsVO.DeliveryOrderVO;
-import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
-import vo_client.userVO.CourierVO;
-import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
+import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
+import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
 /**
- * ÅÉ¼þµ¥
+ * 
  * @author Öì¿¡ÎÄ
- *×®
+ *
  */
-public class DeliveryOrder implements DeliveryOrderblservice{
+public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
-	public String generateDeliverier(String id) {
+	public String generateStartAddress(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addDeliverier(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<String> addOrder(String orderid) {
+	public ResultMessage addTransferOrder(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,8 +34,8 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public DeliveryOrderVO addDeliveryOrder(String id,
-			ArrayList<String> orsderidlist, String dn, String did, String d) {
+	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id,
+			String toid, String sa, String d, GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,8 +47,8 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public DeliveryOrderVO modify(String id, ArrayList<String> orsderidlist,
-			String dn, String did, String d) {
+	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
+			String d, GoodState gs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -71,13 +66,13 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public DeliveryOrderVO inquireA(String id) {
+	public ArrivalOrder4BusiHallVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DeliveryOrderlineitemVO inquireB(String time) {
+	public ArrivalOrder4BusiHalllineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -88,5 +83,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		
 	}
 
-	
+
+
 }

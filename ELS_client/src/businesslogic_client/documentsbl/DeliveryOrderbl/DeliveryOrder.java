@@ -1,23 +1,33 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.DeliveryOrderbl;
 
 import java.util.ArrayList;
 
-import state.GoodState;
 import state.ResultMessage;
-import vo_client.documentsVO.ArrivalOrder4TranCenVO;
-import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4TranCenlineitemVO;
-import businesslogicservice_client.documentsblservice.ArrivalOrder4TranCenblservice;
-
-public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
+import vo_client.documentsVO.DeliveryOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import vo_client.userVO.CourierVO;
+import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
+/**
+ * ÅÉ¼þµ¥
+ * @author Öì¿¡ÎÄ
+ *×®
+ */
+public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
-	public String generateStartAddress(String toid) {
+	public String generateDeliverier(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addTransferOrder(String id) {
+	public ResultMessage addDeliverier(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -29,8 +39,8 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 	}
 
 	@Override
-	public ArrivalOrder4TranCenVO addArrivalOrder4TranCen(String id,
-			String toid, String sa, String d, GoodState gs, String tcid) {
+	public DeliveryOrderVO addDeliveryOrder(String id,
+			ArrayList<String> orsderidlist, String dn, String did, String d) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,8 +52,8 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 	}
 
 	@Override
-	public ArrivalOrder4TranCenVO modify(String id, String toid, String sa,
-			String d, GoodState gs, String tcid) {
+	public DeliveryOrderVO modify(String id, ArrayList<String> orsderidlist,
+			String dn, String did, String d) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,13 +71,13 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 	}
 
 	@Override
-	public ArrivalOrder4TranCenVO inquireA(String id) {
+	public DeliveryOrderVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrivalOrder4TranCenlineitemVO inquireB(String time) {
+	public DeliveryOrderlineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -78,4 +88,5 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 		
 	}
 
+	
 }

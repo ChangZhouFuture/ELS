@@ -1,4 +1,4 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.ReceivablesOrderbl;
 
 import java.util.ArrayList;
 

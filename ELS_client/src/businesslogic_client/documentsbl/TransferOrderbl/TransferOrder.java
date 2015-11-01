@@ -1,4 +1,4 @@
-package businesslogic_client.documentsbl;
+package businesslogic_client.documentsbl.TransferOrderbl;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 /**
  * 
  * @author Öì¿¡ÎÄ
- *
+ * 
  */
 public class TransferOrder implements TransferOrderblservice {
 
