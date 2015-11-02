@@ -1,7 +1,0 @@
-package data_server.mngerandaccountantdata.approdocmdata;
-
-import dataservice_server.mngerandaccountantdataservice.approdocmdataservice.Approdocmdataservice;
-
-public class Approdocmdata implements Approdocmdataservice{
-
-}
