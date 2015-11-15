@@ -2,9 +2,7 @@ package vo_client.documentsVO;
 
 import java.util.ArrayList;
 
-import vo_client.ParentVO;
-
-public class DeliveryOrderVO extends ParentVO{
+public class DeliveryOrderVO {
 	String couriername;
 	String deliverierid;
 	String date;

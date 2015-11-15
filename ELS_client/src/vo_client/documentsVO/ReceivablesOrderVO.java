@@ -2,9 +2,7 @@ package vo_client.documentsVO;
 
 import java.util.ArrayList;
 
-import vo_client.ParentVO;
-
-public class ReceivablesOrderVO extends ParentVO{
+public class ReceivablesOrderVO {
 	String date4RO;
 	String amount4RO;
 	String courier4RO;

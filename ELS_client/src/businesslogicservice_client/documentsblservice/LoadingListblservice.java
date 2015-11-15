@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo_client.documentsVO.LoadingListVO;
-import vo_client.lineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 /**
  * 

@@ -1,10 +1,6 @@
 package vo_client.stockVO;
 
-import java.io.Serializable;
-
-import vo_client.ParentVO;
-
-public class StorageListVO extends ParentVO{
+public class StorageListVO {
 	String id4e;
 	
 	String desti;

@@ -2,12 +2,14 @@ package businesslogicservice_client.documentsblservice;
 
 import java.util.ArrayList;
  
+
  import state.GoodState;
- import state.ResultMessage;
- import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
- import vo_client.documentsVO.DeliveryOrderVO;
- import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
- import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import state.ResultMessage;
+import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
+import vo_client.documentsVO.DeliveryOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
+import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  
  /**
   * 
@@ -25,15 +27,15 @@ import java.util.ArrayList;
  	public String generateStartAddress(String id);
  	
  	/**
- 	 * 前置：已打开营业厅到达单输入页面
- 	 * 判断中转单是否存在
+ 	 * 前置：要添加的中转单在数据持久化对象中有记录
+ 	 * 后置：添加中转单lineitem记录,并向展示层返回VO
  	 * @param id
- 	 * @return 是否存在
+ 	 * @return 
  	 */
- 	public ResultMessage addTransferOrder(String id);
+ 	public TransferOrderlineitemVO addTransferOrder(String id);
  	
  	/**
- 	 * 前置：已打开营业厅到达单输入页面
+ 	 * 前置：已输入所有应该手动输入的参数
  	 * 后置：自动生成营业厅到达单日期
  	 * @return 日期
  	 */
@@ -73,7 +75,6 @@ import java.util.ArrayList;
  	/**
  	 * 前置：要删除的营业厅到达单在持久化数据中有记录
 -	 * 后置：删除一个营业厅到达单
-+	 * 后置：删除一个营业厅到达单，更新VO，PO
  	 * @param id
  	 */
  	public ResultMessage deleteone(String id);
@@ -81,7 +82,6 @@ import java.util.ArrayList;
  	/**
  	 * 前置：要删除的营业厅到达单在持久化数据中有记录
 -	 * 后置：删除多个营业厅到达单
-+	 * 后置：删除多个营业厅到达单，更新VO，PO
  	 * @param id
  	 */
  	public ResultMessage deleteMany(ArrayList<String> idlist);

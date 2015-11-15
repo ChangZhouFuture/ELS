@@ -1,9 +1,7 @@
 package po_server.lineitemPO.stocklineitemPO;
 
-import java.io.Serializable;
-import po_server.lineitemPO.ParentlineitemPO;
 
-public class OutBoundOrderlineitemPO extends ParentlineitemPO{
+public class OutBoundOrderlineitemPO {
 	String id4e;
 	
 	String desti;

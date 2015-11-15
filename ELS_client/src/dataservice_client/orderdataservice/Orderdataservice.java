@@ -1,6 +1,6 @@
 package dataservice_client.orderdataservice;
 
-import po_client.OrderPO;
+import po_client.orderPO.OrderPO;
 import state.ExpressType;
 
 public interface Orderdataservice {

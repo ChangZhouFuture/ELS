@@ -1,8 +1,6 @@
 package vo_client.informngmtVO;
 
-import vo_client.ParentVO;
-
-public class VehiclesVO extends ParentVO{
+public class VehiclesVO {
 	/**
 	 * 
 	 */

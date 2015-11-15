@@ -1,9 +1,7 @@
 package businesslogic_client.stockbl;
 
 import java.util.ArrayList;
-
 import state.ResultMessage;
-import vo_client.OrderVO;
 import vo_client.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo_client.stockVO.OutBoundOrderVO;
 import businesslogicservice_client.stockblservice.OutBoundOrderblservice;

@@ -1,7 +1,6 @@
 package businesslogic_client.mngerandaccountantbl;
 
-import vo_client.OperaLogVO;
-import vo_client.lineitemVO.OperaLoglineitemVO;
+import vo_client.utilityVO.OperaLogVO;
 import businesslogicservice_client.mngerandaccountantblservice.OperaLogblservice;
 
 public class InquireOperaLog implements OperaLogblservice{
@@ -13,13 +12,13 @@ public class InquireOperaLog implements OperaLogblservice{
 	}
 
 	@Override
-	public OperaLoglineitemVO inquireB(String id) {
+	public OperaLogVO inquireB(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OperaLoglineitemVO inquireC(String date) {
+	public OperaLogVO inquireC(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

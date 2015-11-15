@@ -1,0 +1,7 @@
+package data_server.documentsdata;
+
+import dataservice_server.documentsdataservice.ArrivalOrder4TranCendataservice;
+
+public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice{
+
+}

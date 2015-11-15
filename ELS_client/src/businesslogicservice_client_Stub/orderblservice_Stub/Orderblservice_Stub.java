@@ -2,7 +2,7 @@ package businesslogicservice_client_Stub.orderblservice_Stub;
 
 import businesslogicservice_client.orderblservice.Orderblservice;
 import state.ExpressType;
-import vo_client.OrderVO;
+import vo_client.orderVO.OrderVO;
 
 public class Orderblservice_Stub implements Orderblservice{
     OrderVO oVO;

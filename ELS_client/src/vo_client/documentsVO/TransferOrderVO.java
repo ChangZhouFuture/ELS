@@ -1,12 +1,9 @@
 package vo_client.documentsVO;
 
-import vo_client.ParentVO;
 import java.util.ArrayList;
-
 import state.TransportType;
-import vo_client.ParentVO;
  
-public class TransferOrderVO extends ParentVO{
+public class TransferOrderVO {
  
 	String id;
 	TransportType transporttype;

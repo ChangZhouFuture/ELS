@@ -1,7 +1,6 @@
 package businesslogicservice_client.mngerandaccountantblservice;
 
-import vo_client.OperaLogVO;
-import vo_client.lineitemVO.OperaLoglineitemVO;
+import vo_client.utilityVO.OperaLogVO;
 /**
  * 
  * @author zt
@@ -23,7 +22,7 @@ public interface OperaLogblservice {
  	 * @param id
  	 * @return
  	 */
-     public OperaLoglineitemVO inquireB(String id);
+     public OperaLogVO inquireB(String id);
      
      /**
  	 * 前置条件：启动一个查询日志回合
@@ -31,5 +30,5 @@ public interface OperaLogblservice {
  	 * @param date
  	 * @return
  	 */
-     public OperaLoglineitemVO inquireC(String date);
+     public OperaLogVO inquireC(String date);
 }

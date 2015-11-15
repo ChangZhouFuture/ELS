@@ -1,9 +1,8 @@
 package vo_client.documentsVO;
 
 import java.util.ArrayList;
- import vo_client.ParentVO;
  
- public class LoadingListVO extends ParentVO{
+ public class LoadingListVO {
  
 	String id;
 	String busihallid;

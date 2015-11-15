@@ -1,11 +1,10 @@
 package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import java.util.ArrayList;
-
 import state.ResultMessage;
-import vo_client.OrderVO;
 import vo_client.documentsVO.ReceivablesOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.ReceivablesOrderlineitemVO;
+import vo_client.orderVO.OrderVO;
 import businesslogicservice_client.documentsblservice.ReceivablesOrderblservice;
 
 public class ReceivablesOrderblservice_Stub implements ReceivablesOrderblservice{

@@ -1,8 +1,6 @@
 package vo_client.informngmtVO;
 
-import vo_client.ParentVO;
-
-public class DriversVO extends ParentVO{
+public class DriversVO {
 	String driverID;
 	String driverName;
 	String driverDob;

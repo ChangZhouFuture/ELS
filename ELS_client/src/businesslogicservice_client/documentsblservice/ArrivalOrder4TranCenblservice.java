@@ -52,8 +52,6 @@ public interface ArrivalOrder4TranCenblservice {
 	public ArrivalOrder4TranCenVO addArrivalOrder4TranCen(String id,String toid,String sa,String d,GoodState gs,String tcid);
 	
 	/**
--	 * 前置：已选择新增中转中心到达单并输入相关信息
--	 * 自动生成中转中心到达单编号
 +	 * 前置：已添加所有中转中心到达单信息
 +	 * 后置：自动生成中转中心到达单编号
 	 * @return 中转中心到达单
@@ -61,8 +59,6 @@ public interface ArrivalOrder4TranCenblservice {
 	public String generateId();
 	
 	/**
--	 * 前置：已选择更改的中转中心到达单
--	 * 更改一个中转中心到达单，更新VO，PO，返回VO信息到展示层
 +	 * 前置：要修改的中转中心到达单在持久化数据中有记录
 +	 * 后置：更改一个中转中心到达单，更新VO，PO，返回VO信息到展示层
 	 * @param id

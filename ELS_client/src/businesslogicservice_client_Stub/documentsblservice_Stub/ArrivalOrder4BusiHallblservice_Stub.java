@@ -2,12 +2,14 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import java.util.ArrayList;
  
+
  import state.GoodState;
- import state.ResultMessage;
- import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
- import vo_client.documentsVO.DeliveryOrderVO;
- import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
- import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
+import state.ResultMessage;
+import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
+import vo_client.documentsVO.DeliveryOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
+import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblservice;
  
  public class ArrivalOrder4BusiHallblservice_Stub implements ArrivalOrder4BusiHallblservice{
 
@@ -25,11 +27,10 @@ import java.util.ArrayList;
  	}
  
  	@Override
- 	public ResultMessage addTransferOrder(String id) {
+ 	public TransferOrderlineitemVO addTransferOrder(String id) {
+		return null;
  		// TODO Auto-generated method stub
- 		if(id=="tfo00000002")
- 			return ResultMessage.Exist;
- 		else return ResultMessage.NotExist;
+ 		
  	}
  			 
  	@Override

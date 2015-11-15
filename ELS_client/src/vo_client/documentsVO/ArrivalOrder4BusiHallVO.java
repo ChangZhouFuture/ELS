@@ -1,9 +1,9 @@
 package vo_client.documentsVO;
 
 import state.GoodState;
-import vo_client.ParentVO;
 
-public class ArrivalOrder4BusiHallVO extends ParentVO{
+
+public class ArrivalOrder4BusiHallVO {
 
 	String id;
 	String tranorderoid;

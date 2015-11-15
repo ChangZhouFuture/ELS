@@ -1,7 +1,7 @@
 package businesslogic_client.orderbl;
 
 import state.ExpressType;
-import vo_client.OrderVO;
+import vo_client.orderVO.OrderVO;
 import businesslogicservice_client.orderblservice.Orderblservice;
 /**
  * 

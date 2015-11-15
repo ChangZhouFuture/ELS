@@ -1,8 +1,6 @@
 package vo_client.userVO;
 
-import vo_client.ParentVO;
-
-public class CourierVO extends ParentVO{
+public class CourierVO {
 	String couriername;
 	String courierid;
 	String birthday;

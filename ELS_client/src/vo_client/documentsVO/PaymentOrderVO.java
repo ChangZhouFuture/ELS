@@ -2,9 +2,8 @@ package vo_client.documentsVO;
 
 import java.util.ArrayList;
 
-import vo_client.ParentVO;
 
-public class PaymentOrderVO extends ParentVO{
+public class PaymentOrderVO {
 	/**
 	 * 
 	 */

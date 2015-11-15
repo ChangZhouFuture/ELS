@@ -3,9 +3,7 @@ package businesslogicservice_client.stockblservice;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo_client.OrderVO;
-import vo_client.lineitemVO.OrderlineitemVO;
-import vo_client.stockVO.OutBoundOrderVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.stockVO.StorageListVO;
 /**
  * 
@@ -36,7 +34,7 @@ public interface StorageListblservice {
 	 * @param id4e
 	 * @param id4to
 	 * @param desti
-	 * @return 增加一个入库单，更新变动到VO和PO，把VO信息返回到展示层
+	 * @return 增加一个入库单，更新变动到PO，把VO信息返回到展示层
 	 */
 	public StorageListVO add(String desti, String dis, String row, String she, 
 			String pos);

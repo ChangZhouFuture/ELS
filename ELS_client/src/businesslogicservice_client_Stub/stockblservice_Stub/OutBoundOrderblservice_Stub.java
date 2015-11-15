@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 import businesslogicservice_client.stockblservice.OutBoundOrderblservice;
 import state.ResultMessage;
-import vo_client.OrderVO;
-import vo_client.lineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
+import vo_client.orderVO.OrderVO;
 import vo_client.stockVO.OutBoundOrderVO;
 
 public class OutBoundOrderblservice_Stub implements OutBoundOrderblservice{

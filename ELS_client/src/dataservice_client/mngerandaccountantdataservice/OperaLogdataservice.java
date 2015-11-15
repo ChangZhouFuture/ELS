@@ -1,7 +1,6 @@
 package dataservice_client.mngerandaccountantdataservice;
 
-import vo_client.OperaLogVO;
-import vo_client.lineitemVO.OperaLoglineitemVO;
+import vo_client.utilityVO.OperaLogVO;
 /**
  * 该类处理有关查询操作日志的数据
  * @author zt
@@ -23,7 +22,7 @@ public interface OperaLogdataservice {
  	 * @param id
  	 * @return
  	 */
-     public OperaLoglineitemVO inquireB(String id);
+     public OperaLogVO inquireB(String id);
      
      /**
  	 * 前置条件：查询的操作日志在数据库中
@@ -31,6 +30,6 @@ public interface OperaLogdataservice {
  	 * @param date
  	 * @return
  	 */
-     public OperaLoglineitemVO inquireC(String date);
+     public OperaLogVO inquireC(String date);
      
 }
