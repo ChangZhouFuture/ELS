@@ -2,6 +2,7 @@ package businesslogicservice_client_Stub.orderblservice_Stub;
 
 import businesslogicservice_client.orderblservice.Orderblservice;
 import state.ExpressType;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.orderVO.OrderVO;
 
 public class Orderblservice_Stub implements Orderblservice{
@@ -68,6 +69,12 @@ public class Orderblservice_Stub implements Orderblservice{
     public void endOrder(){
     	System.out.println("结束订单处理");
     }
+
+	@Override
+	public OrderlineitemVO getOrderlineitemVO(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
      

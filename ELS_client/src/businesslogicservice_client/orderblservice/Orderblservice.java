@@ -1,6 +1,7 @@
 package businesslogicservice_client.orderblservice;
 
 import state.ExpressType;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.orderVO.OrderVO;
 /**
  * 
@@ -81,6 +82,9 @@ public interface Orderblservice {
       */
      public double getTotalPrice(String startingPlace,String desti,ExpressType eType,int num);
     
+
+     public OrderlineitemVO getOrderlineitemVO(String id);
+     
      /**
       * 前置条件：已完成订单处理
       * 后置条件：结束本次订单处理，持久化更新涉及的领域对象的数据

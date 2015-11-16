@@ -1,11 +1,11 @@
 package businesslogicservice_client.documentsblservice;
 
 import java.util.ArrayList;
-
 import state.ResultMessage;
 import state.TransportType;
 import vo_client.documentsVO.TransferOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 /**
  * 
@@ -16,12 +16,12 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 public interface TransferOrderblservice {
 	
 	/**
-	 * 前置：已打开中转单输入页面
-	 * 中转中心是否存在
+	 * 前置：要添加的中转中心在数据持久化对象里有记录
+	 * 后置：添加一个中转中心
 	 * @param tcid
-	 * @return 是否存在
+	 * @return 
 	 */
-	public ResultMessage addTransferCenter(String tcid);
+	public void addTransferCenter(String tcid);
 	
 	/**
 	 * 前置：启动一个新建或修改中转单回合
@@ -29,7 +29,7 @@ public interface TransferOrderblservice {
 	 * @param orderid
 	 * @return 
 	 */
-	public ArrayList<String> addOrder(String orderid);
+	public OrderlineitemVO addOrder(String orderid);
 	
 	/**
 	 * 前置：已打开中转单输入页面
@@ -102,7 +102,7 @@ public interface TransferOrderblservice {
 	
 	/**
 	 * 前置：要查询的中转单在持久化数据中有记录
-	 * 后置：根据时间查询某中转单,返回中转单VO信息
+	 * 后置：根据id查询某中转单,返回中转单VO信息
 	 * @param id
 	 * @return 中转单信息
 	 */

@@ -7,6 +7,16 @@ import vo_client.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO;
 
 
 public interface PaymentOrderblservice {
+	
+	/**
+	 * 
+	 * @param accountName
+	 * @return
+	 * 前置条件：财务人员已经输入所有参数
+	 * 后置条件：判断账户是否存在
+	 */
+	public ResultMessage doesAccountExist(String accountName);
+	
 	/**
 	 * 
 	 * @param date4PaymentOrder
@@ -54,12 +64,21 @@ public interface PaymentOrderblservice {
 	
 	/**
 	 * 
-	 * @param keyword
+	 * @param id
+	 * @return
+	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
+	 * 后置条件：返回付款单VO对象
+	 */
+	public PaymentOrderlineitemVO inquireA(String id);
+	
+	/**
+	 * time
+	 * @param 
 	 * @return
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public PaymentOrderlineitemVO inquire(String keyword);
+	public PaymentOrderlineitemVO inquireB(String time);
 	
 	/**
 	 * 前置条件：付款单已生成

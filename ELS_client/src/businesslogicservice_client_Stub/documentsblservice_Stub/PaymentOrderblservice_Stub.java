@@ -48,13 +48,6 @@ public class PaymentOrderblservice_Stub implements PaymentOrderblservice{
 	}
 
 	@Override
-	public PaymentOrderlineitemVO inquire(String keyword) {
-		// TODO Auto-generated method stub
-		System.out.println("找到相关记录x条");
-		return null;
-	}
-
-	@Override
 	public void countAmount(ArrayList<String> OrderId) {
 		// TODO Auto-generated method stub
 		
@@ -64,6 +57,26 @@ public class PaymentOrderblservice_Stub implements PaymentOrderblservice{
 	public void end() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public vo_client.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO inquireA(
+			String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public vo_client.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO inquireB(
+			String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage doesAccountExist(String accountName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

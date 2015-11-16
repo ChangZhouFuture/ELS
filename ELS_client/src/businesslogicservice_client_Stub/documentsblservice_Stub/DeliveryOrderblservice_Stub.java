@@ -2,11 +2,15 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import java.util.ArrayList;
  
+
+
  import state.ResultMessage;
- import vo_client.documentsVO.DeliveryOrderVO;
- import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
- import vo_client.userVO.CourierVO;
- import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
+import vo_client.documentsVO.DeliveryOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import vo_client.lineitemVO.userlineitemVO.SenderlineitemVO;
+import vo_client.userVO.CourierVO;
+import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 
 /**
  * 
@@ -32,17 +36,16 @@ import java.util.ArrayList;
  		end();
  		return dovo;
  	}
- 	public String generateDeliverier(String id){
+ 	public String generateName(String id){
  		//此处根据id返回快递员姓名
  		return couriername;
  	}
  	
- 	public ResultMessage addDeliverier(String id){
- 		if(id=="cr00000001")
- 			return ResultMessage.Exist;
- 		else return ResultMessage.NotExist;
+ 	public SenderlineitemVO addDeliverier(String id){
+		return null;
+ 		
  	}
- 	public ArrayList<String> addOrder(String orderid){
+ 	public OrderlineitemVO addOrder(String orderid){
  		System.out.println("Add Express successfully!");
  		return null;
  	}
@@ -81,9 +84,8 @@ import java.util.ArrayList;
  	}
  	
  	@Override
- 	public String generateId() {
+ 	public void generateId() {
  		// TODO Auto-generated method stub
- 		return null;
  	}
  	@Override
  	public ResultMessage deleteone(String id) {

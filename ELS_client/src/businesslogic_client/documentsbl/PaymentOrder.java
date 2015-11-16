@@ -38,12 +38,6 @@ public class PaymentOrder implements PaymentOrderblservice {
 	}
 
 	@Override
-	public PaymentOrderlineitemVO inquire(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void countAmount(ArrayList<String> OrderId) {
 		// TODO Auto-generated method stub
 		
@@ -53,6 +47,24 @@ public class PaymentOrder implements PaymentOrderblservice {
 	public void end() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ResultMessage doesAccountExist(String accountName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PaymentOrderlineitemVO inquireA(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PaymentOrderlineitemVO inquireB(String time) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

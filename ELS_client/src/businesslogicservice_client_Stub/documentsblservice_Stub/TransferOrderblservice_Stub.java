@@ -2,11 +2,13 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 
 import java.util.ArrayList;
  
+
  import state.ResultMessage;
- import state.TransportType;
- import vo_client.documentsVO.TransferOrderVO;
- import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
- import businesslogicservice_client.documentsblservice.TransferOrderblservice;
+import state.TransportType;
+import vo_client.documentsVO.TransferOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 
 /**
  * 
@@ -26,15 +28,12 @@ import java.util.ArrayList;
  	String Jianzhuangyyuan;
  	TransferOrderVO transferorder;
  	@Override
- 	public ResultMessage addTransferCenter(String tcid) {
- 		// TODO Auto-generated method stub
- 		if(tcid=="tc00000001")
- 			return ResultMessage.Exist;
- 		else return ResultMessage.NotExist;
+ 	public void addTransferCenter(String tcid) {
+ 		
  	}
  
  	@Override
- 	public ArrayList<String> addOrder(String orderid) {
+ 	public OrderlineitemVO addOrder(String orderid) {
  		// TODO Auto-generated method stub
  		System.out.println("Add Express successfully!");
  		return null;

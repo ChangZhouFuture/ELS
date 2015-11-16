@@ -1,11 +1,11 @@
 package businesslogicservice_client.documentsblservice;
 
 import java.util.ArrayList;
- 
- import state.ResultMessage;
- import vo_client.documentsVO.DeliveryOrderVO;
- import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
- import vo_client.userVO.CourierVO;
+import state.ResultMessage;
+import vo_client.documentsVO.DeliveryOrderVO;
+import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import vo_client.lineitemVO.userlineitemVO.SenderlineitemVO;
  /**
   * 
   * @author 朱俊文
@@ -14,28 +14,20 @@ import java.util.ArrayList;
   */
  public interface DeliveryOrderblservice {
  	/**
- 	 * 前置：派件员ID在持久化数据中有记录
- 	 * 后置：自动得出派件员姓名
+ 	 * 前置：要添加的派件人在数据持久化对象中有记录
+ 	 * 后置：添加派件人，返回快递员lineitemVO到展示层
  	 * @param id
- 	 * @return 派件员部分信息
+ 	 * @return
  	 */
- 	public String generateDeliverier(String id);
- 	
- 	/**
- 	 * 前置：已打开派件单输入页面
- 	 * 判断快递员是否存在
- 	 * @param id
- 	 * @return 是否存在
- 	 */
- 	public ResultMessage addDeliverier(String id);
+ 	public SenderlineitemVO addDeliverier(String id);
  	
  	/**
  	 * 前置：启动一个新建或修改派件单回合
- 	 * 后置：在派件单中增加一个快件编号，返回展示层本单所有快件编号
+ 	 * 后置：在派件单中增加一个快件编号，返回展示层订单lineitem对象
  	 * @param orderid
  	 * @return 
  	 */
- 	public ArrayList<String> addOrder(String orderid);
+ 	public OrderlineitemVO addOrder(String orderid);
  	
  	/**
  	 * 前置：已打开派件单输入页面
@@ -61,7 +53,7 @@ import java.util.ArrayList;
  	 * 后置：自动生成派件单编号
  	 * @return 派件单编号
  	 */
- 	public String generateId();
+ 	public void generateId();
  	
  	/**
  	 * 前置：要修改的派件单在持久化数据中有记录
@@ -88,11 +80,11 @@ import java.util.ArrayList;
  	 * 后置：删除多个派件单
  	 * @param id
  	 */
-public ResultMessage deleteMany(ArrayList<String> idlist);
+ 	public ResultMessage deleteMany(ArrayList<String> idlist);
  	
  	/**
  	 * 前置：要查询的派件单在持久化数据中有记录
- 	 * 后置：根据时间查询某派件单,返回派件单VO信息
+ 	 * 后置：根据id查询某派件单,返回派件单VO信息
  	 * @param id
  	 * @return 派件单信息
  	 */
@@ -100,7 +92,7 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	
  	/**
  	 * 前置：要查询的派件单在持久化数据中有记录
- 	 * 后置：根据时间查询某派件单,返回派件单VO信息
+ 	 * 后置：根据时间查询某派件单,返回派件单lineitemVO信息
  	 * @param time
  	 * @return 派件单列表
  	 */

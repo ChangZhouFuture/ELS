@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo_client.documentsVO.DeliveryOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import vo_client.lineitemVO.userlineitemVO.SenderlineitemVO;
 import vo_client.userVO.CourierVO;
 import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 /**
@@ -15,19 +17,13 @@ import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
-	public String generateDeliverier(String id) {
+	public SenderlineitemVO addDeliverier(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addDeliverier(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<String> addOrder(String orderid) {
+	public OrderlineitemVO addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,9 +42,9 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public String generateId() {
+	public void generateId() {
 		// TODO Auto-generated method stub
-		return null;
+		return;
 	}
 
 	@Override

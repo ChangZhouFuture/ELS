@@ -1,6 +1,7 @@
 package businesslogic_client.orderbl;
 
 import state.ExpressType;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.orderVO.OrderVO;
 import businesslogicservice_client.orderblservice.Orderblservice;
 /**
@@ -61,6 +62,12 @@ public class Order implements Orderblservice {
 	public void endOrder() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public OrderlineitemVO getOrderlineitemVO(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -6,6 +6,7 @@ import state.ResultMessage;
 import state.TransportType;
 import vo_client.documentsVO.TransferOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 /**
  * 
@@ -15,13 +16,12 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 public class TransferOrder implements TransferOrderblservice {
 
 	@Override
-	public ResultMessage addTransferCenter(String tcid) {
+	public void addTransferCenter(String tcid) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
-	public ArrayList<String> addOrder(String orderid) {
+	public OrderlineitemVO addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

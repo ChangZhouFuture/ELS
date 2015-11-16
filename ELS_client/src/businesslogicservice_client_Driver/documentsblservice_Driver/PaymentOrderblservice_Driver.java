@@ -5,7 +5,7 @@ import businesslogicservice_client_Stub.documentsblservice_Stub.PaymentOrderblse
 
 public class PaymentOrderblservice_Driver {
 	public void drive(PaymentOrderblservice PaymentOrderblservice) {
-		PaymentOrderblservice.inquire(null);
+		PaymentOrderblservice.inquireA(null);
 	}
 	
 	public static void main(String[] args) {

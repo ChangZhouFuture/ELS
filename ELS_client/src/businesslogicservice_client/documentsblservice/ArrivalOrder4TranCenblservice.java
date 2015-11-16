@@ -80,10 +80,8 @@ public interface ArrivalOrder4TranCenblservice {
 	public ResultMessage deleteone(String id);
 	
 	/**
-	 * 前置：启动一个中转接收回合
-	 * 删除多个中转中心到达单
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
-	 * 后置：删除一个中转中心到达单
+	 * 后置：删除多个中转中心到达单
 	 * @param id
 	 */
 	public ResultMessage deleteMany(ArrayList<String> idlist);

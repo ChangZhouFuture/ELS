@@ -1,5 +1,5 @@
 package state;
 
 public enum ResultMessage {
-Exist,NotExist
+Exist,NotExist,Success,Fail;
 }
