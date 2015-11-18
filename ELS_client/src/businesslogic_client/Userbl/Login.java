@@ -1,4 +1,4 @@
-package businesslogic_client.Userbl;
+package businesslogic_client.userbl;
 
 import businesslogicservice_client.userblservice.Loginblservice;
 
