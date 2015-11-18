@@ -1,7 +1,5 @@
 package businesslogicservice_client.mngerandaccountantblservice;
 
-import vo_client.ParentVO;
-import vo_client.lineitemVO.ParentlineitemVO;
 
 /**
  * 
@@ -15,7 +13,7 @@ public interface ApproDocmblservice {
 	 * @param kind
 	 * @return
 	 */
-	public ParentlineitemVO chooseKind(String kind);
+	public Object chooseKind(String kind);
 	
 	/**
 	 * 前置条件：打开一种单据列表
@@ -23,14 +21,14 @@ public interface ApproDocmblservice {
 	 * @param id
 	 * @return
 	 */
-	public ParentVO inquire(String id);
+	public Object inquire(String id);
 	
 	/**
 	 * 前置条件：显示一个单据的数据
 	 * 后置条件：修改一个单据的数据
 	 * @return
 	 */
-	public ParentVO modify();
+	public Object modify();
 	
 	/**
 	 * 前置条件：启动一个审批单据任务

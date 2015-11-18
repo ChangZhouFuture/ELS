@@ -1,10 +1,6 @@
 package vo_client.lineitemVO.informngmtlineitemVO;
 
-import java.io.Serializable;
-
-import vo_client.lineitemVO.ParentlineitemVO;
-
-public class DriverslineitemVO extends ParentlineitemVO implements Serializable{
+public class DriverslineitemVO{
 	String driverID;
 	String driverName;
 	String driverDob;

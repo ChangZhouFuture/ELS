@@ -1,6 +1,5 @@
 package dataservice_client.mngerandaccountantdataservice;
 
-import vo_client.ParentVO;
 
 /**
  * 该接口提供审批单据相关的数据层方法
@@ -15,7 +14,7 @@ public interface Approdocmdataservice {
 	 * @param id
 	 * @return
 	 */
-	public ParentVO inquireA(String id);
+	public Object inquireA(String id);
 	
 	/**
 	 * 前置条件：
@@ -23,7 +22,7 @@ public interface Approdocmdataservice {
 	 * @param kind
 	 * @return
 	 */
-	public ParentVO inquireB(String kind);
+	public Object inquireB(String kind);
 	
 	/**
 	 * 前置条件：
@@ -31,7 +30,7 @@ public interface Approdocmdataservice {
 	 * @param kind
 	 * @return
 	 */
-	public ParentVO inquireC(String date);
+	public Object inquireC(String date);
 	
 	
 	/**
@@ -39,7 +38,7 @@ public interface Approdocmdataservice {
 	 * 后置条件：修改某一单据
 	 * @return
 	 */
-	public ParentVO modify();
+	public Object modify();
 	
 	/**
 	 * 

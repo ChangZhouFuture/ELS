@@ -1,25 +1,23 @@
 package businesslogic_client.mngerandaccountantbl;
 
-import vo_client.ParentVO;
-import vo_client.lineitemVO.ParentlineitemVO;
 import businesslogicservice_client.mngerandaccountantblservice.ApproDocmblservice;
 
 public class ApproDocm implements ApproDocmblservice{
 
 	@Override
-	public ParentlineitemVO chooseKind(String kind) {
+	public Object chooseKind(String kind) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ParentVO inquire(String id) {
+	public Object inquire(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ParentVO modify() {
+	public Object modify() {
 		// TODO Auto-generated method stub
 		return null;
 	}

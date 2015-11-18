@@ -2,6 +2,8 @@ package businesslogic_client.documentsbl;
 
 import java.util.ArrayList;
 
+import po_client.documentsPO.ArrivalOrder4BusiHallPO;
+import po_client.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
 import state.GoodState;
 import state.ResultMessage;
 import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
@@ -15,6 +17,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  *
  */
 public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
+	ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO;
 	
 	@Override
 	public String generateStartAddress(String id) {
@@ -35,9 +38,9 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id,
-			String toid, String sa, String d, GoodState gs) {
+	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

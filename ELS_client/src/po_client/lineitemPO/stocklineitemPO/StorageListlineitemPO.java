@@ -1,11 +1,6 @@
 package po_client.lineitemPO.stocklineitemPO;
 
-import java.io.Serializable;
-
-import po_client.lineitemPO.ParentlineitemPO;
-import vo_client.lineitemVO.ParentlineitemVO;
-
-public class StorageListlineitemPO extends ParentlineitemPO{
+public class StorageListlineitemPO{
 	String id4e;
 	
 	String desti;

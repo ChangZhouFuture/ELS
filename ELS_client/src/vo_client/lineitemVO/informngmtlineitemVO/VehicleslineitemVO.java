@@ -1,10 +1,7 @@
 package vo_client.lineitemVO.informngmtlineitemVO;
 
-import java.io.Serializable;
 
-import vo_client.lineitemVO.ParentlineitemVO;
-
-public class VehicleslineitemVO extends ParentlineitemVO implements Serializable{
+public class VehicleslineitemVO {
 	/**
 	 * 
 	 */

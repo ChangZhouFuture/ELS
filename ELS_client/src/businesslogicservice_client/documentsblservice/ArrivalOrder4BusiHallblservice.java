@@ -51,7 +51,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 一个营业厅到达单
  	 */
- 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id,String toid,String sa,String d,GoodState gs);
+ 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：已添加所有营业厅到达单信息

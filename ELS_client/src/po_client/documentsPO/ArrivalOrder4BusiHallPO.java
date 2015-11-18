@@ -1,24 +1,23 @@
 package po_client.documentsPO;
 
-import java.io.Serializable;
 
 import state.GoodState;
 
- public class ArrivalOrder4BusiHallPO implements Serializable{
+ public class ArrivalOrder4BusiHallPO{
  
-	String id;
-	String toid;
-	String sa;
-	String d;
-	GoodState gs;
+	private String id;
+	private String toid;
+	private String startingAdd;
+	private String date;
+	private GoodState goodState;
 	
-	public ArrivalOrder4BusiHallPO(String id,String toid,String sa,String d,GoodState gs){
+	public ArrivalOrder4BusiHallPO(String id,String toid,String startingAdd,String date,GoodState goodState){
 		super();
 		this.id=id;
 		this.toid=toid;
-		this.sa=sa;
-		this.d=d;
-		this.gs=gs;
+		this.startingAdd=startingAdd;
+		this.date=date;
+		this.goodState=goodState;
 	}
 
 	public String getId() {
@@ -38,26 +37,26 @@ import state.GoodState;
 	}
 
 	public String getSa() {
-		return sa;
+		return startingAdd;
 	}
 
 	public void setSa(String sa) {
-		this.sa = sa;
+		this.startingAdd = startingAdd;
 	}
 
 	public String getD() {
-		return d;
+		return date;
 	}
 
 	public void setD(String d) {
-		this.d = d;
+		this.date = date;
 	}
 
 	public GoodState getGs() {
-		return gs;
+		return goodState;
 	}
 
 	public void setGs(GoodState gs) {
-		this.gs = gs;
+		this.goodState = goodState;
 	}
  }

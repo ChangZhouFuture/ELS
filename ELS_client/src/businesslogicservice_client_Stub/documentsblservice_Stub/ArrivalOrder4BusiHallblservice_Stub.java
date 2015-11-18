@@ -41,14 +41,13 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  		 
  	@Override
- 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(String id, String toid,
- 		 			String sa, String d, GoodState gs) {
+ 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
  		 // TODO Auto-generated method stub
- 		this.id=id;
- 		this.tranorderoid=toid;
- 		this.startaddress=sa;
- 		this.date=d;
- 		this.goodstate=gs;
+// 		this.id=id;
+// 		this.tranorderoid=toid;
+// 		this.startaddress=sa;
+// 		this.date=d;
+// 		this.goodstate=gs;
  		//		此处传入VO所有参数，记录aobhVO（PO和VO的单号是一样的）；
  		aobh=new ArrivalOrder4BusiHallVO(this.id,this.tranorderoid,this.startaddress,this.date,this.goodstate);
  		//		此处调用数据层的增加营业厅到达单方法，更新PO

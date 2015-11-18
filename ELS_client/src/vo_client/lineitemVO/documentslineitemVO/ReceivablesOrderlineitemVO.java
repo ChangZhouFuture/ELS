@@ -1,11 +1,8 @@
 package vo_client.lineitemVO.documentslineitemVO;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo_client.lineitemVO.ParentlineitemVO;
-
-public class ReceivablesOrderlineitemVO extends ParentlineitemVO{
+public class ReceivablesOrderlineitemVO{
 	String date4RO;
 	String amount4RO;
 	String courier4RO;
