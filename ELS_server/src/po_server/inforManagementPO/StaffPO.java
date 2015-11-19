@@ -1,4 +1,4 @@
-package po_server.informngmtPO;
+package po_server.inforManagementPO;
 
 public class StaffPO {
 	private String ID;
