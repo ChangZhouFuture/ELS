@@ -3,75 +3,82 @@ package po_client.inforManagementPO;
 import java.io.Serializable;
 
 public class DriversPO implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8345248940752949681L;
-	String driverID;
-	String driverName;
-	String driverDob;
-	String driverIdNum;
-	String driverCPN;
-	String VehicleUnit;
-	String driverSex;
-	String driverDLP;
-	public DriversPO(String id, String driverName, String driverDob, String driverIdNum,String driverCPN,String VehicleUnit,String driverSex,String driverDLP){
+	private String ID;
+	private String name;
+	private String birthDate;
+	private String identyNum;
+	private String phone;
+	private int gender;
+	private String driveLimitDate;
+	
+	public DriversPO(String ID, String name, String birthDate, String identyNum,
+			String phone,int gender,String driveLimitDate){
 		super();
-		this.driverID = driverID;
-		this.driverName = driverName;
-		this.driverDob = driverDob;
-		this.driverIdNum = driverIdNum;
-		this.driverCPN = driverCPN;
-		this.VehicleUnit = VehicleUnit;
-		this.driverSex = driverSex;
-		this.driverDLP = driverDLP;
+		this.ID = ID;
+		this.name = name;
+		this.birthDate = birthDate;
+		this.identyNum = identyNum;
+		this.phone = phone;
+		this.gender = gender;
+		this.driveLimitDate = driveLimitDate;
+		
 	}
-	public String getdriverID() {
-		return this.driverID;
+
+	public String getID() {
+		return ID;
 	}
-	public void setdriverID(String driverID) {
-		this.driverID = driverID;
+
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public String getdriverName() {
-		return this.driverName;
+
+	public String getName() {
+		return name;
 	}
-	public void setdriverName(String driverName) {
-		this.driverName = driverName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getdriverDob() {
-		return this.driverDob;
+
+	public String getBirthDate() {
+		return birthDate;
 	}
-	public void setdriverDob(String driverDob) {
-		this.driverDob = driverDob;
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
-	public String getdriverIdNum() {
-		return this.driverIdNum;
+
+	public String getIdentyNum() {
+		return identyNum;
 	}
-	public void setdriverIdNum(String driverIdNum) {
-		this.driverIdNum = driverIdNum;
+
+	public void setIdentyNum(String identyNum) {
+		this.identyNum = identyNum;
 	}
-	public String getdriverCPN() {
-		return this.driverCPN;
+
+	public String getPhone() {
+		return phone;
 	}
-	public void setdriverCPN(String driverCPN) {
-		this.driverCPN = driverCPN;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getVehicleUnit() {
-		return this.VehicleUnit;
+
+	public int getGender() {
+		return gender;
 	}
-	public void setVehicleUnit(String VehicleUnit) {
-		this.VehicleUnit = VehicleUnit;
+
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
-	public String getdriverSex() {
-		return this.driverSex;
+
+	public String getDriveLimitDate() {
+		return driveLimitDate;
 	}
-	public void setdriverSex(String driverSex) {
-		this.driverSex = driverSex;
+
+	public void setDriveLimitDate(String driveLimitDate) {
+		this.driveLimitDate = driveLimitDate;
 	}
-	public String getdriverDLP() {
-		return this.driverDLP;
-	}
-	public void setdriverDLP(String driverDLP) {
-		this.driverDLP = driverDLP;
-	}
+	
 }

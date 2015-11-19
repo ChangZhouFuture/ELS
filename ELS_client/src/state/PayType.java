@@ -1,5 +1,5 @@
 package state;
 
-public enum PayType {BYMONTH,BYDAY,PERCENTAGE
+public enum PayType {BYMONTH,BYDAY
 
 }
