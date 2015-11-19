@@ -51,7 +51,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 一个营业厅到达单
  	 */
- 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+ 	public void addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：已添加所有营业厅到达单信息
@@ -70,7 +70,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 更改后的营业厅到达单
  	 */
- 	public ArrivalOrder4BusiHallVO modify(String id,String toid,String sa,String d,GoodState gs);
+ 	public void modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：要删除的营业厅到达单在持久化数据中有记录
@@ -100,11 +100,23 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param time
  	 * @return 营业厅到达单列表
  	 */
- 	public ArrivalOrder4BusiHalllineitemVO inquireB(String time);
+ 	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成
  	 * 后置：结束此次营业厅接收回合，持久化更新设计的领域对象的数据
  	 */
+ 	
+ 	/**
+ 	 * 前置：
+ 	 * 后置：查询出所有营业厅到达单
+ 	 * @return
+ 	 */
+ 	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireC();
+ 	
+ 	public void VOtoPO(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+		
+ 	public void POlineitemToVOlineitem();
+ 	
  	public void end();
 }

@@ -1,7 +1,0 @@
-package data_server.mngerandaccountantdata;
-
-import dataservice_server.mngerandaccountantdataservice.InquireOperaLogdataservice;
-
-public class InquireOperaLogdata implements InquireOperaLogdataservice{
-
-}

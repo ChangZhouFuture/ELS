@@ -6,19 +6,22 @@ import state.GoodState;
  public class ArrivalOrder4BusiHallPO{
  
 	private String id;
-	private String toid;
+	private String transferOrderId;
 	private String startingAdd;
 	private String date;
 	private GoodState goodState;
 	
-	public ArrivalOrder4BusiHallPO(String id,String toid,String startingAdd,String date,GoodState goodState){
-		super();
-		this.id=id;
-		this.toid=toid;
-		this.startingAdd=startingAdd;
-		this.date=date;
-		this.goodState=goodState;
-	}
+//	public ArrivalOrder4BusiHallPO() {
+//		
+//	}
+	
+//	public ArrivalOrder4BusiHallPO(String id,String transferOrderId,String startingAdd,String date,GoodState goodState){
+//		this.id=id;
+//		this.transferOrderId= transferOrderId;
+//		this.startingAdd=startingAdd;
+//		this.date=date;
+//		this.goodState=goodState;
+//	}
 
 	public String getId() {
 		return id;
@@ -28,35 +31,36 @@ import state.GoodState;
 		this.id = id;
 	}
 
-	public String getToid() {
-		return toid;
+	public String getTransferOrderId() {
+		return transferOrderId;
 	}
 
-	public void setToid(String toid) {
-		this.toid = toid;
+	public void setTransferOrderId(String transferOrderId) {
+		this.transferOrderId = transferOrderId;
 	}
 
-	public String getSa() {
+	public String getStartingAdd() {
 		return startingAdd;
 	}
 
-	public void setSa(String sa) {
+	public void setStartingAdd(String startingAdd) {
 		this.startingAdd = startingAdd;
 	}
 
-	public String getD() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setD(String d) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public GoodState getGs() {
+	public GoodState getGoodState() {
 		return goodState;
 	}
 
-	public void setGs(GoodState gs) {
+	public void setGoodState(GoodState goodState) {
 		this.goodState = goodState;
 	}
+
  }

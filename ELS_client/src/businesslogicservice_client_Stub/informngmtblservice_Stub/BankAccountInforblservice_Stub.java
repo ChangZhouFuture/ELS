@@ -1,9 +1,9 @@
 package businesslogicservice_client_Stub.informngmtblservice_Stub;
 
 import state.ResultMessage;
-import vo_client.informngmtVO.BankAccountVO;
-import vo_client.lineitemVO.informngmtlineitemVO.BankAccountlineitemVO;
-import businesslogicservice_client.informngmtblservice.BankAccountInforblservice;
+import vo_client.inforManagementVO.BankAccountVO;
+import vo_client.lineitemVO.inforManagementlineitemVO.BankAccountlineitemVO;
+import businesslogicservice_client.inforManagementblservice.BankAccountInforblservice;
 
 public class BankAccountInforblservice_Stub implements BankAccountInforblservice{
 	String accountName;

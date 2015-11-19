@@ -3,10 +3,10 @@ package businesslogicservice_client_Stub.informngmtblservice_Stub;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo_client.informngmtVO.VehiclesVO;
-import vo_client.lineitemVO.informngmtlineitemVO.VehicleslineitemVO;
+import vo_client.inforManagementVO.VehiclesVO;
+import vo_client.lineitemVO.inforManagementlineitemVO.VehicleslineitemVO;
 import vo_client.orderVO.OrderVO;
-import businesslogicservice_client.informngmtblservice.VehiclesInforblservice;
+import businesslogicservice_client.inforManagementblservice.VehiclesInforblservice;
 
 public class VehiclesInforblservice_Stub implements VehiclesInforblservice{
 	VehiclesVO VehiclesVO;

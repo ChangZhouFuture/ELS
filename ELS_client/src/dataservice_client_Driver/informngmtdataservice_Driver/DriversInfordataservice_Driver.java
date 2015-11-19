@@ -1,6 +1,6 @@
 package dataservice_client_Driver.informngmtdataservice_Driver;
 
-import dataservice_client.informngmtdataservice.DriversInfordataservice;
+import dataservice_client.inforManagementdataservice.DriversInfordataservice;
 import dataservice_client_Driver.informngmtdataservice_Driver.DriversInfordataservice_Driver;
 import dataservice_client_Stub.informngmtdataservice_Stub.DriversInfordataservice_Stub;
 

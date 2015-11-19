@@ -1,6 +1,6 @@
 package businesslogicservice_client_Driver.mngerandaccountantblservice_Driver;
 
-import businesslogicservice_client.mngerandaccountantblservice.ApproDocmblservice;
+import businesslogicservice_client.managerAndAccountantblservice.ApproDocmblservice;
 import businesslogicservice_client_Stub.mngerandaccountantblservice_Stub.ApproDocmblservice_Stub;
 
 public class ApproDocmblservice_Driver {

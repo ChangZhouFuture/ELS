@@ -6,36 +6,37 @@ import state.GoodState;
 public class ArrivalOrder4BusiHallVO {
 
 	String id;
-	String tranorderoid;
-	String startaddress;
+	String transferOrderId;
+	String startingAdd;
 	String date;
-	GoodState goodstate;
-	public ArrivalOrder4BusiHallVO(String id, String tranorderoid,
-			String startaddress, String date, GoodState goodstate) {
-		// TODO Auto-generated constructor stub
-		this.id=id;
-		this.tranorderoid=tranorderoid;
-		this.startaddress=startaddress;
-		this.date=date;
-		this.goodstate=goodstate;
-	}
+	GoodState goodState;
+	
+//	public ArrivalOrder4BusiHallVO(String id, String transferOrderId,
+//			String startingAdd, String date, GoodState goodState) {
+//		this.id=id;
+//		this.transferOrderId=transferOrderId;
+//		this.startingAdd=startingAdd;
+//		this.date=date;
+//		this.goodState=goodState;
+//	}
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getTranorderoid() {
-		return tranorderoid;
+	public String getTransferOrderId() {
+		return transferOrderId;
 	}
-	public void setTranorderoid(String tranorderoid) {
-		this.tranorderoid = tranorderoid;
+	public void setTransferOrderId(String transferOrderId) {
+		this.transferOrderId = transferOrderId;
 	}
-	public String getStartaddress() {
-		return startaddress;
+	public String getStartingAdd() {
+		return startingAdd;
 	}
-	public void setStartaddress(String startaddress) {
-		this.startaddress = startaddress;
+	public void setStartingAdd(String startingAdd) {
+		this.startingAdd = startingAdd;
 	}
 	public String getDate() {
 		return date;
@@ -43,12 +44,13 @@ public class ArrivalOrder4BusiHallVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public GoodState getGoodstate() {
-		return goodstate;
+	public GoodState getGoodState() {
+		return goodState;
 	}
-	public void setGoodstate(GoodState goodstate) {
-		this.goodstate = goodstate;
+	public void setGoodState(GoodState goodState) {
+		this.goodState = goodState;
 	}
-
+	
+	
 }
 

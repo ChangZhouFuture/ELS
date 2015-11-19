@@ -1,0 +1,7 @@
+package businesslogic_client.userManagementbl;
+
+import businesslogicservice_client.userManagementblservice.UserManagementblservice;
+
+public class UserManagement implements UserManagementblservice{
+
+}

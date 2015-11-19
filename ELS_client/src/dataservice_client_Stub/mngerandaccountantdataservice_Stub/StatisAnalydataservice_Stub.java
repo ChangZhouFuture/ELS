@@ -1,6 +1,6 @@
 package dataservice_client_Stub.mngerandaccountantdataservice_Stub;
 
-import dataservice_client.mngerandaccountantdataservice.StatisAnalydataservice;
+import dataservice_client.managerAndAccountantdataservice.StatisAnalydataservice;
 import vo_client.StatisAnalyVO.BusinessSituationVO;
 import vo_client.StatisAnalyVO.CostAndIncomeVO;
 

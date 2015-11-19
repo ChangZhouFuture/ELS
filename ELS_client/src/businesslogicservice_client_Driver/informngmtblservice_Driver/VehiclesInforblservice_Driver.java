@@ -1,7 +1,7 @@
 package businesslogicservice_client_Driver.informngmtblservice_Driver;
 
 
-import businesslogicservice_client.informngmtblservice.VehiclesInforblservice;
+import businesslogicservice_client.inforManagementblservice.VehiclesInforblservice;
 import businesslogicservice_client_Stub.informngmtblservice_Stub.VehiclesInforblservice_Stub;
 
 public class VehiclesInforblservice_Driver {

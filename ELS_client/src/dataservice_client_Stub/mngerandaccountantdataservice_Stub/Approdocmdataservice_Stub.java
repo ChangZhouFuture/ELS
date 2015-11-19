@@ -1,6 +1,6 @@
 package dataservice_client_Stub.mngerandaccountantdataservice_Stub;
 
-import dataservice_client.mngerandaccountantdataservice.Approdocmdataservice;
+import dataservice_client.managerAndAccountantdataservice.Approdocmdataservice;
 
 public class Approdocmdataservice_Stub implements Approdocmdataservice{
 

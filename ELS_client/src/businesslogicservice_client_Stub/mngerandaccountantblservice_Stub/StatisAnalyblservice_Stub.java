@@ -1,6 +1,6 @@
 package businesslogicservice_client_Stub.mngerandaccountantblservice_Stub;
 
-import businesslogicservice_client.mngerandaccountantblservice.StatisAnalyblservice;
+import businesslogicservice_client.managerAndAccountantblservice.StatisAnalyblservice;
 import vo_client.StatisAnalyVO.CostAndIncomeVO;
 import vo_client.StatisAnalyVO.BusinessSituationVO;
 import vo_client.lineitemVO.documentslineitemVO.LoadingListlineitemVO;

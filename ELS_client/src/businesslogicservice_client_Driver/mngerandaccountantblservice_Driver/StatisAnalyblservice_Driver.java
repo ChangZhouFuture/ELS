@@ -1,6 +1,6 @@
 package businesslogicservice_client_Driver.mngerandaccountantblservice_Driver;
 
-import businesslogicservice_client.mngerandaccountantblservice.StatisAnalyblservice;
+import businesslogicservice_client.managerAndAccountantblservice.StatisAnalyblservice;
 import businesslogicservice_client_Stub.mngerandaccountantblservice_Stub.StatisAnalyblservice_Stub;
 
 public class StatisAnalyblservice_Driver {

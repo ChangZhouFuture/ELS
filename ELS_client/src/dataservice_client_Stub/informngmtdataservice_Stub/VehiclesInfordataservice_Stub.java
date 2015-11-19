@@ -2,10 +2,10 @@ package dataservice_client_Stub.informngmtdataservice_Stub;
 
 import java.util.ArrayList;
 
-import po_client.informngmtPO.VehiclesPO;
-import po_client.lineitemPO.informngmtlineitemPO.VehicleslineitemPO;
+import po_client.inforManagementPO.VehiclesPO;
+import po_client.lineitemPO.inforManagementlineitemPO.VehicleslineitemPO;
 import state.ResultMessage;
-import dataservice_client.informngmtdataservice.VehiclesInfordataservice;
+import dataservice_client.inforManagementdataservice.VehiclesInfordataservice;
 
 public class VehiclesInfordataservice_Stub implements VehiclesInfordataservice{
 	String vehiclesId;

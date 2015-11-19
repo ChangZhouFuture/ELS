@@ -1,6 +1,6 @@
 package dataservice_client_Driver.mngerandaccountantdataservice_Driver;
 
-import dataservice_client.mngerandaccountantdataservice.StatisAnalydataservice;
+import dataservice_client.managerAndAccountantdataservice.StatisAnalydataservice;
 import dataservice_client_Stub.mngerandaccountantdataservice_Stub.StatisAnalydataservice_Stub;
 
 public class StatisAnalydataservice_Driver {

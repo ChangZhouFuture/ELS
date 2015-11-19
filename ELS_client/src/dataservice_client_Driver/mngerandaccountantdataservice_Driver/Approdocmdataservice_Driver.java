@@ -1,6 +1,6 @@
 package dataservice_client_Driver.mngerandaccountantdataservice_Driver;
 
-import dataservice_client.mngerandaccountantdataservice.Approdocmdataservice;
+import dataservice_client.managerAndAccountantdataservice.Approdocmdataservice;
 import dataservice_client_Stub.mngerandaccountantdataservice_Stub.Approdocmdataservice_Stub;
 
 public class Approdocmdataservice_Driver {

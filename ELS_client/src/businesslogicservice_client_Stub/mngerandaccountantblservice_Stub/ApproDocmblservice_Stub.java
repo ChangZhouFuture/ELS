@@ -1,6 +1,6 @@
 package businesslogicservice_client_Stub.mngerandaccountantblservice_Stub;
 
-import businesslogicservice_client.mngerandaccountantblservice.ApproDocmblservice;
+import businesslogicservice_client.managerAndAccountantblservice.ApproDocmblservice;
 
 public class ApproDocmblservice_Stub implements ApproDocmblservice{
 

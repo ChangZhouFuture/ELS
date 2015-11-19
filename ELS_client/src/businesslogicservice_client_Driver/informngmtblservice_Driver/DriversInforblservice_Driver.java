@@ -1,6 +1,6 @@
 package businesslogicservice_client_Driver.informngmtblservice_Driver;
 
-import businesslogicservice_client.informngmtblservice.DriversInforblservice;
+import businesslogicservice_client.inforManagementblservice.DriversInforblservice;
 import businesslogicservice_client_Stub.informngmtblservice_Stub.DriversInforblservice_Stub;
 
 public class DriversInforblservice_Driver {

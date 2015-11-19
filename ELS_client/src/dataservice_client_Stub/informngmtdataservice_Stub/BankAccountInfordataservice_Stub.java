@@ -1,9 +1,9 @@
 package dataservice_client_Stub.informngmtdataservice_Stub;
 
-import po_client.informngmtPO.BankAccountPO;
-import po_client.lineitemPO.informngmtlineitemPO.BankAccountlineitemPO;
+import po_client.inforManagementPO.BankAccountPO;
+import po_client.lineitemPO.inforManagementlineitemPO.BankAccountlineitemPO;
 import state.ResultMessage;
-import dataservice_client.informngmtdataservice.BankAccountInfordataservice;
+import dataservice_client.inforManagementdataservice.BankAccountInfordataservice;
 
 public class BankAccountInfordataservice_Stub implements BankAccountInfordataservice{
 

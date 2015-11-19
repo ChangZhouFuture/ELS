@@ -1,9 +1,9 @@
 package dataservice_client.documentsdataservice;
 
 import java.util.ArrayList;
-
 import po_client.documentsPO.ArrivalOrder4BusiHallPO;
 import po_client.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
+import po_client.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.GoodState;
 import state.ResultMessage;
 
@@ -16,16 +16,24 @@ import state.ResultMessage;
  public interface ArrivalOrder4BusiHalldataservice {
  
 	/**
+	 * 前置：
+	 * 后置：添加中转单
+	 * @param id
+	 * @return
+	 */
+	 public TransferOrderlineitemPO addTransferOrder(String id);
+	 
+	/**
 	 * 前置：营业厅业务员已输入所有参数
 	 * 后置：增加一个营业厅到达单，更新PO
 	 * @param id
 	 * @param toid
 	 * @param sa
 	 * @param d
-	 * @param gs
+	 * @param gs 
 	 * @return 一个营业厅到达单
 	 */
-	public ArrivalOrder4BusiHallPO addArrivalOrder4BusiHall(String id,String toid,String sa,String d,GoodState gs);
+	public ArrivalOrder4BusiHallPO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 	
 	/**
 	 * 前置：要修改的营业厅到达单在PO中有记录
@@ -37,7 +45,7 @@ import state.ResultMessage;
 	 * @param gs
 	 * @return 更改后的营业厅到达单
 	 */
-	public ArrivalOrder4BusiHallPO modify(String id,String toid,String sa,String d,GoodState gs);
+	public ArrivalOrder4BusiHallPO modify(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 	
 	/**
 	 * 前置：要删除的营业厅到达单在PO中有记录
@@ -67,7 +75,15 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 营业厅到达单列表
 	 */
-	public ArrivalOrder4BusiHalllineitemPO inquireB(String time);
+	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireB(String time);
+	
+	/**
+	 * 前置：
+	 * 后置：查询所有营业厅到达单
+	 * @param time
+	 * @return
+	 */
+	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireC();
 	
 	/**
 	 * 前置：行为或操作已经完成

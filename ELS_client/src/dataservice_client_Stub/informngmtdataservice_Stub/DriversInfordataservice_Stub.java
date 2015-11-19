@@ -2,10 +2,10 @@ package dataservice_client_Stub.informngmtdataservice_Stub;
 
 import java.util.ArrayList;
 
-import po_client.informngmtPO.DriversPO;
-import po_client.lineitemPO.informngmtlineitemPO.DriverslineitemPO;
+import po_client.inforManagementPO.DriversPO;
+import po_client.lineitemPO.inforManagementlineitemPO.DriverslineitemPO;
 import state.ResultMessage;
-import dataservice_client.informngmtdataservice.DriversInfordataservice;
+import dataservice_client.inforManagementdataservice.DriversInfordataservice;
 
 public class DriversInfordataservice_Stub implements DriversInfordataservice{
 	String driverID;

@@ -1,6 +1,6 @@
 package businesslogicservice_client_Driver.informngmtblservice_Driver;
 
-import businesslogicservice_client.informngmtblservice.BankAccountInforblservice;
+import businesslogicservice_client.inforManagementblservice.BankAccountInforblservice;
 import businesslogicservice_client_Stub.informngmtblservice_Stub.BankAccountInforblservice_Stub;
 
 public class BankAccountInforblservice_Driver {

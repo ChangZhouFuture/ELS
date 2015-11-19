@@ -1,5 +1,5 @@
 package state;
 
-public interface TransportType {
-
+public enum TransportType {
+	Plane, Train, Truck;
 }

@@ -3,6 +3,7 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 import java.util.ArrayList;
  
 
+
  import state.GoodState;
 import state.ResultMessage;
 import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
@@ -18,7 +19,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
 	String startaddress;
 	String date;
 	GoodState goodstate;
-	ArrivalOrder4BusiHallVO aobh;
+	ArrivalOrder4BusiHallVO ao4bh;
  	@Override
  	public String generateStartAddress(String id) {
  		// TODO Auto-generated method stub
@@ -41,18 +42,12 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  		 
  	@Override
- 	public ArrivalOrder4BusiHallVO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
- 		 // TODO Auto-generated method stub
-// 		this.id=id;
-// 		this.tranorderoid=toid;
-// 		this.startaddress=sa;
-// 		this.date=d;
-// 		this.goodstate=gs;
+ 	public void addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+
+ 		
  		//		此处传入VO所有参数，记录aobhVO（PO和VO的单号是一样的）；
- 		aobh=new ArrivalOrder4BusiHallVO(this.id,this.tranorderoid,this.startaddress,this.date,this.goodstate);
+// 		ao4bh=new ArrivalOrder4BusiHallVO(this.id,this.tranorderoid,this.startaddress,this.date,this.goodstate);
  		//		此处调用数据层的增加营业厅到达单方法，更新PO
- 		end();
- 		return aobh;
  	}
  		 
  	@Override
@@ -62,14 +57,12 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  		 
  	@Override
- 	public ArrivalOrder4BusiHallVO modify(String id, String toid, String sa,
- 		 			String d, GoodState gs) {
+ 	public void modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
  		// TODO Auto-generated method stub
  		//调用数据层的修改方法，修改PO
  				
  		end();
  		System.out.println("Modify the ArrivalOrder4BusiHall successfully!");
- 		 		return null;
  		 	}
  		 
  	@Override
@@ -109,18 +102,36 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  
  	@Override
- 	public ArrivalOrder4BusiHalllineitemVO inquireB(String time) {
- 		// TODO Auto-generated method stub
- 		return null;
- 	}
- 
- 	@Override
  	public void end() {
  		// TODO Auto-generated method stub
 		//此处调用数据层的Update方法
  		
 		System.out.println("End the ArrivalOrder4BusiHall!");
  	}
+
+	@Override
+	public void VOtoPO(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireB(String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireC() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void POlineitemToVOlineitem() {
+		// TODO Auto-generated method stub
+		
+	}
  
  }
  	
