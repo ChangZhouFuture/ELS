@@ -1,7 +1,19 @@
+<<<<<<< HEAD
 /businesslogic_client/
 /businesslogicservice_client/
 /businesslogicservice_client_Stub/
 /dataservice_client/
 /dataservice_client_Stub/
 /po_client/
+=======
+/businesslogicservice_client_Driver/
+/businesslogicservice_client_Stub/
+/dataservice_client/
+/dataservice_client_Driver/
+/dataservice_client_Stub/
+/main_client/
+/po_client/
+/presentation_client/
+/state/
+>>>>>>> origin/master
 /vo_client/
