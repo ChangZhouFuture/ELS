@@ -1,1 +1,7 @@
 /businesslogic_client/
+/businesslogicservice_client/
+/businesslogicservice_client_Stub/
+/dataservice_client/
+/dataservice_client_Stub/
+/po_client/
+/vo_client/

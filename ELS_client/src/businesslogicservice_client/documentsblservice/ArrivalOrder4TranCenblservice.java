@@ -6,6 +6,7 @@ import state.GoodState;
 import state.ResultMessage;
 import vo_client.documentsVO.ArrivalOrder4TranCenVO;
 import vo_client.lineitemVO.documentslineitemVO.ArrivalOrder4TranCenlineitemVO;
+import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 
 /**
  * 
@@ -21,7 +22,7 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @return 出发地
 	 */
 
-	public String generateStartAddress(String toid);
+	public String generateStartAddress(String transderOrderId);
 	
 	/**
 	 * 前置：已打开中转中心到达单输入页面
@@ -29,7 +30,7 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @param id
 	 * @return 是否存在
 	 */
-	public ResultMessage addTransferOrder(String id);
+	public TransferOrderlineitemVO addTransferOrder(String id);
 	
 	/**
 	 * 前置：已打开中转中心到达单输入页面
@@ -49,7 +50,7 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @param tcid
 	 * @return 一个中转中心到达单
 	 */
-	public ArrivalOrder4TranCenVO addArrivalOrder4TranCen(String id,String toid,String sa,String d,GoodState gs,String tcid);
+	public ResultMessage addArrivalOrder4TranCen(ArrivalOrder4TranCenVO arrivalOrder4TranCenVO);
 	
 	/**
 +	 * 前置：已添加所有中转中心到达单信息
@@ -69,7 +70,7 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @param tcid
 	 * @return 更改后的中转中心到达单
 	 */
-	public ArrivalOrder4TranCenVO modify(String id,String toid,String sa,String d,GoodState gs,String tcid);
+	public ResultMessage modify(ArrivalOrder4TranCenVO arrivalOrder4TranCenVO);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
@@ -92,7 +93,7 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public ArrivalOrder4TranCenVO inquireA(String id);
+	public ArrayList<ArrivalOrder4TranCenVO> inquireA(String id);
 	
 	/**
 	 * 前置：要查询的中转中心到达单在持久化数据中有记录
@@ -100,7 +101,13 @@ public interface ArrivalOrder4TranCenblservice {
 	 * @param time
 	 * @return 中转中心到达单列表
 	 */
-	public ArrivalOrder4TranCenlineitemVO inquireB(String time);
+	public ArrayList<ArrivalOrder4TranCenVO> inquireB(String time);
+	
+	public ArrayList<ArrivalOrder4TranCenVO> inquireC();
+	
+	public void VOtoPO();
+	
+	public void POtoVO();
 	
 	/**
 	 * 前置：业务已经处理完成

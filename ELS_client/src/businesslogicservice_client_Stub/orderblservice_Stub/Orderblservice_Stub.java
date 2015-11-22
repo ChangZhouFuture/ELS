@@ -16,15 +16,7 @@ public class Orderblservice_Stub implements Orderblservice{
     String id;
     int num;
     
-    public OrderVO add(String sender, String addressee, String desti, String startingPlace,
-			ExpressType eType, String name, String id, int num){
-    	this.sender = sender;
-		this.addressee = addressee;
-		this.desti = desti;
-		this.startingPlace = startingPlace;
-		this.eType = eType;
-		this.name = name;
-		this.num = num;
+    public void add(OrderVO orderVO){
 		
         //此处传入VO所有参数，记录oVO
 		oVO=new OrderVO(this.sender,this.addressee,this.desti,this.startingPlace,this.eType,
@@ -32,7 +24,6 @@ public class Orderblservice_Stub implements Orderblservice{
 		
 	    //调用数据层增加订单方法，更新PO
 		
-		return oVO;
     }
     
     public void delete(String id){
@@ -43,12 +34,10 @@ public class Orderblservice_Stub implements Orderblservice{
     	System.out.println("删除成功");
     }
     
-    public OrderVO modify(String sender, String addressee, String desti, String startingPlace,
-			ExpressType eType, String name, String id, int num){
+    public void modify(OrderVO orderVO){
     	//处理修改，调用数据层方法，更新PO
     	
     	System.out.println("修改成功");
-    	return null;
     }
     
     public OrderVO inquireA(String id){
@@ -75,9 +64,12 @@ public class Orderblservice_Stub implements Orderblservice{
 		// TODO Auto-generated method stub
 		return null;
 	}
-    
-    
-     
-   
-   
+
+	@Override
+	public double calculateTotalPrice(String startingPlace, String desti,
+			ExpressType eType, int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

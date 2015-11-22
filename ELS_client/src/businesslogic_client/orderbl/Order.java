@@ -12,30 +12,19 @@ import businesslogicservice_client.orderblservice.Orderblservice;
 public class Order implements Orderblservice {
 
 	@Override
-	public OrderVO add(String sender, String addressee, String desti,
-			String startingPlace, ExpressType eType, String name, String id,
-			int num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
+	public void add(OrderVO orderVO) {
+		
 		
 	}
 
 	@Override
-	public OrderVO modify(String sender, String addressee, String desti,
-			String startingPlace, ExpressType eType, String name, String id,
-			int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(String id) {
+		
 	}
 
 	@Override
 	public OrderVO inquireA(String id) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -52,13 +41,6 @@ public class Order implements Orderblservice {
 	}
 
 	@Override
-	public double getTotalPrice(String startingPlace, String desti,
-			ExpressType eType, int num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void endOrder() {
 		// TODO Auto-generated method stub
 		
@@ -68,6 +50,19 @@ public class Order implements Orderblservice {
 	public OrderlineitemVO getOrderlineitemVO(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void modify(OrderVO orderVO) {
+
+	
+	}
+
+	@Override
+	public double calculateTotalPrice(String startingPlace, String desti,
+			ExpressType eType, int num) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

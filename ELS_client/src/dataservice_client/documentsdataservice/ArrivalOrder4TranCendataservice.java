@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po_client.documentsPO.ArrivalOrder4TranCenPO;
 import po_client.lineitemPO.documentslineitemPO.ArrivalOrder4TranCenlineitemPO;
+import po_client.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.GoodState;
 import state.ResultMessage;
  
@@ -12,6 +13,9 @@ import state.ResultMessage;
  * 该接口提供与中转中心到达单相关的数据层方法
  */
 public interface ArrivalOrder4TranCendataservice {
+	
+	public TransferOrderlineitemPO addTransferOrder(String id);
+	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
 	 * 后置：增加一个中转中心到达单，更新变动到PO
@@ -23,7 +27,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param tcid
 	 * @return 一个中转中心到达单
 	 */
-	public ArrivalOrder4TranCenPO addArrivalOrder4TranCen(String id,String toid,String sa,String d,GoodState gs,String tcid);
+	public ResultMessage addArrivalOrder4TranCen(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
 	
 	/**
 	 * 前置：要修改的中转中心到达单在PO中有记录
@@ -36,7 +40,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param tcid
 	 * @return 更改后的中转中心到达单
 	 */
-	public ArrivalOrder4TranCenPO modify(String id,String toid,String sa,String d,GoodState gs,String tcid);
+	public ResultMessage modify(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在PO中有记录

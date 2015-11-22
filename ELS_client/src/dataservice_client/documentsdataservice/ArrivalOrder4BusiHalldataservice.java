@@ -33,7 +33,7 @@ import state.ResultMessage;
 	 * @param gs 
 	 * @return 一个营业厅到达单
 	 */
-	public ArrivalOrder4BusiHallPO addArrivalOrder4BusiHall(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
+	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 	
 	/**
 	 * 前置：要修改的营业厅到达单在PO中有记录
@@ -45,7 +45,7 @@ import state.ResultMessage;
 	 * @param gs
 	 * @return 更改后的营业厅到达单
 	 */
-	public ArrivalOrder4BusiHallPO modify(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
+	public ResultMessage modify(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 	
 	/**
 	 * 前置：要删除的营业厅到达单在PO中有记录
@@ -75,7 +75,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 营业厅到达单列表
 	 */
-	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireB(String time);
+	public ArrayList<ArrivalOrder4BusiHallPO> inquireB(String time);
 	
 	/**
 	 * 前置：
@@ -83,7 +83,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return
 	 */
-	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireC();
+	public ArrayList<ArrivalOrder4BusiHallPO> inquireC();
 	
 	/**
 	 * 前置：行为或操作已经完成

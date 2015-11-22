@@ -3,6 +3,8 @@ package businesslogicservice_client.documentsblservice;
 import java.util.ArrayList;
  
 
+
+import po_client.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
  import state.GoodState;
 import state.ResultMessage;
 import vo_client.documentsVO.ArrivalOrder4BusiHallVO;
@@ -51,7 +53,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 一个营业厅到达单
  	 */
- 	public void addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+ 	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：已添加所有营业厅到达单信息
@@ -70,7 +72,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 更改后的营业厅到达单
  	 */
- 	public void modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+ 	public ResultMessage modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：要删除的营业厅到达单在持久化数据中有记录
@@ -92,7 +94,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param id
  	 * @return 营业厅到达单信息
  	 */
- 	public ArrivalOrder4BusiHallVO inquireA(String id);
+ 	public ArrayList<ArrivalOrder4BusiHallVO> inquireA(String id);
  	
  	/**
  	 * 前置：要查询的营业厅到达单在持久化数据中有记录
@@ -100,7 +102,7 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param time
  	 * @return 营业厅到达单列表
  	 */
- 	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireB(String time);
+ 	public ArrayList<ArrivalOrder4BusiHallVO> inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成
@@ -112,11 +114,11 @@ import vo_client.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * 后置：查询出所有营业厅到达单
  	 * @return
  	 */
- 	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireC();
+ 	public ArrayList<ArrivalOrder4BusiHallVO> inquireC();
  	
- 	public void VOtoPO(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+ 	public void VOtoPO();
 		
- 	public void POlineitemToVOlineitem();
+ 	public void POtoVO(int k);
  	
  	public void end();
 }

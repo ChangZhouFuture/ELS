@@ -3,6 +3,7 @@ package businesslogicservice_client_Stub.documentsblservice_Stub;
 import java.util.ArrayList;
  
 
+
  import state.ResultMessage;
 import state.TransportType;
 import vo_client.documentsVO.TransferOrderVO;
@@ -140,5 +141,11 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
  		
  		System.out.println("End the TransferOrder!");
  	}
+
+	@Override
+	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  
  }

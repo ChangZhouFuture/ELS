@@ -42,27 +42,27 @@ public class ArrivalOrder4BusiHalldataservice_Stub implements ArrivalOrder4BusiH
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallPO addArrivalOrder4BusiHall(
+	public ResultMessage addArrivalOrder4BusiHall(
 			ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrivalOrder4BusiHallPO modify(
+	public ResultMessage modify(
 			ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireB(String date) {
+	public ArrayList<ArrivalOrder4BusiHallPO> inquireB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ArrivalOrder4BusiHalllineitemPO> inquireC() {
+	public ArrayList<ArrivalOrder4BusiHallPO> inquireC() {
 		// TODO Auto-generated method stub
 		return null;
 	}

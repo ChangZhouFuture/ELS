@@ -84,10 +84,18 @@ public class TransferOrder implements TransferOrderblservice {
 		return null;
 	}
 
+	
+	
 	@Override
 	public void end() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

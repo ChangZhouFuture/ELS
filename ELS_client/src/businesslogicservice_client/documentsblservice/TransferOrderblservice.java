@@ -116,6 +116,8 @@ public interface TransferOrderblservice {
 	 */
 	public TransferOrderlineitemVO inquireB(String time);
 	
+	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id);
+	
 	/**
 	 * 前置：业务已经处理完成
 	 * 后置：结束此次中转回合，持久化更新设计的领域对象的数据

@@ -42,7 +42,8 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  		 
  	@Override
- 	public void addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+ 	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+		return null;
 
  		
  		//		此处传入VO所有参数，记录aobhVO（PO和VO的单号是一样的）；
@@ -57,12 +58,13 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  		 
  	@Override
- 	public void modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+ 	public ResultMessage modify(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
  		// TODO Auto-generated method stub
  		//调用数据层的修改方法，修改PO
  				
  		end();
  		System.out.println("Modify the ArrivalOrder4BusiHall successfully!");
+		return null;
  		 	}
  		 
  	@Override
@@ -96,7 +98,7 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
  
  	@Override
- 	public ArrivalOrder4BusiHallVO inquireA(String id) {
+ 	public ArrayList<ArrivalOrder4BusiHallVO> inquireA(String id) {
  		// TODO Auto-generated method stub
  		return null;
  	}
@@ -110,28 +112,28 @@ import businesslogicservice_client.documentsblservice.ArrivalOrder4BusiHallblser
  	}
 
 	@Override
-	public void VOtoPO(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+	public void VOtoPO() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireB(String date) {
+	public ArrayList<ArrivalOrder4BusiHallVO> inquireB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ArrivalOrder4BusiHalllineitemVO> inquireC() {
+	public ArrayList<ArrivalOrder4BusiHallVO> inquireC() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void POlineitemToVOlineitem() {
+	public void POtoVO(int k) {
 		// TODO Auto-generated method stub
 		
 	}
- 
+
  }
  	

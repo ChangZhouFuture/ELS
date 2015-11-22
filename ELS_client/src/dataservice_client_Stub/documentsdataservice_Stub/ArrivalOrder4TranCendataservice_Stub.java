@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po_client.documentsPO.ArrivalOrder4TranCenPO;
 import po_client.lineitemPO.documentslineitemPO.ArrivalOrder4TranCenlineitemPO;
+import po_client.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.GoodState;
 import state.ResultMessage;
 import dataservice_client.documentsdataservice.ArrivalOrder4TranCendataservice;
@@ -11,15 +12,13 @@ import dataservice_client.documentsdataservice.ArrivalOrder4TranCendataservice;
 public class ArrivalOrder4TranCendataservice_Stub implements ArrivalOrder4TranCendataservice{
 
 	@Override
-	public ArrivalOrder4TranCenPO addArrivalOrder4TranCen(String id,
-			String toid, String sa, String d, GoodState gs, String tcid) {
+	public ResultMessage addArrivalOrder4TranCen(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrivalOrder4TranCenPO modify(String id, String toid, String sa,
-			String d, GoodState gs, String tcid) {
+	public ResultMessage modify(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,6 +51,12 @@ public class ArrivalOrder4TranCendataservice_Stub implements ArrivalOrder4TranCe
 	public void update() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public TransferOrderlineitemPO addTransferOrder(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

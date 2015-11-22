@@ -3,37 +3,29 @@ import state.GoodState;
 
 public class ArrivalOrder4TranCenVO {
 	String id;
-	String tranorderoid;
-	String startaddress;
+	String transferOrderId;
+	String startingAdd;
 	String date;
-	GoodState goodstate;
-	String trancenterid;
-	public ArrivalOrder4TranCenVO(String id,
-			String tranorderoid, String startaddress, String date, GoodState goodstate, String trancenterid) {
-		this.id=id;
-		this.tranorderoid=tranorderoid;
-		this.startaddress=startaddress;
-		this.date=date;
-		this.goodstate=goodstate;
-		this.trancenterid=trancenterid;
-}
+	GoodState goodState;
+	String transferCenterId;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getTranorderoid() {
-		return tranorderoid;
+	public String getTransferOrderId() {
+		return transferOrderId;
 	}
-	public void setTranorderoid(String tranorderoid) {
-		this.tranorderoid = tranorderoid;
+	public void setTransferOrderId(String transferOrderId) {
+		this.transferOrderId = transferOrderId;
 	}
-	public String getStartaddress() {
-		return startaddress;
+	public String getStartingAdd() {
+		return startingAdd;
 	}
-	public void setStartaddress(String startaddress) {
-		this.startaddress = startaddress;
+	public void setStartingAdd(String startingAdd) {
+		this.startingAdd = startingAdd;
 	}
 	public String getDate() {
 		return date;
@@ -41,16 +33,27 @@ public class ArrivalOrder4TranCenVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public GoodState getGoodstate() {
-		return goodstate;
+	public GoodState getGoodState() {
+		return goodState;
 	}
-	public void setGoodstate(GoodState goodstate) {
-		this.goodstate = goodstate;
+	public void setGoodState(GoodState goodState) {
+		this.goodState = goodState;
 	}
-	public String getTrancenterid() {
-		return trancenterid;
+	public String getTransferCenterId() {
+		return transferCenterId;
 	}
-	public void setTrancenterid(String trancenterid) {
-		this.trancenterid = trancenterid;
+	public void setTransferCenterId(String transferCenterId) {
+		this.transferCenterId = transferCenterId;
 	}
+	
+//	public ArrivalOrder4TranCenVO(String id,
+//			String tranorderoid, String startaddress, String date, GoodState goodstate, String trancenterid) {
+//		this.id=id;
+//		this.tranorderoid=tranorderoid;
+//		this.startaddress=startaddress;
+//		this.date=date;
+//		this.goodstate=goodstate;
+//		this.trancenterid=trancenterid;
+//}
+	
 } 

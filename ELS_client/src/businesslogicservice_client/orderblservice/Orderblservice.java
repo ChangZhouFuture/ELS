@@ -23,8 +23,7 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-	 public OrderVO add(String sender, String addressee, String desti, String startingPlace,
-				ExpressType eType, String name, String id, int num);
+	 public void add(OrderVO orderVO);
 	 
 	 /**
 	  * 前置条件：展开一个订单列表
@@ -46,8 +45,7 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-     public OrderVO modify(String sender, String addressee, String desti, String startingPlace,
- 			ExpressType eType, String name, String id, int num);
+     public void modify(OrderVO orderVO);
      
      /**
       * 前置条件：输入一个订单编号
@@ -80,7 +78,7 @@ public interface Orderblservice {
       * @param packprice
       * @return
       */
-     public double getTotalPrice(String startingPlace,String desti,ExpressType eType,int num);
+     public double calculateTotalPrice(String startingPlace,String desti,ExpressType eType,int num);
     
 
      public OrderlineitemVO getOrderlineitemVO(String id);
