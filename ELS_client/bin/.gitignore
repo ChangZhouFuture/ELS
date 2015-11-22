@@ -1,1 +1,10 @@
-/businesslogic_client/
+/businesslogicservice_client_Driver/
+/businesslogicservice_client_Stub/
+/dataservice_client/
+/dataservice_client_Driver/
+/dataservice_client_Stub/
+/main_client/
+/po_client/
+/presentation_client/
+/state/
+/vo_client/

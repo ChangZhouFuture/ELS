@@ -1,71 +1,57 @@
 package vo_client.inforManagementVO;
 
+import state.Gender;
+
 public class DriversVO {
-	String driverID;
-	String driverName;
-	String driverDob;
-	String driverIdNum;
-	String driverCPN;
-	String VehicleUnit;
-	String driverSex;
-	String driverDLP;
-	public DriversVO(String id, String driverName, String driverDob, String driverIdNum,String driverCPN,String VehicleUnit,String driverSex,String driverDLP){
-		super();
-		this.driverID = driverID;
-		this.driverName = driverName;
-		this.driverDob = driverDob;
-		this.driverIdNum = driverIdNum;
-		this.driverCPN = driverCPN;
-		this.VehicleUnit = VehicleUnit;
-		this.driverSex = driverSex;
-		this.driverDLP = driverDLP;
+	private String ID;
+	private String name;
+	private String birthDate;
+	private String identyNum;
+	private String phone;
+	private Gender gender;
+	private String driveLimitDate;
+	public String getID() {
+		return ID;
 	}
-	public String getdriverID() {
-		return this.driverID;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public void setdriverID(String driverID) {
-		this.driverID = driverID;
+	public String getName() {
+		return name;
 	}
-	public String getdriverName() {
-		return this.driverName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void setdriverName(String driverName) {
-		this.driverName = driverName;
+	public String getBirthDate() {
+		return birthDate;
 	}
-	public String getdriverDob() {
-		return this.driverDob;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
-	public void setdriverDob(String driverDob) {
-		this.driverDob = driverDob;
+	public String getIdentyNum() {
+		return identyNum;
 	}
-	public String getdriverIdNum() {
-		return this.driverIdNum;
+	public void setIdentyNum(String identyNum) {
+		this.identyNum = identyNum;
 	}
-	public void setdriverIdNum(String driverIdNum) {
-		this.driverIdNum = driverIdNum;
+	public String getPhone() {
+		return phone;
 	}
-	public String getdriverCPN() {
-		return this.driverCPN;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public void setdriverCPN(String driverCPN) {
-		this.driverCPN = driverCPN;
+
+	public Gender getGender() {
+		return gender;
 	}
-	public String getVehicleUnit() {
-		return this.VehicleUnit;
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
-	public void setVehicleUnit(String VehicleUnit) {
-		this.VehicleUnit = VehicleUnit;
+	public String getDriveLimitDate() {
+		return driveLimitDate;
 	}
-	public String getdriverSex() {
-		return this.driverSex;
+	public void setDriveLimitDate(String driveLimitDate) {
+		this.driveLimitDate = driveLimitDate;
 	}
-	public void setdriverSex(String driverSex) {
-		this.driverSex = driverSex;
-	}
-	public String getdriverDLP() {
-		return this.driverDLP;
-	}
-	public void setdriverDLP(String driverDLP) {
-		this.driverDLP = driverDLP;
-	}
+	
 }

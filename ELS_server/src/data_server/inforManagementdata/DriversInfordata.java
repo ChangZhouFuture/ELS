@@ -1,20 +1,22 @@
 package data_server.inforManagementdata;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import po_server.inforManagementPO.DriversPO;
+import state.ResultMessage;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.DriversInfordataservice;
 
 public class DriversInfordata implements DriversInfordataservice {
 	    Database db=new Database();
-	    Connection con;
+	    Connection con=db.getConnection();
 	    Statement sm;
 	    PreparedStatement stmt;
 	    DriversPO po;
 	    
     //增加新司机信息
-	public void add(DriversPO po){
-		con=db.getConnection();
+	public ResultMessage add(DriversPO po){
 		try {
 			// “?” 即占位符
 			stmt = con.prepareStatement("INSERT INTO driver(ID,name,birthDate,identyNum,phone,gender,DriveLimitDate) VALUES(?,?,?,?,?,?,?)");
@@ -26,16 +28,17 @@ public class DriversInfordata implements DriversInfordataservice {
 		    stmt.setInt(6, po.getGender());
 		    stmt.setString(7, po.getDriveLimitDate());
 		    stmt.executeUpdate();
+		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
 	}
 	
 	//查找司机信息
 	public DriversPO find(String Id){
 		po = new DriversPO();
-		con=db.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM driver WHERE ID='"+Id+"'");
 			
@@ -58,20 +61,38 @@ public class DriversInfordata implements DriversInfordataservice {
 	}
 	
 	//删除司机信息
-	public void delete(String Id){
-		con=db.getConnection();
+	public ResultMessage deleteOne(String Id){
 		try {
 			stmt=con.prepareStatement("DELETE FROM driver WHERE ID=?");
 			stmt.setString(1, Id);
 			stmt.executeUpdate();
+		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
 	}
 	
+	@Override
+	public ResultMessage deleteMany(ArrayList<String> Ids) {
+		// TODO Auto-generated method stub
+		try {
+			for(int i=0;i<Ids.size();i++){
+				stmt=con.prepareStatement("DELETE FROM driver WHERE ID=?");
+			    stmt.setString(1, Ids.get(i));
+			    stmt.executeUpdate();
+			}
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.Fail;
+		}
+	} 
+	
 	//修改司机信息
-	public void update(DriversPO po){
+	public ResultMessage update(DriversPO po){
 		con=db.getConnection();
 		try {
 			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=? WHERE ID=?");
@@ -84,10 +105,11 @@ public class DriversInfordata implements DriversInfordataservice {
 			stmt.setString(6, po.getDriveLimitDate());
 			stmt.setString(7, po.getID());
 			stmt.executeUpdate();
+			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
 	}
-
 }
