@@ -21,45 +21,32 @@ public class DriversInforblservice_Stub implements DriversInforblservice{
 	String driverSex;
 	String driverDLP;
 	@Override
-	public DriversVO add(String driverId, String driverName,
-			String driverDob, String driverIdNum, String driverCPN,
-			String VehicleUnit, String driverSex, String driverDLP) {
+	public ResultMessage add(DriversVO driversVO) {
 		// TODO Auto-generated method stub
-		end();
-		return driversVO;
+		return null;
 	}
 	@Override
 	public ResultMessage deleteOne(String driverId) {
 		// TODO Auto-generated method stub
-		end();
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> id4Driver) {
 		// TODO Auto-generated method stub
-		end();
 		return null;
 	}
 	@Override
-	public DriversVO modify(String driverId) {
+	public ResultMessage modify(DriversVO driversVO) {
 		// TODO Auto-generated method stub
-		end();
 		return null;
 	}
 
 	@Override
-	public DriverslineitemVO inquire(String keyword) {
+	public DriversVO inquire(String keyword) {
 		// TODO Auto-generated method stub
 		System.out.println("找到相关记录x条");
 		return null;
-	}
-
-	@Override
-	public void end() {
-		// TODO Auto-generated method stub
-		
-		//调用数据层的update方法
 	}
 
 }
