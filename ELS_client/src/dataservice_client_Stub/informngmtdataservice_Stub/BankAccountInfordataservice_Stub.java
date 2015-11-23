@@ -3,39 +3,43 @@ package dataservice_client_Stub.informngmtdataservice_Stub;
 import po_client.inforManagementPO.BankAccountPO;
 import po_client.lineitemPO.inforManagementlineitemPO.BankAccountlineitemPO;
 import state.ResultMessage;
+
+import java.util.ArrayList;
+
 import dataservice_client.inforManagementdataservice.BankAccountInfordataservice;
 
 public class BankAccountInfordataservice_Stub implements BankAccountInfordataservice{
 
 	@Override
-	public BankAccountPO initialize(String accountName, String agency,
-			String id4staff, String id4Vehics) {
+	public ResultMessage add(BankAccountPO po) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String accountName) {
+	public ResultMessage deleteOne(String Id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BankAccountPO modify(String accountName) {
+	public ResultMessage deleteMany(ArrayList<String> Ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BankAccountlineitemPO inquire(String keyword) {
+	public ResultMessage update(BankAccountPO po) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update() {
+	public BankAccountPO find(String Id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+
+//	
 
 }

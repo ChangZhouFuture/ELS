@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 import po_server.inforManagementPO.VehiclesPO;
+import state.ResultMessage;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.VehiclesInfordataservice;
 
@@ -16,7 +19,7 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
     PreparedStatement stmt;
     VehiclesPO po;
     
-    public void add(VehiclesPO po){
+    public ResultMessage add(VehiclesPO po){
     	con=db.getConnection();
 		try {
 			stmt = con.prepareStatement("INSERT INTO vehicles(ID,plateNum,serviceTime) VALUES(?,?,?)");
@@ -24,9 +27,11 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
 		    stmt.setString(2, po.getPlateNum());
 		    stmt.setInt(3, po.getServiceTime());
 		    stmt.executeUpdate();
+		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
     }
     
@@ -48,19 +53,21 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
 		return po;
     }
     
-    public void delete(String Id){
+    public ResultMessage deleteOne(String Id){
     	con=db.getConnection();
 		try {
 			stmt=con.prepareStatement("DELETE FROM vehicles WHERE ID=?");
 			stmt.setString(1, Id);
 			stmt.executeUpdate();
+			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.NotExist;
 		}
     }
     
-    public void update(VehiclesPO po){
+    public ResultMessage update(VehiclesPO po){
     	con=db.getConnection();
 		try {
 			String sql=("UPDATE drivers SET plateNum=?,serviceTime=? WHERE ID=?");
@@ -69,10 +76,30 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
 			stmt.setInt(2, po.getServiceTime());
 			stmt.setString(3, po.getID());
 			stmt.executeUpdate();
+			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.NotExist;
 		}
     }
+
+	@Override
+	public ResultMessage deleteMany(ArrayList<String> Ids) {
+		// TODO Auto-generated method stub
+		con=db.getConnection();
+		try {
+			for(int i=0;i<Ids.size();i++){
+			stmt=con.prepareStatement("DELETE FROM vehicles WHERE ID=?");
+			stmt.setString(1, Ids.get(i));
+			stmt.executeUpdate();
+			}
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
+	}
     
 }
