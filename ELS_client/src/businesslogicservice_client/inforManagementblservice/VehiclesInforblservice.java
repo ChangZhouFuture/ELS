@@ -4,23 +4,16 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo_client.inforManagementVO.VehiclesVO;
-import vo_client.lineitemVO.inforManagementlineitemVO.VehicleslineitemVO;
 
 public interface VehiclesInforblservice {
 	/**
 	 * 
-	 * @param vehiclesId
-	 * @param engineNum
-	 * @param vehiclesNum
-	 * @param chassisNum
-	 * @param dateOfBuy
-	 * @param activeTime
-	 * @param vehiclesImage
+	 * @param vo
 	 * @return
 	 * 前置条件：营业厅业务员已经被授权和登录
 	 * 后置条件：添加新的车辆信息
 	 */
-	public VehiclesVO add(String vehiclesId, String engineNum, String vehiclesNum, String chassisNum,String dateOfBuy,String activeTime,String vehiclesImage);
+	public ResultMessage add(VehiclesVO vo);
 		
 	/**
 	 * 
@@ -30,7 +23,7 @@ public interface VehiclesInforblservice {
 	 * 后置条件：删除一条车辆信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String vehiclesId);
+	public ResultMessage deleteOne(String Id);
 	/**
 	 * 
 	 * @param id4Vehicles
@@ -38,29 +31,21 @@ public interface VehiclesInforblservice {
 	 * 后置条件：删除多条车辆信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> id4Vehicles);
+	public ResultMessage deleteMany(ArrayList<String> Ids);
 	
 	/**
 	 * 
-	 * @param vehiclesId
+	 * @param Id
 	 * @return
 	 * 前置条件：要修改的车辆信息在PO中有记录
 	 * 后置条件：修改车辆信息，并更新VO和PO
 	 */
-	public VehiclesVO modify(String vehiclesId);
+	public ResultMessage modify(VehiclesVO vo);
 	
 	/**
 	 * 
-	 * @param keyword
+	 * @param Id
 	 * @return
-	 * 前置条件：要查询的车辆信息在数据持久化对象中有记录
-	 * 后置条件：返回相关记录的列表
 	 */
-	public VehicleslineitemVO inquire(String keyword);
-	
-	/**
-	 * 前置条件：车辆信息处理完成
-	 * 后置条件：结束本次车辆信息处理，更新数据持久化对象
-	 */
-	public void end();
+	public VehiclesVO inquire(String Id);
 }

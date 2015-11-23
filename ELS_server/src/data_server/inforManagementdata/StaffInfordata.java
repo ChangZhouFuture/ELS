@@ -5,21 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 import po_server.inforManagementPO.StaffPO;
+import state.ResultMessage;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.StaffInfordataservice;
 
 
 public class StaffInfordata implements StaffInfordataservice{
 	Database db=new Database();
-    static Connection con;
-    static String URL="jdbc:mysql://127.0.0.1:3306/information_store";
+    Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     StaffPO po;
     
-    public void add(StaffPO po){
-    	con=db.getConnection();
+    public ResultMessage add(StaffPO po){
 		try {
 			stmt = con.prepareStatement("INSERT INTO staff(ID,name,gender,birthDate,identyNum,phone,agency,position,payType,payAmount,percentage) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
@@ -35,15 +36,16 @@ public class StaffInfordata implements StaffInfordataservice{
 		    stmt.setDouble(10, po.getPayAmount());
 		    stmt.setString(11, po.getPercentage());
 		    stmt.executeUpdate();
+		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
     }
     
     public StaffPO find(String Id){
     	po = new StaffPO();
-		con=db.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE ID='"+Id+"'");
 			ResultSet rs=ps.executeQuery(); 
@@ -67,20 +69,35 @@ public class StaffInfordata implements StaffInfordataservice{
 		return po;
     }
     
-    public void delete(String Id){
-    	con=db.getConnection();
+    public ResultMessage deleteOne(String Id){
 		try {
 			stmt=con.prepareStatement("DELETE FROM staff WHERE ID=?");
 			stmt.setString(1, Id);
 			stmt.executeUpdate();
+			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.NotExist;
 		}
     }
     
-    public void update(StaffPO po){
-    	con=db.getConnection();
+    public ResultMessage deleteMany(ArrayList<String> Ids){
+    	try {
+    		for(int i=0;i<Ids.size();i++){
+			stmt=con.prepareStatement("DELETE FROM staff WHERE ID=?");
+			stmt.setString(1, Ids.get(i));
+			stmt.executeUpdate();
+    		}
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
+    }
+    
+    public ResultMessage update(StaffPO po){
 		try {
 			String sql=("UPDATE drivers SET name=?,gender=?,birthDate=?,identyNum=?,phone=?,agency=?,position=?,payType=?,payAmount=?,percentage=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
@@ -94,9 +111,12 @@ public class StaffInfordata implements StaffInfordataservice{
 		    stmt.setInt(8, po.getPayType());
 		    stmt.setDouble(9, po.getPayAmount());
 		    stmt.setString(10, po.getPercentage());
+		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.NotExist;
 		}
     }
 }
+

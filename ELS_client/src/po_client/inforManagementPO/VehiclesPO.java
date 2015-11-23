@@ -4,67 +4,31 @@ import java.io.Serializable;
 
 
 public class VehiclesPO implements Serializable{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8345248940752949681L;
-	String vehiclesId;
-	String engineNum;
-	String vehiclesNum;
-	String chassisNum;
-	String dateOfBuy;
-	String activeTime;
-	String vehiclesImage;
-	public VehiclesPO(String vehiclesId, String engineNum, String vehiclesNum, String chassisNum,String dateOfBuy,String activeTime,String vehiclesImage){
-		super();
-		this.vehiclesId = vehiclesId;
-		this.engineNum = engineNum;
-		this.chassisNum = chassisNum;
-		this.vehiclesNum = vehiclesNum;
-		this.dateOfBuy = dateOfBuy;
-		this.activeTime = activeTime;
-		this.vehiclesImage = vehiclesImage;
+	private static final long serialVersionUID = 1L;
+	String ID;
+	String plateNum;
+	int serviceTime;
+	public String getID() {
+		return ID;
 	}
-	public String getvehiclesId() {
-		return this.vehiclesId;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public void setvehiclesId(String vehiclesId) {
-		this.vehiclesId = vehiclesId;
+	public String getPlateNum() {
+		return plateNum;
 	}
-	public String getengineNum() {
-		return this.engineNum;
+	public void setPlateNum(String plateNum) {
+		this.plateNum = plateNum;
 	}
-	public void setengineNum(String engineNum) {
-		this.engineNum = engineNum;
+	public int getServiceTime() {
+		return serviceTime;
 	}
-	public String getvehiclesNum() {
-		return this.vehiclesNum;
+	public void setServiceTime(int serviceTime) {
+		this.serviceTime = serviceTime;
 	}
-	public void setvehiclesNum(String vehiclesNum) {
-		this.vehiclesNum = vehiclesNum;
-	}
-	public String getchassisNum() {
-		return this.chassisNum;
-	}
-	public void setchassisNum(String chassisNum) {
-		this.chassisNum = chassisNum;
-	}
-	public String getdateOfBuy() {
-		return this.dateOfBuy;
-	}
-	public void setdateOfBuy(String dateOfBuy) {
-		this.dateOfBuy = dateOfBuy;
-	}
-	public String getactiveTime() {
-		return this.activeTime;
-	}
-	public void setactiveTime(String activeTime) {
-		this.activeTime = activeTime;
-	}
-	public String getvehiclesImage() {
-		return this.vehiclesImage;
-	}
-	public void setvehiclesImage(String vehiclesImage) {
-		this.vehiclesImage = vehiclesImage;
-	}
+	
 }
