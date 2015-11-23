@@ -1,7 +1,6 @@
 package dataservice_client_Stub.informngmtdataservice_Stub;
 
 import po_client.inforManagementPO.BankAccountPO;
-import po_client.lineitemPO.inforManagementlineitemPO.BankAccountlineitemPO;
 import state.ResultMessage;
 
 import java.util.ArrayList;

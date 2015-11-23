@@ -1,10 +1,8 @@
 package businesslogicservice_client.inforManagementblservice;
 
 import java.util.ArrayList;
-
 import state.ResultMessage;
 import vo_client.inforManagementVO.BankAccountVO;
-import vo_client.lineitemVO.inforManagementlineitemVO.BankAccountlineitemVO;
 
 /**
  * 

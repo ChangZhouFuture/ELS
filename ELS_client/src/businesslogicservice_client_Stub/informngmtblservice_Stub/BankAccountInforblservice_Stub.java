@@ -2,7 +2,6 @@ package businesslogicservice_client_Stub.informngmtblservice_Stub;
 
 import state.ResultMessage;
 import vo_client.inforManagementVO.BankAccountVO;
-import vo_client.lineitemVO.inforManagementlineitemVO.BankAccountlineitemVO;
 
 import java.util.ArrayList;
 

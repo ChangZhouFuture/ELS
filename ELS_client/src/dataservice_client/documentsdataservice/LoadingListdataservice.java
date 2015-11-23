@@ -1,8 +1,10 @@
 package dataservice_client.documentsdataservice;
 
 import java.util.ArrayList;
+
 import po_client.documentsPO.LoadingListPO;
 import po_client.lineitemPO.documentslineitemPO.LoadingListlineitemPO;
+import po_client.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
 /**
@@ -11,6 +13,8 @@ import state.ResultMessage;
  */
  public interface LoadingListdataservice {
  
+	 public OrderlineitemPO addOrder(String id);
+	 
 	/**
 	 * 前置：营业厅业务员已输入所有参数
 	 * 后置：增加一个装车单，更新变动到PO
@@ -26,24 +30,24 @@ import state.ResultMessage;
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-	public LoadingListPO addLoadingList(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy);
+	public ResultMessage addLoadingList(LoadingListPO loadingListPO);
 	
-	/**
-	 * 前置：要修改的装车单在PO中有记录
-	 * 后置：更改一个装车单，更新PO相关信息
-	 * @param id
-	 * @param bhid
-	 * @param tlid
-	 * @param ea
-	 * @param orderidlist
-	 * @param d
-	 * @param vid
-	 * @param f
-	 * @param Jzy
-	 * @param Yyy
-	 * @return 更改后的装车单
-	 */
-	public LoadingListPO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
+//	/**
+//	 * 前置：要修改的装车单在PO中有记录
+//	 * 后置：更改一个装车单，更新PO相关信息
+//	 * @param id
+//	 * @param bhid
+//	 * @param tlid
+//	 * @param ea
+//	 * @param orderidlist
+//	 * @param d
+//	 * @param vid
+//	 * @param f
+//	 * @param Jzy
+//	 * @param Yyy
+//	 * @return 更改后的装车单
+//	 */
+//	public LoadingListPO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
 	
 	/**
 	 * 前置：要删除的装车单在PO中有记录
@@ -65,7 +69,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 装车单信息
 	 */
-	public LoadingListPO inquireA(String id);
+	public LoadingListPO findA(String id);
 	
 	/**
 	 * 前置：要查询的装车单在PO中有记录
@@ -73,11 +77,12 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 装车单列表
 	 */
-	public LoadingListlineitemPO inquireB(String time);
+	public LoadingListlineitemPO findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public void update();
+	public ResultMessage update(LoadingListPO loadingListPO);
+	
  }
