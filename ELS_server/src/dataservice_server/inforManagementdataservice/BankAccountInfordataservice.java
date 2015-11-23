@@ -8,11 +8,11 @@ import state.ResultMessage;
 public interface BankAccountInfordataservice {
 	 public ResultMessage add(BankAccountPO po);
      
-	    public ResultMessage deleteOne(String Id);
+	    public ResultMessage deleteOne(String name);
 	    
-	    public ResultMessage deleteMany(ArrayList<String> Ids);
+	    public ResultMessage deleteMany(ArrayList<String> names);
 	    
 	    public ResultMessage update(BankAccountPO po);
 	    
-	    public BankAccountPO find(String Id);
+	    public BankAccountPO find(String name);
 }

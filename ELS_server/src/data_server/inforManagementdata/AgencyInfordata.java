@@ -46,7 +46,7 @@ public AgencyPO find(String Id){
 		if(rs.next()){
 		    po.setID(Id);
 	        po.setCity(rs.getString("city"));
-	        po.setAgencyType(rs.getInt("agencyType"));;
+	        po.setAgencyType(rs.getInt("agencyType"));
 	        
 		}
 	} catch (SQLException e) {
