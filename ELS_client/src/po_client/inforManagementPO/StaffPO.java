@@ -1,15 +1,19 @@
 package po_client.inforManagementPO;
 
+import state.Gender;
+import state.PayType;
+import state.Position;
+
 public class StaffPO {
     private String ID;
     private String name;
-    private int gender;
+    private Gender gender;
     private String birthDate;
     private String identyNum;
     private String phone;
     private String agency;
-    private int position;
-    private int payType;
+    private Position position;
+    private PayType payType;
     private double payAmount;
     private String percentage;
     
@@ -25,12 +29,7 @@ public class StaffPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getGender() {
-		return gender;
-	}
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
+	
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -55,16 +54,23 @@ public class StaffPO {
 	public void setAgency(String agency) {
 		this.agency = agency;
 	}
-	public int getPosition() {
+	
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+	public Position getPosition() {
 		return position;
 	}
-	public void setPosition(int position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
-	public int getPayType() {
+	public PayType getPayType() {
 		return payType;
 	}
-	public void setPayType(int payType) {
+	public void setPayType(PayType payType) {
 		this.payType = payType;
 	}
 	public double getPayAmount() {

@@ -2,6 +2,8 @@ package po_server.inforManagementPO;
 
 import java.io.Serializable;
 
+import state.Gender;
+
 public class DriversPO implements Serializable{
 	private static final long serialVersionUID = -8345248940752949681L;
 	private String ID;
@@ -9,7 +11,7 @@ public class DriversPO implements Serializable{
 	private String birthDate;
 	private String identyNum;
 	private String phone;
-	private int gender;
+	private Gender gender;
 	private String driveLimitDate;
 
 	public String getID() {
@@ -52,11 +54,13 @@ public class DriversPO implements Serializable{
 		this.phone = phone;
 	}
 
-	public int getGender() {
+	
+
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 

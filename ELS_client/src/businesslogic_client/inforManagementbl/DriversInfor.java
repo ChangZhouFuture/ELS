@@ -31,15 +31,7 @@ public class DriversInfor implements DriversInforblservice {
         po.setName(vo.getName());
         po.setPhone(vo.getPhone());
         po.setDriveLimitDate(vo.getDriveLimitDate());
-        Gender x=vo.getGender();
-        switch(x){
-        	case MALE:
-        		po.setGender(1);
-        		break;
-        	case FEMALE:
-        		po.setGender(2);
-        		break;
-        }
+        po.setGender(vo.getGender());
 		return driversdataservice.add(po);
 	}
 
@@ -68,15 +60,7 @@ public class DriversInfor implements DriversInforblservice {
         po.setName(vo.getName());
         po.setPhone(vo.getPhone());
         po.setDriveLimitDate(vo.getDriveLimitDate());
-        Gender x=vo.getGender();
-        switch(x){
-        	case MALE:
-        		po.setGender(1);
-        		break;
-        	case FEMALE:
-        		po.setGender(2);
-        		break;
-        }
+        po.setGender(vo.getGender());
 		return driversdataservice.update(po);
 	}
 
@@ -91,12 +75,7 @@ public class DriversInfor implements DriversInforblservice {
 		vo.setIdentyNum(po.getIdentyNum());
 		vo.setPhone(po.getPhone());
 		vo.setDriveLimitDate(po.getDriveLimitDate());
-		switch(po.getGender()){
-		case 1:
-			vo.setGender(Gender.MALE);
-		case 2:
-			vo.setGender(Gender.FEMALE);
-		}
+		vo.setGender(po.getGender());
 		return vo;
 	}
 

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import po_server.inforManagementPO.DriversPO;
+import state.Gender;
 import state.ResultMessage;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.DriversInfordataservice;
@@ -25,7 +26,7 @@ public class DriversInfordata implements DriversInfordataservice {
 		    stmt.setString(3, po.getBirthDate());
 		    stmt.setString(4, po.getIdentyNum());
 		    stmt.setString(5, po.getPhone());
-		    stmt.setInt(6, po.getGender());
+		    stmt.setString(6, po.getGender().toString());
 		    stmt.setString(7, po.getDriveLimitDate());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
@@ -50,7 +51,7 @@ public class DriversInfordata implements DriversInfordataservice {
 		        po.setBirthDate(rs.getString("birthDate"));
 		        po.setIdentyNum(rs.getString("identyNum"));
 		        po.setPhone(rs.getString("phone"));
-		        po.setGender(rs.getInt("gender"));
+		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
 			}
 		} catch (SQLException e) {
@@ -101,7 +102,7 @@ public class DriversInfordata implements DriversInfordataservice {
 			stmt.setString(2, po.getBirthDate());
 			stmt.setString(3, po.getIdentyNum());
 			stmt.setString(4, po.getPhone());
-			stmt.setInt(5, po.getGender());
+			stmt.setString(5, po.getGender().toString());
 			stmt.setString(6, po.getDriveLimitDate());
 			stmt.setString(7, po.getID());
 			stmt.executeUpdate();

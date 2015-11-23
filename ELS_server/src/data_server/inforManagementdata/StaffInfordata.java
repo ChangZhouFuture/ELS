@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import po_server.inforManagementPO.StaffPO;
+import state.Gender;
+import state.PayType;
+import state.Position;
 import state.ResultMessage;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.StaffInfordataservice;
@@ -26,13 +29,13 @@ public class StaffInfordata implements StaffInfordataservice{
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getName());
-		    stmt.setInt(3, po.getGender());
+		    stmt.setString(3, po.getGender().toString());
 		    stmt.setString(4, po.getBirthDate());
 		    stmt.setString(5, po.getIdentyNum());
 		    stmt.setString(6, po.getPhone());
 		    stmt.setString(7, po.getAgency());
-		    stmt.setInt(8, po.getPosition());
-		    stmt.setInt(9, po.getPayType());
+		    stmt.setString(8, po.getPosition().toString());
+		    stmt.setString(9, po.getPayType().toString());
 		    stmt.setDouble(10, po.getPayAmount());
 		    stmt.setString(11, po.getPercentage());
 		    stmt.executeUpdate();
@@ -52,13 +55,13 @@ public class StaffInfordata implements StaffInfordataservice{
 			if(rs.next()){
 			    po.setID(Id);
 		        po.setName(rs.getString("name"));
-		        po.setGender(rs.getInt("gender"));
+		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setBirthDate(rs.getString("birthDate"));
 		        po.setIdentyNum(rs.getString("identyNum"));
 		        po.setPhone(rs.getString("phone"));
 		        po.setAgency(rs.getString("agency"));
-		        po.setPosition(rs.getInt("position"));
-		        po.setPayType(rs.getInt("payType"));
+		        po.setPosition(Position.valueOf(rs.getString("position")));
+		        po.setPayType(PayType.valueOf(rs.getString("payType")));
 		        po.setPayAmount(rs.getDouble("payAmount"));
 		        po.setPercentage(rs.getString("percentage"));
 			}
@@ -102,13 +105,13 @@ public class StaffInfordata implements StaffInfordataservice{
 			String sql=("UPDATE drivers SET name=?,gender=?,birthDate=?,identyNum=?,phone=?,agency=?,position=?,payType=?,payAmount=?,percentage=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getName());
-		    stmt.setInt(2, po.getGender());
+		    stmt.setString(2, po.getGender().toString());
 		    stmt.setString(3, po.getBirthDate());
 		    stmt.setString(4, po.getIdentyNum());
 		    stmt.setString(5, po.getPhone());
 		    stmt.setString(6, po.getAgency());
-		    stmt.setInt(7, po.getPosition());
-		    stmt.setInt(8, po.getPayType());
+		    stmt.setString(7, po.getPosition().toString());
+		    stmt.setString(8, po.getPayType().toString());
 		    stmt.setDouble(9, po.getPayAmount());
 		    stmt.setString(10, po.getPercentage());
 		    return ResultMessage.Success;

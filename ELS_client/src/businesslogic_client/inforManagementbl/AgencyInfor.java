@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import businesslogicservice_client.inforManagementblservice.AgencyInforblservice;
 import dataservice_client.inforManagementdataservice.AgencyInfordataservice;
 import po_client.inforManagementPO.AgencyPO;
-import state.AgencyType;
 import state.ResultMessage;
 import vo_client.inforManagementVO.AgencyVO;
 
@@ -21,11 +20,7 @@ public class AgencyInfor implements AgencyInforblservice{
 		po=new AgencyPO();
 		po.setID(vo.getID());
 		po.setCity(vo.getCity());
-		switch(vo.getAgencyType()){
-		case BUSIHALL:po.setAgencyType(1);break;
-		case TRANCEN:po.setAgencyType(2);break;
-		case SUPRECOMP:po.setAgencyType(3);break;
-		}
+		po.setAgencyType(vo.getAgencyType());
 		rm=agencydataservice.add(po);
 		return rm;
 	}
@@ -50,11 +45,8 @@ public class AgencyInfor implements AgencyInforblservice{
 		po=new AgencyPO();
 		po.setID(vo.getID());
 		po.setCity(vo.getCity());
-		switch(vo.getAgencyType()){
-		case BUSIHALL:po.setAgencyType(1);break;
-		case TRANCEN:po.setAgencyType(2);break;
-		case SUPRECOMP:po.setAgencyType(3);break;
-		}
+		po.setAgencyType(vo.getAgencyType());
+		
 		rm=agencydataservice.update(po);
 		return rm;
 	}
@@ -66,11 +58,7 @@ public class AgencyInfor implements AgencyInforblservice{
 		vo=new AgencyVO();
 		vo.setID(Id);
 		vo.setCity(po.getCity());
-		switch(po.getAgencyType()){
-		case 1:vo.setAgencyType(AgencyType.BUSIHALL);break;
-		case 2:vo.setAgencyType(AgencyType.TRANCEN);break;
-		case 3:vo.setAgencyType(AgencyType.SUPRECOMP);break;
-		}
+		vo.setAgencyType(po.getAgencyType());
 		return vo;
 	}
 

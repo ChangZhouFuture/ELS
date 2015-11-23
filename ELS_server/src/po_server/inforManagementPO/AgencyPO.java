@@ -1,9 +1,11 @@
 package po_server.inforManagementPO;
 
+import state.AgencyType;
+
 public class AgencyPO {
     private String ID;
     private String city;
-    private int agencyType;
+    private AgencyType agencyType;
 	public String getID() {
 		return ID;
 	}
@@ -16,12 +18,12 @@ public class AgencyPO {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getAgencyType() {
+	public AgencyType getAgencyType() {
 		return agencyType;
 	}
-	public void setAgencyType(int agencyType) {
+	public void setAgencyType(AgencyType agencyType) {
 		this.agencyType = agencyType;
 	}
-    
+	
     
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import data_server.utility.Database;
 import dataservice_server.inforManagementdataservice.AgencyInfordataservice;
 import po_server.inforManagementPO.AgencyPO;
+import state.AgencyType;
 import state.ResultMessage;
 
 public class AgencyInfordata implements AgencyInfordataservice{
@@ -25,7 +26,7 @@ public ResultMessage add(AgencyPO po){
 		stmt = con.prepareStatement("INSERT INTO agency(ID,city,agencyType) VALUES(?,?,?)");
 		stmt.setString(1, po.getID());
 	    stmt.setString(2, po.getCity());
-	    stmt.setInt(3, po.getAgencyType());
+	    stmt.setString(3, po.getAgencyType().toString());
 	    stmt.executeUpdate();
 	    return ResultMessage.Success;
 	} catch (SQLException e) {
@@ -46,7 +47,7 @@ public AgencyPO find(String Id){
 		if(rs.next()){
 		    po.setID(Id);
 	        po.setCity(rs.getString("city"));
-	        po.setAgencyType(rs.getInt("agencyType"));
+	        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 	        
 		}
 	} catch (SQLException e) {
@@ -93,7 +94,7 @@ public ResultMessage update(AgencyPO po){
 		String sql=("UPDATE agency SET city=?,agencyType=? WHERE ID=?");
 		stmt=con.prepareStatement(sql);
 		stmt.setString(1, po.getCity());
-		stmt.setInt(2, po.getAgencyType());
+		stmt.setString(2, po.getAgencyType().toString());
 		stmt.setString(3, po.getID());
 		stmt.executeUpdate();
 		return ResultMessage.Success;
