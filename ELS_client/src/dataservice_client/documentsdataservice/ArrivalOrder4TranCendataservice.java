@@ -30,19 +30,6 @@ public interface ArrivalOrder4TranCendataservice {
 	public ResultMessage addArrivalOrder4TranCen(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
 	
 	/**
-	 * 前置：要修改的中转中心到达单在PO中有记录
-	 * 后置：更改一个中转中心到达单，更新PO相关信息
-	 * @param id
-	 * @param toid
-	 * @param sa
-	 * @param d
-	 * @param gs
-	 * @param tcid
-	 * @return 更改后的中转中心到达单
-	 */
-	public ResultMessage modify(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
-	
-	/**
 	 * 前置：要删除的中转中心到达单在PO中有记录
 	 * 后置：删除一个中转中心到达单，更新PO数据
 	 * @param id
@@ -63,7 +50,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public ArrivalOrder4TranCenPO inquireA(String id);
+	public ArrayList<ArrivalOrder4TranCenPO> findA(String id);
 	
 	/**
 	 * 前置：要查询的中转中心到达单在PO中有记录
@@ -71,11 +58,17 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param time
 	 * @return 中转中心到达单列表
 	 */
-	public ArrivalOrder4TranCenlineitemPO inquireB(String time);
+	public ArrayList<ArrivalOrder4TranCenPO> findB(String time);
+	
+	/**
+	 * 后置：查询所有中转中心到达单
+	 * @return
+	 */
+	public ArrayList<ArrivalOrder4TranCenPO> findC();
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public void update();
+	public ResultMessage update(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
  }

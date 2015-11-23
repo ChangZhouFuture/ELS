@@ -6,7 +6,7 @@ import businesslogicservice_client_Stub.informngmtblservice_Stub.BankAccountInfo
 public class BankAccountInforblservice_Driver {
 	
 	public void drive(BankAccountInforblservice bankAccountInforblservice) {
-		bankAccountInforblservice.inquire(null);
+//		bankAccountInforblservice.inquire(null);
 	}
 	
 	public static void main(String[] args) {
