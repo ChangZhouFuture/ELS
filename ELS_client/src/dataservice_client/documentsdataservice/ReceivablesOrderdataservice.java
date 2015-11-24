@@ -53,7 +53,7 @@ public interface ReceivablesOrderdataservice {
 	
 	/**
 	 * 
-	 * @param keyword
+	 * @param keyword 
 	 * @return
 	 * 前置条件：要查询的收款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
@@ -66,7 +66,7 @@ public interface ReceivablesOrderdataservice {
 	
 	public double generateFreight();
 	/**
-	 * 前置条件：收款单信息处理完成
+	 * 前置条件：收款单信息处理完成 
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
 	 */
 	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);

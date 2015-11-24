@@ -5,7 +5,7 @@ import dataservice_client_Stub.documentsdataservice_Stub.ReceivablesOrderdataser
 
 public class ReceivablesOrderdataservice_Driver {
 	public void drive(ReceivablesOrderdataservice ReceivablesOrderdataservice) {
-		ReceivablesOrderdataservice.inquire(null);
+//		ReceivablesOrderdataservice.inquire(null);
 	}
 	
 	public static void main(String[] args) {
