@@ -9,7 +9,6 @@ import vo_client.documentsVO.DeliveryOrderVO;
 import vo_client.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
 import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.lineitemVO.userlineitemVO.SenderlineitemVO;
-import vo_client.userVO.CourierVO;
 import businesslogicservice_client.documentsblservice.DeliveryOrderblservice;
 
 /**
