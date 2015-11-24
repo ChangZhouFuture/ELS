@@ -6,7 +6,7 @@ import dataservice_client_Stub.documentsdataservice_Stub.PaymentOrderdataservice
 
 public class PaymentOrderdataservice_Driver {
 	public void drive(PaymentOrderdataservice PaymentOrderdataservice) {
-		PaymentOrderdataservice.inquire(null);
+//		PaymentOrderdataservice.inquire(null);
 	}
 	
 	public static void main(String[] args) {

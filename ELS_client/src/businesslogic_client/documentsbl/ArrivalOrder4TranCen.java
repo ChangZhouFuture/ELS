@@ -76,7 +76,7 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 		
 		VOtoPO();
 		resultMessage = arrivalOrder4TranCendataservice.
-				modify(arrivalOrder4TranCenPO);
+				update(arrivalOrder4TranCenPO);
 		return resultMessage;
 	}
 

@@ -36,18 +36,6 @@ import state.ResultMessage;
 	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 	
 	/**
-	 * 前置：要修改的营业厅到达单在PO中有记录
-	 * 后置：更改一个营业厅到达单，更新PO相关信息
-	 * @param id
-	 * @param toid
-	 * @param sa
-	 * @param d
-	 * @param gs
-	 * @return 更改后的营业厅到达单
-	 */
-	public ResultMessage modify(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
-	
-	/**
 	 * 前置：要删除的营业厅到达单在PO中有记录
 	 * 后置：删除一个营业厅到达单，更新PO数据
 	 * @param id
@@ -67,7 +55,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 营业厅到达单信息
 	 */
-	public ArrivalOrder4BusiHallPO inquireA(String id);
+	public ArrivalOrder4BusiHallPO findA(String id);
 	
 	/**
 	 * 前置：要查询的营业厅到达单在PO中有记录
@@ -75,7 +63,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 营业厅到达单列表
 	 */
-	public ArrayList<ArrivalOrder4BusiHallPO> inquireB(String time);
+	public ArrayList<ArrivalOrder4BusiHallPO> findB(String time);
 	
 	/**
 	 * 前置：
@@ -83,11 +71,11 @@ import state.ResultMessage;
 	 * @param time
 	 * @return
 	 */
-	public ArrayList<ArrivalOrder4BusiHallPO> inquireC();
+	public ArrayList<ArrivalOrder4BusiHallPO> findC();
 	
 	/**
 	 * 前置：行为或操作已经完成
-	 * 后置：持久化更新设计的领域对象的数据
+	 * 后置：修改相关单据
 	 */
-	public void update();
+	public ResultMessage update(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
  }

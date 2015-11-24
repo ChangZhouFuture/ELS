@@ -1,9 +1,7 @@
 package dataservice_client.inforManagementdataservice;
 
 import java.util.ArrayList;
-
 import po_client.inforManagementPO.BankAccountPO;
-import po_client.lineitemPO.inforManagementlineitemPO.BankAccountlineitemPO;
 import state.ResultMessage;
 
 public interface BankAccountInfordataservice {

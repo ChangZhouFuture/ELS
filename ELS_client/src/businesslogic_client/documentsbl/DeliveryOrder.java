@@ -43,7 +43,8 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
 	public void generateId() {
-		// TODO Auto-generated method stub
+		
+		
 		return;
 	}
 

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import po_client.documentsPO.DeliveryOrderPO;
 import po_client.lineitemPO.documentslineitemPO.DeliveryOrderlineitemPO;
+import po_client.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice_client.documentsdataservice.DeliveryOrderdataservice;
 
 public class DeliveryOrderdataservice_Stub implements DeliveryOrderdataservice{
 
 	@Override
-	public DeliveryOrderPO addDeliveryOrder(String id,
-			ArrayList<String> orsderidlist, String dn, String did, String d) {
+	public ResultMessage addDeliveryOrder(DeliveryOrderPO deliveryOrderPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -28,29 +28,35 @@ public class DeliveryOrderdataservice_Stub implements DeliveryOrderdataservice{
 		return null;
 	}
 
-	@Override
-	public DeliveryOrderPO modify(String id, ArrayList<String> orsderidlist,
-			String dn, String did, String d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public DeliveryOrderPO modify(String id, ArrayList<String> orsderidlist,
+//			String dn, String did, String d) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
-	public DeliveryOrderPO inquireA(String id) {
-		// TODO Auto-generated method stub
+	public ResultMessage update(DeliveryOrderPO deliveryOrderPO) {
 		return null;
-	}
-
-	@Override
-	public DeliveryOrderlineitemPO inquireB(String time) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public OrderlineitemPO addOrder(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DeliveryOrderPO findA(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<DeliveryOrderlineitemPO> findB(String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

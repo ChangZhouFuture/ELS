@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po_client.documentsPO.ReceivablesOrderPO;
 import po_client.lineitemPO.documentslineitemPO.ReceivablesOrderlineitemPO;
+import po_client.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
 
@@ -18,7 +19,7 @@ public interface ReceivablesOrderdataservice {
 	 * 前置条件：营业厅业务员已经被授权和登录
 	 * 后置条件：添加新的收款单信息
 	 */
-	public ReceivablesOrderPO add(String date4RO, String amount4RO, String courier4RO, ArrayList<String> barCode);
+	public ResultMessage add(ReceivablesOrderPO receivablesOrderPO);
 		
 	/**
 	 * 
@@ -28,7 +29,7 @@ public interface ReceivablesOrderdataservice {
 	 * 后置条件：删除一条收款单信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String date,String courierId);
+	public ResultMessage deleteOne(String id);
 
 	/**
 	 * 
@@ -38,17 +39,17 @@ public interface ReceivablesOrderdataservice {
 	 * 后置条件：删除多条收款单信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> id4courier,ArrayList<String> date);
+	public ResultMessage deleteMany(ArrayList<String> idList);
 	
-	/**
-	 * 
-	 * @param id4courier
-	 * @param date
-	 * @return
-	 * 前置条件：要修改的收款单信息在PO中有记录
-	 * 后置条件：修改收款单信息，并更新VO和PO
-	 */
-	public ReceivablesOrderPO modify(String id4courier,String date);
+//	/**
+//	 * 
+//	 * @param id4courier
+//	 * @param date
+//	 * @return
+//	 * 前置条件：要修改的收款单信息在PO中有记录
+//	 * 后置条件：修改收款单信息，并更新VO和PO
+//	 */
+//	public ReceivablesOrderPO modify(String id4courier,String date);
 	
 	/**
 	 * 
@@ -57,22 +58,16 @@ public interface ReceivablesOrderdataservice {
 	 * 前置条件：要查询的收款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public ReceivablesOrderlineitemPO inquire(String keyword);
+	public ReceivablesOrderPO findA(String id);
 	
-	/**
-	 * 前置条件：快件从某地出发
-	 * 
-	 * 后置条件：快件到达某地
-	 */
-	public void countCarriage(String depature,String destination);
-	/**
-	 * 前置条件：订单已生成
-	 * 后置条件：计算生成总收款费用
-	 */
-	public void countAmount(ArrayList<String> OrderId);
+	public ReceivablesOrderlineitemPO findB(String date);
+	
+	public ArrayList<OrderlineitemPO> generateOrder(String courierId);
+	
+	public double generateFreight();
 	/**
 	 * 前置条件：收款单信息处理完成
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
 	 */
-	public void update();
+	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);
 }

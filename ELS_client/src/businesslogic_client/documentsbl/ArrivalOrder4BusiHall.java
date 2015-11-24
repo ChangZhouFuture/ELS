@@ -76,7 +76,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 		
 		VOtoPO();
 		resultMessage = arrivalOrder4BusiHalldataservice.
-				modify(arrivalOrder4BusiHallPO);
+				update(arrivalOrder4BusiHallPO);
 		
 		return resultMessage;
 	}
@@ -97,7 +97,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ArrayList<ArrivalOrder4BusiHallVO> inquireA(String id) {
-		arrivalOrder4BusiHallPO = arrivalOrder4BusiHalldataservice.inquireA(id);
+		arrivalOrder4BusiHallPO = arrivalOrder4BusiHalldataservice.findA(id);
 		
 		POtoVO(1);
 		return arrayList2;
@@ -105,7 +105,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ArrayList<ArrivalOrder4BusiHallVO> inquireB(String date) {
-		arrayList = arrivalOrder4BusiHalldataservice.inquireB(date);
+		arrayList = arrivalOrder4BusiHalldataservice.findB(date);
 		int k = arrayList.size();
 		
 		POtoVO(k);
@@ -114,7 +114,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	
 	@Override
 	public ArrayList<ArrivalOrder4BusiHallVO> inquireC() {
-		arrayList = arrivalOrder4BusiHalldataservice.inquireC();
+		arrayList = arrivalOrder4BusiHalldataservice.findC();
 		int k = arrayList.size();
 		
 		POtoVO(k);
