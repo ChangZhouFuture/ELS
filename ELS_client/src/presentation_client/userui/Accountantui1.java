@@ -1,5 +1,7 @@
 package presentation_client.userui;
 
-public class Accountantui1 {
+import presentation_client.MainFrame;
 
+public class Accountantui1 extends MainFrame{
+	
 }
