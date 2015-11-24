@@ -2,17 +2,17 @@ package dataservice_client.userManagementdataservice;
 
 import java.util.ArrayList;
 
-import po_client.UserManagementPO;
+import po_client.userPO.UserPO;
 import state.ResultMessage;
 
 public interface UserManagementdataservice {
-    public ResultMessage add(UserManagementPO po);
+    public ResultMessage add(UserPO po);
     
     public ResultMessage deleteOne(String Id);
     
     public ResultMessage deleteMany(ArrayList<String> Ids);
     
-    public ResultMessage update(UserManagementPO po);
+    public ResultMessage update(UserPO po);
     
-    public UserManagementPO find(String Id);
+    public UserPO find(String Id);
 }

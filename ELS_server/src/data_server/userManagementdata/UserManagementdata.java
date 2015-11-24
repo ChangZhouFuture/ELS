@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import data_server.utility.Database;
 import dataservice_server.userManagementdataservice.UserManagementdataservice;
-import po_server.UserManagementPO;
+import po_server.userPO.UserPO;
 import state.ResultMessage;
 
 public class UserManagementdata implements UserManagementdataservice{
@@ -18,9 +18,9 @@ public class UserManagementdata implements UserManagementdataservice{
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
-    UserManagementPO po;
+    UserPO po;
 	@Override
-	public ResultMessage add(UserManagementPO po) {
+	public ResultMessage add(UserPO po) {
 		// TODO Auto-generated method stub
 		
 		try {
@@ -69,7 +69,7 @@ public class UserManagementdata implements UserManagementdataservice{
 	}
 
 	@Override
-	public ResultMessage update(UserManagementPO po) {
+	public ResultMessage update(UserPO po) {
 		// TODO Auto-generated method stub
 		try {
 			String sql=("UPDATE agency SET password=? WHERE ID=?");
@@ -86,9 +86,9 @@ public class UserManagementdata implements UserManagementdataservice{
 	}
 
 	@Override
-	public UserManagementPO find(String Id) {
+	public UserPO find(String Id) {
 		// TODO Auto-generated method stub
-		po = new UserManagementPO();
+		po = new UserPO();
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM agency WHERE ID='"+Id+"'");
 			

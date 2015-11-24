@@ -15,14 +15,13 @@ import state.ResultMessage;
 
 public class BankAccountInfordata implements BankAccountInfordataservice {
 	Database db=new Database();
-    Connection con;
+    Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     BankAccountPO po;
     
 //增加新银行账户信息
 public ResultMessage add(BankAccountPO po){
-	con=db.getConnection();
 	try {
 		stmt = con.prepareStatement("INSERT INTO bankAccount(name,amount) VALUES(?,?)");
 		stmt.setString(1, po.getName());
@@ -39,7 +38,6 @@ public ResultMessage add(BankAccountPO po){
 //查找银行账户信息
 public BankAccountPO find(String name){
 	po = new BankAccountPO();
-	con=db.getConnection();
 	try {
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM bankAccount WHERE name='"+name+"'");
 		
@@ -58,7 +56,6 @@ public BankAccountPO find(String name){
 
 //删除银行信息
 public ResultMessage deleteOne(String name){
-	con=db.getConnection();
 	try {
 		stmt=con.prepareStatement("DELETE FROM bankAccount WHERE name=?");
 		stmt.setString(1, name);
@@ -74,7 +71,6 @@ public ResultMessage deleteOne(String name){
 @Override
 public ResultMessage deleteMany(ArrayList<String> names) {
 	// TODO Auto-generated method stub
-	con=db.getConnection();
 	try {
 		for(int i=0;i<names.size();i++){
 		stmt=con.prepareStatement("DELETE FROM bankAccount WHERE name=?");
@@ -91,7 +87,6 @@ public ResultMessage deleteMany(ArrayList<String> names) {
 
 //修改银行账户信息
 public ResultMessage update(BankAccountPO po){
-	con=db.getConnection();
 	try {
 		String sql=("UPDATE bankAccount SET amount=? WHERE name=?");
 		stmt=con.prepareStatement(sql);

@@ -14,13 +14,12 @@ import dataservice_server.inforManagementdataservice.VehiclesInfordataservice;
 
 public class VehiclesInfordata implements VehiclesInfordataservice {
 	Database db=new Database();
-    Connection con;
+    Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     VehiclesPO po;
     
     public ResultMessage add(VehiclesPO po){
-    	con=db.getConnection();
 		try {
 			stmt = con.prepareStatement("INSERT INTO vehicles(ID,plateNum,serviceTime) VALUES(?,?,?)");
 			stmt.setString(1, po.getID());
@@ -37,7 +36,6 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
     
     public VehiclesPO find(String Id){
     	po = new VehiclesPO();
-		con=db.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM vehicles WHERE ID='"+Id+"'");
 			ResultSet rs=ps.executeQuery(); 
@@ -54,7 +52,7 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
     }
     
     public ResultMessage deleteOne(String Id){
-    	con=db.getConnection();
+
 		try {
 			stmt=con.prepareStatement("DELETE FROM vehicles WHERE ID=?");
 			stmt.setString(1, Id);
@@ -68,7 +66,7 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
     }
     
     public ResultMessage update(VehiclesPO po){
-    	con=db.getConnection();
+
 		try {
 			String sql=("UPDATE drivers SET plateNum=?,serviceTime=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
@@ -87,7 +85,7 @@ public class VehiclesInfordata implements VehiclesInfordataservice {
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> Ids) {
 		// TODO Auto-generated method stub
-		con=db.getConnection();
+
 		try {
 			for(int i=0;i<Ids.size();i++){
 			stmt=con.prepareStatement("DELETE FROM vehicles WHERE ID=?");
