@@ -77,6 +77,7 @@ public interface ArrivalOrder4BusiHalldataservice {
 		 * @return
 		 */
 		public ArrayList<ArrivalOrder4BusiHallPO> findC();
-		
+		 
+		public String generateId();
 		
 }

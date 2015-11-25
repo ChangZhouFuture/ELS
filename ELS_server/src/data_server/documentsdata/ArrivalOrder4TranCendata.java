@@ -178,4 +178,10 @@ public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

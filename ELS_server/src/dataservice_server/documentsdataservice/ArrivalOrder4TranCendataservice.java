@@ -65,7 +65,7 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 */
 	public ResultMessage update(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
 	
-	
+	public String generateId();
 	
 	public String generateStartAdd();
 }

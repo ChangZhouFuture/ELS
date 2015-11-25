@@ -172,4 +172,10 @@ public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservi
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
