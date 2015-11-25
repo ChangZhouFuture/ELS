@@ -28,11 +28,7 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
  	String huoguiid;
  	String Jianzhuangyyuan;
  	TransferOrderVO transferorder;
- 	@Override
- 	public void addTransferCenter(String tcid) {
- 		
- 	}
- 
+
  	@Override
  	public OrderlineitemVO addOrder(String orderid) {
  		// TODO Auto-generated method stub
@@ -55,40 +51,8 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
  	}
  
  	@Override
- 	public TransferOrderVO addTransferOrder(String id, TransportType tst,
- 			String sa, String ea, ArrayList<String> oidl, String d,
- 			String hbid, String hgid, String Jzy) {
- 		// TODO Auto-generated method stub
- 		this.id=id;
- 		this.transporttype=tst;
- 		this.startaddress=sa;
- 		this.endaddress=ea;
- 		this.orderidlist=oidl;
- 		this.date=d;
- 		this.hangbanid=hbid;
- 		this.huoguiid=hgid;
- 		this.Jianzhuangyyuan=Jzy;
- //		此处传入VO所有参数，记录aobhVO（PO和VO的单号是一样的）；
- 		transferorder=new TransferOrderVO(this.id,this.transporttype,this.startaddress,this.endaddress,this.orderidlist,this.date,this.hangbanid,this.huoguiid,this.Jianzhuangyyuan);
- //		此处调用数据层的增加中转单方法，更新PO
- 		end();
- 		return transferorder;
- 	}
- 
- 	@Override
  	public String generateId() {
  		// TODO Auto-generated method stub
- 		return null;
- 	}
- 
- 	@Override
- 	public TransferOrderVO modify(String id, TransportType tst, String sa,
- 			String ea, ArrayList<String> orderidlist, String d, String hbid,
- 			String hgid, String Jzy) {
- 		// TODO Auto-generated method stub
- 		//调用数据层的修改方法，修改PO
- 		end();
- 		System.out.println("Modify the TransferOrder successfully!");
  		return null;
  	}
  
@@ -144,6 +108,18 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 
 	@Override
 	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addTransferOrder(TransferOrderVO transferOrderVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modify(TransferOrderVO transferOrderVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

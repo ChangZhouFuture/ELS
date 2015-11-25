@@ -16,11 +16,6 @@ import businesslogicservice_client.documentsblservice.TransferOrderblservice;
 public class TransferOrder implements TransferOrderblservice {
 
 	@Override
-	public void addTransferCenter(String tcid) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public OrderlineitemVO addOrder(String orderid) {
 		// TODO Auto-generated method stub
 		return null;
@@ -39,9 +34,7 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public TransferOrderVO addTransferOrder(String id, TransportType tst,
-			String sa, String ea, ArrayList<String> oidl, String d,
-			String hbid, String hgid, String Jzy) {
+	public ResultMessage addTransferOrder(TransferOrderVO transferOrderVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -53,9 +46,7 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public TransferOrderVO modify(String id, TransportType tst, String sa,
-			String ea, ArrayList<String> oidl, String d, String hbid,
-			String hgid, String Jzy) {
+	public ResultMessage modify(TransferOrderVO transferOrderVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

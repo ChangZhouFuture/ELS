@@ -64,4 +64,10 @@ public class ReceivablesOrderdataservice_Stub implements ReceivablesOrderdataser
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

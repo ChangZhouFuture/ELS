@@ -71,4 +71,8 @@ public interface ArrivalOrder4TranCendataservice {
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
 	public ResultMessage update(ArrivalOrder4TranCenPO arrivalOrder4TranCenPO);
+	
+	public String generateId();
+	
+	public String generateStartAdd();
  }

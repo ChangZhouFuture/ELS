@@ -72,4 +72,6 @@ public interface PaymentOrderdataservice {
 	 * 后置条件：结束这次付款单信息处理，更新数据持久化对象
 	 */
 	public ResultMessage update(PaymentOrderPO paymentOrderPO);
+	
+	public String generaId();
 }

@@ -29,22 +29,6 @@ import state.TransportType;
 	public TransferOrderPO addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
 	
 	/**
-	 * 前置：要修改的中转单在PO中有记录
-	 * 后置：更改一个中转单，更新PO相关信息
-	 * @param id
-	 * @param tst
-	 * @param sa
-	 * @param ea
-	 * @param orderidlist
-	 * @param d
-	 * @param hbid
-	 * @param hgid
-	 * @param Jzy
-	 * @return 更改后的中转单
-	 */
-	public TransferOrderPO modify(String id,TransportType tst,String sa,String ea,ArrayList<String> orderidlist,String d,String hbid,String hgid,String Jzy);
-	
-	/**
 	 * 前置：要删除的中转单在PO中有记录
 	 * 后置：删除一个中转单，更新PO数据
 	 * @param id
@@ -64,7 +48,7 @@ import state.TransportType;
 	 * @param id
 	 * @return 中转单信息
 	 */
-	public TransferOrderPO inquireA(String id);
+	public TransferOrderPO findA(String id);
 	
 	/**
 	 * 前置：要查询的中转单在PO中有记录
@@ -72,11 +56,15 @@ import state.TransportType;
 	 * @param time
 	 * @return 中转单列表
 	 */
-	public TransferOrderlineitemPO inquireB(String time);
+	public TransferOrderlineitemPO findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public void update();
+	public ResultMessage update(TransferOrderPO transferOrderPO);
+	
+	public TransferOrderlineitemPO getTransferOrderlineitemPO();
+	
+	public String generateId();
  }

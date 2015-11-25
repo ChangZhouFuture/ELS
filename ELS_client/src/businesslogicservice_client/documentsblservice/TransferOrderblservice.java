@@ -16,20 +16,12 @@ import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 public interface TransferOrderblservice {
 	
 	/**
-	 * 前置：要添加的中转中心在数据持久化对象里有记录
-	 * 后置：添加一个中转中心
-	 * @param tcid
-	 * @return 
-	 */
-	public void addTransferCenter(String tcid);
-	
-	/**
 	 * 前置：启动一个新建或修改中转单回合
 	 * 后置：在中转单中增加一个快件编号，返回展示层本单所有快件编号
 	 * @param orderid
 	 * @return 
 	 */
-	public OrderlineitemVO addOrder(String orderid);
+	public OrderlineitemVO addOrder(String orderId);
 	
 	/**
 	 * 前置：已打开中转单输入页面
@@ -61,7 +53,7 @@ public interface TransferOrderblservice {
 	 * @param Jzy
 	 * @return 一个中转单
 	 */
-	public TransferOrderVO addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
+	public ResultMessage addTransferOrder(TransferOrderVO transferOrderVO);
 	
 	/**
 	 * 前置：已添加所有中转信息
@@ -84,7 +76,7 @@ public interface TransferOrderblservice {
 	 * @param Jzy
 	 * @return 更改后的中转单
 	 */
-	public TransferOrderVO modify(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
+	public ResultMessage modify(TransferOrderVO transferOrderVO);
 	
 	/**
 	 * 前置：要删除的中转单在持久化数据中有记录

@@ -52,4 +52,10 @@ public class LoadingListdataservice_Stub implements LoadingListdataservice{
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

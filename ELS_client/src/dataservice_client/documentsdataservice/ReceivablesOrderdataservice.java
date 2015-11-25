@@ -70,4 +70,6 @@ public interface ReceivablesOrderdataservice {
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
 	 */
 	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);
+	
+	public String generateId();
 }

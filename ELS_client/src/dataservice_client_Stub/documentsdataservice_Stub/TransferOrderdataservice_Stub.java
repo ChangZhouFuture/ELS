@@ -19,14 +19,6 @@ public class TransferOrderdataservice_Stub implements TransferOrderdataservice{
 	}
 
 	@Override
-	public TransferOrderPO modify(String id, TransportType tst, String sa,
-			String ea, ArrayList<String> orderidlist, String d, String hbid,
-			String hgid, String Jzy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteone(String id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -39,21 +31,33 @@ public class TransferOrderdataservice_Stub implements TransferOrderdataservice{
 	}
 
 	@Override
-	public TransferOrderPO inquireA(String id) {
+	public TransferOrderPO findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public TransferOrderlineitemPO inquireB(String time) {
+	public TransferOrderlineitemPO findB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update() {
+	public ResultMessage update(TransferOrderPO transferOrderPO) {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	@Override
+	public TransferOrderlineitemPO getTransferOrderlineitemPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -78,4 +78,8 @@ import state.ResultMessage;
 	 * 后置：修改相关单据
 	 */
 	public ResultMessage update(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
+	
+	public String generateStartAdd(String transferOrderId);
+	
+	public String generateId();
  }

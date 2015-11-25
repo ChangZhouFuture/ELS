@@ -74,4 +74,6 @@ import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 	 */
 	public ResultMessage update(DeliveryOrderPO deliveryOrderPO);
 	
+	public String generateId();
+	
  }
