@@ -85,6 +85,6 @@ import state.ResultMessage;
 	 */
 	public ResultMessage update(LoadingListPO loadingListPO);
 	
-	public String generateId();
+	
 	
  }

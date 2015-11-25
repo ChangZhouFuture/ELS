@@ -64,7 +64,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public String generateId() {
+	public String generateId() {              //生成营业厅到达单Id
 		//调用数据层方法，0000000七位数字往后顺延
 		return null;
 	}

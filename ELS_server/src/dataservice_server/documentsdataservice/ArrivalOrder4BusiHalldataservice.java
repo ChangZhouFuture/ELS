@@ -38,7 +38,7 @@ public interface ArrivalOrder4BusiHalldataservice {
 		 * @param gs
 		 * @return 更改后的营业厅到达单
 		 */
-		public ResultMessage modify(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
+		public ResultMessage update(ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO);
 		
 		/**
 		 * 前置：要删除的营业厅到达单在PO中有记录
@@ -60,7 +60,7 @@ public interface ArrivalOrder4BusiHalldataservice {
 		 * @param id
 		 * @return 营业厅到达单信息
 		 */
-		public ArrivalOrder4BusiHallPO inquireA(String id);
+		public ArrivalOrder4BusiHallPO findA(String id);
 		
 		/**
 		 * 前置：要查询的营业厅到达单在PO中有记录
@@ -68,7 +68,7 @@ public interface ArrivalOrder4BusiHalldataservice {
 		 * @param time
 		 * @return 营业厅到达单列表
 		 */
-		public ArrayList<ArrivalOrder4BusiHallPO> inquireB(String time);
+		public ArrayList<ArrivalOrder4BusiHallPO> findB(String time);//****-**-** 
 		
 		/**
 		 * 前置：
@@ -76,11 +76,7 @@ public interface ArrivalOrder4BusiHalldataservice {
 		 * @param time
 		 * @return
 		 */
-		public ArrayList<ArrivalOrder4BusiHallPO> inquireC();
+		public ArrayList<ArrivalOrder4BusiHallPO> findC();
 		
-		/**
-		 * 前置：行为或操作已经完成
-		 * 后置：持久化更新设计的领域对象的数据
-		 */
-		public void update();
+		
 }

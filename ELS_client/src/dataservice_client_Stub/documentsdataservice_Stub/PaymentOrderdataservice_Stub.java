@@ -60,10 +60,4 @@ public class PaymentOrderdataservice_Stub implements PaymentOrderdataservice{
 		return null;
 	}
 
-	@Override
-	public String generaId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
