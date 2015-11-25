@@ -3,92 +3,153 @@ package vo_client.orderVO;
 import state.ExpressType;
 
 public class OrderVO {
-	String sender;
+	private String senderName;
+	private String senderAdd;
+	private String senderCompany;
+	private String senderPhoneNumber;
+	private String AddresseeName;
+	private String AddresseeAdd;
+	private String AddresseeCompany;
+	private String AddresseePhoneNumber;
+	private int numOfGoods;
+	private double weight;
+	private double size;
+	private String goodsName;
+	private ExpressType expressType;
+	private int numOfCartons;
+	private int numOfWoodenBox;
+	private int numOfBags;
+	private String id;
+	private String generationDate;
 	
-	String addressee;
-	
-	String desti;
-	
-	String startingPlace;
-	
-	ExpressType eType;
-	
-	String name;
-	
-	String id;
-	
-	int num;
-	
-	public OrderVO(String sender, String addressee, String desti, String startingPlace,
-			ExpressType eType, String name, String id, int num){
-		super();
-		this.sender = sender;
-		this.addressee = addressee;
-		this.desti = desti;
-		this.startingPlace = startingPlace;
-		this.eType = eType;
-		this.name = name;
-		this.num = num;
+	public String getSenderName() {
+		return senderName;
 	}
-	
-	public String getsender() {
-		return this.sender;
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
 	}
-	
-	public void setid4e(String sender) {
-		this.sender = sender;
+	public String getSenderAdd() {
+		return senderAdd;
 	}
-	
-	public String getdesti() {
-		return this.desti;
+	public void setSenderAdd(String senderAdd) {
+		this.senderAdd = senderAdd;
 	}
-	
-	public void setdesti(String desti) {
-		this.desti = desti;
+	public String getSenderCompany() {
+		return senderCompany;
 	}
-
-	public String getaddressee() {
-		return this.addressee;
+	public void setSenderCompany(String senderCompany) {
+		this.senderCompany = senderCompany;
 	}
-	
-	public void setaddressee(String addressee) {
-		this.addressee = addressee;
+	public String getSenderPhoneNumber() {
+		return senderPhoneNumber;
 	}
-
-	public String getStartingPlace() {
-		return startingPlace;
+	public void setSenderPhoneNumber(String senderPhoneNumber) {
+		this.senderPhoneNumber = senderPhoneNumber;
 	}
-
-	public void setStartingPlace(String startingPlace) {
-		this.startingPlace = startingPlace;
+	public String getAddresseeName() {
+		return AddresseeName;
 	}
-
-	public ExpressType geteType() {
-		return eType;
+	public void setAddresseeName(String addresseeName) {
+		AddresseeName = addresseeName;
 	}
-
-	public void seteType(ExpressType eType) {
-		this.eType = eType;
+	public String getAddresseeAdd() {
+		return AddresseeAdd;
 	}
-
-	public String getName() {
-		return name;
+	public void setAddresseeAdd(String addresseeAdd) {
+		AddresseeAdd = addresseeAdd;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getAddresseeCompany() {
+		return AddresseeCompany;
 	}
-
-	public int getNum() {
-		return num;
+	public void setAddresseeCompany(String addresseeCompany) {
+		AddresseeCompany = addresseeCompany;
 	}
-
-	public void setNum(int num) {
-		this.num = num;
+	public String getAddresseePhoneNumber() {
+		return AddresseePhoneNumber;
 	}
-	
-	public String getID() {
-		return this.id;
+	public void setAddresseePhoneNumber(String addresseePhoneNumber) {
+		AddresseePhoneNumber = addresseePhoneNumber;
 	}
+	public int getNumOfGoods() {
+		return numOfGoods;
+	}
+	public void setNumOfGoods(int numOfGoods) {
+		this.numOfGoods = numOfGoods;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	public double getSize() {
+		return size;
+	}
+	public void setSize(double size) {
+		this.size = size;
+	}
+	public String getGoodsName() {
+		return goodsName;
+	}
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+	public ExpressType getExpressType() {
+		return expressType;
+	}
+	public void setExpressType(ExpressType expressType) {
+		this.expressType = expressType;
+	}
+	public int getNumOfCartons() {
+		return numOfCartons;
+	}
+	public void setNumOfCartons(int numOfCartons) {
+		this.numOfCartons = numOfCartons;
+	}
+	public int getNumOfWoodenBox() {
+		return numOfWoodenBox;
+	}
+	public void setNumOfWoodenBox(int numOfWoodenBox) {
+		this.numOfWoodenBox = numOfWoodenBox;
+	}
+	public int getNumOfBags() {
+		return numOfBags;
+	}
+	public void setNumOfBags(int numOfBags) {
+		this.numOfBags = numOfBags;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getGenerationDate() {
+		return generationDate;
+	}
+	public void setGenerationDate(String generationDate) {
+		this.generationDate = generationDate;
+	}
+	public String getExpectedArrivalDate() {
+		return expectedArrivalDate;
+	}
+	public void setExpectedArrivalDate(String expectedArrivalDate) {
+		this.expectedArrivalDate = expectedArrivalDate;
+	}
+	public String getActualArrivalDate() {
+		return actualArrivalDate;
+	}
+	public void setActualArrivalDate(String actualArrivalDate) {
+		this.actualArrivalDate = actualArrivalDate;
+	}
+	public String getActualAddresseeName() {
+		return actualAddresseeName;
+	}
+	public void setActualAddresseeName(String actualAddresseeName) {
+		this.actualAddresseeName = actualAddresseeName;
+	}
+	private String expectedArrivalDate;
+	private String actualArrivalDate;
+	private String actualAddresseeName;
 }
 

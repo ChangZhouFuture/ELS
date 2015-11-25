@@ -5,7 +5,7 @@ import businesslogicservice_client_Stub.orderblservice_Stub.Orderblservice_Stub;
 
 public class Orderblservice_Driver {
     public void drive(Orderblservice orderblservice){
-    	orderblservice.delete("");
+//    	orderblservice.delete("");
     }
     
     public static void main(String[] args){

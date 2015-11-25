@@ -5,9 +5,9 @@ import dataservice_client_Stub.orderdataservice_Stub.Orderdataservice_Stub;
 
 public class Orderdataservice_Driver {
     public void drive(Orderdataservice orderdataservice){
-    	orderdataservice.delete("");
-    	orderdataservice.inquireA("");
-    	orderdataservice.update();
+//    	orderdataservice.delete("");
+//    	orderdataservice.inquireA("");
+//    	orderdataservice.update();
     }
     
     public static void main(String[] args) {

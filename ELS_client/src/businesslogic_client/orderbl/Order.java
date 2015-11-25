@@ -1,6 +1,9 @@
 package businesslogic_client.orderbl;
 
+import java.util.ArrayList;
+
 import state.ExpressType;
+import state.ResultMessage;
 import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.orderVO.OrderVO;
 import businesslogicservice_client.orderblservice.Orderblservice;
@@ -12,13 +15,15 @@ import businesslogicservice_client.orderblservice.Orderblservice;
 public class Order implements Orderblservice {
 
 	@Override
-	public void add(OrderVO orderVO) {
+	public ResultMessage add(OrderVO orderVO) {
+		return null;
 		
 		
 	}
 
 	@Override
-	public void delete(String id) {
+	public ResultMessage deleteOne(String id) {
+		return null;
 		
 	}
 
@@ -29,7 +34,7 @@ public class Order implements Orderblservice {
 	}
 
 	@Override
-	public OrderVO inquireB(String date) {
+	public ArrayList<OrderlineitemVO> inquireB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -53,16 +58,28 @@ public class Order implements Orderblservice {
 	}
 
 	@Override
-	public void modify(OrderVO orderVO) {
+	public ResultMessage modify(OrderVO orderVO) {
+		return null;
 
 	
 	}
+	
+	@Override
+	public ResultMessage deleteMany(ArrayList<String> idList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
-	public double calculateTotalPrice(String startingPlace, String desti,
-			ExpressType eType, int num) {
+	public void calculateTotalPrice() {
 		// TODO Auto-generated method stub
-		return 0;
+		
+	}
+
+	@Override
+	public void generateExpectedArrivalDate() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,51 +1,62 @@
 package dataservice_client_Stub.orderdataservice_Stub;
 
+import java.util.ArrayList;
+
+import po_client.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po_client.orderPO.OrderPO;
 import dataservice_client.orderdataservice.Orderdataservice;
 import state.ExpressType;
+import state.ResultMessage;
 
 public class Orderdataservice_Stub implements Orderdataservice{
 
 	@Override
-	public OrderPO add(String sender, String addressee, String desti, String startingPlace, ExpressType eType,
-			String name, String id, int num) {
+	public OrderPO add(OrderPO orderPO) {
 		// TODO Auto-generated method stub
-		System.out.println("增加成功");
 		return null;
 	}
 
 	@Override
-	public void delete(String id) {
+	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("删除成功");
-	}
-
-	@Override
-	public OrderPO modify(String sender, String addressee, String desti, String startingPlace, ExpressType eType,
-			String name, String id, int num) {
-		// TODO Auto-generated method stub
-		System.out.println("修改成功");
 		return null;
 	}
 
 	@Override
-	public OrderPO inquireA(String id) {
+	public ResultMessage deleteMany(ArrayList<String> idList) {
 		// TODO Auto-generated method stub
-		System.out.println("订单信息；");
 		return null;
 	}
 
 	@Override
-	public OrderPO inquireB(String date) {
+	public OrderPO findA(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("该日订单；");
 		return null;
 	}
 
 	@Override
-	public void update() {
+	public ArrayList<OrderlineitemPO> findB(String date) {
 		// TODO Auto-generated method stub
-		System.out.println("更新成功");
+		return null;
 	}
 
+	@Override
+	public ResultMessage update(OrderPO orderPO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OrderlineitemPO getOrderlineitemPO(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void generateId() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

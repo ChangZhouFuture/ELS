@@ -1,7 +1,11 @@
 package dataservice_client.orderdataservice;
 
+import java.util.ArrayList;
+
+import po_client.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po_client.orderPO.OrderPO;
 import state.ExpressType;
+import state.ResultMessage;
 
 public interface Orderdataservice {
 	/**
@@ -17,39 +21,24 @@ public interface Orderdataservice {
 	 * @param num
 	 * @return
 	 */
-	public OrderPO add(String sender, String addressee, String desti, String startingPlace,
-			ExpressType eType, String name, String id, int num);
+	public OrderPO add(OrderPO orderPO);
 	
 	/**
 	 * 前置条件：要删除的订单在PO中有记录
 	 * 后置条件：删除一个订单，更新PO
 	 * @param orderid
 	 */
-    public void delete(String id);
+    public ResultMessage deleteOne(String id);
     
-    /**
-     * 前置条件：要修改的订单在PO中有记录
-     * 后置条件：修改一个订单的内容，更新PO
-     * @param sender
-     * @param addressee
-     * @param desti
-     * @param startingPlace
-     * @param eType
-     * @param name
-     * @param id
-     * @param num
-     * @return
-     */
-    public OrderPO modify(String sender, String addressee, String desti, String startingPlace,
- 			ExpressType eType, String name, String id, int num);
-    
+    public ResultMessage deleteMany(ArrayList<String> idList);
+	
     /**
      * 前置条件：
      * 后置条件：根据id查询订单，返回po信息给逻辑层
      * @param id
      * @return
      */
-    public OrderPO inquireA(String id);
+    public OrderPO findA(String id);
     
     /**
      * 前置条件：
@@ -57,13 +46,17 @@ public interface Orderdataservice {
      * @param id
      * @return
      */
-    public OrderPO inquireB(String date);
+    public ArrayList<OrderlineitemPO> findB(String date);
     
     /**
 	 * 
 	 * 前置条件：行为或操作已经完成
 	 * 后置条件：持久化更新涉及的领域对象的数据
 	 */
-	public void update();
+	public ResultMessage update(OrderPO orderPO);
+	
+	public OrderlineitemPO getOrderlineitemPO(String id);
+	
+	public void generateId();
 
 }

@@ -1,6 +1,9 @@
 package businesslogicservice_client.orderblservice;
 
+import java.util.ArrayList;
+
 import state.ExpressType;
+import state.ResultMessage;
 import vo_client.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo_client.orderVO.OrderVO;
 /**
@@ -23,14 +26,16 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-	 public void add(OrderVO orderVO);
+	 public ResultMessage add(OrderVO orderVO);
 	 
 	 /**
 	  * 前置条件：展开一个订单列表
 	  * 后置条件：在订单列表中删除一个订单
 	  * @param orderid
 	  */
-     public void delete(String id);
+     public ResultMessage deleteOne(String id);
+     
+     public ResultMessage deleteMany(ArrayList<String> idList);
      
      /**
       * 前置条件：选择一个订单
@@ -45,7 +50,7 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-     public void modify(OrderVO orderVO);
+     public ResultMessage modify(OrderVO orderVO);
      
      /**
       * 前置条件：输入一个订单编号
@@ -61,7 +66,7 @@ public interface Orderblservice {
       * @param time
       * @return
       */
-     public OrderVO inquireB(String date);
+     public ArrayList<OrderlineitemVO> inquireB(String date);
      
      /**
       * 前置条件：完成订单信息输入
@@ -72,18 +77,19 @@ public interface Orderblservice {
      
      /**
       * 前置条件：完成订单信息输入
-      * 后置条件：根据订单信息计算总费用
+      * 后置条件：根据订单信息计算总费用 ，运费+包装费
       * @param senderadderss
       * @param recipientaddress
       * @param packprice
       * @return
       */
-     public double calculateTotalPrice(String startingPlace,String desti,ExpressType eType,int num);
+     public void calculateTotalPrice();
     
+     public void generateExpectedArrivalDate();
 
      public OrderlineitemVO getOrderlineitemVO(String id);
-     
-     /**
+
+	/**
       * 前置条件：已完成订单处理
       * 后置条件：结束本次订单处理，持久化更新涉及的领域对象的数据
       */
