@@ -1,14 +1,12 @@
 package data.documentsdata;
 
 import java.util.ArrayList;
-
 import po.documentsPO.ArrivalOrder4BusiHallPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
-import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import state.ResultMessage;
+import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 
-public class ArrivalOrder4BusiHalldata implements
-		ArrivalOrder4BusiHalldataservice {
+public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservice {
 
 	@Override
 	public TransferOrderlineitemPO addTransferOrder(String id) {
@@ -70,5 +68,5 @@ public class ArrivalOrder4BusiHalldata implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 }

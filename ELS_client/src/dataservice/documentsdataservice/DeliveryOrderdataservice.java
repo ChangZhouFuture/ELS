@@ -73,6 +73,6 @@ import state.ResultMessage;
 	 */
 	public ResultMessage update(DeliveryOrderPO deliveryOrderPO);
 	
-	public String generateId();
+	
 	
  }

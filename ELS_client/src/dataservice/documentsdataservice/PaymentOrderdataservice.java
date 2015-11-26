@@ -73,5 +73,5 @@ public interface PaymentOrderdataservice {
 	 */
 	public ResultMessage update(PaymentOrderPO paymentOrderPO);
 	
-	public String generaId();
+	
 }
