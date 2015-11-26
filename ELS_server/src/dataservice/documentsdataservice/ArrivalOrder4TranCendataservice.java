@@ -35,7 +35,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param id
 	 * @return 
 	 */
-	public ResultMessage deleteoOne(String id);
+	public ResultMessage deleteOne(String id);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
@@ -50,7 +50,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public ArrayList<ArrivalOrder4TranCenPO> findA(String id);
+	public ArrivalOrder4TranCenPO findA(String id);
 	
 	/**
 	 * 前置：要查询的中转中心到达单在PO中有记录
