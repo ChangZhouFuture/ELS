@@ -6,6 +6,7 @@ import state.ResultMessage;
 import vo.documentsVO.BusinessHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import businesslogic.utilitybl.JavaBean;
 import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
 /**
  * 
@@ -15,14 +16,13 @@ import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
 public class BusinessHallLoadingList implements BusinessHallLoadingListblservice{
 
 	@Override
-	public ResultMessage addBusiHall(String bhid) {
-		// TODO Auto-generated method stub
+	public ResultMessage addBusiHall(String businessHallId) {
+		
 		return null;
 	}
 
 	@Override
 	public OrderlineitemVO addOrder(String orderid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -33,66 +33,66 @@ public class BusinessHallLoadingList implements BusinessHallLoadingListblservice
 	}
 
 	@Override
-	public String generateTranLoadId(String bhid, String d) {
-		// TODO Auto-generated method stub
+	public String generateTruckId(String bhid, String d) {
+		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
 		return null;
 	}
 
 	@Override
-	public int generateFare(String sa, String ea) {
-		// TODO Auto-generated method stub
+	public double generateFreight(String sa, String ea) {
+
+		
 		return 0;
 	}
 
 	@Override
-	public BusinessHallLoadingListVO addLoadingList(String id, String bhid, String tlid,
-			String ea, ArrayList<String> oidl, String d, String vid, int f,
-			String Jzy, String Yyy) {
-		// TODO Auto-generated method stub
+	public JavaBean addBusinessHallLoadingList(BusinessHallLoadingListVO businessHallLoadingListVO) {
+
+		
 		return null;
 	}
 
 	@Override
 	public String generateId() {
-		// TODO Auto-generated method stub
+		//调用数据层方法
+		
 		return null;
 	}
 
 	@Override
-	public BusinessHallLoadingListVO modify(String id, String bhid, String tlid, String ea,
-			ArrayList<String> orderidlist, String d, String vid, int f,
-			String Jzy, String Yyy) {
-		// TODO Auto-generated method stub
+	public ResultMessage modify(BusinessHallLoadingListVO businessHallLoadingListVO) {
+
+		
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public BusinessHallLoadingListVO inquireA(String id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public BusinessHallLoadingListlineitemVO inquireB(String time) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void end() {
-		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void VOtoPO() {
 		
 	}
 

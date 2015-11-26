@@ -1,5 +1,7 @@
 package po.lineitemPO.userlineitemPO;
 
-public class AdministratorlineitemPO {
+import java.io.Serializable;
+
+public class AdministratorlineitemPO implements Serializable{
 
 }

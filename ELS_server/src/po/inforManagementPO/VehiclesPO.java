@@ -2,15 +2,16 @@ package po.inforManagementPO;
 
 import java.io.Serializable;
 
+
 public class VehiclesPO implements Serializable{
-    /**
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String ID;
-    private String plateNum;
-    private int serviceTime;
-    
+	String ID;
+	String plateNum;
+	int serviceTime;
 	public String getID() {
 		return ID;
 	}
@@ -29,5 +30,5 @@ public class VehiclesPO implements Serializable{
 	public void setServiceTime(int serviceTime) {
 		this.serviceTime = serviceTime;
 	}
-    
+	
 }

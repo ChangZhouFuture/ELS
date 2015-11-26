@@ -1,5 +1,7 @@
 package data.documentsdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.documentsPO.ArrivalOrder4TranCenPO;
@@ -8,7 +10,12 @@ import state.ResultMessage;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
 
 
-public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice{
+public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements ArrivalOrder4TranCendataservice{
+
+	public ArrivalOrder4TranCendata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public TransferOrderlineitemPO addTransferOrder(String id) {
@@ -22,13 +29,7 @@ public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public ResultMessage deleteoOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
@@ -67,6 +68,12 @@ public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice
 
 	@Override
 	public String generateStartAdd() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

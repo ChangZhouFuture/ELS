@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.TransferOrderPO;
@@ -11,7 +12,7 @@ import state.TransportType;
  * @author 朱俊文
  * 该接口提供与中转单相关的数据层方法
  */
- public interface TransferOrderdataservice {
+ public interface TransferOrderdataservice extends Remote{
  
 	/**
 	 * 前置：中转中心业务员已输入所有参数

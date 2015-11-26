@@ -1,9 +1,17 @@
 package data.managerAndAccountantdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import po.utilityPO.OperaLogPO;
 import dataservice.managerAndAccountantdataservice.InquireOperaLogdataservice;
 
-public class InquireOperaLogdata implements InquireOperaLogdataservice{
+public class InquireOperaLogdata extends UnicastRemoteObject implements InquireOperaLogdataservice{
+
+	public InquireOperaLogdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public OperaLogPO inquireA(String id, String date) {

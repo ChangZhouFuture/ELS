@@ -1,5 +1,7 @@
 package po.StatisAnalyPO;
 
-public class BusinessSituationPO {
+import java.io.Serializable;
+
+public class BusinessSituationPO implements Serializable{
 
 }

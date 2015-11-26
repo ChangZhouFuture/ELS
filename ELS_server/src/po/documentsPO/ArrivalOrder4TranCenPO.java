@@ -4,56 +4,59 @@ import java.io.Serializable;
 
 import state.GoodState;
 
-public class ArrivalOrder4TranCenPO implements Serializable{
-    private String Id;
-    private String Id4TranCen;
-    private String arrivalDate;
-    private String Id4TransferOrder;
-    private String StartingAddress;
-    private GoodState status;
-    private String generateTime;
+ public class ArrivalOrder4TranCenPO implements Serializable{
+	String id;
+	String transferOrderid;
+	String startingAdd;
+	String date;
+	GoodState goodState;
+	String transferCenterId;
+	
 	public String getId() {
-		return Id;
+		return id;
 	}
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
-	public String getId4TranCen() {
-		return Id4TranCen;
+	public String getTransferOrderid() {
+		return transferOrderid;
 	}
-	public void setId4TranCen(String id4TranCen) {
-		Id4TranCen = id4TranCen;
+	public void setTransferOrderid(String transferOrderid) {
+		this.transferOrderid = transferOrderid;
 	}
-	public String getArrivalDate() {
-		return arrivalDate;
+	public String getStartingAdd() {
+		return startingAdd;
 	}
-	public void setArrivalDate(String arrivalDate) {
-		this.arrivalDate = arrivalDate;
+	public void setStartingAdd(String startingAdd) {
+		this.startingAdd = startingAdd;
 	}
-	public String getId4TransferOrder() {
-		return Id4TransferOrder;
+	public String getDate() {
+		return date;
 	}
-	public void setId4TransferOrder(String id4TransferOrder) {
-		Id4TransferOrder = id4TransferOrder;
+	public void setDate(String date) {
+		this.date = date;
 	}
-	public String getStartingAddress() {
-		return StartingAddress;
+	public GoodState getGoodState() {
+		return goodState;
 	}
-	public void setStartingAddress(String startingAddress) {
-		StartingAddress = startingAddress;
+	public void setGoodState(GoodState goodState) {
+		this.goodState = goodState;
 	}
-	public GoodState getStatus() {
-		return status;
+	public String getTransferCenterId() {
+		return transferCenterId;
 	}
-	public void setStatus(GoodState status) {
-		this.status = status;
+	public void setTransferCenterId(String transferCenterId) {
+		this.transferCenterId = transferCenterId;
 	}
-	public String getGenerateTime() {
-		return generateTime;
-	}
-	public void setGenerateTime(String generateTime) {
-		this.generateTime = generateTime;
-	}
-    
-    
-}
+	
+//	public ArrivalOrder4TranCenPO(String id,String toid,String sa,String d,GoodState gs,String tcid){
+//		super();
+//		this.id=id;
+//		this.toid=toid;
+//		this.sa=sa;
+//		this.d=d;
+//		this.gs=gs;
+//		this.tcid=tcid;
+//	}
+
+ }

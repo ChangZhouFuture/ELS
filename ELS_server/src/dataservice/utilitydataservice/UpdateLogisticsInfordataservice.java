@@ -1,5 +1,7 @@
 package dataservice.utilitydataservice;
 
-public class UpdateLogisticsInfordataservice {
+import java.rmi.Remote;
+
+public interface UpdateLogisticsInfordataservice extends Remote{
 
 }

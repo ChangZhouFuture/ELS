@@ -1,9 +1,11 @@
 package dataservice.stockdataservice;
 
+import java.rmi.Remote;
+
 import po.stockPO.StockPO;
 
 
-public interface Stockdataservice {
+public interface Stockdataservice extends Remote{
 	/**
 	 * 
 	 * @param startDate

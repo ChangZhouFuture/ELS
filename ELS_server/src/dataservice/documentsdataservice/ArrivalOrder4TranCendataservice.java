@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.ArrivalOrder4TranCenPO;
@@ -12,7 +13,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与中转中心到达单相关的数据层方法
  */
-public interface ArrivalOrder4TranCendataservice {
+public interface ArrivalOrder4TranCendataservice extends Remote{
 	
 	public TransferOrderlineitemPO addTransferOrder(String id);
 	
@@ -35,7 +36,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param id
 	 * @return 
 	 */
-	public ResultMessage deleteoOne(String id);
+	public ResultMessage deleteOne(String id);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录

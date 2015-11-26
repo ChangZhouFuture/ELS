@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.DeliveryOrderPO;
@@ -10,7 +11,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与派件单相关的数据层方法
  */
- public interface DeliveryOrderdataservice {
+ public interface DeliveryOrderdataservice extends Remote{
  
 	 public OrderlineitemPO addOrder(String id);
 	 

@@ -22,5 +22,4 @@ public class BankAccountPO implements Serializable{
 		this.amount = amount;
 	}
     
-    
 }

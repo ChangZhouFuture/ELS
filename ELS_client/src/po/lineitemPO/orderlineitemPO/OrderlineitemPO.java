@@ -1,5 +1,7 @@
 package po.lineitemPO.orderlineitemPO;
 
-public class OrderlineitemPO {
+import java.io.Serializable;
+
+public class OrderlineitemPO implements Serializable{
 
 }

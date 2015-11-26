@@ -1,6 +1,8 @@
 
 package data.inforManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,13 +15,17 @@ import data.utility.Database;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
 import state.ResultMessage;
 
-public class BankAccountInfordata implements BankAccountInfordataservice {
+public class BankAccountInfordata extends UnicastRemoteObject implements BankAccountInfordataservice {
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     BankAccountPO po;
     
+    public BankAccountInfordata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
 //增加新银行账户信息
 public ResultMessage add(BankAccountPO po){
 	try {

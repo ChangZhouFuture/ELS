@@ -1,9 +1,17 @@
 package data.stockdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import po.stockPO.StockPO;
 import dataservice.stockdataservice.Stockdataservice;
 
-public class Stockdata implements Stockdataservice{
+public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
+
+	public Stockdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public StockPO stockCheck(String startDate, String endDate) {

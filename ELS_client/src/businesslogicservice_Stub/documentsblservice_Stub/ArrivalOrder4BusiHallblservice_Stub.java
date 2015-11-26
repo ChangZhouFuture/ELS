@@ -6,12 +6,14 @@ import java.util.ArrayList;
 
 
 
+
  import state.GoodState;
 import state.ResultMessage;
 import vo.documentsVO.ArrivalOrder4BusiHallVO;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import businesslogic.utilitybl.JavaBean;
 import businesslogicservice.documentsblservice.ArrivalOrder4BusiHallblservice;
  
  public class ArrivalOrder4BusiHallblservice_Stub implements ArrivalOrder4BusiHallblservice{
@@ -44,7 +46,7 @@ import businesslogicservice.documentsblservice.ArrivalOrder4BusiHallblservice;
  	}
  		 
  	@Override
- 	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+ 	public JavaBean addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
 		return null;
 
  		

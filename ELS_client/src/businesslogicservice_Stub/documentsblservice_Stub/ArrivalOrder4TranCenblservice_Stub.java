@@ -131,7 +131,7 @@ import businesslogicservice.documentsblservice.ArrivalOrder4TranCenblservice;
 	}
 
 	@Override
-	public void POtoVO() {
+	public void POtoVO(int k) {
 		// TODO Auto-generated method stub
 		
 	}

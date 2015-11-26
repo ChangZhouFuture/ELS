@@ -1,5 +1,7 @@
 package po.lineitemPO.documentslineitemPO;
 
-public class TransferCenterLoadingListlineitemPO {
+import java.io.Serializable;
+
+public class TransferCenterLoadingListlineitemPO implements Serializable{
 
 }

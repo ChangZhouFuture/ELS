@@ -1,5 +1,7 @@
 package data.inforManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -9,13 +11,17 @@ import state.ResultMessage;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.DriversInfordataservice;
 
-public class DriversInfordata implements DriversInfordataservice {
-	    Database db=new Database();
+public class DriversInfordata extends UnicastRemoteObject implements DriversInfordataservice {
+		Database db=new Database();
 	    Connection con=db.getConnection();
 	    Statement sm;
 	    PreparedStatement stmt;
 	    DriversPO po;
 	    
+	    public DriversInfordata() throws RemoteException {
+	    	super();
+	    	// TODO Auto-generated constructor stub
+	    }
     //增加新司机信息
 	public ResultMessage add(DriversPO po){
 		try {

@@ -1,11 +1,19 @@
 package data.managerAndAccountantdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import po.StatisAnalyPO.BusinessSituationPO;
 import po.StatisAnalyPO.CostAndIncomePO;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
 
 
-public class StatisAnalydata implements StatisAnalydataservice{
+public class StatisAnalydata extends UnicastRemoteObject implements StatisAnalydataservice{
+
+	public StatisAnalydata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public BusinessSituationPO BS(String StartDate, String EndDate) {

@@ -1,5 +1,7 @@
 package data.documentsdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.documentsPO.PaymentOrderPO;
@@ -9,7 +11,12 @@ import state.ResultMessage;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 
 
-public class PaymentOrderdata implements PaymentOrderdataservice {
+public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrderdataservice {
+
+	public PaymentOrderdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public BankAccountPO addPaymentAccount(String accountName) {

@@ -1,5 +1,7 @@
 package po.lineitemPO.documentslineitemPO;
 
-public class PaymentOrderlineitemPO {
+import java.io.Serializable;
+
+public class PaymentOrderlineitemPO implements Serializable{
 
 }

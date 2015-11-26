@@ -1,5 +1,7 @@
 package data.documentsdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.documentsPO.DeliveryOrderPO;
@@ -9,7 +11,12 @@ import state.ResultMessage;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
 
 
-public class DeliveryOrderdata implements DeliveryOrderdataservice {
+public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOrderdataservice {
+
+	public DeliveryOrderdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public OrderlineitemPO addOrder(String id) {

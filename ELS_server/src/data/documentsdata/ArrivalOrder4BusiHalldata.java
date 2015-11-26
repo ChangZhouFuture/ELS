@@ -1,12 +1,20 @@
 package data.documentsdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+
 import po.documentsPO.ArrivalOrder4BusiHallPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 
-public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservice {
+public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements ArrivalOrder4BusiHalldataservice {
+
+	public ArrivalOrder4BusiHalldata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public TransferOrderlineitemPO addTransferOrder(String id) {
@@ -17,12 +25,6 @@ public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservi
 	@Override
 	public ResultMessage addArrivalOrder4BusiHall(
 			ArrivalOrder4BusiHallPO arrivalOrder4BusiHallPO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteoOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -65,6 +67,12 @@ public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservi
 
 	@Override
 	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

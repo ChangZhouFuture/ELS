@@ -2,6 +2,6 @@ package po.lineitemPO.inforManagementlineitemPO;
 
 import java.io.Serializable;
 
-public class BankAccountlineitemPO implements Serializable{
+public class AgencylineitemPO implements Serializable{
 
 }

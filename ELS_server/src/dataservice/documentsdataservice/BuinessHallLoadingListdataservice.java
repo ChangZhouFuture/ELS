@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.BusinessHallLoadingListPO;
@@ -11,7 +12,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与装车单相关的数据层方法
  */
- public interface BuinessHallLoadingListdataservice {
+ public interface BuinessHallLoadingListdataservice extends Remote{
  
 	 public OrderlineitemPO addOrder(String id);
 	 

@@ -1,5 +1,7 @@
 package po.lineitemPO.userlineitemPO;
 
-public class SenderlineitemPO{
+import java.io.Serializable;
+
+public class SenderlineitemPO implements Serializable{
 
 }

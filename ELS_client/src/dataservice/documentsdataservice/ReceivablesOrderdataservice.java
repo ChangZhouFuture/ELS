@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.ReceivablesOrderPO;
@@ -8,7 +9,7 @@ import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
 
-public interface ReceivablesOrderdataservice {
+public interface ReceivablesOrderdataservice extends Remote{
 	/**
 	 * 
 	 * @param date4RO

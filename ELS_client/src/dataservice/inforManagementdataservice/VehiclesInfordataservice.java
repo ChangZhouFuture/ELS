@@ -1,12 +1,13 @@
 package dataservice.inforManagementdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.inforManagementPO.VehiclesPO;
 import po.lineitemPO.inforManagementlineitemPO.VehicleslineitemPO;
 import state.ResultMessage;
 
-public interface VehiclesInfordataservice {
+public interface VehiclesInfordataservice extends Remote{
 	/**
 	 * 
 	 * @param po

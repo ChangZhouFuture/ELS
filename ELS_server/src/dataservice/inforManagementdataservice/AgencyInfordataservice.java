@@ -1,11 +1,12 @@
 package dataservice.inforManagementdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.inforManagementPO.AgencyPO;
 import state.ResultMessage;
 
-public interface AgencyInfordataservice {
+public interface AgencyInfordataservice extends Remote{
 public ResultMessage add(AgencyPO po);
 	
 	public ResultMessage deleteOne(String Id);

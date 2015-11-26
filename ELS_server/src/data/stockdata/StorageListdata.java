@@ -1,5 +1,7 @@
 package data.stockdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.lineitemPO.stocklineitemPO.StorageListlineitemPO;
@@ -8,7 +10,12 @@ import state.ResultMessage;
 import dataservice.stockdataservice.StorageListdataservice;
 
 
-public class StorageListdata implements StorageListdataservice {
+public class StorageListdata extends UnicastRemoteObject implements StorageListdataservice {
+
+	public StorageListdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public StorageListPO add(String id4obo, String time, String id4e,

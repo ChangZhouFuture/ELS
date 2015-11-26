@@ -1,7 +1,10 @@
 package po.lineitemPO.stocklineitemPO;
 
+import java.io.Serializable;
 
-public class OutBoundOrderlineitemPO {
+
+
+public class OutBoundOrderlineitemPO implements Serializable{
 	String id4e;
 	
 	String desti;

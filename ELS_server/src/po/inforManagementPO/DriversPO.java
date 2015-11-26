@@ -13,6 +13,19 @@ public class DriversPO implements Serializable{
 	private String phone;
 	private Gender gender;
 	private String driveLimitDate;
+	
+//	public DriversPO(String ID, String name, String birthDate, String identyNum,
+//			String phone,int gender,String driveLimitDate){
+//		super();
+//		this.ID = ID;
+//		this.name = name;
+//		this.birthDate = birthDate;
+//		this.identyNum = identyNum;
+//		this.phone = phone;
+//		this.gender = gender;
+//		this.driveLimitDate = driveLimitDate;
+//		
+//	}
 
 	public String getID() {
 		return ID;
@@ -53,8 +66,6 @@ public class DriversPO implements Serializable{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	
 
 	public Gender getGender() {
 		return gender;

@@ -1,6 +1,8 @@
 package po.lineitemPO.stocklineitemPO;
 
-public class StorageListlineitemPO{
+import java.io.Serializable;
+
+public class StorageListlineitemPO implements Serializable{
 	String id4e;
 	
 	String desti;

@@ -1,5 +1,7 @@
 package po.lineitemPO.documentslineitemPO;
 
-public class ArrivalOrder4BusiHalllineitemPO {
+import java.io.Serializable;
+
+public class ArrivalOrder4BusiHalllineitemPO implements Serializable{
 
 }

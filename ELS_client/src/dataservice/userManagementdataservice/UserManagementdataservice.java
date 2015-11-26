@@ -1,11 +1,12 @@
 package dataservice.userManagementdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.userPO.UserPO;
 import state.ResultMessage;
 
-public interface UserManagementdataservice {
+public interface UserManagementdataservice extends Remote{
     public ResultMessage add(UserPO po);
     
     public ResultMessage deleteOne(String Id);

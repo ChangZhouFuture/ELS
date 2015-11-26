@@ -1,5 +1,7 @@
 package dataservice.managerAndAccountantdataservice;
 
+import java.rmi.Remote;
+
 import po.StatisAnalyPO.BusinessSituationPO;
 import po.StatisAnalyPO.CostAndIncomePO;
 
@@ -8,7 +10,7 @@ import po.StatisAnalyPO.CostAndIncomePO;
  * @author zt
  *
  */
-public interface StatisAnalydataservice {
+public interface StatisAnalydataservice extends Remote{
 	/**
 	 * 前置条件：
 	 * 后置条件：生成经营情况表返回给逻辑层

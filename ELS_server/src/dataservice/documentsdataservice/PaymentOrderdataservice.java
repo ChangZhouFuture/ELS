@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.PaymentOrderPO;
@@ -7,7 +8,7 @@ import po.inforManagementPO.BankAccountPO;
 import po.lineitemPO.documentslineitemPO.PaymentOrderlineitemPO;
 import state.ResultMessage;
 
-public interface PaymentOrderdataservice {
+public interface PaymentOrderdataservice extends Remote{
 	
 	public BankAccountPO addPaymentAccount(String accountName);
 	

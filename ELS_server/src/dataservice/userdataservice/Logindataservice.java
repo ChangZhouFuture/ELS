@@ -1,7 +1,9 @@
 package dataservice.userdataservice;
 
-public interface Logindataservice {
-	public Object login(String id, String passWord, String identity);
+import java.rmi.Remote;
+
+public interface Logindataservice extends Remote{
+	public Object login(String id, String passWord);
 	
 	public void logout();
 }

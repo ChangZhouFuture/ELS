@@ -6,6 +6,7 @@ import state.ResultMessage;
 import vo.documentsVO.BusinessHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import businesslogic.utilitybl.JavaBean;
 import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
 
 /**
@@ -48,58 +49,7 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 		return date;
 	}
 
-	@Override
-	public String generateTranLoadId(String bhid, String d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int generateFare(String sa, String ea) {
-		// TODO Auto-generated method stub
-		int fare=0;
-		return fare;
-	}
-
-	@Override
-	public BusinessHallLoadingListVO addLoadingList(String id, String bhid, String tlid,
-			String ea, ArrayList<String> oidl, String d, String vid,
-			int f, String Jzy, String Yyy) {
-		// TODO Auto-generated method stub
-		this.id=id;
-		this.busihallid=bhid;
-		this.tranloadid=tlid;
-		this.endaddress=ea;
-		this.orderidlist=oidl;
-		this.date=d;
-		this.vehicleid=vid;
-		this.fare=f;
-		this.Jianzhuangyuan=Jzy;
-		this.Yayunyuan=Yyy;
-//		此处传入VO�?有参数，记录llVO（PO和VO的单号是�?样的）；
-		ll=new BusinessHallLoadingListVO(this.id,this.busihallid,this.tranloadid,this.endaddress,this.orderidlist,this.date,this.vehicleid,this.fare,this.Jianzhuangyuan,this.Yayunyuan);
-//		此处调用数据层的增加装运单方法，更新PO
-		end();
-		return ll;
-	}
-
-	@Override
-	public String generateId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BusinessHallLoadingListVO modify(String id, String bhid, String tlid, String ea,
-			ArrayList<String> orderidlist, String d, String vid, int f,
-			String Jzy, String Yyy) {
-		// TODO Auto-generated method stub
-		//调用数据层的修改方法，修改PO
-		
-		end();
-		System.out.println("Modify the LuadingList successfully!");
-		return null;
-	}
+	
 
 	@Override
 	public ResultMessage deleteone(String id) {
@@ -149,6 +99,44 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 		//此处调用数据层的Update方法
 		
 		System.out.println("End the LoadingList!");
+	}
+
+	@Override
+	public String generateTruckId(String bhid, String d) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double generateFreight(String sa, String ea) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public JavaBean addBusinessHallLoadingList(
+			BusinessHallLoadingListVO businessHallLoadingListVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modify(
+			BusinessHallLoadingListVO businessHallLoadingListVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void VOtoPO() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

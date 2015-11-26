@@ -1,25 +1,30 @@
 package data.inforManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import po.inforManagementPO.AgencyPO;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import state.AgencyType;
 import state.ResultMessage;
 
-public class AgencyInfordata implements AgencyInfordataservice{
+public class AgencyInfordata extends UnicastRemoteObject implements AgencyInfordataservice{	
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     AgencyPO po;
     
+    public AgencyInfordata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
 //增加新机构信息
 public ResultMessage add(AgencyPO po){
 	try {

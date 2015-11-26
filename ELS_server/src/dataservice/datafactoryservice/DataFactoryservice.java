@@ -24,7 +24,6 @@ import dataservice.stockdataservice.Stockdataservice;
 import dataservice.stockdataservice.StorageListdataservice;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import dataservice.userdataservice.Logindataservice;
-import dataservice.utilitydataservice.AutoGenerateTimedataservice;
 import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
@@ -91,10 +90,6 @@ public interface DataFactoryservice extends Remote{
 			
 			
 	public UserManagementdataservice getUserManagementdataservice() throws RemoteException;
-			
-			
-	public AutoGenerateTimedataservice getautAutoGenerateTimedataservice() throws 
-			RemoteException;
 				
 			
 	public RecordOperaLogdataservice getRecordOperaLogdataservice() throws 

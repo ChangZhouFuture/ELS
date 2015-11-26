@@ -107,7 +107,7 @@ public interface ArrivalOrder4TranCenblservice {
 	
 	public void VOtoPO();
 	
-	public void POtoVO();
+	public void POtoVO(int k);
 	
 	/**
 	 * 前置：业务已经处理完成

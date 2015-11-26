@@ -1,12 +1,13 @@
 package dataservice.stockdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.lineitemPO.stocklineitemPO.StorageListlineitemPO;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
 
-public interface StorageListdataservice {
+public interface StorageListdataservice extends Remote{
 	
 	/**
 	 * 

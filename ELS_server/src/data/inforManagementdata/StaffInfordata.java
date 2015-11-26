@@ -1,5 +1,7 @@
 package data.inforManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,12 +18,17 @@ import data.utility.Database;
 import dataservice.inforManagementdataservice.StaffInfordataservice;
 
 
-public class StaffInfordata implements StaffInfordataservice{
+public class StaffInfordata extends UnicastRemoteObject implements StaffInfordataservice{
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     StaffPO po;
+    
+    public StaffInfordata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
     
     public ResultMessage add(StaffPO po){
 		try {

@@ -1,5 +1,7 @@
 package data.stockdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
@@ -8,7 +10,12 @@ import state.ResultMessage;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
 
 
-public class OutBoundOrderdata implements OutBoundOrderdataservice {
+public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOrderdataservice {
+
+	public OutBoundOrderdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public OutBoundOrderPO add(String id4obo, String time, String id4e,

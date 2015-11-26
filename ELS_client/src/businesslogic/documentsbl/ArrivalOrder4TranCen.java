@@ -1,17 +1,10 @@
 package businesslogic.documentsbl;
 
 import java.util.ArrayList;
-
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
-import po.documentsPO.ArrivalOrder4BusiHallPO;
 import po.documentsPO.ArrivalOrder4TranCenPO;
-import po.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
-import po.lineitemPO.documentslineitemPO.ArrivalOrder4TranCenlineitemPO;
-import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
-import state.GoodState;
 import state.ResultMessage;
 import vo.documentsVO.ArrivalOrder4TranCenVO;
-import vo.lineitemVO.documentslineitemVO.ArrivalOrder4TranCenlineitemVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import businesslogicservice.documentsblservice.ArrivalOrder4TranCenblservice;
 
@@ -20,8 +13,8 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 	private ArrivalOrder4TranCenPO arrivalOrder4TranCenPO;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
 	private ArrivalOrder4TranCendataservice arrivalOrder4TranCendataservice;
-	private ArrayList<TransferOrderlineitemPO> arrayList1;
-	private ArrayList<TransferOrderlineitemVO> arrayList2;
+	private ArrayList<ArrivalOrder4TranCenPO> arrayList1;
+	private ArrayList<ArrivalOrder4TranCenVO> arrayList2;
 	private TransferOrder transferOrder;
 	private ResultMessage resultMessage;
 	
@@ -94,15 +87,18 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
 	public ArrayList<ArrivalOrder4TranCenVO> inquireA(String id) {
-		
-		
-		return null;
+		arrayList1 = arrivalOrder4TranCendataservice.findA(id);
+		POtoVO(1);
+		return arrayList2;
 	}
 
 	@Override
 	public ArrayList<ArrivalOrder4TranCenVO> inquireB(String time) {
+		arrayList1 = arrivalOrder4TranCendataservice.findB(time);
+		int k = arrayList1.size();
 		
-		return null;
+		POtoVO(k);
+		return arrayList2;
 	}
 
 	@Override
@@ -122,14 +118,23 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
 	public void end() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void POtoVO() {
-		// TODO Auto-generated method stub
+	public void POtoVO(int k) {
+		arrayList2 = new ArrayList<ArrivalOrder4TranCenVO>();
 		
+		for (int i = 0; i < k; i++) {
+			arrivalOrder4TranCenPO = arrayList1.get(i);
+			
+			arrivalOrder4TranCenVO = new ArrivalOrder4TranCenVO();
+			arrivalOrder4TranCenVO.setId(arrivalOrder4TranCenPO.getId());
+			arrivalOrder4TranCenVO.setDate(arrivalOrder4TranCenPO.getDate());
+			arrivalOrder4TranCenVO.setTransferOrderId(arrivalOrder4TranCenPO.getTransferOrderid());
+			arrivalOrder4TranCenVO.setStartingAdd(arrivalOrder4TranCenPO.getStartingAdd());
+			arrivalOrder4TranCenVO.setGoodState(arrivalOrder4TranCenPO.getGoodState());
+		}
 	}
 
 	

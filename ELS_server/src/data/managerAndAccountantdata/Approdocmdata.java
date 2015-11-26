@@ -1,9 +1,17 @@
 package data.managerAndAccountantdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
 
 
-public class Approdocmdata implements Approdocmdataservice{
+public class Approdocmdata extends UnicastRemoteObject implements Approdocmdataservice{
+
+	public Approdocmdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Object inquireA(String id) {

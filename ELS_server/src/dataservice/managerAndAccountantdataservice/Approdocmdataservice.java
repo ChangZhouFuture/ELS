@@ -1,12 +1,14 @@
 package dataservice.managerAndAccountantdataservice;
 
+import java.rmi.Remote;
+
 
 /**
  * 该接口提供审批单据相关的数据层方法
  * @author zt
  *
  */
-public interface Approdocmdataservice {
+public interface Approdocmdataservice extends Remote{
 
 	/**
 	 * 前置条件：数据层有查询的对应id的单据

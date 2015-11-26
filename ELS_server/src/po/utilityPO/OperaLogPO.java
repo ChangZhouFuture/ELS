@@ -1,5 +1,7 @@
 package po.utilityPO;
 
-public class OperaLogPO {
+import java.io.Serializable;
+
+public class OperaLogPO implements Serializable{
 
 }

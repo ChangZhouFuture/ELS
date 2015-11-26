@@ -26,7 +26,6 @@ import dataservice.stockdataservice.Stockdataservice;
 import dataservice.stockdataservice.StorageListdataservice;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import dataservice.userdataservice.Logindataservice;
-import dataservice.utilitydataservice.AutoGenerateTimedataservice;
 import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
@@ -137,12 +136,6 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public UserManagementdataservice getUserManagementdataservice() throws RemoteException{
-		return null;
-		
-	}
-	
-	public AutoGenerateTimedataservice getautAutoGenerateTimedataservice() throws 
-	RemoteException{
 		return null;
 		
 	}

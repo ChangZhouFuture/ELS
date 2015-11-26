@@ -1,9 +1,11 @@
 package po.documentsPO;
 
 
+import java.io.Serializable;
+
 import state.GoodState;
 
- public class ArrivalOrder4BusiHallPO{
+ public class ArrivalOrder4BusiHallPO implements Serializable{
  
 	private String id;
 	private String transferOrderId;

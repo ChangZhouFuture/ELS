@@ -1,8 +1,10 @@
 package po.lineitemPO.documentslineitemPO;
 
+import java.io.Serializable;
+
 import state.TransportType;
 
-public class TransferOrderlineitemPO {
+public class TransferOrderlineitemPO implements Serializable{
 	private String id;
 	private String date;
 	private String startingAdd;

@@ -1,5 +1,7 @@
 package po.lineitemPO.inforManagementlineitemPO;
 
-public class AgencylineitemPO {
+import java.io.Serializable;
+
+public class AgencylineitemPO implements Serializable{
 
 }

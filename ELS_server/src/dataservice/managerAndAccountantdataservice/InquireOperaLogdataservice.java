@@ -1,5 +1,7 @@
 package dataservice.managerAndAccountantdataservice;
 
+import java.rmi.Remote;
+
 import po.utilityPO.OperaLogPO;
 
 /**
@@ -7,7 +9,7 @@ import po.utilityPO.OperaLogPO;
  * @author zt
  *
  */
-public interface InquireOperaLogdataservice {
+public interface InquireOperaLogdataservice extends Remote{
 	/**
 	 * 前置条件：查询的操作日志在数据库中
 	 * 后置条件：将某人员某天日志返回给逻辑层

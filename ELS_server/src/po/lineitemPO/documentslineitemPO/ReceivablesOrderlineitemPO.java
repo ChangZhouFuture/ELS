@@ -1,6 +1,7 @@
 package po.lineitemPO.documentslineitemPO;
 
+import java.io.Serializable;
 
-public class ReceivablesOrderlineitemPO {
+public class ReceivablesOrderlineitemPO implements Serializable{
 
 }

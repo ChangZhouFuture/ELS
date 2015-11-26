@@ -1,5 +1,6 @@
 package dataservice.stockdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
@@ -10,7 +11,7 @@ import state.ResultMessage;
  * @author 周畅
  * 该接口提供与出库单相关的数据层方法
  */
-public interface OutBoundOrderdataservice {
+public interface OutBoundOrderdataservice extends Remote{
 		
 	/**
 	 * 

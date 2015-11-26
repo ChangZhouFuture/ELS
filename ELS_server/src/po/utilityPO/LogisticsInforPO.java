@@ -1,5 +1,7 @@
 package po.utilityPO;
 
-public class LogisticsInforPO {
+import java.io.Serializable;
+
+public class LogisticsInforPO implements Serializable{
 
 }

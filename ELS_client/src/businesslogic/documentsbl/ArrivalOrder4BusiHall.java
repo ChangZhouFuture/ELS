@@ -4,14 +4,10 @@ import java.util.ArrayList;
 
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import po.documentsPO.ArrivalOrder4BusiHallPO;
-import po.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
-import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
-import state.GoodState;
 import state.ResultMessage;
 import vo.documentsVO.ArrivalOrder4BusiHallVO;
-import vo.documentsVO.DeliveryOrderVO;
-import vo.lineitemVO.documentslineitemVO.ArrivalOrder4BusiHalllineitemVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import businesslogic.utilitybl.JavaBean;
 import businesslogicservice.documentsblservice.ArrivalOrder4BusiHallblservice;
 /**
  * 
@@ -49,7 +45,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 	}
 
 	@Override
-	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
+	public JavaBean addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO) {
 		arrivalOrder4BusiHallPO = new ArrivalOrder4BusiHallPO();
 		this.arrivalOrder4BusiHallVO = arrivalOrder4BusiHallVO;
 		
@@ -60,7 +56,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 		resultMessage = arrivalOrder4BusiHalldataservice.
 			addArrivalOrder4BusiHall(arrivalOrder4BusiHallPO);
 	
-		return resultMessage;
+		return null;
 	}
 
 	@Override

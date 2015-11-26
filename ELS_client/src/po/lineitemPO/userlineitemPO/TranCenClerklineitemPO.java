@@ -1,5 +1,7 @@
 package po.lineitemPO.userlineitemPO;
 
-public class TranCenClerklineitemPO{
+import java.io.Serializable;
+
+public class TranCenClerklineitemPO implements Serializable{
 
 }

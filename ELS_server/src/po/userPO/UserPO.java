@@ -1,7 +1,9 @@
 package po.userPO;
 
-public class UserPO {
-	private String Id;
+import java.io.Serializable;
+
+public class UserPO implements Serializable{
+    private String Id;
     private String password;
 	public String getId() {
 		return Id;
@@ -15,4 +17,5 @@ public class UserPO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+    
 }

@@ -1,6 +1,8 @@
 package po.userPO;
 
-public class UserPO {
+import java.io.Serializable;
+
+public class UserPO implements Serializable{
     private String Id;
     private String password;
 	public String getId() {

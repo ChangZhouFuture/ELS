@@ -1,5 +1,7 @@
 package dataservice.documentsdataservice;
 
-public interface TransferCenterLoadingListdataservice {
+import java.rmi.Remote;
+
+public interface TransferCenterLoadingListdataservice extends Remote{
 
 }

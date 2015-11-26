@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 
 
+
+import businesslogic.utilitybl.JavaBean;
 import po.lineitemPO.documentslineitemPO.ArrivalOrder4BusiHalllineitemPO;
 import state.GoodState;
 import state.ResultMessage;
@@ -55,7 +57,7 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 一个营业厅到达单
  	 */
- 	public ResultMessage addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
+ 	public JavaBean addArrivalOrder4BusiHall(ArrivalOrder4BusiHallVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：已添加所有营业厅到达单信息

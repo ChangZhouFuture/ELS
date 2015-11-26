@@ -1,6 +1,7 @@
 package businesslogicservice.documentsblservice;
 import java.util.ArrayList;
 
+import businesslogic.utilitybl.JavaBean;
 import state.ResultMessage;
 import vo.documentsVO.BusinessHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
@@ -43,7 +44,7 @@ public interface BusinessHallLoadingListblservice {
 	 * @param d
 	 * @return
 	 */
-	public String generateTranLoadId(String bhid,String d);
+	public String generateTruckId(String bhid,String d);
 	
 	/**
 	 * 前置：营业厅业务员已输入出发地目的地
@@ -52,7 +53,7 @@ public interface BusinessHallLoadingListblservice {
 	 * @param ea
 	 * @return 运费
 	 */
-	public int generateFare(String sa,String ea);
+	public double generateFreight(String sa,String ea);
 	/**
 	 * 前置：营业厅业务员已输入所有参数
 	 * 后置：增加一个装车单，更新VO，PO，返回VO信息到展示层
@@ -68,7 +69,7 @@ public interface BusinessHallLoadingListblservice {
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-public BusinessHallLoadingListVO addLoadingList(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy);
+public JavaBean addBusinessHallLoadingList(BusinessHallLoadingListVO businessHallLoadingListVO);
  	
  	/**
  	 * 前置：已添加所有装车信息
@@ -92,7 +93,7 @@ public BusinessHallLoadingListVO addLoadingList(String id,String bhid,String tli
  	 * @param Yyy
  	 * @return 更改后的装车单
  	 */
- 	public BusinessHallLoadingListVO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
+ 	public ResultMessage modify(BusinessHallLoadingListVO businessHallLoadingListVO);
  	
  	/**
  	 * 前置：要删除的装车单在持久化数据中有记录
@@ -129,4 +130,6 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	 * 后置：结束此次装车回合，持久化更新设计的领域对象的数据
  	 */
  	public void end();
+ 	
+ 	public void VOtoPO();
  }

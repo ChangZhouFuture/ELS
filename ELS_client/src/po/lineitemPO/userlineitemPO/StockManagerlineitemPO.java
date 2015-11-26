@@ -1,5 +1,7 @@
 package po.lineitemPO.userlineitemPO;
 
-public class StockManagerlineitemPO{
+import java.io.Serializable;
+
+public class StockManagerlineitemPO implements Serializable{
 
 }

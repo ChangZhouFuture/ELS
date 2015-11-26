@@ -1,6 +1,8 @@
 package po.lineitemPO.documentslineitemPO;
 
+import java.io.Serializable;
 
-public class BusinessHallLoadingListlineitemPO {
+
+public class BusinessHallLoadingListlineitemPO implements Serializable{
 
 }

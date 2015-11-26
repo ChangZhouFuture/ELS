@@ -1,5 +1,6 @@
 package dataservice.documentsdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.documentsPO.ArrivalOrder4BusiHallPO;
@@ -14,7 +15,7 @@ import state.ResultMessage;
  * 该接口提供与营业厅到达单单相关的数据层方法
  *
  */
- public interface ArrivalOrder4BusiHalldataservice {
+ public interface ArrivalOrder4BusiHalldataservice extends Remote{
  
 	/**
 	 * 前置：

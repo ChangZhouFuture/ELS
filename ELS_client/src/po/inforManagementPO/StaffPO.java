@@ -1,10 +1,12 @@
 package po.inforManagementPO;
 
+import java.io.Serializable;
+
 import state.Gender;
 import state.PayType;
 import state.Position;
 
-public class StaffPO {
+public class StaffPO implements Serializable{
     private String ID;
     private String name;
     private Gender gender;

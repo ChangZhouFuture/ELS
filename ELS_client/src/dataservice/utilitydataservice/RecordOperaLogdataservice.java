@@ -1,5 +1,7 @@
 package dataservice.utilitydataservice;
 
-public interface RecordOperaLogdataservice {
+import java.rmi.Remote;
+
+public interface RecordOperaLogdataservice extends Remote{
 
 }

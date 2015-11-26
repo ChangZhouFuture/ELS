@@ -1,11 +1,12 @@
 package dataservice.inforManagementdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import po.inforManagementPO.DriversPO;
 import state.ResultMessage;
 
-public interface DriversInfordataservice {
+public interface DriversInfordataservice extends Remote{
 	/**
 	 * 前置条件：营业厅业务员已经被授权和登录
 	 * 后置条件：添加新的司机信息

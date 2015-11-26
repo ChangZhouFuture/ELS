@@ -1,8 +1,10 @@
 package po.orderPO;
 
+import java.io.Serializable;
+
 import state.ExpressType;
 
-public class OrderPO {
+public class OrderPO implements Serializable{
 	private String senderName;
 	private String senderAdd;
 	private String senderCompany;

@@ -2,7 +2,6 @@ package RMI;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
@@ -26,7 +25,6 @@ import dataservice.stockdataservice.Stockdataservice;
 import dataservice.stockdataservice.StorageListdataservice;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import dataservice.userdataservice.Logindataservice;
-import dataservice.utilitydataservice.AutoGenerateTimedataservice;
 import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
@@ -48,130 +46,123 @@ public class RMIHelper {
 		return dataFactoryservice.getOrderdataservice();
 	}
 	
-	public ArrivalOrder4BusiHalldataservice getArrivalOrder4BusiHalldataservice()
+	public static ArrivalOrder4BusiHalldataservice getArrivalOrder4BusiHalldataservice()
 			throws RemoteException{
 				return null;
 	}
 			
-	public ArrivalOrder4TranCendataservice getArrivalOrder4TranCendataservice()
+	public static ArrivalOrder4TranCendataservice getArrivalOrder4TranCendataservice()
 		throws RemoteException{
 						
 		return null;
 	}
 			
-	public DeliveryOrderdataservice getDeliveryOrderdataservice() 
+	public static DeliveryOrderdataservice getDeliveryOrderdataservice() 
 		throws RemoteException{
 				
 		return null;
 	}
 	
-	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
+	public static BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
+	public static TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
+	public static PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public ReceivablesOrderdataservice getReceivablesOrderdataservice() 
+	public static ReceivablesOrderdataservice getReceivablesOrderdataservice() 
 	throws RemoteException{
 		return null;
 				
 	}
 			
-	public TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{
+	public static TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
+	public static AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public BankAccountInfordataservice getBankAccountInfordataservice() throws RemoteException{
+	public static BankAccountInfordataservice getBankAccountInfordataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public DriversInfordataservice getDriversInfordataservice() throws RemoteException{
+	public static DriversInfordataservice getDriversInfordataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public StaffInfordataservice getStaffInfordataservice() throws RemoteException{
+	public static StaffInfordataservice getStaffInfordataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public VehiclesInfordataservice getVehiclesInfordataservice() throws RemoteException{
+	public static VehiclesInfordataservice getVehiclesInfordataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public Approdocmdataservice getApprodocmdataservice() throws RemoteException{
+	public static Approdocmdataservice getApprodocmdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public StatisAnalydataservice getStatisAnalydataservice() throws RemoteException{
+	public static StatisAnalydataservice getStatisAnalydataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public  InquireOperaLogdataservice getInquireOperaLogdataservice() throws 
+	public static InquireOperaLogdataservice getInquireOperaLogdataservice() throws 
 	RemoteException{
 		return null;
 				
 	}
 			
-	public OutBoundOrderdataservice getOutBoundOrderdataservice() throws RemoteException{
+	public static OutBoundOrderdataservice getOutBoundOrderdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public Stockdataservice getStockdataservice() throws RemoteException{
+	public static Stockdataservice getStockdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public StorageListdataservice getStorageListdataservice() throws RemoteException{
+	public static StorageListdataservice getStorageListdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public Logindataservice getLogindataservice() throws RemoteException{
+	public static Logindataservice getLogindataservice() throws RemoteException{
+		return dataFactoryservice.getLogindataservice();	
+	}
+			
+	public static UserManagementdataservice getUserManagementdataservice() throws RemoteException{
 		return null;
 				
 	}
 			
-	public UserManagementdataservice getUserManagementdataservice() throws RemoteException{
-		return null;
-				
-	}
-			
-	public AutoGenerateTimedataservice getautAutoGenerateTimedataservice() throws 
+	public static RecordOperaLogdataservice getRecordOperaLogdataservice() throws 
 	RemoteException{
 		return null;
 				
 	}
 			
-	public RecordOperaLogdataservice getRecordOperaLogdataservice() throws 
-	RemoteException{
-		return null;
-				
-	}
-			
-	public UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
+	public static UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
 	throws RemoteException{
 		return null;
 				

@@ -1,5 +1,7 @@
 package data.documentsdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.documentsPO.TransferOrderPO;
@@ -9,7 +11,12 @@ import state.TransportType;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 
 
-public class TransferOrderdata implements TransferOrderdataservice {
+public class TransferOrderdata extends UnicastRemoteObject implements TransferOrderdataservice {
+
+	public TransferOrderdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public TransferOrderPO addTransferOrder(String id, TransportType tst,

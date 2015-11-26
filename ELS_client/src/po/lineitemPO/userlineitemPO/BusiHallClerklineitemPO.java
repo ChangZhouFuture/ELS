@@ -1,5 +1,7 @@
 package po.lineitemPO.userlineitemPO;
 
-public class BusiHallClerklineitemPO {
+import java.io.Serializable;
+
+public class BusiHallClerklineitemPO implements Serializable{
 
 }

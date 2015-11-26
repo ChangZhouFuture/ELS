@@ -1,5 +1,7 @@
 package data.inforManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,12 +14,17 @@ import state.ResultMessage;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 
-public class VehiclesInfordata implements VehiclesInfordataservice {
+public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesInfordataservice {
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     VehiclesPO po;
+    
+    public VehiclesInfordata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
     
     public ResultMessage add(VehiclesPO po){
 		try {

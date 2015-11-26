@@ -1,11 +1,13 @@
 package po.inforManagementPO;
 
+import java.io.Serializable;
+
 import state.Gender;
 import state.PayType;
 import state.Position;
 
-public class StaffPO {
-	private String ID;
+public class StaffPO implements Serializable{
+    private String ID;
     private String name;
     private Gender gender;
     private String birthDate;
@@ -29,6 +31,7 @@ public class StaffPO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getBirthDate() {
 		return birthDate;
 	}

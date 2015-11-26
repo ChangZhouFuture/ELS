@@ -1,20 +1,28 @@
 package data.userdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import dataservice.userdataservice.Logindataservice;
 
 
-public class Logindata implements Logindataservice{
+public class Logindata extends UnicastRemoteObject implements Logindataservice{
 
-	@Override
-	public Object login(String id, String passWord, String identity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Logindata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void logout() {
-		// TODO Auto-generated method stub
 		
+		
+	}
+
+	@Override
+	public Object login(String id, String passWord) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

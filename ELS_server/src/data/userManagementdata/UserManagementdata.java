@@ -1,5 +1,7 @@
 package data.userManagementdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +14,18 @@ import data.utility.Database;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import state.ResultMessage;
 
-public class UserManagementdata implements UserManagementdataservice{
-
+public class UserManagementdata extends UnicastRemoteObject implements UserManagementdataservice{
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
     UserPO po;
+    
+    public UserManagementdata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
+    
 	@Override
 	public ResultMessage add(UserPO po) {
 		// TODO Auto-generated method stub
@@ -101,7 +108,7 @@ public class UserManagementdata implements UserManagementdataservice{
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		return po;
 	}
