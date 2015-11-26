@@ -3,15 +3,15 @@ package dataservice_Stub.documentsdataservice_Stub;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.LoadingListdataservice;
-import po.documentsPO.LoadingListPO;
-import po.lineitemPO.documentslineitemPO.LoadingListlineitemPO;
+import po.documentsPO.BusinessHallLoadingListPO;
+import po.lineitemPO.documentslineitemPO.BusinessHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
 public class LoadingListdataservice_Stub implements LoadingListdataservice{
 
 	@Override
-	public ResultMessage addLoadingList(LoadingListPO loadingListPO) {
+	public ResultMessage addLoadingList(BusinessHallLoadingListPO loadingListPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -35,19 +35,19 @@ public class LoadingListdataservice_Stub implements LoadingListdataservice{
 	}
 
 	@Override
-	public LoadingListPO findA(String id) {
+	public BusinessHallLoadingListPO findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LoadingListlineitemPO findB(String time) {
+	public BusinessHallLoadingListlineitemPO findB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(LoadingListPO loadingListPO) {
+	public ResultMessage update(BusinessHallLoadingListPO loadingListPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

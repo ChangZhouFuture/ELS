@@ -1,6 +1,6 @@
 package po.lineitemPO.documentslineitemPO;
 
 
-public class LoadingListlineitemPO{
+public class BusinessHallLoadingListlineitemPO{
 
 }

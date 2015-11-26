@@ -2,8 +2,8 @@ package dataservice.documentsdataservice;
 
 import java.util.ArrayList;
 
-import po.documentsPO.LoadingListPO;
-import po.lineitemPO.documentslineitemPO.LoadingListlineitemPO;
+import po.documentsPO.BusinessHallLoadingListPO;
+import po.lineitemPO.documentslineitemPO.BusinessHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
@@ -30,7 +30,7 @@ import state.ResultMessage;
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-	public ResultMessage addLoadingList(LoadingListPO loadingListPO);
+	public ResultMessage addLoadingList(BusinessHallLoadingListPO loadingListPO);
 	
 //	/**
 //	 * 前置：要修改的装车单在PO中有记录
@@ -69,7 +69,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 装车单信息
 	 */
-	public LoadingListPO findA(String id);
+	public BusinessHallLoadingListPO findA(String id);
 	
 	/**
 	 * 前置：要查询的装车单在PO中有记录
@@ -77,13 +77,13 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 装车单列表
 	 */
-	public LoadingListlineitemPO findB(String time);
+	public BusinessHallLoadingListlineitemPO findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public ResultMessage update(LoadingListPO loadingListPO);
+	public ResultMessage update(BusinessHallLoadingListPO loadingListPO);
 	
 	public String generateId();
 	

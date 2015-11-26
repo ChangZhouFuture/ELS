@@ -2,7 +2,7 @@ package vo.documentsVO;
 
 import java.util.ArrayList;
  
- public class LoadingListVO {
+ public class BusinessHallLoadingListVO {
  
 	String id;
 	String busihallid;
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 	int fare;
 	String Jianzhuangyuan;
 	String Yayunyuan;
-	LoadingListVO ll;
-	public LoadingListVO(String id, String busihallid, String tranloadid,
+	BusinessHallLoadingListVO ll;
+	public BusinessHallLoadingListVO(String id, String busihallid, String tranloadid,
 			String endaddress, ArrayList<String> orderidlist, String date,
 			String vehicleid, int fare, String Jianzhuangyuan, String Yayunyuan) {
 		// TODO Auto-generated constructor stub
@@ -90,10 +90,10 @@ import java.util.ArrayList;
 	public void setYayunyuan(String yayunyuan) {
 		Yayunyuan = yayunyuan;
 	}
-	public LoadingListVO getLl() {
+	public BusinessHallLoadingListVO getLl() {
 		return ll;
 	}
-	public void setLl(LoadingListVO ll) {
+	public void setLl(BusinessHallLoadingListVO ll) {
 		this.ll = ll;
 	}
 

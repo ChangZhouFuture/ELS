@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.io.Serializable;
 import java.util.ArrayList;
  
- public class LoadingListPO implements Serializable{
+ public class BusinessHallLoadingListPO implements Serializable{
  
 	String id;
 	String bhid;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 	String Jzy;
 	String Yyy;
 	
-	public LoadingListPO(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy){
+	public BusinessHallLoadingListPO(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy){
 		this.id=id;
 		this.bhid=bhid;
 		this.tlid=tlid;

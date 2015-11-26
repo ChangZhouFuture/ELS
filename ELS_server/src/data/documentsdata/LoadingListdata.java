@@ -2,8 +2,8 @@ package data.documentsdata;
 
 import java.util.ArrayList;
 
-import po.documentsPO.LoadingListPO;
-import po.lineitemPO.documentslineitemPO.LoadingListlineitemPO;
+import po.documentsPO.BusinessHallLoadingListPO;
+import po.lineitemPO.documentslineitemPO.BusinessHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.LoadingListdataservice;
@@ -17,7 +17,7 @@ public class LoadingListdata implements LoadingListdataservice {
 	}
 
 	@Override
-	public ResultMessage addLoadingList(LoadingListPO loadingListPO) {
+	public ResultMessage addLoadingList(BusinessHallLoadingListPO loadingListPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -35,19 +35,19 @@ public class LoadingListdata implements LoadingListdataservice {
 	}
 
 	@Override
-	public LoadingListPO findA(String id) {
+	public BusinessHallLoadingListPO findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LoadingListlineitemPO findB(String time) {
+	public BusinessHallLoadingListlineitemPO findB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(LoadingListPO loadingListPO) {
+	public ResultMessage update(BusinessHallLoadingListPO loadingListPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,17 +3,17 @@ package businesslogicservice_Stub.documentsblservice_Stub;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.documentsVO.LoadingListVO;
-import vo.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
+import vo.documentsVO.BusinessHallLoadingListVO;
+import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import businesslogicservice.documentsblservice.LoadingListblservice;
+import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
 
 /**
  * 
  * @author 朱俊�?
  *
  */
-public class LoadingListblservice_Stub implements LoadingListblservice{
+public class LoadingListblservice_Stub implements BusinessHallLoadingListblservice{
 
 	String id;
 	String busihallid;
@@ -25,7 +25,7 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 	int fare;
 	String Jianzhuangyuan;
 	String Yayunyuan;
-	LoadingListVO ll;
+	BusinessHallLoadingListVO ll;
 	@Override
 	public ResultMessage addBusiHall(String bhid) {
 		// TODO Auto-generated method stub
@@ -62,7 +62,7 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO addLoadingList(String id, String bhid, String tlid,
+	public BusinessHallLoadingListVO addLoadingList(String id, String bhid, String tlid,
 			String ea, ArrayList<String> oidl, String d, String vid,
 			int f, String Jzy, String Yyy) {
 		// TODO Auto-generated method stub
@@ -77,7 +77,7 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 		this.Jianzhuangyuan=Jzy;
 		this.Yayunyuan=Yyy;
 //		此处传入VO�?有参数，记录llVO（PO和VO的单号是�?样的）；
-		ll=new LoadingListVO(this.id,this.busihallid,this.tranloadid,this.endaddress,this.orderidlist,this.date,this.vehicleid,this.fare,this.Jianzhuangyuan,this.Yayunyuan);
+		ll=new BusinessHallLoadingListVO(this.id,this.busihallid,this.tranloadid,this.endaddress,this.orderidlist,this.date,this.vehicleid,this.fare,this.Jianzhuangyuan,this.Yayunyuan);
 //		此处调用数据层的增加装运单方法，更新PO
 		end();
 		return ll;
@@ -90,7 +90,7 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO modify(String id, String bhid, String tlid, String ea,
+	public BusinessHallLoadingListVO modify(String id, String bhid, String tlid, String ea,
 			ArrayList<String> orderidlist, String d, String vid, int f,
 			String Jzy, String Yyy) {
 		// TODO Auto-generated method stub
@@ -132,13 +132,13 @@ public class LoadingListblservice_Stub implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO inquireA(String id) {
+	public BusinessHallLoadingListVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LoadingListlineitemVO inquireB(String time) {
+	public BusinessHallLoadingListlineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

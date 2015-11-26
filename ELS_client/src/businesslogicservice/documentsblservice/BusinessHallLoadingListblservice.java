@@ -2,8 +2,8 @@ package businesslogicservice.documentsblservice;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.documentsVO.LoadingListVO;
-import vo.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
+import vo.documentsVO.BusinessHallLoadingListVO;
+import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 /**
@@ -12,7 +12,7 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
  * 处理与装车单相关的业务逻辑
  *
  */
-public interface LoadingListblservice {
+public interface BusinessHallLoadingListblservice {
 	/**
 	 * 前置：已打开装车单输入页面
 	 * 营业厅是否存在
@@ -68,7 +68,7 @@ public interface LoadingListblservice {
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-public LoadingListVO addLoadingList(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy);
+public BusinessHallLoadingListVO addLoadingList(String id,String bhid,String tlid,String ea,ArrayList<String> oidl,String d,String vid,int f,String Jzy,String Yyy);
  	
  	/**
  	 * 前置：已添加所有装车信息
@@ -92,7 +92,7 @@ public LoadingListVO addLoadingList(String id,String bhid,String tlid,String ea,
  	 * @param Yyy
  	 * @return 更改后的装车单
  	 */
- 	public LoadingListVO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
+ 	public BusinessHallLoadingListVO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
  	
  	/**
  	 * 前置：要删除的装车单在持久化数据中有记录
@@ -114,7 +114,7 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	 * @param id
  	 * @return 装车单信息
  	 */
- 	public LoadingListVO inquireA(String id);
+ 	public BusinessHallLoadingListVO inquireA(String id);
  	
  	/**
  	 * 前置：要查询的装车单在持久化数据中有记录
@@ -122,7 +122,7 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	 * @param time
  	 * @return 装车单列表
  	 */
- 	public LoadingListlineitemVO inquireB(String time);
+ 	public BusinessHallLoadingListlineitemVO inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成

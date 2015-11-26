@@ -3,16 +3,16 @@ package businesslogic.documentsbl;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.documentsVO.LoadingListVO;
-import vo.lineitemVO.documentslineitemVO.LoadingListlineitemVO;
+import vo.documentsVO.BusinessHallLoadingListVO;
+import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import businesslogicservice.documentsblservice.LoadingListblservice;
+import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
 /**
  * 
  * @author Öì¿¡ÎÄ
  *
  */
-public class LoadingList implements LoadingListblservice{
+public class BusinessHallLoadingList implements BusinessHallLoadingListblservice{
 
 	@Override
 	public ResultMessage addBusiHall(String bhid) {
@@ -45,7 +45,7 @@ public class LoadingList implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO addLoadingList(String id, String bhid, String tlid,
+	public BusinessHallLoadingListVO addLoadingList(String id, String bhid, String tlid,
 			String ea, ArrayList<String> oidl, String d, String vid, int f,
 			String Jzy, String Yyy) {
 		// TODO Auto-generated method stub
@@ -59,7 +59,7 @@ public class LoadingList implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO modify(String id, String bhid, String tlid, String ea,
+	public BusinessHallLoadingListVO modify(String id, String bhid, String tlid, String ea,
 			ArrayList<String> orderidlist, String d, String vid, int f,
 			String Jzy, String Yyy) {
 		// TODO Auto-generated method stub
@@ -79,13 +79,13 @@ public class LoadingList implements LoadingListblservice{
 	}
 
 	@Override
-	public LoadingListVO inquireA(String id) {
+	public BusinessHallLoadingListVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LoadingListlineitemVO inquireB(String time) {
+	public BusinessHallLoadingListlineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
