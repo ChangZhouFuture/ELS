@@ -22,7 +22,7 @@ public class ArrivalOrder4BusiHalldata implements ArrivalOrder4BusiHalldataservi
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public ResultMessage deleteoOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

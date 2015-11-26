@@ -24,7 +24,7 @@ public class ArrivalOrder4TranCendata implements ArrivalOrder4TranCendataservice
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public ResultMessage deleteoOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

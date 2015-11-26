@@ -80,7 +80,7 @@ public class ArrivalOrder4TranCen implements ArrivalOrder4TranCenblservice {
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = arrivalOrder4TranCendataservice.deleteone(id);
+		resultMessage = arrivalOrder4TranCendataservice.deleteOne(id);
 		
 		return resultMessage;
 	}

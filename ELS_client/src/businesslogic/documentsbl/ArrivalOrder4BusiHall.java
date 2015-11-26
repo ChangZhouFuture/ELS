@@ -83,7 +83,7 @@ public class ArrivalOrder4BusiHall implements ArrivalOrder4BusiHallblservice{
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = arrivalOrder4BusiHalldataservice.deleteone(id);
+		resultMessage = arrivalOrder4BusiHalldataservice.deleteOne(id);
 		
 		return resultMessage;
 	}

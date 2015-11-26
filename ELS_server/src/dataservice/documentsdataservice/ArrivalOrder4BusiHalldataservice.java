@@ -41,7 +41,7 @@ import state.ResultMessage;
 	 * 后置：删除一个营业厅到达单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteone(String id);
+	public ResultMessage deleteoOne(String id);
 	
 	/**
 	 * 前置：要删除的营业厅到达单在持久化数据中有记录

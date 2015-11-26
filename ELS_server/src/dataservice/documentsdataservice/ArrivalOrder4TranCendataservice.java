@@ -35,7 +35,7 @@ public interface ArrivalOrder4TranCendataservice {
 	 * @param id
 	 * @return 
 	 */
-	public ResultMessage deleteone(String id);
+	public ResultMessage deleteoOne(String id);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
