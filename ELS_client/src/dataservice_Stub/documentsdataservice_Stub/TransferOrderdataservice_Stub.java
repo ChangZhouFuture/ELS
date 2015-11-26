@@ -54,4 +54,10 @@ public class TransferOrderdataservice_Stub implements TransferOrderdataservice{
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

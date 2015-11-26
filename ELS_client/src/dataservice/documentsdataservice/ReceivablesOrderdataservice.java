@@ -71,5 +71,5 @@ public interface ReceivablesOrderdataservice {
 	 */
 	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);
 	
-	
+	public String generateId();
 }

@@ -60,4 +60,10 @@ public class DeliveryOrderdataservice_Stub implements DeliveryOrderdataservice{
 		return null;
 	}
 
+	@Override
+	public String generateId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
