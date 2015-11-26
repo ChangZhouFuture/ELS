@@ -11,7 +11,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与装车单相关的数据层方法
  */
- public interface LoadingListdataservice {
+ public interface BuinessHallLoadingListdataservice {
  
 	 public OrderlineitemPO addOrder(String id);
 	 

@@ -6,9 +6,9 @@ import po.documentsPO.BusinessHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusinessHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
-import dataservice.documentsdataservice.LoadingListdataservice;
+import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 
-public class LoadingListdata implements LoadingListdataservice {
+public class BuinessHallLoadingList implements BuinessHallLoadingListdataservice {
 
 	@Override
 	public OrderlineitemPO addOrder(String id) {

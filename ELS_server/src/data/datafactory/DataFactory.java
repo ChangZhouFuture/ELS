@@ -7,7 +7,7 @@ import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
-import dataservice.documentsdataservice.LoadingListdataservice;
+import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
@@ -58,7 +58,7 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		return null;
 	}
 	
-	public LoadingListdataservice getLoadingListdataservice() throws RemoteException{
+	public BuinessHallLoadingListdataservice getLoadingListdataservice() throws RemoteException{
 		return null;
 		
 	}
