@@ -6,7 +6,9 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 import data.utility.Database;
+import po.documentsPO.ArrivalOrder4BusiHallPO;
 import po.documentsPO.ArrivalOrder4TranCenPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.GoodState;
@@ -42,11 +44,11 @@ public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements Arr
 				try {
 					stmt=con.prepareStatement(sql);
 					stmt.setString(1, po.getId());
-					stmt.setString(2, po.getId4TranCen());
-					stmt.setString(3, po.getArrivalDate());
-					stmt.setString(4, po.getId4TransferOrder());
-					stmt.setString(5, po.getStartingAddress());
-					stmt.setString(6, po.getStatus().toString());
+					stmt.setString(2, po.getTransferCenterId());
+					stmt.setString(3, po.getDate());
+					stmt.setString(4, po.getTransferOrderid());
+					stmt.setString(5, po.getStartingAdd());
+					stmt.setString(6, po.getGoodState().toString());
 					stmt.setString(7, sdf.format(now));
 					stmt.executeUpdate();
 		            return ResultMessage.Success;
@@ -94,27 +96,27 @@ public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements Arr
 	}
 
 	@Override
-	public ArrivalOrder4TranCenPO findA(String id) {
+	public ArrayList<ArrivalOrder4TranCenPO> findA(String id) {
 		// TODO Auto-generated method stub
+		ArrayList<ArrivalOrder4TranCenPO> arrayList = new ArrayList<ArrivalOrder4TranCenPO>();
 		po=new ArrivalOrder4TranCenPO();
 		try {
 			stmt = con.prepareStatement("SELECT * FROM arrivalorder4trancen WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
 			    po.setId(id);
-		        po.setId4TranCen(rs.getString(2));
-		        po.setArrivalDate(rs.getString(3));
-		        po.setId4TransferOrder(rs.getString(4));
-		        po.setStartingAddress(rs.getString(5));
-		        po.setStatus(GoodState.valueOf(rs.getString(6)));
-		        po.setGenerateTime(rs.getString(7));
+		        po.setTransferCenterId(rs.getString(2));
+		        po.setDate(rs.getString(3));
+		        po.setTransferOrderid(rs.getString(4));
+		        po.setStartingAdd(rs.getString(5));
+		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		return po;
-	
+		arrayList.add(po);
+		return arrayList;
 	}
 
 	@Override
@@ -130,12 +132,12 @@ public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements Arr
 				substr=rs.getString(7).substring(0, 10);
 				if(substr==date){
 					po.setId(rs.getString(1));
-					po.setId4TranCen(rs.getString(2));
-					po.setArrivalDate(rs.getString(3));
-					po.setId4TransferOrder(rs.getString(4));
-					po.setStartingAddress(rs.getString(5));
-					po.setStatus(GoodState.valueOf(rs.getString(6)));
-					po.setGenerateTime(rs.getString(7));
+					po.setTransferCenterId(rs.getString(2));
+					po.setDate(rs.getString(3));
+					po.setTransferOrderid(rs.getString(4));
+					po.setStartingAdd(rs.getString(5));
+					po.setGoodState(GoodState.valueOf(rs.getString(6)));
+//					po.setGenerateTime(rs.getString(7));
 					pos.add(po);
 				}
 			}
@@ -159,13 +161,13 @@ public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements Arr
 			String sql=("UPDATE arrivalorder4trancen SET ID4TranCen=?,arrivalDate=?,ID4TransferOrder=?,"
 					+ "startingAddress=?,status=?,generateTime=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, po.getId4TranCen());
-			stmt.setString(2, po.getArrivalDate());
-			stmt.setString(3, po.getId4TransferOrder());
-			stmt.setString(4, po.getStartingAddress());
-			stmt.setString(5, po.getStatus().toString());
+			stmt.setString(1, po.getTransferCenterId());
+			stmt.setString(2, po.getDate());
+			stmt.setString(3, po.getTransferOrderid());
+			stmt.setString(4, po.getStartingAdd());
+			stmt.setString(5, po.getGoodState().toString());
 			stmt.setString(7, po.getId());
-			stmt.setString(6, po.getGenerateTime());
+//			stmt.setString(6, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -184,12 +186,6 @@ public class ArrivalOrder4TranCendata extends UnicastRemoteObject implements Arr
 
 	@Override
 	public String generateId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

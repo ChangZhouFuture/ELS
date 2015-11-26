@@ -12,18 +12,6 @@ import state.GoodState;
 	private String startingAdd;
 	private String date;
 	private GoodState goodState;
-	
-//	public ArrivalOrder4BusiHallPO() {
-//		
-//	}
-	
-//	public ArrivalOrder4BusiHallPO(String id,String transferOrderId,String startingAdd,String date,GoodState goodState){
-//		this.id=id;
-//		this.transferOrderId= transferOrderId;
-//		this.startingAdd=startingAdd;
-//		this.date=date;
-//		this.goodState=goodState;
-//	}
 
 	public String getId() {
 		return id;

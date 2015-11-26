@@ -18,12 +18,6 @@ import state.ResultMessage;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 
 public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements ArrivalOrder4BusiHalldataservice {
-
-	public ArrivalOrder4BusiHalldata() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
@@ -32,6 +26,11 @@ public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements Ar
     TransferOrderlineitemPO llpo;
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date now=new Date();
+    
+    public ArrivalOrder4BusiHalldata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
 	@Override
 	public TransferOrderlineitemPO addTransferOrder(String id) {    //ÖÐ×ªµ¥ID
 		// TODO Auto-generated method stub
@@ -48,11 +47,11 @@ public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements Ar
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
-			stmt.setString(2, po.getID4BusiHall());
-			stmt.setString(3, po.getArrivalDate());
-			stmt.setString(4, po.getID4TransferOrder());
-			stmt.setString(5, po.getStartingAddress());
-			stmt.setString(6, po.getStatus().toString());
+//			stmt.setString(2, po.getID4BusiHall());
+			stmt.setString(3, po.getDate());
+			stmt.setString(4, po.getTransferOrderId());
+			stmt.setString(5, po.getStartingAdd());
+			stmt.setString(6, po.getGoodState().toString());
 			stmt.setString(7, sdf.format(now));
 			stmt.executeUpdate();
             return ResultMessage.Success;
@@ -69,13 +68,13 @@ public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements Ar
 			String sql=("UPDATE arrivalorder4busihall SET ID4BusiHall=?,arrivalDate=?,ID4TransferOrder=?,"
 					+ "startingAddress=?,status=?,generateTime=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, po.getID4BusiHall());
-			stmt.setString(2, po.getArrivalDate());
-			stmt.setString(3, po.getID4TransferOrder());
-			stmt.setString(4, po.getStartingAddress());
-			stmt.setString(5, po.getStatus().toString());
+//			stmt.setString(1, po.getID4BusiHall());
+			stmt.setString(2, po.getDate());
+			stmt.setString(3, po.getTransferOrderId());
+			stmt.setString(4, po.getStartingAdd());
+			stmt.setString(5, po.getGoodState().toString());
 			stmt.setString(7, po.getId());
-			stmt.setString(6, po.getGenerateTime());
+//			stmt.setString(6, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -126,11 +125,11 @@ public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements Ar
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
 			    po.setId(id);
-		        po.setID4BusiHall(rs.getString("ID4BusiHall"));
-		        po.setArrivalDate(rs.getString("arrivalDate"));
-		        po.setID4TransferOrder(rs.getString("ID4TransferOrder"));
-		        po.setStartingAddress(rs.getString("startingAddress"));
-		        po.setStatus(GoodState.valueOf(rs.getString("status")));
+//		        po.setID4BusiHall(rs.getString("ID4BusiHall"));
+		        po.setDate(rs.getString("arrivalDate"));
+		        po.setTransferOrderId(rs.getString("ID4TransferOrder"));
+		        po.setStartingAdd(rs.getString("startingAddress"));
+		        po.setGoodState(GoodState.valueOf(rs.getString("status")));
 		       
 			}
 		} catch (SQLException e) {
@@ -154,11 +153,11 @@ public class ArrivalOrder4BusiHalldata extends UnicastRemoteObject implements Ar
 		    substr=rs.getString(7).substring(0, 10);
 		    if(substr==date){
 			   po.setId(rs.getString(1));
-			   po.setID4BusiHall(rs.getString(2));
-			   po.setArrivalDate(rs.getString(3));
-			   po.setID4TransferOrder(rs.getString(4));
-			   po.setStartingAddress(rs.getString(5));
-			   po.setStatus(GoodState.valueOf(rs.getString(6)));
+//			   po.setID4BusiHall(rs.getString(2));
+			   po.setDate(rs.getString(3));
+			   po.setTransferOrderId(rs.getString(4));
+			   po.setStartingAdd(rs.getString(5));
+			   po.setGoodState(GoodState.valueOf(rs.getString(6)));
 			   pos.add(po);
 		   }	
 		
