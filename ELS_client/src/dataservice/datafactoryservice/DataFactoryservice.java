@@ -2,13 +2,13 @@ package dataservice.datafactoryservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
-import dataservice.documentsdataservice.LoadingListdataservice;
+import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
+import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -40,9 +40,10 @@ public interface DataFactoryservice extends Remote{
 	public DeliveryOrderdataservice getDeliveryOrderdataservice() 
 		throws RemoteException;
 			
-	public LoadingListdataservice getLoadingListdataservice() throws RemoteException;
+	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice() throws RemoteException;
 		
-			
+	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice () throws RemoteException;
+	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException;
 			
 			

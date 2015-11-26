@@ -2,13 +2,15 @@ package RMI;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
+import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
-import dataservice.documentsdataservice.LoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
+import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -62,12 +64,19 @@ public class RMIHelper {
 				
 		return null;
 	}
-			
-	public LoadingListdataservice getLoadingListdataservice() throws RemoteException{
+	
+	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
+			throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
-				
 	}
-			
+
+	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
 		return null;
 				

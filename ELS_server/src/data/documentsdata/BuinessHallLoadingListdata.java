@@ -1,14 +1,20 @@
-package dataservice_Stub.documentsdataservice_Stub;
+package data.documentsdata;
 
 import java.util.ArrayList;
 
-import dataservice.documentsdataservice.LoadingListdataservice;
 import po.documentsPO.BusinessHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusinessHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
+import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 
-public class LoadingListdataservice_Stub implements LoadingListdataservice{
+public class BuinessHallLoadingListdata implements BuinessHallLoadingListdataservice {
+
+	@Override
+	public OrderlineitemPO addOrder(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public ResultMessage addLoadingList(BusinessHallLoadingListPO loadingListPO) {
@@ -24,12 +30,6 @@ public class LoadingListdataservice_Stub implements LoadingListdataservice{
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -57,6 +57,5 @@ public class LoadingListdataservice_Stub implements LoadingListdataservice{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

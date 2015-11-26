@@ -2,6 +2,6 @@ package data.documentsdata;
 
 import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
 
-public class TransferCenterLoadingList implements TransferCenterLoadingListdataservice {
+public class TransferCenterLoadingListdata implements TransferCenterLoadingListdataservice {
 
 }

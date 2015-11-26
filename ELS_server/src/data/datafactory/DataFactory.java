@@ -10,6 +10,7 @@ import dataservice.documentsdataservice.DeliveryOrderdataservice;
 import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
+import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -56,11 +57,6 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		throws RemoteException{
 		
 		return null;
-	}
-	
-	public BuinessHallLoadingListdataservice getLoadingListdataservice() throws RemoteException{
-		return null;
-		
 	}
 	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
@@ -161,5 +157,19 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	throws RemoteException{
 		return null;
 		
+	}
+
+	@Override
+	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
