@@ -2,7 +2,6 @@ package RMI;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
 import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
