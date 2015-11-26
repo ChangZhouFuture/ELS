@@ -26,6 +26,8 @@ public class Images {
 
 	public static final ImageIcon USER_IMAGE=createImageIcon("images/user.png");
 	
+	public static final ImageIcon USERLOGO_IMAGE=createImageIcon("images/userlogo.png");
+	
 	public static final ImageIcon PASSWORD_IMAGE=createImageIcon("images/password.png");
 	
 	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize.png");
