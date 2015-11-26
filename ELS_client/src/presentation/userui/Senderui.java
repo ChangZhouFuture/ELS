@@ -24,19 +24,20 @@ public class Senderui extends MainFrame{
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(2,96,172,24);
+		UserName.setBounds(4,96,176,24);
 		UserName.setText("寄件人："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
-		Font font2=new Font("TimesRoman",Font.PLAIN,18);
+		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		UserName.setFont(font2);
 		UserName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		UserName.setBackground(Color.WHITE);
 		UserName.setOpaque(true);
 		
-		LogisticsCheck.setBounds(0,120,176,30);
+		LogisticsCheck.setBounds(2,120,180,30);
 		LogisticsCheck.setText("物流信息查询");
-		LogisticsCheck.setFont(font2);
-		LogisticsCheck.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		Font font3=new Font("TimesRoman",Font.PLAIN,18);
+		LogisticsCheck.setFont(font3);
+		LogisticsCheck.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		LogisticsCheck.setBackground(Color.WHITE);
 		
 		layeredPane.add(UserName,new Integer(10), 0);

@@ -57,13 +57,14 @@ public class MainFrame extends JFrame{
 		
 		left.setBounds(0,24,2,502);
 		left.setBackground(Color.lightGray);
-		left.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		left.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		left.setOpaque(true);
 		
 		MainPanel.setLayout(null);
 		MainPanel.setLocation(0,0);
 		MainPanel.setSize(this.getWidth(),this.getHeight());
 		MainPanel.setBackground(Color.WHITE);
+		MainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		MainPanel.setOpaque(true);
 		
 		MainLabel1.setBounds(0,0,this.getWidth(),24);
@@ -73,22 +74,22 @@ public class MainFrame extends JFrame{
 		MainLabel1.setText(" 快递物流系统");
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		MainLabel1.setFont(font1);
-		MainLabel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		MainLabel1.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
 		MainLabel2.setBounds(0,this.getHeight()-24,this.getWidth(),24);
 		MainLabel2.setBackground(Color.lightGray);
 		MainLabel2.setOpaque(true);
 		MainLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		MainLabel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		MainLabel2.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		MainLabel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		MainLabel3.setBounds(2,24,176,502);
+		MainLabel3.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		MainLabel3.setBounds(2,24,180,502);
 		MainLabel3.setBackground(Color.WHITE);
 		
-		UserLogo.setBounds(54,0,72,72);
+		UserLogo.setBounds((MainLabel3.getWidth()-72)/2,0,72,72);
 		UserLogo.setIcon(Images.USERLOGO_IMAGE);
 		
-		ExitButton.setBounds(54,454,72,24);
+		ExitButton.setBounds((MainLabel3.getWidth()-72)/2,454,72,24);
 		ExitButton.setText("退出");
 		ExitButton.setFont(font1);
 		ExitButton.setBackground(Color.WHITE);		
