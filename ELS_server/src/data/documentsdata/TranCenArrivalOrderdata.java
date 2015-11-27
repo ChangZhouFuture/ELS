@@ -19,7 +19,7 @@ import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements TranCenArrivalOrderdataservice{
 	
 
-	protected TranCenArrivalOrderdata() throws RemoteException {
+	public TranCenArrivalOrderdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

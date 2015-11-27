@@ -45,11 +45,11 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		this.arrivalOrder4TranCenVO = arrivalOrder4TranCenVO;
 		
 		VOtoPO();
-		arrivalOrder4TranCenPO.setDate(generateDate());
-		arrivalOrder4TranCenPO.setId(generateId());
+		arrivalOrder4TranCenPO.setArrivalDate(generateDate());
+		arrivalOrder4TranCenPO.setID(generateId());
 		
 		resultMessage = arrivalOrder4TranCendataservice.
-				addArrivalOrder4TranCen(arrivalOrder4TranCenPO);
+				addTranCenArrivalOrder(arrivalOrder4TranCenPO);
 		return resultMessage;
 	}
 
@@ -110,9 +110,9 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 
 	@Override
 	public void VOtoPO() {
-		String transferOrderId = arrivalOrder4TranCenVO.getTransferOrderId();
-		arrivalOrder4TranCenPO.setTransferOrderid(transferOrderId);
-		arrivalOrder4TranCenPO.setStartingAdd(generateStartAddress(transferOrderId));
+		String transferOrderId = arrivalOrder4TranCenVO.getTransferOrderID();
+		arrivalOrder4TranCenPO.setTransferOrderID(transferOrderId);
+		arrivalOrder4TranCenPO.setOrigin(generateStartAddress(transferOrderId));
 		arrivalOrder4TranCenPO.setGoodState(arrivalOrder4TranCenVO.getGoodState());
 	}
 
@@ -129,10 +129,10 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 			arrivalOrder4TranCenPO = arrayList1.get(i);
 			
 			arrivalOrder4TranCenVO = new TranCenArrivalOrderVO();
-			arrivalOrder4TranCenVO.setId(arrivalOrder4TranCenPO.getId());
-			arrivalOrder4TranCenVO.setDate(arrivalOrder4TranCenPO.getDate());
-			arrivalOrder4TranCenVO.setTransferOrderId(arrivalOrder4TranCenPO.getTransferOrderid());
-			arrivalOrder4TranCenVO.setStartingAdd(arrivalOrder4TranCenPO.getStartingAdd());
+			arrivalOrder4TranCenVO.setID(arrivalOrder4TranCenPO.getID());
+			arrivalOrder4TranCenVO.setArrivalDate(arrivalOrder4TranCenPO.getArrivalDate());
+			arrivalOrder4TranCenVO.setTransferOrderID(arrivalOrder4TranCenPO.getTransferOrderID());
+			arrivalOrder4TranCenVO.setOrigin(arrivalOrder4TranCenPO.getOrigin());
 			arrivalOrder4TranCenVO.setGoodState(arrivalOrder4TranCenPO.getGoodState());
 		}
 	}

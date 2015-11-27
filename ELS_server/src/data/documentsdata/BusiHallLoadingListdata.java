@@ -14,7 +14,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 
 	
 
-	protected BusiHallLoadingListdata() throws RemoteException {
+	public BusiHallLoadingListdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

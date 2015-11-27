@@ -50,11 +50,11 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.arrivalOrder4BusiHallVO = arrivalOrder4BusiHallVO;
 		
 		VOtoPO();
-		arrivalOrder4BusiHallPO.setDate(generateDate());
+		arrivalOrder4BusiHallPO.setArrivalDate(generateDate());
 		arrivalOrder4BusiHallPO.setId(generateId());
 		
 		resultMessage = arrivalOrder4BusiHalldataservice.
-			addArrivalOrder4BusiHall(arrivalOrder4BusiHallPO);
+			addBusiHallArrivalOrder(arrivalOrder4BusiHallPO);
 	
 		return null;
 	}
@@ -93,7 +93,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 
 	@Override
 	public ArrayList<BusiHallArrivalOrderVO> inquireA(String id) {
-		arrivalOrder4BusiHallPO = arrivalOrder4BusiHalldataservice.findA(id);
+		arrayList = arrivalOrder4BusiHalldataservice.findA(id);
 		
 		POtoVO(1);
 		return arrayList2;
@@ -124,9 +124,9 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 
 	@Override
 	public void VOtoPO() {
-		String transferOrderId = arrivalOrder4BusiHallVO.getTransferOrderId();
-		arrivalOrder4BusiHallPO.setTransferOrderId(transferOrderId);
-		arrivalOrder4BusiHallPO.setStartingAdd(generateStartAddress(transferOrderId));
+		String transferOrderId = arrivalOrder4BusiHallVO.getTransferOrderID();
+		arrivalOrder4BusiHallPO.setTransferOrderID(transferOrderId);
+		arrivalOrder4BusiHallPO.setOrigin(generateStartAddress(transferOrderId));
 		arrivalOrder4BusiHallPO.setGoodState(arrivalOrder4BusiHallVO.getGoodState());
 	}
 
@@ -139,10 +139,10 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 			
 			arrivalOrder4BusiHallVO = new BusiHallArrivalOrderVO();
 			arrivalOrder4BusiHallVO.setId(arrivalOrder4BusiHallPO.getId());
-			arrivalOrder4BusiHallVO.setTransferOrderId(arrivalOrder4BusiHallPO.getTransferOrderId());
-			arrivalOrder4BusiHallVO.setStartingAdd(arrivalOrder4BusiHallPO.getStartingAdd());
+			arrivalOrder4BusiHallVO.setTransferOrderID(arrivalOrder4BusiHallPO.getTransferOrderID());
+			arrivalOrder4BusiHallVO.setOrigin(arrivalOrder4BusiHallPO.getOrigin());
 			arrivalOrder4BusiHallVO.setGoodState(arrivalOrder4BusiHallPO.getGoodState());
-			arrivalOrder4BusiHallVO.setDate(arrivalOrder4BusiHallPO.getDate());
+			arrivalOrder4BusiHallVO.setArrivalDate(arrivalOrder4BusiHallPO.getArrivalDate());
 			
 			arrayList2.add(arrivalOrder4BusiHallVO);
 		}
