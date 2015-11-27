@@ -4,13 +4,13 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import data.orderdata.Orderdata;
 import dataservice.datafactoryservice.DataFactoryservice;
-import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
-import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
+import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
+import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
-import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
+import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
-import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
+import dataservice.documentsdataservice.TranCenLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -40,13 +40,13 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		return orderdataservice;
 	}
 	
-	public ArrivalOrder4BusiHalldataservice getArrivalOrder4BusiHalldataservice()
+	public BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
 	throws RemoteException{
 		
 		return null;
 	}
 	
-	public ArrivalOrder4TranCendataservice getArrivalOrder4TranCendataservice()
+	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
 		throws RemoteException{
 				
 		return null;
@@ -153,14 +153,14 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 
 	@Override
-	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
+	public BusiHallLoadingListdataservice getBuinessHallLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
+	public TranCenLoadingListdataservice getTransferCenterLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

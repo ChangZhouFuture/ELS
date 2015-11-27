@@ -3,18 +3,18 @@ package businesslogicservice_Stub.documentsblservice_Stub;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.documentsVO.BusinessHallLoadingListVO;
-import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
+import vo.documentsVO.BusiHallLoadingListVO;
+import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import businesslogic.utilitybl.JavaBean;
-import businesslogicservice.documentsblservice.BusinessHallLoadingListblservice;
+import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 
 /**
  * 
  * @author 朱俊�?
  *
  */
-public class LoadingListblservice_Stub implements BusinessHallLoadingListblservice{
+public class LoadingListblservice_Stub implements BusiHallLoadingListblservice{
 
 	String id;
 	String busihallid;
@@ -26,7 +26,7 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 	int fare;
 	String Jianzhuangyuan;
 	String Yayunyuan;
-	BusinessHallLoadingListVO ll;
+	BusiHallLoadingListVO ll;
 	@Override
 	public ResultMessage addBusiHall(String bhid) {
 		// TODO Auto-generated method stub
@@ -82,13 +82,13 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 	}
 
 	@Override
-	public BusinessHallLoadingListVO inquireA(String id) {
+	public BusiHallLoadingListVO inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BusinessHallLoadingListlineitemVO inquireB(String time) {
+	public BusiHallLoadingListlineitemVO inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -115,7 +115,7 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 
 	@Override
 	public JavaBean addBusinessHallLoadingList(
-			BusinessHallLoadingListVO businessHallLoadingListVO) {
+			BusiHallLoadingListVO businessHallLoadingListVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -128,7 +128,7 @@ public class LoadingListblservice_Stub implements BusinessHallLoadingListblservi
 
 	@Override
 	public ResultMessage modify(
-			BusinessHallLoadingListVO businessHallLoadingListVO) {
+			BusiHallLoadingListVO businessHallLoadingListVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

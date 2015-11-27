@@ -3,7 +3,7 @@ package businesslogicservice_Stub.mngerandaccountantblservice_Stub;
 import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
 import vo.StatisAnalyVO.BusinessSituationVO;
 import vo.StatisAnalyVO.CostAndIncomeVO;
-import vo.lineitemVO.documentslineitemVO.BusinessHallLoadingListlineitemVO;
+import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
 
 public class StatisAnalyblservice_Stub implements StatisAnalyblservice{
     BusinessSituationVO mcVO;

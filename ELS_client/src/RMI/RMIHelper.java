@@ -3,13 +3,13 @@ package RMI;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import dataservice.datafactoryservice.DataFactoryservice;
-import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
-import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
-import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
+import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
+import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
+import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
-import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
+import dataservice.documentsdataservice.TranCenLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -46,12 +46,12 @@ public class RMIHelper {
 		return dataFactoryservice.getOrderdataservice();
 	}
 	
-	public static ArrivalOrder4BusiHalldataservice getArrivalOrder4BusiHalldataservice()
+	public static BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
 			throws RemoteException{
 				return null;
 	}
 			
-	public static ArrivalOrder4TranCendataservice getArrivalOrder4TranCendataservice()
+	public static TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
 		throws RemoteException{
 						
 		return null;
@@ -63,13 +63,13 @@ public class RMIHelper {
 		return null;
 	}
 	
-	public static BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice()
+	public static BusiHallLoadingListdataservice getBuinessHallLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public static TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice()
+	public static TranCenLoadingListdataservice getTransferCenterLoadingListdataservice()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

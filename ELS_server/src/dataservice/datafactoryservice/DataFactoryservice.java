@@ -2,13 +2,13 @@ package dataservice.datafactoryservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import dataservice.documentsdataservice.ArrivalOrder4BusiHalldataservice;
-import dataservice.documentsdataservice.ArrivalOrder4TranCendataservice;
+import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
+import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
-import dataservice.documentsdataservice.BuinessHallLoadingListdataservice;
+import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
-import dataservice.documentsdataservice.TransferCenterLoadingListdataservice;
+import dataservice.documentsdataservice.TranCenLoadingListdataservice;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -30,18 +30,18 @@ import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 public interface DataFactoryservice extends Remote{
 	public Orderdataservice getOrderdataservice() throws RemoteException;
 	
-	public ArrivalOrder4BusiHalldataservice getArrivalOrder4BusiHalldataservice()
+	public BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
 			throws RemoteException;
 			
-	public ArrivalOrder4TranCendataservice getArrivalOrder4TranCendataservice()
+	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
 		throws RemoteException;
 			
 	public DeliveryOrderdataservice getDeliveryOrderdataservice() 
 		throws RemoteException;
 			
-	public BuinessHallLoadingListdataservice getBuinessHallLoadingListdataservice() throws RemoteException;
+	public BusiHallLoadingListdataservice getBuinessHallLoadingListdataservice() throws RemoteException;
 		
-	public TransferCenterLoadingListdataservice getTransferCenterLoadingListdataservice () throws RemoteException;
+	public TranCenLoadingListdataservice getTransferCenterLoadingListdataservice () throws RemoteException;
 	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException;
 			
