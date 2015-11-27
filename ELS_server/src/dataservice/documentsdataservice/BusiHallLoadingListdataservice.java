@@ -19,37 +19,10 @@ import state.ResultMessage;
 	/**
 	 * 前置：营业厅业务员已输入所有参数
 	 * 后置：增加一个装车单，更新变动到PO
-     * @param id
-	 * @param bhid
-	 * @param tlid
-	 * @param ea
-	 * @param orderidlist
-	 * @param d
-	 * @param vid
-	 * @param f
-	 * @param Jzy
-	 * @param Yyy
-	 * @return 一个装车单
 	 */
 	public ResultMessage addLoadingList(BusiHallLoadingListPO loadingListPO);
 	
-//	/**
-//	 * 前置：要修改的装车单在PO中有记录
-//	 * 后置：更改一个装车单，更新PO相关信息
-//	 * @param id
-//	 * @param bhid
-//	 * @param tlid
-//	 * @param ea
-//	 * @param orderidlist
-//	 * @param d
-//	 * @param vid
-//	 * @param f
-//	 * @param Jzy
-//	 * @param Yyy
-//	 * @return 更改后的装车单
-//	 */
-//	public LoadingListPO modify(String id,String bhid,String tlid,String ea,ArrayList<String> orderidlist,String d,String vid,int f,String Jzy,String Yyy);
-	
+
 	/**
 	 * 前置：要删除的装车单在PO中有记录
 	 * 后置：删除一个装车单，更新PO数据

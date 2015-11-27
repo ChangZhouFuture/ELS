@@ -15,7 +15,7 @@ import state.ResultMessage;
  */
 public interface TranCenArrivalOrderdataservice extends Remote{
 	
-	public TransferOrderlineitemPO addTransferOrder(String id);
+public TransferOrderlineitemPO addTransferOrder(String id);
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
@@ -28,7 +28,7 @@ public interface TranCenArrivalOrderdataservice extends Remote{
 	 * @param tcid
 	 * @return 一个中转中心到达单
 	 */
-	public ResultMessage addArrivalOrder4TranCen(TranCenArrivalOrderPO arrivalOrder4TranCenPO);
+	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tanCenArrivalOrderPO);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在PO中有记录
@@ -71,7 +71,7 @@ public interface TranCenArrivalOrderdataservice extends Remote{
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public ResultMessage update(TranCenArrivalOrderPO arrivalOrder4TranCenPO);
+	public ResultMessage update(TranCenArrivalOrderPO tranCenArrivalOrderPO);
 	
 	public String generateId();
 	

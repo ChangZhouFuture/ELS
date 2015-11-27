@@ -2,101 +2,71 @@ package po.documentsPO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import state.TransportType;
+
  
  public class TransferOrderPO implements Serializable{
  
-	String id;
-	TransportType tst;
-	String sa;
-	String ea;
-	ArrayList<String> oidl;
-	String d;
-	String hbid;
-	String hgid;
-	String Jzy;
-	
-	public TransferOrderPO(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy){
-		this.id=id;
-		this.tst=tst;
-		this.sa=sa;
-		this.ea=ea;
-		this.oidl=oidl;
-		this.d=d;
-		this.hbid=hbid;
-		this.hgid=hgid;
-		this.Jzy=Jzy;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public TransportType getTst() {
-		return tst;
-	}
-
-	public void setTst(TransportType tst) {
-		this.tst = tst;
-	}
-
-	public String getSa() {
-		return sa;
-	}
-
-	public void setSa(String sa) {
-		this.sa = sa;
-	}
-
-	public String getEa() {
-		return ea;
-	}
-
-	public void setEa(String ea) {
-		this.ea = ea;
-	}
-
-	public ArrayList<String> getOidl() {
-		return oidl;
-	}
-
-	public void setOidl(ArrayList<String> oidl) {
-		this.oidl = oidl;
-	}
-
-	public String getD() {
-		return d;
-	}
-
-	public void setD(String d) {
-		this.d = d;
-	}
-
-	public String getHbid() {
-		return hbid;
-	}
-
-	public void setHbid(String hbid) {
-		this.hbid = hbid;
-	}
-
-	public String getHgid() {
-		return hgid;
-	}
-
-	public void setHgid(String hgid) {
-		this.hgid = hgid;
-	}
-
-	public String getJzy() {
-		return Jzy;
-	}
-
-	public void setJzy(String jzy) {
-		Jzy = jzy;
-	}
+	 private String ID;
+		private String loadingDate;
+		private String flightNum;
+		private String origin;
+		private String destination;
+		private String containerNum;
+		private String supervisionMan;
+		ArrayList<String> orderIDs=new ArrayList<>();
+		private double carriage;
+		public String getID() {
+			return ID;
+		}
+		public void setID(String iD) {
+			ID = iD;
+		}
+		public String getLoadingDate() {
+			return loadingDate;
+		}
+		public void setLoadingDate(String loadingDate) {
+			this.loadingDate = loadingDate;
+		}
+		public String getFlightNum() {
+			return flightNum;
+		}
+		public void setFlightNum(String flightNum) {
+			this.flightNum = flightNum;
+		}
+		public String getOrigin() {
+			return origin;
+		}
+		public void setOrigin(String origin) {
+			this.origin = origin;
+		}
+		public String getDestination() {
+			return destination;
+		}
+		public void setDestination(String destination) {
+			this.destination = destination;
+		}
+		public String getContainerNum() {
+			return containerNum;
+		}
+		public void setContainerNum(String containerNum) {
+			this.containerNum = containerNum;
+		}
+		public String getSupervisionMan() {
+			return supervisionMan;
+		}
+		public void setSupervisionMan(String supervisionMan) {
+			this.supervisionMan = supervisionMan;
+		}
+		public ArrayList<String> getOrderIDs() {
+			return orderIDs;
+		}
+		public void setOrderIDs(ArrayList<String> orderIDs) {
+			this.orderIDs = orderIDs;
+		}
+		public double getCarriage() {
+			return carriage;
+		}
+		public void setCarriage(double carriage) {
+			this.carriage = carriage;
+		}
  }

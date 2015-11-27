@@ -10,9 +10,11 @@ import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
 
-public class BusiHallLoadingListdata extends UnicastRemoteObject implements BusiHallLoadingListdataservice {
+public class BusiHallLoadingListdata extends UnicastRemoteObject  implements BusiHallLoadingListdataservice {
 
-	public BusiHallLoadingListdata() throws RemoteException {
+	
+
+	protected BusiHallLoadingListdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

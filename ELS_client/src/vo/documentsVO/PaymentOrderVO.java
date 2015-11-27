@@ -8,63 +8,53 @@ public class PaymentOrderVO {
 	 * 
 	 */
 	private static final long serialVersionUID = -8345248940752949681L;
-	String date4PaymentOrder;
-	String amount4PaymentOrder;
-	String remitter;
-	String account4PaymentOrder;
-	ArrayList<String>  item4Vehicles;
-	ArrayList<String> remark1;
-	ArrayList<String> remark2;
-	public PaymentOrderVO(String date4PaymentOrder, String amount4PaymentOrder, String remitter, String account4PaymentOrder,ArrayList<String>  item4Vehicles,ArrayList<String> remark1,ArrayList<String> remark2){
-		super();
-		this.date4PaymentOrder = date4PaymentOrder;
-		this.amount4PaymentOrder = amount4PaymentOrder;
-		this.remitter = remitter;
-		this.account4PaymentOrder = account4PaymentOrder;
-		this.item4Vehicles = item4Vehicles;
-		this.remark1 = remark1;
-		this.remark2 = remark2;
-	}
-	public String date4PaymentOrder() {
-		return this.date4PaymentOrder;
-	}
-	public void setdate4PaymentOrder(String date4PaymentOrder) {
-		this.date4PaymentOrder = date4PaymentOrder;
-	}
-	public String getamount4PaymentOrder() {
-		return this.amount4PaymentOrder;
-	}
-	public void setamount4PaymentOrder(String amount4PaymentOrder) {
-		this.amount4PaymentOrder = amount4PaymentOrder;
-	}
-	public String getremitter() {
-		return this.remitter;
-	}
-	public void setremitter(String remitter) {
-		this.remitter = remitter;
-	}
-	public String getaccount4PaymentOrder() {
-		return this.account4PaymentOrder;
-	}
-	public void setaccount4PaymentOrder(String account4PaymentOrder) {
-		this.account4PaymentOrder = account4PaymentOrder;
-	}
-	public ArrayList<String> getitem4Vehicles() {
-		return this.item4Vehicles;
-	}
-	public void setitem4Vehicles(ArrayList<String> item4Vehicles) {
-		this.item4Vehicles = item4Vehicles;
-	}
-	public ArrayList<String> getremark1() {
-		return this.remark1;
-	}
-	public void setremark1(ArrayList<String> remark1) {
-		this.remark1 = remark1;
-	}
-	public ArrayList<String> getremark2() {
-		return this.remark2;
-	}
-	public void setremark2(ArrayList<String> remark2) {
-		this.remark2 = remark2;
-	}
+	 private String ID;
+	    private String date;
+	    private double amount;
+	    private String payer;
+	    private String bankAccount;
+	    private String entry;
+	    private String note;
+		public String getID() {
+			return ID;
+		}
+		public void setID(String iD) {
+			ID = iD;
+		}
+		public String getDate() {
+			return date;
+		}
+		public void setDate(String date) {
+			this.date = date;
+		}
+		public double getAmount() {
+			return amount;
+		}
+		public void setAmount(double amount) {
+			this.amount = amount;
+		}
+		public String getPayer() {
+			return payer;
+		}
+		public void setPayer(String payer) {
+			this.payer = payer;
+		}
+		public String getBankAccount() {
+			return bankAccount;
+		}
+		public void setBankAccount(String bankAccount) {
+			this.bankAccount = bankAccount;
+		}
+		public String getEntry() {
+			return entry;
+		}
+		public void setEntry(String entry) {
+			this.entry = entry;
+		}
+		public String getNote() {
+			return note;
+		}
+		public void setNote(String note) {
+			this.note = note;
+		}
 }

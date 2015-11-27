@@ -35,7 +35,7 @@ import state.ResultMessage;
 	 * @param gs 
 	 * @return 一个营业厅到达单
 	 */
-	public ResultMessage addArrivalOrder4BusiHall(BusiHallArrivalOrderPO arrivalOrder4BusiHallPO);
+	public ResultMessage addBusiHallArrivalOrder(BusiHallArrivalOrderPO busiHallArrivalOrder);
 	
 	/**
 	 * 前置：要删除的营业厅到达单在PO中有记录
@@ -57,7 +57,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 营业厅到达单信息
 	 */
-	public BusiHallArrivalOrderPO findA(String id);
+	public ArrayList<BusiHallArrivalOrderPO> findA(String id);
 	
 	/**
 	 * 前置：要查询的营业厅到达单在PO中有记录
@@ -79,7 +79,7 @@ import state.ResultMessage;
 	 * 前置：行为或操作已经完成
 	 * 后置：修改相关单据
 	 */
-	public ResultMessage update(BusiHallArrivalOrderPO arrivalOrder4BusiHallPO);
+	public ResultMessage update(BusiHallArrivalOrderPO busiHallArrivalOrder);
 	
 	public String generateStartAdd(String transferOrderId);
 	

@@ -2,36 +2,42 @@ package vo.documentsVO;
 import state.GoodState;
 
 public class TranCenArrivalOrderVO {
-	String id;
-	String transferOrderId;
-	String startingAdd;
-	String date;
-	GoodState goodState;
-	String transferCenterId;
-	
-	public String getId() {
-		return id;
+	private String ID;
+    private String tranCenID;
+    private String arrivalDate;
+    private String transferOrderID;
+    private String origin;
+    private GoodState goodState;
+    private String generateTime;
+	public String getID() {
+		return ID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public String getTransferOrderId() {
-		return transferOrderId;
+	public String getTranCenID() {
+		return tranCenID;
 	}
-	public void setTransferOrderId(String transferOrderId) {
-		this.transferOrderId = transferOrderId;
+	public void setTranCenID(String tranCenID) {
+		this.tranCenID = tranCenID;
 	}
-	public String getStartingAdd() {
-		return startingAdd;
+	public String getArrivalDate() {
+		return arrivalDate;
 	}
-	public void setStartingAdd(String startingAdd) {
-		this.startingAdd = startingAdd;
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
 	}
-	public String getDate() {
-		return date;
+	public String getTransferOrderID() {
+		return transferOrderID;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setTransferOrderID(String transferOrderID) {
+		this.transferOrderID = transferOrderID;
+	}
+	public String getOrigin() {
+		return origin;
+	}
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 	public GoodState getGoodState() {
 		return goodState;
@@ -39,21 +45,11 @@ public class TranCenArrivalOrderVO {
 	public void setGoodState(GoodState goodState) {
 		this.goodState = goodState;
 	}
-	public String getTransferCenterId() {
-		return transferCenterId;
+	public String getGenerateTime() {
+		return generateTime;
 	}
-	public void setTransferCenterId(String transferCenterId) {
-		this.transferCenterId = transferCenterId;
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
-	
-//	public ArrivalOrder4TranCenVO(String id,
-//			String tranorderoid, String startaddress, String date, GoodState goodstate, String trancenterid) {
-//		this.id=id;
-//		this.tranorderoid=tranorderoid;
-//		this.startaddress=startaddress;
-//		this.date=date;
-//		this.goodstate=goodstate;
-//		this.trancenterid=trancenterid;
-//}
 	
 } 

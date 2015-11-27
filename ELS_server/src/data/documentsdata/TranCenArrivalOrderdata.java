@@ -16,9 +16,10 @@ import state.ResultMessage;
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 
 
-public class TranCenArrivalOrderdata extends UnicastRemoteObject implements TranCenArrivalOrderdataservice{
+public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements TranCenArrivalOrderdataservice{
+	
 
-	public TranCenArrivalOrderdata() throws RemoteException {
+	protected TranCenArrivalOrderdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,17 +38,17 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 	}
 
 	@Override
-	public ResultMessage addArrivalOrder4TranCen(TranCenArrivalOrderPO arrivalOrder4TranCenPO) {
+	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tranCenArrivalOrderPO) {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO arrivalorder4trancen(ID,ID4TranCen,arrivalDate,ID4TransferOrder,startingAddress,status,generateTime)"+
+		String sql="INSERT INTO trancenarrivalorder(ID,tranCenID,arrivalDate,transferOrderID,origin,goodState,generateTime)"+
 				"values(?,?,?,?,?,?,?)";
 				try {
 					stmt=con.prepareStatement(sql);
-					stmt.setString(1, po.getId());
-					stmt.setString(2, po.getTransferCenterId());
-					stmt.setString(3, po.getDate());
-					stmt.setString(4, po.getTransferOrderid());
-					stmt.setString(5, po.getStartingAdd());
+					stmt.setString(1, po.getID());
+					stmt.setString(2, po.getTranCenID());
+					stmt.setString(3, po.getArrivalDate());
+					stmt.setString(4, po.getTransferOrderID());
+					stmt.setString(5, po.getOrigin());
 					stmt.setString(6, po.getGoodState().toString());
 					stmt.setString(7, sdf.format(now));
 					stmt.executeUpdate();
@@ -62,7 +63,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 	@Override
 	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
-		String sql="DELETE FROM arrivalorder4trancen WHERE ID='"+id+"'";
+		String sql="DELETE FROM trancenarrivalorder WHERE ID='"+id+"'";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.executeUpdate();
@@ -81,7 +82,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 		
 		try {
 			for(int i=0;i<idlist.size();i++){
-			String sql="DELETE FROM arrivalorder4trancen WHERE ID=?";
+			String sql="DELETE FROM trancenarrivalorder WHERE ID=?";
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, idlist.get(i));
 			stmt.executeUpdate();
@@ -98,18 +99,19 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 	@Override
 	public ArrayList<TranCenArrivalOrderPO> findA(String id) {
 		// TODO Auto-generated method stub
-		ArrayList<TranCenArrivalOrderPO> arrayList = new ArrayList<TranCenArrivalOrderPO>();
+		ArrayList<TranCenArrivalOrderPO> arrayList = new ArrayList<>();
 		po=new TranCenArrivalOrderPO();
 		try {
-			stmt = con.prepareStatement("SELECT * FROM arrivalorder4trancen WHERE ID='"+id+"'");
+			stmt = con.prepareStatement("SELECT * FROM trancenarrivalorder WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
-			    po.setId(id);
-		        po.setTransferCenterId(rs.getString(2));
-		        po.setDate(rs.getString(3));
-		        po.setTransferOrderid(rs.getString(4));
-		        po.setStartingAdd(rs.getString(5));
+			    po.setID(id);
+		        po.setTranCenID(rs.getString(2));
+		        po.setArrivalDate(rs.getString(3));
+		        po.setTransferOrderID(rs.getString(4));
+		        po.setOrigin(rs.getString(5));
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
+		        po.setGenerateTime(rs.getString(7));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -126,18 +128,18 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 		po=new TranCenArrivalOrderPO();
 		String substr;
 		try {
-			stmt=con.prepareStatement("SELECT * FROM arrivalorder4trancen");
+			stmt=con.prepareStatement("SELECT * FROM trancenarrivalorder");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				substr=rs.getString(7).substring(0, 10);
 				if(substr==date){
-					po.setId(rs.getString(1));
-					po.setTransferCenterId(rs.getString(2));
-					po.setDate(rs.getString(3));
-					po.setTransferOrderid(rs.getString(4));
-					po.setStartingAdd(rs.getString(5));
-					po.setGoodState(GoodState.valueOf(rs.getString(6)));
-//					po.setGenerateTime(rs.getString(7));
+					po.setID(rs.getString(1));
+			        po.setTranCenID(rs.getString(2));
+			        po.setArrivalDate(rs.getString(3));
+			        po.setTransferOrderID(rs.getString(4));
+			        po.setOrigin(rs.getString(5));
+			        po.setGoodState(GoodState.valueOf(rs.getString(6)));
+			        po.setGenerateTime(rs.getString(7));
 					pos.add(po);
 				}
 			}
@@ -158,16 +160,16 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject implements Tran
 	public ResultMessage update(TranCenArrivalOrderPO po) {
 		// TODO Auto-generated method stub
 		try {
-			String sql=("UPDATE arrivalorder4trancen SET ID4TranCen=?,arrivalDate=?,ID4TransferOrder=?,"
-					+ "startingAddress=?,status=?,generateTime=? WHERE ID=?");
+			String sql=("UPDATE trancenarrivalorder SET tranCenID=?,arrivalDate=?,transferOrderID=?,"
+					+ "origin=?,goodState=?,generateTime=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, po.getTransferCenterId());
-			stmt.setString(2, po.getDate());
-			stmt.setString(3, po.getTransferOrderid());
-			stmt.setString(4, po.getStartingAdd());
+			stmt.setString(1, po.getTranCenID());
+			stmt.setString(2, po.getArrivalDate());
+			stmt.setString(3, po.getTransferOrderID());
+			stmt.setString(4, po.getOrigin());
 			stmt.setString(5, po.getGoodState().toString());
-			stmt.setString(7, po.getId());
-//			stmt.setString(6, po.getGenerateTime());
+			stmt.setString(6, po.getGenerateTime());
+			stmt.setString(7, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

@@ -6,44 +6,42 @@ import state.GoodState;
 
 public class BusiHallArrivalOrderVO {
 
-	String id;
-	String transferOrderId;
-	String startingAdd;
-	String date;
-	GoodState goodState;
-	
-//	public ArrivalOrder4BusiHallVO(String id, String transferOrderId,
-//			String startingAdd, String date, GoodState goodState) {
-//		this.id=id;
-//		this.transferOrderId=transferOrderId;
-//		this.startingAdd=startingAdd;
-//		this.date=date;
-//		this.goodState=goodState;
-//	}
-	
+	private String Id;
+	private String busiHallID;
+	private String arrivalDate;
+	private String transferOrderID;
+	private String origin;
+	private GoodState goodState;
+	private String generateTime;
 	public String getId() {
-		return id;
+		return Id;
 	}
 	public void setId(String id) {
-		this.id = id;
+		Id = id;
 	}
-	public String getTransferOrderId() {
-		return transferOrderId;
+	public String getBusiHallID() {
+		return busiHallID;
 	}
-	public void setTransferOrderId(String transferOrderId) {
-		this.transferOrderId = transferOrderId;
+	public void setBusiHallID(String busiHallID) {
+		this.busiHallID = busiHallID;
 	}
-	public String getStartingAdd() {
-		return startingAdd;
+	public String getArrivalDate() {
+		return arrivalDate;
 	}
-	public void setStartingAdd(String startingAdd) {
-		this.startingAdd = startingAdd;
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
 	}
-	public String getDate() {
-		return date;
+	public String getTransferOrderID() {
+		return transferOrderID;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setTransferOrderID(String transferOrderID) {
+		this.transferOrderID = transferOrderID;
+	}
+	public String getOrigin() {
+		return origin;
+	}
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 	public GoodState getGoodState() {
 		return goodState;
@@ -51,7 +49,11 @@ public class BusiHallArrivalOrderVO {
 	public void setGoodState(GoodState goodState) {
 		this.goodState = goodState;
 	}
-	
-	
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
 }
 

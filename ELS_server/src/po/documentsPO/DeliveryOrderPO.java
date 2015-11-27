@@ -6,46 +6,39 @@ import java.util.ArrayList;
 
 public class DeliveryOrderPO implements Serializable{
 
-	String id;
-	ArrayList<String> orsderidlist;
-	String dn;
-	String did;
-	String d;
-	public DeliveryOrderPO(String id,ArrayList<String> orsderidlist,String dn,String did,String d){
-		this.id=id;
-		this.orsderidlist=orsderidlist;
-		this.dn=dn;
-		this.did=did;
-		this.d=d;
+	private String ID;
+    private String arrivalDate;
+    ArrayList<String> orderIDs=new ArrayList<>();
+    private String deliverier;
+    private String generateTime;
+	public String getID() {
+		return ID;
 	}
-	public String getId() {
-		return id;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public String getArrivalDate() {
+		return arrivalDate;
 	}
-	public ArrayList<String> getOrsderidlist() {
-		return orsderidlist;
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
 	}
-	public void setOrsderidlist(ArrayList<String> orsderidlist) {
-		this.orsderidlist = orsderidlist;
+	public ArrayList<String> getOrderIDs() {
+		return orderIDs;
 	}
-	public String getDn() {
-		return dn;
+	public void setOrderIDs(ArrayList<String> orderIDs) {
+		this.orderIDs = orderIDs;
 	}
-	public void setDn(String dn) {
-		this.dn = dn;
+	public String getDeliverier() {
+		return deliverier;
 	}
-	public String getDid() {
-		return did;
+	public void setDeliverier(String deliverier) {
+		this.deliverier = deliverier;
 	}
-	public void setDid(String did) {
-		this.did = did;
+	public String getGenerateTime() {
+		return generateTime;
 	}
-	public String getD() {
-		return d;
-	}
-	public void setD(String d) {
-		this.d = d;
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
 }

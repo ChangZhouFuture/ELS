@@ -3,47 +3,39 @@ package vo.documentsVO;
 import java.util.ArrayList;
 
 public class DeliveryOrderVO {
-	String couriername;
-	String deliverierid;
-	String date;
-	ArrayList<String> orsderidlist;
-	String id;
-	public DeliveryOrderVO(String id,ArrayList<String> orsderidlist,String deliveriername,String deliverierid,String date){
-		this.id=id;
-		this.orsderidlist=orsderidlist;
-		this.couriername=deliveriername;
-		this.deliverierid=deliverierid;
-		this.date=date;
-		
+	private String ID;
+    private String arrivalDate;
+    ArrayList<String> orderIDs=new ArrayList<>();
+    private String deliverier;
+    private String generateTime;
+	public String getID() {
+		return ID;
 	}
-	public String getDeliveriername(String deliverierid) {
-		return couriername;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public void setDeliveriername(String deliveriername) {
-		this.couriername = deliveriername;
+	public String getArrivalDate() {
+		return arrivalDate;
 	}
-	public String getDeliverierid() {
-		return deliverierid;
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
 	}
-	public void setDeliverierid(String deliverierid) {
-		this.deliverierid = deliverierid;
+	public ArrayList<String> getOrderIDs() {
+		return orderIDs;
 	}
-	public String getDate() {
-		return date;
+	public void setOrderIDs(ArrayList<String> orderIDs) {
+		this.orderIDs = orderIDs;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public String getDeliverier() {
+		return deliverier;
 	}
-	public ArrayList<String> getOrsderidlist() {
-		return orsderidlist;
+	public void setDeliverier(String deliverier) {
+		this.deliverier = deliverier;
 	}
-	public void setOrsderidlist(ArrayList<String> orsderidlist) {
-		this.orsderidlist = orsderidlist;
+	public String getGenerateTime() {
+		return generateTime;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
 }

@@ -4,97 +4,75 @@ import java.util.ArrayList;
  
  public class BusiHallLoadingListVO {
  
-	String id;
-	String busihallid;
-	String tranloadid;
-	String endaddress;
-	ArrayList<String> orderidlist;
-	String date;
-	String vehicleid;
-	int fare;
-	String Jianzhuangyuan;
-	String Yayunyuan;
-	BusiHallLoadingListVO ll;
-	public BusiHallLoadingListVO(String id, String busihallid, String tranloadid,
-			String endaddress, ArrayList<String> orderidlist, String date,
-			String vehicleid, int fare, String Jianzhuangyuan, String Yayunyuan) {
-		// TODO Auto-generated constructor stub
-		this.id=id;
-		this.busihallid=busihallid;
-		this.tranloadid=tranloadid;
-		this.endaddress=endaddress;
-		this.orderidlist=orderidlist;
-		this.date=date;
-		this.vehicleid=vehicleid;
-		this.fare=fare;
-		this.Jianzhuangyuan=Jianzhuangyuan;
-		this.Yayunyuan=Yayunyuan;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getBusihallid() {
-		return busihallid;
-	}
-	public void setBusihallid(String busihallid) {
-		this.busihallid = busihallid;
-	}
-	public String getTranloadid() {
-		return tranloadid;
-	}
-	public void setTranloadid(String tranloadid) {
-		this.tranloadid = tranloadid;
-	}
-	public String getEndaddress() {
-		return endaddress;
-	}
-	public void setEndaddress(String endaddress) {
-		this.endaddress = endaddress;
-	}
-	public ArrayList<String> getOrderidlist() {
-		return orderidlist;
-	}
-	public void setOrderidlist(ArrayList<String> orderidlist) {
-		this.orderidlist = orderidlist;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getVehicleid() {
-		return vehicleid;
-	}
-	public void setVehicleid(String vehicleid) {
-		this.vehicleid = vehicleid;
-	}
-	public int getFare() {
-		return fare;
-	}
-	public void setFare(int fare) {
-		this.fare = fare;
-	}
-	public String getJianzhuangyuan() {
-		return Jianzhuangyuan;
-	}
-	public void setJianzhuangyuan(String jianzhuangyuan) {
-		Jianzhuangyuan = jianzhuangyuan;
-	}
-	public String getYayunyuan() {
-		return Yayunyuan;
-	}
-	public void setYayunyuan(String yayunyuan) {
-		Yayunyuan = yayunyuan;
-	}
-	public BusiHallLoadingListVO getLl() {
-		return ll;
-	}
-	public void setLl(BusiHallLoadingListVO ll) {
-		this.ll = ll;
-	}
+	 private String ID;
+	    private String loadingDate;
+	    private String busiHallID;
+	    private String truckNum;
+	    private String destination;
+	    private String vehiclesID;
+	    private String supervisionMan;
+	    private String escortMan;
+	    ArrayList<String> orderIDs=new ArrayList<String>();
+	    private double carriage;
+		public String getID() {
+			return ID;
+		}
+		public void setID(String iD) {
+			ID = iD;
+		}
+		public String getLoadingDate() {
+			return loadingDate;
+		}
+		public void setLoadingDate(String loadingDate) {
+			this.loadingDate = loadingDate;
+		}
+		public String getBusiHallID() {
+			return busiHallID;
+		}
+		public void setBusiHallID(String busiHallID) {
+			this.busiHallID = busiHallID;
+		}
+		public String getTruckNum() {
+			return truckNum;
+		}
+		public void setTruckNum(String truckNum) {
+			this.truckNum = truckNum;
+		}
+		public String getDestination() {
+			return destination;
+		}
+		public void setDestination(String destination) {
+			this.destination = destination;
+		}
+		public String getVehiclesID() {
+			return vehiclesID;
+		}
+		public void setVehiclesID(String vehiclesID) {
+			this.vehiclesID = vehiclesID;
+		}
+		public String getSupervisionMan() {
+			return supervisionMan;
+		}
+		public void setSupervisionMan(String supervisionMan) {
+			this.supervisionMan = supervisionMan;
+		}
+		public String getEscortMan() {
+			return escortMan;
+		}
+		public void setEscortMan(String escortMan) {
+			this.escortMan = escortMan;
+		}
+		public ArrayList<String> getOrderIDs() {
+			return orderIDs;
+		}
+		public void setOrderIDs(ArrayList<String> orderIDs) {
+			this.orderIDs = orderIDs;
+		}
+		public double getCarriage() {
+			return carriage;
+		}
+		public void setCarriage(double carriage) {
+			this.carriage = carriage;
+		}
 
  }

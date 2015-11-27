@@ -1,87 +1,72 @@
 package vo.documentsVO;
 
 import java.util.ArrayList;
-import state.TransportType;
+
  
 public class TransferOrderVO {
  
-	String id;
-	TransportType transporttype;
-	String startaddress;
-	String endaddress;
-	ArrayList<String> orderidlist;
-	String date;
-	String hangbanid;
-	String huoguiid;
-	String Jianzhuangyyuan;
-	public TransferOrderVO(String id, TransportType transporttype,
-			String startaddress, String endaddress,
-			ArrayList<String> orderidlist, String date, String hangbanid,
-			String huoguiid, String Jianzhuangyyuan) {
-		// TODO Auto-generated constructor stub
-		this.id=id;
-		this.transporttype=transporttype;
-		this.startaddress=startaddress;
-		this.endaddress=endaddress;
-		this.orderidlist=orderidlist;
-		this.date=date;
-		this.hangbanid=hangbanid;
-		this.huoguiid=huoguiid;
-		this.Jianzhuangyyuan=Jianzhuangyyuan;
+	private String ID;
+	private String loadingDate;
+	private String flightNum;
+	private String origin;
+	private String destination;
+	private String containerNum;
+	private String supervisionMan;
+	ArrayList<String> orderIDs=new ArrayList<>();
+	private double carriage;
+	public String getID() {
+		return ID;
 	}
-	public String getId() {
-		return id;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public String getLoadingDate() {
+		return loadingDate;
 	}
-	public TransportType getTransporttype() {
-		return transporttype;
+	public void setLoadingDate(String loadingDate) {
+		this.loadingDate = loadingDate;
 	}
-	public void setTransporttype(TransportType transporttype) {
-		this.transporttype = transporttype;
+	public String getFlightNum() {
+		return flightNum;
 	}
-	public String getStartaddress() {
-		return startaddress;
+	public void setFlightNum(String flightNum) {
+		this.flightNum = flightNum;
 	}
-	public void setStartaddress(String startaddress) {
-		this.startaddress = startaddress;
+	public String getOrigin() {
+		return origin;
 	}
-	public String getEndaddress() {
-		return endaddress;
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
-	public void setEndaddress(String endaddress) {
-		this.endaddress = endaddress;
+	public String getDestination() {
+		return destination;
 	}
-	public ArrayList<String> getOrderidlist() {
-		return orderidlist;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
-	public void setOrderidlist(ArrayList<String> orderidlist) {
-		this.orderidlist = orderidlist;
+	public String getContainerNum() {
+		return containerNum;
 	}
-	public String getDate() {
-		return date;
+	public void setContainerNum(String containerNum) {
+		this.containerNum = containerNum;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public String getSupervisionMan() {
+		return supervisionMan;
 	}
-	public String getHangbanid() {
-		return hangbanid;
+	public void setSupervisionMan(String supervisionMan) {
+		this.supervisionMan = supervisionMan;
 	}
-	public void setHangbanid(String hangbanid) {
-		this.hangbanid = hangbanid;
+	public ArrayList<String> getOrderIDs() {
+		return orderIDs;
 	}
-	public String getHuoguiid() {
-		return huoguiid;	
+	public void setOrderIDs(ArrayList<String> orderIDs) {
+		this.orderIDs = orderIDs;
 	}
-	public void setHuoguiid(String huoguiid) {
-		this.huoguiid = huoguiid;
+	public double getCarriage() {
+		return carriage;
 	}
-	public String getJianzhuangyyuan() {
-		return Jianzhuangyyuan;
-	}
-	public void setJianzhuangyyuan(String jianzhuangyyuan) {
-		Jianzhuangyyuan = jianzhuangyyuan;
+	public void setCarriage(double carriage) {
+		this.carriage = carriage;
 	}
 
  }
