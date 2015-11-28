@@ -2,12 +2,9 @@ package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.documentsPO.BusiHallArrivalOrderPO;
-import po.lineitemPO.documentslineitemPO.BusiHallArrivalOrderlineitemPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
-import state.GoodState;
 import state.ResultMessage;
 
 /**

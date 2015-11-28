@@ -2,11 +2,9 @@ package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.documentsPO.PaymentOrderPO;
 import po.inforManagementPO.BankAccountPO;
-import po.lineitemPO.documentslineitemPO.PaymentOrderlineitemPO;
 import state.ResultMessage;
 
 public interface PaymentOrderdataservice extends Remote{
