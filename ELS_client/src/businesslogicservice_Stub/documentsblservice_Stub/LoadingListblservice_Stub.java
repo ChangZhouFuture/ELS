@@ -31,7 +31,7 @@ public class LoadingListblservice_Stub implements BusiHallLoadingListblservice{
 	public ResultMessage addBusiHall(String bhid) {
 		// TODO Auto-generated method stub
 		if(bhid=="bh00000001")
-			return ResultMessage.Exist;
+			return ResultMessage.Success;
 		else return ResultMessage.NotExist;
 	}
 
@@ -61,7 +61,7 @@ public class LoadingListblservice_Stub implements BusiHallLoadingListblservice{
 		end();
 		if(id=="ll00000001"){
 			System.out.println("Delete the LoadingList successfully!");
-			return ResultMessage.Exist;
+			return ResultMessage.Success;
 		}
 		else return ResultMessage.NotExist;
 	}
@@ -76,7 +76,7 @@ public class LoadingListblservice_Stub implements BusiHallLoadingListblservice{
 		end();
 		if(idlist.contains("ll00000001")){
 			System.out.println("Delete the LoadingLists successfully!");
-			return ResultMessage.Exist;
+			return ResultMessage.Success;
 		}
 		else return ResultMessage.NotExist;
 	}

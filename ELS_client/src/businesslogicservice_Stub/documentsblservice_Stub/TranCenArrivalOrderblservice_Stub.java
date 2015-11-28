@@ -84,7 +84,7 @@ import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
  		end();
  		if(id=="aotc00000001"){
  			System.out.println("Delete the ArrivalOrder4TranCen successfully!");
- 			return ResultMessage.Exist;
+ 			return ResultMessage.Success;
  		}
  		else return ResultMessage.NotExist;
  	}
@@ -99,7 +99,7 @@ import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
  		end();
  		if(idlist.contains("aotc00000001")){
  			System.out.println("Delete the ArrivalOrder4TranCen successfully!");
- 			return ResultMessage.Exist;
+ 			return ResultMessage.Success;
  		}
  		else return ResultMessage.NotExist;
  	}

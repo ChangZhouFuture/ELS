@@ -81,7 +81,7 @@ import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
  		end();
  		if(id=="aobh00000001"){
  			System.out.println("Delete the ArrivalOrder4BusiHall successfully!");
- 			return ResultMessage.Exist;
+ 			return ResultMessage.Success;
  		}
  		else return ResultMessage.NotExist;
  		 	}
@@ -96,7 +96,7 @@ import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 		end();
 		if(idlist.contains("aobh00000001")){
 			System.out.println("Delete the ArrivalOrder4BusiHalls successfully!");
-			return ResultMessage.Exist;
+			return ResultMessage.Success;
 		}
 		else return ResultMessage.NotExist;
  	}

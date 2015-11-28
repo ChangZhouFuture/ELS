@@ -68,7 +68,7 @@ import businesslogicservice.documentsblservice.TransferOrderblservice;
  		end();
  		if(id=="to00000001"){
  			System.out.println("Delete the TransferOrder successfully!");
- 			return ResultMessage.Exist;
+ 			return ResultMessage.Success;
  		}
  		else return ResultMessage.NotExist;
  	}
@@ -83,7 +83,7 @@ import businesslogicservice.documentsblservice.TransferOrderblservice;
  		end();
  		if(idlist.contains("to00000001")){
  			System.out.println("Delete the TransferOrders successfully!");
- 			return ResultMessage.Exist;
+ 			return ResultMessage.Success;
  		}
  		else return ResultMessage.NotExist;
  	}
