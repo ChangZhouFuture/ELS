@@ -3,6 +3,7 @@ package dataservice.userManagementdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.userPO.UserPO;
 import state.ResultMessage;
 
@@ -15,5 +16,5 @@ public interface UserManagementdataservice extends Remote{
     
     public ResultMessage update(UserPO po);
     
-    public UserPO find(String Id);
+    public JavaBean1 find(String Id);
 }

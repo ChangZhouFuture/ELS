@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
 
 public class PaymentOrder implements PaymentOrderblservice {
@@ -56,13 +57,13 @@ public class PaymentOrder implements PaymentOrderblservice {
 	}
 
 	@Override
-	public PaymentOrderlineitemVO inquireA(String id) {
+	public JavaBean1 inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public PaymentOrderlineitemVO inquireB(String time) {
+	public JavaBean1 inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

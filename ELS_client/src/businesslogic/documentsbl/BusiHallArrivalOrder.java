@@ -7,7 +7,7 @@ import po.documentsPO.BusiHallArrivalOrderPO;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
-import businesslogic.utilitybl.JavaBean1;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 /**
  * 
@@ -22,6 +22,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	private TransferOrder transferOrder;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
 	private BusiHallArrivalOrderdataservice arrivalOrder4BusiHalldataservice;
+	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	
 	@Override
@@ -92,20 +93,24 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	}
 
 	@Override
-	public ArrayList<BusiHallArrivalOrderVO> inquireA(String id) {
-		arrayList = arrivalOrder4BusiHalldataservice.findA(id);
+	public JavaBean1 inquireA(String id) {
+		javaBean1 = arrivalOrder4BusiHalldataservice.findA(id);
+		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		
 		POtoVO(1);
-		return arrayList2;
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
 	}
 
 	@Override
-	public ArrayList<BusiHallArrivalOrderVO> inquireB(String date) {
-		arrayList = arrivalOrder4BusiHalldataservice.findB(date);
+	public JavaBean1 inquireB(String date) {
+		javaBean1 = arrivalOrder4BusiHalldataservice.findB(date);
+		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();
 		
 		POtoVO(k);
-		return arrayList2;	
+		javaBean1.setObject(arrayList2);
+		return javaBean1;	
 	}
 	
 	@Override

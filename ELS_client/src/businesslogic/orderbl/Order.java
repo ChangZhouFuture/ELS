@@ -8,6 +8,7 @@ import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
 import RMI.RMIHelper;
+import bean.JavaBean1;
 import businesslogicservice.orderblservice.Orderblservice;
 /**
  * 
@@ -26,7 +27,7 @@ public class Order implements Orderblservice {
 	}	
 	
 	@Override
-	public  ResultMessage add(OrderVO orderVO) {
+	public  JavaBean1 add(OrderVO orderVO) {
 		return null;
 		
 		
@@ -39,17 +40,13 @@ public class Order implements Orderblservice {
 	}
 
 	@Override
-	public OrderVO inquireA(String id) {
-		try {
-			orderdataservice.findA("");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+	public JavaBean1 inquireA(String id) {
+		
 		return null;
 	}
 
 	@Override
-	public ArrayList<OrderlineitemVO> inquireB(String date) {
+	public JavaBean1 inquireB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

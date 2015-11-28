@@ -6,7 +6,7 @@ import state.ResultMessage;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import businesslogic.utilitybl.JavaBean1;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 /**
  * 
@@ -77,12 +77,12 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	}
 
 	@Override
-	public BusiHallLoadingListVO inquireA(String id) {
+	public JavaBean1 inquireA(String id) {
 		return null;
 	}
 
 	@Override
-	public BusiHallLoadingListlineitemVO inquireB(String time) {
+	public JavaBean1 inquireB(String time) {
 		return null;
 	}
 

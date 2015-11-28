@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.TransferOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
@@ -28,7 +29,7 @@ import state.TransportType;
 	 * @param Jzy
 	 * @return 一个中转单
 	 */
-	public TransferOrderPO addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
+	public ResultMessage addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
 	
 	/**
 	 * 前置：要删除的中转单在PO中有记录
@@ -50,7 +51,7 @@ import state.TransportType;
 	 * @param id
 	 * @return 中转单信息
 	 */
-	public TransferOrderPO findA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 前置：要查询的中转单在PO中有记录
@@ -58,7 +59,7 @@ import state.TransportType;
 	 * @param time
 	 * @return 中转单列表
 	 */
-	public TransferOrderlineitemPO findB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成

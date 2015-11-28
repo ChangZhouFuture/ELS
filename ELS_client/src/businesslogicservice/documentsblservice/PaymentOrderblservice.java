@@ -2,6 +2,7 @@ package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO;
@@ -70,7 +71,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回付款单VO对象
 	 */
-	public PaymentOrderlineitemVO inquireA(String id);
+	public JavaBean1 inquireA(String id);
 	
 	/**
 	 * time
@@ -79,7 +80,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public PaymentOrderlineitemVO inquireB(String time);
+	public JavaBean1 inquireB(String time);
 	
 	/**
 	 * 前置条件：付款单已生成

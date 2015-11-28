@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 import state.ResultMessage;
 import vo.inforManagementVO.VehiclesVO;
+import bean.JavaBean1;
 import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
 import po.inforManagementPO.VehiclesPO;
 /**
@@ -19,14 +20,14 @@ public class VehiclesInfor implements VehiclesInforblservice {
 	private ResultMessage rm;
 	private VehiclesInfordataservice vehiclesdataservice;
 	@Override
-	public ResultMessage add(VehiclesVO vo) {
+	public JavaBean1 add(VehiclesVO vo) {
 		// TODO Auto-generated method stub
 		po=new VehiclesPO();
 		po.setID(vo.getID());
 		po.setPlateNum(vo.getPlateNum());
 		po.setServiceTime(vo.getServiceTime());
 		rm=vehiclesdataservice.add(po);
-		return rm;
+		return null;
 	}
 	
 	@Override
@@ -55,14 +56,14 @@ public class VehiclesInfor implements VehiclesInforblservice {
 	}
 
 	@Override
-	public VehiclesVO inquire(String Id) {
+	public JavaBean1 inquire(String Id) {
 		// TODO Auto-generated method stub
 		vo=new VehiclesVO();
-		po=vehiclesdataservice.find(Id);
+//		po=vehiclesdataservice.find(Id);
 		vo.setID(Id);
 		vo.setPlateNum(po.getPlateNum());
 		vo.setServiceTime(po.getServiceTime());
-		return vo;
+		return null;
 	}
 
 }

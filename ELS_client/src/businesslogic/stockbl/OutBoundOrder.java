@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo.stockVO.OutBoundOrderVO;
+import bean.JavaBean1;
 import businesslogicservice.stockblservice.OutBoundOrderblservice;
 /**
  * 
@@ -20,7 +21,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public OutBoundOrderVO add(String id4e, String id4to, String desti) {
+	public JavaBean1 add(String id4e, String id4to, String desti) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -47,13 +48,13 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public OutBoundOrderVO inquireA(String id) {
+	public JavaBean1 inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OutBoundOrderVO inquireB(String time) {
+	public JavaBean1 inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

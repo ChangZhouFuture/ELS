@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.ReceivablesOrderPO;
 import po.lineitemPO.documentslineitemPO.ReceivablesOrderlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -59,9 +60,9 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 * 前置条件：要查询的收款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public ReceivablesOrderPO findA(String id);
+	public JavaBean1 findA(String id);
 	
-	public ReceivablesOrderlineitemPO findB(String date);
+	public JavaBean1 findB(String date);
 	
 	public ArrayList<OrderlineitemPO> generateOrder(String courierId);
 	

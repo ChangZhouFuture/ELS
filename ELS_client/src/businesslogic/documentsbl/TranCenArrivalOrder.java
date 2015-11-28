@@ -1,11 +1,13 @@
 package businesslogic.documentsbl;
 
 import java.util.ArrayList;
+
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import po.documentsPO.TranCenArrivalOrderPO;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 
 public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
@@ -17,6 +19,8 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	private ArrayList<TranCenArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private ResultMessage resultMessage;
+	private JavaBean1 javaBean1;
+	private Class class1;
 	
 	@Override
 	public String generateStartAddress(String transferOrderId) {
@@ -86,19 +90,23 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	}
 
 	@Override
-	public ArrayList<TranCenArrivalOrderVO> inquireA(String id) {
-		arrayList1 = arrivalOrder4TranCendataservice.findA(id);
+	public JavaBean1 inquireA(String id) {
+		javaBean1 = arrivalOrder4TranCendataservice.findA(id);
+		arrayList1 = (ArrayList<TranCenArrivalOrderPO>)javaBean1.getObject();
+		
 		POtoVO(1);
-		return arrayList2;
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
 	}
 
 	@Override
-	public ArrayList<TranCenArrivalOrderVO> inquireB(String time) {
-		arrayList1 = arrivalOrder4TranCendataservice.findB(time);
+	public JavaBean1 inquireB(String time) {
+		javaBean1 = arrivalOrder4TranCendataservice.findB(time);
 		int k = arrayList1.size();
 		
 		POtoVO(k);
-		return arrayList2;
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
 	}
 
 	@Override

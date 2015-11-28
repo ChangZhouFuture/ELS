@@ -1,8 +1,10 @@
 package businesslogic.userbl;
 
 import java.rmi.RemoteException;
+
 import dataservice.userdataservice.Logindataservice;
 import RMI.RMIHelper;
+import bean.JavaBean2;
 import businesslogicservice.userblservice.LoginAndOutblservice;
 
 public class LoginAndOut implements LoginAndOutblservice{
@@ -17,11 +19,11 @@ public class LoginAndOut implements LoginAndOutblservice{
 	}
 	
 	@Override
-	public Object login(String id, String passWord) {
+	public JavaBean2 login(String id, String passWord) {
 		
 		Object o = logindataservice.login(id, passWord);
 		
-		return o;
+		return null;
 	}
 
 	@Override

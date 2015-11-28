@@ -2,6 +2,7 @@ package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.ReceivablesOrderVO;
 import vo.lineitemVO.documentslineitemVO.ReceivablesOrderlineitemVO;
@@ -56,7 +57,7 @@ public interface ReceivablesOrderblservice {
 	 * 前置条件：要查询的收款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public ReceivablesOrderlineitemVO inquire(String keyword);
+	public JavaBean1 inquire(String keyword);
 	
 	/**
 	 * 前置条件：收款单信息处理完成

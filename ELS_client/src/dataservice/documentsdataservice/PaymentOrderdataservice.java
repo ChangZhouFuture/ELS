@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.PaymentOrderPO;
 import po.inforManagementPO.BankAccountPO;
 import po.lineitemPO.documentslineitemPO.PaymentOrderlineitemPO;
@@ -64,9 +65,9 @@ public interface PaymentOrderdataservice extends Remote{
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public PaymentOrderPO findA(String id);
+	public JavaBean1 findA(String id);
 	
-	public ArrayList<PaymentOrderlineitemPO> findB(String date);
+	public JavaBean1 findB(String date);
 	
 	/**
 	 * 前置条件：付款单信息处理完成

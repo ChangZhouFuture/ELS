@@ -2,6 +2,7 @@ package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.inforManagementVO.AgencyVO;
 
@@ -11,7 +12,7 @@ import vo.inforManagementVO.AgencyVO;
  * 该类处理和人员机构管理有关的业务逻辑
  */
 public interface AgencyInforblservice {
-	public ResultMessage add(AgencyVO vo);
+	public JavaBean1 add(AgencyVO vo);
 	
 	public ResultMessage deleteOne(String Id);
 	
@@ -19,5 +20,5 @@ public interface AgencyInforblservice {
 	
 	public ResultMessage modify(AgencyVO vo);
 	
-	public AgencyVO inquire(String Id);
+	public JavaBean1 inquire(String Id);
 }

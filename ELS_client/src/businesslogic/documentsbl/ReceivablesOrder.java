@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo.documentsVO.ReceivablesOrderVO;
 import vo.lineitemVO.documentslineitemVO.ReceivablesOrderlineitemVO;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 /**
  * 
@@ -40,7 +41,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	}
 
 	@Override
-	public ReceivablesOrderlineitemVO inquire(String keyword) {
+	public JavaBean1 inquire(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,6 +2,7 @@ package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.inforManagementVO.VehiclesVO;
 
@@ -13,7 +14,7 @@ public interface VehiclesInforblservice {
 	 * 前置条件：营业厅业务员已经被授权和登录
 	 * 后置条件：添加新的车辆信息
 	 */
-	public ResultMessage add(VehiclesVO vo);
+	public JavaBean1 add(VehiclesVO vo);
 		
 	/**
 	 * 
@@ -47,5 +48,5 @@ public interface VehiclesInforblservice {
 	 * @param Id
 	 * @return
 	 */
-	public VehiclesVO inquire(String Id);
+	public JavaBean1 inquire(String Id);
 }

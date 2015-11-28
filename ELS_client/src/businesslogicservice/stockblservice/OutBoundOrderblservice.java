@@ -2,6 +2,7 @@ package businesslogicservice.stockblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo.stockVO.OutBoundOrderVO;
@@ -43,7 +44,7 @@ public interface OutBoundOrderblservice {
 	 * 前置条件：库存管理人员已经输入了所有出库单参数值
 	 * 后置条件:增加一个出库单，更新变动到VO和PO，把VO信息返回到展示层
 	 */
-	public OutBoundOrderVO add(String id4e, String id4to, String desti);
+	public JavaBean1 add(String id4e, String id4to, String desti);
 	
 	/**
 	 * 
@@ -81,7 +82,7 @@ public interface OutBoundOrderblservice {
 	 * 前置条件：要查询的出库单在持久化数据中有记录
 	 * 后置条件：根据id查询某出库单,返回出库单VO信息
 	 */
-	public OutBoundOrderVO inquireA(String id);
+	public JavaBean1 inquireA(String id);
 	
 	/**
 	 * 
@@ -90,7 +91,7 @@ public interface OutBoundOrderblservice {
 	 * 前置条件：库存管理人员已经被授权和登录
 	 * 后置条件：根据时间查询某出库单,返回出库单VO信息
 	 */
-	public OutBoundOrderVO inquireB(String time);
+	public JavaBean1 inquireB(String time);
 	
 	/**
 	 * 

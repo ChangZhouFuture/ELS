@@ -7,6 +7,7 @@ import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
+import bean.JavaBean1;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 /**
  * ÅÉ¼þµ¥
@@ -67,13 +68,13 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public DeliveryOrderVO inquireA(String id) {
+	public JavaBean1 inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DeliveryOrderlineitemVO inquireB(String time) {
+	public JavaBean1 inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

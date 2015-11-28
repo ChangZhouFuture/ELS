@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.stockVO.StorageListVO;
+import bean.JavaBean1;
 import businesslogicservice.stockblservice.StorageListblservice;
 /**
  * 
@@ -32,7 +33,7 @@ public class StorageList implements StorageListblservice {
 	}
 
 	@Override
-	public StorageListVO add(String desti, String dis, String row,
+	public JavaBean1 add(String desti, String dis, String row,
 			String she, String pos) {
 		// TODO Auto-generated method stub
 		return null;
@@ -60,13 +61,13 @@ public class StorageList implements StorageListblservice {
 	}
 
 	@Override
-	public StorageListVO inquireA(String id) {
+	public JavaBean1 inquireA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public StorageListVO inquireB(String time) {
+	public JavaBean1 inquireB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

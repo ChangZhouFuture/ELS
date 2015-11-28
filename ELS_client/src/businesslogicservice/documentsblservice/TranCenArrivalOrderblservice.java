@@ -2,6 +2,7 @@ package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.GoodState;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
@@ -93,7 +94,7 @@ public interface TranCenArrivalOrderblservice {
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public ArrayList<TranCenArrivalOrderVO> inquireA(String id);
+	public JavaBean1 inquireA(String id);
 	
 	/**
 	 * 前置：要查询的中转中心到达单在持久化数据中有记录
@@ -101,7 +102,7 @@ public interface TranCenArrivalOrderblservice {
 	 * @param time
 	 * @return 中转中心到达单列表
 	 */
-	public ArrayList<TranCenArrivalOrderVO> inquireB(String time);
+	public JavaBean1 inquireB(String time);
 	
 	public ArrayList<TranCenArrivalOrderVO> inquireC();
 	

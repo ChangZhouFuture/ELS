@@ -2,6 +2,7 @@ package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
 
@@ -12,7 +13,7 @@ import vo.inforManagementVO.BankAccountVO;
  */
 public interface BankAccountInforblservice {
 	
-	public ResultMessage add(BankAccountVO vo);
+	public JavaBean1 add(BankAccountVO vo);
 	
 	public ResultMessage deleteOne(String Id);
 	
@@ -20,5 +21,5 @@ public interface BankAccountInforblservice {
 	
 	public ResultMessage modify(BankAccountVO vo);
 	
-	public BankAccountVO find(String Id);
+	public JavaBean1 find(String Id);
 }

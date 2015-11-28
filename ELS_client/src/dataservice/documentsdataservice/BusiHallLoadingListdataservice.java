@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -70,7 +71,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 装车单信息
 	 */
-	public BusiHallLoadingListPO findA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 前置：要查询的装车单在PO中有记录
@@ -78,7 +79,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 装车单列表
 	 */
-	public BusiHallLoadingListlineitemPO findB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成

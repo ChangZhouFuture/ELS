@@ -3,14 +3,14 @@ package bean;
 import state.ResultMessage;
 
 public class JavaBean1 {
-	private Object VOObject;
+	private Object Object;
 	private ResultMessage resultMessage;
 	
-	public Object getVOObject() {
-		return VOObject;
+	public Object getObject() {
+		return Object;
 	}
-	public void setvOObject(Object VOObject) {
-		this.VOObject = VOObject;
+	public void setObject(Object Object) {
+		this.Object = Object;
 	}
 	public ResultMessage getResultMessage() {
 		return resultMessage;
@@ -18,4 +18,8 @@ public class JavaBean1 {
 	public void setResultMessage(ResultMessage resultMessage) {
 		this.resultMessage = resultMessage;
 	}
+	public Class getObjectClass() {
+		return Object.getClass();
+	}
+	
 }

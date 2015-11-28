@@ -3,6 +3,7 @@ package dataservice.inforManagementdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.inforManagementPO.DriversPO;
 import state.ResultMessage;
 
@@ -20,7 +21,7 @@ public interface DriversInfordataservice extends Remote{
 	 * @param Id
 	 * @return
 	 */
-	public DriversPO find(String Id);
+	public JavaBean1 find(String Id);
 	
 	/**
 	 * 

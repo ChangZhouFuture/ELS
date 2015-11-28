@@ -1,7 +1,7 @@
 package businesslogicservice.documentsblservice;
 import java.util.ArrayList;
 
-import businesslogic.utilitybl.JavaBean1;
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
@@ -115,7 +115,7 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	 * @param id
  	 * @return 装车单信息
  	 */
- 	public BusiHallLoadingListVO inquireA(String id);
+ 	public JavaBean1 inquireA(String id);
  	
  	/**
  	 * 前置：要查询的装车单在持久化数据中有记录
@@ -123,7 +123,7 @@ public ResultMessage deleteMany(ArrayList<String> idlist);
  	 * @param time
  	 * @return 装车单列表
  	 */
- 	public BusiHallLoadingListlineitemVO inquireB(String time);
+ 	public JavaBean1 inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成

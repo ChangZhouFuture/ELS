@@ -1,13 +1,8 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
- 
 
-
-
-
-
-import businesslogic.utilitybl.JavaBean1;
+import bean.JavaBean1;
 import po.lineitemPO.documentslineitemPO.BusiHallArrivalOrderlineitemPO;
 import state.GoodState;
 import state.ResultMessage;
@@ -98,7 +93,7 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param id
  	 * @return 营业厅到达单信息
  	 */
- 	public ArrayList<BusiHallArrivalOrderVO> inquireA(String id);
+ 	public JavaBean1 inquireA(String id);
  	
  	/**
  	 * 前置：要查询的营业厅到达单在持久化数据中有记录
@@ -106,7 +101,7 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param time
  	 * @return 营业厅到达单列表
  	 */
- 	public ArrayList<BusiHallArrivalOrderVO> inquireB(String time);
+ 	public JavaBean1 inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成

@@ -2,6 +2,7 @@ package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
@@ -89,7 +90,7 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @param id
  	 * @return 派件单信息
  	 */
- 	public DeliveryOrderVO inquireA(String id);
+ 	public JavaBean1 inquireA(String id);
  	
  	/**
  	 * 前置：要查询的派件单在持久化数据中有记录
@@ -97,7 +98,7 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @param time
  	 * @return 派件单列表
  	 */
- 	public DeliveryOrderlineitemVO inquireB(String time);
+ 	public JavaBean1 inquireB(String time);
  	
  	/**
  	 * 前置：业务已经处理完成

@@ -2,6 +2,7 @@ package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
 
@@ -12,7 +13,7 @@ public interface DriversInforblservice {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMessage add(DriversVO vo);
+	public JavaBean1 add(DriversVO vo);
 	
 	/**
 	 * 
@@ -21,7 +22,7 @@ public interface DriversInforblservice {
 	 * 前置条件：要查询的司机信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public DriversVO inquire(String Id);
+	public JavaBean1 inquire(String Id);
 		
 	/**
 	 * 

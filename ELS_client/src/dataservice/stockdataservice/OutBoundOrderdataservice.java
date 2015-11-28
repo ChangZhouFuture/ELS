@@ -3,6 +3,7 @@ package dataservice.stockdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
 import po.stockPO.OutBoundOrderPO;
 import state.ResultMessage;
@@ -22,7 +23,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：库存管理人员已经输入了所有出库单参数值
 	 * 后置条件：增加一个出库单，更新变动到PO
 	 */
-	public OutBoundOrderPO add(String id4obo, String time, String id4e, String id4to, String desti);
+	public ResultMessage add(OutBoundOrderPO outBoundOrderPO);
 	
 	/**
 	 * 
@@ -59,7 +60,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据id查询某出库单,返回出库单PO信息给业务逻辑层
 	 */
-	public OutBoundOrderPO inquireA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 
@@ -68,7 +69,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据时间查询某出库单,返回出库单PO信息
 	 */
-	public OutBoundOrderlineitemPO inquireB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 

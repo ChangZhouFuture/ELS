@@ -6,6 +6,7 @@ import dataservice.inforManagementdataservice.DriversInfordataservice;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
 import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
+import bean.JavaBean1;
 import businesslogicservice.inforManagementblservice.DriversInforblservice;
 import po.inforManagementPO.DriversPO;
 /**
@@ -21,7 +22,7 @@ public class DriversInfor implements DriversInforblservice {
 	private ResultMessage rm;
 	private DriversInfordataservice driversdataservice;
 	@Override
-	public ResultMessage add(DriversVO vo) {
+	public JavaBean1 add(DriversVO vo) {
 		// TODO Auto-generated method stub
 		po=new DriversPO();
         po.setID(vo.getID());
@@ -31,7 +32,8 @@ public class DriversInfor implements DriversInforblservice {
         po.setPhone(vo.getPhone());
         po.setDriveLimitDate(vo.getDriveLimitDate());
         po.setGender(vo.getGender());
-		return driversdataservice.add(po);
+//		return driversdataservice.add(po);
+        return null;
 	}
 
 	@Override
@@ -64,9 +66,9 @@ public class DriversInfor implements DriversInforblservice {
 	}
 
 	@Override
-	public DriversVO inquire(String Id) {
+	public JavaBean1 inquire(String Id) {
 		// TODO Auto-generated method stub
-		po=driversdataservice.find(Id);
+//		po=driversdataservice.find(Id);
 		vo=new DriversVO();
 		vo.setID(po.getID());
 		vo.setName(po.getName());
@@ -75,7 +77,7 @@ public class DriversInfor implements DriversInforblservice {
 		vo.setPhone(po.getPhone());
 		vo.setDriveLimitDate(po.getDriveLimitDate());
 		vo.setGender(po.getGender());
-		return vo;
+		return null;
 	}
 
 	

@@ -67,7 +67,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 派件单列表
 	 */
-	public ArrayList<DeliveryOrderlineitemPO> findB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成

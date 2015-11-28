@@ -2,6 +2,7 @@ package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ResultMessage;
 import state.TransportType;
 import vo.documentsVO.TransferOrderVO;
@@ -99,7 +100,7 @@ public interface TransferOrderblservice {
 	 * @param id
 	 * @return 中转单信息
 	 */
-	public TransferOrderVO inquireA(String id);
+	public JavaBean1 inquireA(String id);
 	
 	/**
 	 * 前置：要查询的中转单在持久化数据中有记录
@@ -107,7 +108,7 @@ public interface TransferOrderblservice {
 	 * @param time
 	 * @return 中转单列表
 	 */
-	public TransferOrderlineitemVO inquireB(String time);
+	public JavaBean1 inquireB(String time);
 	
 	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id);
 	

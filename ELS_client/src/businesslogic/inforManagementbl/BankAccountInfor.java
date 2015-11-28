@@ -6,6 +6,7 @@ import vo.inforManagementVO.BankAccountVO;
 import java.util.ArrayList;
 
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
+import bean.JavaBean1;
 import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
 import po.inforManagementPO.BankAccountPO;
 /**
@@ -20,13 +21,13 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	private ResultMessage rm;
 	private BankAccountInfordataservice bankaccountservice;
 	@Override
-	public ResultMessage add(BankAccountVO vo) {
+	public JavaBean1 add(BankAccountVO vo) {
 		// TODO Auto-generated method stub
 		po=new BankAccountPO();
 		po.setName(vo.getName());
 		po.setAmount(vo.getAmount());
 		rm=bankaccountservice.add(po);
-		return rm;
+		return null;
 	}
 
 	@Override
@@ -54,13 +55,13 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	}
 
 	@Override
-	public BankAccountVO find(String Id) {
+	public JavaBean1 find(String Id) {
 		// TODO Auto-generated method stub
-		po=bankaccountservice.find(Id);
+//		po=bankaccountservice.find(Id);
 		vo=new BankAccountVO();
 		vo.setName(po.getName());
 		vo.setAmount(po.getAmount());
-		return vo;
+		return null;
 	}
 
 	

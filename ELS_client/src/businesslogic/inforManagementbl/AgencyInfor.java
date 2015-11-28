@@ -3,6 +3,7 @@ package businesslogic.inforManagementbl;
 import java.util.ArrayList;
 
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
+import bean.JavaBean1;
 import businesslogicservice.inforManagementblservice.AgencyInforblservice;
 import po.inforManagementPO.AgencyPO;
 import state.ResultMessage;
@@ -15,14 +16,14 @@ public class AgencyInfor implements AgencyInforblservice{
 	private ResultMessage rm;
 	private AgencyInfordataservice agencydataservice;
 	@Override
-	public ResultMessage add(AgencyVO vo) {
+	public JavaBean1 add(AgencyVO vo) {
 		// TODO Auto-generated method stub
 		po=new AgencyPO();
 		po.setID(vo.getID());
 		po.setCity(vo.getCity());
 		po.setAgencyType(vo.getAgencyType());
 		rm=agencydataservice.add(po);
-		return rm;
+		return null;
 	}
 
 	@Override
@@ -52,14 +53,14 @@ public class AgencyInfor implements AgencyInforblservice{
 	}
 
 	@Override
-	public AgencyVO inquire(String Id) {
+	public JavaBean1 inquire(String Id) {
 		// TODO Auto-generated method stub
-		po=agencydataservice.find(Id);
+//		po=agencydataservice.find(Id);
 		vo=new AgencyVO();
 		vo.setID(Id);
 		vo.setCity(po.getCity());
 		vo.setAgencyType(po.getAgencyType());
-		return vo;
+		return null;
 	}
 
 }

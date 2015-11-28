@@ -2,6 +2,7 @@ package businesslogicservice.orderblservice;
 
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import state.ExpressType;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -26,7 +27,7 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-	 public ResultMessage add(OrderVO orderVO);
+	 public JavaBean1 add(OrderVO orderVO);
 	 
 	 /**
 	  * 前置条件：展开一个订单列表
@@ -58,7 +59,7 @@ public interface Orderblservice {
       * @param orderid
       * @return
       */
-     public OrderVO inquireA(String id);
+     public JavaBean1 inquireA(String id);
      
      /**
       * 前置条件：输入一个日期
@@ -66,7 +67,7 @@ public interface Orderblservice {
       * @param time
       * @return
       */
-     public ArrayList<OrderlineitemVO> inquireB(String date);
+     public JavaBean1 inquireB(String date);
      
      /**
       * 前置条件：完成订单信息输入

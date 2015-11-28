@@ -3,6 +3,7 @@ package businesslogic.inforManagementbl;
 import java.util.ArrayList;
 
 import dataservice.inforManagementdataservice.StaffInfordataservice;
+import bean.JavaBean1;
 import businesslogicservice.inforManagementblservice.StaffInforblservice;
 import po.inforManagementPO.StaffPO;
 import state.ResultMessage;
@@ -15,7 +16,7 @@ public class StaffInfor implements StaffInforblservice{
 	private ResultMessage rm;
 	private StaffInfordataservice staffdataservice;
 	@Override
-	public ResultMessage add(StaffVO vo) {
+	public JavaBean1 add(StaffVO vo) {
 		// TODO Auto-generated method stub
 		po=new StaffPO();
 		po.setID(vo.getID());
@@ -28,13 +29,14 @@ public class StaffInfor implements StaffInforblservice{
 		po.setGender(vo.getGender());
 		po.setPosition(vo.getPosition());
 		po.setPayType(vo.getPayType());
-		return staffdataservice.add(po);
+//		return staffdataservice.add(po);
+		return null;
 	}
 
 	@Override
-	public StaffVO inquire(String Id) {
+	public JavaBean1 inquire(String Id) {
 		// TODO Auto-generated method stub
-		po=staffdataservice.find(Id);
+//		po=staffdataservice.find(Id);
 		vo=new StaffVO();
 		vo.setID(Id);
 		vo.setName(po.getName());
@@ -46,7 +48,7 @@ public class StaffInfor implements StaffInforblservice{
 		vo.setGender(po.getGender());
 		vo.setPosition(po.getPosition());
 		vo.setPayType(po.getPayType());
-		return vo;
+		return null;
 	}
 
 	@Override

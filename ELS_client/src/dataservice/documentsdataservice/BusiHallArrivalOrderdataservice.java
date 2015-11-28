@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.BusiHallArrivalOrderlineitemPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
@@ -57,7 +58,7 @@ import state.ResultMessage;
 		 * @param id
 		 * @return 营业厅到达单信息
 		 */
-		public ArrayList<BusiHallArrivalOrderPO> findA(String id);
+		public JavaBean1 findA(String id);
 		
 		/**
 		 * 前置：要查询的营业厅到达单在PO中有记录
@@ -65,7 +66,7 @@ import state.ResultMessage;
 		 * @param time
 		 * @return 营业厅到达单列表
 		 */
-		public ArrayList<BusiHallArrivalOrderPO> findB(String time);
+		public JavaBean1 findB(String time);
 		
 		/**
 		 * 前置：

@@ -3,6 +3,7 @@ package businesslogic.userManagementbl;
 import java.util.ArrayList;
 
 import dataservice.userManagementdataservice.UserManagementdataservice;
+import bean.JavaBean1;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
 import po.userPO.UserPO;
 import state.ResultMessage;
@@ -14,13 +15,13 @@ public class UserManagement implements UserManagementblservice{
     private ResultMessage rm;
     private UserManagementdataservice usermanagementdataservice;
 	@Override
-	public ResultMessage add(UserVO vo) {
+	public JavaBean1 add(UserVO vo) {
 		// TODO Auto-generated method stub
 		po=new UserPO();
 		po.setId(vo.getId());
 		po.setPassword(vo.getPassword());
 		rm=usermanagementdataservice.add(po);
-		return rm;
+		return null;
 	}
 
 	@Override
@@ -48,13 +49,13 @@ public class UserManagement implements UserManagementblservice{
 	}
 
 	@Override
-	public UserVO inquire(String Id) {
+	public JavaBean1 inquire(String Id) {
 		// TODO Auto-generated method stub
-		po=usermanagementdataservice.find(Id);
+//		po=usermanagementdataservice.find(Id);
 		vo=new UserVO();
 		vo.setId(po.getId());
 		vo.setPassword(po.getPassword());
-		return vo;
+		return null;
 	}
 
 

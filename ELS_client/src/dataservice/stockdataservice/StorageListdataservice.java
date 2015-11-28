@@ -3,6 +3,7 @@ package dataservice.stockdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.lineitemPO.stocklineitemPO.StorageListlineitemPO;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
@@ -18,7 +19,7 @@ public interface StorageListdataservice extends Remote{
 	 * 前置条件：库存管理人员已经输入了所有入库单参数值
 	 * 后置条件：增加一个入库单，更新变动到PO
 	 */
-	public StorageListPO add(String id4obo, String time, String id4e, String id4to, String desti);
+	public ResultMessage add(StorageListPO storageListPO);
 	
 	/**
 	 * 
@@ -55,7 +56,7 @@ public interface StorageListdataservice extends Remote{
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据id查询某入库单,返回入库单PO信息给业务逻辑层
 	 */
-	public StorageListPO inquireA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 
@@ -64,7 +65,7 @@ public interface StorageListdataservice extends Remote{
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据时间查询某入库单,返回入库单PO信息
 	 */
-	public StorageListlineitemPO inquireB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 
