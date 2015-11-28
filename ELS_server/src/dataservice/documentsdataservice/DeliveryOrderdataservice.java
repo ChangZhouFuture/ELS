@@ -2,10 +2,8 @@ package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.documentsPO.DeliveryOrderPO;
-import po.lineitemPO.documentslineitemPO.DeliveryOrderlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 /**
@@ -67,7 +65,7 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 派件单列表
 	 */
-	public ArrayList<DeliveryOrderlineitemPO> findB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 前置：行为或操作已经完成

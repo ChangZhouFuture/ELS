@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.TransferOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
@@ -19,7 +20,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	}
 
 	@Override
-	public TransferOrderPO addTransferOrder(String id, TransportType tst,
+	public ResultMessage addTransferOrder(String id, TransportType tst,
 			String sa, String ea, ArrayList<String> oidl, String d,
 			String hbid, String hgid, String Jzy) {
 		// TODO Auto-generated method stub
@@ -39,13 +40,13 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	}
 
 	@Override
-	public TransferOrderPO findA(String id) {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public TransferOrderlineitemPO findB(String time) {
+	public JavaBean1 findB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}

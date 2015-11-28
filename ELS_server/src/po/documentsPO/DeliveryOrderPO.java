@@ -8,7 +8,7 @@ public class DeliveryOrderPO implements Serializable{
 
 	private String ID;
     private String arrivalDate;
-    ArrayList<String> orderIDs=new ArrayList<>();
+    private String orderID;
     private String deliverier;
     private String generateTime;
 	public String getID() {
@@ -23,11 +23,11 @@ public class DeliveryOrderPO implements Serializable{
 	public void setArrivalDate(String arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
-	public ArrayList<String> getOrderIDs() {
-		return orderIDs;
+	public String getOrderID() {
+		return orderID;
 	}
-	public void setOrderIDs(ArrayList<String> orderIDs) {
-		this.orderIDs = orderIDs;
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	public String getDeliverier() {
 		return deliverier;

@@ -2,11 +2,9 @@ package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
 import java.util.ArrayList;
-
+import bean.JavaBean1;
 import po.documentsPO.TranCenArrivalOrderPO;
-import po.lineitemPO.documentslineitemPO.TranCenArrivalOrderlineitemPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
-import state.GoodState;
 import state.ResultMessage;
  
 /**
@@ -15,7 +13,7 @@ import state.ResultMessage;
  */
 public interface TranCenArrivalOrderdataservice extends Remote{
 	
-	public TransferOrderlineitemPO addTransferOrder(String id);
+public TransferOrderlineitemPO addTransferOrder(String id);
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
@@ -51,7 +49,7 @@ public interface TranCenArrivalOrderdataservice extends Remote{
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public ArrayList<TranCenArrivalOrderPO> findA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 前置：要查询的中转中心到达单在PO中有记录
@@ -59,7 +57,7 @@ public interface TranCenArrivalOrderdataservice extends Remote{
 	 * @param time
 	 * @return 中转中心到达单列表
 	 */
-	public ArrayList<TranCenArrivalOrderPO> findB(String time);
+	public JavaBean1 findB(String time);
 	
 	/**
 	 * 后置：查询所有中转中心到达单

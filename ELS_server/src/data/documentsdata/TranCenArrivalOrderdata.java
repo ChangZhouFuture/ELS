@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import bean.JavaBean1;
 import data.utility.Database;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.documentsPO.TranCenArrivalOrderPO;
@@ -27,6 +28,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	Database db=new Database();
 	Connection con=db.getConnection();
 	PreparedStatement stmt;
+	JavaBean1 jb1;
 	TranCenArrivalOrderPO po;
 	TransferOrderlineitemPO llpo;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -97,14 +99,17 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public ArrayList<TranCenArrivalOrderPO> findA(String id) {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
-		ArrayList<TranCenArrivalOrderPO> arrayList = new ArrayList<>();
+		ArrayList<TranCenArrivalOrderPO> pos = new ArrayList<>();
 		po=new TranCenArrivalOrderPO();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt = con.prepareStatement("SELECT * FROM trancenarrivalorder WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
+				jb1.setResultMessage(ResultMessage.Success);
 			    po.setID(id);
 		        po.setTranCenID(rs.getString(2));
 		        po.setArrivalDate(rs.getString(3));
@@ -112,27 +117,33 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		        po.setOrigin(rs.getString(5));
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 		        po.setGenerateTime(rs.getString(7));
+		        pos.add(po);
 			}
+			jb1.setPOObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		} 
-		arrayList.add(po);
-		return arrayList;
+		
 	}
 
 	@Override
-	public ArrayList<TranCenArrivalOrderPO> findB(String date) {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
 		ArrayList<TranCenArrivalOrderPO> pos=new ArrayList<TranCenArrivalOrderPO>();
 		po=new TranCenArrivalOrderPO();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
 		String substr;
 		try {
 			stmt=con.prepareStatement("SELECT * FROM trancenarrivalorder");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+			    jb1.setResultMessage(ResultMessage.Success);
 				substr=rs.getString(7).substring(0, 10);
-				if(substr==date){
+				if(substr.equals(date)){
 					po.setID(rs.getString(1));
 			        po.setTranCenID(rs.getString(2));
 			        po.setArrivalDate(rs.getString(3));
@@ -143,11 +154,14 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 					pos.add(po);
 				}
 			}
+			jb1.setPOObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		}
-		return pos;
+		
 	}
 
 	@Override

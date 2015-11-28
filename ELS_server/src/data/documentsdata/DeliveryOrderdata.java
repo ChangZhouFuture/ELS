@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import data.utility.Database;
 import po.documentsPO.DeliveryOrderPO;
-import po.lineitemPO.documentslineitemPO.DeliveryOrderlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
@@ -29,6 +29,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
     Statement sm;
     PreparedStatement stmt;
     DeliveryOrderPO po;
+    JavaBean1 jb1;
 	@Override
 	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
@@ -46,13 +47,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			stmt.setString(2, po.getArrivalDate());
 			stmt.setString(4, po.getDeliverier());
 			stmt.setString(5, po.getGenerateTime());
-			String ids="";
-			ArrayList<String> arr=po.getOrderIDs();
-			for(int i=0;i<arr.size();i++){
-				ids=ids+arr.get(i)+";";
-			}
-			ids=ids.substring(0, ids.length()-1);
-			stmt.setString(3, ids);
+			stmt.setString(3, po.getOrderID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -102,20 +97,64 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new DeliveryOrderPO();
-		String sql="select * from deliveryorder where ID=?";
+		jb1=new JavaBean1();
+		String sql="select * from deliveryorder where ID='"+id+"'";
 		try {
 			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			jb1.setResultMessage(ResultMessage.NotExist);
+			if(rs.next()){ 
+				po.setID(id);
+				po.setArrivalDate(rs.getString(2));
+				po.setDeliverier(rs.getString(4));
+				po.setGenerateTime(rs.getString(5));
+				po.setOrderID(rs.getString(3));
+				
+				jb1.setPOObject(po);
+				jb1.setResultMessage(ResultMessage.Success);
+				
+			}return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			jb1.setResultMessage(ResultMessage.NotExist);
+			return jb1;
 		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DeliveryOrderlineitemPO> findB(String time) {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		return null;
+		po=new DeliveryOrderPO();
+		ArrayList<DeliveryOrderPO> pos=new ArrayList<>();
+		jb1=new JavaBean1();
+		String substr;
+		String sql="select * from deliveryorder";
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			jb1.setResultMessage(ResultMessage.NotExist);
+			while(rs.next()){
+				substr=rs.getString(5).substring(0, 10);
+				if(substr.equals(date)){
+					po.setID(rs.getString(1));
+					po.setArrivalDate(rs.getString(2));
+					po.setDeliverier(rs.getString(4));
+					po.setGenerateTime(rs.getString(5));
+					
+					po.setOrderID(rs.getString(3));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+			}
+			jb1.setPOObject(pos);
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			jb1.setResultMessage(ResultMessage.NotExist);
+			return jb1;
+		}
 	}
 
 	@Override
@@ -128,13 +167,8 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			stmt.setString(3,po.getDeliverier() );
 			stmt.setString(4, po.getGenerateTime());
 			stmt.setString(5, po.getID());
-			ArrayList<String> arr=po.getOrderIDs();
-			String ids="";
-			for(int i=0;i<arr.size();i++){
-				ids=ids+arr.get(i)+";";
-			}
-			ids=ids.substring(0, ids.length()-1);
-			stmt.setString(2, ids);
+			
+			stmt.setString(2, po.getOrderID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

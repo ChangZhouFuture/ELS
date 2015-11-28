@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import bean.JavaBean1;
 import data.utility.Database;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
@@ -27,6 +29,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
+    JavaBean1 jb1;
     BusiHallArrivalOrderPO po;
     TransferOrderlineitemPO llpo;
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -117,10 +120,12 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 	}
 
 	@Override
-	public ArrayList<BusiHallArrivalOrderPO> findA(String id) {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new BusiHallArrivalOrderPO();
+		jb1=new JavaBean1();
 		ArrayList<BusiHallArrivalOrderPO> pos=new ArrayList<>();
+		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt = con.prepareStatement("SELECT * FROM busihallarrivalorder WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
@@ -133,44 +138,54 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 		        po.setGenerateTime(rs.getString(7));
 		        pos.add(po);
+		        jb1.setResultMessage(ResultMessage.Success);
+		        jb1.setPOObject(pos);
 			}
+			
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} return pos;
+			return jb1;
+		} 
 	}
 
 	@Override
-	public ArrayList<BusiHallArrivalOrderPO> findB(String date) {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
 		po=new BusiHallArrivalOrderPO();
+		jb1=new JavaBean1();
 		ArrayList<BusiHallArrivalOrderPO> pos = new ArrayList<BusiHallArrivalOrderPO>();
 		String sql="SELECT * FROM busihallarrivalorder";
 		String substr;
+		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery(); 
 
 			while(rs.next()){
-		    substr=rs.getString(7).substring(0, 10);
-		    if(substr==date){
-			   po.setId(rs.getString(1));
-			   po.setBusiHallID(rs.getString(2));
-			   po.setArrivalDate(rs.getString(3));
-			   po.setTransferOrderID(rs.getString(4));
-			   po.setOrigin(rs.getString(5));
-			   po.setGoodState(GoodState.valueOf(rs.getString(6)));
-			   po.setGenerateTime(rs.getString(7));
-			   pos.add(po);
-		   }	
-		
-		}
+				jb1.setResultMessage(ResultMessage.Success);
+				substr=rs.getString(7).substring(0, 10);
+				    if(substr.equals(date)){
+					   po.setId(rs.getString(1));
+					   po.setBusiHallID(rs.getString(2));
+					   po.setArrivalDate(rs.getString(3));
+					   po.setTransferOrderID(rs.getString(4));
+					   po.setOrigin(rs.getString(5));
+					   po.setGoodState(GoodState.valueOf(rs.getString(6)));
+					   po.setGenerateTime(rs.getString(7));
+					   pos.add(po);
+		            }	
+		    }
+			jb1.setPOObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		}
 		
-		return pos;
+		
 	}
 
 	@Override

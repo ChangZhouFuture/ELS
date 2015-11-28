@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.ReceivablesOrderPO;
-import po.lineitemPO.documentslineitemPO.ReceivablesOrderlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
@@ -36,13 +36,13 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 	}
 
 	@Override
-	public ReceivablesOrderPO findA(String id) {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ReceivablesOrderlineitemPO findB(String date) {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

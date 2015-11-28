@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -44,13 +45,13 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	}
 
 	@Override
-	public BusiHallLoadingListPO findA(String id) {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BusiHallLoadingListlineitemPO findB(String time) {
+	public JavaBean1 findB(String time) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -67,4 +68,5 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 		return null;
 	}
 
+	
 }
