@@ -1,8 +1,8 @@
-package businesslogic.utilitybl;
+package bean;
 
 import state.ResultMessage;
 
-public class JavaBean {
+public class JavaBean1 {
 	private Object VOObject;
 	private ResultMessage resultMessage;
 	
@@ -18,5 +18,4 @@ public class JavaBean {
 	public void setResultMessage(ResultMessage resultMessage) {
 		this.resultMessage = resultMessage;
 	}
-	
 }

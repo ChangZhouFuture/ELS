@@ -6,7 +6,7 @@ import state.ResultMessage;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import businesslogic.utilitybl.JavaBean;
+import businesslogic.utilitybl.JavaBean1;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 /**
  * 
@@ -46,7 +46,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	}
 
 	@Override
-	public JavaBean addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO) {
+	public JavaBean1 addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO) {
 
 		
 		return null;

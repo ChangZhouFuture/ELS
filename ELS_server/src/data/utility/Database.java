@@ -11,6 +11,7 @@ public class Database {
         try {
 		    Class.forName("com.mysql.jdbc.Driver");        //加载jdbc驱动程序
 		    con=DriverManager.getConnection(URL,"root","root");
+		    System.out.println("连接数据库成功");
 	    } catch (Exception e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();

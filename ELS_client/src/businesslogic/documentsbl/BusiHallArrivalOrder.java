@@ -7,7 +7,7 @@ import po.documentsPO.BusiHallArrivalOrderPO;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
-import businesslogic.utilitybl.JavaBean;
+import businesslogic.utilitybl.JavaBean1;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 /**
  * 
@@ -45,7 +45,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	}
 
 	@Override
-	public JavaBean addArrivalOrder4BusiHall(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO) {
+	public JavaBean1 addArrivalOrder4BusiHall(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO) {
 		arrivalOrder4BusiHallPO = new BusiHallArrivalOrderPO();
 		this.arrivalOrder4BusiHallVO = arrivalOrder4BusiHallVO;
 		

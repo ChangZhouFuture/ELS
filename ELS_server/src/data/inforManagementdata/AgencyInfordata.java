@@ -14,7 +14,7 @@ import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import state.AgencyType;
 import state.ResultMessage;
 
-public class AgencyInfordata extends UnicastRemoteObject implements AgencyInfordataservice{	
+public class AgencyInfordata  extends UnicastRemoteObject implements AgencyInfordataservice{	
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
@@ -43,6 +43,7 @@ public ResultMessage add(AgencyPO po){
 
 //查找机构信息
 public AgencyPO find(String Id){
+	
 	po = new AgencyPO();
 	try {
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM agency WHERE ID='"+Id+"'");

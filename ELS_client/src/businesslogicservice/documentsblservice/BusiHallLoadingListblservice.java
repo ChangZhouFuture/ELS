@@ -1,7 +1,7 @@
 package businesslogicservice.documentsblservice;
 import java.util.ArrayList;
 
-import businesslogic.utilitybl.JavaBean;
+import businesslogic.utilitybl.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
@@ -69,7 +69,7 @@ public interface BusiHallLoadingListblservice {
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-public JavaBean addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO);
+public JavaBean1 addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO);
  	
  	/**
  	 * 前置：已添加所有装车信息

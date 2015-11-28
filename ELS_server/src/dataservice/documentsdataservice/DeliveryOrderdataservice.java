@@ -3,6 +3,7 @@ package dataservice.documentsdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.documentsPO.DeliveryOrderPO;
 import po.lineitemPO.documentslineitemPO.DeliveryOrderlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -58,7 +59,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 派件单信息
 	 */
-	public DeliveryOrderPO findA(String id);
+	public JavaBean1 findA(String id);
 	
 	/**
 	 * 前置：要查询的派件单在PO中有记录
