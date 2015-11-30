@@ -58,13 +58,13 @@ public class Loginui {
 		LoginFrame.setLocation((screenSize.width - LoginFrame.getWidth()) / 2,
 				(screenSize.height - LoginFrame.getHeight()) / 2);
 		
-		LoginUser.setBounds(128,150,24,24);
+		LoginUser.setBounds(128,140,24,24);
 		LoginUser.setIcon(Images.USER_IMAGE);
 		
 		LoginPassword.setBounds(128,180,24,24);
 		LoginPassword.setIcon(Images.PASSWORD_IMAGE);
 		
-		UserField.setBounds(152,150,120,24);
+		UserField.setBounds(152,140,120,24);
 		
 		PasswordField.setBounds(152,180,120,24);
 		

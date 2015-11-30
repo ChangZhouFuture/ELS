@@ -55,7 +55,7 @@ public class MainFrame extends JFrame{
 		this.setLocation((screenSize.width - this.getWidth()) / 2,(screenSize.height - this.getHeight()) / 2);
 		this.getContentPane().setLayout(null);
 		
-		left.setBounds(0,24,2,502);
+		left.setBounds(0,30,4,490);
 		left.setBackground(Color.lightGray);
 		left.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		left.setOpaque(true);
@@ -67,7 +67,7 @@ public class MainFrame extends JFrame{
 		MainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		MainPanel.setOpaque(true);
 		
-		MainLabel1.setBounds(0,0,this.getWidth(),24);
+		MainLabel1.setBounds(0,0,this.getWidth(),30);
 		MainLabel1.setBackground(Color.lightGray);
 		MainLabel1.setOpaque(true);
 		MainLabel1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -76,25 +76,25 @@ public class MainFrame extends JFrame{
 		MainLabel1.setFont(font1);
 		MainLabel1.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		MainLabel2.setBounds(0,this.getHeight()-24,this.getWidth(),24);
+		MainLabel2.setBounds(0,this.getHeight()-30,this.getWidth(),30);
 		MainLabel2.setBackground(Color.lightGray);
 		MainLabel2.setOpaque(true);
 		MainLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
 		MainLabel2.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
 		MainLabel3.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		MainLabel3.setBounds(2,24,180,502);
+		MainLabel3.setBounds(4,30,180,490);
 		MainLabel3.setBackground(Color.WHITE);
 		
 		UserLogo.setBounds((MainLabel3.getWidth()-72)/2,0,72,72);
 		UserLogo.setIcon(Images.USERLOGO_IMAGE);
 		
-		ExitButton.setBounds((MainLabel3.getWidth()-72)/2,454,72,24);
+		ExitButton.setBounds((MainLabel3.getWidth()-72)/2,442,72,30);
 		ExitButton.setText("ÍË³ö");
 		ExitButton.setFont(font1);
 		ExitButton.setBackground(Color.WHITE);		
 		
-		MinimizeButton.setBounds(this.getWidth()-24*2,0,24,24);
+		MinimizeButton.setBounds(this.getWidth()-30*2,0,30,30);
 		MinimizeButton.setIcon(Images.MINIMIZE_IMAGE);
 		MinimizeButton.addActionListener(new ActionListener(){
 			
@@ -105,7 +105,7 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		CloseButton.setBounds(this.getWidth()-24,0,24,24);
+		CloseButton.setBounds(this.getWidth()-30,0,30,30);
 		CloseButton.setIcon(Images.CLOSE_IMAGE);
 		CloseButton.addActionListener(new ActionListener(){
 			

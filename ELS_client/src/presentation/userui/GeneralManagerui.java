@@ -32,7 +32,7 @@ public class GeneralManagerui extends MainFrame{
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("总经理："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -42,31 +42,31 @@ public class GeneralManagerui extends MainFrame{
 		UserName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		AgencyManage.setBounds(2,120,180,30);
+		AgencyManage.setBounds(4,130,180,30);
 		AgencyManage.setText("机构管理");
 		AgencyManage.setFont(font3);
 		AgencyManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		AgencyManage.setBackground(Color.WHITE);
 		
-		StuffManage.setBounds(2,150,180,30);
+		StuffManage.setBounds(4,160,180,30);
 		StuffManage.setText("人员管理");
 		StuffManage.setFont(font3);
 		StuffManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		StuffManage.setBackground(Color.WHITE);
 		
-		StatisAnaly.setBounds(2,180,180,30);
+		StatisAnaly.setBounds(4,190,180,30);
 		StatisAnaly.setText("统计报表");
 		StatisAnaly.setFont(font3);
 		StatisAnaly.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		StatisAnaly.setBackground(Color.WHITE);
 		
-		Approdocm.setBounds(2,210,180,30);
+		Approdocm.setBounds(4,220,180,30);
 		Approdocm.setText("审批单据");
 		Approdocm.setFont(font3);
 		Approdocm.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		Approdocm.setBackground(Color.WHITE);
 		
-		Operalog.setBounds(2,240,180,30);
+		Operalog.setBounds(4,250,180,30);
 		Operalog.setText("查询操作日志");
 		Operalog.setFont(font3);
 		Operalog.setBorder(BorderFactory.createLineBorder(Color.lightGray));

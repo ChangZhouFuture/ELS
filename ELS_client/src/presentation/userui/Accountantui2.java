@@ -30,7 +30,7 @@ public class Accountantui2 extends MainFrame{
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("财务人员："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -40,25 +40,25 @@ public class Accountantui2 extends MainFrame{
 		UserName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		Receival.setBounds(2,120,180,30);
+		Receival.setBounds(4,130,180,30);
 		Receival.setText("结算管理");
 		Receival.setFont(font3);
 		Receival.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		Receival.setBackground(Color.WHITE);
 		
-		Payment.setBounds(2,150,180,30);
+		Payment.setBounds(4,160,180,30);
 		Payment.setText("成本管理");
 		Payment.setFont(font3);
 		Payment.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		Payment.setBackground(Color.WHITE);
 		
-		StatisAnaly.setBounds(2,180,180,30);
+		StatisAnaly.setBounds(4,190,180,30);
 		StatisAnaly.setText("统计报表");
 		StatisAnaly.setFont(font3);
 		StatisAnaly.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		StatisAnaly.setBackground(Color.WHITE);
 		
-		Operalog.setBounds(2,210,180,30);
+		Operalog.setBounds(4,220,180,30);
 		Operalog.setText("查询操作日志");
 		Operalog.setFont(font3);
 		Operalog.setBorder(BorderFactory.createLineBorder(Color.lightGray));

@@ -30,7 +30,7 @@ public class StockManagerui extends MainFrame{
 		StockCheck=new JButton();
 		StockCount=new JButton();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("库存管理人员："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -40,25 +40,25 @@ public class StockManagerui extends MainFrame{
 		UserName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		StorageManage.setBounds(2,120,180,30);
+		StorageManage.setBounds(4,130,180,30);
 		StorageManage.setText("入库管理");
 		StorageManage.setFont(font3);
 		StorageManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		StorageManage.setBackground(Color.WHITE);
 		
-		OutBoundManage.setBounds(2,150,180,30);
+		OutBoundManage.setBounds(4,160,180,30);
 		OutBoundManage.setText("出库管理");
 		OutBoundManage.setFont(font3);
 		OutBoundManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		OutBoundManage.setBackground(Color.WHITE);
 		
-		StockCheck.setBounds(2,180,180,30);
+		StockCheck.setBounds(4,190,180,30);
 		StockCheck.setText("库存查看");
 		StockCheck.setFont(font3);
 		StockCheck.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		StockCheck.setBackground(Color.WHITE);
 		
-		StockCount.setBounds(2,210,180,30);
+		StockCount.setBounds(4,220,180,30);
 		StockCount.setText("库存盘点");
 		StockCount.setFont(font3);
 		StockCount.setBorder(BorderFactory.createLineBorder(Color.lightGray));

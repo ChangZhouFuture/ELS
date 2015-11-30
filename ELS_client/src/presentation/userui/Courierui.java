@@ -24,7 +24,7 @@ public class Courierui extends MainFrame{
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("快递员："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -33,7 +33,7 @@ public class Courierui extends MainFrame{
 		UserName.setBackground(Color.WHITE);
 		UserName.setOpaque(true);
 		
-		OrderManage.setBounds(2,120,180,30);
+		OrderManage.setBounds(4,130,180,30);
 		OrderManage.setText("订单信息管理");
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		OrderManage.setFont(font3);

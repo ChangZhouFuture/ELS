@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 import presentation.MainFrame;
 
 public class TranCenClerkui extends MainFrame{
-	JButton ArraivalOrder4TranCenManage;
+	JButton TranCenArraivalOrderManage;
 	JButton TrensferOrderManage;
 	JLabel UserName;
 	JLayeredPane layeredPane;
@@ -21,12 +21,12 @@ public class TranCenClerkui extends MainFrame{
 		TranCenClerkui ui=new TranCenClerkui();
 	}
 	public TranCenClerkui(){
-		ArraivalOrder4TranCenManage=new JButton();
+		TranCenArraivalOrderManage=new JButton();
 		TrensferOrderManage=new JButton();
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("中转中心业务员："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -35,21 +35,21 @@ public class TranCenClerkui extends MainFrame{
 		UserName.setBackground(Color.WHITE);
 		UserName.setOpaque(true);
 		
-		ArraivalOrder4TranCenManage.setBounds(2,120,180,30);
-		ArraivalOrder4TranCenManage.setText("中转接收管理");
+		TranCenArraivalOrderManage.setBounds(4,130,180,30);
+		TranCenArraivalOrderManage.setText("中转接收管理");
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		ArraivalOrder4TranCenManage.setFont(font3);
-		ArraivalOrder4TranCenManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		ArraivalOrder4TranCenManage.setBackground(Color.WHITE);
+		TranCenArraivalOrderManage.setFont(font3);
+		TranCenArraivalOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		TranCenArraivalOrderManage.setBackground(Color.WHITE);
 		
-		TrensferOrderManage.setBounds(2,150,180,30);
+		TrensferOrderManage.setBounds(4,160,180,30);
 		TrensferOrderManage.setText("中转单管理");
 		TrensferOrderManage.setFont(font3);
 		TrensferOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		TrensferOrderManage.setBackground(Color.WHITE);
 		
 		layeredPane.add(UserName,new Integer(10), 0);
-		layeredPane.add(ArraivalOrder4TranCenManage,new Integer(10), 0);
+		layeredPane.add(TranCenArraivalOrderManage,new Integer(10), 0);
 		layeredPane.add(TrensferOrderManage,new Integer(10), 0);
 	}
 }

@@ -24,7 +24,7 @@ public class Administratorui extends MainFrame{
 		UserName=new JLabel();
 		layeredPane=getLayeredPane();
 		
-		UserName.setBounds(4,96,176,24);
+		UserName.setBounds(6,106,176,24);
 		UserName.setText("管理员："+"***");
 		UserName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -33,7 +33,7 @@ public class Administratorui extends MainFrame{
 		UserName.setBackground(Color.WHITE);
 		UserName.setOpaque(true);
 		
-		UserManage.setBounds(2,120,180,30);
+		UserManage.setBounds(4,130,180,30);
 		UserManage.setText("用户管理");
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		UserManage.setFont(font3);

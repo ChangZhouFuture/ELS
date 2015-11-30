@@ -40,29 +40,29 @@ public class DeliveryOrderui extends JPanel{
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		DeliveryOrder.setBounds(219,10,180,30);
+		DeliveryOrder.setBounds(218,10,180,30);
 		DeliveryOrder.setText("派件单信息");
 		DeliveryOrder.setFont(font1);
 		DeliveryOrder.setBackground(Color.WHITE);
 		DeliveryOrder.setOpaque(true);
 		
-		Courier.setBounds(40,50,70,30);
+		Courier.setBounds(40,50,70,24);
 		Courier.setText("派送员：");
 		Courier.setFont(font2);
 		Courier.setBackground(Color.WHITE);
 		Courier.setOpaque(true);
 		
-		Courierid.setBounds(110,50,150,24);
+		Courierid.setBounds(110,52,150,20);
 		
-		Order.setBounds(40,80,180,30);
+		Order.setBounds(40,80,180,24);
 		Order.setText("托运订单条形码号：");
 		Order.setFont(font2);
 		Order.setBackground(Color.WHITE);
 		Order.setOpaque(true);
 		
-		Orderid.setBounds(110,110,150,24);
+		Orderid.setBounds(110,112,150,20);
 		
-		MakeOrder.setBounds(219,454,96,30);
+		MakeOrder.setBounds(218,442,96,30);
 		MakeOrder.setText("确认生成");
 		MakeOrder.setFont(font1);
 		MakeOrder.setBackground(Color.WHITE);
@@ -74,8 +74,8 @@ public class DeliveryOrderui extends JPanel{
 		this.add(Courierid);
 		this.add(Orderid);
 		this.add(MakeOrder);
-		setLocation(182,24);
-		this.setSize(618,502);
+		setLocation(184,30);
+		this.setSize(616,490);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
