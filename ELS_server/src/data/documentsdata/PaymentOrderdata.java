@@ -93,9 +93,35 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	}
 
 	@Override
-	public String generaId() {
+	public String generaId(String date) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from paymentorder where date='"+date+"'";
+		String sub,subId;
+		int x;
+		int last=0;
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			if(!rs.next()){
+				return date+"0001";
+			}
+			while(rs.next()){
+				sub=rs.getString(1).substring(8);
+				x=Integer.parseInt(sub);
+				if(x>last){
+					last=x;
+				}
+			}
+			subId=Integer.toString(last);
+			for(int i=0;i<4-subId.length();i++){
+				subId="0"+subId;
+			}
+			return date+subId;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -143,13 +169,12 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				jb1.setPOObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
-			
+			 return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return jb1;
 		}
-	    return jb1;
 	}
 
 	@Override

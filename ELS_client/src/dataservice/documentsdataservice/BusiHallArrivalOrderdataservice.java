@@ -81,5 +81,5 @@ import state.ResultMessage;
 		
 		public String generateStartAdd(String transferOrderId);
 		
-		public String generateId();
+		public String generateId(String date);
  }

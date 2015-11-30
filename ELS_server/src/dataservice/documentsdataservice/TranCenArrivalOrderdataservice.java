@@ -71,7 +71,7 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 */
 	public ResultMessage update(TranCenArrivalOrderPO tranCenArrivalOrderPO);
 	
-	public String generateId();
+	public String generateId(String date);
 	
 	public String generateStartAdd();
  }

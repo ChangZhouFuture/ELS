@@ -73,5 +73,5 @@ public interface PaymentOrderdataservice extends Remote{
 	 */
 	public ResultMessage update(PaymentOrderPO paymentOrderPO);
 	
-	public String generaId();
+	public String generaId(String date);
 }

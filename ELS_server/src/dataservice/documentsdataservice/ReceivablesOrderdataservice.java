@@ -71,5 +71,5 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 */
 	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);
 	
-	public String generateId();
+	public String generateId(String date);
 }

@@ -69,5 +69,5 @@ import state.TransportType;
 	
 	public TransferOrderlineitemPO getTransferOrderlineitemPO();
 	
-	public String generateId();
+	public String generateId(String date);
  }

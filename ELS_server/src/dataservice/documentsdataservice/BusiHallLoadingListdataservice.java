@@ -86,6 +86,6 @@ import state.ResultMessage;
 	 */
 	public ResultMessage update(BusiHallLoadingListPO loadingListPO);
 	
-	public String generateId();
+	public String generateId(String date);
 	
  }
