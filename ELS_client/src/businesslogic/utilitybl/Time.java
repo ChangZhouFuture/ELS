@@ -1,5 +1,5 @@
 package businesslogic.utilitybl;
 
-public class AutoGenerateTime {
+public class Time {
 
 }

@@ -6,8 +6,16 @@ import state.AgencyType;
 
 public class AgencyPO implements Serializable{
     private String ID;
+    private String district;
     private String city;
     private AgencyType agencyType;
+    
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 	public String getID() {
 		return ID;
 	}

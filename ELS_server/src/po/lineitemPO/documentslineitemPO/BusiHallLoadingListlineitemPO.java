@@ -4,10 +4,18 @@ import java.io.Serializable;
 
 
 public class BusiHallLoadingListlineitemPO implements Serializable{
+	private String ID;
 	private String loadingDate;
 	private String destination;
 	private String truckNum;
 	private double carriage;
+	
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
+	}
 	
 	public String getLoadingDate() {
 		return loadingDate;
