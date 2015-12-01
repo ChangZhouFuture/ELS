@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.ReceivablesOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
@@ -29,23 +30,25 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
     PreparedStatement stmt;
     JavaBean1 jb1;
     ReceivablesOrderPO po;
+    GenerateId g;
 	@Override
 	public ResultMessage add(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date)values(?,?,?,?,?)";
+		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date,generateTime)values(?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
 			stmt.setDouble(2, po.getAmount());
 			stmt.setString(3, po.getCourier());
-			stmt.setString(4, po.getDate());
+			stmt.setString(5, po.getDate());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
 				str=str+arr.get(i)+";";
 			}
 			str=str.substring(0, str.length()-1);
-			stmt.setString(5, str);
+			stmt.setString(4, str);
+			stmt.setString(6, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -105,6 +108,7 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 			    po.setAmount(rs.getDouble(2));
 			    po.setCourier(rs.getString(3));
 			    po.setDate(rs.getString(5));
+			    po.setGenerateTime(rs.getString(6));
 			    String str=rs.getString(4);
 			    String[] s=str.split(";");
 			    ArrayList<String> arr=new ArrayList<>();
@@ -139,19 +143,23 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				jb1.setResultMessage(ResultMessage.Success);
-				po.setID(rs.getString(1));
-				po.setAmount(rs.getDouble(2));
-				po.setCourier(rs.getString(3));
-				String str=rs.getString(4);
-				s=str.split(";");
-				arr=new ArrayList<>();
-				for(int i=0;i<s.length;i++){
-					arr.add(i, s[i]);
+				if(rs.getString("generateTime").substring(0, 10).equals(date)){
+					jb1.setResultMessage(ResultMessage.Success);
+					po.setID(rs.getString(1));
+					po.setAmount(rs.getDouble(2));
+					po.setCourier(rs.getString(3));
+					String str=rs.getString(4);
+					s=str.split(";");
+					arr=new ArrayList<>();
+					for(int i=0;i<s.length;i++){
+						arr.add(i, s[i]);
+					}
+					po.setOrderIDs(arr);
+					po.setDate(date);
+					po.setGenerateTime(rs.getString("generateTime"));
+					pos.add(po);
 				}
-				po.setOrderIDs(arr);
-				po.setDate(date);
-				pos.add(po);
+				
 			}
 			jb1.setPOObject(pos);
 			
@@ -176,40 +184,36 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 	}
 
 	@Override
-	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO) {
+	public ResultMessage update(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="update receivablesorder set amount=?,courier=?,orderIDs=?,date=?,generateTime=? where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setDouble(1, po.getAmount());
+			stmt.setString(2, po.getCourier());
+			stmt.setString(4, po.getDate());
+			stmt.setString(5, po.getGenerateTime());
+			stmt.setString(6, po.getID());
+			ArrayList<String> arr=po.getOrderIDs();
+			String str="";
+			for(int i=0;i<arr.size();i++){
+				str=str+arr.get(i)+";";
+			}
+			str=str.substring(0, str.length()-1);
+			stmt.setString(3, str);
+			stmt.executeUpdate();
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
 	}
 
 	@Override
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
-		String sql="select * from receivablesorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateOrderId(date, "receivablesorder");
 	}
 }

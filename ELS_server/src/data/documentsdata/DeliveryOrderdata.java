@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.DeliveryOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
@@ -30,6 +31,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
     PreparedStatement stmt;
     DeliveryOrderPO po;
     JavaBean1 jb1;
+    GenerateId g;
 	@Override
 	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
@@ -45,9 +47,9 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
 			stmt.setString(2, po.getArrivalDate());
+			stmt.setString(3, po.getOrderID());
 			stmt.setString(4, po.getDeliverier());
 			stmt.setString(5, po.getGenerateTime());
-			stmt.setString(3, po.getOrderID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -106,10 +108,9 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			if(rs.next()){ 
 				po.setID(id);
 				po.setArrivalDate(rs.getString(2));
+				po.setOrderID(rs.getString(3));
 				po.setDeliverier(rs.getString(4));
 				po.setGenerateTime(rs.getString(5));
-				po.setOrderID(rs.getString(3));
-				
 				jb1.setPOObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 				
@@ -129,6 +130,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 		ArrayList<DeliveryOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		String substr;
+		
 		String sql="select * from deliveryorder";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -139,10 +141,9 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 				if(substr.equals(date)){
 					po.setID(rs.getString(1));
 					po.setArrivalDate(rs.getString(2));
+					po.setOrderID(rs.getString(3));
 					po.setDeliverier(rs.getString(4));
 					po.setGenerateTime(rs.getString(5));
-					
-					po.setOrderID(rs.getString(3));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -164,11 +165,10 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getArrivalDate());
+			stmt.setString(2, po.getOrderID());
 			stmt.setString(3,po.getDeliverier() );
 			stmt.setString(4, po.getGenerateTime());
 			stmt.setString(5, po.getID());
-			
-			stmt.setString(2, po.getOrderID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -182,33 +182,8 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
-		String sql="select * from deliveryorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateOrderId(date, "deliveryorder");
 	}
 
 }

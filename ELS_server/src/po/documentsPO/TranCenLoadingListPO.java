@@ -14,6 +14,7 @@ public class TranCenLoadingListPO implements Serializable{
 	private String escortMan;
 	ArrayList<String>  orderIDs=new ArrayList<>();
 	private double carriage;
+	private String generateTime;
 	public String getID() {
 		return ID;
 	}
@@ -73,5 +74,11 @@ public class TranCenLoadingListPO implements Serializable{
 	}
 	public void setCarriage(double carriage) {
 		this.carriage = carriage;
+	}
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
 }

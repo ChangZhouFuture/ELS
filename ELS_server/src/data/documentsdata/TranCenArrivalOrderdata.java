@@ -9,6 +9,7 @@ import java.util.Date;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.documentsPO.TranCenArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
@@ -31,8 +32,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	JavaBean1 jb1;
 	TranCenArrivalOrderPO po;
 	TransferOrderlineitemPO llpo;
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	Date now=new Date();
+	GenerateId g;
 	@Override
 	public TransferOrderlineitemPO addTransferOrder(String id) {
 		// TODO Auto-generated method stub
@@ -52,7 +52,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 					stmt.setString(4, po.getTransferOrderID());
 					stmt.setString(5, po.getOrigin());
 					stmt.setString(6, po.getGoodState().toString());
-					stmt.setString(7, sdf.format(now));
+					stmt.setString(7, po.getGenerateTime());
 					stmt.executeUpdate();
 		            return ResultMessage.Success;
 				} catch (SQLException e) {
@@ -203,33 +203,8 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	@Override
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
-		String sql="select * from trancenarrivalorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateOrderId(date, "trancenarrivalorder");
 	}
 
 }

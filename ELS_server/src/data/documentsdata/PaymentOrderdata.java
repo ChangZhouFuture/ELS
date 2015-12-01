@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.PaymentOrderPO;
 import po.inforManagementPO.BankAccountPO;
 import state.ResultMessage;
@@ -30,6 +31,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
     PreparedStatement stmt;
     JavaBean1 jb1;
     PaymentOrderPO po;
+    GenerateId g;
 	@Override
 	public BankAccountPO addPaymentAccount(String accountName) {
 		// TODO Auto-generated method stub
@@ -73,7 +75,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public ResultMessage update(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update paymentorder set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=? where ID=?";
+		String sql="update paymentorder set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=?£¬generateTime=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getDate());
@@ -82,7 +84,8 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(4, po.getBankAccount());
 			stmt.setString(5, po.getEntry());
 			stmt.setString(6, po.getNote());
-			stmt.setString(7, po.getID());
+			stmt.setString(7, po.getGenerateTime());
+			stmt.setString(8, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -95,39 +98,14 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public String generaId(String date) {
 		// TODO Auto-generated method stub
-		String sql="select * from paymentorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateOrderId(date, "paymentorder");
 	}
 
 	@Override
 	public ResultMessage add(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into paymentorder(ID,date,amount,payer,bankaccount,entry,note)values(?,?,?,?,?,?,?)";
+		String sql="insert into paymentorder(ID,date,amount,payer,bankaccount,entry,note,generateTime)values(?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -137,6 +115,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(5, po.getBankAccount());
 			stmt.setString(6, po.getEntry());
 			stmt.setString(7, po.getNote());
+			stmt.setString(8, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -166,6 +145,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				po.setBankAccount(rs.getString(5));
 				po.setEntry(rs.getString(6));
 				po.setNote(rs.getString(7));
+				po.setGenerateTime(rs.getString(8));
 				jb1.setPOObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}

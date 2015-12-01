@@ -5,54 +5,47 @@ import java.io.Serializable;
 import state.TransportType;
 
 public class TransferOrderlineitemPO implements Serializable{
-	private String id;
-	private String date;
-	private String startingAdd;
-	private String endAdd;
-	private String vehiclesId;
-	private int carriage;
-	private TransportType transportType;
+	private String ID;
+	private String loadingDate;
+	private String destination;
+	private double carriage;
+	private TransportType tranType;
+	private String vehicleNum;
 	
-	public String getId() {
-		return id;
+	public String getID() {
+		return ID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public String getDate() {
-		return date;
+	public String getLoadingDate() {
+		return loadingDate;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setLoadingDate(String loadingDate) {
+		this.loadingDate = loadingDate;
 	}
-	public String getStartingAdd() {
-		return startingAdd;
+	public String getDestination() {
+		return destination;
 	}
-	public void setStartingAdd(String startingAdd) {
-		this.startingAdd = startingAdd;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
-	public String getEndAdd() {
-		return endAdd;
-	}
-	public void setEndAdd(String endAdd) {
-		this.endAdd = endAdd;
-	}
-	public String getVehiclesId() {
-		return vehiclesId;
-	}
-	public void setVehiclesId(String vehiclesId) {
-		this.vehiclesId = vehiclesId;
-	}
-	public int getCarriage() {
+	public double getCarriage() {
 		return carriage;
 	}
-	public void setCarriage(int carriage) {
+	public void setCarriage(double carriage) {
 		this.carriage = carriage;
 	}
-	public TransportType getTransportType() {
-		return transportType;
+	public TransportType getTranType() {
+		return tranType;
 	}
-	public void setTransportType(TransportType transportType) {
-		this.transportType = transportType;
+	public void setTranType(TransportType tranType) {
+		this.tranType = tranType;
+	}
+	public String getVehicleNum() {
+		return vehicleNum;
+	}
+	public void setVehicleNum(String vehicleNum) {
+		this.vehicleNum = vehicleNum;
 	}
 }

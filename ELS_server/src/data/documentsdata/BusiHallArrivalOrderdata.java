@@ -13,6 +13,7 @@ import java.util.Date;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.GoodState;
@@ -32,8 +33,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
     JavaBean1 jb1;
     BusiHallArrivalOrderPO po;
     TransferOrderlineitemPO llpo;
-    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date now=new Date();
+    GenerateId g;
     
 	public TransferOrderlineitemPO addTransferOrder(String id) {    //ÖÐ×ªµ¥ID
 		// TODO Auto-generated method stub
@@ -55,7 +55,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 			stmt.setString(4, po.getTransferOrderID());
 			stmt.setString(5, po.getOrigin());
 			stmt.setString(6, po.getGoodState().toString());
-			stmt.setString(7, sdf.format(now));
+			stmt.setString(7, po.getGenerateTime());
 			stmt.executeUpdate();
             return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -158,11 +158,12 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 		ArrayList<BusiHallArrivalOrderPO> pos = new ArrayList<BusiHallArrivalOrderPO>();
 		String sql="SELECT * FROM busihallarrivalorder";
 		String substr;
+		
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery(); 
-
+			
 			while(rs.next()){
 				jb1.setResultMessage(ResultMessage.Success);
 				substr=rs.getString(7).substring(0, 10);
@@ -197,33 +198,8 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 	@Override
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
-		String sql="select * from busihallarrivalorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateOrderId(date, "busihallarrivalorder");
 	}
 
 	@Override

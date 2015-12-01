@@ -1,17 +1,16 @@
 package po.documentsPO;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-import vo.documentsVO.PaymentOrderVO;
 public class PaymentOrderPO implements Serializable{
-		private String ID;
+	 private String ID;
 	    private String date;
 	    private double amount;
 	    private String payer;
 	    private String bankAccount;
 	    private String entry;
 	    private String note;
+	    private String generateTime;
 		public String getID() {
 			return ID;
 		}
@@ -53,5 +52,11 @@ public class PaymentOrderPO implements Serializable{
 		}
 		public void setNote(String note) {
 			this.note = note;
+		}
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
 		}
 }

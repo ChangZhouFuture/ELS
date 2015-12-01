@@ -9,6 +9,7 @@ public class ReceivablesOrderPO implements Serializable{
 	    private String courier;
 	    ArrayList<String> orderIDs=new ArrayList<>();
 	    private String date;
+	    private String generateTime;
 		public String getID() {
 			return ID;
 		}
@@ -38,5 +39,11 @@ public class ReceivablesOrderPO implements Serializable{
 		}
 		public void setDate(String date) {
 			this.date = date;
+		}
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
 		}
 }

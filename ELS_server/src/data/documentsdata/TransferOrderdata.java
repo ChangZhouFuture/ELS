@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.documentsPO.TransferOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
@@ -28,6 +29,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	Connection con=db.getConnection();
 	PreparedStatement stmt;
 	JavaBean1 jb1;
+	GenerateId g;
 	@Override
 	public ResultMessage addTransferOrder(String id, TransportType tst,
 			String sa, String ea, ArrayList<String> oidl, String d,
@@ -73,35 +75,10 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	}
 
 	@Override
-	public String generateId(String date) {
+	public String generateId(String date,String trancenId) {
 		// TODO Auto-generated method stub
-		String sql="select * from transferorder where date='"+date+"'";
-		String sub,subId;
-		int x;
-		int last=0;
-		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			if(!rs.next()){
-				return date+"0001";
-			}
-			while(rs.next()){
-				sub=rs.getString(1).substring(8);
-				x=Integer.parseInt(sub);
-				if(x>last){
-					last=x;
-				}
-			}
-			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
-				subId="0"+subId;
-			}
-			return date+subId;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		g=new GenerateId();
+		return g.generateTransferOrderId(date, trancenId);
 	}
 
 }

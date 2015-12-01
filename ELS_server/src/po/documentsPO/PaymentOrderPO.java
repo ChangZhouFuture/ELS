@@ -10,6 +10,7 @@ public class PaymentOrderPO implements Serializable{
 	    private String bankAccount;
 	    private String entry;
 	    private String note;
+	    private String generateTime;
 		public String getID() {
 			return ID;
 		}
@@ -51,5 +52,11 @@ public class PaymentOrderPO implements Serializable{
 		}
 		public void setNote(String note) {
 			this.note = note;
+		}
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
 		}
 }

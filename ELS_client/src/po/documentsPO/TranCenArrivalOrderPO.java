@@ -54,6 +54,4 @@ import state.GoodState;
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
 		}
-	}
-	
-
+ }

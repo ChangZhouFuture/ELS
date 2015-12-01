@@ -15,6 +15,7 @@ import java.util.ArrayList;
 		private String supervisionMan;
 		ArrayList<String> orderIDs=new ArrayList<>();
 		private double carriage;
+		private String generateTime;
 		public String getID() {
 			return ID;
 		}
@@ -68,5 +69,11 @@ import java.util.ArrayList;
 		}
 		public void setCarriage(double carriage) {
 			this.carriage = carriage;
+		}
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
 		}
  }

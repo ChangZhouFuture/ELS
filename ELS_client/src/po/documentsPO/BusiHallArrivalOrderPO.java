@@ -6,7 +6,6 @@ import java.io.Serializable;
 import state.GoodState;
 
  public class BusiHallArrivalOrderPO implements Serializable{
- 
 	 private String Id;
 		private String busiHallID;
 		private String arrivalDate;
@@ -56,4 +55,5 @@ import state.GoodState;
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
 		}
+
  }
