@@ -6,16 +6,11 @@ import state.AgencyType;
 
 public class AgencyPO implements Serializable{
     private String ID;
-    private String district;
+    private String region;
     private String city;
     private AgencyType agencyType;
     
-	public String getDistrict() {
-		return district;
-	}
-	public void setDistrict(String district) {
-		this.district = district;
-	}
+	
 	public String getID() {
 		return ID;
 	}
@@ -33,6 +28,12 @@ public class AgencyPO implements Serializable{
 	}
 	public void setAgencyType(AgencyType agencyType) {
 		this.agencyType = agencyType;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	
     

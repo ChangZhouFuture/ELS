@@ -3,6 +3,7 @@ package dataservice.inforManagementdataservice;
 import java.rmi.Remote;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.inforManagementPO.BankAccountPO;
 import state.ResultMessage;
 
@@ -15,5 +16,5 @@ public interface BankAccountInfordataservice extends Remote{
     
     public ResultMessage update(BankAccountPO po);
     
-    public BankAccountPO find(String Id);
+    public JavaBean1 find(String Id);
 }

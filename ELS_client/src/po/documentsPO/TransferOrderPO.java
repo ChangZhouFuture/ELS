@@ -3,12 +3,15 @@ package po.documentsPO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import state.TransportType;
+
  
  public class TransferOrderPO implements Serializable{
  
 	 private String ID;
 		private String loadingDate;
-		private String flightNum;
+		private TransportType transportType;
+		private String vehicleNum;
 		private String origin;
 		private String destination;
 		private String containerNum;
@@ -16,6 +19,19 @@ import java.util.ArrayList;
 		ArrayList<String> orderIDs=new ArrayList<>();
 		private double carriage;
 		private String generateTime;
+		
+		public TransportType getTransportType() {
+			return transportType;
+		}
+		public void setTransportType(TransportType transportType) {
+			this.transportType = transportType;
+		}
+		public String getVehicleNum() {
+			return vehicleNum;
+		}
+		public void setVehicleNum(String vehicleNum) {
+			this.vehicleNum = vehicleNum;
+		}
 		public String getID() {
 			return ID;
 		}
@@ -27,12 +43,6 @@ import java.util.ArrayList;
 		}
 		public void setLoadingDate(String loadingDate) {
 			this.loadingDate = loadingDate;
-		}
-		public String getFlightNum() {
-			return flightNum;
-		}
-		public void setFlightNum(String flightNum) {
-			this.flightNum = flightNum;
 		}
 		public String getOrigin() {
 			return origin;

@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import po.inforManagementPO.StaffPO;
+import bean.JavaBean1;
+import po.userPO.UserPO;
+import state.AgencyType;
 import state.Gender;
 import state.PayType;
 import state.Position;
@@ -23,104 +25,57 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
-    StaffPO po;
+    UserPO po;
+    JavaBean1 jb1;
     
     public StaffInfordata() throws RemoteException {
     	super();
     	// TODO Auto-generated constructor stub
     }
     
-    public ResultMessage add(StaffPO po){
-		try {
-			stmt = con.prepareStatement("INSERT INTO staff(ID,name,gender,birthDate,identyNum,phone,agency,position,payType,payAmount,percentage) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-			stmt.setString(1, po.getID());
-		    stmt.setString(2, po.getName());
-		    stmt.setString(3, po.getGender().toString());
-		    stmt.setString(4, po.getBirthDate());
-		    stmt.setString(5, po.getIdentyNum());
-		    stmt.setString(6, po.getPhone());
-		    stmt.setString(7, po.getAgency());
-		    stmt.setString(8, po.getPosition().toString());
-		    stmt.setString(9, po.getPayType().toString());
-		    stmt.setDouble(10, po.getPayAmount());
-		    stmt.setString(11, po.getPercentage());
-		    stmt.executeUpdate();
-		    return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.Fail;
-		}
-    }
     
-    public StaffPO find(String Id){
-    	po = new StaffPO();
+    public JavaBean1 find(String Id){
+    	po = new UserPO();
+    	jb1=new JavaBean1();
+    	jb1.setResultMessage(ResultMessage.NotExist);
 		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE ID='"+Id+"'");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE ID='"+Id+"'");
 			ResultSet rs=ps.executeQuery(); 
 			if(rs.next()){
-			    po.setID(Id);
+			    po.setId(Id);
 		        po.setName(rs.getString("name"));
+		        po.setPassword(rs.getString("password"));
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setBirthDate(rs.getString("birthDate"));
 		        po.setIdentyNum(rs.getString("identyNum"));
 		        po.setPhone(rs.getString("phone"));
-		        po.setAgency(rs.getString("agency"));
+		        po.setCity(rs.getString("city"));
+		        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
+		        po.setRegion(rs.getString("region"));
+		        po.setAgencyID(rs.getString("agencyID"));
 		        po.setPosition(Position.valueOf(rs.getString("position")));
 		        po.setPayType(PayType.valueOf(rs.getString("payType")));
 		        po.setPayAmount(rs.getDouble("payAmount"));
 		        po.setPercentage(rs.getString("percentage"));
-			}
+		        jb1.setPOObject(po);
+		        jb1.setResultMessage(ResultMessage.Success);
+			}return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		}
-		return po;
     }
     
-    public ResultMessage deleteOne(String Id){
+   
+    public ResultMessage update(UserPO po){
 		try {
-			stmt=con.prepareStatement("DELETE FROM staff WHERE ID=?");
-			stmt.setString(1, Id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-    }
-    
-    public ResultMessage deleteMany(ArrayList<String> Ids){
-    	try {
-    		for(int i=0;i<Ids.size();i++){
-			stmt=con.prepareStatement("DELETE FROM staff WHERE ID=?");
-			stmt.setString(1, Ids.get(i));
-			stmt.executeUpdate();
-    		}
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-    }
-    
-    public ResultMessage update(StaffPO po){
-		try {
-			String sql=("UPDATE drivers SET name=?,gender=?,birthDate=?,identyNum=?,phone=?,agency=?,position=?,payType=?,payAmount=?,percentage=? WHERE ID=?");
+			String sql=("UPDATE user SET payType=?,payAmount=?,percentage=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, po.getName());
-		    stmt.setString(2, po.getGender().toString());
-		    stmt.setString(3, po.getBirthDate());
-		    stmt.setString(4, po.getIdentyNum());
-		    stmt.setString(5, po.getPhone());
-		    stmt.setString(6, po.getAgency());
-		    stmt.setString(7, po.getPosition().toString());
-		    stmt.setString(8, po.getPayType().toString());
-		    stmt.setDouble(9, po.getPayAmount());
-		    stmt.setString(10, po.getPercentage());
+		    stmt.setString(1, po.getPayType().toString());
+		    stmt.setDouble(2, po.getPayAmount());
+		    stmt.setString(3, po.getPercentage());
+		    stmt.setString(4, po.getId());
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

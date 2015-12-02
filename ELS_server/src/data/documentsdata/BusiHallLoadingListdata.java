@@ -161,6 +161,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 				if(rs.getString("generateTime").substring(0,10).equals(date)){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setLoadingDate(date);
+			        llpo.setID(rs.getString(1));
 					llpo.setDestination(rs.getString(5));
 					llpo.setTruckNum(rs.getString(4));
 					llpo.setCarriage(rs.getDouble(10));

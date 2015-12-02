@@ -30,49 +30,177 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	PreparedStatement stmt;
 	JavaBean1 jb1;
 	GenerateId g;
+	TransferOrderPO po;
+	TransferOrderlineitemPO llpo;
+
 	@Override
-	public ResultMessage addTransferOrder(String id, TransportType tst,
-			String sa, String ea, ArrayList<String> oidl, String d,
-			String hbid, String hgid, String Jzy) {
+	public ResultMessage addTransferOrder(TransferOrderPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="insert into transferorder(ID,loadingDate,transportType,vehicleNum,origin,destination,containerNum,supervisionMan,orderIDs,carriage,generateTime)"
+				+"values(?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, po.getID());
+			stmt.setString(2, po.getLoadingDate());
+			stmt.setString(3, po.getTransportType().toString());
+			stmt.setString(4, po.getVehicleNum());
+			stmt.setString(5, po.getOrigin());
+			stmt.setString(6, po.getDestination());
+			stmt.setString(7, po.getContainerNum());
+			stmt.setString(8, po.getSupervisionMan());
+			ArrayList<String> arr=po.getOrderIDs();
+			String str="";
+			for(int i=0;i<arr.size();i++){
+				str=str+arr.get(i)+";";
+			}str=str.substring(0, str.length()-1);
+			stmt.setString(9, str);
+			stmt.setDouble(10, po.getCarriage());
+			stmt.setString(11, po.getGenerateTime());
+			stmt.executeUpdate();
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.Fail;
+		}
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
+	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="delete from transferorder where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.executeUpdate();
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="delete from transferorder where ID=?";
+		try {
+			for(int i=0;i<idlist.size();i++){
+				stmt=con.prepareStatement(sql);
+				stmt.setString(1, idlist.get(i));
+				stmt.executeUpdate();
+			}
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
 	}
 
 	@Override
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		po=new TransferOrderPO();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		String sql="select * from transferorder where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()){
+				po.setID(id);
+				po.setLoadingDate(rs.getString(2));
+				po.setTransportType(TransportType.valueOf(rs.getString(3)));
+				po.setVehicleNum(rs.getString(4));
+				po.setOrigin(rs.getString(5));
+				po.setDestination(rs.getString(6));
+				po.setContainerNum(rs.getString(7));
+				po.setSupervisionMan(rs.getString(8));
+				String str=rs.getString(9);
+				String[] s=str.split(";");
+				ArrayList<String> arr=new ArrayList<>();
+				for(int i=0;i<s.length;i++){
+					arr.add(i, s[i]);
+				}po.setOrderIDs(arr);
+				po.setCarriage(rs.getDouble(10));
+				po.setGenerateTime(rs.getString(11));
+				jb1.setPOObject(po);
+				jb1.setResultMessage(ResultMessage.Success);
+			}
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 
 	@Override
-	public JavaBean1 findB(String time) {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		return null;
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		llpo=new TransferOrderlineitemPO();
+		ArrayList<TransferOrderlineitemPO> llpos=new ArrayList<>();
+		String sql="select * from transferorder";
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("generateTime").substring(0, 10).equals(date)){
+					jb1.setResultMessage(ResultMessage.Success);
+					llpo.setID(rs.getString(1));
+					llpo.setLoadingDate(rs.getString(2));
+					llpo.setTranType(TransportType.valueOf(rs.getString(3)));
+					llpo.setVehicleNum(rs.getString(4));
+					llpo.setDestination(rs.getString(6));
+					llpo.setCarriage(rs.getDouble(10));
+					llpos.add(llpo);
+				}
+			}jb1.setPOObject(llpos);
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 
 	@Override
-	public ResultMessage update(TransferOrderPO transferOrderPO) {
+	public ResultMessage update(TransferOrderPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="update transferorder set loadingDate=?,transportType=?,vehicleNum=?,origin=?,destination=?,containerNum=?,"
+				+ "supervisionMan=?,orderIDs=?,carriage=?,generateTime=? where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, po.getLoadingDate());
+			stmt.setString(2, po.getTransportType().toString());
+			stmt.setString(3, po.getVehicleNum());
+			stmt.setString(4, po.getOrigin());
+			stmt.setString(5, po.getDestination());
+			stmt.setString(6, po.getContainerNum());
+			stmt.setString(7, po.getSupervisionMan());
+			ArrayList<String> arr=po.getOrderIDs();
+			String str="";
+			for(int i=0;i<arr.size();i++){
+				str=str+arr.get(i)+";";
+			}str=str.substring(0, str.length()-1);
+			stmt.setString(8, str);
+			stmt.setDouble(9, po.getCarriage());
+			stmt.setString(10, po.getGenerateTime());
+			stmt.setString(11, po.getID());
+			stmt.executeUpdate();
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
 	}
 
-	@Override
-	public TransferOrderlineitemPO getTransferOrderlineitemPO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String generateId(String date,String trancenId) {

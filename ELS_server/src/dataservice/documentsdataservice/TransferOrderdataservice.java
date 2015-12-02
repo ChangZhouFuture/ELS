@@ -29,14 +29,14 @@ import state.TransportType;
 	 * @param Jzy
 	 * @return 一个中转单
 	 */
-	public ResultMessage addTransferOrder(String id,TransportType tst,String sa,String ea,ArrayList<String> oidl,String d,String hbid,String hgid,String Jzy);
+	public ResultMessage addTransferOrder(TransferOrderPO po);
 	
 	/**
 	 * 前置：要删除的中转单在PO中有记录
 	 * 后置：删除一个中转单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteone(String id);
+	public ResultMessage deleteOne(String id);
 	
 	/**
 	 * 前置：要删除的中转单在PO中有记录
@@ -59,15 +59,14 @@ import state.TransportType;
 	 * @param time
 	 * @return 中转单列表
 	 */
-	public JavaBean1 findB(String time);
+	public JavaBean1 findB(String date);
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public ResultMessage update(TransferOrderPO transferOrderPO);
-	
-	public TransferOrderlineitemPO getTransferOrderlineitemPO();
+	public ResultMessage update(TransferOrderPO po);
+
 	
 	public String generateId(String date,String trancenId);
  }

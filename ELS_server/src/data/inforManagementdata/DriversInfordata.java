@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.inforManagementPO.DriversPO;
 import state.Gender;
 import state.ResultMessage;
@@ -17,6 +18,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	    Statement sm;
 	    PreparedStatement stmt;
 	    DriversPO po;
+	    JavaBean1 jb1;
 	    
 	    public DriversInfordata() throws RemoteException {
 	    	super();
@@ -44,8 +46,10 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	}
 	
 	//查找司机信息
-	public DriversPO find(String Id){
+	public JavaBean1 find(String Id){
 		po = new DriversPO();
+		jb1=new JavaBean1();
+			jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM driver WHERE ID='"+Id+"'");
 			
@@ -59,12 +63,16 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setPhone(rs.getString("phone"));
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
+		        jb1.setResultMessage(ResultMessage.Success);
+		        jb1.setPOObject(po);
 			}
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		}
-		return po;
+
 	}
 	
 	//删除司机信息

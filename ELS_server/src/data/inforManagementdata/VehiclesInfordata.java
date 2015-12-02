@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.inforManagementPO.VehiclesPO;
 import state.ResultMessage;
 import data.utility.Database;
@@ -20,6 +21,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
     Statement sm;
     PreparedStatement stmt;
     VehiclesPO po;
+    JavaBean1 jb1;
     
     public VehiclesInfordata() throws RemoteException {
     	super();
@@ -41,8 +43,10 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 		}
     }
     
-    public VehiclesPO find(String Id){
+    public JavaBean1 find(String Id){
     	po = new VehiclesPO();
+    	jb1=new JavaBean1();
+    	jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM vehicles WHERE ID='"+Id+"'");
 			ResultSet rs=ps.executeQuery(); 
@@ -50,12 +54,16 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			    po.setID(Id);
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getInt("serviceTime"));
+		        jb1.setPOObject(po);
+		        jb1.setResultMessage(ResultMessage.Success);
 			}
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return jb1;
 		}
-		return po;
+		
     }
     
     public ResultMessage deleteOne(String Id){

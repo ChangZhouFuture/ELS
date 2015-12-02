@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import bean.JavaBean1;
 import po.inforManagementPO.AgencyPO;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
@@ -20,6 +22,7 @@ public class AgencyInfordata  extends UnicastRemoteObject implements AgencyInfor
     Statement sm;
     PreparedStatement stmt;
     AgencyPO po;
+    JavaBean1 jb1;
     
     public AgencyInfordata() throws RemoteException {
     	super();
@@ -28,10 +31,11 @@ public class AgencyInfordata  extends UnicastRemoteObject implements AgencyInfor
 //增加新机构信息
 public ResultMessage add(AgencyPO po){
 	try {
-		stmt = con.prepareStatement("INSERT INTO agency(ID,city,agencyType) VALUES(?,?,?)");
+		stmt = con.prepareStatement("INSERT INTO agency(ID,agencyType,city,region) VALUES(?,?,?,?)");
 		stmt.setString(1, po.getID());
-	    stmt.setString(2, po.getCity());
-	    stmt.setString(3, po.getAgencyType().toString());
+	    stmt.setString(2, po.getAgencyType().toString());
+	    stmt.setString(3, po.getCity());
+	    stmt.setString(4, po.getRegion());
 	    stmt.executeUpdate();
 	    return ResultMessage.Success;
 	} catch (SQLException e) {
@@ -42,9 +46,11 @@ public ResultMessage add(AgencyPO po){
 }
 
 //查找机构信息
-public AgencyPO find(String Id){
+public JavaBean1 find(String Id){
 	
 	po = new AgencyPO();
+	jb1=new JavaBean1();
+	jb1.setResultMessage(ResultMessage.NotExist);
 	try {
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM agency WHERE ID='"+Id+"'");
 		
@@ -52,15 +58,18 @@ public AgencyPO find(String Id){
 		ResultSet rs=ps.executeQuery(); 
 		if(rs.next()){
 		    po.setID(Id);
+		    po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 	        po.setCity(rs.getString("city"));
-	        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
-	        
+	        po.setRegion(rs.getString("region"));
+	        jb1.setPOObject(po);
+	        jb1.setResultMessage(ResultMessage.Success);
 		}
+		return jb1;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		return jb1;
 	}
-	return po;
 }
 
 //删除机构信息
@@ -97,11 +106,12 @@ public ResultMessage deleteMany(ArrayList<String> Ids) {
 //修改机构信息
 public ResultMessage update(AgencyPO po){
 	try {
-		String sql=("UPDATE agency SET city=?,agencyType=? WHERE ID=?");
-		stmt=con.prepareStatement(sql);
-		stmt.setString(1, po.getCity());
-		stmt.setString(2, po.getAgencyType().toString());
-		stmt.setString(3, po.getID());
+		String sql=("UPDATE agency SET agencyType=?,city=?,region=? WHERE ID=?");
+		stmt=con.prepareStatement(sql);	
+		stmt.setString(1, po.getAgencyType().toString());
+		stmt.setString(2, po.getCity());
+		stmt.setString(3, po.getRegion());
+		stmt.setString(4, po.getID());
 		stmt.executeUpdate();
 		return ResultMessage.Success;
 	} catch (SQLException e) {

@@ -50,20 +50,6 @@ public class StaffInfor implements StaffInforblservice{
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		rm=staffdataservice.deleteOne(Id);
-		return rm;
-	}
-
-	@Override
-	public ResultMessage deleteMany(ArrayList<String> Ids) {
-		// TODO Auto-generated method stub
-		rm=staffdataservice.deleteMany(Ids);
-		return rm;
-	}
-
-	@Override
 	public ResultMessage modify(StaffVO vo) {
 		// TODO Auto-generated method stub
 //		po=new StaffPO();
@@ -79,6 +65,18 @@ public class StaffInfor implements StaffInforblservice{
 //		po.setPayType(vo.getPayType());
 //		rm=staffdataservice.update(po);
 		return rm;
+	}
+
+	@Override
+	public ResultMessage deleteOne(String Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage deleteMany(ArrayList<String> Ids) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

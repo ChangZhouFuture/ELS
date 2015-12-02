@@ -2,9 +2,8 @@ package dataservice.inforManagementdataservice;
 
 import java.rmi.Remote;
 import java.util.ArrayList;
-
+import bean.JavaBean1;
 import po.inforManagementPO.VehiclesPO;
-import po.lineitemPO.inforManagementlineitemPO.VehicleslineitemPO;
 import state.ResultMessage;
 
 public interface VehiclesInfordataservice extends Remote{
@@ -51,6 +50,6 @@ public interface VehiclesInfordataservice extends Remote{
 	 * 前置条件：要查询的车辆信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public VehiclesPO find(String Id);
+	public JavaBean1 find(String Id);
 	
 }

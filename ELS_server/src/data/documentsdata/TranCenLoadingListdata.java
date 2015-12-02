@@ -183,6 +183,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			while(rs.next()){
 				if(rs.getString("generateTime").substring(0,10).equals(date)){
 					jb1.setResultMessage(ResultMessage.Success);
+					llpo.setID(rs.getString(1));
 					llpo.setLoadingDate(date);
 					llpo.setDestination(rs.getString(5));
 					llpo.setTruckNum(rs.getString(4));

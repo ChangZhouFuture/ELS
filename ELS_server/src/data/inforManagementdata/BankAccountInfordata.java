@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.inforManagementPO.BankAccountPO;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -21,6 +22,7 @@ public class BankAccountInfordata extends UnicastRemoteObject implements BankAcc
     Statement sm;
     PreparedStatement stmt;
     BankAccountPO po;
+    JavaBean1 jb1;
     
     public BankAccountInfordata() throws RemoteException {
     	super();
@@ -42,8 +44,10 @@ public ResultMessage add(BankAccountPO po){
 }
 
 //查找银行账户信息
-public BankAccountPO find(String name){
+public JavaBean1 find(String name){
 	po = new BankAccountPO();
+	jb1=new JavaBean1();
+	jb1.setResultMessage(ResultMessage.NotExist);
 	try {
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM bankAccount WHERE name='"+name+"'");
 		
@@ -52,12 +56,15 @@ public BankAccountPO find(String name){
 		if(rs.next()){
 		    po.setName(name);
 	        po.setAmount(rs.getDouble("amount"));
+	        jb1.setResultMessage(ResultMessage.Success);
+	        jb1.setPOObject(po);
 		}
+		return jb1;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		return jb1;
 	}
-	return po;
 }
 
 //删除银行信息
