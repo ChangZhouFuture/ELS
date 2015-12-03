@@ -1,8 +1,9 @@
 package bean;
 
+import java.io.Serializable;
 import state.ResultMessage;
 
-public class JavaBean1 {
+public class JavaBean1 implements Serializable{
 	private Object Object;
 	private ResultMessage resultMessage;
 	

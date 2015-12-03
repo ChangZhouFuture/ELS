@@ -1,6 +1,7 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.documentsPO.TranCenArrivalOrderPO;
@@ -13,7 +14,7 @@ import state.ResultMessage;
  */
 public interface TranCenArrivalOrderdataservice extends Remote{
 	
-public TransferOrderlineitemPO addTransferOrder(String id);
+public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteException;
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
@@ -26,7 +27,8 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 * @param tcid
 	 * @return 一个中转中心到达单
 	 */
-	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tanCenArrivalOrderPO);
+	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tanCenArrivalOrderPO)
+	throws RemoteException;
 	
 	/**
 	 * 前置：要删除的中转中心到达单在PO中有记录
@@ -34,14 +36,14 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 * @param id
 	 * @return 
 	 */
-	public ResultMessage deleteOne(String id);
+	public ResultMessage deleteOne(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
 	 * 后置：删除一个中转中心到达单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteMany(ArrayList<String> idlist);
+	public ResultMessage deleteMany(ArrayList<String> idlist) throws RemoteException; 
 	
 	/**
 	 * 前置：要查询的中转中心到达单在PO中有记录
@@ -49,7 +51,7 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 * @param id
 	 * @return 中转中心到达单信息
 	 */
-	public JavaBean1 findA(String id);
+	public JavaBean1 findA(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要查询的中转中心到达单在PO中有记录
@@ -57,21 +59,22 @@ public TransferOrderlineitemPO addTransferOrder(String id);
 	 * @param time
 	 * @return 中转中心到达单列表
 	 */
-	public JavaBean1 findB(String time);
+	public JavaBean1 findB(String time) throws RemoteException;
 	
 	/**
 	 * 后置：查询所有中转中心到达单
 	 * @return
 	 */
-	public ArrayList<TranCenArrivalOrderPO> findC();
+	public ArrayList<TranCenArrivalOrderPO> findC() throws RemoteException;
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public ResultMessage update(TranCenArrivalOrderPO tranCenArrivalOrderPO);
+	public ResultMessage update(TranCenArrivalOrderPO tranCenArrivalOrderPO) throws 
+	RemoteException;
 	
-	public String generateId(String date);
+	public String generateId(String date) throws RemoteException;
 	
-	public String generateStartAdd();
+	public String generateStartAdd() throws RemoteException;
  }

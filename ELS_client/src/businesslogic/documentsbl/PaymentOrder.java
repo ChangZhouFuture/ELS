@@ -1,7 +1,7 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import po.documentsPO.PaymentOrderPO;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import state.ResultMessage;
@@ -31,7 +31,11 @@ public class PaymentOrder implements PaymentOrderblservice {
 	
 	@Override
 	public ResultMessage addPaymentAccount(String accountName) {
-		resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
+		try {
+			resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
@@ -49,32 +53,68 @@ public class PaymentOrder implements PaymentOrderblservice {
 
 	@Override
 	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			resultMessage = paymentOrderdataservice.deleteOne(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			resultMessage = paymentOrderdataservice.deleteMany(idList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage modify(PaymentOrderVO paymentOrderVO) {
-		// TODO Auto-generated method stub
-		return null;
+		paymentOrderPO = new PaymentOrderPO();
+		this.paymentOrderVO = paymentOrderVO;
+		
+		VOtoPO();
+		try {
+			resultMessage = paymentOrderdataservice.update(paymentOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			javaBean1 = paymentOrderdataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<PaymentOrderPO>)javaBean1.getObject();
+		
+		POtoVO(1);
+		javaBean1.setObject(arrayList2);
+		
+		return javaBean1;
 	}
 
 	@Override
 	public JavaBean1 inquireB(String date) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			javaBean1 = paymentOrderdataservice.findB(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<PaymentOrderPO>)javaBean1.getObject();
+		int k = arrayList.size();
+		
+		POtoVO(k);
+		javaBean1.setObject(arrayList2);
+		
+		return javaBean1;
 	}
 
 	@Override
@@ -85,7 +125,13 @@ public class PaymentOrder implements PaymentOrderblservice {
 
 	@Override
 	public String generateId() {
-		String id = date+paymentOrderdataservice.generaId(date);
+		String id;
+		try {
+			id = date+paymentOrderdataservice.generaId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return id;
 	}
 
@@ -103,12 +149,24 @@ public class PaymentOrder implements PaymentOrderblservice {
 		paymentOrderPO.setEntry(paymentOrderVO.getEntry());
 		paymentOrderPO.setNote(paymentOrderVO.getNote());
 		paymentOrderPO.setPayer(paymentOrderVO.getPayer());
-		
 	}
 
 	@Override
-	public void POtoVO() {
-		// TODO Auto-generated method stub
+	public void POtoVO(int k) {
+		arrayList2 = new ArrayList<PaymentOrderVO>();
+		
+		for (int i = 0; i < k; i++) {
+			paymentOrderPO = arrayList.get(i);
+			
+			paymentOrderVO = new PaymentOrderVO();
+			paymentOrderVO.setDate(paymentOrderPO.getDate());
+			paymentOrderVO.setAmount(paymentOrderPO.getAmount());
+			paymentOrderVO.setPayer(paymentOrderPO.getPayer());
+			paymentOrderVO.setBankAccount(paymentOrderPO.getBankAccount());
+			paymentOrderVO.setEntry(paymentOrderPO.getEntry());
+			
+			arrayList2.add(paymentOrderVO);
+		}
 		
 	}
 

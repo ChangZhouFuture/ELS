@@ -1,12 +1,9 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
-import state.GoodState;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
-import vo.lineitemVO.documentslineitemVO.TranCenArrivalOrderlineitemVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 
 /**

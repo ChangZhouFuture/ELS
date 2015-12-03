@@ -1,5 +1,6 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 import po.documentsPO.BusiHallArrivalOrderPO;
@@ -40,7 +41,13 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	@Override
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
-		String startAdd = busiHallArrivalOrderdataservice.generateStartAdd(transferOrderId);
+		String startAdd;
+		try {
+			startAdd = busiHallArrivalOrderdataservice.generateStartAdd(transferOrderId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return startAdd;
 	}
 
@@ -66,8 +73,12 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.busiHallArrivalOrderVO.setId(generateId());
 		VOtoPO();
 		
-		resultMessage = busiHallArrivalOrderdataservice.
-			addBusiHallArrivalOrder(busiHallArrivalOrderPO);
+		try {
+			resultMessage = busiHallArrivalOrderdataservice.
+				addBusiHallArrivalOrder(busiHallArrivalOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		javaBean1.setObject(this.busiHallArrivalOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -78,7 +89,13 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	public String generateId() {              
 		//生成营业厅到达单Id
 		//调用数据层方法，0000000七位数字往后顺延
-		String id = busiHallArrivalOrderdataservice.generateId(date);	
+		String id;
+		try {
+			id = busiHallArrivalOrderdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}	
 		return id;
 	}
 
@@ -88,40 +105,59 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.busiHallArrivalOrderVO = arrivalOrder4BusiHallVO;
 		
 		VOtoPO();
-		resultMessage = busiHallArrivalOrderdataservice.
-				update(busiHallArrivalOrderPO);
+		try {
+			resultMessage = busiHallArrivalOrderdataservice.
+					update(busiHallArrivalOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = busiHallArrivalOrderdataservice.deleteOne(id);
+		try {
+			resultMessage = busiHallArrivalOrderdataservice.deleteOne(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
-		resultMessage = busiHallArrivalOrderdataservice.deleteMany(idlist);
+		try {
+			resultMessage = busiHallArrivalOrderdataservice.deleteMany(idlist);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		javaBean1 = busiHallArrivalOrderdataservice.findA(id);
+		try {
+			javaBean1 = busiHallArrivalOrderdataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		
 		POtoVO(1);
 		javaBean1.setObject(arrayList2);
-		
 		return javaBean1;
 	}
 
 	@Override
 	public JavaBean1 inquireB(String date) {
-		javaBean1 = busiHallArrivalOrderdataservice.findB(date);
+		try {
+			javaBean1 = busiHallArrivalOrderdataservice.findB(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();
 		
@@ -132,7 +168,11 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	
 	@Override
 	public ArrayList<BusiHallArrivalOrderVO> inquireC() {
-		arrayList = busiHallArrivalOrderdataservice.findC();
+		try {
+			arrayList = busiHallArrivalOrderdataservice.findC();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		int k = arrayList.size();
 		
 		POtoVO(k);

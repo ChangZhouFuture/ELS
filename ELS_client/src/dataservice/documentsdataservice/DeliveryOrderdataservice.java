@@ -1,6 +1,7 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.documentsPO.DeliveryOrderPO;
@@ -12,7 +13,7 @@ import state.ResultMessage;
  */
  public interface DeliveryOrderdataservice extends Remote{
  
-	 public OrderlineitemPO addOrder(String id);
+	 public OrderlineitemPO addOrder(String id) throws RemoteException;
 	 
 	/**
 	 * 前置：营业厅业务员已输入所有参数
@@ -24,21 +25,21 @@ import state.ResultMessage;
 	 * @param d
 	 * @return 一个派件单
 	 */
-	public ResultMessage addDeliveryOrder(DeliveryOrderPO deliveryOrderPO);
+	public ResultMessage addDeliveryOrder(DeliveryOrderPO deliveryOrderPO) throws RemoteException;
 	
 	/**
 	 * 前置：要删除的派件单在PO有记录
 	 * 后置：删除一个派件单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteone(String id);
+	public ResultMessage deleteone(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要删除的派件单在PO中有记录
 	 * 后置：删除多个派件单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteMany(ArrayList<String> idlist);
+	public ResultMessage deleteMany(ArrayList<String> idlist) throws RemoteException;
 	
 //	/**
 //	 * 前置：要修改的派件单在PO中有记录
@@ -57,7 +58,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 派件单信息
 	 */
-	public JavaBean1 findA(String id);
+	public JavaBean1 findA(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要查询的派件单在PO中有记录
@@ -65,14 +66,14 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 派件单列表
 	 */
-	public JavaBean1 findB(String time);
+	public JavaBean1 findB(String time) throws RemoteException;
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新涉及的领域对象的数据
 	 */
-	public ResultMessage update(DeliveryOrderPO deliveryOrderPO);
+	public ResultMessage update(DeliveryOrderPO deliveryOrderPO) throws RemoteException;
 	
-	public String generateId(String date);
+	public String generateId(String date) throws RemoteException;
 	
  }

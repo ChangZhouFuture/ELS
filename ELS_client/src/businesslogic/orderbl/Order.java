@@ -41,7 +41,11 @@ public class Order implements Orderblservice {
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		
+		try {
+			orderdataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

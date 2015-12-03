@@ -1,5 +1,6 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import po.documentsPO.DeliveryOrderPO;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
@@ -58,7 +59,11 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		this.deliveryOrderVO.setID(generateId());
 		VOtoPO();
 		
-		resultMessage = deliveryOrderdataservice.addDeliveryOrder(this.deliveryOrderPO);
+		try {
+			resultMessage = deliveryOrderdataservice.addDeliveryOrder(this.deliveryOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		javaBean1.setObject(this.deliveryOrderVO);		
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -67,7 +72,13 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
 	public String generateId() {
-		String id = date+deliveryOrderdataservice.generateId(date);
+		String id;
+		try {
+			id = date+deliveryOrderdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return id;
 	}
 
@@ -77,26 +88,42 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		this.deliveryOrderVO = deliveryOrderVO;
 		
 		VOtoPO();
-		resultMessage = deliveryOrderdataservice.update(deliveryOrderPO);
+		try {
+			resultMessage = deliveryOrderdataservice.update(deliveryOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = deliveryOrderdataservice.deleteone(id);
+		try {
+			resultMessage = deliveryOrderdataservice.deleteone(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
-		resultMessage = deliveryOrderdataservice.deleteMany(idList);
+		try {
+			resultMessage = deliveryOrderdataservice.deleteMany(idList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		javaBean1 = deliveryOrderdataservice.findA(id);
+		try {
+			javaBean1 = deliveryOrderdataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList = (ArrayList<DeliveryOrderPO>)javaBean1.getObject();
 		
 		POtoVO(1);
@@ -107,7 +134,11 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
 	public JavaBean1 inquireB(String date) {
-		javaBean1 = deliveryOrderdataservice.findB(date);
+		try {
+			javaBean1 = deliveryOrderdataservice.findB(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList = (ArrayList<DeliveryOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();
 		

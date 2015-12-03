@@ -1,6 +1,7 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.documentsPO.ReceivablesOrderPO;
@@ -19,7 +20,8 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 * 前置条件：营业厅业务员已经被授权和登录
 	 * 后置条件：添加新的收款单信息
 	 */
-	public ResultMessage add(ReceivablesOrderPO receivablesOrderPO);
+	public ResultMessage add(ReceivablesOrderPO receivablesOrderPO) throws 
+	RemoteException;
 		
 	/**
 	 * 
@@ -29,7 +31,7 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 * 后置条件：删除一条收款单信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String id);
+	public ResultMessage deleteOne(String id) throws RemoteException;
 
 	/**
 	 * 
@@ -39,7 +41,7 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 * 后置条件：删除多条收款单信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> idList);
+	public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	
 //	/**
 //	 * 
@@ -58,18 +60,18 @@ public interface ReceivablesOrderdataservice extends Remote{
 	 * 前置条件：要查询的收款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public JavaBean1 findA(String id);
+	public JavaBean1 findA(String id) throws RemoteException;
 	
-	public JavaBean1 findB(String date);
+	public JavaBean1 findB(String date) throws RemoteException;
 	
-	public ArrayList<OrderlineitemPO> generateOrder(String courierId);
+	public ArrayList<OrderlineitemPO> generateOrder(String courierId) throws RemoteException;
 	
-	public double generateFreight();
+	public double generateFreight() throws RemoteException;
 	/**
 	 * 前置条件：收款单信息处理完成 
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
 	 */
-	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO);
+	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO) throws RemoteException;
 	
-	public String generateId(String date);
+	public String generateId(String date) throws RemoteException;
 }

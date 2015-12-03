@@ -1,10 +1,8 @@
 package businesslogicservice.stockblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
-import vo.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo.stockVO.OutBoundOrderVO;
 /**
  * 
@@ -21,7 +19,7 @@ public interface OutBoundOrderblservice {
 	 * 后置条件：在出库单中增加一个快件编号，返回展示层快件的部分信息（LineItem形式）
 	 * 
 	 */
-	public OutBoundOrderlineitemVO addExpress(String id);
+//	public OutBoundOrderlineitemVO addExpress(String id);
 	
 	/**
 	 * 前置条件：已添加所有出库单信息

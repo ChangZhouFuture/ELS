@@ -1,6 +1,7 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.documentsPO.BusiHallArrivalOrderPO;
@@ -21,7 +22,7 @@ import state.ResultMessage;
 		 * @param id
 		 * @return
 		 */
-		 public TransferOrderlineitemPO addTransferOrder(String id);
+		 public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteException;
 		 
 		/**
 		 * 前置：营业厅业务员已输入所有参数
@@ -33,21 +34,22 @@ import state.ResultMessage;
 		 * @param gs 
 		 * @return 一个营业厅到达单
 		 */
-		public ResultMessage addBusiHallArrivalOrder(BusiHallArrivalOrderPO busiHallArrivalOrder);
+		public ResultMessage addBusiHallArrivalOrder(BusiHallArrivalOrderPO busiHallArrivalOrder)
+		throws RemoteException;
 		
 		/**
 		 * 前置：要删除的营业厅到达单在PO中有记录
 		 * 后置：删除一个营业厅到达单，更新PO数据
 		 * @param id
 		 */
-		public ResultMessage deleteOne(String id);
+		public ResultMessage deleteOne(String id) throws RemoteException;
 		
 		/**
 		 * 前置：要删除的营业厅到达单在持久化数据中有记录
 		 * 后置：删除多个营业厅到达单，更新PO数据
 		 * @param id
 		 */
-		public ResultMessage deleteMany(ArrayList<String> idlist);
+		public ResultMessage deleteMany(ArrayList<String> idlist) throws RemoteException;
 		
 		/**
 		 * 前置：要查询的营业厅到达单在PO中有记录
@@ -55,7 +57,7 @@ import state.ResultMessage;
 		 * @param id
 		 * @return 营业厅到达单信息
 		 */
-		public JavaBean1 findA(String id);
+		public JavaBean1 findA(String id) throws RemoteException;
 		
 		/**
 		 * 前置：要查询的营业厅到达单在PO中有记录
@@ -63,7 +65,7 @@ import state.ResultMessage;
 		 * @param time
 		 * @return 营业厅到达单列表
 		 */
-		public JavaBean1 findB(String time);
+		public JavaBean1 findB(String time) throws RemoteException;
 		
 		/**
 		 * 前置：
@@ -71,15 +73,16 @@ import state.ResultMessage;
 		 * @param time
 		 * @return
 		 */
-		public ArrayList<BusiHallArrivalOrderPO> findC();
+		public ArrayList<BusiHallArrivalOrderPO> findC() throws RemoteException;
 		
 		/**
 		 * 前置：行为或操作已经完成
 		 * 后置：修改相关单据
 		 */
-		public ResultMessage update(BusiHallArrivalOrderPO busiHallArrivalOrder);
+		public ResultMessage update(BusiHallArrivalOrderPO busiHallArrivalOrder) throws
+		RemoteException;
 		
-		public String generateStartAdd(String transferOrderId);
+		public String generateStartAdd(String transferOrderId) throws RemoteException;
 		
-		public String generateId(String date);
+		public String generateId(String date) throws RemoteException;
  }

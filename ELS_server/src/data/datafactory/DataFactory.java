@@ -44,10 +44,11 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		return orderdataservice;
 	}
 	
-	public BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
+	public BusiHallArrivalOrderdataservice getBusiHallArrivalOrderdataservice()
 	throws RemoteException{
-		
-		return null;
+		BusiHallArrivalOrderdataservice busiHallArrivalOrderdataservice = new 
+				BusiHallArrivalOrderdata();
+		return busiHallArrivalOrderdataservice;
 	}
 	
 	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()

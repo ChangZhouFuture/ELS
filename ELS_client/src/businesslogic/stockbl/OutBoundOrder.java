@@ -1,9 +1,7 @@
 package businesslogic.stockbl;
 
 import java.util.ArrayList;
-
 import state.ResultMessage;
-import vo.lineitemVO.stocklineitemVO.OutBoundOrderlineitemVO;
 import vo.stockVO.OutBoundOrderVO;
 import bean.JavaBean1;
 import businesslogicservice.stockblservice.OutBoundOrderblservice;
@@ -14,11 +12,11 @@ import businesslogicservice.stockblservice.OutBoundOrderblservice;
  */
 public class OutBoundOrder implements OutBoundOrderblservice {
 
-	@Override
-	public OutBoundOrderlineitemVO addExpress(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public OutBoundOrderlineitemVO addExpress(String id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public JavaBean1 add(String id4e, String id4to, String desti) {

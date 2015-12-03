@@ -1,5 +1,6 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
@@ -64,8 +65,14 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	@Override
 	public String generatevehiclesID() {
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
-		String vehiclesID = getBusiHallId()+date+busiHallLoadingListdtaservice.
-				generateId(date);
+		String vehiclesID;
+		try {
+			vehiclesID = getBusiHallId()+date+busiHallLoadingListdtaservice.
+					generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return vehiclesID;
 	}
 
@@ -89,7 +96,11 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		this.busiHallLoadingListVO.setID(generateId());
 		VOtoPO();
 		
-		resultMessage = busiHallLoadingListdtaservice.addLoadingList(busiHallLoadingListPO);
+		try {
+			resultMessage = busiHallLoadingListdtaservice.addLoadingList(busiHallLoadingListPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		javaBean1.setObject(this.busiHallLoadingListVO);
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -99,7 +110,13 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	@Override
 	public String generateId() {
 		//调用数据层方法
-		String id = date+busiHallLoadingListdtaservice.generateId(date);
+		String id;
+		try {
+			id = date+busiHallLoadingListdtaservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return id;
 	}
 
@@ -109,28 +126,44 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		this.busiHallLoadingListVO = businessHallLoadingListVO;
 		
 		VOtoPO();
-		resultMessage = busiHallLoadingListdtaservice.update(busiHallLoadingListPO);
+		try {
+			resultMessage = busiHallLoadingListdtaservice.update(busiHallLoadingListPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = busiHallLoadingListdtaservice.deleteone(id);
+		try {
+			resultMessage = busiHallLoadingListdtaservice.deleteone(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
-		resultMessage = busiHallLoadingListdtaservice.deleteMany(idList);
+		try {
+			resultMessage = busiHallLoadingListdtaservice.deleteMany(idList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		javaBean1 = busiHallLoadingListdtaservice.findA(id);
+		try {
+			javaBean1 = busiHallLoadingListdtaservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		busiHallLoadingListPO = (BusiHallLoadingListPO)javaBean1.getObject();
 		busiHallLoadingListVO = new BusiHallLoadingListVO();
 		
@@ -151,7 +184,11 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 
 	@Override
 	public JavaBean1 inquireB(String date) {
-		javaBean1 = busiHallLoadingListdtaservice.findB(date);
+		try {
+			javaBean1 = busiHallLoadingListdtaservice.findB(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList = (ArrayList<BusiHallLoadingListlineitemPO>)javaBean1.getObject();
 		arrayList2 = new ArrayList<BusiHallLoadingListlineitemVO>();
 		int k = arrayList.size();

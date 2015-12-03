@@ -1,15 +1,15 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.documentsPO.PaymentOrderPO;
-import po.inforManagementPO.BankAccountPO;
 import state.ResultMessage;
 
 public interface PaymentOrderdataservice extends Remote{
 	
-	public ResultMessage addPaymentAccount(String accountName);
+	public ResultMessage addPaymentAccount(String accountName) throws RemoteException;
 	
 	/**
 	 * 
@@ -24,7 +24,7 @@ public interface PaymentOrderdataservice extends Remote{
 	 * 前置条件：财务人员已经被授权和登录
 	 * 后置条件：添加新的付款单信息
 	 */
-	public ResultMessage add(PaymentOrderPO paymentOrderPO);
+	public ResultMessage add(PaymentOrderPO paymentOrderPO) throws RemoteException;
 	/**
 	 * 
 	 * @param id
@@ -34,7 +34,7 @@ public interface PaymentOrderdataservice extends Remote{
 	 * 后置条件：删除一条付款单信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String id);
+	public ResultMessage deleteOne(String id) throws RemoteException;
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public interface PaymentOrderdataservice extends Remote{
 	 * 后置条件：删除多条收款单信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> idList);
+	public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	
 //	/**
 //	 * 
@@ -63,15 +63,15 @@ public interface PaymentOrderdataservice extends Remote{
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public JavaBean1 findA(String id);
+	public JavaBean1 findA(String id) throws RemoteException;
 	
-	public JavaBean1 findB(String date);
+	public JavaBean1 findB(String date) throws RemoteException;
 	
 	/**
 	 * 前置条件：付款单信息处理完成
 	 * 后置条件：结束这次付款单信息处理，更新数据持久化对象
 	 */
-	public ResultMessage update(PaymentOrderPO paymentOrderPO);
+	public ResultMessage update(PaymentOrderPO paymentOrderPO) throws RemoteException;
 	
-	public String generaId(String date);
+	public String generaId(String date)throws RemoteException;
 }

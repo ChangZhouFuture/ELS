@@ -21,14 +21,22 @@ public class LoginAndOut implements LoginAndOutblservice{
 	@Override
 	public JavaBean2 login(String id, String passWord) {
 		
-		Object o = logindataservice.login(id, passWord);
+		try {
+			Object o = logindataservice.login(id, passWord);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return null;
 	}
 
 	@Override
 	public void logout() {
-		logindataservice.logout();
+		try {
+			logindataservice.logout();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

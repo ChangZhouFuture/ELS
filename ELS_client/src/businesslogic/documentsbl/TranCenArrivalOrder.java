@@ -1,5 +1,6 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
@@ -52,8 +53,12 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		arrivalOrder4TranCenPO.setArrivalDate(generateDate());
 		arrivalOrder4TranCenPO.setID(generateId());
 		
-		resultMessage = arrivalOrder4TranCendataservice.
-				addTranCenArrivalOrder(arrivalOrder4TranCenPO);
+		try {
+			resultMessage = arrivalOrder4TranCendataservice.
+					addTranCenArrivalOrder(arrivalOrder4TranCenPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
@@ -70,28 +75,44 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		this.arrivalOrder4TranCenVO = arrivalOrder4TranCenVO;
 		
 		VOtoPO();
-		resultMessage = arrivalOrder4TranCendataservice.
-				update(arrivalOrder4TranCenPO);
+		try {
+			resultMessage = arrivalOrder4TranCendataservice.
+					update(arrivalOrder4TranCenPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = arrivalOrder4TranCendataservice.deleteOne(id);
+		try {
+			resultMessage = arrivalOrder4TranCendataservice.deleteOne(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
-		resultMessage = arrivalOrder4TranCendataservice.deleteMany(idList);
+		try {
+			resultMessage = arrivalOrder4TranCendataservice.deleteMany(idList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		javaBean1 = arrivalOrder4TranCendataservice.findA(id);
+		try {
+			javaBean1 = arrivalOrder4TranCendataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		arrayList1 = (ArrayList<TranCenArrivalOrderPO>)javaBean1.getObject();
 		
 		POtoVO(1);
@@ -101,7 +122,11 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 
 	@Override
 	public JavaBean1 inquireB(String time) {
-		javaBean1 = arrivalOrder4TranCendataservice.findB(time);
+		try {
+			javaBean1 = arrivalOrder4TranCendataservice.findB(time);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		int k = arrayList1.size();
 		
 		POtoVO(k);

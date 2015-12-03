@@ -1,11 +1,9 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.ReceivablesOrderVO;
-import vo.lineitemVO.documentslineitemVO.ReceivablesOrderlineitemVO;
 
 public interface ReceivablesOrderblservice {
 	/**

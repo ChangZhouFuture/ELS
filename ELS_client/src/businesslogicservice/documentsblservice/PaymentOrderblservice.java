@@ -92,5 +92,5 @@ public interface PaymentOrderblservice {
 	
 	public void VOtoPO();
 	
-	public void POtoVO();
+	public void POtoVO(int k);
 }

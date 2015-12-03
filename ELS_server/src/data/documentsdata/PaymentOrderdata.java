@@ -33,7 +33,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
     PaymentOrderPO po;
     GenerateId g;
 	@Override
-	public BankAccountPO addPaymentAccount(String accountName) {
+	public ResultMessage addPaymentAccount(String accountName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,11 +1,10 @@
 package dataservice.documentsdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.documentsPO.BusiHallLoadingListPO;
-import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 /**
@@ -14,7 +13,7 @@ import state.ResultMessage;
  */
  public interface BusiHallLoadingListdataservice extends Remote{
  
-	 public OrderlineitemPO addOrder(String id);
+	 public OrderlineitemPO addOrder(String id) throws RemoteException;
 	 
 	/**
 	 * 前置：营业厅业务员已输入所有参数
@@ -31,7 +30,8 @@ import state.ResultMessage;
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-	public ResultMessage addLoadingList(BusiHallLoadingListPO loadingListPO);
+	public ResultMessage addLoadingList(BusiHallLoadingListPO loadingListPO) throws
+	RemoteException;
 	
 //	/**
 //	 * 前置：要修改的装车单在PO中有记录
@@ -55,14 +55,14 @@ import state.ResultMessage;
 	 * 后置：删除一个装车单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteone(String id);
+	public ResultMessage deleteone(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要删除的装车单在PO中有记录
 	 * 后置：删除多个装车单，更新PO数据
 	 * @param id
 	 */
-	public ResultMessage deleteMany(ArrayList<String> idlist);
+	public ResultMessage deleteMany(ArrayList<String> idlist) throws RemoteException;
 	
 	/**
 	 * 前置：要查询的装车单在PO中有记录
@@ -70,7 +70,7 @@ import state.ResultMessage;
 	 * @param id
 	 * @return 装车单信息
 	 */
-	public JavaBean1 findA(String id);
+	public JavaBean1 findA(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要查询的装车单在PO中有记录
@@ -78,14 +78,14 @@ import state.ResultMessage;
 	 * @param time
 	 * @return 装车单列表
 	 */
-	public JavaBean1 findB(String time);
+	public JavaBean1 findB(String time) throws RemoteException;
 	
 	/**
 	 * 前置：行为或操作已经完成
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
-	public ResultMessage update(BusiHallLoadingListPO loadingListPO);
+	public ResultMessage update(BusiHallLoadingListPO loadingListPO) throws RemoteException;
 	
-	public String generateId(String date);
+	public String generateId(String date) throws RemoteException;
 	
  }

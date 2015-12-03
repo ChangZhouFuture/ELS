@@ -3,7 +3,7 @@ package dataservice.orderdataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
+import bean.JavaBean1;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import state.ResultMessage;
@@ -22,7 +22,7 @@ public interface Orderdataservice extends Remote{
 	 * @param num
 	 * @return
 	 */
-	public OrderPO add(OrderPO orderPO) throws RemoteException;
+	public ResultMessage add(OrderPO orderPO) throws RemoteException;
 	
 	/**
 	 * 前置条件：要删除的订单在PO中有记录
@@ -39,7 +39,7 @@ public interface Orderdataservice extends Remote{
      * @param id
      * @return
      */
-    public OrderPO findA(String id) throws RemoteException;
+    public JavaBean1 findA(String id) throws RemoteException;
     
     /**
      * 前置条件：
@@ -47,7 +47,7 @@ public interface Orderdataservice extends Remote{
      * @param id
      * @return
      */
-    public ArrayList<OrderlineitemPO> findB(String date) throws RemoteException;
+    public JavaBean1 findB(String date) throws RemoteException;
     
     /**
 	 * 

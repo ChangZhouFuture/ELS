@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import bean.JavaBean1;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
@@ -17,51 +18,50 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	}
 
 	@Override
-	public OrderPO add(OrderPO orderPO) throws RemoteException {
+	public ResultMessage add(OrderPO orderPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage deleteOne(String id) throws RemoteException {
+	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> idList)
-			throws RemoteException {
+	public ResultMessage deleteMany(ArrayList<String> idList){
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OrderPO findA(String id) throws RemoteException {
+	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		System.out.println("a");
 		return null;
 	}
 
 	@Override
-	public ArrayList<OrderlineitemPO> findB(String date) throws RemoteException {
+	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(OrderPO orderPO) throws RemoteException {
+	public ResultMessage update(OrderPO orderPO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OrderlineitemPO getOrderlineitemPO(String id) throws RemoteException {
+	public OrderlineitemPO getOrderlineitemPO(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void generateId() throws RemoteException {
+	public void generateId() {
 		// TODO Auto-generated method stub
 		
 	}
