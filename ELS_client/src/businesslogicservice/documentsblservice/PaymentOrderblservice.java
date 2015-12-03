@@ -1,14 +1,16 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
-import vo.lineitemVO.documentslineitemVO.PaymentOrderlineitemVO;
 
 
 public interface PaymentOrderblservice {
+	
+	public String generateId();
+	
+	public String generateDate();
 	
 	/**
 	 * 
@@ -17,7 +19,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：财务人员已经输入所有参数
 	 * 后置条件：判断账户是否存在
 	 */
-	public ResultMessage doesAccountExist(String accountName);
+	public ResultMessage addPaymentAccount(String accountName);
 	
 	/**
 	 * 
@@ -32,7 +34,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：财务人员已经被授权和登录
 	 * 后置条件：添加新的付款单信息
 	 */
-	public PaymentOrderVO add(String date4PaymentOrder, String amount4PaymentOrder, String remitter, String account4PaymentOrder,ArrayList<String>  item4Vehicles,ArrayList<String> remark1,ArrayList<String> remark2);
+	public PaymentOrderVO add(PaymentOrderVO paymentOrderVO);
 	/**
 	 * 
 	 * @param id
@@ -42,7 +44,7 @@ public interface PaymentOrderblservice {
 	 * 后置条件：删除一条付款单信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String date,String bussinessHall);
+	public ResultMessage deleteOne(String id);
 
 	/**
 	 * 
@@ -52,7 +54,7 @@ public interface PaymentOrderblservice {
 	 * 后置条件：删除多条收款单信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> id4courier,ArrayList<String> date);
+	public ResultMessage deleteMany(ArrayList<String> idList);
 	
 	/**
 	 * 
@@ -62,7 +64,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：要修改的付款单信息在PO中有记录
 	 * 后置条件：修改付款单信息，并更新VO和PO
 	 */
-	public PaymentOrderVO modify(String bussinessHall,String date);
+	public ResultMessage modify(PaymentOrderVO paymentOrderVO);
 	
 	/**
 	 * 
@@ -80,16 +82,15 @@ public interface PaymentOrderblservice {
 	 * 前置条件：要查询的付款单信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public JavaBean1 inquireB(String time);
+	public JavaBean1 inquireB(String date);
 	
-	/**
-	 * 前置条件：付款单已生成
-	 * 后置条件：计算总付款费用
-	 */
-	public void countAmount(ArrayList<String> OrderId);
 	/**
 	 * 前置条件：付款单信息处理完成
 	 * 后置条件：结束这次付款单信息处理，更新数据持久化对象
 	 */
 	public void end();
+	
+	public void VOtoPO();
+	
+	public void POtoVO();
 }

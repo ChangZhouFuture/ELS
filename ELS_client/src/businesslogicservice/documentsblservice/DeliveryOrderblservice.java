@@ -1,13 +1,10 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.DeliveryOrderVO;
-import vo.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  /**
   * 
   * @author 朱俊文
@@ -15,13 +12,6 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
   *
   */
  public interface DeliveryOrderblservice {
- 	/**
- 	 * 前置：要添加的派件人在数据持久化对象中有记录
- 	 * 后置：添加派件人，返回快递员lineitemVO到展示层
- 	 * @param id
- 	 * @return
- 	 */
- 	public SenderlineitemVO addDeliverier(String id);
  	
  	/**
  	 * 前置：启动一个新建或修改派件单回合
@@ -29,7 +19,7 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @param orderid
  	 * @return 
  	 */
- 	public OrderlineitemVO addOrder(String orderid);
+ 	public OrderlineitemVO addOrder(String orderID);
  	
  	/**
  	 * 前置：已打开派件单输入页面
@@ -48,14 +38,14 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @param d
  	 * @return 一个派件单
  	 */
- 	public DeliveryOrderVO addDeliveryOrder(String id,ArrayList<String> orsderidlist,String dn,String did,String d);
+ 	public JavaBean1 addDeliveryOrder(DeliveryOrderVO deliveryOrderVO);
  	
  	/**
  	 * 前置：已添加所有派件单信息
  	 * 后置：自动生成派件单编号
  	 * @return 派件单编号
  	 */
- 	public void generateId();
+ 	public String generateId();
  	
  	/**
  	 * 前置：要修改的派件单在持久化数据中有记录
@@ -67,7 +57,7 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @param d
  	 * @return 更改后的派件单
  	 */
- 	public DeliveryOrderVO modify(String id,ArrayList<String> orsderidlist,String dn,String did,String d);
+ 	public ResultMessage modify(DeliveryOrderVO deliveryOrderVO);
  	
  	/**
  	 * 前置：要删除的派件单在持久化数据中有记录
@@ -82,7 +72,7 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * 后置：删除多个派件单
  	 * @param id
  	 */
- 	public ResultMessage deleteMany(ArrayList<String> idlist);
+ 	public ResultMessage deleteMany(ArrayList<String> idList);
  	
  	/**
  	 * 前置：要查询的派件单在持久化数据中有记录
@@ -99,6 +89,11 @@ import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
  	 * @return 派件单列表
  	 */
  	public JavaBean1 inquireB(String time);
+ 	
+ 	public void VOtoPO();
+ 	
+ 	public void POtoVO(int k);
+	
  	
  	/**
  	 * 前置：业务已经处理完成

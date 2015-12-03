@@ -9,7 +9,7 @@ import state.ResultMessage;
 
 public interface PaymentOrderdataservice extends Remote{
 	
-	public BankAccountPO addPaymentAccount(String accountName);
+	public ResultMessage addPaymentAccount(String accountName);
 	
 	/**
 	 * 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DeliveryOrderVO {
 	private String ID;
     private String arrivalDate;
-    ArrayList<String> orderIDs=new ArrayList<>();
+    private String orderID;
     private String deliverier;
     private String generateTime;
 	public String getID() {
@@ -20,11 +20,11 @@ public class DeliveryOrderVO {
 	public void setArrivalDate(String arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
-	public ArrayList<String> getOrderIDs() {
-		return orderIDs;
+	public String getOrderID() {
+		return orderID;
 	}
-	public void setOrderIDs(ArrayList<String> orderIDs) {
-		this.orderIDs = orderIDs;
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	public String getDeliverier() {
 		return deliverier;

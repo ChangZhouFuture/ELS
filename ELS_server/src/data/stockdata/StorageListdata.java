@@ -133,7 +133,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 				po.setFrameNum(rs.getString(6));
 				po.setPositionNum(rs.getString(7));
 				po.setGenerateTime(rs.getString(8));
-				jb1.setPOObject(po);
+				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}return jb1;
 		} catch (SQLException e) {
@@ -168,7 +168,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
-			}jb1.setPOObject(pos);
+			}jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

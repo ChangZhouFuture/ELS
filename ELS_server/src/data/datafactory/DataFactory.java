@@ -2,6 +2,10 @@ package data.datafactory;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
+import data.documentsdata.BusiHallArrivalOrderdata;
+import data.documentsdata.BusiHallLoadingListdata;
+import data.documentsdata.DeliveryOrderdata;
 import data.orderdata.Orderdata;
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
@@ -54,8 +58,8 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	
 	public DeliveryOrderdataservice getDeliveryOrderdataservice() 
 		throws RemoteException{
-		
-		return null;
+		DeliveryOrderdataservice deliveryOrderdataservice = new DeliveryOrderdata();
+		return deliveryOrderdataservice;
 	}
 	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
@@ -155,8 +159,9 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	@Override
 	public BusiHallLoadingListdataservice getBuinessHallLoadingListdataservice()
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		BusiHallLoadingListdataservice busiHallLoadingListdataservice = new
+				BusiHallLoadingListdata();
+		return busiHallLoadingListdataservice;
 	}
 
 	@Override

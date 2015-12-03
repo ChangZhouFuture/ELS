@@ -1,82 +1,119 @@
 package businesslogic.documentsbl;
 
 import java.util.ArrayList;
-
+import po.documentsPO.DeliveryOrderPO;
+import dataservice.documentsdataservice.DeliveryOrderdataservice;
 import state.ResultMessage;
 import vo.documentsVO.DeliveryOrderVO;
-import vo.lineitemVO.documentslineitemVO.DeliveryOrderlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import vo.lineitemVO.userlineitemVO.SenderlineitemVO;
+import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.orderbl.Order;
+import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 /**
  * ÅÉ¼þµ¥
- * @author Öì¿¡ÎÄ
- *×®
+ * @author 
+ *
  */
 public class DeliveryOrder implements DeliveryOrderblservice{
-
-	@Override
-	public SenderlineitemVO addDeliverier(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	private DeliveryOrderdataservice deliveryOrderdataservice;
+	private DeliveryOrderVO deliveryOrderVO;
+	private DeliveryOrderPO deliveryOrderPO;
+	private Order order;
+	private OrderlineitemVO orderlineitemVO;
+	private ArrayList<DeliveryOrderPO> arrayList;
+	private ArrayList<DeliveryOrderVO> arrayList2;
+	private JavaBean1 javaBean1;
+	private ResultMessage resultMessage;
+	private String date;
+	
+	public DeliveryOrder(){
+		try {
+			deliveryOrderdataservice = RMIHelper.getDeliveryOrderdataservice();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
+	
 	@Override
-	public OrderlineitemVO addOrder(String orderid) {
-		// TODO Auto-generated method stub
-		return null;
+	public OrderlineitemVO addOrder(String orderID) {
+		order = new Order();
+		orderlineitemVO = order.getOrderlineitemVO(orderID);
+		return orderlineitemVO;
 	}
 
 	@Override
 	public String generateDate() {
-		// TODO Auto-generated method stub
-		return null;
+		date = Time.generateDate();
+		return date;
 	}
 
 	@Override
-	public DeliveryOrderVO addDeliveryOrder(String id,
-			ArrayList<String> orsderidlist, String dn, String did, String d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void generateId() {
+	public JavaBean1 addDeliveryOrder(DeliveryOrderVO deliveryOrderVO) {
+		this.deliveryOrderPO = new DeliveryOrderPO();
+		this.deliveryOrderVO = deliveryOrderVO;
 		
+		this.deliveryOrderVO.setArrivalDate(generateDate());
+		this.deliveryOrderVO.setID(generateId());
+		VOtoPO();
 		
-		return;
+		resultMessage = deliveryOrderdataservice.addDeliveryOrder(this.deliveryOrderPO);
+		javaBean1.setObject(this.deliveryOrderVO);		
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
-	public DeliveryOrderVO modify(String id, ArrayList<String> orsderidlist,
-			String dn, String did, String d) {
-		// TODO Auto-generated method stub
-		return null;
+	public String generateId() {
+		String id = date+deliveryOrderdataservice.generateId(date);
+		return id;
+	}
+
+	@Override
+	public ResultMessage modify(DeliveryOrderVO deliveryOrderVO) {
+		deliveryOrderPO = new DeliveryOrderPO();
+		this.deliveryOrderVO = deliveryOrderVO;
+		
+		VOtoPO();
+		resultMessage = deliveryOrderdataservice.update(deliveryOrderPO);
+		
+		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		resultMessage = deliveryOrderdataservice.deleteone(id);
+		return resultMessage;
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> idlist) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage deleteMany(ArrayList<String> idList) {
+		resultMessage = deliveryOrderdataservice.deleteMany(idList);
+		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		javaBean1 = deliveryOrderdataservice.findA(id);
+		arrayList = (ArrayList<DeliveryOrderPO>)javaBean1.getObject();
+		
+		POtoVO(1);
+		javaBean1.setObject(arrayList2);
+		
+		return javaBean1;
 	}
 
 	@Override
-	public JavaBean1 inquireB(String time) {
-		// TODO Auto-generated method stub
-		return null;
+	public JavaBean1 inquireB(String date) {
+		javaBean1 = deliveryOrderdataservice.findB(date);
+		arrayList = (ArrayList<DeliveryOrderPO>)javaBean1.getObject();
+		int k = arrayList.size();
+		
+		POtoVO(k);
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
 	}
 
 	@Override
@@ -85,5 +122,29 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		
 	}
 
+	@Override
+	public void VOtoPO() {
+		deliveryOrderPO.setArrivalDate(deliveryOrderVO.getArrivalDate());
+		deliveryOrderPO.setDeliverier(deliveryOrderVO.getDeliverier());
+		deliveryOrderPO.setOrderID(deliveryOrderVO.getOrderID());
+		deliveryOrderPO.setID(deliveryOrderVO.getID());
+	}
+
+	@Override
+	public void POtoVO(int k) {
+		arrayList2 = new ArrayList<DeliveryOrderVO>();
+		
+		for (int i = 0; i < k; i++) {
+			deliveryOrderPO = arrayList.get(i);
+			
+			deliveryOrderVO = new DeliveryOrderVO();
+			deliveryOrderVO.setID(deliveryOrderPO.getID());
+			deliveryOrderVO.setArrivalDate(deliveryOrderPO.getArrivalDate());
+			deliveryOrderVO.setDeliverier(deliveryOrderPO.getDeliverier());
+			deliveryOrderVO.setOrderID(deliveryOrderPO.getOrderID());
+			
+			arrayList2.add(deliveryOrderVO);
+		}
+	}
 	
 }

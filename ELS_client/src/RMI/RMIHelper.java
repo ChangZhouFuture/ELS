@@ -53,20 +53,18 @@ public class RMIHelper {
 			
 	public static TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
 		throws RemoteException{
-						
+		
 		return null;
 	}
 			
 	public static DeliveryOrderdataservice getDeliveryOrderdataservice() 
 		throws RemoteException{
-				
-		return null;
+		return dataFactoryservice.getDeliveryOrderdataservice();
 	}
 	
 	public static BusiHallLoadingListdataservice getBuinessHallLoadingListdataservice()
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return dataFactoryservice.getBuinessHallLoadingListdataservice();
 	}
 
 	public static TranCenLoadingListdataservice getTransferCenterLoadingListdataservice()

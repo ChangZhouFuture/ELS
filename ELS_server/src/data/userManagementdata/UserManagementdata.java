@@ -143,7 +143,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		        po.setAgencyID(rs.getString(11));
 		        po.setPosition(Position.valueOf(rs.getString(12)));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        jb1.setPOObject(po);
+		        jb1.setObject(po);
 			}return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

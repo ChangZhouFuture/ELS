@@ -16,13 +16,13 @@ import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
  *
  */
 public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
+	private BusiHallArrivalOrderdataservice busiHallArrivalOrderdataservice;
 	private BusiHallArrivalOrderPO busiHallArrivalOrderPO;
 	private BusiHallArrivalOrderVO busiHallArrivalOrderVO;
 	private ArrayList<BusiHallArrivalOrderPO> arrayList;
 	private ArrayList<BusiHallArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
-	private BusiHallArrivalOrderdataservice busiHallArrivalOrderdataservice;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
