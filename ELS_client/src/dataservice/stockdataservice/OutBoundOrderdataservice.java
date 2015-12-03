@@ -4,7 +4,6 @@ import java.rmi.Remote;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
-import po.lineitemPO.stocklineitemPO.OutBoundOrderlineitemPO;
 import po.stockPO.OutBoundOrderPO;
 import state.ResultMessage;
 /**
@@ -23,7 +22,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：库存管理人员已经输入了所有出库单参数值
 	 * 后置条件：增加一个出库单，更新变动到PO
 	 */
-	public ResultMessage add(OutBoundOrderPO outBoundOrderPO);
+	public ResultMessage add(OutBoundOrderPO po);
 	
 	/**
 	 * 
@@ -31,7 +30,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件:要删除的单据在PO中有记录
 	 * 后置条件:删除一个出库单,更新PO数据
 	 */
-	public ResultMessage deleteone(String id4obo);
+	public ResultMessage deleteOne(String id);
 	
 	/**
 	 * 
@@ -39,7 +38,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：要删除的单据在PO中有记录
 	 * 后置条件：删除多个出库单,更新PO记录
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> id4obo);
+	public ResultMessage deleteMany(ArrayList<String> idList);
 	
 	/**
 	 * 
@@ -51,7 +50,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：要修改的出库单在PO中有记录
 	 * 后置条件:修改一个出库单，更新相关信息到PO
 	 */
-	public OutBoundOrderPO modify(String id, String id4e, String id4to, String desti);
+	public ResultMessage update(OutBoundOrderPO po);
 	
 	/**
 	 * 
@@ -69,12 +68,7 @@ public interface OutBoundOrderdataservice extends Remote{
 	 * 前置条件：要查询的单据在PO中有记录
 	 * 后置条件：根据时间查询某出库单,返回出库单PO信息
 	 */
-	public JavaBean1 findB(String time);
+	public JavaBean1 findB(String date);
 	
-	/**
-	 * 
-	 * 前置条件：行为或操作已经完成
-	 * 后置条件：持久化更新涉及的领域对象的数据
-	 */
-	public void update();
+;
 }

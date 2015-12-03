@@ -3,100 +3,64 @@ package po.stockPO;
 import java.io.Serializable;
 
 public class StorageListPO implements Serializable{
-	String id4e;
-	
-	String desti;
-	
-	String dis;
-	
-	String row;
-	
-	String she;
-	
-	String pos;
-	
-	String time;
-	
-	String id4obo;
-	
-	
-	public StorageListPO(String id4e, String desti, String dis, String row, String she,String pos, String time){
-		super();
-		this.id4e = id4e;
-		this.desti = desti;
-		this.dis = dis;
-		this.row = row;
-		this.she = she;
-		this.pos = pos;
-	}
-
+	private String id;
+	private String inDate;
+	private String destination;
+	private String areaNum;                              //ÇøºÅ
+	private String rowNum;                               //ÅÅºÅ
+	private String frameNum;                             //¼ÜºÅ
+	private String positionNum;                          //Î»ºÅ
+	private String generateTime;
 	public String getId() {
-		return this.id4obo;
+		return id;
 	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getInDate() {
+		return inDate;
+	}
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public String getAreaNum() {
+		return areaNum;
+	}
+	public void setAreaNum(String areaNum) {
+		this.areaNum = areaNum;
+	}
+	public String getRowNum() {
+		return rowNum;
+	}
+	public void setRowNum(String rowNum) {
+		this.rowNum = rowNum;
+	}
+	public String getFrameNum() {
+		return frameNum;
+	}
+	public void setFrameNum(String frameNum) {
+		this.frameNum = frameNum;
+	}
+	public String getPositionNum() {
+		return positionNum;
+	}
+	public void setPositionNum(String positionNum) {
+		this.positionNum = positionNum;
+	}
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
+
 	
-	public String getTime() {
-		return this.time;
-	}
-	
-	
-	public String getId4e() {
-		return id4e;
-	}
-
-
-	public void setId4e(String id4e) {
-		this.id4e = id4e;
-	}
-
-
-	public String getDesti() {
-		return desti;
-	}
-
-
-	public void setDesti(String desti) {
-		this.desti = desti;
-	}
-
-
-	public String getDis() {
-		return dis;
-	}
-
-
-	public void setDis(String dis) {
-		this.dis = dis;
-	}
-
-
-	public String getRow() {
-		return row;
-	}
-
-
-	public void setRow(String row) {
-		this.row = row;
-	}
-
-
-	public String getShe() {
-		return she;
-	}
-
-
-	public void setShe(String she) {
-		this.she = she;
-	}
-
-
-	public String getPos() {
-		return pos;
-	}
-
-
-	public void setPos(String pos) {
-		this.pos = pos;
-	}
 	
 	
 }
