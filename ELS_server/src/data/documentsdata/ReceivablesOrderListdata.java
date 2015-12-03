@@ -116,7 +116,7 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 			    	arr.add(i, s[i]);
 			    }
 			    po.setOrderIDs(arr);
-			    jb1.setPOObject(po);
+			    jb1.setObject(po);
 		    }
 		    
 		    return jb1;
@@ -161,7 +161,7 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 				}
 				
 			}
-			jb1.setPOObject(pos);
+			jb1.setObject(pos);
 			
 			return jb1;
 		} catch (SQLException e) {

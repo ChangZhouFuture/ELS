@@ -46,9 +46,9 @@ public class RMIHelper {
 		return dataFactoryservice.getOrderdataservice();
 	}
 	
-	public static BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
+	public static BusiHallArrivalOrderdataservice getBusiHallArrivalOrderdataservice()
 			throws RemoteException{
-				return null;
+		return dataFactoryservice.getBusiHallArrivalOrderdataservice();
 	}
 			
 	public static TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()

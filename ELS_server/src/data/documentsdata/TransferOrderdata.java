@@ -127,7 +127,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 				}po.setOrderIDs(arr);
 				po.setCarriage(rs.getDouble(10));
 				po.setGenerateTime(rs.getString(11));
-				jb1.setPOObject(po);
+				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
 			return jb1;
@@ -160,7 +160,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
 				}
-			}jb1.setPOObject(llpos);
+			}jb1.setObject(llpos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

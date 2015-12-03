@@ -61,7 +61,7 @@ public JavaBean1 find(String Id){
 		    po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 	        po.setCity(rs.getString("city"));
 	        po.setRegion(rs.getString("region"));
-	        jb1.setPOObject(po);
+	        jb1.setObject(po);
 	        jb1.setResultMessage(ResultMessage.Success);
 		}
 		return jb1;

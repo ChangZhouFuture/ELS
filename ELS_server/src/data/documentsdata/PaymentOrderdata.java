@@ -146,7 +146,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				po.setEntry(rs.getString(6));
 				po.setNote(rs.getString(7));
 				po.setGenerateTime(rs.getString(8));
-				jb1.setPOObject(po);
+				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
 			 return jb1;

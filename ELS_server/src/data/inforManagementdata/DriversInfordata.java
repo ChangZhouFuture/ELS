@@ -64,7 +64,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        jb1.setPOObject(po);
+		        jb1.setObject(po);
 			}
 			return jb1;
 		} catch (SQLException e) {

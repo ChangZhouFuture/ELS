@@ -20,7 +20,7 @@ public interface BusiHallLoadingListblservice {
 	 * @param bhid
 	 * @return 是否存在
 	 */
-	public ResultMessage addBusiHall(String bhid);
+	public String getBusiHallId();
 	
 	/**
 	 * 前置：启动一个新建或修改装车单回合
@@ -44,7 +44,7 @@ public interface BusiHallLoadingListblservice {
 	 * @param d
 	 * @return
 	 */
-	public String generateTruckId(String bhid,String d);
+	public String generatevehiclesID();
 	
 	/**
 	 * 前置：营业厅业务员已输入出发地目的地
@@ -53,7 +53,7 @@ public interface BusiHallLoadingListblservice {
 	 * @param ea
 	 * @return 运费
 	 */
-	public double generateFreight(String sa,String ea);
+	public double generateFreight(String destination);
 	/**
 	 * 前置：营业厅业务员已输入所有参数
 	 * 后置：增加一个装车单，更新VO，PO，返回VO信息到展示层
@@ -69,7 +69,7 @@ public interface BusiHallLoadingListblservice {
 	 * @param Yyy
 	 * @return 一个装车单
 	 */
-public JavaBean1 addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO);
+	public JavaBean1 addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO);
  	
  	/**
  	 * 前置：已添加所有装车信息

@@ -3,13 +3,14 @@ package bean;
 import state.ResultMessage;
 
 public class JavaBean1 {
-	private Object POObject;
+	private Object Object;
 	private ResultMessage resultMessage;
-	public Object getPOObject() {
-		return POObject;
+	
+	public Object getObject() {
+		return Object;
 	}
-	public void setPOObject(Object pOObject) {
-		POObject = pOObject;
+	public void setObject(Object Object) {
+		this.Object = Object;
 	}
 	public ResultMessage getResultMessage() {
 		return resultMessage;

@@ -54,7 +54,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			    po.setID(Id);
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getInt("serviceTime"));
-		        jb1.setPOObject(po);
+		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}
 			return jb1;

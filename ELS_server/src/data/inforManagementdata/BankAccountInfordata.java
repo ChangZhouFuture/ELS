@@ -57,7 +57,7 @@ public JavaBean1 find(String name){
 		    po.setName(name);
 	        po.setAmount(rs.getDouble("amount"));
 	        jb1.setResultMessage(ResultMessage.Success);
-	        jb1.setPOObject(po);
+	        jb1.setObject(po);
 		}
 		return jb1;
 	} catch (SQLException e) {

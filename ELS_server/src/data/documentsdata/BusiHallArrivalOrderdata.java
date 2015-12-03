@@ -139,7 +139,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 		        po.setGenerateTime(rs.getString(7));
 		        pos.add(po);
 		        jb1.setResultMessage(ResultMessage.Success);
-		        jb1.setPOObject(pos);
+		        jb1.setObject(pos);
 			}
 			
 			return jb1;
@@ -178,7 +178,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 					   pos.add(po);
 		            }	
 		    }
-			jb1.setPOObject(pos);
+			jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -18,8 +18,5 @@ public class JavaBean1 {
 	public void setResultMessage(ResultMessage resultMessage) {
 		this.resultMessage = resultMessage;
 	}
-	public Class getObjectClass() {
-		return Object.getClass();
-	}
 	
 }

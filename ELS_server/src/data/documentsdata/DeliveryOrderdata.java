@@ -111,7 +111,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 				po.setOrderID(rs.getString(3));
 				po.setDeliverier(rs.getString(4));
 				po.setGenerateTime(rs.getString(5));
-				jb1.setPOObject(po);
+				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 				
 			}return jb1;
@@ -148,7 +148,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 					jb1.setResultMessage(ResultMessage.Success);
 				}
 			}
-			jb1.setPOObject(pos);
+			jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

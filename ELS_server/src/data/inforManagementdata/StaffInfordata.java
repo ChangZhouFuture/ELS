@@ -57,7 +57,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		        po.setPayType(PayType.valueOf(rs.getString("payType")));
 		        po.setPayAmount(rs.getDouble("payAmount"));
 		        po.setPercentage(rs.getString("percentage"));
-		        jb1.setPOObject(po);
+		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}return jb1;
 		} catch (SQLException e) {

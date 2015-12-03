@@ -119,7 +119,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		        po.setGenerateTime(rs.getString(7));
 		        pos.add(po);
 			}
-			jb1.setPOObject(pos);
+			jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -154,7 +154,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 					pos.add(po);
 				}
 			}
-			jb1.setPOObject(pos);
+			jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

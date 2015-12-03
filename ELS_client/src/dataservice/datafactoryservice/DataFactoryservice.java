@@ -30,7 +30,7 @@ import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 public interface DataFactoryservice extends Remote{
 	public Orderdataservice getOrderdataservice() throws RemoteException;
 	
-	public BusiHallArrivalOrderdataservice getArrivalOrder4BusiHalldataservice()
+	public BusiHallArrivalOrderdataservice getBusiHallArrivalOrderdataservice()
 			throws RemoteException;
 			
 	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()

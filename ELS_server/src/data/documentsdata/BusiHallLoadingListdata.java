@@ -136,7 +136,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 				}
 				po.setOrderIDs(arr);
 				jb1.setResultMessage(ResultMessage.Success);
-				jb1.setPOObject(po);
+				jb1.setObject(po);
 			}
 			return jb1;
 		} catch (SQLException e) {
@@ -168,7 +168,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 					llpos.add(llpo);
 				}
 			}
-			jb1.setPOObject(llpos);
+			jb1.setObject(llpos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,13 +1,14 @@
 package businesslogic.documentsbl;
 
 import java.util.ArrayList;
-
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 /**
  * 
@@ -15,21 +16,32 @@ import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
  *
  */
 public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
-	private BusiHallArrivalOrderPO arrivalOrder4BusiHallPO;
-	private BusiHallArrivalOrderVO arrivalOrder4BusiHallVO;
+	private BusiHallArrivalOrderPO busiHallArrivalOrderPO;
+	private BusiHallArrivalOrderVO busiHallArrivalOrderVO;
 	private ArrayList<BusiHallArrivalOrderPO> arrayList;
 	private ArrayList<BusiHallArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
-	private BusiHallArrivalOrderdataservice arrivalOrder4BusiHalldataservice;
+	private BusiHallArrivalOrderdataservice busiHallArrivalOrderdataservice;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
+	private String date;
+	
+	public BusiHallArrivalOrder() {
+		try {
+			busiHallArrivalOrderdataservice = RMIHelper.
+					getBusiHallArrivalOrderdataservice();	
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
-		
-		return null;
+		String startAdd = busiHallArrivalOrderdataservice.generateStartAdd(transferOrderId);
+		return startAdd;
 	}
 
 	@Override
@@ -41,70 +53,75 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 
 	@Override
 	public String generateDate() {
-		
-		return null;
+		date = Time.generateDate();
+		return date;
 	}
 
 	@Override
-	public JavaBean1 addArrivalOrder4BusiHall(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO) {
-		arrivalOrder4BusiHallPO = new BusiHallArrivalOrderPO();
-		this.arrivalOrder4BusiHallVO = arrivalOrder4BusiHallVO;
+	public JavaBean1 addBusiHallArrivalOrder(BusiHallArrivalOrderVO busiHallArrivalOrderVO) {
+		busiHallArrivalOrderPO = new BusiHallArrivalOrderPO();
+		this.busiHallArrivalOrderVO = busiHallArrivalOrderVO;
 		
+		this.busiHallArrivalOrderVO.setArrivalDate(generateDate());
+		this.busiHallArrivalOrderVO.setId(generateId());
 		VOtoPO();
-		arrivalOrder4BusiHallPO.setArrivalDate(generateDate());
-		arrivalOrder4BusiHallPO.setId(generateId());
 		
-		resultMessage = arrivalOrder4BusiHalldataservice.
-			addBusiHallArrivalOrder(arrivalOrder4BusiHallPO);
-	
-		return null;
+		resultMessage = busiHallArrivalOrderdataservice.
+			addBusiHallArrivalOrder(busiHallArrivalOrderPO);
+		javaBean1.setObject(this.busiHallArrivalOrderVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
-	public String generateId() {              //生成营业厅到达单Id
+	public String generateId() {              
+		//生成营业厅到达单Id
 		//调用数据层方法，0000000七位数字往后顺延
-		return null;
+		String id = busiHallArrivalOrderdataservice.generateId(date);	
+		return id;
 	}
 
 	@Override
 	public ResultMessage modify(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO ) {
-		arrivalOrder4BusiHallPO = new BusiHallArrivalOrderPO();
-		this.arrivalOrder4BusiHallVO = arrivalOrder4BusiHallVO;
+		busiHallArrivalOrderPO = new BusiHallArrivalOrderPO();
+		this.busiHallArrivalOrderVO = arrivalOrder4BusiHallVO;
 		
 		VOtoPO();
-		resultMessage = arrivalOrder4BusiHalldataservice.
-				update(arrivalOrder4BusiHallPO);
+		resultMessage = busiHallArrivalOrderdataservice.
+				update(busiHallArrivalOrderPO);
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		resultMessage = arrivalOrder4BusiHalldataservice.deleteOne(id);
+		resultMessage = busiHallArrivalOrderdataservice.deleteOne(id);
 		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
-		resultMessage = arrivalOrder4BusiHalldataservice.deleteMany(idlist);
+		resultMessage = busiHallArrivalOrderdataservice.deleteMany(idlist);
 	
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
-		javaBean1 = arrivalOrder4BusiHalldataservice.findA(id);
+		javaBean1 = busiHallArrivalOrderdataservice.findA(id);
 		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		
 		POtoVO(1);
 		javaBean1.setObject(arrayList2);
+		
 		return javaBean1;
 	}
 
 	@Override
 	public JavaBean1 inquireB(String date) {
-		javaBean1 = arrivalOrder4BusiHalldataservice.findB(date);
+		javaBean1 = busiHallArrivalOrderdataservice.findB(date);
 		arrayList = (ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();
 		
@@ -115,7 +132,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	
 	@Override
 	public ArrayList<BusiHallArrivalOrderVO> inquireC() {
-		arrayList = arrivalOrder4BusiHalldataservice.findC();
+		arrayList = busiHallArrivalOrderdataservice.findC();
 		int k = arrayList.size();
 		
 		POtoVO(k);
@@ -129,10 +146,12 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 
 	@Override
 	public void VOtoPO() {
-		String transferOrderId = arrivalOrder4BusiHallVO.getTransferOrderID();
-		arrivalOrder4BusiHallPO.setTransferOrderID(transferOrderId);
-		arrivalOrder4BusiHallPO.setOrigin(generateStartAddress(transferOrderId));
-		arrivalOrder4BusiHallPO.setGoodState(arrivalOrder4BusiHallVO.getGoodState());
+		String transferOrderId = busiHallArrivalOrderVO.getTransferOrderID();
+		busiHallArrivalOrderPO.setTransferOrderID(transferOrderId);
+		busiHallArrivalOrderPO.setOrigin(generateStartAddress(transferOrderId));
+		busiHallArrivalOrderPO.setGoodState(busiHallArrivalOrderVO.getGoodState());
+		busiHallArrivalOrderPO.setArrivalDate(busiHallArrivalOrderVO.getArrivalDate());
+		busiHallArrivalOrderPO.setId(busiHallArrivalOrderVO.getId());
 	}
 
 	@Override
@@ -140,16 +159,16 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		arrayList2 = new ArrayList<BusiHallArrivalOrderVO>();
 		
 		for (int i = 0; i < k; i++) {
-			arrivalOrder4BusiHallPO = arrayList.get(i);
+			busiHallArrivalOrderPO = arrayList.get(i);
 			
-			arrivalOrder4BusiHallVO = new BusiHallArrivalOrderVO();
-			arrivalOrder4BusiHallVO.setId(arrivalOrder4BusiHallPO.getId());
-			arrivalOrder4BusiHallVO.setTransferOrderID(arrivalOrder4BusiHallPO.getTransferOrderID());
-			arrivalOrder4BusiHallVO.setOrigin(arrivalOrder4BusiHallPO.getOrigin());
-			arrivalOrder4BusiHallVO.setGoodState(arrivalOrder4BusiHallPO.getGoodState());
-			arrivalOrder4BusiHallVO.setArrivalDate(arrivalOrder4BusiHallPO.getArrivalDate());
+			busiHallArrivalOrderVO = new BusiHallArrivalOrderVO();
+			busiHallArrivalOrderVO.setId(busiHallArrivalOrderPO.getId());
+			busiHallArrivalOrderVO.setTransferOrderID(busiHallArrivalOrderPO.getTransferOrderID());
+			busiHallArrivalOrderVO.setOrigin(busiHallArrivalOrderPO.getOrigin());
+			busiHallArrivalOrderVO.setGoodState(busiHallArrivalOrderPO.getGoodState());
+			busiHallArrivalOrderVO.setArrivalDate(busiHallArrivalOrderPO.getArrivalDate());
 			
-			arrayList2.add(arrivalOrder4BusiHallVO);
+			arrayList2.add(busiHallArrivalOrderVO);
 		}
 
 	}
