@@ -125,12 +125,11 @@ public class PaymentOrder implements PaymentOrderblservice {
 
 	@Override
 	public String generateId() {
-		String id;
+		String id = null;
 		try {
 			id = date+paymentOrderdataservice.generaId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return null;
 		}
 		return id;
 	}

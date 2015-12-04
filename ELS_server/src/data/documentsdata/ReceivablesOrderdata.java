@@ -17,9 +17,9 @@ import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 
-public class ReceivablesOrderListdata extends UnicastRemoteObject implements ReceivablesOrderdataservice{
+public class ReceivablesOrderdata extends UnicastRemoteObject implements ReceivablesOrderdataservice{
 
-	public ReceivablesOrderListdata() throws RemoteException {
+	public ReceivablesOrderdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -178,7 +178,7 @@ public class ReceivablesOrderListdata extends UnicastRemoteObject implements Rec
 	}
 
 	@Override
-	public double generateFreight() {
+	public double generateAmount(ArrayList<String> ordersId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

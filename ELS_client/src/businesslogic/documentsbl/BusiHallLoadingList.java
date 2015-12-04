@@ -65,13 +65,12 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	@Override
 	public String generatevehiclesID() {
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
-		String vehiclesID;
+		String vehiclesID = null;
 		try {
 			vehiclesID = getBusiHallId()+date+busiHallLoadingListdtaservice.
 					generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return null;
 		}
 		return vehiclesID;
 	}
@@ -110,12 +109,11 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	@Override
 	public String generateId() {
 		//调用数据层方法
-		String id;
+		String id = null;
 		try {
 			id = date+busiHallLoadingListdtaservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return null;
 		}
 		return id;
 	}

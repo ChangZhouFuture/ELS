@@ -72,12 +72,11 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 
 	@Override
 	public String generateId() {
-		String id;
+		String id = null;
 		try {
 			id = date+deliveryOrderdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return null;
 		}
 		return id;
 	}

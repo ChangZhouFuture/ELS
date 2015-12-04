@@ -51,10 +51,9 @@ public class RMIHelper {
 		return dataFactoryservice.getBusiHallArrivalOrderdataservice();
 	}
 			
-	public static TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
+	public static TranCenArrivalOrderdataservice getTranCenArrivalOrderdataservice()
 		throws RemoteException{
-		
-		return null;
+		return dataFactoryservice.getTranCenArrivalOrderdataservice();
 	}
 			
 	public static DeliveryOrderdataservice getDeliveryOrderdataservice() 
@@ -80,8 +79,7 @@ public class RMIHelper {
 			
 	public static ReceivablesOrderdataservice getReceivablesOrderdataservice() 
 	throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getReceivablesOrderdataservice();
 	}
 			
 	public static TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{

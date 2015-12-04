@@ -6,6 +6,8 @@ import java.rmi.server.UnicastRemoteObject;
 import data.documentsdata.BusiHallArrivalOrderdata;
 import data.documentsdata.BusiHallLoadingListdata;
 import data.documentsdata.DeliveryOrderdata;
+import data.documentsdata.ReceivablesOrderdata;
+import data.documentsdata.TranCenArrivalOrderdata;
 import data.orderdata.Orderdata;
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
@@ -51,10 +53,11 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		return busiHallArrivalOrderdataservice;
 	}
 	
-	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
+	public TranCenArrivalOrderdataservice getTranCenArrivalOrderdataservice()
 		throws RemoteException{
-				
-		return null;
+		TranCenArrivalOrderdataservice tranCenArrivalOrderdataservice = new 
+				TranCenArrivalOrderdata();
+		return tranCenArrivalOrderdataservice;
 	}
 	
 	public DeliveryOrderdataservice getDeliveryOrderdataservice() 
@@ -70,8 +73,9 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	
 	public ReceivablesOrderdataservice getReceivablesOrderdataservice() 
 	throws RemoteException{
-		return null;
-		
+		ReceivablesOrderdataservice receivablesOrderdataservice = new 
+				ReceivablesOrderdata();
+		return receivablesOrderdataservice;
 	}
 	
 	public TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{

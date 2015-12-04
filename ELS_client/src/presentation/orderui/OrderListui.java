@@ -2,6 +2,8 @@ package presentation.orderui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -20,7 +22,7 @@ public class OrderListui extends JPanel{
 	JLabel SheetLabel;
 	JLabel Sheet;
 	JLabel OrderName;
-	JButton Add;
+	public JButton Add;
 	JLabel AddText;
 	JRadioButton FindById;
 	JRadioButton FindByDate;
@@ -34,6 +36,7 @@ public class OrderListui extends JPanel{
 	JLabel Day;
 	JButton IdFind;
 	JButton DateFind;
+	public JButton jButton = new JButton("123456");
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -163,6 +166,8 @@ public class OrderListui extends JPanel{
 		this.add(Day);
 		this.add(IdFind);
 		this.add(DateFind);
+		this.add(jButton);
+		jButton.setBounds(20, 20, 100, 20);;
 		
 		setLocation(184,30);
 		this.setSize(616,490);

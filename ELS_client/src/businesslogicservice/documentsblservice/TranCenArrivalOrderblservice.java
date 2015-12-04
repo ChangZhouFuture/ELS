@@ -19,7 +19,6 @@ public interface TranCenArrivalOrderblservice {
 	 * @param id
 	 * @return 出发地
 	 */
-
 	public String generateStartAddress(String transderOrderId);
 	
 	/**
@@ -48,7 +47,7 @@ public interface TranCenArrivalOrderblservice {
 	 * @param tcid
 	 * @return 一个中转中心到达单
 	 */
-	public ResultMessage addArrivalOrder4TranCen(TranCenArrivalOrderVO arrivalOrder4TranCenVO);
+	public JavaBean1 addTranCenArivalOrder(TranCenArrivalOrderVO tranCenArrivalOrderVO);
 	
 	/**
 +	 * 前置：已添加所有中转中心到达单信息

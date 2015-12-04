@@ -66,7 +66,7 @@ public interface ReceivablesOrderdataservice extends Remote{
 	
 	public ArrayList<OrderlineitemPO> generateOrder(String courierId) throws RemoteException;
 	
-	public double generateFreight() throws RemoteException;
+	public double generateAmount(ArrayList<String> ordersId) throws RemoteException;
 	/**
 	 * 前置条件：收款单信息处理完成 
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象

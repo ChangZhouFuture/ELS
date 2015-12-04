@@ -89,12 +89,11 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	public String generateId() {              
 		//生成营业厅到达单Id
 		//调用数据层方法，0000000七位数字往后顺延
-		String id;
+		String id = null;
 		try {
 			id = busiHallArrivalOrderdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return null;
 		}	
 		return id;
 	}

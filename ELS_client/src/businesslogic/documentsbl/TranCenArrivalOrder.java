@@ -2,114 +2,129 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import po.documentsPO.TranCenArrivalOrderPO;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
+import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 
 public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
-	private TranCenArrivalOrderVO arrivalOrder4TranCenVO;
-	private TranCenArrivalOrderPO arrivalOrder4TranCenPO;
+	private TranCenArrivalOrderVO tranCenArrivalOrderVO;
+	private TranCenArrivalOrderPO tranCenArrivalOrderPO;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
-	private TranCenArrivalOrderdataservice arrivalOrder4TranCendataservice;
+	private TranCenArrivalOrderdataservice tranCenArrivalOrderdataservice;
 	private ArrayList<TranCenArrivalOrderPO> arrayList1;
 	private ArrayList<TranCenArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
-	private Class class1;
+	private String date;
+	
+	public TranCenArrivalOrder(){
+		try {
+			tranCenArrivalOrderdataservice = RMIHelper.getTranCenArrivalOrderdataservice();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
-		
-		return null;
+		String startAdd = null;
+		try {
+			startAdd = tranCenArrivalOrderdataservice.generateId(transferOrderId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return startAdd;
 	}
 
 	@Override
 	public TransferOrderlineitemVO addTransferOrder(String id) {
 		transferOrderlineitemVO = transferOrder.getTransferOrderlineitemVO(id);
-		
 		return transferOrderlineitemVO;
 	}
 
 	@Override
 	public String generateDate() {
-		
-		
-		return null;
+		date = Time.generateDate();
+		return date;
 	}
 
 	@Override
-	public ResultMessage addArrivalOrder4TranCen(TranCenArrivalOrderVO arrivalOrder4TranCenVO) {
-		arrivalOrder4TranCenPO = new TranCenArrivalOrderPO();
-		this.arrivalOrder4TranCenVO = arrivalOrder4TranCenVO;
+	public JavaBean1 addTranCenArivalOrder(TranCenArrivalOrderVO tranCenArrivalOrderVO) {
+		tranCenArrivalOrderPO = new TranCenArrivalOrderPO();
+		this.tranCenArrivalOrderVO = tranCenArrivalOrderVO;
 		
+		this.tranCenArrivalOrderVO.setArrivalDate(generateDate());
+		this.tranCenArrivalOrderVO.setID(generateId());
+		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
+				tranCenArrivalOrderVO.getTransferOrderID()));
 		VOtoPO();
-		arrivalOrder4TranCenPO.setArrivalDate(generateDate());
-		arrivalOrder4TranCenPO.setID(generateId());
 		
 		try {
-			resultMessage = arrivalOrder4TranCendataservice.
-					addTranCenArrivalOrder(arrivalOrder4TranCenPO);
+			resultMessage = tranCenArrivalOrderdataservice.addTranCenArrivalOrder
+					(this.tranCenArrivalOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return resultMessage;
+		javaBean1.setObject(this.tranCenArrivalOrderVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
 	public String generateId() {
-		
-		
-		return null;
+		String id = null;
+		try {
+			id = date+tranCenArrivalOrderdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}		
+		return id;
 	}
 
 	@Override
-	public ResultMessage modify(TranCenArrivalOrderVO arrivalOrder4TranCenVO) {
-		arrivalOrder4TranCenPO = new TranCenArrivalOrderPO();
-		this.arrivalOrder4TranCenVO = arrivalOrder4TranCenVO;
+	public ResultMessage modify(TranCenArrivalOrderVO tranCenArrivalOrderVO) {
+		tranCenArrivalOrderPO = new TranCenArrivalOrderPO();
+		this.tranCenArrivalOrderVO = tranCenArrivalOrderVO;
 		
 		VOtoPO();
 		try {
-			resultMessage = arrivalOrder4TranCendataservice.
-					update(arrivalOrder4TranCenPO);
+			resultMessage = tranCenArrivalOrderdataservice.update(tranCenArrivalOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage deleteone(String id) {
-		try {
-			resultMessage = arrivalOrder4TranCendataservice.deleteOne(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
 		return resultMessage;
+		
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		try {
-			resultMessage = arrivalOrder4TranCendataservice.deleteMany(idList);
+			resultMessage = tranCenArrivalOrderdataservice.deleteMany(idList);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
 		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String id) {
 		try {
-			javaBean1 = arrivalOrder4TranCendataservice.findA(id);
+			javaBean1 = tranCenArrivalOrderdataservice.findA(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -121,17 +136,19 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	}
 
 	@Override
-	public JavaBean1 inquireB(String time) {
+	public JavaBean1 inquireB(String date) {
 		try {
-			javaBean1 = arrivalOrder4TranCendataservice.findB(time);
+			javaBean1 = tranCenArrivalOrderdataservice.findB(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		arrayList1 = (ArrayList<TranCenArrivalOrderPO>)javaBean1.getObject();
 		int k = arrayList1.size();
 		
 		POtoVO(k);
 		javaBean1.setObject(arrayList2);
 		return javaBean1;
+		
 	}
 
 	@Override
@@ -143,10 +160,13 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 
 	@Override
 	public void VOtoPO() {
-		String transferOrderId = arrivalOrder4TranCenVO.getTransferOrderID();
-		arrivalOrder4TranCenPO.setTransferOrderID(transferOrderId);
-		arrivalOrder4TranCenPO.setOrigin(generateStartAddress(transferOrderId));
-		arrivalOrder4TranCenPO.setGoodState(arrivalOrder4TranCenVO.getGoodState());
+		tranCenArrivalOrderPO.setArrivalDate(tranCenArrivalOrderVO.getArrivalDate());
+		tranCenArrivalOrderPO.setGoodState(tranCenArrivalOrderVO.getGoodState());
+		tranCenArrivalOrderPO.setID(tranCenArrivalOrderVO.getID());
+		tranCenArrivalOrderPO.setOrigin(tranCenArrivalOrderVO.getOrigin());
+		tranCenArrivalOrderPO.setTranCenID(tranCenArrivalOrderVO.getTranCenID());
+		tranCenArrivalOrderPO.setTransferOrderID(tranCenArrivalOrderVO.
+				getTransferOrderID());
 	}
 
 	@Override
@@ -159,17 +179,19 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		arrayList2 = new ArrayList<TranCenArrivalOrderVO>();
 		
 		for (int i = 0; i < k; i++) {
-			arrivalOrder4TranCenPO = arrayList1.get(i);
+			tranCenArrivalOrderPO = arrayList1.get(i);
 			
-			arrivalOrder4TranCenVO = new TranCenArrivalOrderVO();
-			arrivalOrder4TranCenVO.setID(arrivalOrder4TranCenPO.getID());
-			arrivalOrder4TranCenVO.setArrivalDate(arrivalOrder4TranCenPO.getArrivalDate());
-			arrivalOrder4TranCenVO.setTransferOrderID(arrivalOrder4TranCenPO.getTransferOrderID());
-			arrivalOrder4TranCenVO.setOrigin(arrivalOrder4TranCenPO.getOrigin());
-			arrivalOrder4TranCenVO.setGoodState(arrivalOrder4TranCenPO.getGoodState());
+			tranCenArrivalOrderVO = new TranCenArrivalOrderVO();
+			tranCenArrivalOrderVO.setID(tranCenArrivalOrderPO.getID());
+			tranCenArrivalOrderVO.setArrivalDate(tranCenArrivalOrderPO.getArrivalDate());
+			tranCenArrivalOrderVO.setTranCenID(tranCenArrivalOrderPO.getTranCenID());
+			tranCenArrivalOrderVO.setTransferOrderID(tranCenArrivalOrderPO.
+					getTransferOrderID());
+			tranCenArrivalOrderVO.setOrigin(tranCenArrivalOrderPO.getOrigin());
+			tranCenArrivalOrderVO.setGoodState(tranCenArrivalOrderPO.getGoodState());
+		
+			arrayList2.add(tranCenArrivalOrderVO);
 		}
 	}
-
-	
 
 }

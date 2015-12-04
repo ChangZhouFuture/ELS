@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import presentation.reuse.Images;
+import presentation.userui.Loginui;
 
 public class MainFrame extends JFrame{
 	JButton MinimizeButton;
@@ -32,6 +33,7 @@ public class MainFrame extends JFrame{
 	JButton ExitButton;
 	Point origin;
 	JLabel left;
+	JFrame jFrame;
 	
 	public static void main(String[] args){
 		MainFrame ui=new MainFrame();
@@ -130,6 +132,15 @@ public class MainFrame extends JFrame{
 				Point p =getLocation();
 				// 设置窗口的位置
 				setLocation(p.x + e.getX() - origin.x, p.y + e.getY()- origin.y);
+			}
+		});
+		
+		ExitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				jFrame = new Loginui();
 			}
 		});
 		

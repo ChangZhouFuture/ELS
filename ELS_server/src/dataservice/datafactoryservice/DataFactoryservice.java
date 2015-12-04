@@ -33,7 +33,7 @@ public interface DataFactoryservice extends Remote{
 	public BusiHallArrivalOrderdataservice getBusiHallArrivalOrderdataservice()
 			throws RemoteException;
 			
-	public TranCenArrivalOrderdataservice getArrivalOrder4TranCendataservice()
+	public TranCenArrivalOrderdataservice getTranCenArrivalOrderdataservice()
 		throws RemoteException;
 			
 	public DeliveryOrderdataservice getDeliveryOrderdataservice() 

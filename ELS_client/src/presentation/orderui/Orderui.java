@@ -1,5 +1,6 @@
 package presentation.orderui;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -66,7 +67,7 @@ public class Orderui extends JPanel{
 	JTextField CarriageField;
 	JLabel ActualReceiver;
 	JTextField ActualReceiverField;
-	JButton MakeOrder;
+	public JButton MakeOrder;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -394,5 +395,9 @@ public class Orderui extends JPanel{
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+
+	public Orderui(CardLayout cardLayout) {
+		super(cardLayout);
 	}
 }

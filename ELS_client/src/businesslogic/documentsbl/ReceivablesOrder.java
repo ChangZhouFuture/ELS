@@ -1,9 +1,16 @@
 package businesslogic.documentsbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import po.documentsPO.ReceivablesOrderPO;
+import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 import state.ResultMessage;
 import vo.documentsVO.ReceivablesOrderVO;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.orderbl.Order;
+import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 /**
  * 
@@ -11,12 +18,44 @@ import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
  *
  */
 public class ReceivablesOrder implements ReceivablesOrderblservice{
-
+	private ReceivablesOrderdataservice receivablesOrderdataservice;
+	private ReceivablesOrderVO receivablesOrderVO;
+	private ReceivablesOrderPO receivablesOrderPO;
+	private Order order;
+	private OrderlineitemVO orderlineitemVO;
+	private ArrayList<ReceivablesOrderPO> arrayList;
+	private ArrayList<ReceivablesOrderVO> arrayList2;
+	private ResultMessage resultMessage;
+	private JavaBean1 javaBean1;
+	private String date;
+	
+    public ReceivablesOrder() {
+		 try {
+			receivablesOrderdataservice = RMIHelper.getReceivablesOrderdataservice();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	 }
+	
 	@Override
-	public ReceivablesOrderVO add(String date4ro, String amount4ro,
-			String courier4ro, ArrayList<String> barCode) {
-		// TODO Auto-generated method stub
-		return null;
+	public JavaBean1 add(ReceivablesOrderVO receivablesOrderVO) {
+		receivablesOrderPO = new ReceivablesOrderPO();
+		this.receivablesOrderVO = receivablesOrderVO;
+		
+		this.receivablesOrderVO.setDate(generateDate());
+		this.receivablesOrderVO.setID(generateID());
+		this.receivablesOrderVO.setAmount(calculateAmount(receivablesOrderVO.getOrderIDs()));
+		VOtoPO();
+		
+		try {
+			resultMessage = receivablesOrderdataservice.add(receivablesOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		javaBean1.setObject(this.receivablesOrderVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
@@ -26,34 +65,121 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	}
 
 	@Override
-	public ResultMessage deleteMany(ArrayList<String> id4courier,
-			ArrayList<String> date) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage deleteMany(ArrayList<String> idList) {
+		try {
+			resultMessage = receivablesOrderdataservice.deleteMany(idList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 	@Override
-	public ReceivablesOrderVO modify(String id4courier, String date) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage modify(ReceivablesOrderVO receivablesOrderVO) {
+		receivablesOrderPO = new ReceivablesOrderPO();
+		this.receivablesOrderVO = receivablesOrderVO;
+		
+		VOtoPO();
+		try {
+			resultMessage = receivablesOrderdataservice.update(receivablesOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return resultMessage;
 	}
 
 	@Override
-	public JavaBean1 inquire(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public JavaBean1 inquireA(String id) {
+		try {
+			javaBean1 = receivablesOrderdataservice.findA(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject(); 
+		
+		POtoVO(1);
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
 	}
 
 	@Override
-	public void countCarriage(String depature, String destination) {
-		// TODO Auto-generated method stub
+	public JavaBean1 inqurieB(String date) {
+		try {
+			javaBean1 = receivablesOrderdataservice.findB(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject();
+		int k = arrayList.size();
+		
+		POtoVO(k);
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
+	}
+	
+	@Override
+	public String generateDate() {
+		date = Time.generateDate();
+		return date;
+	}
+
+	@Override
+	public String generateID() {
+		String id = null;
+		try {
+			id = date+ receivablesOrderdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+	@Override
+	public OrderlineitemVO addOrder(String orderId) {
+		order = new Order();
+		orderlineitemVO = order.getOrderlineitemVO(orderId);
+		return orderlineitemVO;
+	}
+
+	@Override
+	public void VOtoPO() {
+		receivablesOrderPO.setID(receivablesOrderVO.getID());
+		receivablesOrderPO.setDate(receivablesOrderVO.getDate());
+		receivablesOrderPO.setAmount(receivablesOrderVO.getAmount());
+		receivablesOrderPO.setCourier(receivablesOrderVO.getCourier());
+		receivablesOrderPO.setOrderIDs(receivablesOrderVO.getOrderIDs());
+	}
+
+	@Override
+	public void POtoVO(int k) {
+		arrayList2 = new ArrayList<ReceivablesOrderVO>();
+		
+		for (int i = 0; i < k; i++) {
+			receivablesOrderPO = arrayList.get(i);
+			
+			receivablesOrderVO = new ReceivablesOrderVO();
+			receivablesOrderVO.setID(receivablesOrderPO.getID());
+			receivablesOrderVO.setDate(receivablesOrderPO.getDate());
+			receivablesOrderVO.setAmount(receivablesOrderPO.getAmount());
+			receivablesOrderVO.setCourier(receivablesOrderPO.getCourier());
+			
+			arrayList2.add(receivablesOrderVO);
+		}
 		
 	}
 
 	@Override
-	public void countAmount(ArrayList<String> OrderId) {
-		// TODO Auto-generated method stub
+	public double calculateAmount(ArrayList<String> OrdersId) {
+		double amount = 0;
 		
+		try {
+			amount = receivablesOrderdataservice.generateAmount(OrdersId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return amount;
 	}
 
 	@Override
@@ -61,5 +187,6 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
