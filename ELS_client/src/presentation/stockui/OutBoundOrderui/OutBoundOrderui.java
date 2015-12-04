@@ -17,18 +17,18 @@ import javax.swing.SwingConstants;
 import presentation.userui.StockManagerui;
 
 public class OutBoundOrderui extends JPanel{
-	JLabel OutBoundOrder;
-	JButton MakeOrder;
-	JLabel TransportType;
-	JRadioButton Plane;
-	JRadioButton Train;
-	JRadioButton Truck;
-	ButtonGroup TransportTypeGroup;
-	JLabel OrderId;
-	JTextField OrderIdField;
-	JLabel Destination;
-	JTextField DestinationField;
-	JList OrderType;
+	JLabel outBoundOrder;
+	JButton makeOrder;
+	JLabel transportType;
+	JRadioButton plane;
+	JRadioButton train;
+	JRadioButton truck;
+	ButtonGroup transportTypeGroup;
+	JLabel orderId;
+	JTextField orderIdField;
+	JLabel destination;
+	JTextField destinationField;
+	JList orderType;
 	
 	public static void main(String[] args){
 		StockManagerui ui=new StockManagerui();
@@ -38,62 +38,62 @@ public class OutBoundOrderui extends JPanel{
 	}
 	
 	public OutBoundOrderui(){
-		OutBoundOrder=new JLabel();
-		MakeOrder=new JButton();
-		TransportType=new JLabel();
-		Plane=new JRadioButton();
-		Train=new JRadioButton();
-		Truck=new JRadioButton();
-		TransportTypeGroup=new ButtonGroup();
+		outBoundOrder=new JLabel();
+		makeOrder=new JButton();
+		transportType=new JLabel();
+		plane=new JRadioButton();
+		train=new JRadioButton();
+		truck=new JRadioButton();
+		transportTypeGroup=new ButtonGroup();
 		
 		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		OutBoundOrder.setBounds(218,10,180,30);
-		OutBoundOrder.setText("出库单信息");
-		OutBoundOrder.setHorizontalAlignment(SwingConstants.CENTER);
-		OutBoundOrder.setFont(font1);
-		OutBoundOrder.setBackground(Color.WHITE);
-		OutBoundOrder.setOpaque(true);
+		outBoundOrder.setBounds(218,10,180,30);
+		outBoundOrder.setText("出库单信息");
+		outBoundOrder.setHorizontalAlignment(SwingConstants.CENTER);
+		outBoundOrder.setFont(font1);
+		outBoundOrder.setBackground(Color.WHITE);
+		outBoundOrder.setOpaque(true);
 		
-		TransportType.setBounds(40,50,100,24);
-		TransportType.setText("装运形式：");
-		TransportType.setFont(font2);
-		TransportType.setBackground(Color.WHITE);
-		TransportType.setOpaque(true);
+		transportType.setBounds(40,50,100,24);
+		transportType.setText("装运形式：");
+		transportType.setFont(font2);
+		transportType.setBackground(Color.WHITE);
+		transportType.setOpaque(true);
 		
-		Plane.setBounds(140,50,100,24);
-		Plane.setText("飞机");
-		Plane.setFont(font2);
-		Plane.setBackground(Color.WHITE);
+		plane.setBounds(140,50,100,24);
+		plane.setText("飞机");
+		plane.setFont(font2);
+		plane.setBackground(Color.WHITE);
 		
-		Train.setBounds(240,50,100,24);
-		Train.setText("铁路");
-		Train.setFont(font2);
-		Train.setBackground(Color.WHITE);
+		train.setBounds(240,50,100,24);
+		train.setText("铁路");
+		train.setFont(font2);
+		train.setBackground(Color.WHITE);
 		
-		Truck.setBounds(340,50,100,24);
-		Truck.setText("公路");
-		Truck.setFont(font2);
-		Truck.setBackground(Color.WHITE); 
+		truck.setBounds(340,50,100,24);
+		truck.setText("公路");
+		truck.setFont(font2);
+		truck.setBackground(Color.WHITE); 
 
-		TransportTypeGroup.add(Plane);
-		TransportTypeGroup.add(Train);
-		TransportTypeGroup.add(Truck);
+		transportTypeGroup.add(plane);
+		transportTypeGroup.add(train);
+		transportTypeGroup.add(truck);
 		
-		MakeOrder.setBounds(260,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		makeOrder.setBounds(260,442,96,30);
+		makeOrder.setText("确认生成");
+		makeOrder.setFont(font1);
+		makeOrder.setBackground(Color.WHITE);
+		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		this.add(OutBoundOrder);
-		this.add(MakeOrder);
-		this.add(TransportType);
-		this.add(Plane);
-		this.add(Train);
-		this.add(Truck);
+		this.add(outBoundOrder);
+		this.add(makeOrder);
+		this.add(transportType);
+		this.add(plane);
+		this.add(train);
+		this.add(truck);
 		
 		setLocation(184,30);
 		this.setSize(616,490);

@@ -18,20 +18,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import presentation.controller.MainFrameController;
 import presentation.reuse.Images;
 import presentation.userui.Loginui;
 
 public class MainFrame extends JFrame{
-	JButton MinimizeButton;
-	JButton CloseButton;
-	JPanel MainPanel;
-	JLabel MainLabel1;
-	JLabel MainLabel2;
-	JLabel MainLabel3;
-	JButton UserLogo;
-	JButton ExitButton;
+	JButton minimizeButton;
+	JButton closeButton;
+	JPanel mainPanel;
+	JLabel mainLabel1;
+	JLabel mainLabel2;
+	JLabel mainLabel3;
+	JButton userLogo;
+	JButton exitButton;
 	Point origin;
 	JLabel left;
 	JFrame jFrame;
@@ -40,15 +38,15 @@ public class MainFrame extends JFrame{
 		MainFrame ui=new MainFrame();
 	}
 	public MainFrame(){
-		MinimizeButton=new JButton();
-		CloseButton=new JButton();
-		MainPanel=new JPanel();
-		MainLabel1=new JLabel();
-		MainLabel2=new JLabel();
-		MainLabel3=new JLabel();
-		UserLogo=new JButton();
+		minimizeButton=new JButton();
+		closeButton=new JButton();
+		mainPanel=new JPanel();
+		mainLabel1=new JLabel();
+		mainLabel2=new JLabel();
+		mainLabel3=new JLabel();
+		userLogo=new JButton();
 		origin=new Point();
-		ExitButton=new JButton();
+		exitButton=new JButton();
 		left=new JLabel();
 		
 		this.setUndecorated(true);
@@ -63,43 +61,51 @@ public class MainFrame extends JFrame{
 		left.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		left.setOpaque(true);
 		
-		MainPanel.setLayout(null);
-		MainPanel.setLocation(0,0);
-		MainPanel.setSize(this.getWidth(),this.getHeight());
-		MainPanel.setBackground(Color.WHITE);
-		MainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		MainPanel.setOpaque(true);
+		mainPanel.setLayout(null);
+		mainPanel.setLocation(0,0);
+		mainPanel.setSize(this.getWidth(),this.getHeight());
+		mainPanel.setBackground(Color.WHITE);
+		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		mainPanel.setOpaque(true);
 		
-		MainLabel1.setBounds(0,0,this.getWidth(),30);
-		MainLabel1.setBackground(Color.lightGray);
-		MainLabel1.setOpaque(true);
-		MainLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		MainLabel1.setText(" 快递物流系统");
+		mainLabel1.setBounds(0,0,this.getWidth(),30);
+		mainLabel1.setBackground(Color.lightGray);
+		mainLabel1.setOpaque(true);
+		mainLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		mainLabel1.setText(" 快递物流系统");
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
-		MainLabel1.setFont(font1);
-		MainLabel1.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		mainLabel1.setFont(font1);
+		mainLabel1.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		MainLabel2.setBounds(0,this.getHeight()-30,this.getWidth(),30);
-		MainLabel2.setBackground(Color.lightGray);
-		MainLabel2.setOpaque(true);
-		MainLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		MainLabel2.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		mainLabel2.setBounds(0,this.getHeight()-30,this.getWidth(),30);
+		mainLabel2.setBackground(Color.lightGray);
+		mainLabel2.setOpaque(true);
+		mainLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
+		mainLabel2.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		MainLabel3.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		MainLabel3.setBounds(4,30,180,490);
-		MainLabel3.setBackground(Color.WHITE);
+		mainLabel3.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		mainLabel3.setBounds(4,30,180,490);
+		mainLabel3.setBackground(Color.WHITE);
 		
-		UserLogo.setBounds((MainLabel3.getWidth()-72)/2,0,72,72);
-		UserLogo.setIcon(Images.USERLOGO_IMAGE);
+		userLogo.setBounds((mainLabel3.getWidth()-72)/2,0,72,72);
+		userLogo.setIcon(Images.USERLOGO_IMAGE);
 		
-		ExitButton.setBounds((MainLabel3.getWidth()-72)/2,442,72,30);
-		ExitButton.setText("退出");
-		ExitButton.setFont(font1);
-		ExitButton.setBackground(Color.WHITE);
+		exitButton.setBounds((mainLabel3.getWidth()-72)/2,442,72,30);
+		exitButton.setText("退出");
+		exitButton.setFont(font1);
+		exitButton.setBackground(Color.WHITE);
+		exitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				jFrame = new Loginui();
+			}
+		});
 		
-		MinimizeButton.setBounds(this.getWidth()-30*2,0,30,30);
-		MinimizeButton.setIcon(Images.MINIMIZE_IMAGE);
-		MinimizeButton.addActionListener(new ActionListener(){
+		minimizeButton.setBounds(this.getWidth()-30*2,0,30,30);
+		minimizeButton.setIcon(Images.MINIMIZE_IMAGE);
+		minimizeButton.addActionListener(new ActionListener(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -108,9 +114,9 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		CloseButton.setBounds(this.getWidth()-30,0,30,30);
-		CloseButton.setIcon(Images.CLOSE_IMAGE);
-		CloseButton.addActionListener(new ActionListener(){
+		closeButton.setBounds(this.getWidth()-30,0,30,30);
+		closeButton.setIcon(Images.CLOSE_IMAGE);
+		closeButton.addActionListener(new ActionListener(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -136,36 +142,27 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		ExitButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				jFrame = new Loginui();
-			}
-		});
+		mainLabel1.add(closeButton);
+		mainLabel1.add(minimizeButton);
+		mainLabel3.add(userLogo);
+		mainLabel3.add(exitButton);
+		mainPanel.add(mainLabel1);
+		mainPanel.add(mainLabel2);
+		mainPanel.add(mainLabel3);
+		mainPanel.add(left);
 		
-		MainLabel1.add(CloseButton);
-		MainLabel1.add(MinimizeButton);
-		MainLabel3.add(UserLogo);
-		MainLabel3.add(ExitButton);
-		MainPanel.add(MainLabel1);
-		MainPanel.add(MainLabel2);
-		MainPanel.add(MainLabel3);
-		MainPanel.add(left);
-		
-		this.add(MainPanel);
+		this.add(mainPanel);
 		this.setVisible(true);
 		this.validate();
 		this.repaint();
 	}
 	public JPanel getMainPanel() {
-		return this.MainPanel;
+		return this.mainPanel;
 	}
 	public JButton getUserLogo() {
-		return this.UserLogo;
+		return this.userLogo;
 	}
 	public JButton getExitButton() {
-		return this.ExitButton;
+		return this.exitButton;
 	}
 }

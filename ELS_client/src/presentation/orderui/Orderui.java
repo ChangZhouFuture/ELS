@@ -348,6 +348,8 @@ public class Orderui extends JPanel{
 		
 		CarriageField.setBounds(110,142,80,20);
 		CarriageField.setEditable(false);
+		CarriageField.setBackground(Color.WHITE);
+		CarriageField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		ActualReceiver.setBounds(240,140,80,24);
 		ActualReceiver.setText("¥˙ ’»À£∫");
@@ -357,6 +359,8 @@ public class Orderui extends JPanel{
 		
 		ActualReceiverField.setBounds(300,142,80,20);
 		ActualReceiverField.setEditable(false);
+		ActualReceiverField.setBackground(Color.WHITE);
+		ActualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		Other.add(GoodNum);
 		Other.add(GoodName);

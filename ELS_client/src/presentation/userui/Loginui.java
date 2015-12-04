@@ -28,9 +28,7 @@ public class Loginui extends JFrame{
 	private JButton MinimizeButton;
 	private JButton CloseButton;
 	static Point origin = new Point();
-	public static void main(String[] args){
-		Loginui ui=new Loginui();
-	}
+	
 	public Loginui(){
 //		LoginFrame=new JFrame();
 		LoginUser=new JLabel();
