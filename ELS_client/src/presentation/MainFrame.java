@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import presentation.controller.MainFrameController;
 import presentation.reuse.Images;
 import presentation.userui.Loginui;
 
@@ -94,7 +95,7 @@ public class MainFrame extends JFrame{
 		ExitButton.setBounds((MainLabel3.getWidth()-72)/2,442,72,30);
 		ExitButton.setText("ÍË³ö");
 		ExitButton.setFont(font1);
-		ExitButton.setBackground(Color.WHITE);		
+		ExitButton.setBackground(Color.WHITE);
 		
 		MinimizeButton.setBounds(this.getWidth()-30*2,0,30,30);
 		MinimizeButton.setIcon(Images.MINIMIZE_IMAGE);
@@ -157,5 +158,14 @@ public class MainFrame extends JFrame{
 		this.setVisible(true);
 		this.validate();
 		this.repaint();
+	}
+	public JPanel getMainPanel() {
+		return this.MainPanel;
+	}
+	public JButton getUserLogo() {
+		return this.UserLogo;
+	}
+	public JButton getExitButton() {
+		return this.ExitButton;
 	}
 }
