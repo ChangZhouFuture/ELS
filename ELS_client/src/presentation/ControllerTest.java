@@ -6,11 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
+import presentation.reuse.Skip;
 
 public class ControllerTest {
 	JFrame jFrame;
 	JPanel mainPanel = new JPanel();
-	JPanel jPanel;
+	JPanel childPanel;
 	OrderListui orderListui;
 	Orderui orderui;
 	
@@ -34,33 +35,25 @@ public class ControllerTest {
 			public void actionPerformed(ActionEvent e) {
 				orderListui = null;
 				orderui = new Orderui();
-				jPanel = orderui;
-				skip();
+				childPanel = orderui;
+				Skip.skip(mainPanel, childPanel);
 				inOrderui();
 			}
 		});
 	}
 	
 	public void inOrderui() {
-		
 		orderui.MakeOrder.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				orderListui = null;
 				orderListui = new OrderListui();
-				jPanel = orderListui;
-				skip();
+				childPanel = orderListui;
+				Skip.skip(mainPanel, childPanel);
 				inOrderListui();
 			}
 		});
-	}
-	
-	public void skip() {
-		mainPanel.removeAll();
-		mainPanel.add(jPanel);
-		mainPanel.revalidate();
-		mainPanel.repaint();
 	}
 	
 	public static void main(String[] args) {
