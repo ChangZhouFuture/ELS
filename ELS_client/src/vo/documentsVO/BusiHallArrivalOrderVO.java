@@ -1,11 +1,11 @@
 package vo.documentsVO;
 
 
+import state.ApproState;
 import state.GoodState;
 
 
 public class BusiHallArrivalOrderVO {
-
 	private String Id;
 	private String busiHallID;
 	private String arrivalDate;
@@ -13,6 +13,15 @@ public class BusiHallArrivalOrderVO {
 	private String origin;
 	private GoodState goodState;
 	private String generateTime;
+	private ApproState approState;
+	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
+	
 	public String getId() {
 		return Id;
 	}

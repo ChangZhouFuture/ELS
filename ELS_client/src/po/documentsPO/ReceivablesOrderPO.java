@@ -3,6 +3,8 @@ package po.documentsPO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import state.ApproState;
+
 public class ReceivablesOrderPO implements Serializable{
 	 private String ID;
 	    private double amount;
@@ -10,6 +12,7 @@ public class ReceivablesOrderPO implements Serializable{
 	    ArrayList<String> orderIDs=new ArrayList<>();
 	    private String date;
 	    private String generateTime;
+	    private ApproState approState;
 		public String getID() {
 			return ID;
 		}
@@ -45,5 +48,11 @@ public class ReceivablesOrderPO implements Serializable{
 		}
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
+		}
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
 		}
 }

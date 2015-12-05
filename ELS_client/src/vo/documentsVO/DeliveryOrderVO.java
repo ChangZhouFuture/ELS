@@ -1,6 +1,6 @@
 package vo.documentsVO;
 
-import java.util.ArrayList;
+import state.ApproState;
 
 public class DeliveryOrderVO {
 	private String ID;
@@ -8,6 +8,14 @@ public class DeliveryOrderVO {
     private String orderID;
     private String deliverier;
     private String generateTime;
+    private ApproState approState;
+    
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getID() {
 		return ID;
 	}

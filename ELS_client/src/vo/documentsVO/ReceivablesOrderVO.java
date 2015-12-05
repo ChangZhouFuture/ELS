@@ -2,12 +2,22 @@ package vo.documentsVO;
 
 import java.util.ArrayList;
 
+import state.ApproState;
+
 public class ReceivablesOrderVO {
-	 private String ID;
-	    private double amount;
+		private String ID;
+	    private String date;
 	    private String courier;
 	    ArrayList<String> orderIDs=new ArrayList<>();
-	    private String date;
+	    private double amount;
+	    private ApproState approState;
+	    
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
+		}
 		public String getID() {
 			return ID;
 		}

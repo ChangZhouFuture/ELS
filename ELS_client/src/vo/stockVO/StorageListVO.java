@@ -1,98 +1,71 @@
 package vo.stockVO;
 
+import state.ApproState;
+
 public class StorageListVO {
-	String id4e;
-	
-	String desti;
-	
-	String dis;
-	
-	String row;
-	
-	String she;
-	
-	String pos;
-	
-	String time;
-	
-	String id4obo;
-	
-	
-	public StorageListVO(String id4e, String desti, String dis, String row, String she,String pos, String time){
-		super();
-		this.id4e = id4e;
-		this.desti = desti;
-		this.dis = dis;
-		this.row = row;
-		this.she = she;
-		this.pos = pos;
-	}
+	private String id;
+	private String inDate;
+	private String destination;
+	private String areaNum;                              //ÇøºÅ
+	private String rowNum;                               //ÅÅºÅ
+	private String frameNum;                             //¼ÜºÅ
+	private String positionNum;                          //Î»ºÅ
+	private String generateTime;
+	private ApproState approState;
 	
 	public String getId() {
-		return this.id4obo;
+		return id;
 	}
-	
-	public String getTime() {
-		return this.time;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public String getId4e() {
-		return id4e;
+	public String getInDate() {
+		return inDate;
 	}
-
-
-	public void setId4e(String id4e) {
-		this.id4e = id4e;
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
 	}
-
-
-	public String getDesti() {
-		return desti;
+	public String getDestination() {
+		return destination;
 	}
-
-
-	public void setDesti(String desti) {
-		this.desti = desti;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
-
-
-	public String getDis() {
-		return dis;
+	public String getAreaNum() {
+		return areaNum;
 	}
-
-
-	public void setDis(String dis) {
-		this.dis = dis;
+	public void setAreaNum(String areaNum) {
+		this.areaNum = areaNum;
 	}
-
-
-	public String getRow() {
-		return row;
+	public String getRowNum() {
+		return rowNum;
 	}
-
-
-	public void setRow(String row) {
-		this.row = row;
+	public void setRowNum(String rowNum) {
+		this.rowNum = rowNum;
 	}
-
-
-	public String getShe() {
-		return she;
+	public String getFrameNum() {
+		return frameNum;
 	}
-
-
-	public void setShe(String she) {
-		this.she = she;
+	public void setFrameNum(String frameNum) {
+		this.frameNum = frameNum;
 	}
-
-
-	public String getPos() {
-		return pos;
+	public String getPositionNum() {
+		return positionNum;
 	}
-
-
-	public void setPos(String pos) {
-		this.pos = pos;
+	public void setPositionNum(String positionNum) {
+		this.positionNum = positionNum;
+	}
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
 	
 }

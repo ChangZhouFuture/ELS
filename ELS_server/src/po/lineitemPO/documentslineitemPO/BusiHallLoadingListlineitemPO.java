@@ -2,6 +2,8 @@ package po.lineitemPO.documentslineitemPO;
 
 import java.io.Serializable;
 
+import state.ApproState;
+
 
 public class BusiHallLoadingListlineitemPO implements Serializable{
 	private String ID;
@@ -9,7 +11,14 @@ public class BusiHallLoadingListlineitemPO implements Serializable{
 	private String destination;
 	private String truckNum;
 	private double carriage;
+	private ApproState approState;
 	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getID() {
 		return ID;
 	}

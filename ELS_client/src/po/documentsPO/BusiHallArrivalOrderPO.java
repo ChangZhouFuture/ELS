@@ -3,16 +3,20 @@ package po.documentsPO;
 
 import java.io.Serializable;
 
+import state.ApproState;
 import state.GoodState;
 
+
  public class BusiHallArrivalOrderPO implements Serializable{
-	 private String Id;
+	 	private String Id;
 		private String busiHallID;
 		private String arrivalDate;
 		private String transferOrderID;
 		private String origin;
 		private GoodState goodState;
 		private String generateTime;
+		private ApproState approState;
+		
 		public String getId() {
 			return Id;
 		}
@@ -54,6 +58,12 @@ import state.GoodState;
 		}
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
+		}
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
 		}
 
  }

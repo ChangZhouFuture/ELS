@@ -2,6 +2,8 @@ package vo.documentsVO;
 
 import java.util.ArrayList;
 
+import state.ApproState;
+
  
 public class TransferOrderVO {
  
@@ -14,6 +16,14 @@ public class TransferOrderVO {
 	private String supervisionMan;
 	ArrayList<String> orderIDs=new ArrayList<>();
 	private double carriage;
+	private ApproState approState;
+	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getID() {
 		return ID;
 	}

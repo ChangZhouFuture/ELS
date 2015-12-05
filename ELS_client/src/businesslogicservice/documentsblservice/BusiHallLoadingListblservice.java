@@ -14,13 +14,6 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
  *
  */
 public interface BusiHallLoadingListblservice {
-	/**
-	 * 前置：已打开装车单输入页面
-	 * 营业厅是否存在
-	 * @param bhid
-	 * @return 是否存在
-	 */
-	public String getBusiHallId();
 	
 	/**
 	 * 前置：启动一个新建或修改装车单回合

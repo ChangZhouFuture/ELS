@@ -1,5 +1,6 @@
 package vo.orderVO;
 
+import state.ApproState;
 import state.ExpressType;
 
 public class OrderVO {
@@ -11,16 +12,22 @@ public class OrderVO {
 	private String AddresseeAdd;
 	private String AddresseeCompany;
 	private String AddresseePhoneNumber;
-	private int numOfGoods;
+	private String trueAddressee;
+	private String id;
+	private String goodsName;
+	private String generateDate;
+	private String expectedArrivalDate;
 	private double weight;
 	private double size;
-	private String goodsName;
-	private ExpressType expressType;
+	private double freight;
+	private double packingCharge;
+	private double totalCost;
+	private int numOfGoods;
 	private int numOfCartons;
 	private int numOfWoodenBox;
 	private int numOfBags;
-	private String id;
-	private String generationDate;
+	private ApproState approState;
+	private ExpressType expressType;
 	
 	public String getSenderName() {
 		return senderName;
@@ -70,11 +77,35 @@ public class OrderVO {
 	public void setAddresseePhoneNumber(String addresseePhoneNumber) {
 		AddresseePhoneNumber = addresseePhoneNumber;
 	}
-	public int getNumOfGoods() {
-		return numOfGoods;
+	public String getTrueAddressee() {
+		return trueAddressee;
 	}
-	public void setNumOfGoods(int numOfGoods) {
-		this.numOfGoods = numOfGoods;
+	public void setTrueAddressee(String trueAddressee) {
+		this.trueAddressee = trueAddressee;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getGoodsName() {
+		return goodsName;
+	}
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+	public String getGenerateDate() {
+		return generateDate;
+	}
+	public void setGenerateDate(String generateDate) {
+		this.generateDate = generateDate;
+	}
+	public String getExpectedArrivalDate() {
+		return expectedArrivalDate;
+	}
+	public void setExpectedArrivalDate(String expectedArrivalDate) {
+		this.expectedArrivalDate = expectedArrivalDate;
 	}
 	public double getWeight() {
 		return weight;
@@ -88,17 +119,29 @@ public class OrderVO {
 	public void setSize(double size) {
 		this.size = size;
 	}
-	public String getGoodsName() {
-		return goodsName;
+	public double getFreight() {
+		return freight;
 	}
-	public void setGoodsName(String goodsName) {
-		this.goodsName = goodsName;
+	public void setFreight(double freight) {
+		this.freight = freight;
 	}
-	public ExpressType getExpressType() {
-		return expressType;
+	public double getPackingCharge() {
+		return packingCharge;
 	}
-	public void setExpressType(ExpressType expressType) {
-		this.expressType = expressType;
+	public void setPackingCharge(double packingCharge) {
+		this.packingCharge = packingCharge;
+	}
+	public double getTotalCost() {
+		return totalCost;
+	}
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
+	}
+	public int getNumOfGoods() {
+		return numOfGoods;
+	}
+	public void setNumOfGoods(int numOfGoods) {
+		this.numOfGoods = numOfGoods;
 	}
 	public int getNumOfCartons() {
 		return numOfCartons;
@@ -118,38 +161,19 @@ public class OrderVO {
 	public void setNumOfBags(int numOfBags) {
 		this.numOfBags = numOfBags;
 	}
-	public String getId() {
-		return id;
+	public ApproState getApproState() {
+		return approState;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
-	public String getGenerationDate() {
-		return generationDate;
+	public ExpressType getExpressType() {
+		return expressType;
 	}
-	public void setGenerationDate(String generationDate) {
-		this.generationDate = generationDate;
+	public void setExpressType(ExpressType expressType) {
+		this.expressType = expressType;
 	}
-	public String getExpectedArrivalDate() {
-		return expectedArrivalDate;
-	}
-	public void setExpectedArrivalDate(String expectedArrivalDate) {
-		this.expectedArrivalDate = expectedArrivalDate;
-	}
-	public String getActualArrivalDate() {
-		return actualArrivalDate;
-	}
-	public void setActualArrivalDate(String actualArrivalDate) {
-		this.actualArrivalDate = actualArrivalDate;
-	}
-	public String getActualAddresseeName() {
-		return actualAddresseeName;
-	}
-	public void setActualAddresseeName(String actualAddresseeName) {
-		this.actualAddresseeName = actualAddresseeName;
-	}
-	private String expectedArrivalDate;
-	private String actualArrivalDate;
-	private String actualAddresseeName;
+	
+	
 }
 

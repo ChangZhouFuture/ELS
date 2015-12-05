@@ -1,4 +1,5 @@
 package vo.documentsVO;
+import state.ApproState;
 import state.GoodState;
 
 public class TranCenArrivalOrderVO {
@@ -9,6 +10,14 @@ public class TranCenArrivalOrderVO {
     private String origin;
     private GoodState goodState;
     private String generateTime;
+    private ApproState approState;
+    
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getID() {
 		return ID;
 	}

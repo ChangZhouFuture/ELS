@@ -1,26 +1,29 @@
 package po.documentsPO;
 
 import java.io.Serializable;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-
 import state.ApproState;
  
  public class BusiHallLoadingListPO implements Serializable{
- 
-	 private String ID;
+	 	private String ID;
 	    private String loadingDate;
-	    private String busiHallID;
 	    private String truckNum;
 	    private String destination;
 	    private String vehiclesID;
 	    private String supervisionMan;
 	    private String escortMan;
+	    private String busiHallID;
+	    private String generateTime;
 	    ArrayList<String> orderIDs=new ArrayList<String>();
 	    private double carriage;
-	    private String generateTime;
 	    private ApproState approState;
+	    
+		public String getBusiHallID() {
+			return busiHallID;
+		}
+		public void setBusiHallID(String busiHallID) {
+			this.busiHallID = busiHallID;
+		}
 		public String getID() {
 			return ID;
 		}
@@ -32,12 +35,6 @@ import state.ApproState;
 		}
 		public void setLoadingDate(String loadingDate) {
 			this.loadingDate = loadingDate;
-		}
-		public String getBusiHallID() {
-			return busiHallID;
-		}
-		public void setBusiHallID(String busiHallID) {
-			this.busiHallID = busiHallID;
 		}
 		public String getTruckNum() {
 			return truckNum;

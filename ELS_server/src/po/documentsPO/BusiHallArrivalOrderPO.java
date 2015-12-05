@@ -8,7 +8,7 @@ import state.GoodState;
 
 
  public class BusiHallArrivalOrderPO implements Serializable{
-	 private String Id;
+	 	private String Id;
 		private String busiHallID;
 		private String arrivalDate;
 		private String transferOrderID;
@@ -16,6 +16,7 @@ import state.GoodState;
 		private GoodState goodState;
 		private String generateTime;
 		private ApproState approState;
+		
 		public String getId() {
 			return Id;
 		}

@@ -2,6 +2,7 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
@@ -12,6 +13,7 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
+import businesslogic.utilitybl.CalculateFreight;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 /**
@@ -44,12 +46,6 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	}
 	
 	@Override
-	public String getBusiHallId() {
-		
-		return null;
-	}
-	
-	@Override
 	public OrderlineitemVO addOrder(String orderId) {
 		order = new Order();
 		orderlineitemVO = order.getOrderlineitemVO(orderId);
@@ -67,7 +63,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
 		String vehiclesID = null;
 		try {
-			vehiclesID = getBusiHallId()+date+busiHallLoadingListdtaservice.
+			vehiclesID = CalculateFreight.agencyId +date+busiHallLoadingListdtaservice.
 					generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -77,17 +73,16 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 
 	@Override
 	public double generateFreight(String destination) {
-		
-		
-		return 0;
+		double freight = CalculateFreight.calculateFreight(destination);
+		return freight;
 	}
 
 	@Override
 	public JavaBean1 addBusinessHallLoadingList(BusiHallLoadingListVO businessHallLoadingListVO) {
 		busiHallLoadingListPO = new BusiHallLoadingListPO();
-		this.busiHallLoadingListVO = busiHallLoadingListVO;
+		this.busiHallLoadingListVO = businessHallLoadingListVO;
 		
-		this.busiHallLoadingListVO.setBusiHallID(getBusiHallId());
+		this.busiHallLoadingListVO.setBusiHallID(CalculateFreight.agencyId);
 		this.busiHallLoadingListVO.setLoadingDate(generateDate());
 		this.busiHallLoadingListVO.setVehiclesID(generatevehiclesID());
 		this.busiHallLoadingListVO.setCarriage(generateFreight(
@@ -175,6 +170,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		busiHallLoadingListVO.setVehiclesID(busiHallLoadingListPO.getVehiclesID());
 		busiHallLoadingListVO.setCarriage(busiHallLoadingListPO.getCarriage());
 		busiHallLoadingListVO.setID(busiHallLoadingListPO.getID());
+		busiHallLoadingListVO.setApproState(busiHallLoadingListPO.getApproState());
 		
 		javaBean1.setObject(busiHallLoadingListVO);
 		return javaBean1;
@@ -229,6 +225,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		busiHallLoadingListPO.setVehiclesID(busiHallLoadingListVO.getVehiclesID());
 		busiHallLoadingListPO.setCarriage(busiHallLoadingListVO.getCarriage());
 		busiHallLoadingListPO.setID(busiHallLoadingListVO.getID());
+		busiHallLoadingListPO.setApproState(busiHallLoadingListVO.getApproState());
 	}
 
 	

@@ -1,7 +1,7 @@
 package po.orderPO;
 
 import java.io.Serializable;
-
+import state.ApproState;
 import state.ExpressType;
 
 public class OrderPO implements Serializable{
@@ -13,16 +13,54 @@ public class OrderPO implements Serializable{
 	private String AddresseeAdd;
 	private String AddresseeCompany;
 	private String AddresseePhoneNumber;
-	private int numOfGoods;
+	private String trueAddressee;
+	private String id;
+	private String goodsName;
+	private String generateDate;
+	private String expectedArrivalDate;
 	private double weight;
 	private double size;
-	private String goodsName;
-	private ExpressType expressType;
+	private double freight;
+	private double packingCharge;
+	private double totalCost;
+	private int numOfGoods;
 	private int numOfCartons;
 	private int numOfWoodenBox;
 	private int numOfBags;
-	private String id;
-	private String generationDate;
+	private ApproState approState;
+	private ExpressType expressType;
+	
+	public String getExpectedArrivalDate() {
+		return expectedArrivalDate;
+	}
+	public void setExpectedArrivalDate(String expectedArrivalDate) {
+		this.expectedArrivalDate = expectedArrivalDate;
+	}
+	
+	public String getTrueAddressee() {
+		return trueAddressee;
+	}
+	public void setTrueAddressee(String trueAddressee) {
+		this.trueAddressee = trueAddressee;
+	}
+	public double getFreight() {
+		return freight;
+	}
+	public void setFreight(double freight) {
+		this.freight = freight;
+	}
+	public double getPackingCharge() {
+		return packingCharge;
+	}
+	public void setPackingCharge(double packingCharge) {
+		this.packingCharge = packingCharge;
+	}
+	public double getTotalCost() {
+		return totalCost;
+	}
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
+	}
 	
 	public String getSenderName() {
 		return senderName;
@@ -126,12 +164,18 @@ public class OrderPO implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getGenerationDate() {
-		return generationDate;
-	}
-	public void setGenerationDate(String generationDate) {
-		this.generationDate = generationDate;
-	}
 	
-	
+	public String getGenerateDate() {
+		return generateDate;
+	}
+	public void setGenerateDate(String generateDate) {
+		this.generateDate = generateDate;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
+
 }

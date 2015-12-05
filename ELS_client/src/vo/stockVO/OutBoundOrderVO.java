@@ -1,58 +1,58 @@
 package vo.stockVO;
 
-import java.io.Serializable;
+import state.ApproState;
+import state.TransportType;
 
 public class OutBoundOrderVO {
-	String id4e;
+	private String id;
+	private String outDate;
+	private String destination;
+	private TransportType transportType;
+	private String truckNum;
+	private String generateTime;
+	private ApproState approState;
 	
-	String desti;
-	
-	String id4to;
-	
-	String id4obo;
-	
-	String time;
-	
-	public OutBoundOrderVO(String id4e, String desti, String id4to, String id4obo, 
-			String time){
-		super();
-		this.id4e = id4e;
-		this.desti = desti;
-		this.id4to = id4to;
-		this.id4obo = id4obo;
-		this.time = time;
+	public String getId() {
+		return id;
 	}
-
-	public String getId4obo() {
-		return this.id4obo;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public String getTime() {
-		return this.time;
+	public String getOutDate() {
+		return outDate;
 	}
-	
-	public String getId4e() {
-		return id4e;
+	public void setOutDate(String outDate) {
+		this.outDate = outDate;
 	}
-
-	public void setId4e(String id4e) {
-		this.id4e = id4e;
+	public String getDestination() {
+		return destination;
 	}
-
-	public String getDesti() {
-		return desti;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
-
-	public void setDesti(String desti) {
-		this.desti = desti;
+	public TransportType getTransportType() {
+		return transportType;
 	}
-
-	public String getId4to() {
-		return id4to;
+	public void setTransportType(TransportType transportType) {
+		this.transportType = transportType;
 	}
-
-	public void setId4to(String id4to) {
-		this.id4to = id4to;
+	public String getTruckNum() {
+		return truckNum;
+	}
+	public void setTruckNum(String truckNum) {
+		this.truckNum = truckNum;
+	}
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
 	
 }

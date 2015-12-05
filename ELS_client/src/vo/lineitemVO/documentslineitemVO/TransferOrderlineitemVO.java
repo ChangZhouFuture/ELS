@@ -1,5 +1,6 @@
 package vo.lineitemVO.documentslineitemVO;
 
+import state.ApproState;
 import state.TransportType;
 
 public class TransferOrderlineitemVO {
@@ -10,7 +11,14 @@ public class TransferOrderlineitemVO {
 	private String vehiclesId;
 	private int carriage;
 	private TransportType transportType;
+	private ApproState approState;
 	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getId() {
 		return id;
 	}

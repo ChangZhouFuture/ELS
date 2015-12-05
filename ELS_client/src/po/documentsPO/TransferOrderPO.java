@@ -3,6 +3,7 @@ package po.documentsPO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import state.ApproState;
 import state.TransportType;
 
  
@@ -19,7 +20,7 @@ import state.TransportType;
 		ArrayList<String> orderIDs=new ArrayList<>();
 		private double carriage;
 		private String generateTime;
-		
+		private ApproState approState;
 		public TransportType getTransportType() {
 			return transportType;
 		}
@@ -85,5 +86,11 @@ import state.TransportType;
 		}
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
+		}
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
 		}
  }

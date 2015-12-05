@@ -1,6 +1,7 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
+
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.documentsVO.TranCenLoadingListVO;
@@ -15,17 +16,17 @@ public interface TranCenLoadingListblservice {
 	
 	public String generateVehieclesId();
 	
-	public double generateFeight();
+	public double generateFeight(String destination);
 	
 	public JavaBean1 add(TranCenLoadingListVO tranCenLoadingListVO);
 	
-	public ResultMessage delete(String id);
+	public ResultMessage delete(ArrayList<String> idList);
 	
 	public ResultMessage modify(TranCenLoadingListVO tranCenLoadingListVO);
 	
 	public JavaBean1 inquireA(String id);
 	
-	public JavaBean1 inquireB(ArrayList<String> idList);
+	public JavaBean1 inquireB(String date);
 	
 	
 	public void VOtoPO();

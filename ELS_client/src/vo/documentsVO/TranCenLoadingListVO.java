@@ -2,6 +2,8 @@ package vo.documentsVO;
 
 import java.util.ArrayList;
 
+import state.ApproState;
+
 public class TranCenLoadingListVO {
 	private String ID;
 	private String loadingDate;
@@ -13,6 +15,14 @@ public class TranCenLoadingListVO {
 	private String escortMan;
 	ArrayList<String>  orderIDs=new ArrayList<>();
 	private double carriage;
+	private ApproState approState;
+	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
 	public String getID() {
 		return ID;
 	}

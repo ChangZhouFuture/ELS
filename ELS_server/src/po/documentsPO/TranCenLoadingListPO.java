@@ -18,6 +18,7 @@ public class TranCenLoadingListPO implements Serializable{
 	private double carriage;
 	private String generateTime;
 	private ApproState approState;
+	
 	public String getID() {
 		return ID;
 	}
