@@ -3,6 +3,8 @@ package po.documentsPO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import state.ApproState;
+
 public class TranCenLoadingListPO implements Serializable{
 	private String ID;
 	private String loadingDate;
@@ -15,6 +17,7 @@ public class TranCenLoadingListPO implements Serializable{
 	ArrayList<String>  orderIDs=new ArrayList<>();
 	private double carriage;
 	private String generateTime;
+	private ApproState approState;
 	public String getID() {
 		return ID;
 	}
@@ -80,5 +83,11 @@ public class TranCenLoadingListPO implements Serializable{
 	}
 	public void setGenerateTime(String generateTime) {
 		this.generateTime = generateTime;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
 }

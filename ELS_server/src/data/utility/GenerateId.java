@@ -71,4 +71,30 @@ public class GenerateId {
 			return null;
 		}
 	}
+	
+	public String generateIdOfOrder(){
+		String sql="select * from order";
+		int temp;
+		int last=0;
+		String id;
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				temp=Integer.parseInt(rs.getString(1));
+				if(temp>last){
+					last=temp;
+				}
+			}last=last+1;
+			id=String.valueOf(last);
+			for(int i=0;i<10-id.length();i++){
+				id="0"+id;
+			}
+			return id;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

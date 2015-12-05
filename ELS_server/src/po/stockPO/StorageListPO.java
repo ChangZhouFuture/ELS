@@ -2,6 +2,8 @@ package po.stockPO;
 
 import java.io.Serializable;
 
+import state.ApproState;
+
 public class StorageListPO implements Serializable{
 	private String id;
 	private String inDate;
@@ -11,6 +13,7 @@ public class StorageListPO implements Serializable{
 	private String frameNum;                             //¼ÜºÅ
 	private String positionNum;                          //Î»ºÅ
 	private String generateTime;
+	private ApproState approState;
 	public String getId() {
 		return id;
 	}
@@ -58,6 +61,12 @@ public class StorageListPO implements Serializable{
 	}
 	public void setGenerateTime(String generateTime) {
 		this.generateTime = generateTime;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
 
 	

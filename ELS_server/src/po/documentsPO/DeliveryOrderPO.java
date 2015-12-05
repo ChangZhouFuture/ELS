@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 
+import state.ApproState;
+
 public class DeliveryOrderPO implements Serializable{
 
 	private String ID;
@@ -11,6 +13,7 @@ public class DeliveryOrderPO implements Serializable{
     private String orderID;
     private String deliverier;
     private String generateTime;
+    private ApproState approState;
 	public String getID() {
 		return ID;
 	}
@@ -40,5 +43,11 @@ public class DeliveryOrderPO implements Serializable{
 	}
 	public void setGenerateTime(String generateTime) {
 		this.generateTime = generateTime;
+	}
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
 	}
 }

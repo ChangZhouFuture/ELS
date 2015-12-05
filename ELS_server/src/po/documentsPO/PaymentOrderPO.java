@@ -2,6 +2,8 @@ package po.documentsPO;
 
 import java.io.Serializable;
 
+import state.ApproState;
+
 public class PaymentOrderPO implements Serializable{
 	 private String ID;
 	    private String date;
@@ -11,6 +13,7 @@ public class PaymentOrderPO implements Serializable{
 	    private String entry;
 	    private String note;
 	    private String generateTime;
+	    private ApproState approState;
 		public String getID() {
 			return ID;
 		}
@@ -58,5 +61,11 @@ public class PaymentOrderPO implements Serializable{
 		}
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
+		}
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
 		}
 }

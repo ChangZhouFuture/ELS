@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import state.ApproState;
  
  public class BusiHallLoadingListPO implements Serializable{
  
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 	    ArrayList<String> orderIDs=new ArrayList<String>();
 	    private double carriage;
 	    private String generateTime;
+	    private ApproState approState;
 		public String getID() {
 			return ID;
 		}
@@ -83,5 +86,11 @@ import java.util.ArrayList;
 		}
 		public void setGenerateTime(String generateTime) {
 			this.generateTime = generateTime;
+		}
+		public ApproState getApproState() {
+			return approState;
+		}
+		public void setApproState(ApproState approState) {
+			this.approState = approState;
 		}
  }

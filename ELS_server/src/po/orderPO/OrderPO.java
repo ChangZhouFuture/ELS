@@ -2,6 +2,7 @@ package po.orderPO;
 
 import java.io.Serializable;
 
+import state.ApproState;
 import state.ExpressType;
 
 public class OrderPO implements Serializable{
@@ -22,8 +23,8 @@ public class OrderPO implements Serializable{
 	private int numOfWoodenBox;
 	private int numOfBags;
 	private String id;
-	private String generationDate;
-	
+	private String generateTime;
+	private ApproState approState;
 	public String getSenderName() {
 		return senderName;
 	}
@@ -126,12 +127,17 @@ public class OrderPO implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getGenerationDate() {
-		return generationDate;
+	public String getGenerateTime() {
+		return generateTime;
 	}
-	public void setGenerationDate(String generationDate) {
-		this.generationDate = generationDate;
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
-	
-	
+	public ApproState getApproState() {
+		return approState;
+	}
+	public void setApproState(ApproState approState) {
+		this.approState = approState;
+	}
+
 }
