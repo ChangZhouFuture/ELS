@@ -16,6 +16,7 @@ import po.documentsPO.BusiHallLoadingListPO;
 import po.documentsPO.TranCenLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import po.lineitemPO.documentslineitemPO.TranCenLoadingListlineitemPO;
+import state.ApproState;
 import state.ResultMessage;
 
 public class TranCenLoadingListdata extends UnicastRemoteObject implements TranCenLoadingListdataservice {
@@ -151,6 +152,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 				po.setEscortMan(rs.getString(8));
 				po.setCarriage(rs.getDouble(10));
 				po.setGenerateTime(rs.getString(11));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				String str=rs.getString(9);
 				String[] s=str.split(";");
 				ArrayList<String> arr=new ArrayList<>();
@@ -181,7 +183,18 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0,10).equals(date)){
+				if(rs.getString("generateTime").substring(0,10).equals(date)
+						&&rs.getString("approState").equals("NotApprove")){
+					jb1.setResultMessage(ResultMessage.Success);
+					llpo.setID(rs.getString(1));
+					llpo.setLoadingDate(date);
+					llpo.setDestination(rs.getString(5));
+					llpo.setTruckNum(rs.getString(4));
+					llpo.setCarriage(rs.getDouble(10));
+					llpos.add(llpo);
+				}
+				if(rs.getString("generateTime").substring(0,10).equals(date)
+						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));
 					llpo.setLoadingDate(date);

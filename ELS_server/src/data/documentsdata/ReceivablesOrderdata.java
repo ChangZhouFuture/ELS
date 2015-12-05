@@ -14,6 +14,7 @@ import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.ReceivablesOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
+import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 
@@ -109,6 +110,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			    po.setCourier(rs.getString(3));
 			    po.setDate(rs.getString(5));
 			    po.setGenerateTime(rs.getString(6));
+			    po.setApproState(ApproState.valueOf(rs.getString("approState")));
 			    String str=rs.getString(4);
 			    String[] s=str.split(";");
 			    ArrayList<String> arr=new ArrayList<>();
@@ -137,13 +139,14 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
 		ArrayList<String> arr;
 		String[] s;
-		String sql="select * from receivablesorder where date='"+date+"'";
+		String sql="select * from receivablesorder ";
 		
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)){
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
 					po.setID(rs.getString(1));
 					po.setAmount(rs.getDouble(2));
@@ -157,6 +160,25 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					po.setOrderIDs(arr);
 					po.setDate(date);
 					po.setGenerateTime(rs.getString("generateTime"));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+				}
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("Approve")){
+					jb1.setResultMessage(ResultMessage.Success);
+					po.setID(rs.getString(1));
+					po.setAmount(rs.getDouble(2));
+					po.setCourier(rs.getString(3));
+					String str=rs.getString(4);
+					s=str.split(";");
+					arr=new ArrayList<>();
+					for(int i=0;i<s.length;i++){
+						arr.add(i, s[i]);
+					}
+					po.setOrderIDs(arr);
+					po.setDate(date);
+					po.setGenerateTime(rs.getString("generateTime"));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 				}
 				

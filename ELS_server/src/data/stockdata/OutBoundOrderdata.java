@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import data.utility.Database;
 import po.stockPO.OutBoundOrderPO;
+import state.ApproState;
 import state.ResultMessage;
 import state.TransportType;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
@@ -132,6 +133,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 				po.setTransportType(TransportType.valueOf(rs.getString(4)));
 				po.setTruckNum(rs.getString(5));
 				po.setGenerateTime(rs.getString(6));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -155,13 +157,25 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("outDate").equals(date)){
+				if(rs.getString("outDate").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setId(rs.getString(1));
 					po.setOutDate(date);
 					po.setDestination(rs.getString(3));
 					po.setTransportType(TransportType.valueOf(rs.getString(4)));
 					po.setTruckNum(rs.getString(5));
 					po.setGenerateTime(rs.getString(6));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+				if(rs.getString("outDate").equals(date)&&rs.getString("approState").equals("Approve")){
+					po.setId(rs.getString(1));
+					po.setOutDate(date);
+					po.setDestination(rs.getString(3));
+					po.setTransportType(TransportType.valueOf(rs.getString(4)));
+					po.setTruckNum(rs.getString(5));
+					po.setGenerateTime(rs.getString(6));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}

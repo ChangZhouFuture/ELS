@@ -13,6 +13,7 @@ import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
+import state.ApproState;
 import state.GoodState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
@@ -134,6 +135,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 		        po.setOrigin(rs.getString(5));
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 		        po.setGenerateTime(rs.getString(7));
+		        po.setApproState(ApproState.valueOf(rs.getString("approState")));
 		        pos.add(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 		        jb1.setObject(pos);
@@ -164,7 +166,7 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 			while(rs.next()){
 				jb1.setResultMessage(ResultMessage.Success);
 				substr=rs.getString(7).substring(0, 10);
-				    if(substr.equals(date)){
+				    if(substr.equals(date)&&rs.getString("approState").equals("NotApprove")){
 					   po.setId(rs.getString(1));
 					   po.setBusiHallID(rs.getString(2));
 					   po.setArrivalDate(rs.getString(3));
@@ -172,8 +174,20 @@ public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements Bu
 					   po.setOrigin(rs.getString(5));
 					   po.setGoodState(GoodState.valueOf(rs.getString(6)));
 					   po.setGenerateTime(rs.getString(7));
+					   po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					   pos.add(po);
 		            }	
+				    if(substr.equals(date)&&rs.getString("approState").equals("Approve")){
+				    	 po.setId(rs.getString(1));
+						 po.setBusiHallID(rs.getString(2));
+						 po.setArrivalDate(rs.getString(3));
+						 po.setTransferOrderID(rs.getString(4));
+						 po.setOrigin(rs.getString(5));
+						 po.setGoodState(GoodState.valueOf(rs.getString(6)));
+						 po.setGenerateTime(rs.getString(7));
+						 po.setApproState(ApproState.valueOf(rs.getString("approState")));
+						 pos.add(po);  
+			        }
 		    }
 			jb1.setObject(pos);
 			return jb1;

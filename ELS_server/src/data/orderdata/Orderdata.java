@@ -15,6 +15,7 @@ import data.utility.GenerateId;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
+import state.ApproState;
 import state.ExpressType;
 import state.ResultMessage;
 
@@ -129,6 +130,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setNumOfWoodenBox(rs.getInt(16));
 				po.setNumOfBags(rs.getInt(17));
 				po.setGenerateTime(rs.getString(18));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
                 jb1.setResultMessage(ResultMessage.Success);
             }
@@ -152,7 +154,31 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)){
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("NotApprove")){
+					po.setId(rs.getString(1));
+					po.setSenderName(rs.getString(2));
+					po.setSenderAdd(rs.getString(3));
+					po.setSenderCompany(rs.getString(4));
+					po.setSenderPhoneNumber(rs.getString(5));
+					po.setAddresseeName(rs.getString(6));
+					po.setAddresseeAdd(rs.getString(7));
+					po.setAddresseeCompany(rs.getString(8));
+					po.setAddresseePhoneNumber(rs.getString(9));
+					po.setNumOfGoods(rs.getInt(10));
+					po.setWeight(rs.getDouble(11));
+					po.setSize(rs.getDouble(12));
+					po.setGoodsName(rs.getString(13));
+					po.setExpressType(ExpressType.valueOf(rs.getString(14)));
+					po.setNumOfCartons(rs.getInt(15));
+					po.setNumOfWoodenBox(rs.getInt(16));
+					po.setNumOfBags(rs.getInt(17));
+					po.setGenerateTime(rs.getString(18));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("Approve")){
 					po.setId(rs.getString(1));
 					po.setSenderName(rs.getString(2));
 					po.setSenderAdd(rs.getString(3));

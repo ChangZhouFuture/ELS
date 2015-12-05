@@ -14,6 +14,7 @@ import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.PaymentOrderPO;
 import po.inforManagementPO.BankAccountPO;
+import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 
@@ -146,6 +147,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				po.setEntry(rs.getString(6));
 				po.setNote(rs.getString(7));
 				po.setGenerateTime(rs.getString(8));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}

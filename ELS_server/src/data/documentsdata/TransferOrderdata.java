@@ -13,6 +13,7 @@ import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.TransferOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
+import state.ApproState;
 import state.ResultMessage;
 import state.TransportType;
 import dataservice.documentsdataservice.TransferOrderdataservice;
@@ -127,6 +128,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 				}po.setOrderIDs(arr);
 				po.setCarriage(rs.getDouble(10));
 				po.setGenerateTime(rs.getString(11));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -150,7 +152,19 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)){
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("NotApprove")){
+					jb1.setResultMessage(ResultMessage.Success);
+					llpo.setID(rs.getString(1));
+					llpo.setLoadingDate(rs.getString(2));
+					llpo.setTranType(TransportType.valueOf(rs.getString(3)));
+					llpo.setVehicleNum(rs.getString(4));
+					llpo.setDestination(rs.getString(6));
+					llpo.setCarriage(rs.getDouble(10));
+					llpos.add(llpo);
+				}
+				if(rs.getString("generateTime").substring(0, 10).equals(date)
+						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));
 					llpo.setLoadingDate(rs.getString(2));

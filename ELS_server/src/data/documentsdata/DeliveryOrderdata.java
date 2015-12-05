@@ -14,6 +14,7 @@ import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.DeliveryOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
+import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
 
@@ -111,6 +112,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 				po.setOrderID(rs.getString(3));
 				po.setDeliverier(rs.getString(4));
 				po.setGenerateTime(rs.getString(5));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 				
@@ -138,12 +140,23 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			jb1.setResultMessage(ResultMessage.NotExist);
 			while(rs.next()){
 				substr=rs.getString(5).substring(0, 10);
-				if(substr.equals(date)){
+				if(substr.equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));
 					po.setArrivalDate(rs.getString(2));
 					po.setOrderID(rs.getString(3));
 					po.setDeliverier(rs.getString(4));
 					po.setGenerateTime(rs.getString(5));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+				if(substr.equals(date)&&rs.getString("approState").equals("Approve")){
+					po.setID(rs.getString(1));
+					po.setArrivalDate(rs.getString(2));
+					po.setOrderID(rs.getString(3));
+					po.setDeliverier(rs.getString(4));
+					po.setGenerateTime(rs.getString(5));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}

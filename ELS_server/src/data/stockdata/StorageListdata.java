@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import data.utility.Database;
 import po.stockPO.StorageListPO;
+import state.ApproState;
 import state.ResultMessage;
 import dataservice.stockdataservice.StorageListdataservice;
 
@@ -136,6 +137,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 				po.setFrameNum(rs.getString(6));
 				po.setPositionNum(rs.getString(7));
 				po.setGenerateTime(rs.getString(8));
+				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}return jb1;
@@ -159,7 +161,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("inDate").equals(date)){
+				if(rs.getString("inDate").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setId(rs.getString(1));
 					po.setInDate(date);
 					po.setDestination(rs.getString(3));
@@ -168,6 +170,20 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 					po.setFrameNum(rs.getString(6));
 					po.setPositionNum(rs.getString(7));
 					po.setGenerateTime(rs.getString(8));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+				if(rs.getString("inDate").equals(date)&&rs.getString("approState").equals("Approve")){
+					po.setId(rs.getString(1));
+					po.setInDate(date);
+					po.setDestination(rs.getString(3));
+					po.setAreaNum(rs.getString(4));
+					po.setRowNum(rs.getString(5));
+					po.setFrameNum(rs.getString(6));
+					po.setPositionNum(rs.getString(7));
+					po.setGenerateTime(rs.getString(8));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
