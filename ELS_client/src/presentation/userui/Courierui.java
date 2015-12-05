@@ -12,34 +12,34 @@ import javax.swing.SwingConstants;
 import presentation.MainFrame;
 
 public class Courierui extends MainFrame{
-	JPanel mainPanel = new JPanel();
-	JButton OrderManage;
-	JLabel UserName;
+	public JPanel mainPanel = new JPanel();
+	public JButton orderManage;
+	public JLabel userName;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
 	}
 	public Courierui(){
-		OrderManage=new JButton();
-		UserName=new JLabel();
+		orderManage=new JButton();
+		userName=new JLabel();
 		
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		UserName.setBounds(6,80,176,24);
-		UserName.setText("快递员："+"***");
-		UserName.setHorizontalAlignment(SwingConstants.CENTER);
-		UserName.setFont(font2);
-		UserName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		UserName.setBackground(Color.WHITE);
-		UserName.setOpaque(true);
+		userName.setBounds(2,80,176,24);
+		userName.setText("快递员："+"***");
+		userName.setHorizontalAlignment(SwingConstants.CENTER);
+		userName.setFont(font2);
+		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		userName.setBackground(Color.WHITE);
+		userName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		OrderManage.setBounds(0,110,180,30);
-		OrderManage.setText("订单信息管理");
-		OrderManage.setFont(font3);
-		OrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		OrderManage.setBackground(Color.WHITE);
+		orderManage.setBounds(0,110,180,30);
+		orderManage.setText("订单信息管理");
+		orderManage.setFont(font3);
+		orderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderManage.setBackground(Color.WHITE);
 		
-		this.left.add(UserName);
-		this.left.add(OrderManage);
+		this.left.add(userName);
+		this.left.add(orderManage);
 	}
 }

@@ -1,19 +1,35 @@
 package presentation.orderui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
+import bean.JavaBean1;
+import businesslogic.orderbl.Order;
+import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
+import state.ResultMessage;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import vo.orderVO.OrderVO;
 
 public class OrderListui extends JPanel{
 	public JLabel sheetLabel;
@@ -24,7 +40,6 @@ public class OrderListui extends JPanel{
 	public JButton add;
 	public JButton idFind;
 	public JButton dateFind;
-	public JButton jButton = new JButton("123456");
 	public JTextField idField;
 	public JTextField yearField;
 	public JTextField monthField;
@@ -34,8 +49,10 @@ public class OrderListui extends JPanel{
 	public ButtonGroup findGroup;
 	
 	public static void main(String[] args){
+		
 		Courierui ui=new Courierui();
 		OrderListui uiPanel=new OrderListui();
+		uiPanel.makeTable(null);
 		JLayeredPane layeredPane=ui.getLayeredPane();
 		layeredPane.add(uiPanel,0);
 	}
@@ -63,10 +80,10 @@ public class OrderListui extends JPanel{
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		
-		sheetLabel.setBounds(0,0,639,30);
+		sheetLabel.setBounds(0,0,616,30);
 		sheetLabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		sheetLabel.setBackground(Color.WHITE);
-		sheetLabel.setText("    订单信息管理");
+		sheetLabel.setText("订单信息管理");
 		sheetLabel.setFont(font1);
 		sheetLabel.setIcon(Images.SHEET_IMAGE);
 		sheetLabel.setOpaque(true);
@@ -97,13 +114,6 @@ public class OrderListui extends JPanel{
 		idField.setBounds(150,92,120,20);
 		
 		yearField.setBounds(150,127,48,20);
-		yearField.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		
 		year.setBounds(200,125,24,24);
 		year.setText("年");
@@ -140,6 +150,40 @@ public class OrderListui extends JPanel{
 		dateFind.setText("查找");
 		dateFind.setFont(font2);
 		dateFind.setOpaque(true);
+		dateFind.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String dateString=null;
+				if(yearField.getText()!=null){
+					dateString=dateString+yearField.getText()+"-";
+					if(monthField.getText()!=null){
+						dateString=dateString+monthField.getText()+"-";
+						if(dayField.getText()!=null){
+							dateString=dateString+dayField.getText();
+							JavaBean1 javaBean1;
+							Orderblservice orderblservice=new Order();
+							try {
+								javaBean1=orderblservice.inquireB(dateString);
+								ArrayList<OrderlineitemVO> arrayList = (ArrayList<OrderlineitemVO>)javaBean1.getObject();
+								makeTable(arrayList);
+							} catch (Exception e2) {
+								e2.printStackTrace();
+							}
+						}
+						else{
+							System.out.println("Error");
+						}
+					}
+					else{
+						System.out.println("Error");
+					}
+				}
+				else{
+					System.out.println("Error");
+				}
+			}
+		});
 		
 		this.add(sheetLabel);
 		this.add(add);
@@ -155,13 +199,63 @@ public class OrderListui extends JPanel{
 		this.add(day);
 		this.add(idFind);
 		this.add(dateFind);
-		this.add(jButton);
-		jButton.setBounds(20, 20, 100, 20);;
 		
-		setLocation(182,40);
-		this.setSize(640,490);
+		setLocation(184,30);
+		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void makeTable(ArrayList<OrderlineitemVO> arrayList){
+		 JTable table;
+		 DefaultTableModel tableModel;
+		 String[] columnNames = {"选择","ID","寄件人","收件人","内件品名","状态","运费","时间"}; //列名
+		 String [][]tableVales={}; //数据
+		 tableModel = new DefaultTableModel(tableVales,columnNames);
+		 table = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
+//		 ButtonGroup checkboxGroup=new ButtonGroup();
+		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		 String[] Row1={" ","12345678","张三","李四","被子","未到达","20","2015-12-5"};
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 tableModel.addRow(Row1);
+		 table.setRowHeight(24);
+		 table.setBackground(Color.WHITE);
+		 table.setShowVerticalLines(true);
+		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 JScrollPane scrollPane = new JScrollPane(table); //支持滚动
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(table);
+		 this.add(scrollPane);
+		 JButton delete=new JButton();
+		 delete.setBounds(30,420,50,24);
+		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 delete.setBackground(Color.WHITE);
+		 delete.setText("删除");
+		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
+		 delete.setFont(font3);
+		 this.add(delete);
 	}
 }

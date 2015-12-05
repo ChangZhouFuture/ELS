@@ -9,11 +9,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import presentation.MainFrame;
 import presentation.reuse.Images;
 
@@ -23,18 +26,21 @@ public class Loginui extends JFrame{
 	public JLabel LoginPassword;
 	public JButton LoginButton;
 	public JTextField UserField;
-	public JTextField PasswordField;
+	public JPasswordField PasswordField;
 	public JButton MinimizeButton;
 	public JButton CloseButton;
 	public Point origin = new Point();
-//	public static final ser
+	
+	public static void main(String[] args){
+		Loginui ui=new Loginui();
+	}
 	
 	public Loginui(){
 		LoginUser=new JLabel();
 		LoginPassword=new JLabel();
 		LoginButton=new JButton();
 		UserField=new JTextField();
-		PasswordField=new JTextField();
+		PasswordField=new JPasswordField();
 		MinimizeButton=new JButton();
 		CloseButton=new JButton();
 		Point origin = new Point();
@@ -55,15 +61,16 @@ public class Loginui extends JFrame{
 		this.setLocation((screenSize.width - this.getWidth()) / 2,
 				(screenSize.height - this.getHeight()) / 2);
 		
-		LoginUser.setBounds(128,140,24,24);
+		LoginUser.setBounds(125,140,30,30);
 		LoginUser.setIcon(Images.USER_IMAGE);
 		
-		LoginPassword.setBounds(128,180,24,24);
+		LoginPassword.setBounds(125,180,30,30);
 		LoginPassword.setIcon(Images.PASSWORD_IMAGE);
 		
-		UserField.setBounds(152,140,120,24);
+		UserField.setBounds(155,140,120,30);
 		
-		PasswordField.setBounds(152,180,120,24);
+		PasswordField.setBounds(155,180,120,30);
+		PasswordField.setEchoChar('*');
 		
 		LoginButton.setBounds(150,240,100,24);
 		LoginButton.setBackground(Color.white);

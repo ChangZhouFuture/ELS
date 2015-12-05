@@ -44,7 +44,7 @@ public class MainFrame extends JFrame{
 		
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(820,560);
+		this.setSize(800,550);
 		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((screenSize.width - this.getWidth()) / 2,(screenSize.height - this.getHeight()) / 2);
 		this.getContentPane().setLayout(null);
@@ -52,17 +52,17 @@ public class MainFrame extends JFrame{
 		Font font1=new Font("TimesRoman",Font.BOLD,20);
 		
 		//上方的长条框
-		top.setBounds(0,0,this.getWidth(),40);
+		top.setBounds(0,0,this.getWidth(),30);
 		top.setText("     快递物流系统");
 		top.setFont(font1);
 		top.setForeground(Color.white);
 		
 		//下方的长条框
-		bottom.setBounds(0,this.getHeight()-30,this.getWidth(),30);
+		bottom.setBounds(0,this.getHeight()-24,this.getWidth(),24);
 		
 		//左边的菜单栏
 		left.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-		left.setBounds(4,40,180,490);
+		left.setBounds(4,30,180,496);
 		left.setBackground(Color.white);
 		left.setOpaque(true);
 		
@@ -83,7 +83,7 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		minimizeButton.setBounds(this.getWidth()-80,0,40,40);
+		minimizeButton.setBounds(this.getWidth()-60,0,30,30);
 		minimizeButton.setIcon(Images.MINIMIZE_IMAGE);
 		minimizeButton.addActionListener(new ActionListener(){
 			
@@ -93,7 +93,7 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		closeButton.setBounds(this.getWidth()-40,0,40,40);
+		closeButton.setBounds(this.getWidth()-30,0,30,30);
 		closeButton.setIcon(Images.CLOSE_IMAGE);
 		closeButton.addActionListener(new ActionListener(){
 			

@@ -23,6 +23,9 @@ public class Images {
 	}
 	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/101_编辑.jpg");				
 	
+
+	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
+
 	public static final Image LOGIN_BACKGROUND = createImage(
 			 "images/6238460_182600301162_2_副本_副本.jpg");
 
@@ -32,9 +35,9 @@ public class Images {
 	
 	public static final ImageIcon PASSWORD_IMAGE=createImageIcon("images/password.png");
 	
-	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize (2).png");
+	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize.png");
 	
-	public static final ImageIcon CLOSE_IMAGE=createImageIcon("images/close (2).png");
+	public static final ImageIcon CLOSE_IMAGE=createImageIcon("images/close.png");
 	
 	public static final ImageIcon ADD_IMAGE=createImageIcon("images/add.png");
 	
