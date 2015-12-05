@@ -23,11 +23,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import bean.JavaBean1;
+import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
 import state.ResultMessage;
+import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
 
@@ -231,6 +233,15 @@ public class OrderListui extends JPanel{
 			 }
 		 });
 		 String[] Row1={" ","12345678","张三","李四","被子","未到达","20","2015-12-5"};
+		 try{
+		     for(int i=0;i<arrayList.size();i++){
+			     OrderlineitemVO oneLine=arrayList.get(i);
+			     String[] oneRow={"",oneLine.getId()};
+			     tableModel.addRow(oneRow);
+		     }
+		 }catch(Exception e2){
+			 e2.printStackTrace(); 
+		 }
 		 tableModel.addRow(Row1);
 		 tableModel.addRow(Row1);
 		 tableModel.addRow(Row1);
@@ -256,6 +267,19 @@ public class OrderListui extends JPanel{
 		 delete.setText("删除");
 		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
 		 delete.setFont(font3);
+		 delete.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   ArrayList<String> idList=new ArrayList<String>();
+				   for(int i=0;i<table.getRowCount();i++){
+				    int selectedRow = table.getSelectedRow();//获得选中行的索引
+				    if(selectedRow!=-1){
+				     tableModel.removeRow(selectedRow);  //删除行 
+				    }
+				   }
+//				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+//				     Orderblservice orderblservice=new Order();
+//				    Orderblservice.deleteMany(idList);
+				  }});
 		 this.add(delete);
 	}
 }
