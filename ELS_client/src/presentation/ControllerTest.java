@@ -2,28 +2,38 @@ package presentation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
+
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
+import presentation.userui.Courierui;
 
 public class ControllerTest {
-	JFrame jFrame;
-	JPanel mainPanel = new JPanel();
+	Courierui courierui;
+	JPanel mainPanel;
 	JPanel childPanel;
 	OrderListui orderListui;
 	Orderui orderui;
 	
 	public ControllerTest(){
-		orderListui = new OrderListui();
-		jFrame = new JFrame();
-		jFrame.setBounds(200, 200, 100, 100);
-		jFrame.setVisible(true);
+		courierui = new Courierui();
+		courierui.setLayout(null);
+		
+		mainPanel = new JPanel();
+		mainPanel.setBounds(184, 40, 640, 490);
 		mainPanel.setLayout(null);
-		mainPanel.setBounds(0, 0, 500, 500);
+		mainPanel.setOpaque(true);
+		
+		orderListui = new OrderListui();
+		orderListui.setBounds(0, 0, 640, 490);
+		orderListui.setOpaque(true);
+
 		mainPanel.add(orderListui);
-		jFrame.add(mainPanel);
+		courierui.getLayeredPane().add(mainPanel, 0);
+		
 		inOrderListui();
 	}
 	

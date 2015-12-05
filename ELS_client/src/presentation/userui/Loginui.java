@@ -42,7 +42,7 @@ public class Loginui extends JFrame{
 		LoginPanel=new JPanel(){
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				g.drawImage(Images.BACKGROUND_IMAGE,0,0,400,300,null);
+//				g.drawImage(Images.BACKGROUND_IMAGE,0,0,400,300,null);
 			}
 		};
 		
@@ -66,7 +66,7 @@ public class Loginui extends JFrame{
 		PasswordField.setBounds(152,180,120,24);
 		
 		LoginButton.setBounds(150,240,100,24);
-		LoginButton.setBackground(Color.blue);
+		LoginButton.setBackground(Color.white);
 		LoginButton.setText("µÇ    Â½");
 		Font font = new Font("TimesRoman",Font.BOLD,18);
 		LoginButton.setFont(font);

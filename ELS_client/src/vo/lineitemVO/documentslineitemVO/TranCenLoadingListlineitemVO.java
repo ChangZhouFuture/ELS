@@ -1,5 +1,5 @@
 package vo.lineitemVO.documentslineitemVO;
 
-public class TranCenterLoadingListlineitemVO {
+public class TranCenLoadingListlineitemVO {
 
 }

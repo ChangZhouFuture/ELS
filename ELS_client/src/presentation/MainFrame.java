@@ -10,116 +10,99 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import presentation.reuse.Images;
 import presentation.userui.Loginui;
 
 public class MainFrame extends JFrame{
-	JButton minimizeButton;
-	JButton closeButton;
-	JPanel mainPanel;
-	JLabel mainLabel1;
-	JLabel mainLabel2;
-	JLabel mainLabel3;
-	JButton userLogo;
-	JButton exitButton;
-	Point origin;
-	JLabel left;
-	JFrame jFrame;
+	public JFrame loginui;
+	public JButton minimizeButton;
+	public JButton closeButton;
+	public JButton exitButton;
+	public JButton userLogo;
+	public JLabel top;
+	public JLabel bottom;
+	public JLabel left;
+	public JLabel backGroundLabel;
+	public Point origin;
+	public ImageIcon backGroundImag = Images.MAIN_FRAME_BACKGROUND;
 	
-	public static void main(String[] args){
-		MainFrame ui=new MainFrame();
-	}
+	
 	public MainFrame(){
-		minimizeButton=new JButton();
-		closeButton=new JButton();
-		mainPanel=new JPanel();
-		mainLabel1=new JLabel();
-		mainLabel2=new JLabel();
-		mainLabel3=new JLabel();
-		userLogo=new JButton();
-		origin=new Point();
-		exitButton=new JButton();
 		left=new JLabel();
+		top = new JLabel();
+		bottom = new JLabel();
+		left = new JLabel();
+		userLogo=new JButton();
+		exitButton=new JButton();
+		closeButton=new JButton();
+		minimizeButton=new JButton();
+		origin=new Point();
 		
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800,550);
+		this.setSize(820,560);
 		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((screenSize.width - this.getWidth()) / 2,(screenSize.height - this.getHeight()) / 2);
 		this.getContentPane().setLayout(null);
 		
-		left.setBounds(0,30,4,490);
-		left.setBackground(Color.lightGray);
-		left.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		Font font1=new Font("TimesRoman",Font.BOLD,20);
+		
+		//上方的长条框
+		top.setBounds(0,0,this.getWidth(),40);
+		top.setText("     快递物流系统");
+		top.setFont(font1);
+		top.setForeground(Color.white);
+		
+		//下方的长条框
+		bottom.setBounds(0,this.getHeight()-30,this.getWidth(),30);
+		
+		//左边的菜单栏
+		left.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		left.setBounds(4,40,180,490);
+		left.setBackground(Color.white);
 		left.setOpaque(true);
 		
-		mainPanel.setLayout(null);
-		mainPanel.setLocation(0,0);
-		mainPanel.setSize(this.getWidth(),this.getHeight());
-		mainPanel.setBackground(Color.WHITE);
-		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		mainPanel.setOpaque(true);
-		
-		mainLabel1.setBounds(0,0,this.getWidth(),30);
-		mainLabel1.setBackground(Color.lightGray);
-		mainLabel1.setOpaque(true);
-		mainLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		mainLabel1.setText(" 快递物流系统");
-		Font font1=new Font("TimesRoman",Font.BOLD,18);
-		mainLabel1.setFont(font1);
-		mainLabel1.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
-		mainLabel2.setBounds(0,this.getHeight()-30,this.getWidth(),30);
-		mainLabel2.setBackground(Color.lightGray);
-		mainLabel2.setOpaque(true);
-		mainLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		mainLabel2.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
-		mainLabel3.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		mainLabel3.setBounds(4,30,180,490);
-		mainLabel3.setBackground(Color.WHITE);
-		
-		userLogo.setBounds((mainLabel3.getWidth()-72)/2,0,72,72);
+		userLogo.setBounds((left.getWidth()-72)/2,0,70,70);
 		userLogo.setIcon(Images.USERLOGO_IMAGE);
 		
-		exitButton.setBounds((mainLabel3.getWidth()-72)/2,442,72,30);
+		Font font2 = new Font("TimesRoman",Font.BOLD,18);
+		exitButton.setBounds((left.getWidth()-72)/2,442,72,30);
 		exitButton.setText("退出");
-		exitButton.setFont(font1);
+		exitButton.setFont(font2);
 		exitButton.setBackground(Color.WHITE);
 		exitButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				jFrame = new Loginui();
+				loginui = new Loginui();
 			}
 		});
 		
-		minimizeButton.setBounds(this.getWidth()-30*2,0,30,30);
+		minimizeButton.setBounds(this.getWidth()-80,0,40,40);
 		minimizeButton.setIcon(Images.MINIMIZE_IMAGE);
 		minimizeButton.addActionListener(new ActionListener(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setExtendedState(JFrame.ICONIFIED); 
 			}
 		});
 		
-		closeButton.setBounds(this.getWidth()-30,0,30,30);
+		closeButton.setBounds(this.getWidth()-40,0,40,40);
 		closeButton.setIcon(Images.CLOSE_IMAGE);
 		closeButton.addActionListener(new ActionListener(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0); 
 			}
 		});
+		
 		this.addMouseListener(new MouseAdapter() {
 			// 按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
 			public void mousePressed(MouseEvent e) {
@@ -128,6 +111,7 @@ public class MainFrame extends JFrame{
 				origin.y = e.getY();
 			}
 		});
+		
 		this.addMouseMotionListener(new MouseMotionAdapter() {
 			// 拖动（mouseDragged 指的不是鼠标在窗口中移动，而是用鼠标拖动）
 			public void mouseDragged(MouseEvent e) {
@@ -138,27 +122,28 @@ public class MainFrame extends JFrame{
 			}
 		});
 		
-		mainLabel1.add(closeButton);
-		mainLabel1.add(minimizeButton);
-		mainLabel3.add(userLogo);
-		mainLabel3.add(exitButton);
-		mainPanel.add(mainLabel1);
-		mainPanel.add(mainLabel2);
-		mainPanel.add(mainLabel3);
-		mainPanel.add(left);
+		top.add(closeButton);
+		top.add(minimizeButton);
+		left.add(userLogo);
+		left.add(exitButton);
 		
-		this.add(mainPanel);
+		this.add(top);
+		this.add(bottom);
+		this.add(left);
+		setBackGroundImag();
 		this.setVisible(true);
-		this.validate();
-		this.repaint();
 	}
-	public JPanel getMainPanel() {
-		return this.mainPanel;
+	
+	public void setBackGroundImag() {
+		JPanel jp = (JPanel)this.getContentPane();
+		backGroundLabel = new JLabel(backGroundImag);
+		backGroundLabel.setBounds(0, 0, backGroundImag.getIconWidth(), backGroundImag.
+				getIconHeight());
+		this.getLayeredPane().add(backGroundLabel, new Integer(Integer.MIN_VALUE));
+		jp.setOpaque(false);
 	}
-	public JButton getUserLogo() {
-		return this.userLogo;
-	}
-	public JButton getExitButton() {
-		return this.exitButton;
+	
+	public static void main(String[] args){
+		MainFrame ui=new MainFrame();
 	}
 }

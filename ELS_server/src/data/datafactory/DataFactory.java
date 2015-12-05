@@ -8,6 +8,7 @@ import data.documentsdata.BusiHallLoadingListdata;
 import data.documentsdata.DeliveryOrderdata;
 import data.documentsdata.ReceivablesOrderdata;
 import data.documentsdata.TranCenArrivalOrderdata;
+import data.documentsdata.TranCenLoadingListdata;
 import data.orderdata.Orderdata;
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
@@ -172,7 +173,8 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	@Override
 	public TranCenLoadingListdataservice getTransferCenterLoadingListdataservice()
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		TranCenLoadingListdataservice tranCenLoadingListdataservice = new 
+				TranCenLoadingListdata();
+		return tranCenLoadingListdataservice;
 	}
 }

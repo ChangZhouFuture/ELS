@@ -4,40 +4,34 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
-import presentation.userui.Loginui;
 
 public class OrderListui extends JPanel{
-	JLabel sheetLabel;
-	JLabel sheet;
-	JLabel orderName;
+	public JLabel sheetLabel;
+	public JLabel addText;
+	public JLabel year;
+	public JLabel month;
+	public JLabel day;
 	public JButton add;
-	JLabel addText;
-	JRadioButton findById;
-	JRadioButton findByDate;
-	ButtonGroup findGroup;
-	JTextField idField;
-	JTextField yearField;
-	JTextField monthField;
-	JTextField dayField;
-	JLabel year;
-	JLabel month;
-	JLabel day;
-	JButton idFind;
-	JButton dateFind;
+	public JButton idFind;
+	public JButton dateFind;
 	public JButton jButton = new JButton("123456");
+	public JTextField idField;
+	public JTextField yearField;
+	public JTextField monthField;
+	public JTextField dayField;
+	public JRadioButton findById;
+	public JRadioButton findByDate;
+	public ButtonGroup findGroup;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -48,8 +42,6 @@ public class OrderListui extends JPanel{
 	
 	public OrderListui(){
 		sheetLabel=new JLabel();
-		sheet=new JLabel();
-		orderName=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
 		findById=new JRadioButton();
@@ -71,24 +63,13 @@ public class OrderListui extends JPanel{
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		
-		sheet.setBounds(0,0,30,30);
-		sheet.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		sheet.setIcon(Images.SHEET_IMAGE);
-		sheet.setOpaque(true);
-		
-		orderName.setBounds(30,0,586,30);
-		orderName.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		orderName.setText("订单信息管理");
-		orderName.setFont(font1);
-		orderName.setBackground(Color.WHITE);
-		orderName.setOpaque(true);
-		
-		sheetLabel.setBounds(0,0,616,30);
+		sheetLabel.setBounds(0,0,639,30);
 		sheetLabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		sheetLabel.setBackground(Color.WHITE);
+		sheetLabel.setText("    订单信息管理");
+		sheetLabel.setFont(font1);
+		sheetLabel.setIcon(Images.SHEET_IMAGE);
 		sheetLabel.setOpaque(true);
-		sheetLabel.add(sheet);
-		sheetLabel.add(orderName);
 		
 		add.setBounds(30,45,30,30);
 		add.setIcon(Images.ADD_IMAGE);
@@ -177,8 +158,8 @@ public class OrderListui extends JPanel{
 		this.add(jButton);
 		jButton.setBounds(20, 20, 100, 20);;
 		
-		setLocation(184,30);
-		this.setSize(616,490);
+		setLocation(182,40);
+		this.setSize(640,490);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);

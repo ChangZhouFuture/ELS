@@ -21,8 +21,9 @@ public class Images {
 		}
 		return null;
 	}
+	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/101_±à¼­.jpg");				
 	
-	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
+//	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
 
 	public static final ImageIcon USER_IMAGE=createImageIcon("images/user.png");
 	
@@ -30,9 +31,9 @@ public class Images {
 	
 	public static final ImageIcon PASSWORD_IMAGE=createImageIcon("images/password.png");
 	
-	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize.png");
+	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize (2).png");
 	
-	public static final ImageIcon CLOSE_IMAGE=createImageIcon("images/close.png");
+	public static final ImageIcon CLOSE_IMAGE=createImageIcon("images/close (2).png");
 	
 	public static final ImageIcon ADD_IMAGE=createImageIcon("images/add.png");
 	

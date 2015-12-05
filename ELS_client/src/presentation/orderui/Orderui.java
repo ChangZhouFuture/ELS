@@ -1,9 +1,7 @@
 package presentation.orderui;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -14,59 +12,58 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
-
 import presentation.userui.Courierui;
 
 public class Orderui extends JPanel{
 	JLabel Order;
 	JLabel Sender;
-	TitledBorder SenderBorder;
 	JLabel SenderName;
-	JTextField SenderNameField;
 	JLabel SenderAddress;
-	JTextField SenderAddressField;
 	JLabel SenderCompany;
-	JTextField SenderCompanyField;
 	JLabel SenderPhone;
-	JTextField SenderPhoneField;
 	JLabel SenderMobile;
-	JTextField SenderMobileField;
 	JLabel Receiver;
-	TitledBorder ReceiverBorder;
 	JLabel ReceiverName;
-	JTextField ReceiverNameField;
-	JLabel ReceiverAddress;
-	JTextField ReceiverAddressField;
 	JLabel ReceiverCompany;
-	JTextField ReceiverCompanyField;
-	JLabel ReceiverPhone;
-	JTextField ReceiverPhoneField;
-	JLabel ReceiverMobile;
-	JTextField ReceiverMobileField;
+	JLabel ReceiverAddress;
 	JLabel Other;
-	TitledBorder OtherBorder;
-	JLabel GoodNum;
-	JTextField GoodNumField;
-	JLabel GoodName;
-	JTextField GoodNameField;
-	JLabel GoodWeight;
-	JTextField GoodWeightField;
+	JLabel ReceiverMobile;
+	JLabel ReceiverPhone;
 	JLabel GoodVolume;
-	JTextField GoodVolumeField;
+	JLabel GoodName;
+	JLabel GoodWeight;
+	JLabel GoodNum;
 	JLabel Pack;
+	JLabel ExpressType;
+	JLabel Carriage;
+	JLabel ActualReceiver;
+	JTextField SenderNameField;
+	JTextField SenderAddressField;
+	JTextField SenderCompanyField;
+	JTextField SenderPhoneField;
+	JTextField ReceiverNameField;
+	JTextField SenderMobileField;
+	JTextField ReceiverAddressField;
+	JTextField ReceiverCompanyField;
+	JTextField ReceiverPhoneField;
+	JTextField ReceiverMobileField;
+	JTextField GoodNumField;
+	JTextField GoodNameField;
+	JTextField GoodWeightField;
+	JTextField GoodVolumeField;
+	JTextField CarriageField;
+	JTextField ActualReceiverField;
+	TitledBorder ReceiverBorder;
+	TitledBorder SenderBorder;
+	TitledBorder OtherBorder;
 	JRadioButton Paper;
 	JRadioButton Wood;
 	JRadioButton Bag;
-	ButtonGroup PackGroup;
-	JLabel ExpressType;
 	JRadioButton Economic;
 	JRadioButton Standard;
 	JRadioButton EMS;
+	ButtonGroup PackGroup;
 	ButtonGroup ExpressTypeGroup;
-	JLabel Carriage;
-	JTextField CarriageField;
-	JLabel ActualReceiver;
-	JTextField ActualReceiverField;
 	public JButton MakeOrder;
 	
 	public static void main(String[] args){
@@ -388,20 +385,17 @@ public class Orderui extends JPanel{
 		MakeOrder.setFont(font1);
 		MakeOrder.setBackground(Color.WHITE);
 		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
+				
 		this.add(Order);
 		this.add(Sender);
 		this.add(Receiver);
 		this.add(Other);
 		this.add(MakeOrder);
-		setLocation(184,30);
-		this.setSize(616,490);
+		this.setLocation(182,40);
+		this.setSize(640,490);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
 	}
 
-	public Orderui(CardLayout cardLayout) {
-		super(cardLayout);
-	}
 }

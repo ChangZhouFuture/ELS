@@ -68,8 +68,7 @@ public class RMIHelper {
 
 	public static TranCenLoadingListdataservice getTransferCenterLoadingListdataservice()
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return dataFactoryservice.getTransferCenterLoadingListdataservice();
 	}
 	
 	public static PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
