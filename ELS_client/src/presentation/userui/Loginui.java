@@ -18,19 +18,18 @@ import presentation.MainFrame;
 import presentation.reuse.Images;
 
 public class Loginui extends JFrame{
-//	private JFrame LoginFrame;
-	private JPanel LoginPanel;
-	private JLabel LoginUser;
-	private JLabel LoginPassword;
-	private JButton LoginButton;
-	private JTextField UserField;
-	private JTextField PasswordField;
-	private JButton MinimizeButton;
-	private JButton CloseButton;
-	static Point origin = new Point();
+	public JPanel LoginPanel;
+	public JLabel LoginUser;
+	public JLabel LoginPassword;
+	public JButton LoginButton;
+	public JTextField UserField;
+	public JTextField PasswordField;
+	public JButton MinimizeButton;
+	public JButton CloseButton;
+	public Point origin = new Point();
+//	public static final ser
 	
 	public Loginui(){
-//		LoginFrame=new JFrame();
 		LoginUser=new JLabel();
 		LoginPassword=new JLabel();
 		LoginButton=new JButton();
@@ -39,10 +38,11 @@ public class Loginui extends JFrame{
 		MinimizeButton=new JButton();
 		CloseButton=new JButton();
 		Point origin = new Point();
+		
 		LoginPanel=new JPanel(){
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-//				g.drawImage(Images.BACKGROUND_IMAGE,0,0,400,300,null);
+				g.drawImage(Images.LOGIN_BACKGROUND,0,0,400,300,null);
 			}
 		};
 		

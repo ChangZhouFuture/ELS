@@ -15,7 +15,6 @@ public class Courierui extends MainFrame{
 	JPanel mainPanel = new JPanel();
 	JButton OrderManage;
 	JLabel UserName;
-//	JLayeredPane layeredPane;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -23,7 +22,6 @@ public class Courierui extends MainFrame{
 	public Courierui(){
 		OrderManage=new JButton();
 		UserName=new JLabel();
-//		layeredPane=getLayeredPane();
 		
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		UserName.setBounds(6,80,176,24);
@@ -41,10 +39,7 @@ public class Courierui extends MainFrame{
 		OrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		OrderManage.setBackground(Color.WHITE);
 		
-//		layeredPane.add(UserName,new Integer(10), JLayeredPane.PALETTE_LAYER);
-//		layeredPane.add(OrderManage,new Integer(10), JLayeredPane.PALETTE_LAYER);
-		this.mainPanel.add(UserName);
-		this.mainPanel.add(OrderManage);
-//		System.out.println(layeredPane.getSize());
+		this.left.add(UserName);
+		this.left.add(OrderManage);
 	}
 }

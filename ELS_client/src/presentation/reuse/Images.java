@@ -23,7 +23,8 @@ public class Images {
 	}
 	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/101_编辑.jpg");				
 	
-//	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
+	public static final Image LOGIN_BACKGROUND = createImage(
+			 "images/6238460_182600301162_2_副本_副本.jpg");
 
 	public static final ImageIcon USER_IMAGE=createImageIcon("images/user.png");
 	
