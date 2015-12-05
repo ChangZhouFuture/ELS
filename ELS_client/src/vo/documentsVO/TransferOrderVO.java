@@ -3,10 +3,11 @@ package vo.documentsVO;
 import java.util.ArrayList;
 
 import state.ApproState;
+import state.TransportType;
 
  
 public class TransferOrderVO {
- 
+	private TransportType transportType;
 	private String ID;
 	private String loadingDate;
 	private String flightNum;
@@ -18,6 +19,12 @@ public class TransferOrderVO {
 	private double carriage;
 	private ApproState approState;
 	
+	public TransportType getTransportType() {
+		return transportType;
+	}
+	public void setTransportType(TransportType transportType) {
+		this.transportType = transportType;
+	}
 	public ApproState getApproState() {
 		return approState;
 	}

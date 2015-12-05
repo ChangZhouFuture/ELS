@@ -82,8 +82,7 @@ public class RMIHelper {
 	}
 			
 	public static TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getTransferOrderdataservice();
 	}
 			
 	public static AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
@@ -153,13 +152,11 @@ public class RMIHelper {
 			
 	public static RecordOperaLogdataservice getRecordOperaLogdataservice() throws 
 	RemoteException{
-		return null;
-				
+		return dataFactoryservice.getRecordOperaLogdataservice();
 	}
 			
 	public static UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
 	throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getUpdateLogisticsInfordataservice();
 	}
 }

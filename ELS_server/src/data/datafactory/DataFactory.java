@@ -9,7 +9,10 @@ import data.documentsdata.DeliveryOrderdata;
 import data.documentsdata.ReceivablesOrderdata;
 import data.documentsdata.TranCenArrivalOrderdata;
 import data.documentsdata.TranCenLoadingListdata;
+import data.documentsdata.TransferOrderdata;
 import data.orderdata.Orderdata;
+import data.utility.RecordOperaLogdata;
+import data.utility.UpdateLogisticsInfordata;
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
@@ -80,8 +83,8 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public TransferOrderdataservice getTransferOrderdataservice() throws RemoteException{
-		return null;
-		
+		TransferOrderdataservice transferOrderdataservice = new TransferOrderdata();
+		return transferOrderdataservice;
 	}
 	
 	public AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
@@ -152,14 +155,15 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	
 	public RecordOperaLogdataservice getRecordOperaLogdataservice() throws 
 	RemoteException{
-		return null;
-		
+		RecordOperaLogdataservice recordOperaLogdataservice = new RecordOperaLogdata();
+		return recordOperaLogdataservice;
 	}
 	
 	public UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
 	throws RemoteException{
-		return null;
-		
+		UpdateLogisticsInfordataservice updateLogisticsInfordataservice = new 
+				UpdateLogisticsInfordata();
+		return updateLogisticsInfordataservice;
 	}
 
 	@Override

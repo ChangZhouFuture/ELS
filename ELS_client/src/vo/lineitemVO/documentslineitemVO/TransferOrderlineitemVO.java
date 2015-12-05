@@ -9,7 +9,7 @@ public class TransferOrderlineitemVO {
 	private String startingAdd;
 	private String endAdd;
 	private String vehiclesId;
-	private int carriage;
+	private double carriage;
 	private TransportType transportType;
 	private ApproState approState;
 	
@@ -49,10 +49,10 @@ public class TransferOrderlineitemVO {
 	public void setVehiclesId(String vehiclesId) {
 		this.vehiclesId = vehiclesId;
 	}
-	public int getCarriage() {
+	public double getCarriage() {
 		return carriage;
 	}
-	public void setCarriage(int carriage) {
+	public void setCarriage(double carriage) {
 		this.carriage = carriage;
 	}
 	public TransportType getTransportType() {

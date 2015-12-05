@@ -1,10 +1,8 @@
 package businesslogicservice.documentsblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
-import state.TransportType;
 import vo.documentsVO.TransferOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -39,7 +37,7 @@ public interface TransferOrderblservice {
 	 * @param ea
 	 * @return 运费
 	 */
-	public int generateFare(String sa,String ea);
+	public double generateFare(String destination);
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
@@ -55,7 +53,7 @@ public interface TransferOrderblservice {
 	 * @param Jzy
 	 * @return 一个中转单
 	 */
-	public ResultMessage addTransferOrder(TransferOrderVO transferOrderVO);
+	public JavaBean1 addTransferOrder(TransferOrderVO transferOrderVO);
 	
 	/**
 	 * 前置：已添加所有中转信息
@@ -85,14 +83,14 @@ public interface TransferOrderblservice {
 	 * 后置：删除一个中转单
 	 * @param id
 	 */
-	public ResultMessage deleteone(String id);
+//	public ResultMessage deleteone(String id);
 	
 	/**
 	 * 前置：要删除的中转单在持久化数据中有记录
 	 * 后置：删除多个中转单
 	 * @param id
 	 */
-	public ResultMessage deleteMany(ArrayList<String> idlist);
+	public ResultMessage delete(ArrayList<String> idList);
 	
 	/**
 	 * 前置：要查询的中转单在持久化数据中有记录
@@ -117,4 +115,8 @@ public interface TransferOrderblservice {
 	 * 后置：结束此次中转回合，持久化更新设计的领域对象的数据
 	 */
 	public void end();
+	
+	public void VOtoPO();
+	
+	public void lineitemPOtolineitemVO(int k);
 }

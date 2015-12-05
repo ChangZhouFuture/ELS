@@ -1,11 +1,26 @@
 package businesslogic.utilitybl;
 
+import RMI.RMIHelper;
+import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import state.OperaType;
 import state.ResultMessage;
 
 public class RecordOperaLog {
-	public ResultMessage recordOperaLog (OperaType type, String id, String operatorId) {
-		return null;
-		//id为单据的编号
+	RecordOperaLogdataservice recordOperaLogdataservice;
+	ResultMessage resultMessage;
+	
+	public RecordOperaLog(){
+		try {
+			recordOperaLogdataservice = RMIHelper.getRecordOperaLogdataservice();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ResultMessage recordOperaLog (OperaType type, String objectType, String id, String operatorId) {
+		String date = Time.generateDate();
+		resultMessage = recordOperaLogdataservice.recordOperaLog(type, date, objectType,
+				id, operatorId);
+		return resultMessage;
 	}
 }

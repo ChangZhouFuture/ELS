@@ -9,5 +9,4 @@ public interface Logindataservice extends Remote{
 	
 	public void logout() throws RemoteException;
 	
-
 }

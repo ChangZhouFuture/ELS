@@ -74,7 +74,7 @@ public interface Orderblservice {
       * 后置条件：生成一个订单的条形码号
       * @return
       */
-     public void generateId();
+     public String generateId();
      
      /**
       * 前置条件：完成订单信息输入
@@ -84,10 +84,14 @@ public interface Orderblservice {
       * @param packprice
       * @return
       */
-     public void calculateTotalPrice();
+     public double calculateFreight(String destination);
+     
+     public double calculatePackingCharge();
     
-     public void generateExpectedArrivalDate();
+     public String generateExpectedArrivalDate();
 
+     public void VOtoPO();
+     
      public OrderlineitemVO getOrderlineitemVO(String id);
 
 	/**
@@ -95,4 +99,8 @@ public interface Orderblservice {
       * 后置条件：结束本次订单处理，持久化更新涉及的领域对象的数据
       */
      public void endOrder();
+     
+     public void lineitemPOtolineitemVO(int k);
+     
+     public String generateDate();
 }
