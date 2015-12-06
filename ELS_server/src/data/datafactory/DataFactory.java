@@ -11,6 +11,7 @@ import data.documentsdata.TranCenArrivalOrderdata;
 import data.documentsdata.TranCenLoadingListdata;
 import data.documentsdata.TransferOrderdata;
 import data.orderdata.Orderdata;
+import data.userdata.Logindata;
 import data.utility.RecordOperaLogdata;
 import data.utility.UpdateLogisticsInfordata;
 import dataservice.datafactoryservice.DataFactoryservice;
@@ -144,8 +145,8 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public Logindataservice getLogindataservice() throws RemoteException{
-		return null;
-		
+		Logindataservice logindataservice = new Logindata();
+		return logindataservice;
 	}
 	
 	public UserManagementdataservice getUserManagementdataservice() throws RemoteException{

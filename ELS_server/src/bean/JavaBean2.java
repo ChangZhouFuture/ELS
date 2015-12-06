@@ -1,9 +1,11 @@
 package bean;
 
+import java.io.Serializable;
+
 import state.Position;
 import state.ResultMessage;
 
-public class JavaBean2 {
+public class JavaBean2 implements Serializable{
 	private String name;
 	private String agencyID;
 	private Position position;

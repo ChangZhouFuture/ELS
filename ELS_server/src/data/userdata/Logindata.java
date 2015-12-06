@@ -35,16 +35,14 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 	}
 
 	@Override
-	public JavaBean2 login(String id, String passWord) {
+	public JavaBean2 login(String id, String passWord) throws RemoteException{
 		// TODO Auto-generated method stub
 		JavaBean2 bean=new JavaBean2();
 		try {
 			stmt=con.prepareStatement("select * from user");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				
 				if(rs.getString(1).equals(id)){
-					
 					if(rs.getString(2).equals(passWord)){
 						bean.setName(rs.getString("name"));
 						bean.setPosition(Position.valueOf(rs.getString("position")));
