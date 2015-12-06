@@ -15,55 +15,51 @@ import javax.swing.border.TitledBorder;
 import presentation.userui.Courierui;
 
 public class Orderui extends JPanel{
-	JLabel order;
-	JLabel sender;
-	JLabel senderName;
-	JLabel senderAddress;
-	JLabel senderCompany;
-	JLabel senderPhone;
-	JLabel senderMobile;
-	JLabel receiver;
-	JLabel receiverName;
-	JLabel receiverCompany;
-	JLabel receiverAddress;
-	JLabel other;
-	JLabel receiverMobile;
-	JLabel receiverPhone;
-	JLabel goodVolume;
-	JLabel goodName;
-	JLabel goodWeight;
-	JLabel goodNum;
-	JLabel pack;
-	JLabel expressType;
-	JLabel carriage;
-	JLabel actualReceiver;
-	JTextField senderNameField;
-	JTextField senderAddressField;
-	JTextField senderCompanyField;
-	JTextField senderPhoneField;
-	JTextField receiverNameField;
-	JTextField senderMobileField;
-	JTextField receiverAddressField;
-	JTextField receiverCompanyField;
-	JTextField receiverPhoneField;
-	JTextField receiverMobileField;
-	JTextField goodNumField;
-	JTextField goodNameField;
-	JTextField goodWeightField;
-	JTextField goodVolumeField;
-	JTextField carriageField;
-	JTextField actualReceiverField;
-	TitledBorder receiverBorder;
-	TitledBorder senderBorder;
-	TitledBorder otherBorder;
-	JRadioButton paper;
-	JRadioButton wood;
-	JRadioButton bag;
-	JRadioButton economic;
-	JRadioButton standard;
-	JRadioButton eMS;
-	ButtonGroup packGroup;
-	ButtonGroup expressTypeGroup;
+	public JLabel order;
+	public JLabel sender;
+	public JLabel senderName;
+	public JLabel senderAddress;
+	public JLabel senderCompany;
+	public JLabel senderPhone;
+	public JLabel receiver;
+	public JLabel receiverName;
+	public JLabel receiverCompany;
+	public JLabel receiverAddress;
+	public JLabel other;
+	public JLabel receiverPhone;
+	public JLabel goodVolume;
+	public JLabel goodName;
+	public JLabel goodWeight;
+	public JLabel goodNum;
+	public JLabel pack;
+	public JLabel expressType;
+	public JLabel carriage;
+	public JLabel actualReceiver;
+	public JTextField senderNameField;
+	public JTextField senderAddressField;
+	public JTextField senderCompanyField;
+	public JTextField senderPhoneField;	
+	public JTextField receiverNameField;
+	public JTextField receiverAddressField;
+	public JTextField receiverCompanyField;
+	public JTextField receiverPhoneField;
+	public JTextField goodNumField;
+	public JTextField goodNameField;
+	public JTextField goodWeightField;
+	public JTextField goodVolumeField;
+	public JTextField carriageField;
+	public JTextField actualReceiverField;
+	public TitledBorder receiverBorder;
+	public TitledBorder senderBorder;
+	public TitledBorder otherBorder;
+	public JRadioButton paper;
+	public JRadioButton wood;
+	public JRadioButton bag;
+	public JRadioButton economic;
+	public JRadioButton standard;
+	public JRadioButton eMS;
+	public ButtonGroup packGroup;
+	public ButtonGroup expressTypeGroup;
 	public JButton makeOrder;
 	
 	public static void main(String[] args){
@@ -84,8 +80,6 @@ public class Orderui extends JPanel{
 		senderCompanyField=new JTextField();
 		senderPhone=new JLabel();
 		senderPhoneField=new JTextField();
-		senderMobile=new JLabel();
-		senderMobileField=new JTextField();
 		receiver=new JLabel();
 		receiverBorder=new TitledBorder(BorderFactory.createLineBorder(Color.lightGray),"收件人");
 		receiverName=new JLabel();
@@ -96,8 +90,6 @@ public class Orderui extends JPanel{
 		receiverCompanyField=new JTextField();
 		receiverPhone=new JLabel();
 		receiverPhoneField=new JTextField();
-		receiverMobile=new JLabel();
-		receiverMobileField=new JTextField();
 		other=new JLabel();
 		otherBorder=new TitledBorder(BorderFactory.createLineBorder(Color.lightGray),"其他");
 		goodNum=new JLabel();
@@ -127,7 +119,7 @@ public class Orderui extends JPanel{
 		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
-		Font font4=new Font("TimesRoman",Font.BOLD,15);
+		Font font4=new Font("TimesRoman",Font.BOLD,17);
 		Font font5=new Font("TimesRoman",Font.PLAIN,14);
 		order.setBounds(218,10,180,30);
 		order.setText("订单信息");
@@ -136,121 +128,101 @@ public class Orderui extends JPanel{
 		order.setBackground(Color.WHITE);
 		order.setOpaque(true);
 		
-		sender.setBounds(30,45,270,180);
+		sender.setBounds(30,50,270,160);
 		sender.setBorder(senderBorder);
 		sender.setBackground(Color.WHITE);
 		sender.setOpaque(true);
 		
-		senderName.setBounds(30,20,60,24);
+		senderName.setBounds(30,25,60,24);
 		senderName.setText("姓名：");
 		senderName.setFont(font5);
 		senderName.setBackground(Color.WHITE);
 		senderName.setOpaque(true);
 		
-		senderNameField.setBounds(90,22,160,20);
+		senderNameField.setBounds(90,27,160,20);
 		
-		senderAddress.setBounds(30,50,60,20);
+		senderAddress.setBounds(30,55,60,20);
 		senderAddress.setText("住址：");
 		senderAddress.setFont(font5);
 		senderAddress.setBackground(Color.WHITE);
 		senderAddress.setOpaque(true);
 		
-		senderAddressField.setBounds(90,52,160,20);
+		senderAddressField.setBounds(90,57,160,20);
 		
-		senderCompany.setBounds(30,80,60,24);
+		senderCompany.setBounds(30,85,60,24);
 		senderCompany.setText("单位：");
 		senderCompany.setFont(font5);
 		senderCompany.setBackground(Color.WHITE);
 		senderCompany.setOpaque(true);
 		
-		senderCompanyField.setBounds(90,82,160,20);
+		senderCompanyField.setBounds(90,87,160,20);
 		
-		senderPhone.setBounds(30,110,60,24);
+		senderPhone.setBounds(30,115,60,24);
 		senderPhone.setText("电话：");
 		senderPhone.setFont(font5);
 		senderPhone.setBackground(Color.WHITE);
 		senderPhone.setOpaque(true);
 		
-		senderPhoneField.setBounds(90,112,160,20);
-		
-		senderMobile.setBounds(30,140,60,24);
-		senderMobile.setText("手机：");
-		senderMobile.setFont(font5);
-		senderMobile.setBackground(Color.WHITE);
-		senderMobile.setOpaque(true);
-		
-		senderMobileField.setBounds(90,142,160,20);
+		senderPhoneField.setBounds(90,117,160,20);
 		
 		sender.add(senderName);
 		sender.add(senderAddress);
 		sender.add(senderCompany);
 		sender.add(senderPhone);
-		sender.add(senderMobile);
 		
 		sender.add(senderNameField);
 		sender.add(senderAddressField);
 		sender.add(senderCompanyField);
 		sender.add(senderPhoneField);
-		sender.add(senderMobileField);
 		
-		receiver.setBounds(320,45,270,180);
+		receiver.setBounds(320,50,270,160);
 		receiver.setBorder(receiverBorder);
 		receiver.setBackground(Color.WHITE);
 		receiver.setOpaque(true);
 		
-		receiverName.setBounds(30,20,60,24);
+		receiverName.setBounds(30,25,60,24);
 		receiverName.setText("姓名：");
 		receiverName.setFont(font5);
 		receiverName.setBackground(Color.WHITE);
 		receiverName.setOpaque(true);
 		
-		receiverNameField.setBounds(90,22,160,20);
+		receiverNameField.setBounds(90,27,160,20);
 		
-		receiverAddress.setBounds(30,50,60,20);
+		receiverAddress.setBounds(30,55,60,20);
 		receiverAddress.setText("住址：");
 		receiverAddress.setFont(font5);
 		receiverAddress.setBackground(Color.WHITE);
 		receiverAddress.setOpaque(true);
 		
-		receiverAddressField.setBounds(90,52,160,20);
+		receiverAddressField.setBounds(90,57,160,20);
 		
-		receiverCompany.setBounds(30,80,60,24);
+		receiverCompany.setBounds(30,85,60,24);
 		receiverCompany.setText("单位：");
 		receiverCompany.setFont(font5);
 		receiverCompany.setBackground(Color.WHITE);
 		receiverCompany.setOpaque(true);
 		
-		receiverCompanyField.setBounds(90,82,160,20);
+		receiverCompanyField.setBounds(90,87,160,20);
 		
-		receiverPhone.setBounds(30,110,60,24);
+		receiverPhone.setBounds(30,115,60,24);
 		receiverPhone.setText("电话：");
 		receiverPhone.setFont(font5);
 		receiverPhone.setBackground(Color.WHITE);
 		receiverPhone.setOpaque(true);
 		
-		receiverPhoneField.setBounds(90,112,160,20);
-		
-		receiverMobile.setBounds(30,140,60,24);
-		receiverMobile.setText("手机：");
-		receiverMobile.setFont(font5);
-		receiverMobile.setBackground(Color.WHITE);
-		receiverMobile.setOpaque(true);
-		
-		receiverMobileField.setBounds(90,142,160,20);
+		receiverPhoneField.setBounds(90,117,160,20);
 		
 		receiver.add(receiverName);
 		receiver.add(receiverAddress);
 		receiver.add(receiverCompany);
 		receiver.add(receiverPhone);
-		receiver.add(receiverMobile);
 		
 		receiver.add(receiverNameField);
 		receiver.add(receiverAddressField);
 		receiver.add(receiverCompanyField);
 		receiver.add(receiverPhoneField);
-		receiver.add(receiverMobileField);
-		
-		other.setBounds(30,230,560,180);
+
+		other.setBounds(30,215,560,180);
 		other.setBorder(otherBorder);
 		other.setBackground(Color.WHITE);
 		other.setOpaque(true);
@@ -391,8 +363,8 @@ public class Orderui extends JPanel{
 		this.add(receiver);
 		this.add(other);
 		this.add(makeOrder);
-		this.setLocation(182,40);
-		this.setSize(640,490);
+		this.setLocation(182,30);
+		this.setSize(640,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);

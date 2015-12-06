@@ -25,12 +25,9 @@ import javax.swing.table.TableCellRenderer;
 import presentation.reuse.Images;
 import presentation.userui.BusiHallClerkui;
 import vo.documentsVO.DeliveryOrderVO;
-import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import bean.JavaBean1;
 import businesslogic.documentsbl.DeliveryOrder;
-import businesslogic.orderbl.Order;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
-import businesslogicservice.orderblservice.Orderblservice;
 
 public class DeliveryOrderListui extends JPanel{
 	public JLabel sheetLabel;
