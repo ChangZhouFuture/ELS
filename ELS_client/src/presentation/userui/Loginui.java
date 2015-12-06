@@ -136,20 +136,28 @@ public class Loginui extends JFrame{
 				switch (position) {
 				case "Accountant1":
 					mineFrame=new Accountantui1();
+					break;
 				case "Accountant2":
 					mineFrame=new Accountantui2();
+					break;
 				case "Administrator":
 					mineFrame=new Administratorui();
+					break;
 				case "BusiHallClerk":
 					mineFrame=new BusiHallClerkui();
+					break;
 				case "Courier":
 					mineFrame=new Courierui();
+					break;
 				case "GeneralManager":
 					mineFrame=new GeneralManagerui();
+					break;
 				case "StockManager":
 					mineFrame=new StockManagerui();
+					break;
 				case "TranCenClerk":
 					mineFrame=new TranCenClerkui();
+					break;
 				default:
 					break;
 				}
