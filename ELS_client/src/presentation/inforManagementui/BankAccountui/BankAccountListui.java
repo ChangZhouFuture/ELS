@@ -1,5 +1,7 @@
 package presentation.inforManagementui.BankAccountui;
 
-public class BankAccountListui {
+import javax.swing.JPanel;
+
+public class BankAccountListui extends JPanel{
 
 }

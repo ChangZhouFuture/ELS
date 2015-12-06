@@ -1,5 +1,7 @@
 package presentation.documentsui.TransferOrderui;
 
-public class TransferOrderListui {
+import presentation.reuse.Listui;
+
+public class TransferOrderListui extends Listui{
 
 }

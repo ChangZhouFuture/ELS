@@ -9,74 +9,72 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
-import presentation.MainFrame;
+import presentation.reuse.MainFrame;
 
 public class GeneralManagerui extends MainFrame{
-	JButton AgencyManage;
-	JButton StuffManage;
-	JButton StatisAnaly;
-	JButton Approdocm;
-	JButton Operalog;
-	JLabel UserName;
-	JLayeredPane layeredPane;
+	public JButton agencyManage;
+	public JButton stuffManage;
+	public JButton statisAnaly;
+	public JButton approdocm;
+	public JButton operalog;
+	public JLabel userName;
 	
 	public static void main(String[] args){
 		GeneralManagerui ui=new GeneralManagerui();
 	}
 	public GeneralManagerui(){
-		AgencyManage=new JButton();
-		StuffManage=new JButton();
-		StatisAnaly=new JButton();
-		Approdocm=new JButton();
-		Operalog=new JButton();
-		UserName=new JLabel();
-		layeredPane=getLayeredPane();
+		agencyManage=new JButton();
+		stuffManage=new JButton();
+		statisAnaly=new JButton();
+		approdocm=new JButton();
+		operalog=new JButton();
+		userName=new JLabel();
 		
-		UserName.setBounds(6,106,176,24);
-		UserName.setText("总经理："+"***");
-		UserName.setHorizontalAlignment(SwingConstants.CENTER);
+		userName.setBounds(2,76,176,24);
+		userName.setText("总经理："+"***");
+		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		UserName.setFont(font2);
-		UserName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		UserName.setBackground(Color.WHITE);
-		UserName.setOpaque(true);
+		userName.setFont(font2);
+		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		userName.setBackground(Color.WHITE);
+		userName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		AgencyManage.setBounds(4,130,180,30);
-		AgencyManage.setText("机构管理");
-		AgencyManage.setFont(font3);
-		AgencyManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		AgencyManage.setBackground(Color.WHITE);
+		agencyManage.setBounds(0,100,180,30);
+		agencyManage.setText("机构管理");
+		agencyManage.setFont(font3);
+		agencyManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		agencyManage.setBackground(Color.WHITE);
 		
-		StuffManage.setBounds(4,160,180,30);
-		StuffManage.setText("人员管理");
-		StuffManage.setFont(font3);
-		StuffManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		StuffManage.setBackground(Color.WHITE);
+		stuffManage.setBounds(0,130,180,30);
+		stuffManage.setText("人员管理");
+		stuffManage.setFont(font3);
+		stuffManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		stuffManage.setBackground(Color.WHITE);
 		
-		StatisAnaly.setBounds(4,190,180,30);
-		StatisAnaly.setText("统计报表");
-		StatisAnaly.setFont(font3);
-		StatisAnaly.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		StatisAnaly.setBackground(Color.WHITE);
+		statisAnaly.setBounds(0,160,180,30);
+		statisAnaly.setText("统计报表");
+		statisAnaly.setFont(font3);
+		statisAnaly.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		statisAnaly.setBackground(Color.WHITE);
 		
-		Approdocm.setBounds(4,220,180,30);
-		Approdocm.setText("审批单据");
-		Approdocm.setFont(font3);
-		Approdocm.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		Approdocm.setBackground(Color.WHITE);
+		approdocm.setBounds(0,190,180,30);
+		approdocm.setText("审批单据");
+		approdocm.setFont(font3);
+		approdocm.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		approdocm.setBackground(Color.WHITE);
 		
-		Operalog.setBounds(4,250,180,30);
-		Operalog.setText("查询操作日志");
-		Operalog.setFont(font3);
-		Operalog.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		Operalog.setBackground(Color.WHITE);
+		operalog.setBounds(0,220,180,30);
+		operalog.setText("查询操作日志");
+		operalog.setFont(font3);
+		operalog.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		operalog.setBackground(Color.WHITE);
 		
-		layeredPane.add(UserName,new Integer(10), 0);
-		layeredPane.add(AgencyManage,new Integer(10), 0);
-		layeredPane.add(StuffManage,new Integer(10), 0);
-		layeredPane.add(StatisAnaly,new Integer(10), 0);
-		layeredPane.add(Approdocm,new Integer(10), 0);
-		layeredPane.add(Operalog,new Integer(10), 0);
+		this.left.add(userName);
+		this.left.add(agencyManage);
+		this.left.add(stuffManage);
+		this.left.add(statisAnaly);
+		this.left.add(approdocm);
+		this.left.add(operalog);
 	}
 }

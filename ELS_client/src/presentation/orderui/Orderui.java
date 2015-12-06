@@ -35,6 +35,8 @@ public class Orderui extends JPanel{
 	public JLabel expressType;
 	public JLabel carriage;
 	public JLabel actualReceiver;
+	public JLabel expectedArrivalDate;
+	public JLabel trueArrivalDate;
 	public JTextField senderNameField;
 	public JTextField senderAddressField;
 	public JTextField senderCompanyField;
@@ -49,6 +51,8 @@ public class Orderui extends JPanel{
 	public JTextField goodVolumeField;
 	public JTextField carriageField;
 	public JTextField actualReceiverField;
+	public JTextField expectedArrivalDateField;
+	public JTextField trueArrivalDateField;
 	public TitledBorder receiverBorder;
 	public TitledBorder senderBorder;
 	public TitledBorder otherBorder;
@@ -114,6 +118,10 @@ public class Orderui extends JPanel{
 		carriageField=new JTextField();
 		actualReceiver=new JLabel();
 		actualReceiverField=new JTextField();
+		expectedArrivalDate=new JLabel();
+		expectedArrivalDateField=new JTextField();
+		trueArrivalDate=new JLabel();
+		trueArrivalDateField=new JTextField();
 		makeOrder=new JButton();
 		
 		this.setLayout(null);
@@ -222,7 +230,7 @@ public class Orderui extends JPanel{
 		receiver.add(receiverCompanyField);
 		receiver.add(receiverPhoneField);
 
-		other.setBounds(30,215,560,180);
+		other.setBounds(30,215,560,210);
 		other.setBorder(otherBorder);
 		other.setBackground(Color.WHITE);
 		other.setOpaque(true);
@@ -265,17 +273,17 @@ public class Orderui extends JPanel{
 		pack.setBackground(Color.WHITE);
 		pack.setOpaque(true);
 		
-		paper.setBounds(90,80,120,24);
+		paper.setBounds(110,80,120,24);
 		paper.setText("纸箱（5元）");
 		paper.setFont(font5);
 		paper.setBackground(Color.WHITE);
 		
-		wood.setBounds(210,80,120,24);
+		wood.setBounds(230,80,120,24);
 		wood.setText("木箱（10元）");
 		wood.setFont(font5);
 		wood.setBackground(Color.WHITE);
 		
-		bag.setBounds(330,80,120,24);
+		bag.setBounds(350,80,120,24);
 		bag.setText("快递袋（1元）");
 		bag.setFont(font5);
 		bag.setBackground(Color.WHITE);
@@ -324,12 +332,34 @@ public class Orderui extends JPanel{
 		actualReceiver.setText("代收人：");
 		actualReceiver.setFont(font5);
 		actualReceiver.setBackground(Color.WHITE);
-		actualReceiver.setOpaque(true);
+		actualReceiver.setVisible(false);
 		
 		actualReceiverField.setBounds(300,142,80,20);
 		actualReceiverField.setEditable(false);
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		expectedArrivalDate.setBounds(30,170,100,24);
+		expectedArrivalDate.setText("预计到达时间：");
+		expectedArrivalDate.setFont(font5);
+		expectedArrivalDate.setBackground(Color.WHITE);
+		expectedArrivalDate.setOpaque(true);
+		
+		expectedArrivalDateField.setBounds(130,172,100,20);
+		expectedArrivalDateField.setEditable(false);
+		expectedArrivalDateField.setBackground(Color.WHITE);
+		expectedArrivalDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		trueArrivalDate.setBounds(240,170,100,24);
+		trueArrivalDate.setText("实际到达时间：");
+		trueArrivalDate.setFont(font5);
+		trueArrivalDate.setBackground(Color.WHITE);
+		trueArrivalDate.setVisible(false);
+		
+		trueArrivalDateField.setBounds(340,172,100,20);
+		trueArrivalDateField.setEditable(false);
+		trueArrivalDateField.setBackground(Color.WHITE);
+		trueArrivalDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		other.add(goodNum);
 		other.add(goodName);
@@ -350,7 +380,10 @@ public class Orderui extends JPanel{
 		other.add(carriage);
 		other.add(carriageField);
 		other.add(actualReceiver);
-		other.add(actualReceiverField);
+		other.add(expectedArrivalDate);
+		other.add(expectedArrivalDateField);
+		other.add(trueArrivalDate);
+		other.add(trueArrivalDateField);
 		
 		makeOrder.setBounds(260,442,96,30);
 		makeOrder.setText("确认生成");

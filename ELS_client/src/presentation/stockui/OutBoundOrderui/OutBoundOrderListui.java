@@ -1,5 +1,7 @@
 package presentation.stockui.OutBoundOrderui;
 
-public class OutBoundOrderListui {
+import presentation.reuse.Listui;
+
+public class OutBoundOrderListui extends Listui{
 
 }

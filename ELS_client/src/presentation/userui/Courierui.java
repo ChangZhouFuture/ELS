@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import presentation.MainFrame;
+import presentation.reuse.MainFrame;
 
 public class Courierui extends MainFrame{
 	public JPanel mainPanel = new JPanel();

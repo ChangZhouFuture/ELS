@@ -1,5 +1,7 @@
 package presentation.documentsui.ReceivablesOrderui;
 
-public class ReceivablesOrderListui {
+import presentation.reuse.Listui;
 
+public class ReceivablesOrderListui extends Listui{
+	
 }

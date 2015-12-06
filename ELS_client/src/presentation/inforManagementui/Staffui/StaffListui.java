@@ -1,5 +1,7 @@
 package presentation.inforManagementui.Staffui;
 
-public class StaffListui {
+import javax.swing.JPanel;
+
+public class StaffListui extends JPanel{
 
 }

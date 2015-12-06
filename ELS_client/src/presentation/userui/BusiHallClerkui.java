@@ -9,83 +9,81 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
-import presentation.MainFrame;
+import presentation.reuse.MainFrame;
 
 public class BusiHallClerkui extends MainFrame{
-	JButton BusiLoad;
-	JButton DriverManage;
-	JButton ReceOrderManage;
-	JButton BusiHallArrivalOrderManage;
-	JButton DeliveryManage;
-	JButton VehicleManage;
-	JLabel UserName;
-	JLayeredPane layeredPane;
+	public JButton busiLoad;
+	public JButton driverManage;
+	public JButton receOrderManage;
+	public JButton busiHallArrivalOrderManage;
+	public JButton deliveryManage;
+	public JButton vehicleManage;
+	public JLabel userName;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
 	}
 	public BusiHallClerkui(){
-		BusiLoad=new JButton();
-		UserName=new JLabel();
-		layeredPane=getLayeredPane();
-		DriverManage=new JButton();
-		ReceOrderManage=new JButton();
-		BusiHallArrivalOrderManage=new JButton();
-		DeliveryManage=new JButton();
-		VehicleManage=new JButton();
+		busiLoad=new JButton();
+		userName=new JLabel();
+		driverManage=new JButton();
+		receOrderManage=new JButton();
+		busiHallArrivalOrderManage=new JButton();
+		deliveryManage=new JButton();
+		vehicleManage=new JButton();
 		
-		UserName.setBounds(6,106,176,24);
-		UserName.setText("营业厅业务员："+"***");
-		UserName.setHorizontalAlignment(SwingConstants.CENTER);
+		userName.setBounds(6,106,176,24);
+		userName.setText("营业厅业务员："+"***");
+		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		UserName.setFont(font2);
-		UserName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		UserName.setBackground(Color.WHITE);
-		UserName.setOpaque(true);
+		userName.setFont(font2);
+		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		userName.setBackground(Color.WHITE);
+		userName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		BusiLoad.setBounds(4,130,180,30);
-		BusiLoad.setText("车辆装车管理");
-		BusiLoad.setFont(font3);
-		BusiLoad.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		BusiLoad.setBackground(Color.WHITE);
+		busiLoad.setBounds(4,130,180,30);
+		busiLoad.setText("车辆装车管理");
+		busiLoad.setFont(font3);
+		busiLoad.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		busiLoad.setBackground(Color.WHITE);
 		
-		DriverManage.setBounds(4,160,180,30);
-		DriverManage.setText("司机信息管理");
-		DriverManage.setFont(font3);
-		DriverManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		DriverManage.setBackground(Color.WHITE);
+		driverManage.setBounds(4,160,180,30);
+		driverManage.setText("司机信息管理");
+		driverManage.setFont(font3);
+		driverManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		driverManage.setBackground(Color.WHITE);
 		
-		ReceOrderManage.setBounds(4,190,180,30);
-		ReceOrderManage.setText("收款单管理");
-		ReceOrderManage.setFont(font3);
-		ReceOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		ReceOrderManage.setBackground(Color.WHITE);
+		receOrderManage.setBounds(4,190,180,30);
+		receOrderManage.setText("收款单管理");
+		receOrderManage.setFont(font3);
+		receOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		receOrderManage.setBackground(Color.WHITE);
 		
-		BusiHallArrivalOrderManage.setBounds(4,220,180,30);
-		BusiHallArrivalOrderManage.setText("接收信息管理");
-		BusiHallArrivalOrderManage.setFont(font3);
-		BusiHallArrivalOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		BusiHallArrivalOrderManage.setBackground(Color.WHITE);
+		busiHallArrivalOrderManage.setBounds(4,220,180,30);
+		busiHallArrivalOrderManage.setText("接收信息管理");
+		busiHallArrivalOrderManage.setFont(font3);
+		busiHallArrivalOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		busiHallArrivalOrderManage.setBackground(Color.WHITE);
 		
-		DeliveryManage.setBounds(4,250,180,30);
-		DeliveryManage.setText("派件信息管理");
-		DeliveryManage.setFont(font3);
-		DeliveryManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		DeliveryManage.setBackground(Color.WHITE);
+		deliveryManage.setBounds(4,250,180,30);
+		deliveryManage.setText("派件信息管理");
+		deliveryManage.setFont(font3);
+		deliveryManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		deliveryManage.setBackground(Color.WHITE);
 		
-		VehicleManage.setBounds(4,280,180,30);
-		VehicleManage.setText("车辆信息管理");
-		VehicleManage.setFont(font3);
-		VehicleManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		VehicleManage.setBackground(Color.WHITE);
+		vehicleManage.setBounds(4,280,180,30);
+		vehicleManage.setText("车辆信息管理");
+		vehicleManage.setFont(font3);
+		vehicleManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		vehicleManage.setBackground(Color.WHITE);
 		
-		layeredPane.add(UserName,new Integer(10), 0);
-		layeredPane.add(BusiLoad,new Integer(10), 0);
-		layeredPane.add(DriverManage,new Integer(10), 0);
-		layeredPane.add(ReceOrderManage,new Integer(10), 0);
-		layeredPane.add(BusiHallArrivalOrderManage,new Integer(10), 0);
-		layeredPane.add(DeliveryManage,new Integer(10), 0);
-		layeredPane.add(VehicleManage,new Integer(10), 0);
+		this.left.add(userName);
+		this.left.add(busiLoad);
+		this.left.add(driverManage);
+		this.left.add(receOrderManage);
+		this.left.add(busiHallArrivalOrderManage);
+		this.left.add(deliveryManage);
+		this.left.add(vehicleManage);
 	}
 }

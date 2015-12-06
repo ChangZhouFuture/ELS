@@ -1,5 +1,7 @@
 package presentation.inforManagementui.Vehiclesui;
 
-public class VehiclesListui {
+import javax.swing.JPanel;
+
+public class VehiclesListui extends JPanel{
 
 }

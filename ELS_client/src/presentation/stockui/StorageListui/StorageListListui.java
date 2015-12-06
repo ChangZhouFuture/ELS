@@ -1,5 +1,7 @@
 package presentation.stockui.StorageListui;
 
-public class StorageListListui {
+import presentation.reuse.Listui;
+
+public class StorageListListui extends Listui{
 
 }

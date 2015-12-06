@@ -1,5 +1,7 @@
 package presentation.documentsui.TranCenLoadingListui;
 
-public class TransferCenterLoadingListui {
+import javax.swing.JPanel;
+
+public class TransferCenterLoadingListui extends JPanel{
 
 }

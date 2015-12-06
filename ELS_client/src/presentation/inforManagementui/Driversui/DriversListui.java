@@ -1,5 +1,7 @@
 package presentation.inforManagementui.Driversui;
 
-public class DriversListui {
+import javax.swing.JPanel;
+
+public class DriversListui extends JPanel{
 
 }

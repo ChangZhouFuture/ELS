@@ -1,5 +1,7 @@
 package presentation.stockui.stockui;
 
-public class StockCheckui {
+import javax.swing.JPanel;
+
+public class StockCheckui extends JPanel{
 
 }

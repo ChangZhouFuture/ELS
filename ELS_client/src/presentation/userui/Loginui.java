@@ -21,8 +21,9 @@ import bean.JavaBean1;
 import bean.JavaBean2;
 import businesslogic.userbl.LoginAndOut;
 import businesslogicservice.userblservice.LoginAndOutblservice;
-import presentation.MainFrame;
+import presentation.controller.CourierController;
 import presentation.reuse.Images;
+import presentation.reuse.MainFrame;
 
 public class Loginui extends JFrame{
 	public JPanel LoginPanel;
@@ -36,6 +37,7 @@ public class Loginui extends JFrame{
 	public Point origin = new Point();
 	public LoginAndOutblservice loginAndOutblservice;
 	public JavaBean2 javaBean2;
+	public CourierController courierController;
 	
 	public static void main(String[] args){
 		Loginui ui=new Loginui();
@@ -129,34 +131,34 @@ public class Loginui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JFrame mineFrame;
+//				JFrame mineFrame;
 				loginAndOutblservice=new LoginAndOut();
 				javaBean2=loginAndOutblservice.login(UserField.getText(),String.valueOf(PasswordField.getPassword()));
 				String position=javaBean2.getPosition().toString();
 				switch (position) {
 				case "Accountant1":
-					mineFrame=new Accountantui1();
+//					mineFrame=new Accountantui1();
 					break;
 				case "Accountant2":
-					mineFrame=new Accountantui2();
+//					mineFrame=new Accountantui2();
 					break;
 				case "Administrator":
-					mineFrame=new Administratorui();
+//					mineFrame=new Administratorui();
 					break;
 				case "BusiHallClerk":
-					mineFrame=new BusiHallClerkui();
+//					mineFrame=new BusiHallClerkui();
 					break;
 				case "Courier":
-					mineFrame=new Courierui();
+					courierController=new CourierController();
 					break;
 				case "GeneralManager":
-					mineFrame=new GeneralManagerui();
+//					mineFrame=new GeneralManagerui();
 					break;
 				case "StockManager":
-					mineFrame=new StockManagerui();
+//					mineFrame=new StockManagerui();
 					break;
 				case "TranCenClerk":
-					mineFrame=new TranCenClerkui();
+//					mineFrame=new TranCenClerkui();
 					break;
 				default:
 					break;

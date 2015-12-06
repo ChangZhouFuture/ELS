@@ -1,5 +1,7 @@
 package presentation.inforManagementui.agencyui;
 
-public class AgencyListui {
+import javax.swing.JPanel;
 
+public class AgencyListui extends JPanel{
+	
 }

@@ -1,5 +1,7 @@
 package presentation.managerAndAccountantui.Operalogui;
 
-public class OperalogListui {
+import javax.swing.JPanel;
+
+public class OperalogListui extends JPanel{
 
 }

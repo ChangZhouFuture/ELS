@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
-import presentation.MainFrame;
+import presentation.reuse.MainFrame;
 
 public class Senderui extends MainFrame{
 	JButton LogisticsCheck;

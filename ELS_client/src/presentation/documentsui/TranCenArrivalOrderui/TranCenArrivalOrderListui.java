@@ -1,5 +1,7 @@
 package presentation.documentsui.TranCenArrivalOrderui;
 
-public class TranCenArrivalOrderListui {
+import presentation.reuse.Listui;
+
+public class TranCenArrivalOrderListui extends Listui{
 
 }

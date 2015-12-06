@@ -9,65 +9,63 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
-import presentation.MainFrame;
+import presentation.reuse.MainFrame;
 
 public class StockManagerui extends MainFrame{
-	JButton OutBoundManage;
-	JButton StorageManage;
-	JButton StockCheck;
-	JButton StockCount;
-	JLabel UserName;
-	JLayeredPane layeredPane;
+	public JButton outBoundManage;
+	public JButton storageManage;
+	public JButton stockCheck;
+	public JButton stockCount;
+	public JLabel userName;
 	
 	public static void main(String[] args){
 		StockManagerui ui=new StockManagerui();
 	}
 	public StockManagerui(){
-		StorageManage=new JButton();
-		UserName=new JLabel();
-		layeredPane=getLayeredPane();
-		OutBoundManage=new JButton();
-		StockCheck=new JButton();
-		StockCount=new JButton();
+		storageManage=new JButton();
+		userName=new JLabel();
+		outBoundManage=new JButton();
+		stockCheck=new JButton();
+		stockCount=new JButton();
 		
-		UserName.setBounds(6,106,176,24);
-		UserName.setText("库存管理人员："+"***");
-		UserName.setHorizontalAlignment(SwingConstants.CENTER);
+		userName.setBounds(6,106,176,24);
+		userName.setText("库存管理人员："+"***");
+		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		UserName.setFont(font2);
-		UserName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		UserName.setBackground(Color.WHITE);
-		UserName.setOpaque(true);
+		userName.setFont(font2);
+		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		userName.setBackground(Color.WHITE);
+		userName.setOpaque(true);
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
-		StorageManage.setBounds(4,130,180,30);
-		StorageManage.setText("入库管理");
-		StorageManage.setFont(font3);
-		StorageManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		StorageManage.setBackground(Color.WHITE);
+		storageManage.setBounds(4,130,180,30);
+		storageManage.setText("入库管理");
+		storageManage.setFont(font3);
+		storageManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		storageManage.setBackground(Color.WHITE);
 		
-		OutBoundManage.setBounds(4,160,180,30);
-		OutBoundManage.setText("出库管理");
-		OutBoundManage.setFont(font3);
-		OutBoundManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		OutBoundManage.setBackground(Color.WHITE);
+		outBoundManage.setBounds(4,160,180,30);
+		outBoundManage.setText("出库管理");
+		outBoundManage.setFont(font3);
+		outBoundManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		outBoundManage.setBackground(Color.WHITE);
 		
-		StockCheck.setBounds(4,190,180,30);
-		StockCheck.setText("库存查看");
-		StockCheck.setFont(font3);
-		StockCheck.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		StockCheck.setBackground(Color.WHITE);
+		stockCheck.setBounds(4,190,180,30);
+		stockCheck.setText("库存查看");
+		stockCheck.setFont(font3);
+		stockCheck.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		stockCheck.setBackground(Color.WHITE);
 		
-		StockCount.setBounds(4,220,180,30);
-		StockCount.setText("库存盘点");
-		StockCount.setFont(font3);
-		StockCount.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		StockCount.setBackground(Color.WHITE);
+		stockCount.setBounds(4,220,180,30);
+		stockCount.setText("库存盘点");
+		stockCount.setFont(font3);
+		stockCount.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		stockCount.setBackground(Color.WHITE);
 		
-		layeredPane.add(UserName,new Integer(10), 0);
-		layeredPane.add(StorageManage,new Integer(10), 0);
-		layeredPane.add(OutBoundManage,new Integer(10), 0);
-		layeredPane.add(StockCheck,new Integer(10), 0);
-		layeredPane.add(StockCount,new Integer(10), 0);
+		this.left.add(userName);
+		this.left.add(storageManage);
+		this.left.add(outBoundManage);
+		this.left.add(stockCheck);
+		this.left.add(stockCount);
 	}
 }

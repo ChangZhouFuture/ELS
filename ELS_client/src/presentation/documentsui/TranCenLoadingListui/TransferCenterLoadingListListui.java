@@ -1,5 +1,7 @@
 package presentation.documentsui.TranCenLoadingListui;
 
-public class TransferCenterLoadingListListui {
+import presentation.reuse.Listui;
+
+public class TransferCenterLoadingListListui extends Listui{
 
 }

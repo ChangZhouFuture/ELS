@@ -1,5 +1,7 @@
 package presentation.stockui.stockui;
 
-public class StockCountui {
+import javax.swing.JPanel;
+
+public class StockCountui extends JPanel{
 
 }

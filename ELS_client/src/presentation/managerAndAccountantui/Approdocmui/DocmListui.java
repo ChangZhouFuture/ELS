@@ -1,5 +1,7 @@
 package presentation.managerAndAccountantui.Approdocmui;
 
-public class DocmListui {
+import javax.swing.JPanel;
+
+public class DocmListui extends JPanel{
 
 }

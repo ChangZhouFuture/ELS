@@ -28,13 +28,17 @@ public class CourierController {
 	
 	public CourierController(){
 		courierui = new Courierui();
+		orderListui = new OrderListui();
+		orderListui.setLocation(0,0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		mainPanel.setBackground(Color.WHITE);
+		mainPanel.add(orderListui);
 		JLayeredPane layeredPane = courierui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
 		inCourierui();
+		inOrderListui();
 	}
 	public void inCourierui() {
 		courierui.orderManage.addActionListener(new ActionListener() {
@@ -98,8 +102,34 @@ public class CourierController {
 					orderui.receiverPhoneField.setText(orderVO.getAddresseePhoneNumber());
 					orderui.receiverPhoneField.setEditable(false);
 					
-					orderui.goodNumField.setText(orderVO.getNumOfGoods());
-					orderui.good
+					orderui.goodNumField.setText(String.valueOf(orderVO.getNumOfGoods()));
+					orderui.goodNumField.setEditable(false);
+					
+					orderui.goodNameField.setText(orderVO.getGoodsName());
+					orderui.goodNameField.setEditable(false);
+					
+					orderui.goodWeightField.setText(String.valueOf(orderVO.getWeight()));
+					orderui.goodWeightField.setEditable(false);
+					
+					orderui.goodVolumeField.setText(String.valueOf(orderVO.getSize()));
+					orderui.goodVolumeField.setEditable(false);
+					
+					orderui.carriageField.setText(String.valueOf(orderVO.getTotalCost()));
+					orderui.carriageField.setEditable(false);
+					
+					orderui.actualReceiverField.setText(orderVO.getTrueAddressee());
+					orderui.actualReceiverField.setEditable(false);
+					
+					orderui.expectedArrivalDateField.setText(orderVO.getExpectedArrivalDate());
+					orderui.expectedArrivalDateField.setEditable(false);
+					
+					orderui.carriageField.setText(String.valueOf(orderVO.getTotalCost()));
+					orderui.carriageField.setEditable(false);
+					
+					if(orderVO.getTrueAddressee()!=null){
+						orderui.actualReceiver.setVisible(true);
+						orderui.actualReceiverField.setText(String.valueOf(orderVO.getTrueAddressee()));
+					}
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
@@ -107,21 +137,10 @@ public class CourierController {
 		});
 	}
 	public void inOrderui() {
-		orderListui.add.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				orderListui = null;
-				orderui = new Orderui();
-				childPanel = orderui;
-				childPanel.setLocation(0,0);
-				Skip.skip(mainPanel,childPanel);
-				inOrderui();
-			}
-		});
+		
 	}
 	public static void main(String[] args) {
-		CourierController loginController = new CourierController();
+		CourierController courierController = new CourierController();
 	}
 }
 

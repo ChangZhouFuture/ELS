@@ -1,5 +1,7 @@
 package presentation.userManagementui;
 
-public class UserInfoui {
+import javax.swing.JPanel;
 
+public class UserInfoui extends JPanel{
+	
 }
