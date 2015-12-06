@@ -132,7 +132,27 @@ public class Loginui extends JFrame{
 				JFrame mineFrame;
 				loginAndOutblservice=new LoginAndOut();
 				javaBean2=loginAndOutblservice.login(UserField.getText(),String.valueOf(PasswordField.getPassword()));
-				
+				String position=javaBean2.getPosition().toString();
+				switch (position) {
+				case "Accountant1":
+					mineFrame=new Accountantui1();
+				case "Accountant2":
+					mineFrame=new Accountantui2();
+				case "Administrator":
+					mineFrame=new Administratorui();
+				case "BusiHallClerk":
+					mineFrame=new BusiHallClerkui();
+				case "Courier":
+					mineFrame=new Courierui();
+				case "GeneralManager":
+					mineFrame=new GeneralManagerui();
+				case "StockManager":
+					mineFrame=new StockManagerui();
+				case "TranCenClerk":
+					mineFrame=new TranCenClerkui();
+				default:
+					break;
+				}
 			}
 		});
 		
