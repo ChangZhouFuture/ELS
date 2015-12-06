@@ -1,5 +1,7 @@
 package businesslogic.utilitybl;
 
+import java.rmi.RemoteException;
+
 import RMI.RMIHelper;
 import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import state.OperaType;
@@ -19,8 +21,12 @@ public class RecordOperaLog {
 	
 	public ResultMessage recordOperaLog (OperaType type, String objectType, String id, String operatorId) {
 		String date = Time.generateDate();
-		resultMessage = recordOperaLogdataservice.recordOperaLog(type, date, objectType,
-				id, operatorId);
+		try {
+			resultMessage = recordOperaLogdataservice.recordOperaLog(type, date, objectType,
+					id, operatorId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 }

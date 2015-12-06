@@ -17,6 +17,7 @@ public class OrderPO implements Serializable{
 	private String id;
 	private String goodsName;
 	private String generateTime;
+	private String arrivalDate;
 	private String expectedArrivalDate;
 	private double weight;
 	private double size;
@@ -31,6 +32,12 @@ public class OrderPO implements Serializable{
 	private ExpressType expressType;
 	private String date;
 	
+	public String getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 	public String getExpectedArrivalDate() {
 		return expectedArrivalDate;
 	}

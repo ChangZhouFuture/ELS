@@ -56,6 +56,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		this.deliveryOrderVO = deliveryOrderVO;
 		
 		this.deliveryOrderVO.setArrivalDate(generateDate());
+		this.deliveryOrderVO.setGenerateTime(Time.generateTime());
 		this.deliveryOrderVO.setID(generateId());
 		VOtoPO();
 		
@@ -155,6 +156,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	@Override
 	public void VOtoPO() {
 		deliveryOrderPO.setArrivalDate(deliveryOrderVO.getArrivalDate());
+		deliveryOrderPO.setGenerateTime(deliveryOrderVO.getGenerateTime());
 		deliveryOrderPO.setDeliverier(deliveryOrderVO.getDeliverier());
 		deliveryOrderPO.setOrderID(deliveryOrderVO.getOrderID());
 		deliveryOrderPO.setID(deliveryOrderVO.getID());
@@ -170,6 +172,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 			deliveryOrderVO = new DeliveryOrderVO();
 			deliveryOrderVO.setID(deliveryOrderPO.getID());
 			deliveryOrderVO.setArrivalDate(deliveryOrderPO.getArrivalDate());
+//			deliveryOrderVO.setGenerateTime(deliveryOrderPO.getGenerateTime());
 			deliveryOrderVO.setDeliverier(deliveryOrderPO.getDeliverier());
 			deliveryOrderVO.setOrderID(deliveryOrderPO.getOrderID());
 			

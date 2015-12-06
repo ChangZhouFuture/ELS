@@ -17,8 +17,12 @@ public class UpdateLogisticsInfor {
 		}
 	}
 	
-	public ResultMessage update(String id, String description) {
-		resultMessage = updateLogisticsInfordataservice.update(id, description);
+	public ResultMessage update(String time, String id, String description) {
+		try {
+			resultMessage = updateLogisticsInfordataservice.update(time, id, description);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 }

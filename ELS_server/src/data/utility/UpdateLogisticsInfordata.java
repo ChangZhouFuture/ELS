@@ -2,6 +2,7 @@ package data.utility;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import state.ResultMessage;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
@@ -13,8 +14,7 @@ public class UpdateLogisticsInfordata extends UnicastRemoteObject implements Upd
 	}
 
 	@Override
-	public ResultMessage update(String id, String description) {
-		// TODO Auto-generated method stub
+	public ResultMessage update(String time, String id, String description){
 		return null;
 	}
 

@@ -5,16 +5,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Time {
+	private static DateFormat dateFormat;
+	private static Date date = new Date();
+	
 	static public String generateDate() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String s = dateFormat.format(date);
-		System.out.println(s);
 		return s;
 	}
 	
-	public static void main(String[] args) {
-//		Time time = new Time();
-		generateDate();
+	static public String generateTime() {
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String s = dateFormat.format(date);
+		return s;
 	}
+	
 }

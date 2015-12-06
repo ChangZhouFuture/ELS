@@ -84,6 +84,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		
 		this.busiHallLoadingListVO.setBusiHallID(CalculateFreight.agencyId);
 		this.busiHallLoadingListVO.setLoadingDate(generateDate());
+		this.busiHallLoadingListVO.setGenerateTime(Time.generateTime());
 		this.busiHallLoadingListVO.setVehiclesID(generatevehiclesID());
 		this.busiHallLoadingListVO.setCarriage(generateFreight(
 				businessHallLoadingListVO.getDestination()));
@@ -222,6 +223,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		busiHallLoadingListPO.setTruckNum(busiHallLoadingListVO.getTruckNum());
 		busiHallLoadingListPO.setBusiHallID(busiHallLoadingListVO.getBusiHallID());
 		busiHallLoadingListPO.setLoadingDate(busiHallLoadingListVO.getLoadingDate());
+		busiHallLoadingListPO.setGenerateTime(busiHallLoadingListVO.getGenerateTime());
 		busiHallLoadingListPO.setVehiclesID(busiHallLoadingListVO.getVehiclesID());
 		busiHallLoadingListPO.setCarriage(busiHallLoadingListVO.getCarriage());
 		busiHallLoadingListPO.setID(busiHallLoadingListVO.getID());

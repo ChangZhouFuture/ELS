@@ -16,6 +16,7 @@ public class OrderVO {
 	private String id;
 	private String goodsName;
 	private String generateDate;
+	private String arrivalDate;
 	private String expectedArrivalDate;
 	private double weight;
 	private double size;
@@ -29,6 +30,12 @@ public class OrderVO {
 	private ApproState approState;
 	private ExpressType expressType;
 	
+	public String getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 	public String getSenderName() {
 		return senderName;
 	}

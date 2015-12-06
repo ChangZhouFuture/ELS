@@ -33,7 +33,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 			busiHallArrivalOrderdataservice = RMIHelper.
 					getBusiHallArrivalOrderdataservice();	
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -70,6 +69,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.busiHallArrivalOrderVO = busiHallArrivalOrderVO;
 		
 		this.busiHallArrivalOrderVO.setArrivalDate(generateDate());
+		this.busiHallArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.busiHallArrivalOrderVO.setId(generateId());
 		VOtoPO();
 		
@@ -190,6 +190,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		busiHallArrivalOrderPO.setOrigin(generateStartAddress(transferOrderId));
 		busiHallArrivalOrderPO.setGoodState(busiHallArrivalOrderVO.getGoodState());
 		busiHallArrivalOrderPO.setArrivalDate(busiHallArrivalOrderVO.getArrivalDate());
+		busiHallArrivalOrderPO.setGenerateTime(busiHallArrivalOrderVO.getGenerateTime());
 		busiHallArrivalOrderPO.setId(busiHallArrivalOrderVO.getId());
 	}
 

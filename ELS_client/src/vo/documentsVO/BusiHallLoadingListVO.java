@@ -7,6 +7,7 @@ import state.ApproState;
  public class BusiHallLoadingListVO {
 	 	private String ID;
 	    private String loadingDate;
+	    private String generateTime;
 	    private String busiHallID;
 	    private String truckNum;
 	    private String destination;
@@ -17,6 +18,12 @@ import state.ApproState;
 	    private double carriage;
 	    private ApproState approState;
 	    
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
+		}
 		public ApproState getApproState() {
 			return approState;
 		}
