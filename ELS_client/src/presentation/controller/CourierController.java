@@ -29,9 +29,9 @@ public class CourierController {
 		mainPanel.setBackground(Color.WHITE);
 		JLayeredPane layeredPane = courierui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
-		intoOrderListui();
+		inCourierui();
 	}
-	public void intoOrderListui() {
+	public void inCourierui() {
 		courierui.orderManage.addActionListener(new ActionListener() {
 			
 			@Override
@@ -40,11 +40,11 @@ public class CourierController {
 				childPanel = orderListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
-				intoOrderui();
+				inOrderListui();
 			}
 		});
 	}
-	public void intoOrderui() {
+	public void inOrderListui() {
 		orderListui.add.addActionListener(new ActionListener() {
 			
 			@Override
@@ -54,7 +54,30 @@ public class CourierController {
 				childPanel = orderui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
-				intoOrderListui();
+				inOrderui();
+			}
+		});
+		orderListui.findById.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				orderListui = null;
+				orderui = new Orderui();
+				childPanel = orderui;
+				
+			}
+		});
+	}
+	public void inOrderui() {
+		orderListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				orderListui = null;
+				orderui = new Orderui();
+				childPanel = orderui;
+				childPanel.setLocation(0,0);
+				Skip.skip(mainPanel,childPanel);
+				inOrderui();
 			}
 		});
 	}

@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import bean.JavaBean1;
+import bean.JavaBean2;
+import businesslogic.userbl.LoginAndOut;
+import businesslogicservice.userblservice.LoginAndOutblservice;
 import presentation.MainFrame;
 import presentation.reuse.Images;
 
@@ -30,6 +34,8 @@ public class Loginui extends JFrame{
 	public JButton MinimizeButton;
 	public JButton CloseButton;
 	public Point origin = new Point();
+	public LoginAndOutblservice loginAndOutblservice;
+	public JavaBean2 javaBean2;
 	
 	public static void main(String[] args){
 		Loginui ui=new Loginui();
@@ -119,10 +125,14 @@ public class Loginui extends JFrame{
 		
 		LoginButton.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MainFrame mainFrame = new MainFrame();
+				JFrame mineFrame;
+				loginAndOutblservice=new LoginAndOut();
+				javaBean2=loginAndOutblservice.login(UserField.getText(),String.valueOf(PasswordField.getPassword()));
+				
 			}
 		});
 		
@@ -141,5 +151,4 @@ public class Loginui extends JFrame{
 		this.validate();
 		this.repaint();
 	}
-	
 }

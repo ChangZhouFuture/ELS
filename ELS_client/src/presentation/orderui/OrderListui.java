@@ -49,6 +49,9 @@ public class OrderListui extends JPanel{
 	public JRadioButton findById;
 	public JRadioButton findByDate;
 	public ButtonGroup findGroup;
+	public JTable table;
+	public JScrollPane scrollPane;
+	public JButton delete;
 	
 	public static void main(String[] args){
 		
@@ -209,7 +212,12 @@ public class OrderListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<OrderlineitemVO> arrayList){
-		 JTable table;
+		try{
+			 this.remove(scrollPane);
+			 this.remove(delete);
+		 }catch(Exception e2){
+			 e2.printStackTrace(); 
+		 }
 		 DefaultTableModel tableModel;
 		 String[] columnNames = {"选择","ID","寄件人","收件人","内件品名","状态","运费","时间"}; //列名
 		 String [][]tableVales={}; //数据
@@ -255,12 +263,12 @@ public class OrderListui extends JPanel{
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 JScrollPane scrollPane = new JScrollPane(table); //支持滚动
+		 scrollPane = new JScrollPane(table); //支持滚动
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 JButton delete=new JButton();
+		 delete=new JButton();
 		 delete.setBounds(30,420,50,24);
 		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		 delete.setBackground(Color.WHITE);
