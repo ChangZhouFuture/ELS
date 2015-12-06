@@ -16,7 +16,7 @@ public class OrderPO implements Serializable{
 	private String trueAddressee;
 	private String id;
 	private String goodsName;
-	private String generateDate;
+	private String generateTime;
 	private String expectedArrivalDate;
 	private double weight;
 	private double size;
@@ -29,6 +29,7 @@ public class OrderPO implements Serializable{
 	private int numOfBags;
 	private ApproState approState;
 	private ExpressType expressType;
+	private String date;
 	
 	public String getExpectedArrivalDate() {
 		return expectedArrivalDate;
@@ -164,18 +165,24 @@ public class OrderPO implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public String getGenerateDate() {
-		return generateDate;
+
+	public String getGenerateTime() {
+		return generateTime;
 	}
-	public void setGenerateDate(String generateDate) {
-		this.generateDate = generateDate;
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
 	}
 	public ApproState getApproState() {
 		return approState;
 	}
 	public void setApproState(ApproState approState) {
 		this.approState = approState;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }

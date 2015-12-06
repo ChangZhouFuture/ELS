@@ -162,7 +162,51 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		return null;
+		po=new PaymentOrderPO();
+		ArrayList<PaymentOrderPO> pos=new ArrayList<>();
+		jb1=new JavaBean1();
+		String sql="select * from paymentorder";
+		jb1.setResultMessage(ResultMessage.NotExist);
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+						rs.getString("approState").equals("NotApprove")){
+					po.setID(rs.getString(1));
+					po.setDate(rs.getString(2));
+					po.setAmount(rs.getDouble(3));
+					po.setPayer(rs.getString(4));
+					po.setBankAccount(rs.getString(5));
+					po.setEntry(rs.getString(6));
+					po.setNote(rs.getString(7));
+					po.setGenerateTime(rs.getString(8));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+						rs.getString("approState").equals("Approve")){
+					po.setID(rs.getString(1));
+					po.setDate(rs.getString(2));
+					po.setAmount(rs.getDouble(3));
+					po.setPayer(rs.getString(4));
+					po.setBankAccount(rs.getString(5));
+					po.setEntry(rs.getString(6));
+					po.setNote(rs.getString(7));
+					po.setGenerateTime(rs.getString(8));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					pos.add(po);
+					jb1.setResultMessage(ResultMessage.Success);
+				}
+			}
+			jb1.setResultMessage(ResultMessage.Success);
+			 return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 
 }

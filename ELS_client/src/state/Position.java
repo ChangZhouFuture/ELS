@@ -1,5 +1,5 @@
 package state;
 
-public enum Position {COURIER,BUSINESSSALESMAN,CHANGESALESMAN,MANAGER,FINANCIALSTUFF
-
+public enum Position {
+Accountant1,Accountant2,Administrator,BusiHallClerk,Courier,GeneralManager,StockManager,TranCenClerk
 }

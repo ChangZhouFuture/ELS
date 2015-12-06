@@ -37,7 +37,21 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	@Override
 	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		OrderlineitemPO orderllpo=new OrderlineitemPO();
+		String sql="select * from order where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()){
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return orderllpo;
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package bean;
 
+import state.Position;
 import state.ResultMessage;
 
 public class JavaBean2 {
 	private String name;
 	private String agencyID;
+	private Position position;
 	private ResultMessage resultMessage;
 	public String getName() {
 		return name;
@@ -23,5 +25,11 @@ public class JavaBean2 {
 	}
 	public void setAgencyID(String agencyID) {
 		this.agencyID = agencyID;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 }

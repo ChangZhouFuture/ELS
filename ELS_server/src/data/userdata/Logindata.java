@@ -12,6 +12,7 @@ import java.sql.Statement;
 import bean.JavaBean2;
 import data.utility.Database;
 import dataservice.userdataservice.Logindataservice;
+import state.Position;
 import state.ResultMessage;
 
 
@@ -45,9 +46,10 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 				if(rs.getString(1).equals(id)){
 					
 					if(rs.getString(2).equals(passWord)){
-						bean.setName(rs.getString(3));
+						bean.setName(rs.getString("name"));
+						bean.setPosition(Position.valueOf(rs.getString("position")));
 						bean.setResultMessage(ResultMessage.Success);
-						bean.setAgencyID(rs.getString(11));
+						bean.setAgencyID(rs.getString("agencyID"));
 						return bean;
 					}else{
 						bean.setResultMessage(ResultMessage.wrongPassWord);
@@ -60,7 +62,8 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			bean.setResultMessage(ResultMessage.NotExist);
+			return bean;
 		}
 		
 	}

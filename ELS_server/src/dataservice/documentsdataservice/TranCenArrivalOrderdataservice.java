@@ -76,5 +76,5 @@ public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteExceptio
 	
 	public String generateId(String date) throws RemoteException;
 	
-	public String generateStartAdd() throws RemoteException;
+	public String generateStartAdd(String transferOrderId) throws RemoteException;
  }
