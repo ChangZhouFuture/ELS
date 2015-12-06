@@ -9,6 +9,7 @@ import businesslogicservice.userblservice.LoginAndOutblservice;
 
 public class LoginAndOut implements LoginAndOutblservice{
 	Logindataservice logindataservice;
+	JavaBean2 javaBean2;
 	
 	public LoginAndOut() {
 		try {
@@ -22,12 +23,12 @@ public class LoginAndOut implements LoginAndOutblservice{
 	public JavaBean2 login(String id, String passWord) {
 		
 		try {
-			Object o = logindataservice.login(id, passWord);
+			javaBean2 = logindataservice.login(id, passWord);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return javaBean2;
 	}
 
 	@Override
