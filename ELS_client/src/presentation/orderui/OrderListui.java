@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -252,6 +254,14 @@ public class OrderListui extends JPanel{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
+		 table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+                 if (evt.getClickCount() == 2) {
+                	 
+                 }
+              }
+         });
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);

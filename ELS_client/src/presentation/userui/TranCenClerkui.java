@@ -49,7 +49,7 @@ public class TranCenClerkui extends MainFrame{
 		trensferOrderManage.setBackground(Color.WHITE);
 		
 		transferCenterLoadingList.setBounds(0,160,180,30);
-		transferCenterLoadingList.setText("中转中心接收管理");
+		transferCenterLoadingList.setText("中转装车管理");
 		transferCenterLoadingList.setFont(font3);
 		transferCenterLoadingList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		transferCenterLoadingList.setBackground(Color.WHITE);

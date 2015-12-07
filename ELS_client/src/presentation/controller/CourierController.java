@@ -69,7 +69,6 @@ public class CourierController {
 		orderListui.findById.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				orderListui = null;
 				orderui = new Orderui();
 				childPanel = orderui;
 				childPanel.setLocation(0,0);
@@ -130,11 +129,20 @@ public class CourierController {
 						orderui.actualReceiver.setVisible(true);
 						orderui.actualReceiverField.setText(String.valueOf(orderVO.getTrueAddressee()));
 					}
+					
+					if(orderVO.getArrivalDate()!=null){
+						orderui.trueArrivalDate.setVisible(true);
+						orderui.trueArrivalDateField.setText(orderVO.getArrivalDate());
+					}
+					
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
 			}
 		});
+	}
+	public Orderui find(Orderui orderui){
+		return orderui;
 	}
 	public void inOrderui() {
 		

@@ -45,6 +45,7 @@ public class BusinessHallLoadingListListui extends Listui{
 	}
 	
 	public BusinessHallLoadingListListui(){
+		sheetLabel.setText("车辆装车管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			

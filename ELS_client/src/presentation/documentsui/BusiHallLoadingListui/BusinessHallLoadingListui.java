@@ -17,27 +17,27 @@ import javax.swing.SwingConstants;
 import presentation.userui.BusiHallClerkui;
 
 public class BusinessHallLoadingListui extends JPanel{
-	JLabel BusiLoadOrder;
-	JLabel BusiId;
-	JTextField BusiIdField;
-	JLabel MotorId;
-	JTextField MotorIdField;
-	JLabel Arrival;
-	JTextField ArrivalField;
-	JLabel VehicleId;
-	JTextField VehicleIdField;
-	JLabel JZY;
-	JTextField JZYField;
-	JLabel YYY;
-	JTextField YYYField;
-	JLabel Fare;
-	JTextField FareField;
-	JLabel OrderId;
-	JTextField OrderIdField;
-	JButton AddOrder;
-	JTextArea OrderList;
-	JScrollPane scroller;
-	JButton MakeOrder;
+	public JLabel busiLoadOrder;
+	public JLabel busiId;
+	public JTextField busiIdField;
+	public JLabel motorId;
+	public JTextField motorIdField;
+	public JLabel arrival;
+	public JTextField arrivalField;
+	public JLabel vehicleId;
+	public JTextField vehicleIdField;
+	public JLabel jZY;
+	public JTextField jZYField;
+	public JLabel yYY;
+	public JTextField yYYField;
+	public JLabel fare;
+	public JTextField fareField;
+	public JLabel orderId;
+	public JTextField orderIdField;
+	public JButton addOrder;
+	public JTextArea orderList;
+	public JScrollPane scroller;
+	public JButton makeOrder;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -46,26 +46,26 @@ public class BusinessHallLoadingListui extends JPanel{
 		layeredPane.add(uiPanel,0);
 	}
 	public BusinessHallLoadingListui(){
-		BusiLoadOrder=new JLabel();
-		BusiId=new JLabel();
-		BusiIdField=new JTextField();
-		MotorId=new JLabel();
-		MotorIdField=new JTextField();
-		VehicleId=new JLabel();
-		VehicleIdField=new JTextField();
-		Arrival=new JLabel();
-		ArrivalField=new JTextField();
-		JZY=new JLabel();
-		JZYField=new JTextField();
-		YYY=new JLabel();
-		YYYField=new JTextField();
-		Fare=new JLabel();
-		FareField=new JTextField();
-		OrderId=new JLabel();
-		OrderIdField=new JTextField();
-		AddOrder=new JButton();
-		OrderList=new JTextArea();
-		MakeOrder=new JButton();
+		busiLoadOrder=new JLabel();
+		busiId=new JLabel();
+		busiIdField=new JTextField();
+		motorId=new JLabel();
+		motorIdField=new JTextField();
+		vehicleId=new JLabel();
+		vehicleIdField=new JTextField();
+		arrival=new JLabel();
+		arrivalField=new JTextField();
+		jZY=new JLabel();
+		jZYField=new JTextField();
+		yYY=new JLabel();
+		yYYField=new JTextField();
+		fare=new JLabel();
+		fareField=new JTextField();
+		orderId=new JLabel();
+		orderIdField=new JTextField();
+		addOrder=new JButton();
+		orderList=new JTextArea();
+		makeOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -73,123 +73,123 @@ public class BusinessHallLoadingListui extends JPanel{
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		Font font5=new Font("TimesRoman",Font.PLAIN,14);
 		
-		BusiLoadOrder.setBounds(218,10,180,30);
-		BusiLoadOrder.setText("装车单信息");
-		BusiLoadOrder.setHorizontalAlignment(SwingConstants.CENTER);
-		BusiLoadOrder.setFont(font1);
-		BusiLoadOrder.setBackground(Color.WHITE);
-		BusiLoadOrder.setOpaque(true);
+		busiLoadOrder.setBounds(218,10,180,30);
+		busiLoadOrder.setText("装车单信息");
+		busiLoadOrder.setHorizontalAlignment(SwingConstants.CENTER);
+		busiLoadOrder.setFont(font1);
+		busiLoadOrder.setBackground(Color.WHITE);
+		busiLoadOrder.setOpaque(true);
 		
-		BusiId.setBounds(40,50,100,24);
-		BusiId.setText("营业厅编号：");
-		BusiId.setFont(font2);
-		BusiId.setBackground(Color.WHITE);
-		BusiId.setOpaque(true);
+		busiId.setBounds(40,50,100,24);
+		busiId.setText("营业厅编号：");
+		busiId.setFont(font2);
+		busiId.setBackground(Color.WHITE);
+		busiId.setOpaque(true);
 		
-		BusiIdField.setBounds(140,52,120,20);
+		busiIdField.setBounds(140,52,120,20);
 		
-		MotorId.setBounds(300,50,100,24);
-		MotorId.setText("汽运编号：");
-		MotorId.setFont(font2);
-		MotorId.setBackground(Color.WHITE);
-		MotorId.setOpaque(true);
+		motorId.setBounds(300,50,100,24);
+		motorId.setText("汽运编号：");
+		motorId.setFont(font2);
+		motorId.setBackground(Color.WHITE);
+		motorId.setOpaque(true);
 		
-		MotorIdField.setBounds(400,52,120,20);
+		motorIdField.setBounds(400,52,120,20);
 		
-		VehicleId.setBounds(40,80,100,24);
-		VehicleId.setText("车辆代号：");
-		VehicleId.setFont(font2);
-		VehicleId.setBackground(Color.WHITE);
-		VehicleId.setOpaque(true);
+		vehicleId.setBounds(40,80,100,24);
+		vehicleId.setText("车辆代号：");
+		vehicleId.setFont(font2);
+		vehicleId.setBackground(Color.WHITE);
+		vehicleId.setOpaque(true);
 		
-		VehicleIdField.setBounds(140,82,120,20);
+		vehicleIdField.setBounds(140,82,120,20);
 		
-		Arrival.setBounds(300,80,100,24);
-		Arrival.setText("到达地：");
-		Arrival.setFont(font2);
-		Arrival.setBackground(Color.WHITE);
-		Arrival.setOpaque(true);
+		arrival.setBounds(300,80,100,24);
+		arrival.setText("到达地：");
+		arrival.setFont(font2);
+		arrival.setBackground(Color.WHITE);
+		arrival.setOpaque(true);
 		
-		ArrivalField.setBounds(400,82,120,20);
+		arrivalField.setBounds(400,82,120,20);
 		
-		JZY.setBounds(40,110,100,24);
-		JZY.setText("监装员：");
-		JZY.setFont(font2);
-		JZY.setBackground(Color.WHITE);
-		JZY.setOpaque(true);
+		jZY.setBounds(40,110,100,24);
+		jZY.setText("监装员：");
+		jZY.setFont(font2);
+		jZY.setBackground(Color.WHITE);
+		jZY.setOpaque(true);
 		
-		JZYField.setBounds(140,112,120,20);
+		jZYField.setBounds(140,112,120,20);
 		
-		YYY.setBounds(300,110,100,24);
-		YYY.setText("押运员：");
-		YYY.setFont(font2);
-		YYY.setBackground(Color.WHITE);
-		YYY.setOpaque(true);
+		yYY.setBounds(300,110,100,24);
+		yYY.setText("押运员：");
+		yYY.setFont(font2);
+		yYY.setBackground(Color.WHITE);
+		yYY.setOpaque(true);
 		
-		YYYField.setBounds(400,112,120,20);
+		yYYField.setBounds(400,112,120,20);
 		
-		Fare.setBounds(40,140,100,24);
-		Fare.setText("运费：");
-		Fare.setFont(font2);
-		Fare.setBackground(Color.WHITE);
-		Fare.setOpaque(true);
+		fare.setBounds(40,140,100,24);
+		fare.setText("运费：");
+		fare.setFont(font2);
+		fare.setBackground(Color.WHITE);
+		fare.setOpaque(true);
 		
-		FareField.setBounds(140,142,120,20);
-		FareField.setEditable(false);
+		fareField.setBounds(140,142,120,20);
+		fareField.setEditable(false);
 		
-		OrderId.setBounds(40,170,200,24);
-		OrderId.setText("本次装箱所有订单条形码号：");
-		OrderId.setFont(font2);
-		OrderId.setBackground(Color.WHITE);
-		OrderId.setOpaque(true);
+		orderId.setBounds(40,170,200,24);
+		orderId.setText("本次装箱所有订单条形码号：");
+		orderId.setFont(font2);
+		orderId.setBackground(Color.WHITE);
+		orderId.setOpaque(true);
 		
-		OrderIdField.setBounds(140,202,120,20);
+		orderIdField.setBounds(140,202,120,20);
 		
-		AddOrder.setBounds(280,200,70,24);
-		AddOrder.setText("添加订单");
-		AddOrder.setFont(font2);
-		AddOrder.setBackground(Color.WHITE);
-		AddOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		addOrder.setBounds(280,200,70,24);
+		addOrder.setText("添加订单");
+		addOrder.setFont(font2);
+		addOrder.setBackground(Color.WHITE);
+		addOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		OrderList.setBounds(40,230,250,150);
-		OrderList.setEnabled(false);
-		OrderList.setFont(font2);
-		OrderList.setBackground(Color.WHITE);
-		OrderList.setWrapStyleWord(true);
-		OrderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		OrderList.setLineWrap(true);
+		orderList.setBounds(40,230,250,150);
+		orderList.setEnabled(false);
+		orderList.setFont(font2);
+		orderList.setBackground(Color.WHITE);
+		orderList.setWrapStyleWord(true);
+		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderList.setLineWrap(true);
 		
-		scroller=new JScrollPane(OrderList);
+		scroller=new JScrollPane(orderList);
 		scroller.setBounds(40,230,250,150);
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		MakeOrder.setBounds(260,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		makeOrder.setBounds(260,442,96,30);
+		makeOrder.setText("确认生成");
+		makeOrder.setFont(font1);
+		makeOrder.setBackground(Color.WHITE);
+		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		
-		this.add(BusiLoadOrder);
-		this.add(BusiId);
-		this.add(BusiIdField);
-		this.add(MotorId);
-		this.add(MotorIdField);
-		this.add(VehicleId);
-		this.add(VehicleIdField);
-		this.add(Arrival);
-		this.add(ArrivalField);
-		this.add(JZY);
-		this.add(JZYField);
-		this.add(YYY);
-		this.add(YYYField);
-		this.add(Fare);
-		this.add(FareField);
-		this.add(OrderId);
-		this.add(OrderIdField);
-		this.add(AddOrder);
+		this.add(busiLoadOrder);
+		this.add(busiId);
+		this.add(busiIdField);
+		this.add(motorId);
+		this.add(motorIdField);
+		this.add(vehicleId);
+		this.add(vehicleIdField);
+		this.add(arrival);
+		this.add(arrivalField);
+		this.add(jZY);
+		this.add(jZYField);
+		this.add(yYY);
+		this.add(yYYField);
+		this.add(fare);
+		this.add(fareField);
+		this.add(orderId);
+		this.add(orderIdField);
+		this.add(addOrder);
 		this.add(scroller);
-		this.add(MakeOrder);
+		this.add(makeOrder);
 		setLocation(184,30);
 		this.setSize(616,490);
 		this.setBackground(Color.WHITE);

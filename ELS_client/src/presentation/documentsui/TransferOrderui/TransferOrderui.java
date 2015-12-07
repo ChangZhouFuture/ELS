@@ -10,33 +10,43 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import presentation.userui.TranCenClerkui;
 
 public class TransferOrderui extends JPanel{
-	JLabel transferOrder;
-	JButton makeOrder;
-	JLabel transportType;
-	JRadioButton plane;
-	JRadioButton train;
-	JRadioButton truck;
-	ButtonGroup transportTypeGroup;
-	JLabel transferOrderId;
-	JTextField transferOrderIdField;
-	JLabel departure;
-	JTextField departureField;
-	JLabel arrival;
-	JTextField arrivalField;
-	JLabel jZY;
-	JTextField jZYField;
-	JLabel yYY;
-	JTextField yYYField;
-	JLabel transportNum;
-	JTextField transportNumField;
-	JLabel containerId;
-	JTextField containerIdField;
+	public JLabel transferOrder;
+	public JButton makeOrder;
+	public JLabel transportType;
+	public JRadioButton plane;
+	public JRadioButton train;
+	public JRadioButton truck;
+	public ButtonGroup transportTypeGroup;
+	public JLabel transferOrderId;
+	public JTextField transferOrderIdField;
+	public JLabel departure;
+	public JTextField departureField;
+	public JLabel arrival;
+	public JTextField arrivalField;
+	public JLabel jZY;
+	public JTextField jZYField;
+	public JLabel yYY;
+	public JTextField yYYField;
+	public JLabel transportNum;
+	public JTextField transportNumField;
+	public JLabel containerId;
+	public JTextField containerIdField;
+	public JLabel carriage;
+	public JTextField carriageField;
+	public JLabel orderId;
+	public JTextField orderIdField;
+	public JButton addOrder;
+	public JTextArea orderList;
+	public JScrollPane scroller;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -66,6 +76,12 @@ public class TransferOrderui extends JPanel{
 		transportNumField=new JTextField();
 		containerId=new JLabel();
 		containerIdField=new JTextField();
+		carriage=new JLabel();
+		carriageField=new JTextField();
+		orderId=new JLabel();
+		orderIdField=new JTextField();
+		addOrder=new JButton();
+		orderList=new JTextArea();
 		
 		this.setLayout(null);
 		
@@ -119,45 +135,83 @@ public class TransferOrderui extends JPanel{
 		
 		departureField.setBounds(140,112,150,20);
 		
-		arrival.setBounds(40,140,100,24);
+		arrival.setBounds(300,110,100,24);
 		arrival.setText("到达地：");
 		arrival.setFont(font2);
 		arrival.setBackground(Color.WHITE);
 		arrival.setOpaque(true);
 		
-		arrivalField.setBounds(140,142,150,20);
+		arrivalField.setBounds(400,112,150,20);
 		
-		jZY.setBounds(40,170,100,24);
+		jZY.setBounds(40,140,100,24);
 		jZY.setText("监装员：");
 		jZY.setFont(font2);
 		jZY.setBackground(Color.WHITE);
 		jZY.setOpaque(true);
 		
-		jZYField.setBounds(140,172,150,20);
+		jZYField.setBounds(140,142,150,20);
 		
-		yYY.setBounds(40,200,100,24);
+		yYY.setBounds(300,140,100,24);
 		yYY.setText("押运员：");
 		yYY.setFont(font2);
 		yYY.setBackground(Color.WHITE);
 		yYY.setOpaque(true);
 		
-		yYYField.setBounds(140,202,150,20);
+		yYYField.setBounds(400,142,150,20);
 		
-		transportNum.setBounds(40,230,100,24);
+		transportNum.setBounds(40,170,100,24);
 		transportNum.setText("航班号：");
 		transportNum.setFont(font2);
 		transportNum.setBackground(Color.WHITE);
 		transportNum.setOpaque(true);
 		
-		transportNumField.setBounds(140,232,150,20);
+		transportNumField.setBounds(140,172,150,20);
 		
-		containerId.setBounds(40,260,100,24);
+		containerId.setBounds(300,170,100,24);
 		containerId.setText("货柜号：");
 		containerId.setFont(font2);
 		containerId.setBackground(Color.WHITE);
 		containerId.setOpaque(true);
 		
-		containerIdField.setBounds(140,262,150,20);
+		containerIdField.setBounds(400,172,150,20);
+		
+		carriage.setBounds(40,200,80,24);
+		carriage.setText("运费：");
+		carriage.setFont(font2);
+		carriage.setBackground(Color.WHITE);
+		carriage.setOpaque(true);
+		
+		carriageField.setBounds(200,202,80,20);
+		carriageField.setEditable(false);
+		carriageField.setBackground(Color.WHITE);
+		carriageField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		orderId.setBounds(40,230,200,24);
+		orderId.setText("本次装箱所有订单条形码号：");
+		orderId.setFont(font2);
+		orderId.setBackground(Color.WHITE);
+		orderId.setOpaque(true);
+		
+		orderIdField.setBounds(240,232,120,20);
+		
+		addOrder.setBounds(400,230,70,24);
+		addOrder.setText("添加订单");
+		addOrder.setFont(font2);
+		addOrder.setBackground(Color.WHITE);
+		addOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		
+		orderList.setBounds(40,260,250,150);
+		orderList.setEnabled(false);
+		orderList.setFont(font2);
+		orderList.setBackground(Color.WHITE);
+		orderList.setWrapStyleWord(true);
+		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderList.setLineWrap(true);
+		
+		scroller=new JScrollPane(orderList);
+		scroller.setBounds(40,260,250,150);
+		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		makeOrder.setBounds(260,442,96,30);
 		makeOrder.setText("确认生成");
@@ -185,8 +239,14 @@ public class TransferOrderui extends JPanel{
 		this.add(transportNumField);
 		this.add(containerId);
 		this.add(containerIdField);
+		this.add(carriage);
+		this.add(carriageField);
+		this.add(orderId);
+		this.add(orderIdField);
+		this.add(addOrder);
+		this.add(scroller);
 		setLocation(184,30);
-		this.setSize(616,490);
+		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
