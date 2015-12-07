@@ -1,22 +1,18 @@
-package vo.userVO;
+package vo.lineitemVO.userlineitemVO;
 
 import state.AgencyType;
 import state.Gender;
 import state.PayType;
 import state.Position;
 
-public class UserVO {
+public class UserlineitemVO {
 	private String Id;
-    private String password;
-    private String name;
+	private String name;
     private Gender gender;
-    private String birthDate;
-    private String identyNum;
     private String phone;
     private String city;
-    private AgencyType agencyType;
     private String region;
-    private String agencyID;
+    private AgencyType agencyType;
     private Position position;
     private PayType payType;
     private double payAmount;
@@ -27,12 +23,6 @@ public class UserVO {
 	}
 	public void setId(String id) {
 		Id = id;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getName() {
 		return name;
@@ -46,18 +36,6 @@ public class UserVO {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public String getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
-	public String getIdentyNum() {
-		return identyNum;
-	}
-	public void setIdentyNum(String identyNum) {
-		this.identyNum = identyNum;
-	}
 	public String getPhone() {
 		return phone;
 	}
@@ -70,23 +48,17 @@ public class UserVO {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public AgencyType getAgencyType() {
-		return agencyType;
-	}
-	public void setAgencyType(AgencyType agencyType) {
-		this.agencyType = agencyType;
-	}
 	public String getRegion() {
 		return region;
 	}
 	public void setRegion(String region) {
 		this.region = region;
 	}
-	public String getAgencyID() {
-		return agencyID;
+	public AgencyType getAgencyType() {
+		return agencyType;
 	}
-	public void setAgencyID(String agencyID) {
-		this.agencyID = agencyID;
+	public void setAgencyType(AgencyType agencyType) {
+		this.agencyType = agencyType;
 	}
 	public Position getPosition() {
 		return position;
@@ -112,5 +84,4 @@ public class UserVO {
 	public void setPercentage(String percentage) {
 		this.percentage = percentage;
 	}
-    
 }

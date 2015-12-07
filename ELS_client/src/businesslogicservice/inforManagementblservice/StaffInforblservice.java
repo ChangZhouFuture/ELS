@@ -1,19 +1,13 @@
 package businesslogicservice.inforManagementblservice;
 
-import java.util.ArrayList;
-
-import bean.JavaBean1;
+import po.userPO.UserPO;
 import state.ResultMessage;
-import vo.inforManagementVO.StaffVO;
+import bean.JavaBean1;
 
 public interface StaffInforblservice {
-    public JavaBean1 add(StaffVO vo);
+    public JavaBean1 inquireA(String Id);
     
-    public JavaBean1 inquire(String Id);
+    public JavaBean1 inquireB(String position);
     
-    public ResultMessage deleteOne(String Id);
-    
-    public ResultMessage deleteMany(ArrayList<String> Ids);
-    
-    public ResultMessage modify(StaffVO vo);
+    public ResultMessage modifySalaryStrategy(UserPO userPO);
 }

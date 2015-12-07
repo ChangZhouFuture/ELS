@@ -1,6 +1,7 @@
 package dataservice.managerAndAccountantdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import bean.JavaBean1;
 /**
@@ -16,14 +17,15 @@ public interface StatisAnalydataservice extends Remote{
 	 * @param EndDate
 	 * @return
 	 */
-	public JavaBean1 BusinessSituation(String StartDate,String EndDate);
+	public JavaBean1 BusinessSituation(String StartDate,String EndDate) throws
+RemoteException;
 	
 	/**
 	 * 前置条件：
 	 * 后置条件：生成截止当前日期的成本收益表（总收入、总支出、总利润=总收入-总支出）返回给逻辑层
 	 * @return
 	 */
-	public JavaBean1 CostAndIncome(String date);
+	public JavaBean1 CostAndIncome(String date) throws RemoteException;
 	
 
 }

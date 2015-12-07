@@ -1,6 +1,7 @@
 package dataservice.managerAndAccountantdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 
 /**
@@ -16,7 +17,7 @@ public interface Approdocmdataservice extends Remote{
 	 * @param id
 	 * @return
 	 */
-	public Object inquireA(String id);
+	public Object inquireA(String id) throws RemoteException;
 	
 	/**
 	 * 前置条件：
@@ -24,7 +25,7 @@ public interface Approdocmdataservice extends Remote{
 	 * @param kind
 	 * @return
 	 */
-	public Object inquireB(String kind);
+	public Object inquireB(String kind) throws RemoteException;
 	
 	/**
 	 * 前置条件：
@@ -32,7 +33,7 @@ public interface Approdocmdataservice extends Remote{
 	 * @param kind
 	 * @return
 	 */
-	public Object inquireC(String date);
+	public Object inquireC(String date) throws RemoteException;
 	
 	
 	/**
@@ -40,13 +41,13 @@ public interface Approdocmdataservice extends Remote{
 	 * 后置条件：修改某一单据
 	 * @return
 	 */
-	public Object modify();
+	public Object modify() throws RemoteException;
 	
 	/**
 	 * 
 	 * 前置条件：行为或操作已经完成
 	 * 后置条件：持久化更新涉及的领域对象的数据
 	 */
-	public void updateApproState(String ordername,String id);
+	public void updateApproState(String ordername,String id) throws RemoteException;
 
 }

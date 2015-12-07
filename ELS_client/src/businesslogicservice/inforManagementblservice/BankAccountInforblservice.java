@@ -13,13 +13,13 @@ import vo.inforManagementVO.BankAccountVO;
  */
 public interface BankAccountInforblservice {
 	
-	public JavaBean1 add(BankAccountVO vo);
+	public JavaBean1 add(BankAccountVO bankAccountVO);
 	
 	public ResultMessage deleteOne(String Id);
 	
-	public ResultMessage deleteMany(ArrayList<String> Ids);
+	public ResultMessage deleteMany(ArrayList<String> IDList);
 	
-	public ResultMessage modify(BankAccountVO vo);
+	public ResultMessage modify(BankAccountVO bankAccountVO);
 	
-	public JavaBean1 find(String Id);
+	public JavaBean1 inquire(String bankAccountName);
 }

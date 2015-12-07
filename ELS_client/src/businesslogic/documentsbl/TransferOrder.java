@@ -69,6 +69,7 @@ public class TransferOrder implements TransferOrderblservice {
 		
 		this.transferOrderVO.setApproState(ApproState.NotApprove);
 		this.transferOrderVO.setLoadingDate(generateDate());
+		this.transferOrderVO.setGenerateTime(Time.generateTime());
 		this.transferOrderVO.setOrigin(CalculateFreight.origin);
 		this.transferOrderVO.setID(generateId());
 		this.transferOrderVO.setCarriage(generateFare(transferOrderVO.
@@ -182,6 +183,7 @@ public class TransferOrder implements TransferOrderblservice {
 	public void VOtoPO() {
 		this.transferOrderPO.setID(transferOrderVO.getID());
 		this.transferOrderPO.setLoadingDate(transferOrderVO.getLoadingDate());
+		this.transferOrderPO.setGenerateTime(transferOrderVO.getGenerateTime());
 		this.transferOrderPO.setCarriage(transferOrderVO.getCarriage());
 		this.transferOrderPO.setOrigin(transferOrderVO.getOrigin());
 		this.transferOrderPO.setDestination(transferOrderVO.getDestination());

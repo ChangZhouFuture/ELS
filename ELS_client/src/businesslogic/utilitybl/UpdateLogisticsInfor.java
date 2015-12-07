@@ -18,11 +18,11 @@ public class UpdateLogisticsInfor {
 	}
 	
 	public ResultMessage update(String time, String id, String description) {
-		try {
-			resultMessage = updateLogisticsInfordataservice.update(time, id, description);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			resultMessage = updateLogisticsInfordataservice.update(time, id, description);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
 		return resultMessage;
 	}
 }

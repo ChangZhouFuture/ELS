@@ -13,10 +13,17 @@ public class TranCenLoadingListVO {
 	private String vehiclesID;
 	private String supervisionMan;
 	private String escortMan;
+	private String generateTime;
 	ArrayList<String>  orderIDs=new ArrayList<>();
 	private double carriage;
 	private ApproState approState;
 	
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
 	public ApproState getApproState() {
 		return approState;
 	}

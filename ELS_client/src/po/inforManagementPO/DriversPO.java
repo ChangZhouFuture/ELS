@@ -11,21 +11,39 @@ public class DriversPO implements Serializable{
 	private String birthDate;
 	private String identyNum;
 	private String phone;
-	private Gender gender;
 	private String driveLimitDate;
+	private String city;
+	private String positon;
+	private String region;
+	private Gender gender;
 	
-//	public DriversPO(String ID, String name, String birthDate, String identyNum,
-//			String phone,int gender,String driveLimitDate){
-//		super();
-//		this.ID = ID;
-//		this.name = name;
-//		this.birthDate = birthDate;
-//		this.identyNum = identyNum;
-//		this.phone = phone;
-//		this.gender = gender;
-//		this.driveLimitDate = driveLimitDate;
-//		
-//	}
+	public String getPositon() {
+		return positon;
+	}
+
+	public void setPositon(String positon) {
+		this.positon = positon;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public String getID() {
 		return ID;

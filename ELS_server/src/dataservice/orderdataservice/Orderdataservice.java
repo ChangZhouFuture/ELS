@@ -3,6 +3,7 @@ package dataservice.orderdataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import bean.JavaBean1;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
@@ -22,16 +23,16 @@ public interface Orderdataservice extends Remote{
 	 * @param num
 	 * @return
 	 */
-	public ResultMessage add(OrderPO orderPO);
+	public ResultMessage add(OrderPO orderPO) throws RemoteException;
 	
 	/**
 	 * 前置条件：要删除的订单在PO中有记录
 	 * 后置条件：删除一个订单，更新PO
 	 * @param orderid
 	 */
-    public ResultMessage deleteOne(String id) ;
+    public ResultMessage deleteOne(String id) throws RemoteException;
     
-    public ResultMessage deleteMany(ArrayList<String> idList) ;
+    public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	
     /**
      * 前置条件：
@@ -39,7 +40,7 @@ public interface Orderdataservice extends Remote{
      * @param id
      * @return
      */
-    public JavaBean1 findA(String id) ;
+    public JavaBean1 findA(String id) throws RemoteException;
     
     /**
      * 前置条件：
@@ -47,17 +48,17 @@ public interface Orderdataservice extends Remote{
      * @param id
      * @return
      */
-    public JavaBean1 findB(String date) ;
+    public JavaBean1 findB(String date) throws RemoteException;
     
     /**
 	 * 
 	 * 前置条件：行为或操作已经完成
 	 * 后置条件：持久化更新涉及的领域对象的数据
 	 */
-	public ResultMessage update(OrderPO orderPO) ;
+	public ResultMessage update(OrderPO orderPO) throws RemoteException;
 	
-	public OrderlineitemPO getOrderlineitemPO(String id);
+	public OrderlineitemPO getOrderlineitemPO(String id) throws RemoteException;
 	
-	public String generateId() ;
+	public String generateId() throws RemoteException;
 
 }

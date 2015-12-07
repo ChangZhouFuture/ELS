@@ -10,6 +10,28 @@ public class DriversVO {
 	private String phone;
 	private Gender gender;
 	private String driveLimitDate;
+	private String positon;
+	private String city;
+	private String region;
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getPositon() {
+		return positon;
+	}
+	public void setPositon(String positon) {
+		this.positon = positon;
+	}
 	public String getID() {
 		return ID;
 	}

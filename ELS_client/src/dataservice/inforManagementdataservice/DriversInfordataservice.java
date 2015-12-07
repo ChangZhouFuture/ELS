@@ -1,6 +1,7 @@
 package dataservice.inforManagementdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
@@ -14,14 +15,16 @@ public interface DriversInfordataservice extends Remote{
 	 * @param po
 	 * @return
 	 */
-	public ResultMessage add(DriversPO po);
+	public ResultMessage add(DriversPO po) throws RemoteException;
 	
 	/**
 	 * 
 	 * @param Id
 	 * @return
 	 */
-	public JavaBean1 find(String Id);
+	public JavaBean1 findA(String Id) throws RemoteException;
+	
+	public JavaBean1 findB(String city, String region) throws RemoteException;
 	
 	/**
 	 * 
@@ -31,7 +34,7 @@ public interface DriversInfordataservice extends Remote{
 	 * 后置条件：删除一条信息信息
 	 * 
 	 */
-	public ResultMessage deleteOne(String Id);
+	public ResultMessage deleteOne(String Id) throws RemoteException;
 	
 	/**
 	 * 
@@ -40,7 +43,7 @@ public interface DriversInfordataservice extends Remote{
 	 * 后置条件：删除多条司机信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> Ids);
+	public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
 	
 	/**
 	 * 
@@ -49,6 +52,7 @@ public interface DriversInfordataservice extends Remote{
 	 * 前置条件：要修改的司机信息在PO中有记录
 	 * 后置条件：修改司机信息，并更新VO和PO
 	 */
-	public ResultMessage update(DriversPO po);
+	public ResultMessage update(DriversPO po) throws RemoteException;
 	
+	public String generateID() throws RemoteException;
 }

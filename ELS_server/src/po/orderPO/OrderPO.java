@@ -1,6 +1,7 @@
 package po.orderPO;
 
 import java.io.Serializable;
+
 import state.ApproState;
 import state.ExpressType;
 
@@ -16,6 +17,7 @@ public class OrderPO implements Serializable{
 	private String trueAddressee;
 	private String id;
 	private String goodsName;
+	private String generateDate;
 	private String generateTime;
 	private String arrivalDate;
 	private String expectedArrivalDate;
@@ -32,6 +34,12 @@ public class OrderPO implements Serializable{
 	private ExpressType expressType;
 	private String date;
 	
+	public String getGenerateDate() {
+		return generateDate;
+	}
+	public void setGenerateDate(String generateDate) {
+		this.generateDate = generateDate;
+	}
 	public String getArrivalDate() {
 		return arrivalDate;
 	}

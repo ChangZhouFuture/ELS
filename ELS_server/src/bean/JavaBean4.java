@@ -1,8 +1,9 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class JavaBean4 {
+public class JavaBean4 implements Serializable{
 
 	private boolean ifAlarm;
 	private ArrayList<String> area;

@@ -3,6 +3,7 @@ package vo.inforManagementVO;
 public class BankAccountVO {
 	private String name;
     private double amount;
+    
 	public String getName() {
 		return name;
 	}

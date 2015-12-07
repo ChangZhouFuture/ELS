@@ -7,7 +7,7 @@ import state.ExpressType;
 
 public class OrderlineitemPO implements Serializable{
 	private String id;
-	private String date;
+	private String generateDate;
 	private String senderAdd;
 	private String AddresseeAdd;
 	private double totalCost;
@@ -26,7 +26,12 @@ public class OrderlineitemPO implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+	public String getGenerateDate() {
+		return generateDate;
+	}
+	public void setGenerateDate(String generateDate) {
+		this.generateDate = generateDate;
+	}
 	public String getSenderAdd() {
 		return senderAdd;
 	}
@@ -50,12 +55,6 @@ public class OrderlineitemPO implements Serializable{
 	}
 	public void setExpressType(ExpressType expressType) {
 		this.expressType = expressType;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 	
 }

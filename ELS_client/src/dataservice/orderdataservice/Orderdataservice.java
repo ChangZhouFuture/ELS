@@ -59,6 +59,6 @@ public interface Orderdataservice extends Remote{
 	
 	public OrderlineitemPO getOrderlineitemPO(String id) throws RemoteException;
 	
-	public void generateId() throws RemoteException;
+	public String generateId() throws RemoteException;
 
 }

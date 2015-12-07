@@ -7,13 +7,17 @@ import state.ResultMessage;
 import vo.userVO.UserVO;
 
 public interface UserManagementblservice {
-    public JavaBean1 add(UserVO vo);
+    public JavaBean1 add(UserVO userVO);
     
     public ResultMessage deleteOne(String Id);
     
-    public ResultMessage deleteMany(ArrayList<String> Ids);
+    public ResultMessage deleteMany(ArrayList<String> IDList);
     
-    public ResultMessage modify(UserVO vo);
+    public ResultMessage modify(UserVO userVO);
     
-    public JavaBean1 inquire(String Id);
+    public JavaBean1 inquireA(String Id);
+    
+    public JavaBean1 inquireB(String position);
+    
+    public String generateID();
 }

@@ -10,6 +10,7 @@ public class TransferOrderVO {
 	private TransportType transportType;
 	private String ID;
 	private String loadingDate;
+	private String generateTime;
 	private String flightNum;
 	private String origin;
 	private String destination;
@@ -19,6 +20,12 @@ public class TransferOrderVO {
 	private double carriage;
 	private ApproState approState;
 	
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
 	public TransportType getTransportType() {
 		return transportType;
 	}

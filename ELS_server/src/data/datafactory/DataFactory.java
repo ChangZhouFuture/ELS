@@ -6,11 +6,24 @@ import java.rmi.server.UnicastRemoteObject;
 import data.documentsdata.BusiHallArrivalOrderdata;
 import data.documentsdata.BusiHallLoadingListdata;
 import data.documentsdata.DeliveryOrderdata;
+import data.documentsdata.PaymentOrderdata;
 import data.documentsdata.ReceivablesOrderdata;
 import data.documentsdata.TranCenArrivalOrderdata;
 import data.documentsdata.TranCenLoadingListdata;
 import data.documentsdata.TransferOrderdata;
+import data.inforManagementdata.AgencyInfordata;
+import data.inforManagementdata.BankAccountInfordata;
+import data.inforManagementdata.DriversInfordata;
+import data.inforManagementdata.StaffInfordata;
+import data.inforManagementdata.VehiclesInfordata;
+import data.managerAndAccountantdata.Approdocmdata;
+import data.managerAndAccountantdata.InquireOperaLogdata;
+import data.managerAndAccountantdata.StatisAnalydata;
 import data.orderdata.Orderdata;
+import data.stockdata.OutBoundOrderdata;
+import data.stockdata.Stockdata;
+import data.stockdata.StorageListdata;
+import data.userManagementdata.UserManagementdata;
 import data.userdata.Logindata;
 import data.utility.RecordOperaLogdata;
 import data.utility.UpdateLogisticsInfordata;
@@ -72,8 +85,8 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
-		return null;
-		
+		PaymentOrderdataservice paymentOrderdataservice = new PaymentOrderdata();
+		return paymentOrderdataservice;
 	}
 	
 	public ReceivablesOrderdataservice getReceivablesOrderdataservice() 
@@ -89,59 +102,61 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
-		return null;
-		
+		AgencyInfordataservice agencyInfordataservice = new AgencyInfordata();
+		return agencyInfordataservice;
 	}
 	
 	public BankAccountInfordataservice getBankAccountInfordataservice() throws RemoteException{
-		return null;
-		
+		BankAccountInfordataservice bankAccountInfordataservice = new 
+				BankAccountInfordata();
+		return bankAccountInfordataservice;
 	}
 	
 	public DriversInfordataservice getDriversInfordataservice() throws RemoteException{
-		return null;
-		
+		DriversInfordataservice driversInfordataservice = new DriversInfordata();
+		return driversInfordataservice;
 	}
 	
 	public StaffInfordataservice getStaffInfordataservice() throws RemoteException{
-		return null;
-		
+		StaffInfordataservice staffInfordataservice = new StaffInfordata();
+		return staffInfordataservice;
 	}
 	
 	public VehiclesInfordataservice getVehiclesInfordataservice() throws RemoteException{
-		return null;
-		
+		VehiclesInfordataservice vehiclesInfordataservice = new VehiclesInfordata();
+		return vehiclesInfordataservice;
 	}
 	
 	public Approdocmdataservice getApprodocmdataservice() throws RemoteException{
-		return null;
-		
+		Approdocmdataservice approdocmdataservice = new Approdocmdata();
+		return approdocmdataservice;
 	}
 	
 	public StatisAnalydataservice getStatisAnalydataservice() throws RemoteException{
-		return null;
-		
+		StatisAnalydataservice statisAnalydataservice = new StatisAnalydata();
+		return statisAnalydataservice;
 	}
 	
 	public  InquireOperaLogdataservice getInquireOperaLogdataservice() throws 
 	RemoteException{
-		return null;
-		
+		InquireOperaLogdataservice inquireOperaLogdataservice = new 
+				InquireOperaLogdata();
+		return inquireOperaLogdataservice;
 	}
 	
 	public OutBoundOrderdataservice getOutBoundOrderdataservice() throws RemoteException{
-		return null;
-		
+		OutBoundOrderdataservice outBoundOrderdataservice = new OutBoundOrderdata();
+		return outBoundOrderdataservice;
 	}
 	
 	public Stockdataservice getStockdataservice() throws RemoteException{
-		return null;
-		
+		Stockdataservice stockdataservice = new Stockdata();
+		return stockdataservice;
 	}
 	
 	public StorageListdataservice getStorageListdataservice() throws RemoteException{
-		return null;
-		
+		StorageListdataservice storageListdataservice = new StorageListdata();
+		return storageListdataservice;
 	}
 	
 	public Logindataservice getLogindataservice() throws RemoteException{
@@ -150,8 +165,9 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 	}
 	
 	public UserManagementdataservice getUserManagementdataservice() throws RemoteException{
-		return null;
-		
+		UserManagementdataservice userManagementdataservice = new 
+				UserManagementdata();
+		return userManagementdataservice;
 	}
 	
 	public RecordOperaLogdataservice getRecordOperaLogdataservice() throws 

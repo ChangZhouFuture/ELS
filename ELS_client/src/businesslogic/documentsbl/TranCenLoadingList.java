@@ -80,6 +80,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		
 		this.tranCenLoadingListVO.setTranCenID(CalculateFreight.agencyId);
 		this.tranCenLoadingListVO.setLoadingDate(generateDate());
+		this.tranCenLoadingListVO.setGenerateTime(Time.generateTime());
 		this.tranCenLoadingListVO.setID(generateId());
 		this.tranCenLoadingListVO.setVehiclesID(generateVehieclesId());
 		this.tranCenLoadingListVO.setCarriage(generateFeight(tranCenLoadingListVO.
@@ -183,6 +184,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	public void VOtoPO() {
 		tranCenLoadingListPO.setID(tranCenLoadingListVO.getID());
 		tranCenLoadingListPO.setLoadingDate(tranCenLoadingListVO.getLoadingDate());
+		tranCenLoadingListPO.setGenerateTime(tranCenLoadingListVO.getGenerateTime());
 		tranCenLoadingListPO.setDestination(tranCenLoadingListVO.getDestination());
 		tranCenLoadingListPO.setVehiclesID(tranCenLoadingListVO.getVehiclesID());
 		tranCenLoadingListPO.setTrucksNum(tranCenLoadingListVO.getTrucksNum());

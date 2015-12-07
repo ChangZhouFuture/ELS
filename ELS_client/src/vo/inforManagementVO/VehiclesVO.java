@@ -1,9 +1,30 @@
 package vo.inforManagementVO;
 
 public class VehiclesVO {
-	String ID;
-	String plateNum;
-	int serviceTime;
+	private String ID;
+    private	String plateNum;
+	private String serviceTime;
+	private String city;
+	private String region;
+	
+	public String getServiceTime() {
+		return serviceTime;
+	}
+	public void setServiceTime(String serviceTime) {
+		this.serviceTime = serviceTime;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public String getID() {
 		return ID;
 	}
@@ -16,11 +37,4 @@ public class VehiclesVO {
 	public void setPlateNum(String plateNum) {
 		this.plateNum = plateNum;
 	}
-	public int getServiceTime() {
-		return serviceTime;
-	}
-	public void setServiceTime(int serviceTime) {
-		this.serviceTime = serviceTime;
-	}
-	
 }

@@ -16,6 +16,7 @@ public class OrderVO {
 	private String id;
 	private String goodsName;
 	private String generateDate;
+	private String generateTime;
 	private String arrivalDate;
 	private String expectedArrivalDate;
 	private double weight;
@@ -30,6 +31,12 @@ public class OrderVO {
 	private ApproState approState;
 	private ExpressType expressType;
 	
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
 	public String getArrivalDate() {
 		return arrivalDate;
 	}

@@ -50,6 +50,7 @@ public class Order implements Orderblservice {
 		this.orderVO.setPackingCharge(calculatePackingCharge());
 		this.orderVO.setTotalCost(totalCost);
 		this.orderVO.setGenerateDate(generateDate());
+		this.orderVO.setGenerateTime(Time.generateTime());
 		this.orderVO.setId(generateId());
 		this.orderVO.setExpectedArrivalDate(generateExpectedArrivalDate());
 		this.orderVO.setApproState(ApproState.NotApprove);
@@ -210,7 +211,8 @@ public class Order implements Orderblservice {
 		this.orderPO.setExpectedArrivalDate(orderVO.getExpectedArrivalDate());
 		this.orderPO.setExpressType(orderVO.getExpressType());
 		this.orderPO.setFreight(orderVO.getFreight());
-		this.orderPO.setGenerateTime(orderVO.getGenerateDate());
+		this.orderPO.setGenerateDate(orderVO.getGenerateDate());
+		this.orderPO.setGenerateTime(orderVO.getGenerateTime());
 		this.orderPO.setGoodsName(orderVO.getGoodsName());
 		this.orderPO.setId(orderVO.getId());
 		this.orderPO.setNumOfBags(orderVO.getNumOfBags());

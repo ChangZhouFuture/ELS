@@ -62,6 +62,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		this.tranCenArrivalOrderVO = tranCenArrivalOrderVO;
 		
 		this.tranCenArrivalOrderVO.setArrivalDate(generateDate());
+		this.tranCenArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.tranCenArrivalOrderVO.setID(generateId());
 		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
 				tranCenArrivalOrderVO.getTransferOrderID()));
@@ -161,6 +162,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	@Override
 	public void VOtoPO() {
 		tranCenArrivalOrderPO.setArrivalDate(tranCenArrivalOrderVO.getArrivalDate());
+		tranCenArrivalOrderPO.setGenerateTime(tranCenArrivalOrderVO.getGenerateTime());
 		tranCenArrivalOrderPO.setGoodState(tranCenArrivalOrderVO.getGoodState());
 		tranCenArrivalOrderPO.setID(tranCenArrivalOrderVO.getID());
 		tranCenArrivalOrderPO.setOrigin(tranCenArrivalOrderVO.getOrigin());

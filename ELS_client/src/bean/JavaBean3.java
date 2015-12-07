@@ -1,8 +1,8 @@
 package bean;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class JavaBean3 {
+public class JavaBean3 implements Serializable{
 
 	private String batch;
 	private String batchNum;

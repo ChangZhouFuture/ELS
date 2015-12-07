@@ -72,8 +72,7 @@ public class RMIHelper {
 	}
 	
 	public static PaymentOrderdataservice getPaymentOrderdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getPaymentOrderdataservice();
 	}
 			
 	public static ReceivablesOrderdataservice getReceivablesOrderdataservice() 
@@ -86,59 +85,48 @@ public class RMIHelper {
 	}
 			
 	public static AgencyInfordataservice getAgencyInfordataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getAgencyInfordataservice();
 	}
 			
 	public static BankAccountInfordataservice getBankAccountInfordataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getBankAccountInfordataservice();
 	}
 			
 	public static DriversInfordataservice getDriversInfordataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getDriversInfordataservice();
 	}
 			
 	public static StaffInfordataservice getStaffInfordataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getStaffInfordataservice();
 	}
 			
 	public static VehiclesInfordataservice getVehiclesInfordataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getVehiclesInfordataservice();
 	}
 			
 	public static Approdocmdataservice getApprodocmdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getApprodocmdataservice();
 	}
 			
 	public static StatisAnalydataservice getStatisAnalydataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getStatisAnalydataservice();
 	}
 			
 	public static InquireOperaLogdataservice getInquireOperaLogdataservice() throws 
 	RemoteException{
-		return null;
-				
+		return dataFactoryservice.getInquireOperaLogdataservice();
 	}
 			
 	public static OutBoundOrderdataservice getOutBoundOrderdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getOutBoundOrderdataservice();
 	}
 			
 	public static Stockdataservice getStockdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getStockdataservice();
 	}
 			
 	public static StorageListdataservice getStorageListdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getStorageListdataservice();
 	}
 			
 	public static Logindataservice getLogindataservice() throws RemoteException{
@@ -146,8 +134,7 @@ public class RMIHelper {
 	}
 			
 	public static UserManagementdataservice getUserManagementdataservice() throws RemoteException{
-		return null;
-				
+		return dataFactoryservice.getUserManagementdataservice();
 	}
 			
 	public static RecordOperaLogdataservice getRecordOperaLogdataservice() throws 

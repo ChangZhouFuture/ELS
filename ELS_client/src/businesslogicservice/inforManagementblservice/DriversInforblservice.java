@@ -1,7 +1,6 @@
 package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
@@ -13,7 +12,7 @@ public interface DriversInforblservice {
 	 * @param vo
 	 * @return
 	 */
-	public JavaBean1 add(DriversVO vo);
+	public JavaBean1 add(DriversVO driversVO);
 	
 	/**
 	 * 
@@ -22,7 +21,9 @@ public interface DriversInforblservice {
 	 * 前置条件：要查询的司机信息在数据持久化对象中有记录
 	 * 后置条件：返回相关记录的列表
 	 */
-	public JavaBean1 inquire(String Id);
+	public JavaBean1 inquireA(String ID);
+	
+	public JavaBean1 inquireB(String city, String region);
 		
 	/**
 	 * 
@@ -41,7 +42,7 @@ public interface DriversInforblservice {
 	 * 后置条件：删除多条司机信息
 	 * 
 	 */ 
-	public ResultMessage deleteMany(ArrayList<String> Ids);
+	public ResultMessage deleteMany(ArrayList<String> IDList);
 	
 	/**
 	 * 
@@ -50,8 +51,8 @@ public interface DriversInforblservice {
 	 * 前置条件：要修改的司机信息在PO中有记录
 	 * 后置条件：修改司机信息，并更新VO和PO
 	 */
-	public ResultMessage modify(DriversVO vo);
+	public ResultMessage modify(DriversVO driversVO);
 	
-
+	public String generateID();
 
 }
