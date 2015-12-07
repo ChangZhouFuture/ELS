@@ -2,6 +2,7 @@ package presentation.orderui;
 
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -12,6 +13,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+
+import presentation.reuse.Images;
 import presentation.userui.Courierui;
 
 public class Orderui extends JPanel{
@@ -37,6 +40,7 @@ public class Orderui extends JPanel{
 	public JLabel actualReceiver;
 	public JLabel expectedArrivalDate;
 	public JLabel trueArrivalDate;
+	public JLabel approState;
 	public JTextField senderNameField;
 	public JTextField senderAddressField;
 	public JTextField senderCompanyField;
@@ -65,6 +69,8 @@ public class Orderui extends JPanel{
 	public ButtonGroup packGroup;
 	public ButtonGroup expressTypeGroup;
 	public JButton makeOrder;
+	public JButton modify;
+	public JButton delete;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -122,6 +128,9 @@ public class Orderui extends JPanel{
 		expectedArrivalDateField=new JTextField();
 		trueArrivalDate=new JLabel();
 		trueArrivalDateField=new JTextField();
+		approState=new JLabel();
+		modify=new JButton();
+		delete=new JButton();
 		makeOrder=new JButton();
 		
 		this.setLayout(null);
@@ -390,12 +399,30 @@ public class Orderui extends JPanel{
 		makeOrder.setFont(font1);
 		makeOrder.setBackground(Color.WHITE);
 		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		
+		approState.setBounds(500,445,90,24);
+		approState.setFont(font5);
+		approState.setBackground(Color.WHITE);
+		approState.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		modify.setBounds(0,0,24,24);
+		modify.setIcon(Images.MODIFY_IMAGE);;
+		modify.setBackground(Color.WHITE);
+		modify.setVisible(false);
+		
+		delete.setBounds(24,0,24,24);
+		delete.setIcon(Images.DELETE_IMAGE);;
+		delete.setBackground(Color.WHITE);
+		delete.setVisible(false);
 				
 		this.add(order);
 		this.add(sender);
 		this.add(receiver);
 		this.add(other);
 		this.add(makeOrder);
+		this.add(approState);
+		this.add(modify);
+		this.add(delete);
 		this.setLocation(182,30);
 		this.setSize(640,496);
 		this.setBackground(Color.WHITE);

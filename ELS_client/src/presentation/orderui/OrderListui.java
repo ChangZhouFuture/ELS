@@ -52,6 +52,8 @@ public class OrderListui extends JPanel{
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
+	public Orderblservice orderblservice;
+	public OrderlineitemVO oneLine;
 	
 	public static void main(String[] args){
 		
@@ -167,7 +169,7 @@ public class OrderListui extends JPanel{
 						if(dayField.getText()!=null){
 							dateString=dateString+dayField.getText();
 							JavaBean1 javaBean1;
-							Orderblservice orderblservice=new Order();
+							orderblservice=new Order();
 							try {
 								javaBean1=orderblservice.inquireB(dateString);
 								ArrayList<OrderlineitemVO> arrayList = (ArrayList<OrderlineitemVO>)javaBean1.getObject();
@@ -243,22 +245,13 @@ public class OrderListui extends JPanel{
 		 String[] Row1={" ","12345678","张三","李四","被子","未到达","20","2015-12-5"};
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
-			     OrderlineitemVO oneLine=arrayList.get(i);
+			     oneLine=arrayList.get(i);
 			     String[] oneRow={"",oneLine.getId()};
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
-		 tableModel.addRow(Row1);
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
@@ -284,9 +277,9 @@ public class OrderListui extends JPanel{
 				     tableModel.removeRow(selectedRow);  //删除行 
 				    }
 				   }
-//				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-//				     Orderblservice orderblservice=new Order();
-//				    Orderblservice.deleteMany(idList);
+				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				   orderblservice=new Order();
+				   orderblservice.deleteMany(idList);
 				  }});
 		 this.add(delete);
 	}
