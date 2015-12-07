@@ -18,6 +18,7 @@ import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
 import dataservice.managerAndAccountantdataservice.InquireOperaLogdataservice;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
+import dataservice.orderdataservice.InquireLogisticsInfordataservice;
 import dataservice.orderdataservice.Orderdataservice;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
 import dataservice.stockdataservice.Stockdataservice;
@@ -97,4 +98,8 @@ public interface DataFactoryservice extends Remote{
 				
 	public UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
 			throws RemoteException;
+	
+	public InquireLogisticsInfordataservice getInquireLogisticsInfordataservice()
+			throws RemoteException;
+	
 }

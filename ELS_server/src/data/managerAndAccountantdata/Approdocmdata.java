@@ -23,31 +23,6 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 	}
 
 	@Override
-	public Object inquireA(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object inquireB(String kind) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object inquireC(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object modify() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public void updateApproState(String ordername, String id) {
 		// TODO Auto-generated method stub
 		String sql="select * from ? where ID=?";

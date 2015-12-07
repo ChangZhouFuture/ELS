@@ -1,49 +1,42 @@
 package businesslogic.managerAndAccountantbl;
 
+import java.util.ArrayList;
+import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
+import state.ResultMessage;
+import RMI.RMIHelper;
+import bean.JavaBean1;
 import businesslogicservice.managerAndAccountantblservice.ApproDocmblservice;
 
 public class ApproDocm implements ApproDocmblservice{
-
+	private Approdocmdataservice approdocmdataservice;
+	private ResultMessage resultMessage;
+	private JavaBean1 javaBean1;
+	
+	public ApproDocm() {
+		try {
+			approdocmdataservice = RMIHelper.getApprodocmdataservice();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
-	public Object chooseKind(String kind) {
+	public JavaBean1 inquireA(String id, String documentType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object inquire(String id) {
+	public JavaBean1 inquireB(String documentsType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object modify() {
+	public ResultMessage approveDocuments(ArrayList<String> IDList,
+			String documentsType) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void finishApprove(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mark() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void endAD() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

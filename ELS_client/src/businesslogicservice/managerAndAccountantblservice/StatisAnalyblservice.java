@@ -1,7 +1,7 @@
 package businesslogicservice.managerAndAccountantblservice;
 
-import vo.StatisAnalyVO.BusinessSituationVO;
-import vo.StatisAnalyVO.CostAndIncomeVO;
+import bean.JavaBean1;
+
 
 /**
  * 
@@ -10,28 +10,14 @@ import vo.StatisAnalyVO.CostAndIncomeVO;
  */
 
 public interface StatisAnalyblservice {
-	/**
-	 * 前置条件：启动查看经营情况表
-	 * 后置条件：根据开始日期和结束日期，显示期间内所有的入款单和收款单信息
-	 * @param StartDate
-	 * @param EndDate
-	 * @return
-	 */
-	public BusinessSituationVO BS(String StartDate,String EndDate);
+	public JavaBean1 inquireReceivalblesOrder(String ID);
 	
-	/**
-	 * 前置条件：启动查看成本收益表
-	 * 后置条件：生成截止当前日期的成本收益表（总收入、总支出、总利润=总收入-总支出）
-	 * @return
-	 */
-	public CostAndIncomeVO CAI();
+	public JavaBean1 inquirePaymentOrder(String ID);
 	
-	/**
-	 * 前置条件：已知总收入和总支出
-	 * 后置条件：根据总收入和总支出计算总利润
-	 * @param income
-	 * @param cost
-	 * @return
-	 */
-	public double profit(double income,double cost);
+	public JavaBean1 inquireReceivalblesOrder2();
+	
+	public JavaBean1 inquirePaymentOrder2();
+	
+	public JavaBean1 inquireCostAndIncomeTable();
+	
 }

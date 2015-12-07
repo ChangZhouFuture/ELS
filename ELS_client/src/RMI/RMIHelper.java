@@ -2,6 +2,7 @@ package RMI;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+
 import dataservice.datafactoryservice.DataFactoryservice;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
@@ -19,6 +20,7 @@ import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
 import dataservice.managerAndAccountantdataservice.InquireOperaLogdataservice;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
+import dataservice.orderdataservice.InquireLogisticsInfordataservice;
 import dataservice.orderdataservice.Orderdataservice;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
 import dataservice.stockdataservice.Stockdataservice;
@@ -145,5 +147,10 @@ public class RMIHelper {
 	public static UpdateLogisticsInfordataservice getUpdateLogisticsInfordataservice() 
 	throws RemoteException{
 		return dataFactoryservice.getUpdateLogisticsInfordataservice();
+	}
+	
+	public static InquireLogisticsInfordataservice getInquireLogisticsInfordataservice() 
+			throws RemoteException {
+		return dataFactoryservice.getInquireLogisticsInfordataservice();
 	}
 }
