@@ -14,8 +14,14 @@ public class PaymentOrderVO {
  	private String entry;
  	private String note;
  	private ApproState approState;
+ 	private String generateTime;
 	    
-	    
+	public String getGenerateTime() {
+		return generateTime;
+	}
+	public void setGenerateTime(String generateTime) {
+		this.generateTime = generateTime;
+	}
 	public ApproState getApproState() {
 		return approState;
 	}

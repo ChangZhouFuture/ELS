@@ -43,6 +43,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		this.receivablesOrderVO = receivablesOrderVO;
 		
 		this.receivablesOrderVO.setDate(generateDate());
+		this.receivablesOrderVO.setGenerateTime(Time.generateTime());
 		this.receivablesOrderVO.setID(generateID());
 		this.receivablesOrderVO.setAmount(calculateAmount(receivablesOrderVO.getOrderIDs()));
 		VOtoPO();
@@ -146,6 +147,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	public void VOtoPO() {
 		receivablesOrderPO.setID(receivablesOrderVO.getID());
 		receivablesOrderPO.setDate(receivablesOrderVO.getDate());
+		receivablesOrderPO.setGenerateTime(receivablesOrderVO.getGenerateTime());
 		receivablesOrderPO.setAmount(receivablesOrderVO.getAmount());
 		receivablesOrderPO.setCourier(receivablesOrderVO.getCourier());
 		receivablesOrderPO.setOrderIDs(receivablesOrderVO.getOrderIDs());

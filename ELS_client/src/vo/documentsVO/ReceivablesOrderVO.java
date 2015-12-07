@@ -8,10 +8,17 @@ public class ReceivablesOrderVO {
 		private String ID;
 	    private String date;
 	    private String courier;
+	    private String generateTime;
 	    ArrayList<String> orderIDs=new ArrayList<>();
 	    private double amount;
 	    private ApproState approState;
 	    
+		public String getGenerateTime() {
+			return generateTime;
+		}
+		public void setGenerateTime(String generateTime) {
+			this.generateTime = generateTime;
+		}
 		public ApproState getApproState() {
 			return approState;
 		}

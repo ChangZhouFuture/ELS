@@ -45,6 +45,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 		this.paymentOrderVO = paymentOrderVO;
 		
 		this.paymentOrderVO.setDate(generateDate());
+		this.paymentOrderVO.setGenerateTime(Time.generateTime());
 		this.paymentOrderVO.setID(generateId());
 		VOtoPO();
 		
@@ -145,6 +146,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 		paymentOrderPO.setAmount(paymentOrderVO.getAmount());
 		paymentOrderPO.setBankAccount(paymentOrderVO.getBankAccount());
 		paymentOrderPO.setDate(paymentOrderVO.getDate());
+		paymentOrderPO.setGenerateTime(paymentOrderVO.getGenerateTime());
 		paymentOrderPO.setEntry(paymentOrderVO.getEntry());
 		paymentOrderPO.setNote(paymentOrderVO.getNote());
 		paymentOrderPO.setPayer(paymentOrderVO.getPayer());
