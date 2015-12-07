@@ -23,7 +23,7 @@ implements InquireLogisticsInfordataservice{
     PreparedStatement stmt;
     LogisticsInforPO po;
     
-	protected InquireLogisticsInfordata() throws RemoteException {
+	public InquireLogisticsInfordata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

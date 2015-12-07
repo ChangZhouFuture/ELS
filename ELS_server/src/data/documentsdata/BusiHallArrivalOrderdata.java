@@ -19,7 +19,9 @@ import state.ResultMessage;
 import state.TransportType;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 
-public class BusiHallArrivalOrderdata extends UnicastRemoteObject  implements BusiHallArrivalOrderdataservice {
+public class BusiHallArrivalOrderdata extends UnicastRemoteObject  
+implements BusiHallArrivalOrderdataservice {
+	
 	public BusiHallArrivalOrderdata() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
