@@ -51,18 +51,22 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 	public void updateApproState(String ordername, String id) {
 		// TODO Auto-generated method stub
 		String sql="select * from ? where ID=?";
-		int state = 0;
+		String state="NotApprove";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, ordername);
 			stmt.setString(2, id);
 			ResultSet rs=stmt.executeQuery();
 			if(rs.next()){
-				state=1-rs.getInt("approState");
+				if(rs.getString("approState").equals("NotApprove")){
+					state="Approve";
+				}else{
+					state="NotApprove";
+				}
 			}
 			sql="update ? set approState=? where ID=?";
 			stmt.setString(1, ordername);
-			stmt.setInt(2, state);
+			stmt.setString(2, state);
 			stmt.setString(3, id);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
