@@ -25,6 +25,8 @@ import businesslogic.documentsbl.DeliveryOrder;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 
 public class DeliveryOrderListui extends Listui{
+	DeliveryOrderblservice deliveryOrderblservice;
+	DeliveryOrderVO oneLine;
 	
 	public static void main(String[] args){
 		
@@ -51,7 +53,7 @@ public class DeliveryOrderListui extends Listui{
 						if(dayField.getText()!=null){
 							dateString=dateString+dayField.getText();
 							JavaBean1 javaBean1;
-							DeliveryOrderblservice deliveryOrderblservice=new DeliveryOrder();
+							deliveryOrderblservice=new DeliveryOrder();
 							try {
 								javaBean1=deliveryOrderblservice.inquireB(dateString);
 								ArrayList<DeliveryOrderVO> arrayList = (ArrayList<DeliveryOrderVO>)javaBean1.getObject();
@@ -106,7 +108,7 @@ public class DeliveryOrderListui extends Listui{
 		 String[] Row1={" ","12345678","ÕÅÈý","2015-12-5","12345678","2015-12-5"};
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
-			     DeliveryOrderVO oneLine=arrayList.get(i);
+			     oneLine=arrayList.get(i);
 			     String[] oneRow={"",oneLine.getID(),oneLine.getDeliverier(),oneLine.getArrivalDate(),
 					     oneLine.getOrderID(),oneLine.getGenerateTime()};
 			     tableModel.addRow(oneRow);
@@ -140,7 +142,7 @@ public class DeliveryOrderListui extends Listui{
 				    }
 				   }
 				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-				   DeliveryOrderblservice deliveryOrderblservice=new DeliveryOrder();
+				   deliveryOrderblservice=new DeliveryOrder();
 				   deliveryOrderblservice.deleteMany(idList);
 				  }});
 		 this.add(delete);

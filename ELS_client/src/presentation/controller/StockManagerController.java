@@ -31,17 +31,17 @@ public class StockManagerController {
 	
 	public StockManagerController(){
 		stockManagerui = new StockManagerui();
-		outBoundOrderListui = new OutBoundOrderListui();
-		outBoundOrderListui.setLocation(0,0);
+		storageListListui = new StorageListListui();
+		storageListListui.setLocation(0,0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		mainPanel.setBackground(Color.WHITE);
-		mainPanel.add(outBoundOrderListui);
+		mainPanel.add(storageListListui);
 		JLayeredPane layeredPane = stockManagerui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
 		inStockManagerui();
-		inOutBoundOrderListui();
+		inStorageListListui();
 	}
 	public void inStockManagerui() {
 		stockManagerui.outBoundManage.addActionListener(new ActionListener() {
@@ -87,6 +87,9 @@ public class StockManagerController {
 		});
 	}
 	public void inOutBoundOrderListui() {
+		
+	}
+	public void inStorageListListui() {
 		
 	}
 	public static void main(String[] args) {

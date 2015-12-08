@@ -12,6 +12,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -26,35 +27,51 @@ import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.inforManagementbl.DriversInfor;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.inforManagementblservice.DriversInforblservice;
+import presentation.documentsui.DeliveryOrderui.DeliveryOrderListui;
 import presentation.reuse.Images;
+import presentation.userui.BusiHallClerkui;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
 
 public class DriversListui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel addText;
+	public JLabel city;
+	public JLabel region;
 	public JButton add;
 	public JButton idFind;
 	public JButton cityFind;
 	public JTextField idField;
 	public JTextField cityField;
+	public JTextField regionField;
 	public JRadioButton findById;
-	public JRadioButton findByName;
+	public JRadioButton findByCity;
 	public ButtonGroup findGroup;
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
 	public DriversInforblservice driversInforblservice;
 	
+	public static void main(String[] args){
+		
+		BusiHallClerkui ui=new BusiHallClerkui();
+		DriversListui uiPanel=new DriversListui();
+		uiPanel.makeTable(null);
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
 	public DriversListui(){
 		sheetLabel=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
+		city=new JLabel();
+		region=new JLabel();
 		findById=new JRadioButton();
-		findByName=new JRadioButton();
+		findByCity=new JRadioButton();
 		findGroup=new ButtonGroup();
 		idField=new JTextField();
 		cityField=new JTextField();
+		regionField=new JTextField();
 		idFind=new JButton();
 		cityFind=new JButton();
 		
@@ -86,26 +103,40 @@ public class DriversListui extends JPanel{
 		findById.setFont(font2);
 		findById.setBackground(Color.WHITE);
 		
-		findByName.setBounds(30,125,120,24);
-		findByName.setText("按姓名查找:");
-		findByName.setFont(font2);
-		findByName.setBackground(Color.WHITE);
+		findByCity.setBounds(30,125,120,24);
+		findByCity.setText("按地区查找:");
+		findByCity.setFont(font2);
+		findByCity.setBackground(Color.WHITE);
 		
 		findGroup.add(findById);
-		findGroup.add(findByName);
+		findGroup.add(findByCity);
 		
 		idField.setBounds(150,92,120,20);
 		
-		cityField.setBounds(150,127,48,20);
+		cityField.setBounds(150,127,100,20);
 		
-		idFind.setBounds(360,90,64,24);
+		city.setBounds(255,125,24,24);
+		city.setBackground(Color.WHITE);
+		city.setText("市");
+		city.setFont(font2);
+		city.setOpaque(true);
+		
+		regionField.setBounds(285,127,48,20);
+		
+		region.setBounds(340,125,24,24);
+		region.setBackground(Color.WHITE);
+		region.setText("区");
+		region.setFont(font2);
+		region.setOpaque(true);
+		
+		idFind.setBounds(380,90,64,24);
 		idFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		idFind.setBackground(Color.WHITE);
 		idFind.setText("查找");
 		idFind.setFont(font2);
 		idFind.setOpaque(true);
 		
-		cityFind.setBounds(360,125,64,24);
+		cityFind.setBounds(380,125,64,24);
 		cityFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		cityFind.setBackground(Color.WHITE);
 		cityFind.setText("查找");
@@ -116,14 +147,16 @@ public class DriversListui extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String cityString=null;
-				if(cityField.getText()!=null){
-					cityString=cityString+cityField.getText();
+				String regionString=null;
+				if(cityField.getText()!=null&&regionField.getText()!=null){
+					cityString=cityField.getText();
+					regionString=regionField.getText();
 					JavaBean1 javaBean1;
 					driversInforblservice=new DriversInfor();
 					try {
-						javaBean1=driversInforblservice.inquire(cityString);
-//						ArrayList<DriverslineitemVO> arrayList=(DriverslineitemVO>)javaBean1.getObject();
-//						makeTable(arrayList);
+						javaBean1=driversInforblservice.inquireB(cityString,regionString);
+						ArrayList<DriverslineitemVO> arrayList=(ArrayList<DriverslineitemVO>)javaBean1.getObject();
+						makeTable(arrayList);
 						} catch (Exception e2) {
 							e2.printStackTrace();
 						}
@@ -138,9 +171,12 @@ public class DriversListui extends JPanel{
 		this.add(add);
 		this.add(addText);
 		this.add(findById);
-		this.add(findByName);
+		this.add(findByCity);
 		this.add(idField);
 		this.add(cityField);
+		this.add(city);
+		this.add(region);
+		this.add(regionField);
 		this.add(idFind);
 		this.add(cityFind);
 		
@@ -158,7 +194,7 @@ public class DriversListui extends JPanel{
 			 e2.printStackTrace(); 
 		 }
 		 DefaultTableModel tableModel;
-		 String[] columnNames = {"选择","ID","派送员","到达地","订单号","时间"}; //列名
+		 String[] columnNames = {"选择","ID","姓名","电话","性别","行驶证期限"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
 		 table = new JTable(tableModel){  
@@ -183,8 +219,8 @@ public class DriversListui extends JPanel{
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
 		    	 DriverslineitemVO oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getID(),oneLine.getDeliverier(),oneLine.getArrivalDate(),
-					     oneLine.getOrderID(),oneLine.getGenerateTime()};
+			     String[] oneRow={"",oneLine.getID(),oneLine.getName(),oneLine.getPhone(),
+					     oneLine.getGender().toString(),oneLine.getDriveLimitDate()};
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
@@ -216,8 +252,8 @@ public class DriversListui extends JPanel{
 				    }
 				   }
 				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-				   DeliveryOrderblservice deliveryOrderblservice=new DeliveryOrder();
-				   deliveryOrderblservice.deleteMany(idList);
+				   driversInforblservice=new DriversInfor();
+				   driversInforblservice.deleteMany(idList);
 				  }});
 		 this.add(delete);
 	}

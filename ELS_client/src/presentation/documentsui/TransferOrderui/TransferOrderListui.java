@@ -18,13 +18,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import bean.JavaBean1;
-import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.documentsbl.TransferOrder;
-import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.documentsblservice.TransferOrderblservice;
 import presentation.reuse.Listui;
 import presentation.userui.TranCenClerkui;
-import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 
 public class TransferOrderListui extends Listui{
