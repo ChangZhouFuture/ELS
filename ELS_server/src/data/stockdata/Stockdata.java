@@ -37,12 +37,6 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public StockPO stockCheck(String startTime, String endTime) {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
 
 	@Override
 	public JavaBean3 stockCount(String generateTime) {
@@ -109,22 +103,6 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		
 	}
 
-	@Override
-	public ResultMessage adjustPartition(String id,String area) {
-		// TODO Auto-generated method stub
-		String sql="update stock set areaNum=? where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, area);
-			stmt.setString(2, id);
-			return ResultMessage.Success;
-					
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-	}
 
 	@Override
 	public JavaBean4 stockAlarm() {
@@ -132,7 +110,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		String sql="select * from stock";
 		ArrayList<String> areas=new ArrayList<>();
 		jb4=new JavaBean4();
-		jb4.setIfAlarm(false);
+		jb4.setAlarm(false);
 		int shipping=0;
 		int trains=0;
 		int trucks=0;
@@ -153,19 +131,19 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			}
 			if(shipping>Max_Size*percentage){
 				areas.add("shipping");
-				jb4.setIfAlarm(true);
+				jb4.setAlarm(true);
 			}
 			if(trains>Max_Size*percentage){
 				areas.add("trains");
-				jb4.setIfAlarm(true);
+				jb4.setAlarm(true);
 			}
 			if(trucks>Max_Size*percentage){
 				areas.add("trucks");
-				jb4.setIfAlarm(true);
+				jb4.setAlarm(true);
 			}
 			if(motor>Max_Size*percentage){
 				areas.add("motor");
-				jb4.setIfAlarm(true);
+				jb4.setAlarm(true);
 			}jb4.setArea(areas);
 			
 		} catch (SQLException e) {
@@ -176,7 +154,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	}
 
 	@Override
-	public void storage(StorageListPO po) {
+	public ResultMessage storage(StorageListPO po) {
 		// TODO Auto-generated method stub
 		String sql="insert into stock(ID,inDate,destination,areaNum,rowNum,frameNum,positionNum,generateTime)"
 				+ "values(?,?,?,?,?,?,?,?)";
@@ -191,28 +169,51 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			stmt.setString(7, po.getPositionNum());
 			stmt.setString(8, po.getGenerateTime());
 			stmt.executeUpdate();
-			
+			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
 		
 		
 	}
 
 	@Override
-	public void outBound(String id) {
+	public ResultMessage outBound(String id) {
 		// TODO Auto-generated method stub
 		String sql="delete from stock where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, id);
 			stmt.executeUpdate();
+			return ResultMessage.Success;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.Fail;
 
+		}
+	}
+
+	@Override
+	public ResultMessage adjustPartition(ArrayList<String> IDList, String area) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql="update stock set areaNum=? where ID=?";
+		try {
+			for(int i=0;i<IDList.size();i++){
+				stmt=con.prepareStatement(sql);
+				stmt.setString(1, area);
+				stmt.setString(2, IDList.get(i));
+			}
+			
+			return ResultMessage.Success;
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.Fail;
 		}
 	}
 
