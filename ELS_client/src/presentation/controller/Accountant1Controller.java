@@ -1,12 +1,15 @@
 package presentation.controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderListui;
@@ -27,10 +30,29 @@ public class Accountant1Controller {
 	OperalogListui operalogListui;
 	BankAccountListui bankAccountListui;
 	ReceivablesOrderui receivablesOrderui;
+	JButton totalAmount=new JButton();
+	JTextField totalAmountField=new JTextField();
+	Font font3=new Font("TimesRoman",Font.PLAIN,15);
 	
 	public Accountant1Controller(){
 		accountant1ui = new Accountantui1();
 		receivablesOrderListui = new ReceivablesOrderListui();
+		receivablesOrderListui.sheetLabel.setText("结算管理");
+		receivablesOrderListui.add.setVisible(false);
+		receivablesOrderListui.addText.setVisible(false);
+		receivablesOrderListui.findById.setText("按营业厅查找");
+		totalAmount.setBounds(30,420,50,24);
+		totalAmount.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		totalAmount.setBackground(Color.WHITE);
+		totalAmount.setText("合计");
+		
+		totalAmount.setFont(font3);
+		totalAmountField.setBounds(80,422,80,20);
+		totalAmountField.setEditable(false);
+		totalAmountField.setBackground(Color.WHITE);
+		totalAmountField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		receivablesOrderListui.add(totalAmount);
+		receivablesOrderListui.add(totalAmountField);
 		receivablesOrderListui.setLocation(0,0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
@@ -48,6 +70,22 @@ public class Accountant1Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				receivablesOrderListui = new ReceivablesOrderListui();
+				receivablesOrderListui.sheetLabel.setText("结算管理");
+				receivablesOrderListui.add.setVisible(false);
+				receivablesOrderListui.addText.setVisible(false);
+				receivablesOrderListui.findById.setText("按营业厅查找");
+				receivablesOrderListui.delete.setVisible(false);
+				totalAmount.setBounds(30,420,50,24);
+				totalAmount.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+				totalAmount.setBackground(Color.WHITE);
+				totalAmount.setText("合计");
+				totalAmount.setFont(font3);
+				totalAmountField.setBounds(80,422,80,20);
+				totalAmountField.setEditable(false);
+				totalAmountField.setBackground(Color.WHITE);
+				totalAmountField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+				receivablesOrderListui.add(totalAmount);
+				receivablesOrderListui.add(totalAmountField);
 				childPanel = receivablesOrderListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);

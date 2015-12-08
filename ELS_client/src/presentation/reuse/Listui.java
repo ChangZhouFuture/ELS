@@ -26,20 +26,18 @@ public class Listui extends JPanel{
 	public JTextField yearField;
 	public JTextField monthField;
 	public JTextField dayField;
-	public JRadioButton findById;
-	public JRadioButton findByDate;
-	public ButtonGroup findGroup;
+	public JLabel findById;
+	public JLabel findByDate;
 	public JTable table;
 	public JScrollPane scrollPane;
-	public JButton delete;
+	public JButton delete=new JButton();
 	
 	public Listui(){
 		sheetLabel=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
-		findById=new JRadioButton();
-		findByDate=new JRadioButton();
-		findGroup=new ButtonGroup();
+		findById=new JLabel();
+		findByDate=new JLabel();
 		idField=new JTextField();
 		yearField=new JTextField();
 		monthField=new JTextField();
@@ -81,9 +79,6 @@ public class Listui extends JPanel{
 		findByDate.setText("按日期查找:");
 		findByDate.setFont(font2);
 		findByDate.setBackground(Color.WHITE);
-		
-		findGroup.add(findById);
-		findGroup.add(findByDate);
 		
 		idField.setBounds(150,92,120,20);
 		

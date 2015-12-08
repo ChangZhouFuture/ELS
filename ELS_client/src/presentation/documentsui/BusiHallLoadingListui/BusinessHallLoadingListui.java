@@ -191,7 +191,7 @@ public class BusinessHallLoadingListui extends JPanel{
 		this.add(scroller);
 		this.add(makeOrder);
 		setLocation(184,30);
-		this.setSize(616,490);
+		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);

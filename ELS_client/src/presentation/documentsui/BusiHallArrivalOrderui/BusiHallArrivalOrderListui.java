@@ -25,7 +25,9 @@ import businesslogic.documentsbl.BusiHallArrivalOrder;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 
 public class BusiHallArrivalOrderListui extends Listui{
-	
+	 BusiHallArrivalOrderblservice busiHallArrivalOrderblservice;
+	 BusiHallArrivalOrderVO oneLine;
+	 
 	public static void main(String[] args){
 		
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -50,7 +52,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 						if(dayField.getText()!=null){
 							dateString=dateString+dayField.getText();
 							JavaBean1 javaBean1;
-							BusiHallArrivalOrderblservice busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
+							busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 							try {
 								javaBean1=busiHallArrivalOrderblservice.inquireB(dateString);
 								ArrayList<BusiHallArrivalOrderVO> arrayList = (ArrayList<BusiHallArrivalOrderVO>)javaBean1.getObject();
@@ -106,7 +108,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 		 String[] Row1={" ","12345678","121212","010101","上海","2015-12-5","完整","2015-12-5"};
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
-		    	 BusiHallArrivalOrderVO oneLine=arrayList.get(i);
+		    	 oneLine=arrayList.get(i);
 			     String[] oneRow={"",oneLine.getId(),oneLine.getBusiHallID(),oneLine.getTransferOrderID(),
 			    		 oneLine.getOrigin(),oneLine.getArrivalDate(),
 					     String.valueOf(oneLine.getGoodState()),oneLine.getGenerateTime()};
@@ -141,7 +143,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 				    }
 				   }
 				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-				   BusiHallArrivalOrderblservice busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
+				   busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				   busiHallArrivalOrderblservice.deleteMany(idList);
 				  }});
 		 this.add(delete);

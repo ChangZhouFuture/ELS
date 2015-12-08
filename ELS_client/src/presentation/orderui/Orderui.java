@@ -2,6 +2,8 @@ package presentation.orderui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -14,8 +16,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import businesslogic.orderbl.Order;
+import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
+import state.ExpressType;
+import vo.orderVO.OrderVO;
 
 public class Orderui extends JPanel{
 	public JLabel order;
@@ -70,7 +76,10 @@ public class Orderui extends JPanel{
 	public ButtonGroup expressTypeGroup;
 	public JButton makeOrder;
 	public JButton modify;
+	public JButton modifyOrder;
 	public JButton delete;
+	Orderblservice orderblservice;
+	OrderVO orderVO;
 	
 	public static void main(String[] args){
 		Courierui ui=new Courierui();
@@ -132,6 +141,8 @@ public class Orderui extends JPanel{
 		modify=new JButton();
 		delete=new JButton();
 		makeOrder=new JButton();
+		orderblservice=new Order();
+		orderVO=new OrderVO();
 		
 		this.setLayout(null);
 		
@@ -399,6 +410,147 @@ public class Orderui extends JPanel{
 		makeOrder.setFont(font1);
 		makeOrder.setBackground(Color.WHITE);
 		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		makeOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				senderNameField.setEditable(false);
+				senderAddressField.setEditable(false);
+				senderCompanyField.setEditable(false);
+				senderPhoneField.setEditable(false);
+				receiverNameField.setEditable(false);
+				receiverAddressField.setEditable(false);
+				receiverCompanyField.setEditable(false);
+				receiverPhoneField.setEditable(false);
+				goodNumField.setEditable(false);
+				goodNameField.setEditable(false);
+				goodWeightField.setEditable(false);
+				goodVolumeField.setEditable(false);
+				carriageField.setEditable(false);
+				bag.setEnabled(false);
+				wood.setEnabled(false);
+				paper.setEnabled(false);
+				economic.setEnabled(false);
+				standard.setEnabled(false);
+				eMS.setEnabled(false);
+				double packingCharge=0;
+				if(bag.isSelected()){
+					packingCharge=1;
+					orderVO.setNumOfBags(1);
+				}else if(wood.isSelected()){
+					packingCharge=10;
+					orderVO.setNumOfWoodenBox(1);
+				}
+				else if(paper.isSelected()){
+					packingCharge=5;
+					orderVO.setNumOfCartons(1);
+				}
+				ExpressType express=null;
+				if(economic.isSelected()){
+					express=ExpressType.Economic;
+				}else if(standard.isSelected()){
+					express=ExpressType.Standard;
+				}
+				else if(eMS.isSelected()){
+					express=ExpressType.EMS;
+				}
+				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
+				carriageField.setText(String.valueOf(totalcost));
+				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+				orderVO.setSenderName(senderNameField.getText());
+				orderVO.setSenderAdd(senderAddressField.getText());
+				orderVO.setSenderCompany(senderCompanyField.getText());
+				orderVO.setSenderPhoneNumber(senderPhoneField.getText());
+				orderVO.setAddresseeName(receiverNameField.getText());;
+				orderVO.setAddresseeAdd(receiverAddressField.getText());
+				orderVO.setAddresseeCompany(receiverCompanyField.getText());
+				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
+				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
+				orderVO.setExpressType(express);
+				orderVO.setTotalCost(totalcost);
+				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
+				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
+				orderVO.setGoodsName(goodNameField.getText());
+				orderVO.setGenerateDate(orderblservice.generateDate());
+				orderVO.setGenerateTime(orderblservice.generateDate());
+				orderVO.setId(orderblservice.generateId());
+				orderblservice.add(orderVO);
+				makeOrder.setEnabled(false);
+			}
+		});
+		
+		modifyOrder.setBounds(260,442,96,30);
+		modifyOrder.setText("È·ÈÏÐÞ¸Ä");
+		modifyOrder.setFont(font1);
+		modifyOrder.setBackground(Color.WHITE);
+		modifyOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				senderNameField.setEditable(false);
+				senderAddressField.setEditable(false);
+				senderCompanyField.setEditable(false);
+				senderPhoneField.setEditable(false);
+				receiverNameField.setEditable(false);
+				receiverAddressField.setEditable(false);
+				receiverCompanyField.setEditable(false);
+				receiverPhoneField.setEditable(false);
+				goodNumField.setEditable(false);
+				goodNameField.setEditable(false);
+				goodWeightField.setEditable(false);
+				goodVolumeField.setEditable(false);
+				carriageField.setEditable(false);
+				bag.setEnabled(false);
+				wood.setEnabled(false);
+				paper.setEnabled(false);
+				economic.setEnabled(false);
+				standard.setEnabled(false);
+				eMS.setEnabled(false);
+				double packingCharge=0;
+				if(bag.isSelected()){
+					packingCharge=1;
+					orderVO.setNumOfBags(1);
+				}else if(wood.isSelected()){
+					packingCharge=10;
+					orderVO.setNumOfWoodenBox(1);
+				}
+				else if(paper.isSelected()){
+					packingCharge=5;
+					orderVO.setNumOfCartons(1);
+				}
+				ExpressType express=null;
+				if(economic.isSelected()){
+					express=ExpressType.Economic;
+				}else if(standard.isSelected()){
+					express=ExpressType.Standard;
+				}
+				else if(eMS.isSelected()){
+					express=ExpressType.EMS;
+				}
+				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
+				carriageField.setText(String.valueOf(totalcost));
+				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+				orderVO.setSenderName(senderNameField.getText());
+				orderVO.setSenderAdd(senderAddressField.getText());
+				orderVO.setSenderCompany(senderCompanyField.getText());
+				orderVO.setSenderPhoneNumber(senderPhoneField.getText());
+				orderVO.setAddresseeName(receiverNameField.getText());;
+				orderVO.setAddresseeAdd(receiverAddressField.getText());
+				orderVO.setAddresseeCompany(receiverCompanyField.getText());
+				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
+				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
+				orderVO.setExpressType(express);
+				orderVO.setTotalCost(totalcost);
+				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
+				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
+				orderVO.setGoodsName(goodNameField.getText());
+				orderVO.setGenerateTime(orderblservice.generateDate());
+				orderblservice.modify(orderVO);
+			}
+		});
 		
 		approState.setBounds(500,445,90,24);
 		approState.setFont(font5);
@@ -409,6 +561,32 @@ public class Orderui extends JPanel{
 		modify.setIcon(Images.MODIFY_IMAGE);;
 		modify.setBackground(Color.WHITE);
 		modify.setVisible(false);
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				senderNameField.setEditable(true);
+				senderAddressField.setEditable(true);
+				senderCompanyField.setEditable(true);
+				senderPhoneField.setEditable(true);
+				receiverNameField.setEditable(true);
+				receiverAddressField.setEditable(true);
+				receiverCompanyField.setEditable(true);
+				receiverPhoneField.setEditable(true);
+				goodNumField.setEditable(true);
+				goodNameField.setEditable(true);
+				goodWeightField.setEditable(true);
+				goodVolumeField.setEditable(true);
+				carriageField.setEditable(true);
+				bag.setEnabled(true);
+				wood.setEnabled(true);
+				paper.setEnabled(true);
+				economic.setEnabled(true);
+				standard.setEnabled(true);
+				eMS.setEnabled(true);
+			}
+		});
 		
 		delete.setBounds(24,0,24,24);
 		delete.setIcon(Images.DELETE_IMAGE);;

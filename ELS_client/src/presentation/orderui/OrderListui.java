@@ -54,6 +54,7 @@ public class OrderListui extends JPanel{
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
+	public DefaultTableModel tableModel;
 	public Orderblservice orderblservice;
 	public OrderlineitemVO oneLine;
 	
@@ -222,8 +223,7 @@ public class OrderListui extends JPanel{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
-		 String[] columnNames = {"选择","ID","寄件人","收件人","内件品名","状态","运费","时间"}; //列名
+		 String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
 		 table = new JTable(tableModel){  
@@ -248,20 +248,13 @@ public class OrderListui extends JPanel{
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
 			     oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId()};
+			     String[] oneRow={"",oneLine.getId(),oneLine.getSenderAdd(),oneLine.getAddresseeAdd(),
+			    		 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 table.addMouseListener(new MouseAdapter() {
-			 
-			public void mouseClicked(MouseEvent evt) {
-                 if (evt.getClickCount() == 2) {
-                	 
-                 }
-              }
-         });
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);

@@ -44,13 +44,13 @@ public class DriversListui extends JPanel{
 	public JTextField idField;
 	public JTextField cityField;
 	public JTextField regionField;
-	public JRadioButton findById;
-	public JRadioButton findByCity;
-	public ButtonGroup findGroup;
+	public JLabel findById;
+	public JLabel findByCity;
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
-	public DriversInforblservice driversInforblservice;
+	DriversInforblservice driversInforblservice;
+	DriverslineitemVO oneLine;
 	
 	public static void main(String[] args){
 		
@@ -66,9 +66,8 @@ public class DriversListui extends JPanel{
 		addText=new JLabel();
 		city=new JLabel();
 		region=new JLabel();
-		findById=new JRadioButton();
-		findByCity=new JRadioButton();
-		findGroup=new ButtonGroup();
+		findById=new JLabel();
+		findByCity=new JLabel();
 		idField=new JTextField();
 		cityField=new JTextField();
 		regionField=new JTextField();
@@ -107,9 +106,6 @@ public class DriversListui extends JPanel{
 		findByCity.setText("按地区查找:");
 		findByCity.setFont(font2);
 		findByCity.setBackground(Color.WHITE);
-		
-		findGroup.add(findById);
-		findGroup.add(findByCity);
 		
 		idField.setBounds(150,92,120,20);
 		
@@ -218,7 +214,7 @@ public class DriversListui extends JPanel{
 		 String[] Row1={" ","12345678","张三","2015-12-5","12345678","2015-12-5"};
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
-		    	 DriverslineitemVO oneLine=arrayList.get(i);
+		    	 oneLine=arrayList.get(i);
 			     String[] oneRow={"",oneLine.getID(),oneLine.getName(),oneLine.getPhone(),
 					     oneLine.getGender().toString(),oneLine.getDriveLimitDate()};
 			     tableModel.addRow(oneRow);
