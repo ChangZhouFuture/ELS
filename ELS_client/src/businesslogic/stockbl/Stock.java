@@ -1,8 +1,10 @@
 package businesslogic.stockbl;
 
+import java.util.ArrayList;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
 import bean.JavaBean3;
+import bean.JavaBean4;
 import bean.JavaBean5;
 import businesslogicservice.stockblservice.Stockblservice;
 
@@ -19,18 +21,19 @@ public class Stock implements Stockblservice{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public ResultMessage adjustPartition() {
+	public JavaBean4 adjustPartition(ArrayList<String> IDList, String area) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public JavaBean4 stockAlarm() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void stockAlarm() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public ResultMessage storage(StorageListPO po) {

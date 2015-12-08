@@ -2,6 +2,8 @@ package dataservice.stockdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import bean.JavaBean3;
 import bean.JavaBean4;
 import bean.JavaBean5;
@@ -35,7 +37,8 @@ public interface Stockdataservice extends Remote{
 	 * 
 	 * @return
 	 */
-	public ResultMessage adjustPartition(String id,String area) throws RemoteException;
+	public ResultMessage adjustPartition(ArrayList<String> IDList,String area)
+			throws RemoteException;
 	
 	/**
 	 * 后置：发出警报

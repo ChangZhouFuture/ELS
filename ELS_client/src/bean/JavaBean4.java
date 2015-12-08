@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class JavaBean4 implements Serializable{
-	private boolean ifAlarm;
+	private boolean isAlarm;
 	private ArrayList<String> area;
 	
-	public boolean isIfAlarm() {
-		return ifAlarm;
+	public boolean isAlarm() {
+		return isAlarm;
 	}
-	public void setIfAlarm(boolean ifAlarm) {
-		this.ifAlarm = ifAlarm;
+	public void setAlarm(boolean isAlarm) {
+		this.isAlarm = isAlarm;
 	}
 	public ArrayList<String> getArea() {
 		return area;

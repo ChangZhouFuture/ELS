@@ -1,7 +1,10 @@
 package businesslogicservice.stockblservice;
 
+import java.util.ArrayList;
+
 import po.stockPO.StorageListPO;
 import bean.JavaBean3;
+import bean.JavaBean4;
 import bean.JavaBean5;
 import state.ResultMessage;
 
@@ -31,12 +34,12 @@ public interface Stockblservice {
 	 * 
 	 * @return
 	 */
-	public ResultMessage adjustPartition();
+	public JavaBean4 adjustPartition(ArrayList<String> IDList, String area);
 	
 	/**
 	 * 后置：发出警报
 	 */
-	public void stockAlarm();
+	public JavaBean4 stockAlarm();
 	
 	/**
 	 * 
