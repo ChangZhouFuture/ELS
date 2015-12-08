@@ -2,10 +2,9 @@ package dataservice.stockdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
 import bean.JavaBean3;
 import bean.JavaBean4;
-import po.stockPO.StockPO;
+import bean.JavaBean5;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
 
@@ -19,7 +18,7 @@ public interface Stockdataservice extends Remote{
 	 * 前置：库存管理人员已经被识别和授权
 	 * 后置：返回这一时间段内的库存变动信息
 	 */
-	public StockPO stockCheck(String startDate, String endDate) throws RemoteException;
+	public JavaBean5 stockCheck(String startDate, String endDate) throws RemoteException;
 	
 	/**
 	 * 
@@ -49,7 +48,7 @@ public interface Stockdataservice extends Remote{
 	 * 后置：入库，记录新的架位状态
 	 * 
 	 */
-	public void storage(StorageListPO po) throws RemoteException;
+	public ResultMessage storage(StorageListPO po) throws RemoteException;
 	
 	/**
 	 * 
@@ -57,5 +56,5 @@ public interface Stockdataservice extends Remote{
 	 * 后置：出库，记录新的架位状态
 	 * 
 	 */
-	public void outBound(String id) throws RemoteException;
+	public ResultMessage outBound(String id) throws RemoteException;
 }

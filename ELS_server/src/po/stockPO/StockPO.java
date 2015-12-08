@@ -3,15 +3,15 @@ package po.stockPO;
 import java.io.Serializable;
 
 public class StockPO implements Serializable{
-
 	private String id;
 	private String inDate;
+	private String generateTime;
 	private String destination;
 	private String areaNum;                              //ÇøºÅ
 	private String rowNum;                               //ÅÅºÅ
 	private String frameNum;                             //¼ÜºÅ
 	private String positionNum;                          //Î»ºÅ
-	private String generateTime;
+	
 	public String getId() {
 		return id;
 	}

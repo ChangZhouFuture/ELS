@@ -3,10 +3,10 @@ package bean;
 import java.io.Serializable;
 
 public class JavaBean3 implements Serializable{
-
 	private String batch;
 	private String batchNum;
 	private Object object;
+	
 	public String getBatch() {
 		return batch;
 	}

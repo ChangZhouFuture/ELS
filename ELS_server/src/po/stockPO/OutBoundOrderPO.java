@@ -1,7 +1,6 @@
 package po.stockPO;
 
 import java.io.Serializable;
-
 import state.ApproState;
 import state.TransportType;
 
@@ -12,7 +11,9 @@ public class OutBoundOrderPO implements Serializable{
 	private TransportType transportType;
 	private String truckNum;
 	private String generateTime;
+	private String orderID;
 	private ApproState approState;
+	
 	public String getId() {
 		return id;
 	}
@@ -48,6 +49,12 @@ public class OutBoundOrderPO implements Serializable{
 	}
 	public void setGenerateTime(String generateTime) {
 		this.generateTime = generateTime;
+	}
+	public String getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	public ApproState getApproState() {
 		return approState;

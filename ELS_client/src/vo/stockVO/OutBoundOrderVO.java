@@ -10,8 +10,15 @@ public class OutBoundOrderVO {
 	private TransportType transportType;
 	private String truckNum;
 	private String generateTime;
+	private String orderID;
 	private ApproState approState;
 	
+	public String getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
+	}
 	public String getId() {
 		return id;
 	}

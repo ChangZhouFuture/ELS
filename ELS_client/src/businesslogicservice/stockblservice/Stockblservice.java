@@ -1,7 +1,9 @@
 package businesslogicservice.stockblservice;
 
+import po.stockPO.StorageListPO;
+import bean.JavaBean3;
+import bean.JavaBean5;
 import state.ResultMessage;
-import vo.stockVO.StockVO;
 
 public interface Stockblservice {
 	/**
@@ -12,7 +14,7 @@ public interface Stockblservice {
 	 * 前置：库存管理人员已经被识别和授权
 	 * 后置：返回这一时间段内的库存变动信息
 	 */
-	public StockVO stockCheck(String startDate, String endDate);
+	public JavaBean5 stockCheck(String startDate, String endDate);
 	
 	/**
 	 * 
@@ -21,7 +23,7 @@ public interface Stockblservice {
 	 * @return
 	 * 
 	 */
-	public StockVO stockCount();
+	public JavaBean3 stockCount();
 	
 	/**
 	 * 前置：库存管理人员已被识别和授权
@@ -29,7 +31,7 @@ public interface Stockblservice {
 	 * 
 	 * @return
 	 */
-	public String adjustPartition();
+	public ResultMessage adjustPartition();
 	
 	/**
 	 * 后置：发出警报
@@ -42,7 +44,7 @@ public interface Stockblservice {
 	 * 后置：入库，记录新的架位状态
 	 * 
 	 */
-	public void storage();
+	public ResultMessage storage(StorageListPO po);
 	
 	/**
 	 * 

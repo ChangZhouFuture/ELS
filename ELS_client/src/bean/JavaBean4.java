@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class JavaBean4 implements Serializable{
-
 	private boolean ifAlarm;
 	private ArrayList<String> area;
+	
 	public boolean isIfAlarm() {
 		return ifAlarm;
 	}
