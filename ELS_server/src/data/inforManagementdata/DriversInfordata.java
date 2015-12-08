@@ -127,4 +127,19 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 			return ResultMessage.Fail;
 		}
 	}
+	@Override
+	public JavaBean1 findA(String Id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public JavaBean1 findB(String city, String region) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String generateID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

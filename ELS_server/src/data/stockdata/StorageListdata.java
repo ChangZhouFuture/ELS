@@ -25,7 +25,6 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
     PreparedStatement stmt;
     JavaBean1 jb1;
     StorageListPO po;
-    Stockdata stock=new Stockdata();
     
 	public StorageListdata() throws RemoteException {
 		super();
@@ -49,7 +48,6 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt.setString(7, po.getPositionNum());
 			stmt.setString(8, po.getGenerateTime());
 			stmt.executeUpdate();
-			stock.storage(po);
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

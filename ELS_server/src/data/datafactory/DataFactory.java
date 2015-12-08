@@ -19,6 +19,7 @@ import data.inforManagementdata.VehiclesInfordata;
 import data.managerAndAccountantdata.Approdocmdata;
 import data.managerAndAccountantdata.InquireOperaLogdata;
 import data.managerAndAccountantdata.StatisAnalydata;
+import data.orderdata.InquireLogisticsInfordata;
 import data.orderdata.Orderdata;
 import data.stockdata.OutBoundOrderdata;
 import data.stockdata.Stockdata;
@@ -44,6 +45,7 @@ import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
 import dataservice.managerAndAccountantdataservice.InquireOperaLogdataservice;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
+import dataservice.orderdataservice.InquireLogisticsInfordataservice;
 import dataservice.orderdataservice.Orderdataservice;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
 import dataservice.stockdataservice.Stockdataservice;
@@ -197,5 +199,13 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryservi
 		TranCenLoadingListdataservice tranCenLoadingListdataservice = new 
 				TranCenLoadingListdata();
 		return tranCenLoadingListdataservice;
+	}
+
+	@Override
+	public InquireLogisticsInfordataservice getInquireLogisticsInfordataservice() throws RemoteException {
+		// TODO Auto-generated method stub
+		InquireLogisticsInfordataservice inquireLogisticsInfordataservice =new 
+				InquireLogisticsInfordata(); 
+		return inquireLogisticsInfordataservice;
 	}
 }

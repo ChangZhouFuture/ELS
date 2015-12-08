@@ -6,9 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import data.utility.Database;
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
+import state.ResultMessage;
 
 
 public class Approdocmdata extends UnicastRemoteObject implements Approdocmdataservice{
@@ -22,34 +24,38 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 		// TODO Auto-generated constructor stub
 	}
 
+
 	@Override
-	public void updateApproState(String ordername, String id) {
+	public ResultMessage updateApproState(String documentsType, ArrayList<String> IDList) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="select * from ? where ID=?";
 		String state="NotApprove";
 		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, ordername);
-			stmt.setString(2, id);
-			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				if(rs.getString("approState").equals("NotApprove")){
-					state="Approve";
-				}else{
-					state="NotApprove";
+			for(int i=0;i<IDList.size();i++){
+				stmt=con.prepareStatement(sql);
+				stmt.setString(1, documentsType);
+				stmt.setString(2, IDList.get(i));
+				ResultSet rs=stmt.executeQuery();
+				if(rs.next()){
+					if(rs.getString("approState").equals("NotApprove")){
+						state="Approve";
+					}else{
+						state="NotApprove";
+					}
 				}
+				sql="update ? set approState=? where ID=?";
+				stmt.setString(1, documentsType);
+				stmt.setString(2, state);
+				stmt.setString(3, IDList.get(i));
+				stmt.executeUpdate();
 			}
-			sql="update ? set approState=? where ID=?";
-			stmt.setString(1, ordername);
-			stmt.setString(2, state);
-			stmt.setString(3, id);
-			stmt.executeUpdate();
+			return ResultMessage.Success;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.NotExist;
 		}
-		
-		
 	}
 
 }

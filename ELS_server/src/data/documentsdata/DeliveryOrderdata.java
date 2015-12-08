@@ -113,6 +113,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new DeliveryOrderPO();
+		ArrayList<DeliveryOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		String sql="select * from deliveryorder where ID='"+id+"'";
 		try {
@@ -126,10 +127,12 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 				po.setDeliverier(rs.getString(4));
 				po.setGenerateTime(rs.getString(5));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
-				jb1.setObject(po);
+				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);
 				
-			}return jb1;
+			}
+			jb1.setObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

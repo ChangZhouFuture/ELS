@@ -83,5 +83,26 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			return ResultMessage.NotExist;
 		}
     }
+
+
+	@Override
+	public JavaBean1 findA(String Id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public JavaBean1 findB() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ResultMessage updateSalaryStrategy(UserPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

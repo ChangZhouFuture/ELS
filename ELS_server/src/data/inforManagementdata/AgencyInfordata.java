@@ -120,6 +120,11 @@ public ResultMessage update(AgencyPO po){
 		return ResultMessage.NotExist;
 	}
 }
+@Override
+public String generateID() throws RemoteException {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 
 }

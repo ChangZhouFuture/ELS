@@ -132,6 +132,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new PaymentOrderPO();
+		ArrayList<PaymentOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		String sql="select * from paymentorder where ID='"+id+"'";
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -148,9 +149,11 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				po.setNote(rs.getString(7));
 				po.setGenerateTime(rs.getString(8));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
-				jb1.setObject(po);
+				pos.add(po);
+				
 				jb1.setResultMessage(ResultMessage.Success);
 			}
+			jb1.setObject(pos);
 			 return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

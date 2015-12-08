@@ -119,7 +119,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	}
 
 	@Override
-	public JavaBean1 find(String Id) {
+	public JavaBean1 findA(String Id) {
 		// TODO Auto-generated method stub
 		po = new UserPO();
 		jb1=new JavaBean1();
@@ -150,6 +150,20 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 			e.printStackTrace(); 
 			return jb1;
 		}
+	}
+
+
+
+	@Override
+	public JavaBean1 findB(String position) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String generateID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

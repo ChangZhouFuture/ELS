@@ -27,7 +27,6 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
     PreparedStatement stmt;
     JavaBean1 jb1;
     OutBoundOrderPO po;
-    Stockdata stock=new Stockdata();
     
 	public OutBoundOrderdata() throws RemoteException {
 		super();
@@ -48,7 +47,6 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			stmt.setString(5, po.getTruckNum());
 			stmt.setString(6, po.getGenerateTime());
 			stmt.executeUpdate();
-			stock.outBound(po.getId());
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

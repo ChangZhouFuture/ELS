@@ -98,6 +98,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new ReceivablesOrderPO();
+		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
 		String sql="select * from receivablesorder where ID='"+id+"'";
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
@@ -118,8 +119,9 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			    	arr.add(i, s[i]);
 			    }
 			    po.setOrderIDs(arr);
-			    jb1.setObject(po);
-		    }
+			    pos.add(po);
+			    
+		    }jb1.setObject(pos);
 		    
 		    return jb1;
 		   

@@ -171,7 +171,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				if(rs.getString("generateTime").substring(0, 10).equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					llpo.setId(rs.getString("ID"));
-					llpo.setDate(rs.getString("date"));
+					llpo.setGenerateDate(rs.getString("date"));
 					llpo.setSenderAdd(rs.getString("senderAdd"));
 					llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
 					llpo.setTotalCost(rs.getDouble("totalCost"));
@@ -183,7 +183,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				if(rs.getString("generateTime").substring(0, 10).equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					llpo.setId(rs.getString("ID"));
-					llpo.setDate(rs.getString("date"));
+					llpo.setGenerateDate(rs.getString("date"));
 					llpo.setSenderAdd(rs.getString("senderAdd"));
 					llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
 					llpo.setTotalCost(rs.getDouble("totalCost"));

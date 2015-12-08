@@ -33,7 +33,9 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			stmt = con.prepareStatement("INSERT INTO vehicles(ID,plateNum,serviceTime) VALUES(?,?,?)");
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getPlateNum());
-		    stmt.setInt(3, po.getServiceTime());
+		    stmt.setString(3, po.getServiceTime());
+		    stmt.setString(4, po.getCity());
+		    stmt.setString(5, po.getRegion());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -43,7 +45,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 		}
     }
     
-    public JavaBean1 find(String Id){
+    public JavaBean1 findA(String Id){
     	po = new VehiclesPO();
     	jb1=new JavaBean1();
     	jb1.setResultMessage(ResultMessage.NotExist);
@@ -53,7 +55,9 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			if(rs.next()){
 			    po.setID(Id);
 		        po.setPlateNum(rs.getString("plateNum"));
-		        po.setServiceTime(rs.getInt("serviceTime"));
+		        po.setServiceTime(rs.getString("serviceTime"));
+		        po.setCity(rs.getString("city"));
+		        po.setRegion(rs.getString("region"));
 		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -83,11 +87,13 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
     public ResultMessage update(VehiclesPO po){
 
 		try {
-			String sql=("UPDATE drivers SET plateNum=?,serviceTime=? WHERE ID=?");
+			String sql=("UPDATE drivers SET plateNum=?,serviceTime=?,city=?,region=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getPlateNum());
-			stmt.setInt(2, po.getServiceTime());
-			stmt.setString(3, po.getID());
+			stmt.setString(2, po.getServiceTime());
+			stmt.setString(3, po.getCity());
+			stmt.setString(4, po.getRegion());
+			stmt.setString(5, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -113,6 +119,19 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			e.printStackTrace();
 			return ResultMessage.NotExist;
 		}
+	}
+
+
+	@Override
+	public JavaBean1 findB() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String generateID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
     
 }
