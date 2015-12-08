@@ -5,13 +5,20 @@ import java.io.Serializable;
 import state.OperaType;
 
 public class OperaLogPO implements Serializable{
-
 	private OperaType operaType;
 	private String date;
 	private String objectType;
 	private String id;
+	private String positon;
 	private String operatorId;
 	private String generateTime;
+	
+	public String getPositon() {
+		return positon;
+	}
+	public void setPositon(String positon) {
+		this.positon = positon;
+	}
 	public OperaType getOperaType() {
 		return operaType;
 	}
