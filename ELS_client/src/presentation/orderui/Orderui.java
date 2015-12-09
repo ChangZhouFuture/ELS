@@ -141,7 +141,7 @@ public class Orderui extends JPanel{
 		modify=new JButton();
 		delete=new JButton();
 		makeOrder=new JButton();
-		orderblservice=new Order();
+		modifyOrder=new JButton();
 		orderVO=new OrderVO();
 		
 		this.setLayout(null);
@@ -455,6 +455,7 @@ public class Orderui extends JPanel{
 				else if(eMS.isSelected()){
 					express=ExpressType.EMS;
 				}
+				orderblservice=new Order();
 				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
 				carriageField.setText(String.valueOf(totalcost));
 				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
@@ -530,6 +531,7 @@ public class Orderui extends JPanel{
 				else if(eMS.isSelected()){
 					express=ExpressType.EMS;
 				}
+				orderblservice=new Order();
 				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
 				carriageField.setText(String.valueOf(totalcost));
 				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
