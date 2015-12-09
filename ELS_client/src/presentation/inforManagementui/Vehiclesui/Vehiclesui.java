@@ -1,12 +1,14 @@
 package presentation.inforManagementui.Vehiclesui;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Vehiclesui extends JPanel{
 	public JLabel vehicles;
@@ -38,8 +40,17 @@ public class Vehiclesui extends JPanel{
 		modifyOrder=new JButton();
 		delete=new JButton();
 		
-		
 		this.setLayout(null);
+		
+		Font font1=new Font("TimesRoman",Font.BOLD,18);
+		Font font2=new Font("TimesRoman",Font.PLAIN,15);
+		
+		vehicles.setBounds(218,10,180,30);
+		vehicles.setText("≥µ¡æ–≈œ¢");
+		vehicles.setHorizontalAlignment(SwingConstants.CENTER);
+		vehicles.setFont(font1);
+		vehicles.setBackground(Color.WHITE);
+		vehicles.setOpaque(true);
 		
 		this.add(vehicles);
 		this.add(city);

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import bean.JavaBean1;
@@ -77,7 +78,11 @@ public class CourierController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					orderblservice=new Order();
+					javaBean1=new JavaBean1();
 					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
+					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						JOptionPane.showMessageDialog(null, "¶©µ¥²»´æÔÚ", "´íÎó", JOptionPane.ERROR_MESSAGE);
+					}
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
 					childPanel = orderui;
