@@ -76,7 +76,6 @@ public class CourierController {
 		orderListui.findById.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
 					orderblservice=new Order();
 					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
 					orderVO=(OrderVO)javaBean1.getObject();
@@ -89,9 +88,6 @@ public class CourierController {
 					childPanel.setLocation(0,0);
 					Skip.skip(mainPanel,childPanel);
 					inOrderui();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
 			}
 		});
 		orderListui.table.addMouseListener(new MouseAdapter() {
