@@ -33,9 +33,27 @@ public class Vehiclesui extends JPanel{
 		regionField=new JTextField();
 		plateNumField=new JTextField();
 		serviceTimeField=new JTextField();
+		makeOrder=new JButton();
+		modify=new JButton();
+		modifyOrder=new JButton();
+		delete=new JButton();
+		
 		
 		this.setLayout(null);
 		
+		this.add(vehicles);
+		this.add(city);
+		this.add(region);
+		this.add(plateNum);
+		this.add(serviceTime);
+		this.add(cityField);
+		this.add(regionField);
+		this.add(plateNumField);
+		this.add(serviceTimeField);
+		this.add(makeOrder);
+		this.add(modify);
+		this.add(modifyOrder);
+		this.add(delete);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

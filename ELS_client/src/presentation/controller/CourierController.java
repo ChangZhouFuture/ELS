@@ -12,12 +12,15 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import bean.JavaBean1;
+import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
 import presentation.userui.Courierui;
 import state.ExpressType;
+import state.ResultMessage;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
 
 public class CourierController {
@@ -26,7 +29,7 @@ public class CourierController {
 	Courierui courierui;
 	OrderListui orderListui;
 	Orderui orderui;
-	Orderblservice orderblservice;
+	Orderblservice orderblservice=new Order();
 	JavaBean1 javaBean1;
 	OrderVO orderVO;
 	
