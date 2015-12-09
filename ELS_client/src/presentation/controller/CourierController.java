@@ -29,7 +29,7 @@ public class CourierController {
 	Courierui courierui;
 	OrderListui orderListui;
 	Orderui orderui;
-	Orderblservice orderblservice=new Order();
+	Orderblservice orderblservice;
 	JavaBean1 javaBean1;
 	OrderVO orderVO;
 	
@@ -77,6 +77,7 @@ public class CourierController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					orderblservice=new Order();
 					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
