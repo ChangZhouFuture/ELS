@@ -83,6 +83,14 @@ public class OrderListui extends JPanel{
 		day=new JLabel();
 		idFind=new JButton();
 		dateFind=new JButton();
+		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
 		
 		this.setLayout(null);
 		
@@ -223,14 +231,7 @@ public class OrderListui extends JPanel{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
+		 
 //		 ButtonGroup checkboxGroup=new ButtonGroup();
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override

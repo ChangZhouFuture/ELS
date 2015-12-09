@@ -12,9 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
+import presentation.documentsui.PaymentOrderui.PaymentOrderui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderListui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderui;
 import presentation.inforManagementui.BankAccountui.BankAccountListui;
+import presentation.inforManagementui.BankAccountui.BankAccountui;
 import presentation.managerAndAccountantui.Operalogui.OperalogListui;
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
 import presentation.reuse.Skip;
@@ -30,6 +32,8 @@ public class Accountant1Controller {
 	OperalogListui operalogListui;
 	BankAccountListui bankAccountListui;
 	ReceivablesOrderui receivablesOrderui;
+	PaymentOrderui paymentOrderui;
+	BankAccountui bankAccountui;
 	JButton totalAmount=new JButton();
 	JTextField totalAmountField=new JTextField();
 	Font font3=new Font("TimesRoman",Font.PLAIN,15);
@@ -100,6 +104,7 @@ public class Accountant1Controller {
 				childPanel = paymentOrderListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inPaymentOrderListui();
 			}
 		});
 		accountant1ui.statisAnaly.addActionListener(new ActionListener() {
@@ -130,6 +135,7 @@ public class Accountant1Controller {
 				childPanel = bankAccountListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inBankAccountListui();
 			}
 		});
 	}
@@ -142,7 +148,32 @@ public class Accountant1Controller {
 				childPanel = receivablesOrderui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
-				inReceivablesOrderListui();
+			}
+		});
+	}
+	public void inPaymentOrderListui(){
+		paymentOrderListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				paymentOrderui=new PaymentOrderui();
+				childPanel=paymentOrderui;
+				childPanel.setLocation(0,0);
+				Skip.skip(mainPanel,childPanel);
+			}
+		});
+	}
+	public void inBankAccountListui(){
+		bankAccountListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				bankAccountui=new BankAccountui();
+				childPanel=bankAccountui;
+				childPanel.setLocation(0,0);
+				Skip.skip(mainPanel,childPanel);
 			}
 		});
 	}
