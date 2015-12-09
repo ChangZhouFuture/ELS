@@ -459,6 +459,7 @@ public class Orderui extends JPanel{
 				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
 				carriageField.setText(String.valueOf(totalcost));
 				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+				approState.setText("Œ¥…Û≈˙");
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
@@ -486,6 +487,7 @@ public class Orderui extends JPanel{
 		modifyOrder.setFont(font1);
 		modifyOrder.setBackground(Color.WHITE);
 		modifyOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		modifyOrder.setVisible(false);
 		modifyOrder.addActionListener(new ActionListener() {
 			
 			@Override

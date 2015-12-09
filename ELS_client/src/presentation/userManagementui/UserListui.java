@@ -48,7 +48,6 @@ public class UserListui extends JPanel{
 	public ButtonGroup findGroup;
 	public JTable table;
 	public JScrollPane scrollPane;
-	public JScrollPane scroller;
 	public JButton delete;
 	public JComboBox position;
 	public UserlineitemVO oneLine;
@@ -75,7 +74,6 @@ public class UserListui extends JPanel{
 		positionFind=new JButton();
 		String[] positionEntries={"快递员","营业厅业务员","中转中心业务员","库存管理人员","财务人员","财务人员(高)","总经理","管理员"};
 		position=new JComboBox(positionEntries);
-		scroller=new JScrollPane(position);
 		
 		this.setLayout(null);
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
@@ -115,12 +113,9 @@ public class UserListui extends JPanel{
 		
 		idField.setBounds(150,92,120,20);
 		
-//		scroller.setBounds(150,125,120,24);
-//		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-//		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		position.setBackground(Color.WHITE);
 		position.setFont(font2);
-		position.setBounds(150,125,120,24);
+		position.setBounds(150,125,160,24);
 		position.addItemListener(new ItemListener(){
 			public void  itemStateChanged(ItemEvent evt) {
 				if(evt.getStateChange() == ItemEvent.SELECTED){
