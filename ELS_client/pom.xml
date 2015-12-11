@@ -33,7 +33,7 @@
         </plugin>
       </plugins>
     </reporting>
-  
+
   <dependencies>  
           <dependency>  
                <groupId>junit</groupId>  
@@ -42,5 +42,5 @@
                <scope>test</scope>  
           </dependency>  
    </dependencies>  
-  
+
 </project>
