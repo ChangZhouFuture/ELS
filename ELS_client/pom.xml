@@ -13,7 +13,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-        </configuration>
+        </configuration> 
       </plugin>
     </plugins>
   </build>
@@ -34,7 +34,6 @@
       </plugins>
     </reporting>
 
- <dependencyManagement>
   <dependencies>  
           <dependency>  
                <groupId>junit</groupId>  
@@ -43,6 +42,5 @@
                <scope>test</scope>  
           </dependency>  
    </dependencies>  
- </dependencyManagement>
 
 </project>
