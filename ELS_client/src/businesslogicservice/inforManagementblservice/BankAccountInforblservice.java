@@ -19,7 +19,9 @@ public interface BankAccountInforblservice {
 	
 	public ResultMessage deleteMany(ArrayList<String> IDList);
 	
-	public ResultMessage modify(BankAccountVO bankAccountVO);
+	public ResultMessage modify(String oldName, String newName);
 	
 	public JavaBean1 inquire(String bankAccountName);
+	
+	public ResultMessage use(String accountName);
 }

@@ -68,39 +68,5 @@ public interface Orderblservice {
       * @return
       */
      public JavaBean1 inquireB(String date);
-     
-     /**
-      * 前置条件：完成订单信息输入
-      * 后置条件：生成一个订单的条形码号
-      * @return
-      */
-     public String generateId();
-     
-     /**
-      * 前置条件：完成订单信息输入
-      * 后置条件：根据订单信息计算总费用 ，运费+包装费
-      * @param senderadderss
-      * @param recipientaddress
-      * @param packprice
-      * @return
-      */
-     public double calculateFreight(String destination);
-     
-     public double calculatePackingCharge();
-    
-     public String generateExpectedArrivalDate();
 
-     public void VOtoPO();
-     
-     public OrderlineitemVO getOrderlineitemVO(String id);
-
-	/**
-      * 前置条件：已完成订单处理
-      * 后置条件：结束本次订单处理，持久化更新涉及的领域对象的数据
-      */
-     public void endOrder();
-     
-     public void lineitemPOtolineitemVO(int k);
-     
-     public String generateDate();
 }

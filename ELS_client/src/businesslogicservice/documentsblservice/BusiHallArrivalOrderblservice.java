@@ -14,27 +14,12 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
   */
  public interface BusiHallArrivalOrderblservice {
  	/**
- 	 * 前置：中转单ID在持久化数据中有记录
- 	 * 后置：自动得出出发地
- 	 * @param id
- 	 * @return 出发地
- 	 */
- 	public String generateStartAddress(String id);
- 	
- 	/**
  	 * 前置：要添加的中转单在数据持久化对象中有记录
  	 * 后置：添加中转单lineitem记录,并向展示层返回VO
  	 * @param id
  	 * @return 
  	 */
  	public TransferOrderlineitemVO addTransferOrder(String id);
- 	
- 	/**
- 	 * 前置：已输入所有应该手动输入的参数
- 	 * 后置：自动生成营业厅到达单日期
- 	 * @return 日期
- 	 */
- 	public String generateDate();
  	
  	/**
  	 * 前置：营业厅业务员已输入所有参数
@@ -47,13 +32,6 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @return 一个营业厅到达单
  	 */
  	public JavaBean1 addBusiHallArrivalOrder(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO);
- 	
- 	/**
- 	 * 前置：已添加所有营业厅到达单信息
- 	 * 后置：自动生成营业厅到达单编号
- 	 * @return 营业厅到达单编号
- 	 */
- 	public String generateId();
  	
  	/**
  	 * 前置：要修改的营业厅到达单在持久化数据中有记录
@@ -97,21 +75,4 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 */
  	public JavaBean1 inquireB(String time);
  	
- 	/**
- 	 * 前置：业务已经处理完成
- 	 * 后置：结束此次营业厅接收回合，持久化更新设计的领域对象的数据
- 	 */
- 	
- 	/**
- 	 * 前置：
- 	 * 后置：查询出所有营业厅到达单
- 	 * @return
- 	 */
- 	public ArrayList<BusiHallArrivalOrderVO> inquireC();
- 	
- 	public void VOtoPO();
-		
- 	public void POtoVO(int k);
- 	
- 	public void end();
 }

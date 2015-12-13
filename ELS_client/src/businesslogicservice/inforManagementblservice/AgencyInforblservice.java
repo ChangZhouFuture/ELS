@@ -1,7 +1,9 @@
 package businesslogicservice.inforManagementblservice;
 
 import java.util.ArrayList;
+
 import bean.JavaBean1;
+import state.AgencyType;
 import state.ResultMessage;
 import vo.inforManagementVO.AgencyVO;
 
@@ -21,5 +23,6 @@ public interface AgencyInforblservice {
 	
 	public JavaBean1 inquire(String ID);
 	
-	public String generateID();
+	public JavaBean1 inquireB(AgencyType agencyType);
+	
 }

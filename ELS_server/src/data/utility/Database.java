@@ -18,7 +18,13 @@ public class Database {
 	    }
 	}
 	public Connection getConnection(){
-		return con;
+		if (con==null) {
+			System.out.println("连接数据库失败");
+			return null;
+		} else {
+			return con;
+		}
 	}
+	
 }
  

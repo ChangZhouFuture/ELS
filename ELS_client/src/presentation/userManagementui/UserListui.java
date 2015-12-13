@@ -237,10 +237,10 @@ public class UserListui extends JPanel{
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
 		    	oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
-			    		 oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
-			    		 oneLine.getPayType().toString()};
-			     tableModel.addRow(oneRow);
+//			     String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
+//			    		 oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
+//			    		 oneLine.getPayType().toString()};
+//			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 

@@ -32,7 +32,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		}
 	}
 	
-	@Override
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
 		String startAdd = null;
@@ -50,7 +49,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		return transferOrderlineitemVO;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
@@ -80,7 +78,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {
 		String id = null;
 		try {
@@ -152,14 +149,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		
 	}
 
-	@Override
-	public ArrayList<TranCenArrivalOrderVO> inquireC() {
-		
-		
-		return null;
-	}
-
-	@Override
 	public void VOtoPO() {
 		tranCenArrivalOrderPO.setArrivalDate(tranCenArrivalOrderVO.getArrivalDate());
 		tranCenArrivalOrderPO.setGenerateTime(tranCenArrivalOrderVO.getGenerateTime());
@@ -170,13 +159,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		tranCenArrivalOrderPO.setTransferOrderID(tranCenArrivalOrderVO.
 				getTransferOrderID());
 	}
-
-	@Override
-	public void end() {
-		
-	}
-
-	@Override
+	
 	public void POtoVO(int k) {
 		arrayList2 = new ArrayList<TranCenArrivalOrderVO>();
 		

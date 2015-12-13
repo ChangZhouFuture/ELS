@@ -24,22 +24,6 @@ public interface TransferOrderblservice {
 	public OrderlineitemVO addOrder(String orderId);
 	
 	/**
-	 * 前置：已打开中转单输入页面
-	 * 后置：自动生成中转单日期
-	 * @return 日期
-	 */
-	public String generateDate();
-	
-	/**
-	 * 前置：中转中心业务员已输入出发地目的地
-	 * 后置：自动计算运费
-	 * @param sa
-	 * @param ea
-	 * @return 运费
-	 */
-	public double generateFare(String destination);
-	
-	/**
 	 * 前置：中转中心业务员已输入所有参数
 	 * 后置：增加一个中转单，更新VO，PO，返回VO信息到展示层
 	 * @param id
@@ -56,13 +40,6 @@ public interface TransferOrderblservice {
 	public JavaBean1 addTransferOrder(TransferOrderVO transferOrderVO);
 	
 	/**
-	 * 前置：已添加所有中转信息
-	 * 后置：自动生成中转单编号
-	 * @return 中转单编号
-	 */
-	public String generateId();
-	
-	/**
 	 * 前置：要修改的中转单在持久化数据中有记录
 	 * 后置：更改一个中转单，更新VO，PO，返回VO信息到展示层
 	 * @param id
@@ -77,13 +54,6 @@ public interface TransferOrderblservice {
 	 * @return 更改后的中转单
 	 */
 	public ResultMessage modify(TransferOrderVO transferOrderVO);
-	
-	/**
-	 * 前置：要删除的中转单在持久化数据中有记录
-	 * 后置：删除一个中转单
-	 * @param id
-	 */
-//	public ResultMessage deleteone(String id);
 	
 	/**
 	 * 前置：要删除的中转单在持久化数据中有记录
@@ -107,16 +77,5 @@ public interface TransferOrderblservice {
 	 * @return 中转单列表
 	 */
 	public JavaBean1 inquireB(String time);
-	
-	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id);
-	
-	/**
-	 * 前置：业务已经处理完成
-	 * 后置：结束此次中转回合，持久化更新设计的领域对象的数据
-	 */
-	public void end();
-	
-	public void VOtoPO();
-	
-	public void lineitemPOtolineitemVO(int k);
+		
 }

@@ -52,13 +52,11 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public String generatevehiclesID() {
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
 		String vehiclesID = null;
@@ -71,7 +69,6 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return vehiclesID;
 	}
 
-	@Override
 	public double generateFreight(String destination) {
 		double freight = CalculateFreight.calculateFreight(destination);
 		return freight;
@@ -102,7 +99,6 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {
 		//调用数据层方法
 		String id = null;
@@ -209,12 +205,6 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return javaBean1;
 	}
 
-	@Override
-	public void end() {
-		
-	}
-
-	@Override
 	public void VOtoPO() {
 		busiHallLoadingListPO.setDestination(busiHallLoadingListVO.getDestination());
 		busiHallLoadingListPO.setEscortMan(busiHallLoadingListVO.getEscortMan());

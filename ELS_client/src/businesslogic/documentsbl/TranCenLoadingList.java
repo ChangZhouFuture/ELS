@@ -45,7 +45,6 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateId() {
 		String id = null;
 		try {
@@ -56,18 +55,15 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		return id;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public String generateVehieclesId() {
 		return null;
 	}
 
-	@Override
 	public double generateFeight(String destination) {
 		double freight = CalculateFreight.calculateFreight(destination);
 		return freight;
@@ -180,7 +176,6 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		return javaBean1;
 	}
 
-	@Override
 	public void VOtoPO() {
 		tranCenLoadingListPO.setID(tranCenLoadingListVO.getID());
 		tranCenLoadingListPO.setLoadingDate(tranCenLoadingListVO.getLoadingDate());

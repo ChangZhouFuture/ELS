@@ -59,22 +59,7 @@ public interface ReceivablesOrderblservice {
 	public JavaBean1 inquireA(String id);
 	
 	public JavaBean1 inqurieB(String date);
-	
-	public String generateDate();
-	
-	public String generateID();
-	
+
 	public OrderlineitemVO addOrder(String orderId);
-	
-	public void VOtoPO();
-	
-	public void POtoVO(int k);
-	
-	public double calculateAmount(ArrayList<String> OrderId);
-	/**
-	 * 前置条件：收款单信息处理完成
-	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
-	 */
-	public void end();
 
 }

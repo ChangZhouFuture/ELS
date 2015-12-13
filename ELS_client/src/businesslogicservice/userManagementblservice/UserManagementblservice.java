@@ -19,5 +19,4 @@ public interface UserManagementblservice {
     
     public JavaBean1 inquireB(String position);
     
-    public String generateID();
 }

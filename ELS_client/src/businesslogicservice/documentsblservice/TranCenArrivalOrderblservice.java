@@ -14,27 +14,12 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  */
 public interface TranCenArrivalOrderblservice {
 	/**
-	 * 前置：中转单ID在持久化数据中有记录
-	 * 后置：自动得出出发地
-	 * @param id
-	 * @return 出发地
-	 */
-	public String generateStartAddress(String transderOrderId);
-	
-	/**
 	 * 前置：已打开中转中心到达单输入页面
 	 * 判断中转单是否存在
 	 * @param id
 	 * @return 是否存在
 	 */
 	public TransferOrderlineitemVO addTransferOrder(String id);
-	
-	/**
-	 * 前置：已打开中转中心到达单输入页面
-	 * 后置：自动生成中转中心到达单日期
-	 * @return 日期
-	 */
-	public String generateDate();
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
@@ -48,13 +33,6 @@ public interface TranCenArrivalOrderblservice {
 	 * @return 一个中转中心到达单
 	 */
 	public JavaBean1 addTranCenArivalOrder(TranCenArrivalOrderVO tranCenArrivalOrderVO);
-	
-	/**
-+	 * 前置：已添加所有中转中心到达单信息
-+	 * 后置：自动生成中转中心到达单编号
-	 * @return 中转中心到达单
-	 */
-	public String generateId();
 	
 	/**
 +	 * 前置：要修改的中转中心到达单在持久化数据中有记录
@@ -100,15 +78,4 @@ public interface TranCenArrivalOrderblservice {
 	 */
 	public JavaBean1 inquireB(String time);
 	
-	public ArrayList<TranCenArrivalOrderVO> inquireC();
-	
-	public void VOtoPO();
-	
-	public void POtoVO(int k);
-	
-	/**
-	 * 前置：业务已经处理完成
-	 * 后置：结束此次中转接收回合，持久化更新设计的领域对象的数据
-	 */
-	public void end();
 }

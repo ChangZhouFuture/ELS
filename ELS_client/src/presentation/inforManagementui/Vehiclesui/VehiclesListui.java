@@ -155,9 +155,9 @@ public class VehiclesListui extends JPanel{
 					JavaBean1 javaBean1;
 					vehiclesInforblservice=new VehiclesInfor();
 					try {
-						javaBean1=vehiclesInforblservice.inquireB(cityString,regionString);
-						ArrayList<VehiclesVO> arrayList=(ArrayList<VehiclesVO>)javaBean1.getObject();
-						makeTable(arrayList);
+//						javaBean1=vehiclesInforblservice.inquireB(cityString,regionString);
+//						ArrayList<VehiclesVO> arrayList=(ArrayList<VehiclesVO>)javaBean1.getObject();
+//						makeTable(arrayList);
 						} catch (Exception e2) {
 							e2.printStackTrace();
 						}
@@ -220,9 +220,9 @@ public class VehiclesListui extends JPanel{
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
 		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getID(),oneLine.getCity(),oneLine.getRegion(),
-					     oneLine.getPlateNum(),oneLine.getServiceTime()};
-			     tableModel.addRow(oneRow);
+//			     String[] oneRow={"",oneLine.getID(),oneLine.getCity(),oneLine.getRegion(),
+//					     oneLine.getPlateNum(),oneLine.getServiceTime()};
+//			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 

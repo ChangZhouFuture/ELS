@@ -119,13 +119,11 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		return javaBean1;
 	}
 	
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public String generateID() {
 		String id = null;
 		try {
@@ -143,7 +141,6 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		return orderlineitemVO;
 	}
 
-	@Override
 	public void VOtoPO() {
 		receivablesOrderPO.setID(receivablesOrderVO.getID());
 		receivablesOrderPO.setDate(receivablesOrderVO.getDate());
@@ -153,7 +150,6 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		receivablesOrderPO.setOrderIDs(receivablesOrderVO.getOrderIDs());
 	}
 
-	@Override
 	public void POtoVO(int k) {
 		arrayList2 = new ArrayList<ReceivablesOrderVO>();
 		
@@ -171,7 +167,6 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		
 	}
 
-	@Override
 	public double calculateAmount(ArrayList<String> OrdersId) {
 		double amount = 0;
 		
@@ -183,12 +178,5 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		
 		return amount;
 	}
-
-	@Override
-	public void end() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }

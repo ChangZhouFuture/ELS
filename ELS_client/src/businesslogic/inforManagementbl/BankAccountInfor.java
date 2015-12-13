@@ -3,6 +3,7 @@ package businesslogic.inforManagementbl;
 import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
@@ -32,31 +33,84 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	
 	@Override
 	public JavaBean1 add(BankAccountVO bankAccountVO) {
-		// TODO Auto-generated method stub
-		return null;
+		bankAccountPO = new BankAccountPO();
+		this.bankAccountVO = bankAccountVO;
+		
+		this.bankAccountVO.setAmount(0);
+		this.bankAccountVO.setUsage("no");
+		VOtoPO();
+		
+		try {
+			resultMessage = bankAccountInfordataservice.add(bankAccountPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		javaBean1.setObject(this.bankAccountVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
 	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			resultMessage = bankAccountInfordataservice.deleteMany(IDList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 	@Override
-	public ResultMessage modify(BankAccountVO bankAccountVO) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage modify(String oldName, String newName) {
+		//调用数据层的修改方法,两个参数都传下去
+		
+		return resultMessage;
 	}
 
 	@Override
 	public JavaBean1 inquire(String bankAccountName) {
-		// TODO Auto-generated method stub
+		try {
+			javaBean1 = bankAccountInfordataservice.find(bankAccountName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		bankAccountPO = (BankAccountPO)javaBean1.getObject();
+		bankAccountVO = new BankAccountVO();
+		
+		bankAccountVO.setName(bankAccountPO.getName());
+		bankAccountVO.setAmount(bankAccountPO.getAmount());
+		
+		javaBean1.setObject(bankAccountVO);
+		return javaBean1;
+	}
+
+	public ResultMessage updateBalance(String operation, double amount) {
+		double newBalance;
+		if (operation=="add") {
+			newBalance = amount;
+		} 
+		else if(operation=="deduct") {
+			newBalance = -amount;
+		}
+		//调用数据层，对默认使用的那一套帐做修改
+		return resultMessage;
+	}
+
+	public void VOtoPO() {
+		bankAccountPO.setName(bankAccountVO.getName());
+		bankAccountPO.setAmount(bankAccountVO.getAmount());
+		bankAccountPO.setUsage(bankAccountVO.getUsage());
+	}
+
+	@Override
+	public ResultMessage use(String accountName) {
+		//调用数据层，把选择的账号设置为正在使用（先把所有的设置为没使用）
 		return null;
 	}
 

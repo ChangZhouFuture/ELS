@@ -26,18 +26,15 @@ public class LoginAndOut implements LoginAndOutblservice{
 			javaBean2 = logindataservice.login(id, passWord);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			System.out.println("´íÎó");
 		}
 		
 		return javaBean2;
 	}
 
-	@Override
-	public void logout() {
-		try {
-			logindataservice.logout();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+	public static void main(String[] args) {
+		RMIHelper.init();
+		LoginAndOut loginAndOut = new LoginAndOut();
+		loginAndOut.login("12345678", "12345678");
 	}
-	
 }

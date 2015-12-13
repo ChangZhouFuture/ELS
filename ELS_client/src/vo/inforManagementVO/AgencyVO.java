@@ -4,8 +4,16 @@ import state.AgencyType;
 
 public class AgencyVO {
 	private String ID;
+	private String region;
     private String city;
     private AgencyType agencyType;
+    
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public String getID() {
 		return ID;
 	}

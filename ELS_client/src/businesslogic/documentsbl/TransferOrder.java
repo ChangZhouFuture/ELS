@@ -50,13 +50,11 @@ public class TransferOrder implements TransferOrderblservice {
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public double generateFare(String destination) {
 		double fare = CalculateFreight.calculateFreight(destination);
 		return fare;
@@ -87,7 +85,6 @@ public class TransferOrder implements TransferOrderblservice {
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {
 		String agencyId = CalculateFreight.agencyId;
 		String id = null;
@@ -168,18 +165,11 @@ public class TransferOrder implements TransferOrderblservice {
 		return javaBean1;
 	}
 
-	@Override
 	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id) {
-//		transferOrderlineitemPO = transferOrderdataservice.get
+//		transferOrderlineitemPO = transferOrderdataservice.
 		return null;
 	}
 
-	@Override
-	public void end() {
-		
-	}
-
-	@Override
 	public void VOtoPO() {
 		this.transferOrderPO.setID(transferOrderVO.getID());
 		this.transferOrderPO.setLoadingDate(transferOrderVO.getLoadingDate());
@@ -195,7 +185,6 @@ public class TransferOrder implements TransferOrderblservice {
 		this.transferOrderPO.setTransportType(transferOrderVO.getTransportType());
 	}
 
-	@Override
 	public void lineitemPOtolineitemVO(int k) {
 		arrayList2 = new ArrayList<TransferOrderlineitemVO>();
 		

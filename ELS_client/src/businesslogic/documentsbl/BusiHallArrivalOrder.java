@@ -37,7 +37,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		}
 	}
 	
-	@Override
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
 		String startAdd;
@@ -57,7 +56,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		return transferOrderlineitemVO;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
@@ -85,7 +83,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {              
 		//生成营业厅到达单Id
 		//调用数据层方法，0000000七位数字往后顺延
@@ -165,7 +162,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		return javaBean1;	
 	}
 	
-	@Override
 	public ArrayList<BusiHallArrivalOrderVO> inquireC() {
 		try {
 			arrayList = busiHallArrivalOrderdataservice.findC();
@@ -178,12 +174,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		return arrayList2;
 	}
 
-	@Override
-	public void end() {
-		
-	}
-
-	@Override
 	public void VOtoPO() {
 		String transferOrderId = busiHallArrivalOrderVO.getTransferOrderID();
 		busiHallArrivalOrderPO.setTransferOrderID(transferOrderId);
@@ -194,7 +184,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		busiHallArrivalOrderPO.setId(busiHallArrivalOrderVO.getId());
 	}
 
-	@Override
 	public void POtoVO(int k) {
 		arrayList2 = new ArrayList<BusiHallArrivalOrderVO>();
 		

@@ -1,7 +1,7 @@
 package businesslogic.inforManagementbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import dataservice.inforManagementdataservice.DriversInfordataservice;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
@@ -37,19 +37,72 @@ public class DriversInfor implements DriversInforblservice {
 	
 	@Override
 	public JavaBean1 add(DriversVO driversVO) {
-		// TODO Auto-generated method stub
-		return null;
+		driversPO = new DriversPO();
+		this.driversVO = driversVO;
+		
+		this.driversVO.setID(generateID());
+		VOtoPO();
+		
+		try {
+			resultMessage = driversInfordataservice.add(driversPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		javaBean1.setObject(this.driversVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
 	public JavaBean1 inquireA(String ID) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			javaBean1 = driversInfordataservice.findA(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		driversPO = (DriversPO)javaBean1.getObject();
+		driversVO = new DriversVO();
+		
+		driversVO.setID(driversPO.getID());
+		driversVO.setBirthDate(driversPO.getBirthDate());
+//		driversVO.setCity(driversPO.getCity());
+		driversVO.setDriveLimitDate(driversPO.getDriveLimitDate());
+		driversVO.setGender(driversPO.getGender());
+		driversVO.setIdentyNum(driversPO.getIdentyNum());
+		driversVO.setName(driversPO.getName());
+		driversVO.setPhone(driversPO.getPhone());
+//		driversVO.setRegion(driversPO.getRegion());
+		
+		javaBean1.setObject(driversVO);
+		return javaBean1;
 	}
 
 	@Override
 	public JavaBean1 inquireB(String city, String region) {
-		// TODO Auto-generated method stub
+		try {
+			javaBean1 = driversInfordataservice.findB(city, region);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<DriverslineitemPO>)javaBean1.getObject();
+		arrayList2 = new ArrayList<DriverslineitemVO>();
+		int k = arrayList.size();
+		
+		for (int i = 0; i < k; i++) {
+			driverslineitemPO = arrayList.get(i);
+			
+			driverslineitemVO = new DriverslineitemVO();
+			driverslineitemVO.setID(driverslineitemPO.getID());
+			driverslineitemVO.setName(driverslineitemPO.getName());
+			driverslineitemVO.setPhone(driverslineitemPO.getPhone());
+			driverslineitemVO.setGender(driverslineitemPO.getGender());
+			driverslineitemVO.setDriveLimitDate(driverslineitemPO.getDriveLimitDate());
+			
+			arrayList2.add(driverslineitemVO);
+		}
+		
+		javaBean1.setObject(arrayList2);
 		return null;
 	}
 
@@ -61,20 +114,45 @@ public class DriversInfor implements DriversInforblservice {
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			resultMessage = driversInfordataservice.deleteMany(IDList);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 	@Override
 	public ResultMessage modify(DriversVO driversVO) {
-		// TODO Auto-generated method stub
-		return null;
+		driversPO = new DriversPO();
+		this.driversVO = driversVO;
+		
+		VOtoPO();
+		try {
+			resultMessage = driversInfordataservice.update(driversPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return resultMessage;
 	}
 
-	@Override
 	public String generateID() {
-		// TODO Auto-generated method stub
+		//城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
+		//直接截取营业厅编号大部分，后面三位需要数据层生成
 		return null;
 	}
 
+	public void VOtoPO() {
+		driversPO.setID(driversVO.getID());
+//		driversPO.setCity(driversVO.getCity());
+		driversPO.setBirthDate(driversVO.getBirthDate());
+		driversPO.setDriveLimitDate(driversVO.getDriveLimitDate());
+		driversPO.setGender(driversVO.getGender());
+		driversPO.setIdentyNum(driversVO.getIdentyNum());
+		driversPO.setName(driversVO.getName());
+		driversPO.setPhone(driversVO.getPhone());
+//		driversPO.setRegion(driversVO.getRegion());
+	}
+	
 }

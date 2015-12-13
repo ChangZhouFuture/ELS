@@ -5,44 +5,21 @@ import java.io.Serializable;
 import state.Gender;
 
 public class DriversPO implements Serializable{
-	private static final long serialVersionUID = -8345248940752949681L;
 	private String ID;
 	private String name;
 	private String birthDate;
 	private String identyNum;
 	private String phone;
 	private String driveLimitDate;
-	private String city;
-	private String positon;
-	private String region;
 	private Gender gender;
-	
-	public String getPositon() {
-		return positon;
+	private String busiHallID;
+
+	public String getBusiHallID() {
+		return busiHallID;
 	}
 
-	public void setPositon(String positon) {
-		this.positon = positon;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setBusiHallID(String busiHallID) {
+		this.busiHallID = busiHallID;
 	}
 
 	public String getID() {

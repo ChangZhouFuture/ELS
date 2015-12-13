@@ -143,6 +143,7 @@ public class Orderui extends JPanel{
 		makeOrder=new JButton();
 		modifyOrder=new JButton();
 		orderVO=new OrderVO();
+		orderblservice=new Order();
 		
 		this.setLayout(null);
 		
@@ -455,10 +456,10 @@ public class Orderui extends JPanel{
 				else if(eMS.isSelected()){
 					express=ExpressType.EMS;
 				}
-				orderblservice=new Order();
-				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
-				carriageField.setText(String.valueOf(totalcost));
-				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+//				orderblservice=new Order();
+//				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
+//				carriageField.setText(String.valueOf(totalcost));
+//				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
 				approState.setText("Œ¥…Û≈˙");
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
@@ -468,15 +469,15 @@ public class Orderui extends JPanel{
 				orderVO.setAddresseeAdd(receiverAddressField.getText());
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
-				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
+//				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
 				orderVO.setExpressType(express);
-				orderVO.setTotalCost(totalcost);
+//				orderVO.setTotalCost(totalcost);
 				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
-				orderVO.setGenerateDate(orderblservice.generateDate());
-				orderVO.setGenerateTime(orderblservice.generateDate());
-				orderVO.setId(orderblservice.generateId());
+//				orderVO.setGenerateDate(orderblservice.generateDate());
+//				orderVO.setGenerateTime(orderblservice.generateDate());
+//				orderVO.setId(orderblservice.generateId());
 				orderblservice.add(orderVO);
 				makeOrder.setEnabled(false);
 			}
@@ -533,10 +534,9 @@ public class Orderui extends JPanel{
 				else if(eMS.isSelected()){
 					express=ExpressType.EMS;
 				}
-				orderblservice=new Order();
-				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
-				carriageField.setText(String.valueOf(totalcost));
-				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+//				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
+//				carriageField.setText(String.valueOf(totalcost));
+//				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
@@ -545,13 +545,13 @@ public class Orderui extends JPanel{
 				orderVO.setAddresseeAdd(receiverAddressField.getText());
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
-				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
+//				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
 				orderVO.setExpressType(express);
-				orderVO.setTotalCost(totalcost);
+//				orderVO.setTotalCost(totalcost);
 				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
-				orderVO.setGenerateTime(orderblservice.generateDate());
+//				orderVO.setGenerateTime(orderblservice.generateDate());
 				orderblservice.modify(orderVO);
 			}
 		});

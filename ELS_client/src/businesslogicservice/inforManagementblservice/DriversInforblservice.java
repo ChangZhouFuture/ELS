@@ -52,7 +52,5 @@ public interface DriversInforblservice {
 	 * 后置条件：修改司机信息，并更新VO和PO
 	 */
 	public ResultMessage modify(DriversVO driversVO);
-	
-	public String generateID();
 
 }

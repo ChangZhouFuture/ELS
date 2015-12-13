@@ -10,14 +10,6 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 public interface TranCenLoadingListblservice {
 	public OrderlineitemVO addOrder(String orderId);
 	
-	public String generateId();
-	
-	public String generateDate();
-	
-	public String generateVehieclesId();
-	
-	public double generateFeight(String destination);
-	
 	public JavaBean1 add(TranCenLoadingListVO tranCenLoadingListVO);
 	
 	public ResultMessage delete(ArrayList<String> idList);
@@ -28,6 +20,4 @@ public interface TranCenLoadingListblservice {
 	
 	public JavaBean1 inquireB(String date);
 	
-	
-	public void VOtoPO();
 }

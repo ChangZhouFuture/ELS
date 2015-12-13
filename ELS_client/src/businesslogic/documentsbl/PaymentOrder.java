@@ -118,13 +118,6 @@ public class PaymentOrder implements PaymentOrderblservice {
 		return javaBean1;
 	}
 
-	@Override
-	public void end() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String generateId() {
 		String id = null;
 		try {
@@ -135,13 +128,11 @@ public class PaymentOrder implements PaymentOrderblservice {
 		return id;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public void VOtoPO() {
 		paymentOrderPO.setAmount(paymentOrderVO.getAmount());
 		paymentOrderPO.setBankAccount(paymentOrderVO.getBankAccount());
@@ -152,7 +143,6 @@ public class PaymentOrder implements PaymentOrderblservice {
 		paymentOrderPO.setPayer(paymentOrderVO.getPayer());
 	}
 
-	@Override
 	public void POtoVO(int k) {
 		arrayList2 = new ArrayList<PaymentOrderVO>();
 		

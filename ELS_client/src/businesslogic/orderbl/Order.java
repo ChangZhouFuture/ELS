@@ -128,19 +128,19 @@ public class Order implements Orderblservice {
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {
+		String id = null;
 		
-		return date;
+		try {
+			id = orderdataservice.generateId();
+			//需要一个可以复用的方法，把日期字符串中的减号去掉，剩下的加上数据层几位数字
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 
-	@Override
-	public void endOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public OrderlineitemVO getOrderlineitemVO(String id) {
 		try {
 			orderlineitemPO = orderdataservice.getOrderlineitemPO(id);
@@ -178,7 +178,6 @@ public class Order implements Orderblservice {
 		return resultMessage;
 	}
 
-	@Override
 	public double calculateFreight(String destination) {
 		
 		//截取字符串的一段
@@ -186,14 +185,12 @@ public class Order implements Orderblservice {
 		return freight;
 	}
 
-	@Override
 	public String generateExpectedArrivalDate() {
 		//仅仅是测试用
 //		String expectedArrivalDate = date.substring(date.length()-2, date.length()-1);
 		return date;
 	}
 
-	@Override
 	public double calculatePackingCharge() {
 		double packingCharge = 0;
 		
@@ -201,7 +198,6 @@ public class Order implements Orderblservice {
 		return packingCharge;
 	}
 
-	@Override
 	public void VOtoPO() {
 		this.orderPO.setAddresseeAdd(orderVO.getAddresseeAdd());
 		this.orderPO.setAddresseeCompany(orderVO.getAddresseeCompany());
@@ -230,7 +226,6 @@ public class Order implements Orderblservice {
 		this.orderPO.setWeight(orderVO.getWeight());
 	}
 
-	@Override
 	public void lineitemPOtolineitemVO(int k) {
 		arrayList2 = new ArrayList<OrderlineitemVO>();
 		
@@ -250,7 +245,6 @@ public class Order implements Orderblservice {
 		}
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;

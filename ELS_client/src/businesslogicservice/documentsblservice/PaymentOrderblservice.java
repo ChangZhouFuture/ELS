@@ -7,11 +7,6 @@ import vo.documentsVO.PaymentOrderVO;
 
 
 public interface PaymentOrderblservice {
-	
-	public String generateId();
-	
-	public String generateDate();
-	
 	/**
 	 * 
 	 * @param accountName
@@ -84,13 +79,4 @@ public interface PaymentOrderblservice {
 	 */
 	public JavaBean1 inquireB(String date);
 	
-	/**
-	 * 前置条件：付款单信息处理完成
-	 * 后置条件：结束这次付款单信息处理，更新数据持久化对象
-	 */
-	public void end();
-	
-	public void VOtoPO();
-	
-	public void POtoVO(int k);
 }

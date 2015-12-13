@@ -44,13 +44,11 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
 	}
 
-	@Override
 	public JavaBean1 addDeliveryOrder(DeliveryOrderVO deliveryOrderVO) {
 		this.deliveryOrderPO = new DeliveryOrderPO();
 		this.deliveryOrderVO = deliveryOrderVO;
@@ -71,7 +69,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		return javaBean1;
 	}
 
-	@Override
 	public String generateId() {
 		String id = null;
 		try {
@@ -147,13 +144,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		return javaBean1;
 	}
 
-	@Override
-	public void end() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void VOtoPO() {
 		deliveryOrderPO.setArrivalDate(deliveryOrderVO.getArrivalDate());
 		deliveryOrderPO.setGenerateTime(deliveryOrderVO.getGenerateTime());
@@ -162,7 +152,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		deliveryOrderPO.setID(deliveryOrderVO.getID());
 	}
 
-	@Override
 	public void POtoVO(int k) {
 		arrayList2 = new ArrayList<DeliveryOrderVO>();
 		
