@@ -29,7 +29,7 @@ public interface Stockdataservice extends Remote{
 	 * @return
 	 * 
 	 */
-	public JavaBean3 stockCount(String generateTime) throws RemoteException;
+	public JavaBean3 stockCount(String date) throws RemoteException;
 	
 	/**
 	 * 前置：库存管理人员已被识别和授权
@@ -51,7 +51,7 @@ public interface Stockdataservice extends Remote{
 	 * 后置：入库，记录新的架位状态
 	 * 
 	 */
-	public ResultMessage storage(StorageListPO po) throws RemoteException;
+	public ResultMessage storage(StockPO po) throws RemoteException;
 	
 	/**
 	 * 

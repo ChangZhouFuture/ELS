@@ -35,8 +35,8 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 	@Override
 	public ResultMessage addLoadingList(TranCenLoadingListPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into trancenloadinglist(ID,loadingDate,tranCenID,trucksNum,destination,vehiclesID,supervisionMan,escortMan,orderIDs,carriage,generateTime)"
-				+"values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql="insert into trancenloadinglist(ID,date,tranCenID,trucksNum,destination,vehiclesID,supervisionMan,escortMan,orderIDs,carriage)"
+				+"values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -48,7 +48,6 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			stmt.setString(7, po.getSupervisionMan());
 			stmt.setString(8, po.getEscortMan());
 			stmt.setDouble(10, po.getCarriage());
-			stmt.setString(11, po.getGenerateTime());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -101,8 +100,8 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 	@Override
 	public ResultMessage update(TranCenLoadingListPO po) {
 		// TODO Auto-generated method stub
-		String sql="update trancenloadinglist set loadingDate=?,tranCenID=?,trucksNum=?,destination=?,vehiclesID=?,"
-				+"supervisionMan=?,escortMan=?,orderIDs=?,carriage=?,generateTime=? where ID=?";
+		String sql="update trancenloadinglist set date=?,tranCenID=?,trucksNum=?,destination=?,vehiclesID=?,"
+				+"supervisionMan=?,escortMan=?,orderIDs=?,carriage=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getLoadingDate());
@@ -113,8 +112,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			stmt.setString(6, po.getSupervisionMan());
 			stmt.setString(7, po.getEscortMan());
 			stmt.setDouble(9, po.getCarriage());
-			stmt.setString(10, po.getGenerateTime());
-			stmt.setString(11, po.getID());
+			stmt.setString(10, po.getID());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -151,7 +149,6 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 				po.setSupervisionMan(rs.getString(7));
 				po.setEscortMan(rs.getString(8));
 				po.setCarriage(rs.getDouble(10));
-				po.setGenerateTime(rs.getString(11));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				String str=rs.getString(9);
 				String[] s=str.split(";");
@@ -183,7 +180,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0,10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));
@@ -193,7 +190,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
 				}
-				if(rs.getString("generateTime").substring(0,10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));

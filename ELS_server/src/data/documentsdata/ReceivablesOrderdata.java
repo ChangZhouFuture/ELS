@@ -35,7 +35,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public ResultMessage add(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date,generateTime)values(?,?,?,?,?,?)";
+		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date)values(?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -49,7 +49,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			}
 			str=str.substring(0, str.length()-1);
 			stmt.setString(4, str);
-			stmt.setString(6, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -110,7 +109,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			    po.setAmount(rs.getDouble(2));
 			    po.setCourier(rs.getString(3));
 			    po.setDate(rs.getString(5));
-			    po.setGenerateTime(rs.getString(6));
 			    po.setApproState(ApproState.valueOf(rs.getString("approState")));
 			    String str=rs.getString(4);
 			    String[] s=str.split(";");
@@ -147,7 +145,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
 					po.setID(rs.getString(1));
@@ -161,11 +159,10 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					}
 					po.setOrderIDs(arr);
 					po.setDate(date);
-					po.setGenerateTime(rs.getString("generateTime"));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 				}
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					po.setID(rs.getString(1));
@@ -179,7 +176,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					}
 					po.setOrderIDs(arr);
 					po.setDate(date);
-					po.setGenerateTime(rs.getString("generateTime"));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 				}
@@ -210,14 +206,13 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public ResultMessage update(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update receivablesorder set amount=?,courier=?,orderIDs=?,date=?,generateTime=? where ID=?";
+		String sql="update receivablesorder set amount=?,courier=?,orderIDs=?,date=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setDouble(1, po.getAmount());
 			stmt.setString(2, po.getCourier());
 			stmt.setString(4, po.getDate());
-			stmt.setString(5, po.getGenerateTime());
-			stmt.setString(6, po.getID());
+			stmt.setString(5, po.getID());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -240,4 +235,5 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		g=new GenerateId();
 		return g.generateOrderId(date, "receivablesorder");
 	}
+	
 }

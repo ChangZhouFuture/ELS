@@ -28,7 +28,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	public ResultMessage add(DriversPO po){
 		try {
 			// “?” 即占位符
-			stmt = con.prepareStatement("INSERT INTO driver(ID,name,birthDate,identyNum,phone,gender,DriveLimitDate) VALUES(?,?,?,?,?,?,?)");
+			stmt = con.prepareStatement("INSERT INTO driver(ID,name,birthDate,identyNum,phone,gender,DriveLimitDate,city,region)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getName());
 		    stmt.setString(3, po.getBirthDate());
@@ -36,6 +37,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		    stmt.setString(5, po.getPhone());
 		    stmt.setString(6, po.getGender().toString());
 		    stmt.setString(7, po.getDriveLimitDate());
+		    stmt.setString(8, po.getCity());
+		    stmt.setString(9, po.getRegion());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -46,7 +49,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	}
 	
 	//查找司机信息
-	public JavaBean1 find(String Id){
+	public JavaBean1 findA(String Id){
 		po = new DriversPO();
 		jb1=new JavaBean1();
 			jb1.setResultMessage(ResultMessage.NotExist);	
@@ -63,6 +66,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setPhone(rs.getString("phone"));
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
+		        po.setCity(rs.getString("city"));
+		        po.setRegion(rs.getString("region"));
 		        jb1.setResultMessage(ResultMessage.Success);
 		        jb1.setObject(po);
 			}
@@ -110,7 +115,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	public ResultMessage update(DriversPO po){
 		con=db.getConnection();
 		try {
-			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=? WHERE ID=?");
+			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=?,city=?,region=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getName());
 			stmt.setString(2, po.getBirthDate());
@@ -118,24 +123,48 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 			stmt.setString(4, po.getPhone());
 			stmt.setString(5, po.getGender().toString());
 			stmt.setString(6, po.getDriveLimitDate());
-			stmt.setString(7, po.getID());
+			stmt.setString(7, po.getCity());
+			stmt.setString(8, po.getRegion());
+			stmt.setString(9, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.Fail;
+			return ResultMessage.NotExist;
 		}
 	}
-	@Override
-	public JavaBean1 findA(String Id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	@Override
 	public JavaBean1 findB(String city, String region) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		po = new DriversPO();
+		jb1=new JavaBean1();
+			jb1.setResultMessage(ResultMessage.NotExist);	
+		try {
+			stmt = con.prepareStatement("SELECT * FROM driver WHERE city=?,region=?");
+			stmt.setString(1, city);
+			stmt.setString(2, region);
+			ResultSet rs=stmt.executeQuery(); 
+			if(rs.next()){
+			    po.setID(rs.getString("ID"));
+		        po.setName(rs.getString("name"));
+		        po.setBirthDate(rs.getString("birthDate"));
+		        po.setIdentyNum(rs.getString("identyNum"));
+		        po.setPhone(rs.getString("phone"));
+		        po.setGender(Gender.valueOf(rs.getString("gender")));
+		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
+		        po.setCity(rs.getString("city"));
+		        po.setRegion(rs.getString("region"));
+		        jb1.setResultMessage(ResultMessage.Success);
+		        jb1.setObject(po);
+			}
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 	@Override
 	public String generateID() throws RemoteException {

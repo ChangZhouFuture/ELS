@@ -37,8 +37,8 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	@Override
 	public ResultMessage addTransferOrder(TransferOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into transferorder(ID,loadingDate,transportType,vehicleNum,origin,destination,containerNum,supervisionMan,orderIDs,carriage,generateTime)"
-				+"values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql="insert into transferorder(ID,date,transportType,vehicleNum,origin,destination,containerNum,supervisionMan,orderIDs,carriage)"
+				+"values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -56,7 +56,6 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 			}str=str.substring(0, str.length()-1);
 			stmt.setString(9, str);
 			stmt.setDouble(10, po.getCarriage());
-			stmt.setString(11, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -127,7 +126,6 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 					arr.add(i, s[i]);
 				}po.setOrderIDs(arr);
 				po.setCarriage(rs.getDouble(10));
-				po.setGenerateTime(rs.getString(11));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
@@ -152,7 +150,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));
@@ -163,7 +161,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
 				}
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setID(rs.getString(1));
@@ -186,8 +184,8 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 	@Override
 	public ResultMessage update(TransferOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update transferorder set loadingDate=?,transportType=?,vehicleNum=?,origin=?,destination=?,containerNum=?,"
-				+ "supervisionMan=?,orderIDs=?,carriage=?,generateTime=? where ID=?";
+		String sql="update transferorder set date=?,transportType=?,vehicleNum=?,origin=?,destination=?,containerNum=?,"
+				+ "supervisionMan=?,orderIDs=?,carriage=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getLoadingDate());
@@ -204,8 +202,7 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 			}str=str.substring(0, str.length()-1);
 			stmt.setString(8, str);
 			stmt.setDouble(9, po.getCarriage());
-			stmt.setString(10, po.getGenerateTime());
-			stmt.setString(11, po.getID());
+			stmt.setString(10, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

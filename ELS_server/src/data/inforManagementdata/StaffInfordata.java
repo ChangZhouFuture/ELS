@@ -34,7 +34,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
     }
     
     
-    public JavaBean1 find(String Id){
+    public JavaBean1 findA(String Id){
     	po = new UserPO();
     	jb1=new JavaBean1();
     	jb1.setResultMessage(ResultMessage.NotExist);
@@ -84,12 +84,6 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		}
     }
 
-
-	@Override
-	public JavaBean1 findA(String Id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	@Override

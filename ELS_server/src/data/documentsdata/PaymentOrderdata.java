@@ -76,7 +76,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public ResultMessage update(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update paymentorder set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=?£¬generateTime=? where ID=?";
+		String sql="update paymentorder set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getDate());
@@ -85,8 +85,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(4, po.getBankAccount());
 			stmt.setString(5, po.getEntry());
 			stmt.setString(6, po.getNote());
-			stmt.setString(7, po.getGenerateTime());
-			stmt.setString(8, po.getID());
+			stmt.setString(7, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -106,7 +105,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public ResultMessage add(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into paymentorder(ID,date,amount,payer,bankaccount,entry,note,generateTime)values(?,?,?,?,?,?,?,?)";
+		String sql="insert into paymentorder(ID,date,amount,payer,bankaccount,entry,note)values(?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -116,7 +115,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(5, po.getBankAccount());
 			stmt.setString(6, po.getEntry());
 			stmt.setString(7, po.getNote());
-			stmt.setString(8, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -147,7 +145,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 				po.setBankAccount(rs.getString(5));
 				po.setEntry(rs.getString(6));
 				po.setNote(rs.getString(7));
-				po.setGenerateTime(rs.getString(8));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				pos.add(po);
 				
@@ -183,7 +180,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 					po.setBankAccount(rs.getString(5));
 					po.setEntry(rs.getString(6));
 					po.setNote(rs.getString(7));
-					po.setGenerateTime(rs.getString(8));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
@@ -197,7 +193,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 					po.setBankAccount(rs.getString(5));
 					po.setEntry(rs.getString(6));
 					po.setNote(rs.getString(7));
-					po.setGenerateTime(rs.getString(8));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);

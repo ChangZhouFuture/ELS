@@ -37,9 +37,9 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	@Override
 	public ResultMessage add(OrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into order(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
+		String sql="insert into dingdanorder(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
 				+ "addresseeCompany,addresseePhone,trueAddressee,goodName,numOfGoods,weight,size,freight,expressType,numOfCatons,"
-				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,generateTime,date)values"
+				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,date)values"
 				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -65,8 +65,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(20, po.getPackingCharge());
 			stmt.setDouble(21, po.getTotalCost());
 			stmt.setString(22, po.getExpectedArrivalDate());
-			stmt.setString(23, po.getGenerateTime());
-			stmt.setString(24, po.getDate());
+			stmt.setString(23, po.getDate());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -80,7 +79,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	public ResultMessage deleteOne(String id) {
 		// TODO Auto-generated method stub
 		try {
-			stmt=con.prepareStatement("DELETE FROM order WHERE ID=?");
+			stmt=con.prepareStatement("DELETE FROM dingdanorder WHERE ID=?");
 			stmt.setString(1, id);
 			stmt.executeUpdate();
 			return ResultMessage.Success;
@@ -96,7 +95,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		// TODO Auto-generated method stub
 		try {
 			for(int i=0;i<idList.size();i++){
-			stmt=con.prepareStatement("DELETE FROM order WHERE ID=?");
+			stmt=con.prepareStatement("DELETE FROM dingdanorder WHERE ID=?");
 			stmt.setString(1, idList.get(i));
 			stmt.executeUpdate();
 			}
@@ -114,7 +113,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		po=new OrderPO();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		String  sql="select * from order where ID=?";
+		String  sql="select * from dingdanorder where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, id);
@@ -142,7 +141,6 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setPackingCharge(rs.getDouble(20));
 				po.setTotalCost(rs.getDouble(21));
 				po.setExpectedArrivalDate(rs.getString(22));
-				po.setGenerateTime(rs.getString(23));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setDate(rs.getString("date"));
 				jb1.setObject(po);
@@ -163,12 +161,12 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		ArrayList<OrderlineitemPO> llpos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		String  sql="select * from order";
+		String  sql="select * from dingdanorder";
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					llpo.setId(rs.getString("ID"));
 					llpo.setGenerateDate(rs.getString("date"));
@@ -180,7 +178,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 					llpos.add(llpo);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
-				if(rs.getString("generateTime").substring(0, 10).equals(date)
+				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					llpo.setId(rs.getString("ID"));
 					llpo.setGenerateDate(rs.getString("date"));
@@ -204,11 +202,11 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	@Override
 	public ResultMessage update(OrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update order set senderName=?,senderAdd=?,senderCompany=?,senderPhone=?,"
+		String sql="update dingdanorder set senderName=?,senderAdd=?,senderCompany=?,senderPhone=?,"
 				+ "addresseeName=?,addresseeAdd=?,addresseeCompany=?,addresseePhone=?,"
 				+ "trueAddressee=?,goodName=?,numOfGoods=?,"
 				+ "weight=?,size=?,freight=?,expressType=?,numOfCatons=?,numOfWoodenBox=?,numOfBags=?,"
-				+ "packingCharge=?,totalCost=?,ExpectedArrivalDate=?,generateTime=?,date=? where ID=?";
+				+ "packingCharge=?,totalCost=?,ExpectedArrivalDate=?,date=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(23, po.getId());
@@ -233,8 +231,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(19, po.getPackingCharge());
 			stmt.setDouble(20, po.getTotalCost());
 			stmt.setString(21, po.getExpectedArrivalDate());
-			stmt.setString(22, po.getGenerateTime());
-			stmt.setString(23, po.getDate());
+			stmt.setString(22, po.getDate());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -247,14 +244,34 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	@Override
 	public OrderlineitemPO getOrderlineitemPO(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		llpo=new OrderlineitemPO();
+		String sql="select * from dingdanorder where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()){
+				llpo.setId(rs.getString("ID"));
+				llpo.setGenerateDate(rs.getString("date"));
+				llpo.setSenderAdd(rs.getString("senderAdd"));
+				llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
+				llpo.setTotalCost(rs.getDouble("totalCost"));
+				llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
+				llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return llpo;
 	}
 
 	@Override
-	public String generateId() {
+	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateIdOfOrder();
+		return g.generateIdOfOrder(date);
 	}
 
 }

@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
+import data.orderdata.Orderdata;
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.DeliveryOrderPO;
@@ -36,34 +37,29 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
+
 		OrderlineitemPO orderllpo=new OrderlineitemPO();
-		String sql="select * from order where ID=?";
 		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				
-			}
-		} catch (SQLException e) {
+			Orderdata orderdata=new Orderdata();
+			orderllpo=orderdata.getOrderlineitemPO(id);
+			
+		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return orderllpo;
 	}
 
 	@Override
 	public ResultMessage addDeliveryOrder(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into deliveryorder(ID,arrivalDate,orderIDs,deliverier,generateTime)values(?,?,?,?,?))";
+		String sql="insert into deliveryorder(ID,date,orderIDs,deliverier)values(?,?,?,?))";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
 			stmt.setString(2, po.getArrivalDate());
 			stmt.setString(3, po.getOrderID());
 			stmt.setString(4, po.getDeliverier());
-			stmt.setString(5, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -125,7 +121,6 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 				po.setArrivalDate(rs.getString(2));
 				po.setOrderID(rs.getString(3));
 				po.setDeliverier(rs.getString(4));
-				po.setGenerateTime(rs.getString(5));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);
@@ -155,23 +150,21 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			ResultSet rs=stmt.executeQuery();
 			jb1.setResultMessage(ResultMessage.NotExist);
 			while(rs.next()){
-				substr=rs.getString(5).substring(0, 10);
-				if(substr.equals(date)&&rs.getString("approState").equals("NotApprove")){
+				
+				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));
 					po.setArrivalDate(rs.getString(2));
 					po.setOrderID(rs.getString(3));
 					po.setDeliverier(rs.getString(4));
-					po.setGenerateTime(rs.getString(5));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
-				if(substr.equals(date)&&rs.getString("approState").equals("Approve")){
+				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("Approve")){
 					po.setID(rs.getString(1));
 					po.setArrivalDate(rs.getString(2));
 					po.setOrderID(rs.getString(3));
 					po.setDeliverier(rs.getString(4));
-					po.setGenerateTime(rs.getString(5));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
@@ -190,14 +183,13 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public ResultMessage update(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update deliveryorder se arrivalDate=?,orderIDs=?,deliverier=?,generateTime=? where ID=?";
+		String sql="update deliveryorder se arrivalDate=?,orderIDs=?,deliverier=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getArrivalDate());
 			stmt.setString(2, po.getOrderID());
-			stmt.setString(3,po.getDeliverier() );
-			stmt.setString(4, po.getGenerateTime());
-			stmt.setString(5, po.getID());
+			stmt.setString(3, po.getDeliverier() );
+			stmt.setString(4, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

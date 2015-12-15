@@ -34,8 +34,8 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 	@Override
 	public ResultMessage add(StorageListPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into storagelist(ID,inDate,destination,areaNum,rowNum,frameNum,positionNum,generateTime)"
-				+ "values(?,?,?,?,?,?,?,?)";
+		String sql="insert into storagelist(ID,date,destination,areaNum,rowNum,frameNum,positionNum)"
+				+ "values(?,?,?,?,?,?,?)";
 		
 		try {
 			stmt=con.prepareStatement(sql);
@@ -46,7 +46,6 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt.setString(5, po.getRowNum());
 			stmt.setString(6, po.getFrameNum());
 			stmt.setString(7, po.getPositionNum());
-			stmt.setString(8, po.getGenerateTime());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -94,7 +93,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 	public ResultMessage update(StorageListPO po) {
 		// TODO Auto-generated method stub
 		po=new StorageListPO();
-		String sql="update storagelist set inDate=?,destination=?,areaNum=?,rowNum=?,frameNum=?,positionNum=?,generateTime=? "
+		String sql="update storagelist set date=?,destination=?,areaNum=?,rowNum=?,frameNum=?,positionNum=? "
 				+ "where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -104,8 +103,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt.setString(4, po.getRowNum());
 			stmt.setString(5, po.getFrameNum());
 			stmt.setString(6, po.getPositionNum());
-			stmt.setString(7, po.getPositionNum());
-			stmt.setString(8, po.getGenerateTime());
+			stmt.setString(7, po.getId());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -134,7 +132,6 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 				po.setRowNum(rs.getString(5));
 				po.setFrameNum(rs.getString(6));
 				po.setPositionNum(rs.getString(7));
-				po.setGenerateTime(rs.getString(8));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
@@ -159,7 +156,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("inDate").equals(date)&&rs.getString("approState").equals("NotApprove")){
+				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setId(rs.getString(1));
 					po.setInDate(date);
 					po.setDestination(rs.getString(3));
@@ -167,12 +164,11 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 					po.setRowNum(rs.getString(5));
 					po.setFrameNum(rs.getString(6));
 					po.setPositionNum(rs.getString(7));
-					po.setGenerateTime(rs.getString(8));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
-				if(rs.getString("inDate").equals(date)&&rs.getString("approState").equals("Approve")){
+				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("Approve")){
 					po.setId(rs.getString(1));
 					po.setInDate(date);
 					po.setDestination(rs.getString(3));
@@ -180,7 +176,6 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 					po.setRowNum(rs.getString(5));
 					po.setFrameNum(rs.getString(6));
 					po.setPositionNum(rs.getString(7));
-					po.setGenerateTime(rs.getString(8));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);

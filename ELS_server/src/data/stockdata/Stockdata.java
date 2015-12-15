@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import bean.JavaBean3;
 import bean.JavaBean4;
+import data.userdata.Logindata;
 import data.utility.Database;
 import data.utility.TimeCompare;
 import po.stockPO.StockPO;
@@ -21,7 +22,7 @@ import dataservice.stockdataservice.Stockdataservice;
 
 public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 
-	static final int Max_Size=20000;
+	static final int Max_Size=2000;
 	static final double percentage=0.9;
 	Database db=new Database();
     Connection con=db.getConnection();
@@ -39,7 +40,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 
 
 	@Override
-	public JavaBean3 stockCount(String generateTime) {
+	public JavaBean3 stockCount(String date) {
 		// TODO Auto-generated method stub
 		int temp=0;
 		jb3=new JavaBean3();
@@ -48,52 +49,17 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		TimeCompare tc=new TimeCompare();
 		String sql="select * from batchnum";
 		int batch,batchNum;
+		
+		batch=Integer.parseInt(date.substring(0,4)+date.substring(5,7)+date.substring(8, 10));
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				String str1=generateTime.substring(0, 10);
-				String str2=rs.getString("generateTime").substring(0, 10);
-				if(tc.dateCompare(str1, str2)==3){
-					batchNum=1;
-					batch=Integer.parseInt(rs.getString("batch"))+1;
-				}else{
-					batch=Integer.parseInt(rs.getString("batch"));
-					batchNum=Integer.parseInt(rs.getString("batchNum"))+1;
-				}
-			}else{
-				batch=1;
-				batchNum=1;
-			}
-			String b=String.valueOf(batch);
-			String bn=String.valueOf(batchNum);
-			for(int i=0;i<4-b.length();i++){
-				b="0"+b;
-			}
-			for(int j=0;j<4-bn.length();j++){
-				bn="0"+bn;
-			}jb3.setBatch(b);
-			jb3.setBatchNum(bn);
-			sql="insert into batchnum(generateTime,batch,batchNum) values(?,?,?)";
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, generateTime);
-			stmt.setString(2, b);
-			stmt.setString(3, bn);
-			sql="select * from stock";
-			stmt=con.prepareStatement(sql);
-			rs=stmt.executeQuery();
 			while(rs.next()){
-				po.setId(rs.getString(1));
-				po.setInDate(rs.getString(2));
-				po.setDestination(rs.getString(3));
-				po.setAreaNum(rs.getString(4));
-				po.setRowNum(rs.getString(5));
-				po.setFrameNum(rs.getString(6));
-				po.setPositionNum(rs.getString(7));
-				po.setGenerateTime(rs.getString(8));
-				pos.add(po);
-			}jb3.setObject(pos);
-			return jb3;
+				if(tc.dateCompare(date,rs.getString("date"))==3){
+					batchNum=Integer.parseInt(rs.getString("batchNum"));
+					
+				}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,7 +73,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public JavaBean4 stockAlarm() {
 		// TODO Auto-generated method stub
-		String sql="select * from stock";
+		String sql="select * from stock where tranCenID=?";
 		ArrayList<String> areas=new ArrayList<>();
 		jb4=new JavaBean4();
 		jb4.setAlarm(false);
@@ -117,6 +83,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		int motor=0;
 		try {
 			stmt=con.prepareStatement(sql);
+			stmt.setString(1, Logindata.agencyId);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				if(rs.getString("areaNum").equals("shipping")){
@@ -154,20 +121,20 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	}
 
 	@Override
-	public ResultMessage storage(StorageListPO po) {
+	public ResultMessage storage(StockPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into stock(ID,inDate,destination,areaNum,rowNum,frameNum,positionNum,generateTime)"
+		String sql="insert into stock(ID,tranCenID,inDate,destination,areaNum,rowNum,frameNum,positionNum)"
 				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
-			stmt.setString(2, po.getInDate());
-			stmt.setString(3, po.getDestination());
-			stmt.setString(4, po.getAreaNum());
-			stmt.setString(5, po.getRowNum());
-			stmt.setString(6, po.getFrameNum());
-			stmt.setString(7, po.getPositionNum());
-			stmt.setString(8, po.getGenerateTime());
+			stmt.setString(2, Logindata.agencyId);
+			stmt.setString(3, po.getInDate());
+			stmt.setString(4, po.getDestination());
+			stmt.setString(5, po.getAreaNum());
+			stmt.setString(6, po.getRowNum());
+			stmt.setString(7, po.getFrameNum());
+			stmt.setString(8, po.getPositionNum());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -182,10 +149,11 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public ResultMessage outBound(String id) {
 		// TODO Auto-generated method stub
-		String sql="delete from stock where ID=?";
+		String sql="delete from stock where ID=?,tranCenID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, id);
+			stmt.setString(2, Logindata.agencyId);
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 
@@ -200,6 +168,23 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public ResultMessage adjustPartition(ArrayList<String> IDList, String area) throws RemoteException {
 		// TODO Auto-generated method stub
+		int count=0;
+		try {
+			stmt=con.prepareStatement("select * from stock where tranCenID=?");
+			stmt.setString(1, Logindata.agencyId);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("areaNum").equals(area)){
+					count++;
+				}
+			}
+			if(count+IDList.size()>Max_Size){
+				return ResultMessage.Fail;
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String sql="update stock set areaNum=? where ID=?";
 		try {
 			for(int i=0;i<IDList.size();i++){
@@ -213,7 +198,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.Fail;
+			return ResultMessage.NotExist;
 		}
 	}
 

@@ -21,6 +21,8 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
     Connection con=db.getConnection();
     Statement sm;
     PreparedStatement stmt;
+    public static String agencyId;
+    public static String personId;
     
 	public Logindata() throws RemoteException {
 		super();
@@ -37,6 +39,7 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 	public JavaBean2 login(String id, String passWord) throws RemoteException{
 		// TODO Auto-generated method stub
 		JavaBean2 bean=new JavaBean2();
+		personId=id;
 		try {
 			stmt=con.prepareStatement("select * from user");
 			ResultSet rs=stmt.executeQuery();
@@ -47,6 +50,7 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 						bean.setPosition(Position.valueOf(rs.getString("position")));
 						bean.setResultMessage(ResultMessage.Success);
 						bean.setAgencyID(rs.getString("agencyID"));
+						agencyId=rs.getString("agencyID");
 						return bean;
 					}else{
 						bean.setResultMessage(ResultMessage.wrongPassWord);

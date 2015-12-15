@@ -52,8 +52,8 @@ public class GenerateId {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString(1).substring(0, 12).equals(trancenId+formatDate)){
-					subId=rs.getString(1).substring(12);
+				if(rs.getString(1).substring(0, 15).equals(trancenId+formatDate)){
+					subId=rs.getString(1).substring(15);
 					temp=Integer.parseInt(subId);
 					if(temp>last){
 						last=temp;
@@ -64,7 +64,7 @@ public class GenerateId {
 			for(int i=0;i<7-subId.length();i++){
 				subId="0"+subId;
 			}
-			return formatDate+subId;
+			return trancenId+formatDate+subId;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,25 +72,29 @@ public class GenerateId {
 		}
 	}
 	
-	public String generateIdOfOrder(){
-		String sql="select * from order";
+	public String generateIdOfOrder(String date){
+		String sql="select * from dingdanorder";
+		String subId="";
 		int temp;
 		int last=0;
-		String id;
+		String formatDate=date.substring(2, 4)+date.substring(5, 7)+date.substring(8, 10);
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				temp=Integer.parseInt(rs.getString(1));
-				if(temp>last){
-					last=temp;
+				if(rs.getString("ID").substring(0, 6).equals(formatDate)){
+					subId=rs.getString("ID").substring(6);
+					temp=Integer.parseInt(subId);
+					if(temp>last){
+						last=temp;
+					}
 				}
 			}last=last+1;
-			id=String.valueOf(last);
-			for(int i=0;i<10-id.length();i++){
-				id="0"+id;
+			subId=String.valueOf(last);
+			for(int i=0;i<4-subId.length();i++){
+				subId="0"+subId;
 			}
-			return id;
+			return formatDate+subId;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

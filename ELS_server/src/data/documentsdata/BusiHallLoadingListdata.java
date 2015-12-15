@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
+import data.orderdata.Orderdata;
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.BusiHallLoadingListPO;
@@ -38,27 +39,22 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	public OrderlineitemPO addOrder(String id) {
 		// TODO Auto-generated method stub
 		OrderlineitemPO orderllpo=new OrderlineitemPO();
-		String sql="select * from order where ID=?";
+		Orderdata orderdata;
 		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				
-			}
-		} catch (SQLException e) {
+			orderdata = new Orderdata();
+			orderllpo=orderdata.getOrderlineitemPO(id);
+		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return orderllpo;
 	}
 
 	@Override
 	public ResultMessage addLoadingList(BusiHallLoadingListPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into busihallloadinglist(ID,loadingDate,busiHallID,trucksNum,destination,vehiclesId,supervisionMan,escortMan,orderIDs,carriage,generateTime)"
-				+"values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql="insert into busihallloadinglist(ID,date,busiHallID,trucksNum,destination,vehiclesId,supervisionMan,escortMan,orderIDs,carriage)"
+				+"values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1,po.getID());
@@ -70,7 +66,6 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 			stmt.setString(7, po.getSupervisionMan());
 			stmt.setString(8, po.getEscortMan());
 			stmt.setDouble(10, po.getCarriage());
-			stmt.setString(11, po.getGenerateTime());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -142,7 +137,6 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 				po.setSupervisionMan(rs.getString(7));
 				po.setEscortMan(rs.getString(8));
 				po.setCarriage(rs.getDouble(10));
-				po.setGenerateTime(rs.getString(11));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				String str=rs.getString(9);
 				String[] s=str.split(";");
@@ -174,7 +168,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+				if(rs.getString("date").equals(date)&&
 						rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setLoadingDate(date);
@@ -184,7 +178,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
 				}
-				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+				if(rs.getString("date").equals(date)&&
 						rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
 					llpo.setLoadingDate(date);
@@ -208,11 +202,11 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	@Override
 	public ResultMessage update(BusiHallLoadingListPO po) {
 		// TODO Auto-generated method stub
-		String sql="update busihallloadinglist set loadingDate=?,busiHallID=?,trucksNum=?,destination=?,"
-				+ "vehiclesID=?,supervisionMan=?,escortMan=?,orderIDs=?,carriage=?,generateTime=? where ID=?";
+		String sql="update busihallloadinglist set date=?,busiHallID=?,trucksNum=?,destination=?,"
+				+ "vehiclesID=?,supervisionMan=?,escortMan=?,orderIDs=?,carriage=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(11,po.getID());
+			stmt.setString(10,po.getID());
 			stmt.setString(1, po.getLoadingDate());
 			stmt.setString(2, po.getBusiHallID());
 			stmt.setString(3, po.getTruckNum());
@@ -221,7 +215,6 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 			stmt.setString(6, po.getSupervisionMan());
 			stmt.setString(7, po.getEscortMan());
 			stmt.setDouble(9,po.getCarriage());
-			stmt.setString(10, po.getGenerateTime());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
