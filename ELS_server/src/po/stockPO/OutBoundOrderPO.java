@@ -9,7 +9,7 @@ public class OutBoundOrderPO implements Serializable{
 	private String outDate;
 	private String destination;
 	private TransportType transportType;
-	private String truckNum;
+	private String truckNum;//展示就这样
 	private String generateTime;
 	private String orderID;
 	private ApproState approState;

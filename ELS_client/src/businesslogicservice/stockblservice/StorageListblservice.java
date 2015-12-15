@@ -61,7 +61,7 @@ public interface StorageListblservice {
 	 * @param desti
 	 * @return 修改一个入库单，更新相关信息到VO和PO，把VO信息返回到展示层
 	 */
-	public StorageListVO modify(StorageListVO storageListVO);
+	public ResultMessage modify(StorageListVO storageListVO);
 	
 	/**
 	 * 

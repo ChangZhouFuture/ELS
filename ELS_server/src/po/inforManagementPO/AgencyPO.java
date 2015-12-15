@@ -1,7 +1,6 @@
 package po.inforManagementPO;
 
 import java.io.Serializable;
-
 import state.AgencyType;
 
 public class AgencyPO implements Serializable{
@@ -10,7 +9,6 @@ public class AgencyPO implements Serializable{
     private String city;
     private AgencyType agencyType;
     
-	
 	public String getID() {
 		return ID;
 	}

@@ -8,7 +8,7 @@ public class Time {
 	private static DateFormat dateFormat;
 	private static Date date = new Date();
 	
-	static public String generateDate() {
+	public static String generateDate() {
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String s = dateFormat.format(date);
 		return s;

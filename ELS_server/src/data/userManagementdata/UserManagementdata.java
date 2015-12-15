@@ -45,7 +45,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		    stmt.setString(6, po.getIdentyNum());
 		    stmt.setString(7, po.getPhone());
 		    stmt.setString(8, po.getCity());
-		    stmt.setString(9, po.getAgencyType().toString());
+//		    stmt.setString(9, po.getAgencyType().toString());
 		    stmt.setString(10, po.getRegion());
 		    stmt.setString(11, po.getAgencyID());
 		    stmt.setString(12, po.getPosition().toString());
@@ -104,7 +104,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		    stmt.setString(5, po.getIdentyNum());
 		    stmt.setString(6, po.getPhone());
 		    stmt.setString(7, po.getCity());
-		    stmt.setString(8, po.getAgencyType().toString());
+//		    stmt.setString(8, po.getAgencyType().toString());
 		    stmt.setString(9, po.getRegion());
 		    stmt.setString(10, po.getAgencyID());
 		    stmt.setString(11, po.getPosition().toString());
@@ -138,7 +138,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		        po.setIdentyNum(rs.getString(6));
 		        po.setPhone(rs.getString(7));
 		        po.setCity(rs.getString(8));
-		        po.setAgencyType(AgencyType.valueOf(rs.getString(9)));
+//		        po.setAgencyType(AgencyType.valueOf(rs.getString(9)));
 		        po.setRegion(rs.getString(10));
 		        po.setAgencyID(rs.getString(11));
 		        po.setPosition(Position.valueOf(rs.getString(12)));

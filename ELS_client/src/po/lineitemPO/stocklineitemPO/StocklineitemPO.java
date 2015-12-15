@@ -5,11 +5,25 @@ import java.io.Serializable;
 
 public class StocklineitemPO implements Serializable{
 	private String id;
+	private String inDate;
+	private String destination;
 	private String areaNum;                              //ÇøºÅ
 	private String rowNum;                               //ÅÅºÅ
 	private String frameNum;                             //¼ÜºÅ
 	private String positionNum;
 	
+	public String getInDate() {
+		return inDate;
+	}
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
 	public String getId() {
 		return id;
 	}

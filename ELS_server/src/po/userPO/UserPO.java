@@ -16,32 +16,14 @@ public class UserPO implements Serializable{
     private String identyNum;
     private String phone;
     private String city;
-    private AgencyType agencyType;
+//    private AgencyType agencyType;
     private String region;
     private String agencyID;
     private Position position;
-    private PayType payType;
-    private double payAmount;
-    private String percentage;
+//    private PayType payType;
+//    private double payAmount;
+//    private String percentage;
     
-	public PayType getPayType() {
-		return payType;
-	}
-	public void setPayType(PayType payType) {
-		this.payType = payType;
-	}
-	public double getPayAmount() {
-		return payAmount;
-	}
-	public void setPayAmount(double payAmount) {
-		this.payAmount = payAmount;
-	}
-	public String getPercentage() {
-		return percentage;
-	}
-	public void setPercentage(String percentage) {
-		this.percentage = percentage;
-	}
 	public String getName() {
 		return name;
 	}
@@ -78,12 +60,6 @@ public class UserPO implements Serializable{
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public AgencyType getAgencyType() {
-		return agencyType;
-	}
-	public void setAgencyType(AgencyType agencyType) {
-		this.agencyType = agencyType;
-	}
 	public String getRegion() {
 		return region;
 	}
@@ -114,5 +90,5 @@ public class UserPO implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+  
 }

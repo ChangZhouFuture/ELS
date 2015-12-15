@@ -50,13 +50,13 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		        po.setIdentyNum(rs.getString("identyNum"));
 		        po.setPhone(rs.getString("phone"));
 		        po.setCity(rs.getString("city"));
-		        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
+//		        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 		        po.setRegion(rs.getString("region"));
 		        po.setAgencyID(rs.getString("agencyID"));
 		        po.setPosition(Position.valueOf(rs.getString("position")));
-		        po.setPayType(PayType.valueOf(rs.getString("payType")));
-		        po.setPayAmount(rs.getDouble("payAmount"));
-		        po.setPercentage(rs.getString("percentage"));
+//		        po.setPayType(PayType.valueOf(rs.getString("payType")));
+//		        po.setPayAmount(rs.getDouble("payAmount"));
+//		        po.setPercentage(rs.getString("percentage"));
 		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}return jb1;
@@ -72,9 +72,9 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		try {
 			String sql=("UPDATE user SET payType=?,payAmount=?,percentage=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-		    stmt.setString(1, po.getPayType().toString());
-		    stmt.setDouble(2, po.getPayAmount());
-		    stmt.setString(3, po.getPercentage());
+//		    stmt.setString(1, po.getPayType().toString());
+//		    stmt.setDouble(2, po.getPayAmount());
+//		    stmt.setString(3, po.getPercentage());
 		    stmt.setString(4, po.getId());
 		    return ResultMessage.Success;
 		} catch (SQLException e) {

@@ -34,8 +34,8 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getPlateNum());
 		    stmt.setString(3, po.getServiceTime());
-		    stmt.setString(4, po.getCity());
-		    stmt.setString(5, po.getRegion());
+//		    stmt.setString(4, po.getCity());
+//		    stmt.setString(5, po.getRegion());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -56,8 +56,8 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			    po.setID(Id);
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getString("serviceTime"));
-		        po.setCity(rs.getString("city"));
-		        po.setRegion(rs.getString("region"));
+//		        po.setCity(rs.getString("city"));
+//		        po.setRegion(rs.getString("region"));
 		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -91,8 +91,8 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getPlateNum());
 			stmt.setString(2, po.getServiceTime());
-			stmt.setString(3, po.getCity());
-			stmt.setString(4, po.getRegion());
+//			stmt.setString(3, po.getCity());
+//			stmt.setString(4, po.getRegion());
 			stmt.setString(5, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;

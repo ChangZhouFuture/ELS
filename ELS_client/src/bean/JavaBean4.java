@@ -2,10 +2,12 @@ package bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import state.ResultMessage;
 
 public class JavaBean4 implements Serializable{
 	private boolean isAlarm;
-	private ArrayList<String> area;
+	private ResultMessage resultMessage;
+	private ArrayList<String> AlarmArea;
 	
 	public boolean isAlarm() {
 		return isAlarm;
@@ -13,11 +15,17 @@ public class JavaBean4 implements Serializable{
 	public void setAlarm(boolean isAlarm) {
 		this.isAlarm = isAlarm;
 	}
-	public ArrayList<String> getArea() {
-		return area;
+	public ArrayList<String> getAlarmArea() {
+		return AlarmArea;
 	}
-	public void setArea(ArrayList<String> area) {
-		this.area = area;
+	public void setAlarmArea(ArrayList<String> alarmArea) {
+		AlarmArea = alarmArea;
+	}
+	public ResultMessage getResultMessage() {
+		return resultMessage;
+	}
+	public void setResultMessage(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 	
 }
