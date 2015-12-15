@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import bean.JavaBean3;
 import bean.JavaBean4;
+import bean.JavaBean5;
 import data.userdata.Logindata;
 import data.utility.Database;
 import data.utility.TimeCompare;
 import po.stockPO.StockPO;
-import po.stockPO.StorageListPO;
 import state.ResultMessage;
 import dataservice.stockdataservice.Stockdataservice;
 
@@ -42,24 +42,49 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public JavaBean3 stockCount(String date) {
 		// TODO Auto-generated method stub
-		int temp=0;
 		jb3=new JavaBean3();
 		po=new StockPO();
 		ArrayList<StockPO> pos=new ArrayList<>();
 		TimeCompare tc=new TimeCompare();
 		String sql="select * from batchnum";
-		int batch,batchNum;
-		
-		batch=Integer.parseInt(date.substring(0,4)+date.substring(5,7)+date.substring(8, 10));
+		int batchNum;
+		String lastNum;
+		batchNum=0;
+		String batch=date.substring(0,4)+date.substring(5,7)+date.substring(8, 10);
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(tc.dateCompare(date,rs.getString("date"))==3){
-					batchNum=Integer.parseInt(rs.getString("batchNum"));
-					
+				if(tc.dateCompare(date,rs.getString("date"))==2){
+					if(Integer.parseInt(rs.getString("batchNum"))>batchNum){
+						batchNum=Integer.parseInt(rs.getString("batchNum"));
+					}	
 				}
+			}batchNum++;
+			lastNum=String.valueOf(batchNum);
+			sql="insert into batchnum(date,batch,batchNum) values (?,?,?)";
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, date);
+			stmt.setString(2, batch);
+			stmt.setString(3, lastNum);
+			jb3.setBatch(batch);
+			jb3.setBatchNum(lastNum);
+			sql="select * from stock where tranCenID=?";
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, Logindata.agencyId);
+			ResultSet rs2=stmt.executeQuery();
+			while(rs2.next()){
+				po.setId(rs.getString(1));
+				po.setInDate(rs.getString(3));
+				po.setDestination(rs.getString(4));
+				po.setAreaNum(rs.getString(5));
+				po.setRowNum(rs.getString(6));
+				po.setFrameNum(rs.getString(7));
+				po.setPositionNum(rs.getString(8));
+				pos.add(po);
 			}
+			jb3.setObject(pos);
+			return jb3;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -200,6 +225,13 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			e.printStackTrace();
 			return ResultMessage.NotExist;
 		}
+	}
+
+
+	@Override
+	public JavaBean5 stockCheck(String startDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
