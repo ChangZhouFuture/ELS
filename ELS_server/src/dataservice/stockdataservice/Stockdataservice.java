@@ -6,12 +6,21 @@ import java.util.ArrayList;
 
 import bean.JavaBean3;
 import bean.JavaBean4;
-import po.stockPO.StorageListPO;
+import bean.JavaBean5;
+import po.stockPO.StockPO;
 import state.ResultMessage;
 
 
 public interface Stockdataservice extends Remote{
-
+	/**
+	 * 
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 * 前置：库存管理人员已经被识别和授权
+	 * 后置：返回这一时间段内的库存变动信息
+	 */
+	public JavaBean5 stockCheck(String startDate, String endDate) throws RemoteException;
 	
 	/**
 	 * 

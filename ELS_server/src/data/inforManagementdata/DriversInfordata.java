@@ -28,8 +28,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	public ResultMessage add(DriversPO po){
 		try {
 			// ¡°?¡± ¼´Õ¼Î»·û
-			stmt = con.prepareStatement("INSERT INTO driver(ID,name,birthDate,identyNum,phone,gender,DriveLimitDate,city,region)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?)");
+			stmt = con.prepareStatement("INSERT INTO driver(ID,name,birthDate,identyNum,phone,gender,DriveLimitDate,busiHallID)"
+					+ " VALUES(?,?,?,?,?,?,?,?)");
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getName());
 		    stmt.setString(3, po.getBirthDate());
@@ -37,8 +37,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		    stmt.setString(5, po.getPhone());
 		    stmt.setString(6, po.getGender().toString());
 		    stmt.setString(7, po.getDriveLimitDate());
-		    stmt.setString(8, po.getCity());
-		    stmt.setString(9, po.getRegion());
+		    stmt.setString(8, po.getBusiHallID());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -66,8 +65,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setPhone(rs.getString("phone"));
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
-		        po.setCity(rs.getString("city"));
-		        po.setRegion(rs.getString("region"));
+		        po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setResultMessage(ResultMessage.Success);
 		        jb1.setObject(po);
 			}
@@ -115,7 +113,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	public ResultMessage update(DriversPO po){
 		con=db.getConnection();
 		try {
-			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=?,city=?,region=? WHERE ID=?");
+			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=?,busiHallID=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getName());
 			stmt.setString(2, po.getBirthDate());
@@ -123,9 +121,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 			stmt.setString(4, po.getPhone());
 			stmt.setString(5, po.getGender().toString());
 			stmt.setString(6, po.getDriveLimitDate());
-			stmt.setString(7, po.getCity());
-			stmt.setString(8, po.getRegion());
-			stmt.setString(9, po.getID());
+			stmt.setString(7, po.getBusiHallID());
+			stmt.setString(8, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -154,8 +151,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setPhone(rs.getString("phone"));
 		        po.setGender(Gender.valueOf(rs.getString("gender")));
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
-		        po.setCity(rs.getString("city"));
-		        po.setRegion(rs.getString("region"));
+		        po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setResultMessage(ResultMessage.Success);
 		        jb1.setObject(po);
 			}
