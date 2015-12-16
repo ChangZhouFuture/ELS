@@ -1,14 +1,13 @@
 package po.utilityPO;
 
 import java.io.Serializable;
-
 import state.OperaType;
 
 public class OperaLogPO implements Serializable{
 	private OperaType operaType;
 	private String date;
 	private String objectType;
-	private String id;
+	private String id;//被操作对象的id
 	private String positon;
 	private String operatorId;
 	private String generateTime;

@@ -1,9 +1,8 @@
 package dataservice.stockdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.stockPO.OutBoundOrderPO;
 import state.ResultMessage;
@@ -12,7 +11,7 @@ import state.ResultMessage;
  * @author 周畅
  * 该接口提供与出库单相关的数据层方法
  */
-public interface OutBoundOrderdataservice extends Remote{
+public interface OutBoundOrderdataservice extends ParentDocumentsdataservice{
 		
 	/**
 	 * 

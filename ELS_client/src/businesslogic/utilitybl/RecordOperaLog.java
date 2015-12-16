@@ -23,7 +23,7 @@ public class RecordOperaLog {
 		String date = Time.generateDate();
 		try {
 			resultMessage = recordOperaLogdataservice.recordOperaLog(type, date, objectType,
-					id, operatorId);
+					id, operatorId);//这里没有写成把VO转换成PO，算了
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

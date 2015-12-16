@@ -1,14 +1,13 @@
 package dataservice.stockdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
 
-public interface StorageListdataservice extends Remote{
+public interface StorageListdataservice extends ParentDocumentsdataservice{
 	
 	/**
 	 * 

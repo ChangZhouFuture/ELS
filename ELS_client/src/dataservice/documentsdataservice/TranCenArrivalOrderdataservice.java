@@ -1,9 +1,8 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.TranCenArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
@@ -13,7 +12,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与中转中心到达单相关的数据层方法
  */
-public interface TranCenArrivalOrderdataservice extends Remote{
+public interface TranCenArrivalOrderdataservice extends ParentDocumentsdataservice{
 	
 public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteException;
 	

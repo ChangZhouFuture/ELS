@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import data.utility.Database;
 import dataservice.managerAndAccountantdataservice.Approdocmdataservice;
+import state.DocumentsType;
 import state.ResultMessage;
 
 
@@ -26,7 +26,7 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 
 
 	@Override
-	public ResultMessage updateApproState(String documentsType, ArrayList<String> IDList) throws RemoteException {
+	public ResultMessage updateApproState(DocumentsType documentsType, ArrayList<String> IDList) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="select * from ? where ID=?";
 		String state="NotApprove";

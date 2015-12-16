@@ -1,8 +1,8 @@
 package businesslogicservice.managerAndAccountantblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
+import state.DocumentsType;
 import state.ResultMessage;
 
 
@@ -18,11 +18,11 @@ public interface ApproDocmblservice {
 	 * @param id
 	 * @return
 	 */
-	public JavaBean1 inquireA(String id, String documentType);
+	public JavaBean1 inquireA(String id, DocumentsType documentType);
 	
-	public JavaBean1 inquireB(String documentsType);
+	public JavaBean1 inquireB(DocumentsType documentsType, String date);
 	
-	public ResultMessage approveDocuments(ArrayList<String> IDList, String 
+	public ResultMessage approveDocuments(ArrayList<String> IDList, DocumentsType 
 			documentsType);
 	
 }

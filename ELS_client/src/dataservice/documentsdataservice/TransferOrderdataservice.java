@@ -1,8 +1,8 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.TransferOrderPO;
 import state.ResultMessage;
@@ -11,7 +11,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与中转单相关的数据层方法
  */
- public interface TransferOrderdataservice extends Remote{
+ public interface TransferOrderdataservice extends ParentDocumentsdataservice{
  
 	/**
 	 * 前置：中转中心业务员已输入所有参数

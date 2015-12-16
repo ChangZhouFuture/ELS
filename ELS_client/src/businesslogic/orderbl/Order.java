@@ -132,7 +132,7 @@ public class Order implements Orderblservice {
 		String id = null;
 		
 		try {
-			id = orderdataservice.generateId();
+			id = orderdataservice.generateId(date);
 			//需要一个可以复用的方法，把日期字符串中的减号去掉，剩下的加上数据层几位数字
 		} catch (RemoteException e) {
 			e.printStackTrace();

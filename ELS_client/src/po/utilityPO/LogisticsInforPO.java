@@ -3,21 +3,21 @@ package po.utilityPO;
 import java.io.Serializable;
 
 public class LogisticsInforPO implements Serializable{
-
 	private String id;
-	private String generateTime;
+	private String generateDate;
 	private String descripition;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getGenerateTime() {
-		return generateTime;
+	public String getGenerateDate() {
+		return generateDate;
 	}
-	public void setGenerateTime(String generateTime) {
-		this.generateTime = generateTime;
+	public void setGenerateDate(String generateDate) {
+		this.generateDate = generateDate;
 	}
 	public String getDescripition() {
 		return descripition;

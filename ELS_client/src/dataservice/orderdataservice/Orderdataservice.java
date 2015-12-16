@@ -1,15 +1,14 @@
 package dataservice.orderdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import state.ResultMessage;
 
-public interface Orderdataservice extends Remote{
+public interface Orderdataservice extends ParentDocumentsdataservice{
 	/**
 	 * 前置条件：输入所有订单参数
      * 后置条件：增加一个订单，更新同步到PO

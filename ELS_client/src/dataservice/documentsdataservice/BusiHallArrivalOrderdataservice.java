@@ -1,8 +1,8 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
@@ -14,7 +14,7 @@ import state.ResultMessage;
  * 该接口提供与营业厅到达单单相关的数据层方法
  *
  */
- public interface BusiHallArrivalOrderdataservice extends Remote{
+ public interface BusiHallArrivalOrderdataservice extends ParentDocumentsdataservice{
  
 	 /**
 		 * 前置：

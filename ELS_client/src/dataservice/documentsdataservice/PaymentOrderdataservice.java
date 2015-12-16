@@ -1,13 +1,13 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.PaymentOrderPO;
 import state.ResultMessage;
 
-public interface PaymentOrderdataservice extends Remote{
+public interface PaymentOrderdataservice extends ParentDocumentsdataservice{
 	
 	public ResultMessage addPaymentAccount(String accountName) throws RemoteException;
 	

@@ -1,5 +1,6 @@
 package businesslogic.managerAndAccountantbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import po.utilityPO.OperaLogPO;
 import state.ResultMessage;
@@ -15,7 +16,6 @@ public class InquireOperaLog implements OperaLogblservice{
 	private OperaLogVO operaLogVO;
 	private ArrayList<OperaLogPO> arrayList;
 	private ArrayList<OperaLogVO> arrayList2;
-	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
 	public InquireOperaLog() {
@@ -28,8 +28,35 @@ public class InquireOperaLog implements OperaLogblservice{
 	
 	@Override
 	public JavaBean1 inquireOperaLog(String date) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			javaBean1 = InquireOperaLogdataservice.inquire(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<OperaLogPO>)javaBean1.getObject();
+		int k = arrayList.size();
+		
+		POtoVO(k);
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
+	}
+	
+	public void POtoVO(int k) {
+		arrayList2 = new ArrayList<OperaLogVO>();
+		
+		for (int i = 0; i < k; i++) {
+			operaLogPO = arrayList.get(i);
+			
+			operaLogVO = new OperaLogVO();
+			operaLogVO.setGenerateTime(operaLogPO.getGenerateTime());
+			operaLogVO.setPositon(operaLogPO.getPositon());
+			operaLogVO.setOperatorId(operaLogPO.getOperatorId());
+			operaLogVO.setOperaType(operaLogPO.getOperaType());
+			operaLogVO.setObjectType(operaLogPO.getObjectType());
+			operaLogVO.setId(operaLogPO.getId());
+			
+			arrayList2.add(operaLogVO);
+		}
 	}
 
 }

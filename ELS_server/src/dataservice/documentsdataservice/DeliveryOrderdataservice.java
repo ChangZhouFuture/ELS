@@ -1,8 +1,8 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.DeliveryOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -11,7 +11,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与派件单相关的数据层方法
  */
- public interface DeliveryOrderdataservice extends Remote{
+ public interface DeliveryOrderdataservice extends ParentDocumentsdataservice{
  
 	 public OrderlineitemPO addOrder(String id) throws RemoteException;
 	 

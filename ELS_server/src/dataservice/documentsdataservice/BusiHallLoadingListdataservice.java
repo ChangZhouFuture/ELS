@@ -1,8 +1,8 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -11,7 +11,7 @@ import state.ResultMessage;
  * @author 朱俊文
  * 该接口提供与装车单相关的数据层方法
  */
- public interface BusiHallLoadingListdataservice extends Remote{
+ public interface BusiHallLoadingListdataservice extends ParentDocumentsdataservice{
  
 	 public OrderlineitemPO addOrder(String id) throws RemoteException;
 	 

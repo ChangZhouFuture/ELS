@@ -52,7 +52,12 @@ public class RMIHelper {
 			throws RemoteException{
 		return dataFactoryservice.getBusiHallArrivalOrderdataservice();
 	}
-			
+	
+	public static BusiHallLoadingListdataservice getBusiHallLoadingListdataservice()
+			throws RemoteException{
+		return dataFactoryservice.getBuinessHallLoadingListdataservice();
+	}
+	
 	public static TranCenArrivalOrderdataservice getTranCenArrivalOrderdataservice()
 		throws RemoteException{
 		return dataFactoryservice.getTranCenArrivalOrderdataservice();

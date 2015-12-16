@@ -1,15 +1,15 @@
 package dataservice.documentsdataservice;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.ReceivablesOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 
 
-public interface ReceivablesOrderdataservice extends Remote{
+public interface ReceivablesOrderdataservice extends ParentDocumentsdataservice{
 	/**
 	 * 
 	 * @param date4RO
