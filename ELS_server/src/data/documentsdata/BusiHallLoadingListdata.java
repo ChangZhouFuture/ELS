@@ -35,20 +35,6 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	GenerateId g;
 	BusiHallLoadingListPO po;
 	BusiHallLoadingListlineitemPO llpo;
-	@Override
-	public OrderlineitemPO addOrder(String id) {
-		// TODO Auto-generated method stub
-		OrderlineitemPO orderllpo=new OrderlineitemPO();
-		Orderdata orderdata;
-		try {
-			orderdata = new Orderdata();
-			orderllpo=orderdata.getOrderlineitemPO(id);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return orderllpo;
-	}
 
 	@Override
 	public ResultMessage addLoadingList(BusiHallLoadingListPO po) {

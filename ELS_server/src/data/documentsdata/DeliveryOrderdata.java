@@ -34,22 +34,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
     DeliveryOrderPO po;
     JavaBean1 jb1;
     GenerateId g;
-	@Override
-	public OrderlineitemPO addOrder(String id) {
-		// TODO Auto-generated method stub
-
-		OrderlineitemPO orderllpo=new OrderlineitemPO();
-		try {
-			Orderdata orderdata=new Orderdata();
-			orderllpo=orderdata.getOrderlineitemPO(id);
-			
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return orderllpo;
-	}
-
+	
 	@Override
 	public ResultMessage addDeliveryOrder(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
