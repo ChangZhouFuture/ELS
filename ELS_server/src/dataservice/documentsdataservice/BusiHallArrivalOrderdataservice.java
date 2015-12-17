@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.BusiHallArrivalOrderPO;
-import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
 
 /**
@@ -16,13 +15,7 @@ import state.ResultMessage;
  */
  public interface BusiHallArrivalOrderdataservice extends ParentDocumentsdataservice{
  
-	 /**
-		 * 前置：
-		 * 后置：添加中转单
-		 * @param id
-		 * @return
-		 */
-		 public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteException;
+
 		 
 		/**
 		 * 前置：营业厅业务员已输入所有参数

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.DeliveryOrderPO;
-import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ResultMessage;
 /**
  * @author 朱俊文
@@ -13,7 +12,6 @@ import state.ResultMessage;
  */
  public interface DeliveryOrderdataservice extends ParentDocumentsdataservice{
  
-	 public OrderlineitemPO addOrder(String id) throws RemoteException;
 	 
 	/**
 	 * 前置：营业厅业务员已输入所有参数

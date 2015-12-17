@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.TranCenArrivalOrderPO;
-import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
  
 /**
@@ -14,7 +13,6 @@ import state.ResultMessage;
  */
 public interface TranCenArrivalOrderdataservice extends ParentDocumentsdataservice{
 	
-public TransferOrderlineitemPO addTransferOrder(String id) throws RemoteException;
 	
 	/**
 	 * 前置：中转中心业务员已输入所有参数
