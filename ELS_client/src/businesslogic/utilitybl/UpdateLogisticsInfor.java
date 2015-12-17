@@ -1,13 +1,15 @@
 package businesslogic.utilitybl;
 
 import java.rmi.RemoteException;
+import po.utilityPO.LogisticsInforPO;
 import RMI.RMIHelper;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 import state.ResultMessage;
 
 public class UpdateLogisticsInfor {
-	UpdateLogisticsInfordataservice updateLogisticsInfordataservice;
-	ResultMessage resultMessage;
+	private UpdateLogisticsInfordataservice updateLogisticsInfordataservice;
+	private LogisticsInforPO logisticsInforPO;
+	private ResultMessage resultMessage;
 	
 	public UpdateLogisticsInfor(){
 		try {
@@ -17,12 +19,17 @@ public class UpdateLogisticsInfor {
 		}
 	}
 	
-	public ResultMessage update(String time, String id, String description) {
-//		try {
-//			resultMessage = updateLogisticsInfordataservice.update(time, id, description);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
+	public ResultMessage update(String date, String id, String description) {
+		logisticsInforPO = new LogisticsInforPO();
+		logisticsInforPO.setId(id);
+		logisticsInforPO.setGenerateDate(date);
+		logisticsInforPO.setDescripition(description);
+		
+		try {
+			resultMessage = updateLogisticsInfordataservice.update(logisticsInforPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 }

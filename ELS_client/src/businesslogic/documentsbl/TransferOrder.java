@@ -2,11 +2,13 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.TransferOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import dataservice.documentsdataservice.TransferOrderdataservice;
 import state.ApproState;
 import state.ResultMessage;
+import state.TransportType;
 import vo.documentsVO.TransferOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -55,8 +57,8 @@ public class TransferOrder implements TransferOrderblservice {
 		return date;
 	}
 
-	public double generateFare(String destination) {
-		double fare = CalculateFreight.calculateFreight(destination);
+	public double generateFare(String destination, TransportType tType) {
+		double fare = CalculateFreight.transportCost(destination, tType);
 		return fare;
 	}
 
@@ -71,7 +73,7 @@ public class TransferOrder implements TransferOrderblservice {
 		this.transferOrderVO.setOrigin(CalculateFreight.origin);
 		this.transferOrderVO.setID(generateId());
 		this.transferOrderVO.setCarriage(generateFare(transferOrderVO.
-				getDestination()));
+				getDestination(), transferOrderVO.getTransportType()));
 		VOtoPO();
 		
 		try {

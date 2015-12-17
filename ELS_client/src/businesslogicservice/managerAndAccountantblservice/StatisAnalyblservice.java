@@ -14,9 +14,9 @@ public interface StatisAnalyblservice {
 	
 	public JavaBean1 inquirePaymentOrder(String ID);
 	
-	public JavaBean1 inquireReceivalblesOrder2();
+	public JavaBean1 inquireReceivalblesOrder2(String beginDate, String endDate);
 	
-	public JavaBean1 inquirePaymentOrder2();
+	public JavaBean1 inquirePaymentOrder2(String beginDate, String endDate);
 	
 	public JavaBean1 inquireCostAndIncomeTable();
 	

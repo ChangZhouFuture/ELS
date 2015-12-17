@@ -150,9 +150,9 @@ public class DriversListui extends JPanel{
 					JavaBean1 javaBean1;
 					driversInforblservice=new DriversInfor();
 					try {
-						javaBean1=driversInforblservice.inquireB(cityString,regionString);
-						ArrayList<DriverslineitemVO> arrayList=(ArrayList<DriverslineitemVO>)javaBean1.getObject();
-						makeTable(arrayList);
+//						javaBean1=driversInforblservice.inquireB(cityString,regionString);
+//						ArrayList<DriverslineitemVO> arrayList=(ArrayList<DriverslineitemVO>)javaBean1.getObject();
+//						makeTable(arrayList);
 						} catch (Exception e2) {
 							e2.printStackTrace();
 						}

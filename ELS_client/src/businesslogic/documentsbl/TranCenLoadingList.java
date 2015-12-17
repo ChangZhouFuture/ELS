@@ -2,10 +2,12 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.TranCenLoadingListPO;
 import po.lineitemPO.documentslineitemPO.TranCenLoadingListlineitemPO;
 import dataservice.documentsdataservice.TranCenLoadingListdataservice;
 import state.ResultMessage;
+import state.TransportType;
 import vo.documentsVO.TranCenLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.TranCenLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -64,8 +66,8 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		return null;
 	}
 
-	public double generateFeight(String destination) {
-		double freight = CalculateFreight.calculateFreight(destination);
+	public double generateFeight(String destination, TransportType tType) {
+		double freight = CalculateFreight.transportCost(destination, tType);
 		return freight;
 	}
 
@@ -80,7 +82,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		this.tranCenLoadingListVO.setID(generateId());
 		this.tranCenLoadingListVO.setVehiclesID(generateVehieclesId());
 		this.tranCenLoadingListVO.setCarriage(generateFeight(tranCenLoadingListVO.
-				getDestination()));
+				getDestination(), TransportType.Truck));
 		VOtoPO();
 		
 		try {

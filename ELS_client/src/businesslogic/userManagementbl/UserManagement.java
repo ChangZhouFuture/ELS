@@ -2,12 +2,14 @@ package businesslogic.userManagementbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
 import po.lineitemPO.userlineitemPO.UserlineitemPO;
 import po.userPO.UserPO;
+import state.Position;
 import state.ResultMessage;
 import vo.lineitemVO.userlineitemVO.UserlineitemVO;
 import vo.userVO.UserVO;
@@ -37,7 +39,7 @@ public class UserManagement implements UserManagementblservice{
 		userPO = new UserPO();
 		this.userVO = userVO;
 		
-		this.userVO.setId(generateID());
+		this.userVO.setId(generateID(userVO.getPosition()));
 		this.userVO.setPassword(userVO.getId());
 		//调用工资管理的类的方法，根据职位生成默认工资支付方式
 		//上面一行说的不需要了
@@ -142,7 +144,7 @@ public class UserManagement implements UserManagementblservice{
 		return javaBean1;
 	}
 
-	public String generateID() {
+	public String generateID(Position position) {
 		//调用数据层方法
 		return null;
 	}

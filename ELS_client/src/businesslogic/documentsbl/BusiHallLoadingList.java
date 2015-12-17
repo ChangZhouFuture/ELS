@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
+import state.ExpressType;
 import state.ResultMessage;
+import state.TransportType;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.documentslineitemVO.BusiHallLoadingListlineitemVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -69,8 +71,9 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return vehiclesID;
 	}
 
-	public double generateFreight(String destination) {
-		double freight = CalculateFreight.calculateFreight(destination);
+	public double generateFreight(String destination, TransportType tType) 
+	{
+		double freight = CalculateFreight.transportCost(destination, tType);
 		return freight;
 	}
 
@@ -84,7 +87,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		this.busiHallLoadingListVO.setGenerateTime(Time.generateTime());
 		this.busiHallLoadingListVO.setVehiclesID(generatevehiclesID());
 		this.busiHallLoadingListVO.setCarriage(generateFreight(
-				businessHallLoadingListVO.getDestination()));
+				businessHallLoadingListVO.getDestination(), TransportType.Truck));
 		this.busiHallLoadingListVO.setID(generateId());
 		VOtoPO();
 		

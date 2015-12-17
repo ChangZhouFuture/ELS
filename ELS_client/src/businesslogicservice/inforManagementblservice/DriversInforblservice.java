@@ -23,7 +23,7 @@ public interface DriversInforblservice {
 	 */
 	public JavaBean1 inquireA(String ID);
 	
-	public JavaBean1 inquireB(String city, String region);
+	public JavaBean1 inquireB(String busiHallID);
 		
 	/**
 	 * 

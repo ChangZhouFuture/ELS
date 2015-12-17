@@ -79,9 +79,9 @@ public class DriversInfor implements DriversInforblservice {
 	}
 
 	@Override
-	public JavaBean1 inquireB(String city, String region) {
+	public JavaBean1 inquireB(String busiHallID) {
 		try {
-			javaBean1 = driversInfordataservice.findB(city, region);
+			javaBean1 = driversInfordataservice.findB(busiHallID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

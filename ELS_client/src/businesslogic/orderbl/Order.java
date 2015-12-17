@@ -2,10 +2,12 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
 import state.ApproState;
+import state.ExpressType;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
@@ -46,7 +48,8 @@ public class Order implements Orderblservice {
 		orderPO = new OrderPO();
 		this.orderVO = orderVO;
 		
-		this.orderVO.setFreight(calculateFreight(orderVO.getAddresseeAdd()));
+		this.orderVO.setFreight(calculateFreight(orderVO.getAddresseeAdd(), orderVO.
+				getWeight(), orderVO.getExpressType()));
 		this.orderVO.setPackingCharge(calculatePackingCharge());
 		this.orderVO.setTotalCost(totalCost);
 		this.orderVO.setGenerateDate(generateDate());
@@ -178,10 +181,10 @@ public class Order implements Orderblservice {
 		return resultMessage;
 	}
 
-	public double calculateFreight(String destination) {
-		
+	public double calculateFreight(String destination, double weight, ExpressType eType)
+	{
 		//½ØÈ¡×Ö·û´®µÄÒ»¶Î
-		freight = CalculateFreight.calculateFreight(destination);
+		freight = CalculateFreight.expressFreight(destination, weight, eType);
 		return freight;
 	}
 
