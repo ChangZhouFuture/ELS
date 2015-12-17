@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.PaymentOrderPO;
+import po.inforManagementPO.BankAccountPO;
 import state.ResultMessage;
 
 public interface PaymentOrderdataservice extends ParentDocumentsdataservice{
 	
-	public ResultMessage addPaymentAccount(String accountName) throws RemoteException;
+	public BankAccountPO addPaymentAccount(String accountName) throws RemoteException;
 	
 	/**
 	 * 

@@ -34,9 +34,23 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
     PaymentOrderPO po;
     GenerateId g;
 	@Override
-	public ResultMessage addPaymentAccount(String accountName) {
+	public BankAccountPO addPaymentAccount(String accountName) {
 		// TODO Auto-generated method stub
-		return null;
+		BankAccountPO bankAccountPO=new BankAccountPO();
+		String sql="select * from bankaccount where name=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, accountName);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()){
+				bankAccountPO.setName(accountName);
+				bankAccountPO.setAmount(rs.getDouble("amount"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bankAccountPO;
 	}
 
 	@Override

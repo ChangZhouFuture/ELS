@@ -10,10 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
+import po.inforManagementPO.SalaryStrategyPO;
 import po.userPO.UserPO;
-import state.AgencyType;
 import state.Gender;
-import state.PayType;
 import state.Position;
 import state.ResultMessage;
 import data.utility.Database;
@@ -50,13 +49,9 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		        po.setIdentyNum(rs.getString("identyNum"));
 		        po.setPhone(rs.getString("phone"));
 		        po.setCity(rs.getString("city"));
-//		        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 		        po.setRegion(rs.getString("region"));
 		        po.setAgencyID(rs.getString("agencyID"));
 		        po.setPosition(Position.valueOf(rs.getString("position")));
-//		        po.setPayType(PayType.valueOf(rs.getString("payType")));
-//		        po.setPayAmount(rs.getDouble("payAmount"));
-//		        po.setPercentage(rs.getString("percentage"));
 		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}return jb1;
@@ -66,37 +61,61 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			return jb1;
 		}
     }
-    
-   
-    public ResultMessage update(UserPO po){
+
+	@Override
+	public JavaBean1 findB(String position) throws RemoteException {
+		// TODO Auto-generated method stub
+		po=new UserPO();
+		ArrayList<UserPO> pos=new ArrayList<>();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		String sql="select * from user where position=?";
 		try {
-			String sql=("UPDATE user SET payType=?,payAmount=?,percentage=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
-//		    stmt.setString(1, po.getPayType().toString());
-//		    stmt.setDouble(2, po.getPayAmount());
-//		    stmt.setString(3, po.getPercentage());
-		    stmt.setString(4, po.getId());
-		    return ResultMessage.Success;
+			stmt.setString(1, position.toString());
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				po.setId(rs.getString(1));
+		        po.setPassword(rs.getString(2));
+		        po.setName(rs.getString(3));
+		        po.setGender(Gender.valueOf(rs.getString(4)));
+		        po.setBirthDate(rs.getString(5));
+		        po.setIdentyNum(rs.getString(6));
+		        po.setPhone(rs.getString(7));
+		        po.setCity(rs.getString(8));
+		        po.setRegion(rs.getString(9));
+		        po.setAgencyID(rs.getString(10));
+		        po.setPosition(Position.valueOf(rs.getString(11)));
+		        pos.add(po);
+		        jb1.setResultMessage(ResultMessage.Success);
+			}
+			jb1.setObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.NotExist;
+			return jb1;
 		}
-    }
-
-
-
-	@Override
-	public JavaBean1 findB() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 
 	@Override
-	public ResultMessage updateSalaryStrategy(UserPO po) throws RemoteException {
+	public ResultMessage updateSalaryStrategy(SalaryStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="update salarystrategy set payType=?,payAmount=?,percentage=? where position=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(4, po.getPosition().toString());
+			stmt.setString(1, po.getPayType().toString());
+			stmt.setDouble(1, po.getPayAmount());
+			stmt.setString(3, po.getPercentage());
+			stmt.executeUpdate();
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.Fail;
+		}
 	}
 }
 

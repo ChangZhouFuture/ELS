@@ -13,7 +13,6 @@ import bean.JavaBean1;
 import po.userPO.UserPO;
 import data.utility.Database;
 import dataservice.userManagementdataservice.UserManagementdataservice;
-import state.AgencyType;
 import state.Gender;
 import state.Position;
 import state.ResultMessage;
@@ -35,7 +34,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	public ResultMessage add(UserPO po) {
 		// TODO Auto-generated method stub
 		try {
-			stmt = con.prepareStatement("INSERT INTO user(ID,password,name,gender,birthDate,identyNum,phone,city,agencyType,region,agencyID,position) "
+			stmt = con.prepareStatement("INSERT INTO user(ID,password,name,gender,birthDate,identyNum,phone,city,region,agencyID,position) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, po.getId());
 			stmt.setString(2, po.getPassword());
@@ -45,10 +44,9 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		    stmt.setString(6, po.getIdentyNum());
 		    stmt.setString(7, po.getPhone());
 		    stmt.setString(8, po.getCity());
-//		    stmt.setString(9, po.getAgencyType().toString());
-		    stmt.setString(10, po.getRegion());
-		    stmt.setString(11, po.getAgencyID());
-		    stmt.setString(12, po.getPosition().toString());
+		    stmt.setString(9, po.getRegion());
+		    stmt.setString(10, po.getAgencyID());
+		    stmt.setString(11, po.getPosition().toString());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -94,8 +92,8 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	public ResultMessage update(UserPO po) {
 		// TODO Auto-generated method stub
 		try {
-			String sql=("UPDATE agency SET password=?,name=?,gender=?,birthDate=?,identyNum=?,phone=?,city=?,"
-					+ "agencyType=?,region=?,agencyID=?,position=? WHERE ID=?");
+			String sql=("UPDATE user SET password=?,name=?,gender=?,birthDate=?,identyNum=?,phone=?,city=?,"
+					+ "region=?,agencyID=?,position=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getPassword());
 		    stmt.setString(2, po.getName());
@@ -104,11 +102,10 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		    stmt.setString(5, po.getIdentyNum());
 		    stmt.setString(6, po.getPhone());
 		    stmt.setString(7, po.getCity());
-//		    stmt.setString(8, po.getAgencyType().toString());
-		    stmt.setString(9, po.getRegion());
-		    stmt.setString(10, po.getAgencyID());
-		    stmt.setString(11, po.getPosition().toString());
-		    stmt.setString(12, po.getId());
+		    stmt.setString(8, po.getRegion());
+		    stmt.setString(9, po.getAgencyID());
+		    stmt.setString(10, po.getPosition().toString());
+		    stmt.setString(11, po.getId());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -125,7 +122,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM agency WHERE ID='"+Id+"'");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE ID='"+Id+"'");
 			
 			 //大小写无区别，此处大写为区别表的名字，where表示条件
 			ResultSet rs=ps.executeQuery(); 
@@ -138,10 +135,9 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		        po.setIdentyNum(rs.getString(6));
 		        po.setPhone(rs.getString(7));
 		        po.setCity(rs.getString(8));
-//		        po.setAgencyType(AgencyType.valueOf(rs.getString(9)));
-		        po.setRegion(rs.getString(10));
-		        po.setAgencyID(rs.getString(11));
-		        po.setPosition(Position.valueOf(rs.getString(12)));
+		        po.setRegion(rs.getString(9));
+		        po.setAgencyID(rs.getString(10));
+		        po.setPosition(Position.valueOf(rs.getString(11)));
 		        jb1.setResultMessage(ResultMessage.Success);
 		        jb1.setObject(po);
 			}return jb1;
@@ -157,7 +153,37 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	@Override
 	public JavaBean1 findB(String position) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		po=new UserPO();
+		ArrayList<UserPO> pos=new ArrayList<>();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		String sql="select * from user where position=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, position.toString());
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				po.setId(rs.getString(1));
+		        po.setPassword(rs.getString(2));
+		        po.setName(rs.getString(3));
+		        po.setGender(Gender.valueOf(rs.getString(4)));
+		        po.setBirthDate(rs.getString(5));
+		        po.setIdentyNum(rs.getString(6));
+		        po.setPhone(rs.getString(7));
+		        po.setCity(rs.getString(8));
+		        po.setRegion(rs.getString(9));
+		        po.setAgencyID(rs.getString(10));
+		        po.setPosition(Position.valueOf(rs.getString(11)));
+		        pos.add(po);
+		        jb1.setResultMessage(ResultMessage.Success);
+			}
+			jb1.setObject(pos);
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 
 	@Override

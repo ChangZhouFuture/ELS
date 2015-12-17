@@ -17,6 +17,10 @@ import dataservice.inforManagementdataservice.BankAccountInfordataservice;
 import state.ResultMessage;
 
 public class BankAccountInfordata extends UnicastRemoteObject implements BankAccountInfordataservice {
+	public BankAccountInfordata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
@@ -24,10 +28,7 @@ public class BankAccountInfordata extends UnicastRemoteObject implements BankAcc
     BankAccountPO po;
     JavaBean1 jb1;
     
-    public BankAccountInfordata() throws RemoteException {
-    	super();
-    	// TODO Auto-generated constructor stub
-    }
+    
 //增加新银行账户信息
 public ResultMessage add(BankAccountPO po){
 	try {
@@ -56,6 +57,7 @@ public JavaBean1 find(String name){
 		if(rs.next()){
 		    po.setName(name);
 	        po.setAmount(rs.getDouble("amount"));
+	        po.setUsage(rs.getString("use"));
 	        jb1.setResultMessage(ResultMessage.Success);
 	        jb1.setObject(po);
 		}
@@ -113,6 +115,59 @@ public ResultMessage update(BankAccountPO po){
 		return ResultMessage.NotExist;
 	}
 }
+@Override
+public ResultMessage updateBalance(double amount) throws RemoteException {
+	// TODO Auto-generated method stub
+	String sql="select * from bankaccount where use='InUse'";
+	double bankAmount=0;
+	try {
+		stmt=con.prepareStatement(sql);
+		ResultSet rs=stmt.executeQuery();
+		if(rs.next()){
+			bankAmount=rs.getDouble(rs.getString("amount"));
+		}bankAmount=bankAmount+amount;
+		sql="update bankaccount set amount=? where use='InUse'";
+		stmt=con.prepareStatement(sql);
+		stmt.setDouble(1, bankAmount);
+		stmt.executeUpdate();
+		return ResultMessage.Success;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return ResultMessage.Fail;
+	}
+}
+@Override
+public ResultMessage setInUse(String accountName) throws RemoteException {
+	// TODO Auto-generated method stub
+	String sql="update bankaccount set use=? where name=?";
+	try {
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, "InUse");
+		stmt.setString(2, accountName);
+		stmt.executeUpdate();
+		sql="update bankaccount set use=? where name<>?,use='Inuse'";
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, "NotInUse");
+		stmt.setString(2, accountName);
+		stmt.executeUpdate();
+		return ResultMessage.Success;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return ResultMessage.NotExist;
+	}
+}
 
-
+//public static void main(String[] args) {
+//	BankAccountInfordata bank=new BankAccountInfordata();
+//	try {
+//		bank.setInUse("00001");
+//		bank.updateBalance(200);
+//	} catch (RemoteException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	
+//}
 }

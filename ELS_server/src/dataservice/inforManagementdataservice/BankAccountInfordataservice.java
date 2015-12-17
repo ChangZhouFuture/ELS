@@ -17,4 +17,8 @@ public interface BankAccountInfordataservice extends Remote{
     public ResultMessage update(BankAccountPO po) throws RemoteException;
     
     public JavaBean1 find(String Id) throws RemoteException;
+    
+    public ResultMessage updateBalance(double amount) throws RemoteException;
+    
+    public ResultMessage setInUse(String accountName) throws RemoteException;
 }

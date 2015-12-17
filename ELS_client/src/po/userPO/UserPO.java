@@ -2,9 +2,7 @@ package po.userPO;
 
 import java.io.Serializable;
 
-import state.AgencyType;
 import state.Gender;
-import state.PayType;
 import state.Position;
 
 public class UserPO implements Serializable{
@@ -16,13 +14,9 @@ public class UserPO implements Serializable{
     private String identyNum;
     private String phone;
     private String city;
-//    private AgencyType agencyType;
     private String region;
     private String agencyID;
     private Position position;
-//    private PayType payType;
-//    private double payAmount;
-//    private String percentage;
     
 	public String getName() {
 		return name;
