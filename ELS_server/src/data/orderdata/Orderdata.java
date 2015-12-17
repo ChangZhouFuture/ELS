@@ -39,8 +39,8 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		// TODO Auto-generated method stub
 		String sql="insert into dingdanorder(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
 				+ "addresseeCompany,addresseePhone,trueAddressee,goodName,numOfGoods,weight,size,freight,expressType,numOfCatons,"
-				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,date)values"
-				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,trueArrivalDate,date)values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
@@ -65,7 +65,8 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(20, po.getPackingCharge());
 			stmt.setDouble(21, po.getTotalCost());
 			stmt.setString(22, po.getExpectedArrivalDate());
-			stmt.setString(23, po.getDate());
+			stmt.setString(23, po.getArrivalDate());
+			stmt.setString(24, po.getDate());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -141,6 +142,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setPackingCharge(rs.getDouble(20));
 				po.setTotalCost(rs.getDouble(21));
 				po.setExpectedArrivalDate(rs.getString(22));
+				po.setArrivalDate(rs.getString(23));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setDate(rs.getString("date"));
 				jb1.setObject(po);
@@ -206,7 +208,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				+ "addresseeName=?,addresseeAdd=?,addresseeCompany=?,addresseePhone=?,"
 				+ "trueAddressee=?,goodName=?,numOfGoods=?,"
 				+ "weight=?,size=?,freight=?,expressType=?,numOfCatons=?,numOfWoodenBox=?,numOfBags=?,"
-				+ "packingCharge=?,totalCost=?,ExpectedArrivalDate=?,date=? where ID=?";
+				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,date=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(23, po.getId());
@@ -231,7 +233,8 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(19, po.getPackingCharge());
 			stmt.setDouble(20, po.getTotalCost());
 			stmt.setString(21, po.getExpectedArrivalDate());
-			stmt.setString(22, po.getDate());
+			stmt.setString(22, po.getArrivalDate());
+			stmt.setString(23, po.getDate());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

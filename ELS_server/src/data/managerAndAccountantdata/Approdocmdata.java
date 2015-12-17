@@ -33,7 +33,7 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 		try {
 			for(int i=0;i<IDList.size();i++){
 				stmt=con.prepareStatement(sql);
-				stmt.setString(1, documentsType);
+				stmt.setString(1, documentsType.toString().toLowerCase());
 				stmt.setString(2, IDList.get(i));
 				ResultSet rs=stmt.executeQuery();
 				if(rs.next()){
@@ -44,7 +44,7 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 					}
 				}
 				sql="update ? set approState=? where ID=?";
-				stmt.setString(1, documentsType);
+				stmt.setString(1, documentsType.toString().toLowerCase());
 				stmt.setString(2, state);
 				stmt.setString(3, IDList.get(i));
 				stmt.executeUpdate();

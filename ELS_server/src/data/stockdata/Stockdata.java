@@ -136,7 +136,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			if(motor>Max_Size*percentage){
 				areas.add("motor");
 				jb4.setAlarm(true);
-			}jb4.setArea(areas);
+			}jb4.setAlarmArea(areas);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -42,7 +42,7 @@ implements InquireLogisticsInfordataservice{
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				po.setId(orderID);
-				po.setGenerateTime(rs.getString("generateTime"));
+				po.setGenerateDate(rs.getString("generateDate"));
 				po.setDescripition(rs.getString("descripition"));
 				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);

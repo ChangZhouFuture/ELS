@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
 import po.documentsPO.TransferOrderPO;
+import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ResultMessage;
 
 /**
@@ -65,6 +66,8 @@ import state.ResultMessage;
 	 */
 	public ResultMessage update(TransferOrderPO po) throws RemoteException;
 
-	
+
 	public String generateId(String date,String trancenId) throws RemoteException;
+	
+	public TransferOrderlineitemPO getTransferOrderlineitemPO(String id) throws RemoteException;;
  }

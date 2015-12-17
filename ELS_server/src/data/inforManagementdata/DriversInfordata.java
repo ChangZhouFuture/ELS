@@ -133,15 +133,14 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	}
 
 	@Override
-	public JavaBean1 findB(String city, String region) throws RemoteException {
+	public JavaBean1 findB(String busiHallId) throws RemoteException {
 		// TODO Auto-generated method stub
 		po = new DriversPO();
 		jb1=new JavaBean1();
 			jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
-			stmt = con.prepareStatement("SELECT * FROM driver WHERE city=?,region=?");
-			stmt.setString(1, city);
-			stmt.setString(2, region);
+			stmt = con.prepareStatement("SELECT * FROM driver WHERE busiHallId=?");
+			stmt.setString(1, busiHallId);
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
 			    po.setID(rs.getString("ID"));

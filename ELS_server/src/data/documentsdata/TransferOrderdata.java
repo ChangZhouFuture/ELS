@@ -220,4 +220,28 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 		return g.generateTransferOrderId(date, trancenId);
 	}
 
+	@Override
+	public TransferOrderlineitemPO getTransferOrderlineitemPO(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		llpo=new TransferOrderlineitemPO();
+		String sql="select * from transferorder where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()){
+				llpo.setID(id);
+			    llpo.setLoadingDate(rs.getString(2));
+			    llpo.setTranType(TransportType.valueOf(rs.getString(3)));
+			    llpo.setVehicleNum(rs.getString(4));
+			    llpo.setDestination(rs.getString(6));
+			    llpo.setCarriage(rs.getDouble(10));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return llpo;
+	}
+
 }

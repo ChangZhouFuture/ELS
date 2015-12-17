@@ -24,7 +24,7 @@ public interface DriversInfordataservice extends Remote{
 	 */
 	public JavaBean1 findA(String Id) throws RemoteException;
 	
-	public JavaBean1 findB(String city, String region) throws RemoteException;
+	public JavaBean1 findB(String busiHallId) throws RemoteException;
 	
 	/**
 	 * 

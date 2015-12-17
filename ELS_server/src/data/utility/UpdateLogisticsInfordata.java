@@ -25,11 +25,11 @@ public class UpdateLogisticsInfordata extends UnicastRemoteObject implements Upd
 	@Override
 	public ResultMessage update(LogisticsInforPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="insert into logistics(ID,generateTime,description) values(?,?,?)";
+		String sql="insert into logistics(ID,generateDate,description) values(?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
-			stmt.setString(2, po.getGenerateTime());
+			stmt.setString(2, po.getGenerateDate());
 			stmt.setString(3, po.getDescripition());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
