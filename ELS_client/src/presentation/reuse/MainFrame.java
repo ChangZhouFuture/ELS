@@ -56,7 +56,7 @@ public class MainFrame extends JFrame{
 		
 		//上方的长条框
 		top.setBounds(0,0,this.getWidth(),30);
-		top.setText("          快递物流系统");
+		top.setText("      快递物流系统");
 		top.setFont(font1);
 		top.setForeground(Color.white);
 		

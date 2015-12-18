@@ -3,17 +3,10 @@ package po.StatisAnalyPO;
 import java.io.Serializable;
 
 public class CostAndIncomePO implements Serializable{
-
-	private String date;
 	private double income;
 	private double cost;
 	private double profit;
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+	
 	public double getIncome() {
 		return income;
 	}

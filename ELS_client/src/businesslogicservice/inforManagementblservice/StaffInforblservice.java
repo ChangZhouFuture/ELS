@@ -1,7 +1,7 @@
 package businesslogicservice.inforManagementblservice;
 
-import po.userPO.UserPO;
 import state.ResultMessage;
+import vo.inforManagementVO.SalaryStrategyVO;
 import bean.JavaBean1;
 
 public interface StaffInforblservice {
@@ -9,5 +9,5 @@ public interface StaffInforblservice {
     
     public JavaBean1 inquireB(String position);
     
-    public ResultMessage modifySalaryStrategy(UserPO userPO);
+    public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO);
 }

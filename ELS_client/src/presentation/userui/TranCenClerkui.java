@@ -35,21 +35,21 @@ public class TranCenClerkui extends MainFrame{
 		userName.setBackground(Color.WHITE);
 		userName.setOpaque(true);
 		
-		tranCenArraivalOrderManage.setBounds(0,100,180,30);
-		tranCenArraivalOrderManage.setText("中转接收管理");
+		tranCenArraivalOrderManage.setBounds(0,130,180,30);
+		tranCenArraivalOrderManage.setText("到达单管理");
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		tranCenArraivalOrderManage.setFont(font3);
 		tranCenArraivalOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		tranCenArraivalOrderManage.setBackground(Color.WHITE);
 		
-		trensferOrderManage.setBounds(0,130,180,30);
+		trensferOrderManage.setBounds(0,100,180,30);
 		trensferOrderManage.setText("中转单管理");
 		trensferOrderManage.setFont(font3);
 		trensferOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		trensferOrderManage.setBackground(Color.WHITE);
 		
 		transferCenterLoadingList.setBounds(0,160,180,30);
-		transferCenterLoadingList.setText("中转装车管理");
+		transferCenterLoadingList.setText("装车单管理");
 		transferCenterLoadingList.setFont(font3);
 		transferCenterLoadingList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		transferCenterLoadingList.setBackground(Color.WHITE);

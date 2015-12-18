@@ -31,16 +31,17 @@ public class PaymentOrder implements PaymentOrderblservice {
 	
 	@Override
 	public ResultMessage addPaymentAccount(String accountName) {
-		try {
-			resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+		//添加银行账户只用返回结果信息，不需要PO
 		return resultMessage;
 	}
 
 	@Override
-	public PaymentOrderVO add(PaymentOrderVO paymentOrderVO) {
+	public JavaBean1 add(PaymentOrderVO paymentOrderVO) {
 		paymentOrderPO = new PaymentOrderPO();
 		this.paymentOrderVO = paymentOrderVO;
 		
@@ -48,6 +49,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 		this.paymentOrderVO.setGenerateTime(Time.generateTime());
 		this.paymentOrderVO.setID(generateId());
 		VOtoPO();
+		//调用数据层方法，增加一个新的付款单
 		
 		return null;
 	}

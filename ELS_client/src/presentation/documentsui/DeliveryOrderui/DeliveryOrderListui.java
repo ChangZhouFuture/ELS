@@ -29,7 +29,7 @@ public class DeliveryOrderListui extends Listui{
 	DeliveryOrderVO oneLine;
 	
 	public static void main(String[] args){
-		
+	
 		BusiHallClerkui ui=new BusiHallClerkui();
 		DeliveryOrderListui uiPanel=new DeliveryOrderListui();
 		uiPanel.makeTable(null);

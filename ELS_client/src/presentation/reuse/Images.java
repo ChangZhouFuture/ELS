@@ -21,13 +21,13 @@ public class Images {
 		}
 		return null;
 	}
-	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/101_编辑.jpg");				
+	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/p1616770564 (1).jpg");				
 	
 
 	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
 
 	public static final Image LOGIN_BACKGROUND = createImage(
-			 "images/6238460_182600301162_2_副本_副本.jpg");
+			 "images/90h58PICgpP_副本.jpg");
 
 	public static final ImageIcon USER_IMAGE=createImageIcon("images/user.png");
 	

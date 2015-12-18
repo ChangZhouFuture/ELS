@@ -4,26 +4,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
-
-import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
-import presentation.reuse.Images;
+import presentation.reuse.ParentDocuments;
 import presentation.userui.Courierui;
 import state.ExpressType;
 import vo.orderVO.OrderVO;
 
-public class Orderui extends JPanel{
+public class Orderui extends ParentDocuments{
 	public JLabel order;
 	public JLabel sender;
 	public JLabel senderName;
@@ -46,7 +41,6 @@ public class Orderui extends JPanel{
 	public JLabel actualReceiver;
 	public JLabel expectedArrivalDate;
 	public JLabel trueArrivalDate;
-	public JLabel approState;
 	public JTextField senderNameField;
 	public JTextField senderAddressField;
 	public JTextField senderCompanyField;
@@ -74,10 +68,6 @@ public class Orderui extends JPanel{
 	public JRadioButton eMS;
 	public ButtonGroup packGroup;
 	public ButtonGroup expressTypeGroup;
-	public JButton makeOrder;
-	public JButton modify;
-	public JButton modifyOrder;
-	public JButton delete;
 	Orderblservice orderblservice;
 	OrderVO orderVO;
 	
@@ -137,16 +127,7 @@ public class Orderui extends JPanel{
 		expectedArrivalDateField=new JTextField();
 		trueArrivalDate=new JLabel();
 		trueArrivalDateField=new JTextField();
-		approState=new JLabel();
-		modify=new JButton();
-		delete=new JButton();
-		makeOrder=new JButton();
-		modifyOrder=new JButton();
 		orderVO=new OrderVO();
-		orderblservice=new Order();
-		
-		this.setLayout(null);
-		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font4=new Font("TimesRoman",Font.BOLD,17);
 		Font font5=new Font("TimesRoman",Font.PLAIN,14);
@@ -406,16 +387,10 @@ public class Orderui extends JPanel{
 		other.add(trueArrivalDate);
 		other.add(trueArrivalDateField);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		makeOrder.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				senderNameField.setEditable(false);
 				senderAddressField.setEditable(false);
 				senderCompanyField.setEditable(false);
@@ -483,17 +458,10 @@ public class Orderui extends JPanel{
 			}
 		});
 		
-		modifyOrder.setBounds(260,442,96,30);
-		modifyOrder.setText("确认修改");
-		modifyOrder.setFont(font1);
-		modifyOrder.setBackground(Color.WHITE);
-		modifyOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		modifyOrder.setVisible(false);
 		modifyOrder.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				senderNameField.setEditable(false);
 				senderAddressField.setEditable(false);
 				senderCompanyField.setEditable(false);
@@ -556,20 +524,10 @@ public class Orderui extends JPanel{
 			}
 		});
 		
-		approState.setBounds(500,445,90,24);
-		approState.setFont(font5);
-		approState.setBackground(Color.WHITE);
-		approState.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		
-		modify.setBounds(0,0,24,24);
-		modify.setIcon(Images.MODIFY_IMAGE);;
-		modify.setBackground(Color.WHITE);
-		modify.setVisible(false);
 		modify.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				senderNameField.setEditable(true);
 				senderAddressField.setEditable(true);
 				senderCompanyField.setEditable(true);
@@ -592,24 +550,10 @@ public class Orderui extends JPanel{
 			}
 		});
 		
-		delete.setBounds(24,0,24,24);
-		delete.setIcon(Images.DELETE_IMAGE);;
-		delete.setBackground(Color.WHITE);
-		delete.setVisible(false);
-				
 		this.add(order);
 		this.add(sender);
 		this.add(receiver);
 		this.add(other);
-		this.add(makeOrder);
-		this.add(approState);
-		this.add(modify);
-		this.add(delete);
-		this.setLocation(182,30);
-		this.setSize(640,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
 	}
 
 }

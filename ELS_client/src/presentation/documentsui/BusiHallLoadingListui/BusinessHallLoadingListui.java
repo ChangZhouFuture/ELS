@@ -2,21 +2,19 @@ package presentation.documentsui.BusiHallLoadingListui;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
+import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
 
-public class BusinessHallLoadingListui extends JPanel{
+public class BusinessHallLoadingListui extends ParentDocuments{
 	public JLabel busiLoadOrder;
 	public JLabel busiId;
 	public JTextField busiIdField;
@@ -37,7 +35,6 @@ public class BusinessHallLoadingListui extends JPanel{
 	public JButton addOrder;
 	public JTextArea orderList;
 	public JScrollPane scroller;
-	public JButton makeOrder;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -65,7 +62,6 @@ public class BusinessHallLoadingListui extends JPanel{
 		orderIdField=new JTextField();
 		addOrder=new JButton();
 		orderList=new JTextArea();
-		makeOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -164,12 +160,6 @@ public class BusinessHallLoadingListui extends JPanel{
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(busiLoadOrder);
 		this.add(busiId);
 		this.add(busiIdField);
@@ -189,7 +179,6 @@ public class BusinessHallLoadingListui extends JPanel{
 		this.add(orderIdField);
 		this.add(addOrder);
 		this.add(scroller);
-		this.add(makeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

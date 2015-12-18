@@ -9,14 +9,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import bean.JavaBean2;
 import businesslogic.userbl.LoginAndOut;
 import businesslogicservice.userblservice.LoginAndOutblservice;
@@ -104,7 +102,6 @@ public class Loginui extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setExtendedState(JFrame.ICONIFIED); 
 			}
 		});
@@ -115,7 +112,6 @@ public class Loginui extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0); 
 			}
 		});
@@ -197,7 +193,5 @@ public class Loginui extends JFrame{
 		
 		this.add(loginPanel);
 		this.setVisible(true);
-		this.validate();
-		this.repaint();
 	}
 }

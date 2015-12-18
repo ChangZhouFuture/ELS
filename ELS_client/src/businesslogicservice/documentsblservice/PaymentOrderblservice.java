@@ -29,7 +29,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：财务人员已经被授权和登录
 	 * 后置条件：添加新的付款单信息
 	 */
-	public PaymentOrderVO add(PaymentOrderVO paymentOrderVO);
+	public JavaBean1 add(PaymentOrderVO paymentOrderVO);
 	/**
 	 * 
 	 * @param id

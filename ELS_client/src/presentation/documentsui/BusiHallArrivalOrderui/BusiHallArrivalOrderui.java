@@ -2,31 +2,26 @@ package presentation.documentsui.BusiHallArrivalOrderui;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
-import presentation.documentsui.DeliveryOrderui.DeliveryOrderui;
+import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
 
-public class BusiHallArrivalOrderui extends JPanel{
+public class BusiHallArrivalOrderui extends ParentDocuments{
 	JLabel BusiHallArrivalOrder;
 	JLabel TransferOrder;
 	JLabel Departure;
 	JTextField TransferOrderId;
 	JTextField DepartureName;
 	JLabel GoodState;
-	JButton MakeOrder;
 	JRadioButton Complete;
 	JRadioButton Damaged;
 	JRadioButton Lost;
@@ -44,7 +39,6 @@ public class BusiHallArrivalOrderui extends JPanel{
 	public BusiHallArrivalOrderui(){
 		BusiHallArrivalOrder=new JLabel();
 		Departure=new JLabel();
-		MakeOrder=new JButton();
 		TransferOrder=new JLabel();
 		GoodState=new JLabel();
 		TransferOrderId=new JTextField();
@@ -126,12 +120,6 @@ public class BusiHallArrivalOrderui extends JPanel{
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		MakeOrder.setBounds(260,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(BusiHallArrivalOrder);
 		this.add(TransferOrder);
 		this.add(Departure);
@@ -143,7 +131,6 @@ public class BusiHallArrivalOrderui extends JPanel{
 		this.add(scroller);
 		this.add(TransferOrderId);
 		this.add(DepartureName);
-		this.add(MakeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

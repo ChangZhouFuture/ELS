@@ -43,12 +43,12 @@ public class BusiHallClerkui extends MainFrame{
 		
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
 		busiLoad.setBounds(0,100,180,30);
-		busiLoad.setText("车辆装车管理");
+		busiLoad.setText("装车单管理");
 		busiLoad.setFont(font3);
 		busiLoad.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		busiLoad.setBackground(Color.WHITE);
 		
-		driverManage.setBounds(0,130,180,30);
+		driverManage.setBounds(0,220,180,30);
 		driverManage.setText("司机信息管理");
 		driverManage.setFont(font3);
 		driverManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -61,13 +61,13 @@ public class BusiHallClerkui extends MainFrame{
 		receOrderManage.setBackground(Color.WHITE);
 		
 		busiHallArrivalOrderManage.setBounds(0,190,180,30);
-		busiHallArrivalOrderManage.setText("接收信息管理");
+		busiHallArrivalOrderManage.setText("到达单管理");
 		busiHallArrivalOrderManage.setFont(font3);
 		busiHallArrivalOrderManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		busiHallArrivalOrderManage.setBackground(Color.WHITE);
 		
-		deliveryManage.setBounds(0,220,180,30);
-		deliveryManage.setText("派件信息管理");
+		deliveryManage.setBounds(0,130,180,30);
+		deliveryManage.setText("派件单管理");
 		deliveryManage.setFont(font3);
 		deliveryManage.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		deliveryManage.setBackground(Color.WHITE);

@@ -1,7 +1,7 @@
 package businesslogic.inforManagementbl;
 
-import po.userPO.UserPO;
 import state.ResultMessage;
+import vo.inforManagementVO.SalaryStrategyVO;
 import dataservice.inforManagementdataservice.StaffInfordataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
@@ -38,7 +38,7 @@ public class StaffInfor implements StaffInforblservice{
 	}
 
 	@Override
-	public ResultMessage modifySalaryStrategy(UserPO userPO) {
+	public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO) {
 		
 		return null;
 	}

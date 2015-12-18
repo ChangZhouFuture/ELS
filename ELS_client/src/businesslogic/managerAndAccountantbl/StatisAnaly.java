@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import po.documentsPO.PaymentOrderPO;
 import po.documentsPO.ReceivablesOrderPO;
 import state.ResultMessage;
-import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
@@ -14,22 +13,12 @@ import businesslogic.utilitybl.Time;
 import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
 
 public class StatisAnaly implements StatisAnalyblservice {
-	private StatisAnalydataservice statisAnalydataservice;
 	private ParentDocumentsdataservice parentDocumentsdataservice;
-	private ResultMessage resultMessage;
 	private ArrayList<ReceivablesOrderPO> receivablesOrderPOs;
 	private ArrayList<PaymentOrderPO> paymentOrderPOs;
 	private JavaBean1 javaBean1;
+	private ResultMessage resultMessage;
 	private ArrayList<String> arrayList;
-	
-	
-	public StatisAnaly() {
-		try {
-			statisAnalydataservice = RMIHelper.getStatisAnalydataservice();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@Override
 	public JavaBean1 inquireReceivalblesOrder(String ID) {
@@ -117,8 +106,12 @@ public class StatisAnaly implements StatisAnalyblservice {
 
 	@Override
 	public JavaBean1 inquireCostAndIncomeTable() {
-		//调用同业务逻辑层的付款单和收款单的总支出、总收入方法，在这里计算利润
+		//调用数据层方法，从表中读取数据（每次生成付款单和收款单都更新表）
 		return null;
+	}
+	
+	public static void updateCostAndIncomeTable(double amount, String costOrIncome) {
+		
 	}
 
 }

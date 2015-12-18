@@ -9,11 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import presentation.reuse.Images;
 
 public class Mainui extends JFrame{
@@ -29,7 +27,6 @@ public class Mainui extends JFrame{
 		Mainui ui=new Mainui();
 	}
 	public Mainui(){
-		mainPanel=new JPanel();
 		findOrder=new JButton();
 		login=new JButton();
 		minimizeButton=new JButton();

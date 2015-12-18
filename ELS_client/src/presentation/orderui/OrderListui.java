@@ -48,9 +48,8 @@ public class OrderListui extends JPanel{
 	public JTextField yearField;
 	public JTextField monthField;
 	public JTextField dayField;
-	public JRadioButton findById;
-	public JRadioButton findByDate;
-	public ButtonGroup findGroup;
+	public JLabel findById;
+	public JLabel findByDate;
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
@@ -68,19 +67,18 @@ public class OrderListui extends JPanel{
 	}
 	
 	public OrderListui(){
-		sheetLabel=new JLabel();
-		add=new JButton();
 		addText=new JLabel();
-		findById=new JRadioButton();
-		findByDate=new JRadioButton();
-		findGroup=new ButtonGroup();
+		sheetLabel=new JLabel();
+		findById = new JLabel();
+		findByDate = new JLabel();
+		year=new JLabel();
+		month=new JLabel();
+		day=new JLabel();
 		idField=new JTextField();
 		yearField=new JTextField();
 		monthField=new JTextField();
 		dayField=new JTextField();
-		year=new JLabel();
-		month=new JLabel();
-		day=new JLabel();
+		add=new JButton();
 		idFind=new JButton();
 		dateFind=new JButton();
 		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
@@ -126,9 +124,6 @@ public class OrderListui extends JPanel{
 		findByDate.setFont(font2);
 		findByDate.setBackground(Color.WHITE);
 		
-		findGroup.add(findById);
-		findGroup.add(findByDate);
-		
 		idField.setBounds(150,92,120,20);
 		
 		yearField.setBounds(150,127,48,20);
@@ -169,37 +164,31 @@ public class OrderListui extends JPanel{
 		dateFind.setFont(font2);
 		dateFind.setOpaque(true);
 		dateFind.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							orderblservice=new Order();
-							try {
-								javaBean1=orderblservice.inquireB(dateString);
-								ArrayList<OrderlineitemVO> arrayList = (ArrayList<OrderlineitemVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
+				String date = null;
+				int year = Integer.parseInt(yearField.getText());
+				int month = Integer.parseInt(monthField.getText());
+				int day = Integer.parseInt(dayField.getText());
+				
+				if (year < 2015 || month < 0 || month > 12 || day < 0 || day > 31) {
+					System.out.println("请重新输入日期");
+					return ;
 				}
-				else{
-					System.out.println("Error");
-				}
+				date = yearField.getText() + "-" + monthField.getText() + "-" 
+						+ dayField.getText();
+				System.out.println(date);
+//				JavaBean1 javaBean1;
+//				orderblservice=new Order();
+//				try {
+//					javaBean1=orderblservice.inquireB(dateString);
+//					ArrayList<OrderlineitemVO> arrayList = (ArrayList<OrderlineitemVO>)javaBean1.getObject();
+//					makeTable(arrayList);
+//				} catch (Exception e2) {
+//					e2.printStackTrace();
+//				}
+//			}
 			}
 		});
 		
@@ -232,7 +221,6 @@ public class OrderListui extends JPanel{
 			 e2.printStackTrace(); 
 		 }
 		 
-//		 ButtonGroup checkboxGroup=new ButtonGroup();
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,

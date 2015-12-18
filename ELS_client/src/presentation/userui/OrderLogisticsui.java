@@ -2,28 +2,25 @@ package presentation.userui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
-import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
 
 public class OrderLogisticsui extends JDialog{ 
@@ -44,12 +41,18 @@ public class OrderLogisticsui extends JDialog{
 	}
 	
 	public OrderLogisticsui(){
-		orderLogisticsPanel=new JPanel();
 		findOrder=new JLabel();
 		orderIdField=new JTextField();
 		find=new JButton();
 		closeButton=new JButton();
 		logisticsArea=new JTextArea();
+		
+		orderLogisticsPanel = new JPanel(){
+			protected void paintComponent(Graphics g){
+				super.paintComponent(g);
+				g.drawImage(Images.LOGIN_BACKGROUND,0,0,400,300,null);
+			}
+		};
 		
 		this.setUndecorated(true);
 		this.setLayout(null);
@@ -59,7 +62,7 @@ public class OrderLogisticsui extends JDialog{
 				(screenSize.height - this.getHeight()) / 2);
 		
 		findOrder.setBounds(30,30,160,24);
-		findOrder.setBackground(Color.WHITE);
+		findOrder.setForeground(Color.WHITE);
 		findOrder.setText("«Î ‰»Î∂©µ•∫≈£∫");
 		Font font = new Font("TimesRoman",Font.BOLD,15);
 		findOrder.setFont(font);
