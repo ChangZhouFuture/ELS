@@ -43,7 +43,7 @@ public class ReceivablesOrderListui extends Listui{
 	
 	public ReceivablesOrderListui(){
 		
-		sheetLabel.setText("收款单管理");
+		sheetLabel.setText("结算管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			

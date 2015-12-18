@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import dataservice.inforManagementdataservice.AgencyInfordataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
+import businesslogic.utilitybl.RecordOperaLog;
 import businesslogicservice.inforManagementblservice.AgencyInforblservice;
 import po.inforManagementPO.AgencyPO;
 import state.AgencyType;
+import state.OperaType;
 import state.ResultMessage;
 import vo.inforManagementVO.AgencyVO;
 
@@ -16,6 +19,7 @@ public class AgencyInfor implements AgencyInforblservice{
 	private AgencyInfordataservice agencyInfordataservice;
 	private AgencyPO agencyPO;
 	private AgencyVO agencyVO;
+	private RecordOperaLog recordOperaLog;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
@@ -40,6 +44,12 @@ public class AgencyInfor implements AgencyInforblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Add, this.agencyVO.getAgencyType().
+					toString(), this.agencyVO.getID(), "总经理" + Login.id);
+		}
 		javaBean1.setObject(this.agencyVO);
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -58,6 +68,16 @@ public class AgencyInfor implements AgencyInforblservice{
 			resultMessage = agencyInfordataservice.deleteMany(IDList);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			String agencyID;
+			for (int i = 0; i < IDList.size(); i++) {
+				agencyID = IDList.get(i);
+				recordOperaLog.recordOperaLog(OperaType.Delete, this.agencyVO.
+				getAgencyType().toString(), agencyID, "总经理" + Login.id);
+			}
 		}
 		return resultMessage;
 	}

@@ -1,5 +1,7 @@
 package presentation.stockui.StorageListui;
 
-public class StorageListui {
+import presentation.reuse.ParentDocuments;
+
+public class StorageListui extends ParentDocuments{
 
 }

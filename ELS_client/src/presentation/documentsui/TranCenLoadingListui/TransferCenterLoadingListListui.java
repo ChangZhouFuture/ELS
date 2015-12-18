@@ -39,7 +39,7 @@ public class TransferCenterLoadingListListui extends Listui{
 	
 	public TransferCenterLoadingListListui(){
 		
-		sheetLabel.setText("中转装车管理");
+		sheetLabel.setText("中转中心装车单管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			

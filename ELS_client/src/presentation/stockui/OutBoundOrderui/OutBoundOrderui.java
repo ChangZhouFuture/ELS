@@ -14,11 +14,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.StockManagerui;
 
-public class OutBoundOrderui extends JPanel{
+public class OutBoundOrderui extends ParentDocuments{
 	JLabel outBoundOrder;
-	JButton makeOrder;
 	JLabel transportType;
 	JRadioButton plane;
 	JRadioButton train;

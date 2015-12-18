@@ -42,7 +42,7 @@ public class TranCenArrivalOrderListui extends Listui{
 	
 	public TranCenArrivalOrderListui(){
 		
-		sheetLabel.setText("中转接收管理");
+		sheetLabel.setText("中转中心到达单管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			

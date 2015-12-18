@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
-import state.ExpressType;
 import state.ResultMessage;
 import state.TransportType;
 import vo.documentsVO.BusiHallLoadingListVO;
@@ -15,8 +14,10 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.CalculateFreight;
 import businesslogic.utilitybl.Time;
+import businesslogic.utilitybl.UpdateLogisticsInfor;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 /**
  * 
@@ -33,6 +34,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	private ArrayList<BusiHallLoadingListlineitemVO> arrayList2;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private UpdateLogisticsInfor updateLogisticsInfor;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
@@ -63,7 +65,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
 		String vehiclesID = null;
 		try {
-			vehiclesID = CalculateFreight.agencyId +date+busiHallLoadingListdtaservice.
+			vehiclesID = Login.agencyID +date+busiHallLoadingListdtaservice.
 					generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -82,7 +84,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		busiHallLoadingListPO = new BusiHallLoadingListPO();
 		this.busiHallLoadingListVO = businessHallLoadingListVO;
 		
-		this.busiHallLoadingListVO.setBusiHallID(CalculateFreight.agencyId);
+		this.busiHallLoadingListVO.setBusiHallID(Login.agencyID);
 		this.busiHallLoadingListVO.setLoadingDate(generateDate());
 		this.busiHallLoadingListVO.setGenerateTime(Time.generateTime());
 		this.busiHallLoadingListVO.setVehiclesID(generatevehiclesID());
@@ -95,6 +97,17 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 			resultMessage = busiHallLoadingListdtaservice.addLoadingList(busiHallLoadingListPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			updateLogisticsInfor = new UpdateLogisticsInfor();
+			ArrayList<String> orderIDs = this.busiHallLoadingListVO.getOrderIDs();
+			String orderID;
+			for (int i = 0; i < orderIDs.size(); i++) {
+				orderID = orderIDs.get(i);
+				updateLogisticsInfor.update(date, orderID, date + " 订单已在" + 
+				Login.city + Login.region +"营业厅装车");
+			}
 		}
 		javaBean1.setObject(this.busiHallLoadingListVO);
 		javaBean1.setResultMessage(resultMessage);

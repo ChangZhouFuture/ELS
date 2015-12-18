@@ -12,15 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
 
-public class DeliveryOrderui extends JPanel{
+public class DeliveryOrderui extends ParentDocuments{
 	JLabel DeliveryOrder;
 	JLabel Courier;
 	JLabel Order;
 	JTextField Courierid;
 	JTextField Orderid;
-	JButton MakeOrder;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -31,7 +31,6 @@ public class DeliveryOrderui extends JPanel{
 	public DeliveryOrderui(){
 		DeliveryOrder=new JLabel();
 		Order=new JLabel();
-		MakeOrder=new JButton();
 		Courier=new JLabel();
 		Courierid=new JTextField();
 		Orderid=new JTextField();
@@ -62,18 +61,11 @@ public class DeliveryOrderui extends JPanel{
 		
 		Orderid.setBounds(110,112,150,20);
 		
-		MakeOrder.setBounds(218,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(DeliveryOrder);
 		this.add(Courier);
 		this.add(Order);
 		this.add(Courierid);
 		this.add(Orderid);
-		this.add(MakeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

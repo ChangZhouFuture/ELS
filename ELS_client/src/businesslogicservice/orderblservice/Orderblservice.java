@@ -30,6 +30,14 @@ public interface Orderblservice {
 	 public JavaBean1 add(OrderVO orderVO);
 	 
 	 /**
+	  * 确认收件，返回javabean1（只含结果信息和收件时间）
+	  * @param id
+	  * @param trueAddresseeName
+	  * @return
+	  */
+	 public JavaBean1 receive(String id, String trueAddresseeName);
+	 
+	 /**
 	  * 前置条件：展开一个订单列表
 	  * 后置条件：在订单列表中删除一个订单
 	  * @param orderid

@@ -154,17 +154,17 @@ public class CourierController {
 		orderui.goodWeightField.setText(String.valueOf(orderVO.getWeight()));
 		orderui.goodWeightField.setEditable(false);
 					
-		orderui.goodVolumeField.setText(String.valueOf(orderVO.getSize()));
-		orderui.goodVolumeField.setEditable(false);
+		orderui.goodSizeField.setText(String.valueOf(orderVO.getSize()));
+		orderui.goodSizeField.setEditable(false);
 					
-		orderui.carriageField.setText(String.valueOf(orderVO.getTotalCost()));
-		orderui.carriageField.setEditable(false);
+		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
+		orderui.amountField.setEditable(false);
 					
-		orderui.expectedArrivalDateField.setText(orderVO.getExpectedArrivalDate());
-		orderui.expectedArrivalDateField.setEditable(false);
+//		orderui.expectedArrivalDateField.setText(orderVO.getExpectedArrivalDate());
+//		orderui.expectedArrivalDateField.setEditable(false);
 					
-		orderui.carriageField.setText(String.valueOf(orderVO.getTotalCost()));
-		orderui.carriageField.setEditable(false);
+		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
+		orderui.amountField.setEditable(false);
 					
 		if(orderVO.getTrueAddressee()!=null){
 			orderui.actualReceiver.setVisible(true);
@@ -175,22 +175,22 @@ public class CourierController {
 			orderui.trueArrivalDate.setVisible(true);
 			orderui.trueArrivalDateField.setText(orderVO.getArrivalDate());
 		}
-		if(orderVO.getNumOfBags()!=0){
-			orderui.bag.setSelected(true);
-		}
-		if(orderVO.getNumOfWoodenBox()!=0){
-			orderui.wood.setSelected(true);
-		}
-		if(orderVO.getNumOfCartons()!=0){
-			orderui.paper.setSelected(true);
-		}
-		if(orderVO.getExpressType()==ExpressType.Economic){
-			orderui.economic.setSelected(true);
-		}else if(orderVO.getExpressType()==ExpressType.Standard){
-			orderui.standard.setSelected(true);
-		}else if(orderVO.getExpressType()==ExpressType.EMS){
-			orderui.eMS.setSelected(true);
-		}
+//		if(orderVO.getNumOfBags()!=0){
+//			orderui.bag.setSelected(true);
+//		}
+//		if(orderVO.getNumOfWoodenBox()!=0){
+//			orderui.wood.setSelected(true);
+//		}
+//		if(orderVO.getNumOfCartons()!=0){
+//			orderui.paper.setSelected(true);
+//		}
+//		if(orderVO.getExpressType()==ExpressType.Economic){
+//			orderui.economic.setSelected(true);
+//		}else if(orderVO.getExpressType()==ExpressType.Standard){
+//			orderui.standard.setSelected(true);
+//		}else if(orderVO.getExpressType()==ExpressType.EMS){
+//			orderui.eMS.setSelected(true);
+//		}
 		return orderui;
 	}
 	public void inOrderui() {

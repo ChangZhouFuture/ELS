@@ -8,8 +8,23 @@ import state.ResultMessage;
 public class JavaBean2 implements Serializable{
 	private String name;
 	private String agencyID;
+	private String city;
+	private String region;
 	private Position position;
 	private ResultMessage resultMessage;
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public String getName() {
 		return name;
 	}

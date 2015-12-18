@@ -30,13 +30,13 @@ public class TranCenClerkController {
 	
 	public TranCenClerkController(){
 		tranCenClerkui = new TranCenClerkui();
-		tranCenArrivalOrderListui = new TranCenArrivalOrderListui();
-		tranCenArrivalOrderListui.setLocation(0,0);
+		transferOrderListui = new TransferOrderListui();
+		transferOrderListui.setLocation(0, 0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		mainPanel.setBackground(Color.WHITE);
-		mainPanel.add(tranCenArrivalOrderListui);
+		mainPanel.add(transferOrderListui);
 		JLayeredPane layeredPane = tranCenClerkui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
 		inTranCenClerkui();

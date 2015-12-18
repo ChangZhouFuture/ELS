@@ -30,13 +30,13 @@ public class GeneralManagerController {
 	
 	public GeneralManagerController(){
 		generalManagerui = new GeneralManagerui();
-		agencyListui = new AgencyListui();
-		agencyListui.setLocation(0,0);
+		docmListui = new DocmListui();
+		docmListui.setLocation(0, 0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		mainPanel.setBackground(Color.WHITE);
-		mainPanel.add(agencyListui);
+		mainPanel.add(docmListui);
 		JLayeredPane layeredPane = generalManagerui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
 		inAdministratorui();

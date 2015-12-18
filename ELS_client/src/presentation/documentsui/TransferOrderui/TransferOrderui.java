@@ -16,11 +16,11 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.TranCenClerkui;
 
-public class TransferOrderui extends JPanel{
+public class TransferOrderui extends ParentDocuments{
 	public JLabel transferOrder;
-	public JButton makeOrder;
 	public JLabel transportType;
 	public JRadioButton plane;
 	public JRadioButton train;

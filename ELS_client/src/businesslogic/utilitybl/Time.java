@@ -24,7 +24,7 @@ public class Time {
 	
 	public static ArrayList<String> getEveryDay(String beginDate, String endDate) 
 			throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy--MM--dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date before;
 		Date after;
 		Date d1;

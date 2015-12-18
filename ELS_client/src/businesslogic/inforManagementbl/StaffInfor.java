@@ -1,5 +1,8 @@
 package businesslogic.inforManagementbl;
 
+import java.rmi.RemoteException;
+
+import po.inforManagementPO.SalaryStrategyPO;
 import state.ResultMessage;
 import vo.inforManagementVO.SalaryStrategyVO;
 import dataservice.inforManagementdataservice.StaffInfordataservice;
@@ -10,6 +13,7 @@ import businesslogicservice.inforManagementblservice.StaffInforblservice;
 
 public class StaffInfor implements StaffInforblservice{
 	private StaffInfordataservice staffInfordataservice;
+	private SalaryStrategyPO salaryStrategyPO;
 	private UserManagement userManagement;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
@@ -39,7 +43,16 @@ public class StaffInfor implements StaffInforblservice{
 
 	@Override
 	public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO) {
-		
+		salaryStrategyPO.setPayType(salaryStrategyVO.getPayType());
+		salaryStrategyPO.setPayAmount(salaryStrategyVO.getPayAmount());//基本工资
+		salaryStrategyPO.setPercentage(salaryStrategyVO.getPercentage());//提成策略
+		salaryStrategyPO.setPosition(salaryStrategyVO.getPosition());
+		try {
+			staffInfordataservice.updateSalaryStrategy(salaryStrategyPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		//调用数据层方法，修改工资策略
 		return null;
 	}
 

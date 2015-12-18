@@ -39,7 +39,7 @@ public class DeliveryOrderListui extends Listui{
 	
 	public DeliveryOrderListui(){
 		
-		sheetLabel.setText("派件信息管理");
+		sheetLabel.setText("派件单管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			

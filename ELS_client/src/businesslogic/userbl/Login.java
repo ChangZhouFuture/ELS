@@ -5,13 +5,17 @@ import java.rmi.RemoteException;
 import dataservice.userdataservice.Logindataservice;
 import RMI.RMIHelper;
 import bean.JavaBean2;
-import businesslogicservice.userblservice.LoginAndOutblservice;
+import businesslogicservice.userblservice.Loginblservice;
 
-public class LoginAndOut implements LoginAndOutblservice{
+public class Login implements Loginblservice{
 	Logindataservice logindataservice;
 	JavaBean2 javaBean2;
+	public static String id;
+	public static String agencyID;
+	public static String city;
+	public static String region;
 	
-	public LoginAndOut() {
+	public Login() {
 		try {
 			logindataservice = RMIHelper.getLogindataservice();
 		} catch (RemoteException e) {
@@ -28,13 +32,16 @@ public class LoginAndOut implements LoginAndOutblservice{
 			e.printStackTrace();
 			System.out.println("´íÎó");
 		}
+		this.id = id;
+		city = javaBean2.getCity();
+		region = javaBean2.getRegion();
 		
 		return javaBean2;
 	}
 
 	public static void main(String[] args) {
 		RMIHelper.init();
-		LoginAndOut loginAndOut = new LoginAndOut();
+		Login loginAndOut = new Login();
 		loginAndOut.login("12345678", "12345678");
 	}
 }

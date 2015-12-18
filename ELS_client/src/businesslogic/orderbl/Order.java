@@ -2,7 +2,6 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
@@ -15,6 +14,7 @@ import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.utilitybl.CalculateFreight;
 import businesslogic.utilitybl.Time;
+import businesslogic.utilitybl.UpdateLogisticsInfor;
 import businesslogicservice.orderblservice.Orderblservice;
 /**
  * 
@@ -29,6 +29,7 @@ public class Order implements Orderblservice {
 	private OrderlineitemPO orderlineitemPO;
 	private ArrayList<OrderlineitemPO> arrayList;
 	private ArrayList<OrderlineitemVO> arrayList2;
+	private UpdateLogisticsInfor updateLogisticsInfor;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	private String date;
@@ -64,10 +65,26 @@ public class Order implements Orderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			updateLogisticsInfor = new UpdateLogisticsInfor();
+			updateLogisticsInfor.update(date, this.orderVO.getId(), date + " "
+					+ "订单已生成");
+		}
 		javaBean1.setObject(this.orderVO);
 		javaBean1.setResultMessage(resultMessage);
 		
 		return javaBean1;
+	}
+	
+	@Override
+	public JavaBean1 receive(String id, String trueAddresseeName) {
+		//直接调用数据层方法，由数据层来设置trueAddresseeName
+		//数据层接口增加一个参数，接收日期
+		generateDate();
+		
+		updateLogisticsInfor.update(date, id, date + " 订单已被接收");
+		return null;
 	}
 
 	@Override

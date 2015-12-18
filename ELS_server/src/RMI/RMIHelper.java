@@ -1,8 +1,6 @@
 package RMI;
 
-import java.io.IOException;
 import java.rmi.Naming;
-
 import data.datafactory.DataFactory;
 import dataservice.datafactoryservice.DataFactoryservice;
 

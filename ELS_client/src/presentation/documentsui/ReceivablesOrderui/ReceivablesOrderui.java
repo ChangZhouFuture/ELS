@@ -14,9 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
 
-public class ReceivablesOrderui extends JPanel{
+public class ReceivablesOrderui extends ParentDocuments{
 	JLabel ReceivablesOrder;
 	JLabel ReceiveDate;
 	JTextField YearField;
@@ -34,7 +35,6 @@ public class ReceivablesOrderui extends JPanel{
 	JButton AddOrder;
 	JTextArea OrderList;
 	JScrollPane scroller;
-	JButton MakeOrder;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -59,7 +59,6 @@ public class ReceivablesOrderui extends JPanel{
 		OrderIdField=new JTextField();
 		AddOrder=new JButton();
 		OrderList=new JTextArea();
-		MakeOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -146,12 +145,6 @@ public class ReceivablesOrderui extends JPanel{
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		MakeOrder.setBounds(260,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(ReceivablesOrder);
 		this.add(ReceiveDate);
 		this.add(YearField);
@@ -168,7 +161,6 @@ public class ReceivablesOrderui extends JPanel{
 		this.add(OrderIdField);
 		this.add(AddOrder);
 		this.add(scroller);
-		this.add(MakeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

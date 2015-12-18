@@ -1,21 +1,33 @@
 package presentation.orderui;
 
 import java.awt.Color;
+import java.awt.Event;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.TextEvent;
+import java.beans.PropertyChangeListener;
+import java.util.EventListener;
+import java.util.InputMismatchException;
+
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.TextAction;
+
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.ParentDocuments;
+import presentation.reuse.TextListener;
 import presentation.userui.Courierui;
-import state.ExpressType;
 import vo.orderVO.OrderVO;
 
 public class Orderui extends ParentDocuments{
@@ -31,13 +43,14 @@ public class Orderui extends ParentDocuments{
 	public JLabel receiverAddress;
 	public JLabel other;
 	public JLabel receiverPhone;
-	public JLabel goodVolume;
+	public JLabel goodSize;
 	public JLabel goodName;
 	public JLabel goodWeight;
 	public JLabel goodNum;
 	public JLabel pack;
 	public JLabel expressType;
-	public JLabel carriage;
+	public JLabel freight;
+	public JLabel amount;
 	public JLabel actualReceiver;
 	public JLabel expectedArrivalDate;
 	public JLabel trueArrivalDate;
@@ -52,31 +65,18 @@ public class Orderui extends ParentDocuments{
 	public JTextField goodNumField;
 	public JTextField goodNameField;
 	public JTextField goodWeightField;
-	public JTextField goodVolumeField;
-	public JTextField carriageField;
+	public JTextField goodSizeField;
+	public JTextField amountField;
 	public JTextField actualReceiverField;
-	public JTextField expectedArrivalDateField;
 	public JTextField trueArrivalDateField;
 	public TitledBorder receiverBorder;
 	public TitledBorder senderBorder;
 	public TitledBorder otherBorder;
-	public JRadioButton paper;
-	public JRadioButton wood;
-	public JRadioButton bag;
-	public JRadioButton economic;
-	public JRadioButton standard;
-	public JRadioButton eMS;
 	public ButtonGroup packGroup;
 	public ButtonGroup expressTypeGroup;
 	Orderblservice orderblservice;
 	OrderVO orderVO;
 	
-	public static void main(String[] args){
-		Courierui ui=new Courierui();
-		Orderui uiPanel=new Orderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public Orderui() {
 		order=new JLabel();
 		sender=new JLabel();
@@ -107,24 +107,18 @@ public class Orderui extends ParentDocuments{
 		goodNameField=new JTextField();
 		goodWeight=new JLabel();
 		goodWeightField=new JTextField();
-		goodVolume=new JLabel();
-		goodVolumeField=new JTextField();
+		goodSize=new JLabel();
+		goodSizeField=new JTextField();
 		pack=new JLabel();
-		paper=new JRadioButton();
-		wood=new JRadioButton();
-		bag=new JRadioButton();
 		packGroup=new ButtonGroup();
 		expressType=new JLabel();
-		economic=new JRadioButton();
-		standard=new JRadioButton();
-		eMS=new JRadioButton();
 		expressTypeGroup=new ButtonGroup();
-		carriage=new JLabel();
-		carriageField=new JTextField();
+		freight = new JLabel();
+		amount=new JLabel();
+		amountField=new JTextField();
 		actualReceiver=new JLabel();
 		actualReceiverField=new JTextField();
 		expectedArrivalDate=new JLabel();
-		expectedArrivalDateField=new JTextField();
 		trueArrivalDate=new JLabel();
 		trueArrivalDateField=new JTextField();
 		orderVO=new OrderVO();
@@ -260,39 +254,37 @@ public class Orderui extends ParentDocuments{
 		goodWeight.setOpaque(true);
 		
 		goodWeightField.setBounds(110,52,80,20);
+		goodWeightField.getDocument().addDocumentListener(new TextListener(
+				goodWeightField));
 		
-		goodVolume.setBounds(240,50,60,24);
-		goodVolume.setText("体积：");
-		goodVolume.setFont(font5);
-		goodVolume.setBackground(Color.WHITE);
-		goodVolume.setOpaque(true);
+		goodSize.setBounds(240,50,60,24);
+		goodSize.setText("体积：");
+		goodSize.setFont(font5);
+		goodSize.setBackground(Color.WHITE);
+		goodSize.setOpaque(true);
 		
-		goodVolumeField.setBounds(320,52,80,20);
+		goodSizeField.setBounds(320,52,80,20);
+		goodSizeField.getDocument().addDocumentListener(new TextListener(
+				goodSizeField));
 		
 		pack.setBounds(30,80,60,24);
-		pack.setText("包装费：");
+		pack.setText("包装：");
 		pack.setFont(font5);
 		pack.setBackground(Color.WHITE);
 		pack.setOpaque(true);
 		
-		paper.setBounds(110,80,120,24);
-		paper.setText("纸箱（5元）");
-		paper.setFont(font5);
-		paper.setBackground(Color.WHITE);
+		freight.setBounds(152,80,60,24);
+		freight.setText("运费：");
+		freight.setFont(font5);
+		freight.setBackground(Color.WHITE);
+		freight.setOpaque(true);
+		//到时候直接跟在后面写运费是多少
 		
-		wood.setBounds(230,80,120,24);
-		wood.setText("木箱（10元）");
-		wood.setFont(font5);
-		wood.setBackground(Color.WHITE);
-		
-		bag.setBounds(350,80,120,24);
-		bag.setText("快递袋（1元）");
-		bag.setFont(font5);
-		bag.setBackground(Color.WHITE);
-		
-		packGroup.add(paper);
-		packGroup.add(wood);
-		packGroup.add(bag);
+		amount.setBounds(255,80,80,24);
+		amount.setText("总费用：");
+		amount.setFont(font5);
+		amount.setBackground(Color.WHITE);
+		amount.setOpaque(true);
 		
 		expressType.setBounds(30,110,80,24);
 		expressType.setText("快递类型：");
@@ -300,37 +292,12 @@ public class Orderui extends ParentDocuments{
 		expressType.setBackground(Color.WHITE);
 		expressType.setOpaque(true);
 		
-		economic.setBounds(110,110,120,24);
-		economic.setText("经济快递");
-		economic.setFont(font5);
-		economic.setBackground(Color.WHITE);
+		amountField.setBounds(110,172,80,20);
+		amountField.setEditable(false);
+		amountField.setBackground(Color.WHITE);
+		amountField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
-		standard.setBounds(230,110,120,24);
-		standard.setText("标准快递");
-		standard.setFont(font5);
-		standard.setBackground(Color.WHITE);
-		
-		eMS.setBounds(350,110,120,24);
-		eMS.setText("特快专递");
-		eMS.setFont(font5);
-		eMS.setBackground(Color.WHITE);
-		
-		expressTypeGroup.add(economic);
-		expressTypeGroup.add(standard);
-		expressTypeGroup.add(eMS);
-		
-		carriage.setBounds(30,140,80,24);
-		carriage.setText("总费用：");
-		carriage.setFont(font5);
-		carriage.setBackground(Color.WHITE);
-		carriage.setOpaque(true);
-		
-		carriageField.setBounds(110,142,80,20);
-		carriageField.setEditable(false);
-		carriageField.setBackground(Color.WHITE);
-		carriageField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		
-		actualReceiver.setBounds(240,140,80,24);
+		actualReceiver.setBounds(240,140,80,24);//注意，要改
 		actualReceiver.setText("代收人：");
 		actualReceiver.setFont(font5);
 		actualReceiver.setBackground(Color.WHITE);
@@ -341,16 +308,11 @@ public class Orderui extends ParentDocuments{
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
-		expectedArrivalDate.setBounds(30,170,100,24);
+		expectedArrivalDate.setBounds(30,140,100,24);
 		expectedArrivalDate.setText("预计到达时间：");
 		expectedArrivalDate.setFont(font5);
 		expectedArrivalDate.setBackground(Color.WHITE);
 		expectedArrivalDate.setOpaque(true);
-		
-		expectedArrivalDateField.setBounds(130,172,100,20);
-		expectedArrivalDateField.setEditable(false);
-		expectedArrivalDateField.setBackground(Color.WHITE);
-		expectedArrivalDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		trueArrivalDate.setBounds(240,170,100,24);
 		trueArrivalDate.setText("实际到达时间：");
@@ -358,7 +320,7 @@ public class Orderui extends ParentDocuments{
 		trueArrivalDate.setBackground(Color.WHITE);
 		trueArrivalDate.setVisible(false);
 		
-		trueArrivalDateField.setBounds(340,172,100,20);
+		trueArrivalDateField.setBounds(340,232,100,20);
 		trueArrivalDateField.setEditable(false);
 		trueArrivalDateField.setBackground(Color.WHITE);
 		trueArrivalDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -368,22 +330,16 @@ public class Orderui extends ParentDocuments{
 		other.add(goodNumField);
 		other.add(goodNameField);
 		other.add(goodWeight);
-		other.add(goodVolume);
+		other.add(goodSize);
 		other.add(goodWeightField);
-		other.add(goodVolumeField);
+		other.add(goodSizeField);
 		other.add(pack);
-		other.add(paper);
-		other.add(wood);
-		other.add(bag);
 		other.add(expressType);
-		other.add(economic);
-		other.add(standard);
-		other.add(eMS);
-		other.add(carriage);
-		other.add(carriageField);
+		other.add(freight);
+		other.add(amount);
+		other.add(amountField);
 		other.add(actualReceiver);
 		other.add(expectedArrivalDate);
-		other.add(expectedArrivalDateField);
 		other.add(trueArrivalDate);
 		other.add(trueArrivalDateField);
 		
@@ -391,46 +347,8 @@ public class Orderui extends ParentDocuments{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				senderNameField.setEditable(false);
-				senderAddressField.setEditable(false);
-				senderCompanyField.setEditable(false);
-				senderPhoneField.setEditable(false);
-				receiverNameField.setEditable(false);
-				receiverAddressField.setEditable(false);
-				receiverCompanyField.setEditable(false);
-				receiverPhoneField.setEditable(false);
-				goodNumField.setEditable(false);
-				goodNameField.setEditable(false);
-				goodWeightField.setEditable(false);
-				goodVolumeField.setEditable(false);
-				carriageField.setEditable(false);
-				bag.setEnabled(false);
-				wood.setEnabled(false);
-				paper.setEnabled(false);
-				economic.setEnabled(false);
-				standard.setEnabled(false);
-				eMS.setEnabled(false);
-				double packingCharge=0;
-				if(bag.isSelected()){
-					packingCharge=1;
-					orderVO.setNumOfBags(1);
-				}else if(wood.isSelected()){
-					packingCharge=10;
-					orderVO.setNumOfWoodenBox(1);
-				}
-				else if(paper.isSelected()){
-					packingCharge=5;
-					orderVO.setNumOfCartons(1);
-				}
-				ExpressType express=null;
-				if(economic.isSelected()){
-					express=ExpressType.Economic;
-				}else if(standard.isSelected()){
-					express=ExpressType.Standard;
-				}
-				else if(eMS.isSelected()){
-					express=ExpressType.EMS;
-				}
+				refresh();
+//				double packingCharge=0;
 //				orderblservice=new Order();
 //				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
 //				carriageField.setText(String.valueOf(totalcost));
@@ -445,9 +363,9 @@ public class Orderui extends ParentDocuments{
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
 //				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
-				orderVO.setExpressType(express);
+//				orderVO.setExpressType(express);
 //				orderVO.setTotalCost(totalcost);
-				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
+				orderVO.setSize(Double.valueOf(goodSizeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
 //				orderVO.setGenerateDate(orderblservice.generateDate());
@@ -473,35 +391,9 @@ public class Orderui extends ParentDocuments{
 				goodNumField.setEditable(false);
 				goodNameField.setEditable(false);
 				goodWeightField.setEditable(false);
-				goodVolumeField.setEditable(false);
-				carriageField.setEditable(false);
-				bag.setEnabled(false);
-				wood.setEnabled(false);
-				paper.setEnabled(false);
-				economic.setEnabled(false);
-				standard.setEnabled(false);
-				eMS.setEnabled(false);
+				goodSizeField.setEditable(false);
+				amountField.setEditable(false);
 				double packingCharge=0;
-				if(bag.isSelected()){
-					packingCharge=1;
-					orderVO.setNumOfBags(1);
-				}else if(wood.isSelected()){
-					packingCharge=10;
-					orderVO.setNumOfWoodenBox(1);
-				}
-				else if(paper.isSelected()){
-					packingCharge=5;
-					orderVO.setNumOfCartons(1);
-				}
-				ExpressType express=null;
-				if(economic.isSelected()){
-					express=ExpressType.Economic;
-				}else if(standard.isSelected()){
-					express=ExpressType.Standard;
-				}
-				else if(eMS.isSelected()){
-					express=ExpressType.EMS;
-				}
 //				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
 //				carriageField.setText(String.valueOf(totalcost));
 //				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
@@ -514,9 +406,9 @@ public class Orderui extends ParentDocuments{
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
 //				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
-				orderVO.setExpressType(express);
+//				orderVO.setExpressType(express);
 //				orderVO.setTotalCost(totalcost);
-				orderVO.setSize(Double.valueOf(goodVolumeField.getText()));
+				orderVO.setSize(Double.valueOf(goodSizeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
 //				orderVO.setGenerateTime(orderblservice.generateDate());
@@ -528,25 +420,7 @@ public class Orderui extends ParentDocuments{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				senderNameField.setEditable(true);
-				senderAddressField.setEditable(true);
-				senderCompanyField.setEditable(true);
-				senderPhoneField.setEditable(true);
-				receiverNameField.setEditable(true);
-				receiverAddressField.setEditable(true);
-				receiverCompanyField.setEditable(true);
-				receiverPhoneField.setEditable(true);
-				goodNumField.setEditable(true);
-				goodNameField.setEditable(true);
-				goodWeightField.setEditable(true);
-				goodVolumeField.setEditable(true);
-				carriageField.setEditable(true);
-				bag.setEnabled(true);
-				wood.setEnabled(true);
-				paper.setEnabled(true);
-				economic.setEnabled(true);
-				standard.setEnabled(true);
-				eMS.setEnabled(true);
+				modifying();
 			}
 		});
 		
@@ -555,5 +429,67 @@ public class Orderui extends ParentDocuments{
 		this.add(receiver);
 		this.add(other);
 	}
+	
+	public void refresh() {
+		senderNameField.setEditable(false);
+		senderAddressField.setEditable(false);
+		senderCompanyField.setEditable(false);
+		senderPhoneField.setEditable(false);
+		receiverNameField.setEditable(false);
+		receiverAddressField.setEditable(false);
+		receiverCompanyField.setEditable(false);
+		receiverPhoneField.setEditable(false);
+		goodNumField.setEditable(false);
+		goodNameField.setEditable(false);
+		goodWeightField.setEditable(false);
+		goodSizeField.setEditable(false);
+		amountField.setEditable(false);
+		
+		senderNameField.setBackground(Color.white);
+//		senderNameField.setBorder(null);
+		senderAddressField.setBackground(Color.white);
+		senderCompanyField.setBackground(Color.white);
+		senderPhoneField.setBackground(Color.white);
+		receiverAddressField.setBackground(Color.white);
+		receiverNameField.setBackground(Color.white);
+		receiverCompanyField.setBackground(Color.white);
+		receiverPhoneField.setBackground(Color.white);
+		goodNameField.setBackground(Color.white);
+		goodNumField.setBackground(Color.white);
+		goodWeightField.setBackground(Color.white);
+		goodSizeField.setBackground(Color.white);
+		amountField.setBackground(Color.white);
 
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+		
+	}
+	
+	public void checking(OrderVO orderVO) {
+		//把VO的参数都设置进来
+	}
+
+	public void modifying() {
+		senderNameField.setEditable(true);
+		senderAddressField.setEditable(true);
+		senderCompanyField.setEditable(true);
+		senderPhoneField.setEditable(true);
+		receiverNameField.setEditable(true);
+		receiverAddressField.setEditable(true);
+		receiverCompanyField.setEditable(true);
+		receiverPhoneField.setEditable(true);
+		goodNumField.setEditable(true);
+		goodNameField.setEditable(true);
+		goodWeightField.setEditable(true);
+		goodSizeField.setEditable(true);
+		amountField.setEditable(true);
+	}
+	
+	public static void main(String[] args){
+		Courierui ui=new Courierui();
+		Orderui uiPanel=new Orderui();
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
 }

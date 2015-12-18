@@ -5,7 +5,6 @@ import state.TransportType;
 
 public class CalculateFreight {
 	public static String origin;
-	public static String agencyId;
 	
 	public static double expressFreight(String destination, double weight, ExpressType
 			eType) {

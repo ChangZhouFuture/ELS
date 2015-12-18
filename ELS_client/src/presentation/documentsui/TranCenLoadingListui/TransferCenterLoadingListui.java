@@ -2,23 +2,19 @@ package presentation.documentsui.TranCenLoadingListui;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
-import presentation.documentsui.BusiHallLoadingListui.BusinessHallLoadingListui;
-import presentation.userui.BusiHallClerkui;
+import presentation.reuse.ParentDocuments;
 import presentation.userui.TranCenClerkui;
 
-public class TransferCenterLoadingListui extends JPanel{
+public class TransferCenterLoadingListui extends ParentDocuments{
 	public JLabel busiLoadOrder;
 	public JLabel motorId;
 	public JTextField motorIdField;
@@ -37,7 +33,6 @@ public class TransferCenterLoadingListui extends JPanel{
 	public JButton addOrder;
 	public JTextArea orderList;
 	public JScrollPane scroller;
-	public JButton makeOrder;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();

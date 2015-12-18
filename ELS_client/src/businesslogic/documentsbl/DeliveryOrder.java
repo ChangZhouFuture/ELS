@@ -2,6 +2,7 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.DeliveryOrderPO;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
 import state.ResultMessage;
@@ -11,6 +12,7 @@ import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogic.utilitybl.Time;
+import businesslogic.utilitybl.UpdateLogisticsInfor;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 /**
  * 派件单
@@ -25,6 +27,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	private OrderlineitemVO orderlineitemVO;
 	private ArrayList<DeliveryOrderPO> arrayList;
 	private ArrayList<DeliveryOrderVO> arrayList2;
+	private UpdateLogisticsInfor updateLogisticsInfor;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
@@ -62,6 +65,12 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 			resultMessage = deliveryOrderdataservice.addDeliveryOrder(this.deliveryOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			updateLogisticsInfor = new UpdateLogisticsInfor();
+			updateLogisticsInfor.update(date, this.deliveryOrderVO.getOrderID(), date
+				+ " 订单正在派件中...");
 		}
 		javaBean1.setObject(this.deliveryOrderVO);		
 		javaBean1.setResultMessage(resultMessage);

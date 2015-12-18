@@ -38,22 +38,23 @@ public class ParentDocuments extends JPanel{
 		modifyOrder.setFont(font1);
 		modifyOrder.setBackground(Color.WHITE);
 		modifyOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		modifyOrder.setVisible(true);
+		modifyOrder.setVisible(false);
 		
 		approState.setBounds(500,445,90,24);
 		approState.setFont(font2);
 		approState.setBackground(Color.WHITE);
 		approState.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		//不显示是因为没有setText
 		
 		modify.setBounds(0,0,24,24);
 		modify.setIcon(Images.MODIFY_IMAGE);
 		modify.setBackground(Color.WHITE);
-		modify.setVisible(true);
+		modify.setVisible(false);
 		
 		delete.setBounds(24,0,24,24);
 		delete.setIcon(Images.DELETE_IMAGE);
 		delete.setBackground(Color.WHITE);
-		delete.setVisible(true);
+		delete.setVisible(false);
 		
 		this.add(makeOrder);
 		this.add(approState);

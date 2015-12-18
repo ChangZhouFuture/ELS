@@ -1,5 +1,5 @@
 package state;
 
 public enum OperaType {
-	Add,Delete;
+	Add,Delete,Modify,Use;
 }

@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.utilitybl.RecordOperaLog;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
 import po.lineitemPO.userlineitemPO.UserlineitemPO;
 import po.userPO.UserPO;
+import state.OperaType;
 import state.Position;
 import state.ResultMessage;
 import vo.lineitemVO.userlineitemVO.UserlineitemVO;
@@ -22,6 +24,7 @@ public class UserManagement implements UserManagementblservice{
 	private UserlineitemVO userlineitemVO;
 	private ArrayList<UserlineitemPO> arrayList;
 	private ArrayList<UserlineitemVO> arrayList2;
+	private RecordOperaLog recordOperaLog;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
@@ -50,6 +53,12 @@ public class UserManagement implements UserManagementblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Add, this.userVO.getPosition().
+					toString(), this.userVO.getId(), "管理员");
+		}
 		javaBean1.setObject(this.userVO);
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -70,6 +79,15 @@ public class UserManagement implements UserManagementblservice{
 			e.printStackTrace();
 		}
 		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			String id;
+			for (int i = 0; i < IDList.size(); i++) {
+				id = IDList.get(i);
+				recordOperaLog.recordOperaLog(OperaType.Delete, this.userVO.
+						getPosition().toString(), id, "管理员");
+			}
+		}
 		return resultMessage;
 	}
 

@@ -14,8 +14,10 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.CalculateFreight;
 import businesslogic.utilitybl.Time;
+import businesslogic.utilitybl.UpdateLogisticsInfor;
 import businesslogicservice.documentsblservice.TranCenLoadingListblservice;
 
 public class TranCenLoadingList implements TranCenLoadingListblservice{
@@ -28,6 +30,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	private ArrayList<TranCenLoadingListlineitemVO> arrayList2;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private UpdateLogisticsInfor updateLogisticsInfor;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	String date;
@@ -76,7 +79,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		tranCenLoadingListPO = new TranCenLoadingListPO();
 		this.tranCenLoadingListVO = tranCenLoadingListVO;
 		
-		this.tranCenLoadingListVO.setTranCenID(CalculateFreight.agencyId);
+		this.tranCenLoadingListVO.setTranCenID(Login.agencyID);
 		this.tranCenLoadingListVO.setLoadingDate(generateDate());
 		this.tranCenLoadingListVO.setGenerateTime(Time.generateTime());
 		this.tranCenLoadingListVO.setID(generateId());
@@ -89,6 +92,17 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 			resultMessage = tranCenLoadingListdataservice.addLoadingList(tranCenLoadingListPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			updateLogisticsInfor = new UpdateLogisticsInfor();
+			ArrayList<String> orderIDs = this.tranCenLoadingListVO.getOrderIDs();
+			String orderID;
+			for (int i = 0; i < orderIDs.size(); i++) {
+				orderID = orderIDs.get(i);
+				updateLogisticsInfor.update(date, orderID, date + " 订单已在" + 
+				Login.city + "中转中心装车");
+			}
 		}
 		javaBean1.setObject(this.tranCenLoadingListVO);
 		javaBean1.setResultMessage(resultMessage);

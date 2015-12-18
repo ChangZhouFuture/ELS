@@ -1,5 +1,6 @@
 package businesslogic.inforManagementbl;
 
+import state.OperaType;
 import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
 
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
+import businesslogic.utilitybl.RecordOperaLog;
 import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
 import po.inforManagementPO.BankAccountPO;
 /**
@@ -20,6 +23,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	private BankAccountInfordataservice bankAccountInfordataservice;
 	private BankAccountPO bankAccountPO;
 	private BankAccountVO bankAccountVO;
+	private RecordOperaLog recordOperaLog;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
@@ -45,6 +49,12 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Add, "银行账户", this.bankAccountVO
+					.getName(), "财务人员" + Login.id);
+		}
 		javaBean1.setObject(this.bankAccountVO);
 		javaBean1.setResultMessage(resultMessage);
 		
@@ -63,6 +73,16 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			String name;
+			for (int i = 0; i < IDList.size(); i++) {
+				name = IDList.get(i);
+				recordOperaLog.recordOperaLog(OperaType.Delete, "银行账户", name, 
+						"财务人员" + Login.id);
+			}
+		}
 		return resultMessage;
 	}
 
@@ -70,6 +90,11 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	public ResultMessage modify(String oldName, String newName) {
 		//调用数据层的修改方法,两个参数都传下去
 		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Modify, "银行账户", oldName + "->" +
+			newName, "财务人员" + Login.id);
+		}
 		return resultMessage;
 	}
 
@@ -111,6 +136,12 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	@Override
 	public ResultMessage use(String accountName) {
 		//调用数据层，把选择的账号设置为正在使用（先把所有的设置为没使用）
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Use, "银行账户", accountName, 
+					"财务人员" + Login.id);
+		}
 		return null;
 	}
 

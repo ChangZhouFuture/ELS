@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import bean.JavaBean2;
-import businesslogic.userbl.LoginAndOut;
-import businesslogicservice.userblservice.LoginAndOutblservice;
+import businesslogic.userbl.Login;
+import businesslogicservice.userblservice.Loginblservice;
 import presentation.controller.Accountant1Controller;
 import presentation.controller.Accountant2Controller;
 import presentation.controller.AdministratorController;
@@ -38,7 +38,7 @@ public class Loginui extends JFrame{
 	public JButton minimizeButton;
 	public JButton closeButton;
 	public Point origin = new Point();
-	public LoginAndOutblservice loginAndOutblservice;
+	public Loginblservice loginAndOutblservice;
 	public JavaBean2 javaBean2;
 	public CourierController courierController;
 	public Accountant1Controller accountant1Controller;
@@ -139,7 +139,7 @@ public class Loginui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				loginAndOutblservice=new LoginAndOut();
+				loginAndOutblservice=new Login();
 				javaBean2=loginAndOutblservice.login(userField.getText(),String.valueOf(passwordField.getPassword()));
 				String position=javaBean2.getPosition().toString();
 				switch (position) {

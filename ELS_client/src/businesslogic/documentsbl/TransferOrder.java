@@ -15,8 +15,10 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.CalculateFreight;
 import businesslogic.utilitybl.Time;
+import businesslogic.utilitybl.UpdateLogisticsInfor;
 import businesslogicservice.documentsblservice.TransferOrderblservice;
 /**
  * 
@@ -33,6 +35,7 @@ public class TransferOrder implements TransferOrderblservice {
 	private ArrayList<TransferOrderlineitemVO> arrayList2;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private UpdateLogisticsInfor updateLogisticsInfor;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
@@ -81,6 +84,18 @@ public class TransferOrder implements TransferOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			updateLogisticsInfor = new UpdateLogisticsInfor();
+			ArrayList<String> orderIDs = this.transferOrderVO.getOrderIDs();
+			String orderID;
+			for (int i = 0; i < orderIDs.size(); i++) {
+				orderID = orderIDs.get(i);
+				updateLogisticsInfor.update(date, orderID, date + " 订单已从" + 
+				Login.city + "中转中心发出,下一站： " + this.transferOrderVO.
+				getDestination() + "中转中心");
+			}
+		}
 		javaBean1.setObject(this.transferOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 
@@ -88,10 +103,10 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	public String generateId() {
-		String agencyId = CalculateFreight.agencyId;
+		String agencyId = Login.agencyID;
 		String id = null;
 		try {
-			id = CalculateFreight.agencyId+date+transferOrderdataservice.
+			id = Login.agencyID+date+transferOrderdataservice.
 					generateId(date, agencyId);
 		} catch (RemoteException e) {
 			e.printStackTrace();

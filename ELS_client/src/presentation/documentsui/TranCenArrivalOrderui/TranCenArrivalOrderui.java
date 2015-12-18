@@ -16,9 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.TranCenClerkui;
 
-public class TranCenArrivalOrderui extends JPanel{
+public class TranCenArrivalOrderui extends ParentDocuments{
 	JLabel TranCenArrivalOrder;
 	JLabel TranCen;
 	JTextField TranCenId;
@@ -27,7 +28,6 @@ public class TranCenArrivalOrderui extends JPanel{
 	JTextField TransferOrderId;
 	JTextField DepartureField;
 	JLabel GoodState;
-	JButton MakeOrder;
 	JRadioButton Complete;
 	JRadioButton Damaged;
 	JRadioButton Lost;
@@ -45,7 +45,6 @@ public class TranCenArrivalOrderui extends JPanel{
 	public TranCenArrivalOrderui(){
 		TranCenArrivalOrder=new JLabel();
 		Departure=new JLabel();
-		MakeOrder=new JButton();
 		TransferOrder=new JLabel();
 		TranCen=new JLabel();
 		TranCenId=new JTextField();
@@ -137,12 +136,6 @@ public class TranCenArrivalOrderui extends JPanel{
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		MakeOrder.setBounds(260,442,96,30);
-		MakeOrder.setText("确认生成");
-		MakeOrder.setFont(font1);
-		MakeOrder.setBackground(Color.WHITE);
-		MakeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(TranCenArrivalOrder);
 		this.add(TransferOrder);
 		this.add(TranCen);
@@ -156,7 +149,6 @@ public class TranCenArrivalOrderui extends JPanel{
 		this.add(scroller);
 		this.add(TransferOrderId);
 		this.add(DepartureField);
-		this.add(MakeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

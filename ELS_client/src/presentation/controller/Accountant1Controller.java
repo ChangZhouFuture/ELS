@@ -169,7 +169,6 @@ public class Accountant1Controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				bankAccountui=new BankAccountui();
 				childPanel=bankAccountui;
 				childPanel.setLocation(0,0);

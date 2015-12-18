@@ -16,10 +16,11 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.ParentDocuments;
 import presentation.userui.Accountantui2;
 
 
-public class PaymentOrderui extends JPanel{
+public class PaymentOrderui extends ParentDocuments{
 	public JLabel paymentOrder;
 	public JLabel paymentDate;
 	public JTextField yearField;
@@ -43,7 +44,6 @@ public class PaymentOrderui extends JPanel{
 	public JLabel remarks;
 	public JTextArea remarksArea;
 	public JScrollPane scroller;
-	public JButton makeOrder;
 	
 	public static void main(String[] args){
 		Accountantui2 ui=new Accountantui2();
@@ -74,7 +74,6 @@ public class PaymentOrderui extends JPanel{
 		rent=new JRadioButton();
 		remarks=new JLabel();
 		remarksArea=new JTextArea();
-		makeOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -191,12 +190,6 @@ public class PaymentOrderui extends JPanel{
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		
 		this.add(paymentOrder);
 		this.add(paymentDate);
 		this.add(yearField);
@@ -218,7 +211,6 @@ public class PaymentOrderui extends JPanel{
 		this.add(rent);
 		this.add(remarks);
 		this.add(scroller);
-		this.add(makeOrder);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);

@@ -2,12 +2,16 @@ package businesslogic.inforManagementbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.inforManagementdataservice.DriversInfordataservice;
+import state.OperaType;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
 import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
+import businesslogic.utilitybl.RecordOperaLog;
 import businesslogicservice.inforManagementblservice.DriversInforblservice;
 import po.inforManagementPO.DriversPO;
 import po.lineitemPO.inforManagementlineitemPO.DriverslineitemPO;
@@ -24,6 +28,7 @@ public class DriversInfor implements DriversInforblservice {
 	private DriverslineitemPO driverslineitemPO;
 	private ArrayList<DriverslineitemPO> arrayList;
 	private ArrayList<DriverslineitemVO> arrayList2;
+	private RecordOperaLog recordOperaLog;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
@@ -47,6 +52,12 @@ public class DriversInfor implements DriversInforblservice {
 			resultMessage = driversInfordataservice.add(driversPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			recordOperaLog.recordOperaLog(OperaType.Add, "司机", this.driversVO.getID()
+					, "营业厅业务员" + Login.id);
 		}
 		javaBean1.setObject(this.driversVO);
 		javaBean1.setResultMessage(resultMessage);
@@ -118,6 +129,16 @@ public class DriversInfor implements DriversInforblservice {
 			resultMessage = driversInfordataservice.deleteMany(IDList);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			recordOperaLog = new RecordOperaLog();
+			String driverID;
+			for (int i = 0; i < IDList.size(); i++) {
+				driverID = IDList.get(i);
+				recordOperaLog.recordOperaLog(OperaType.Delete, "司机", this.driversVO.
+					getID(), "营业厅业务员" + Login.id);
+			}
 		}
 		return resultMessage;
 	}

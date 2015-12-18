@@ -36,7 +36,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 	}
 	
 	public BusiHallArrivalOrderListui(){
-		sheetLabel.setText("接收信息管理");
+		sheetLabel.setText("营业厅到达单管理");
 		
 		dateFind.addActionListener(new ActionListener() {
 			
