@@ -26,6 +26,7 @@ public class StorageList implements StorageListblservice {
 	private ArrayList<StorageListVO> arrayList2;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private Stock stock;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	private String date;

@@ -133,6 +133,11 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		bankAccountPO.setUsage(bankAccountVO.getUsage());
 	}
 
+	public String whichIsUsing() {
+		
+		return null;
+	}
+	
 	@Override
 	public ResultMessage use(String accountName) {
 		//调用数据层，把选择的账号设置为正在使用（先把所有的设置为没使用）

@@ -9,15 +9,6 @@ import vo.documentsVO.PaymentOrderVO;
 public interface PaymentOrderblservice {
 	/**
 	 * 
-	 * @param accountName
-	 * @return
-	 * 前置条件：财务人员已经输入所有参数
-	 * 后置条件：判断账户是否存在
-	 */
-	public ResultMessage addPaymentAccount(String accountName);
-	
-	/**
-	 * 
 	 * @param date4PaymentOrder
 	 * @param amount4PaymentOrder
 	 * @param remitter

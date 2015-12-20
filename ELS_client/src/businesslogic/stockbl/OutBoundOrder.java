@@ -27,6 +27,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	private ArrayList<OutBoundOrderVO> arrayList2;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private Stock stock;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	private String date;

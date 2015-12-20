@@ -34,15 +34,14 @@ public class PaymentOrder implements PaymentOrderblservice {
 		}
 	}
 	
-	@Override
-	public ResultMessage addPaymentAccount(String accountName) {
+	public String generatePaymentAccount() {
 //		try {
 //			resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
 //		} catch (RemoteException e) {
 //			e.printStackTrace();
 //		}
 		//添加银行账户只用返回结果信息，不需要PO
-		return resultMessage;
+		return null;
 	}
 
 	@Override
