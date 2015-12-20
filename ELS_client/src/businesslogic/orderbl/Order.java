@@ -114,10 +114,7 @@ public class Order implements Orderblservice {
 		this.orderVO.setGenerateDate(orderPO.getGenerateTime());
 		this.orderVO.setGoodsName(orderPO.getGoodsName());
 		this.orderVO.setId(orderPO.getId());
-		this.orderVO.setNumOfBags(orderPO.getNumOfBags());
-		this.orderVO.setNumOfCartons(orderPO.getNumOfCartons());
 		this.orderVO.setNumOfGoods(orderPO.getNumOfGoods());
-		this.orderVO.setNumOfWoodenBox(orderPO.getNumOfWoodenBox());
 		this.orderVO.setPackingCharge(orderPO.getPackingCharge());
 		this.orderVO.setSenderAdd(orderPO.getSenderAdd());
 		this.orderVO.setSenderCompany(orderPO.getSenderCompany());
@@ -231,10 +228,7 @@ public class Order implements Orderblservice {
 		this.orderPO.setGenerateTime(orderVO.getGenerateTime());
 		this.orderPO.setGoodsName(orderVO.getGoodsName());
 		this.orderPO.setId(orderVO.getId());
-		this.orderPO.setNumOfBags(orderVO.getNumOfBags());
-		this.orderPO.setNumOfCartons(orderVO.getNumOfCartons());
 		this.orderPO.setNumOfGoods(orderVO.getNumOfGoods());
-		this.orderPO.setNumOfWoodenBox(orderVO.getNumOfWoodenBox());
 		this.orderPO.setPackingCharge(orderVO.getPackingCharge());
 		this.orderPO.setSenderAdd(orderVO.getSenderAdd());
 		this.orderPO.setSenderCompany(orderVO.getSenderCompany());

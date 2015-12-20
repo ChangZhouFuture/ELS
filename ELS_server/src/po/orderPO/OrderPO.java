@@ -28,9 +28,6 @@ public class OrderPO implements Serializable{
 	private double packingCharge;
 	private double totalCost;
 	private int numOfGoods;
-	private int numOfCartons;
-	private int numOfWoodenBox;
-	private int numOfBags;
 	private ApproState approState;
 	private ExpressType expressType;
 	private ExpressArrivalStatus expressArrivalStatus;
@@ -163,24 +160,6 @@ public class OrderPO implements Serializable{
 	}
 	public void setExpressType(ExpressType expressType) {
 		this.expressType = expressType;
-	}
-	public int getNumOfCartons() {
-		return numOfCartons;
-	}
-	public void setNumOfCartons(int numOfCartons) {
-		this.numOfCartons = numOfCartons;
-	}
-	public int getNumOfWoodenBox() {
-		return numOfWoodenBox;
-	}
-	public void setNumOfWoodenBox(int numOfWoodenBox) {
-		this.numOfWoodenBox = numOfWoodenBox;
-	}
-	public int getNumOfBags() {
-		return numOfBags;
-	}
-	public void setNumOfBags(int numOfBags) {
-		this.numOfBags = numOfBags;
 	}
 	public String getId() {
 		return id;

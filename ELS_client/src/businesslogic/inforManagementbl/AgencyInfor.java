@@ -130,7 +130,7 @@ public class AgencyInfor implements AgencyInforblservice{
 		}
 		
 		try {
-			id += agencyInfordataservice.generateID();
+			id = agencyInfordataservice.generateID(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
