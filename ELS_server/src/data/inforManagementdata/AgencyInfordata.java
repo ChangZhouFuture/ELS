@@ -121,26 +121,27 @@ public ResultMessage update(AgencyPO po){
 	}
 }
 @Override
-public String generateID(AgencyType agencyType) throws RemoteException {
+public String generateID(String firstPart) throws RemoteException {
 	// TODO Auto-generated method stub
 	String sql="select * from agency where agencyType=?";
 	int subId=0;
 	int temp=0;
 	try {
 		stmt=con.prepareStatement(sql);
-		stmt.setString(1, agencyType.toString());
 		ResultSet rs=stmt.executeQuery();
 		while(rs.next()){
-			subId=Integer.parseInt(rs.getString("ID").substring(4));
-			if(temp<subId){
-				temp=subId;
-			}temp++;
+			if(rs.getString("ID").substring(0, 4).equals(firstPart)){
+				subId=Integer.parseInt(rs.getString("ID").substring(4));
+				if(temp<subId){
+					temp=subId;
+				}temp++;
+			}
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return String.valueOf(temp);
+	return firstPart+String.valueOf(temp);
 }
 @Override
 public JavaBean1 findB(AgencyType agencyType) throws RemoteException {

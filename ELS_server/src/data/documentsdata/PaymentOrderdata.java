@@ -33,25 +33,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
     JavaBean1 jb1;
     PaymentOrderPO po;
     GenerateId g;
-	@Override
-	public BankAccountPO addPaymentAccount(String accountName) {
-		// TODO Auto-generated method stub
-		BankAccountPO bankAccountPO=new BankAccountPO();
-		String sql="select * from bankaccount where name=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, accountName);
-			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				bankAccountPO.setName(accountName);
-				bankAccountPO.setAmount(rs.getDouble("amount"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return bankAccountPO;
-	}
+
 
 	@Override
 	public ResultMessage deleteOne(String id) {
@@ -130,14 +112,22 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(6, po.getEntry());
 			stmt.setString(7, po.getNote());
 			stmt.executeUpdate();
+			sql="select * from costandincome";
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			double cost=rs.getDouble("cost");
+			double profit=rs.getDouble("profit");
+			sql="update costandincome set cost=?,profit=?";
+			stmt=con.prepareStatement(sql);
+			stmt.setDouble(1, cost+po.getAmount());
+			stmt.setDouble(2, profit-po.getAmount());
+			stmt.executeQuery();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.Fail;
 		}
-		
-	
 	}
 
 	@Override

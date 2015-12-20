@@ -10,7 +10,7 @@ import state.ResultMessage;
 
 public interface PaymentOrderdataservice extends ParentDocumentsdataservice{
 	
-	public BankAccountPO addPaymentAccount(String accountName) throws RemoteException;
+	
 	
 	/**
 	 * 

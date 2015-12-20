@@ -63,15 +63,14 @@ public interface ReceivablesOrderdataservice extends ParentDocumentsdataservice{
 	public JavaBean1 findA(String id) throws RemoteException;
 	
 	public JavaBean1 findB(String date) throws RemoteException;
-	
-	public ArrayList<OrderlineitemPO> generateOrder(String courierId) throws RemoteException;
-	
-	public double generateAmount(ArrayList<String> ordersId) throws RemoteException;
+
 	/**
 	 * 前置条件：收款单信息处理完成 
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象
 	 */
 	public ResultMessage update(ReceivablesOrderPO receivablesOrderPO) throws RemoteException;
+	
+	public double generateAmount(ArrayList<String> orderIdList)  throws RemoteException;
 	
 	public String generateId(String date) throws RemoteException;
 }

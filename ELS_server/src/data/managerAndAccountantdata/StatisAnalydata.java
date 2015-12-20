@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import bean.JavaBean1;
 import data.utility.Database;
-import data.utility.TimeCompare;
 import po.StatisAnalyPO.CostAndIncomePO;
 import state.ResultMessage;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
@@ -21,54 +20,33 @@ StatisAnalydataservice{
     JavaBean1 jb1;
     PreparedStatement stmt;
     CostAndIncomePO costAndIncomePO;
-    TimeCompare timeCompare;
     
 	public StatisAnalydata() throws RemoteException {
 		super();
 	}
 
 	@Override
-	public JavaBean1 BusinessSituation(String StartDate, String EndDate) {
-		return null;
-	}
-
-	@Override
-	public JavaBean1 CostAndIncome(String date) {
+	public JavaBean1 CostAndIncome() {
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		timeCompare=new TimeCompare();
 		costAndIncomePO=new CostAndIncomePO();
-		String sql="select * from receivablesorde";
-		double income=0;
-		double cost=0;
-		double profit;
-		try {
+		String sql="select * from costandincome";
+        try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(timeCompare.dateCompare(date, rs.getString("date"))==3){
-					income=income+rs.getDouble("amount");
-					jb1.setResultMessage(ResultMessage.Success);
-				}
+				costAndIncomePO.setCost(rs.getDouble("cost"));
+				costAndIncomePO.setIncome(rs.getDouble("income"));
+				costAndIncomePO.setProfit(rs.getDouble("profit"));
+				jb1.setResultMessage(ResultMessage.Success);
+				jb1.setObject(costAndIncomePO);
 			}
-			sql="select * from paymentorder";
-			stmt=con.prepareStatement(sql);
-			rs=stmt.executeQuery();
-			while(rs.next()){
-				if(timeCompare.dateCompare(date, rs.getString("date"))==3){
-					cost=cost+rs.getDouble("amount");
-					jb1.setResultMessage(ResultMessage.Success);
-				}
-			}profit=income=cost;
-			costAndIncomePO.setIncome(income);
-			costAndIncomePO.setCost(cost);
-			costAndIncomePO.setProfit(profit);
-			jb1.setObject(costAndIncomePO);
-			return jb1;
+		    return jb1;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return jb1;
-		}
+		}	
 	}
 
 

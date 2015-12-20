@@ -21,5 +21,5 @@ public interface AgencyInfordataservice extends Remote{
 	
 	public JavaBean1 findB(AgencyType agencyType) throws RemoteException;;
 	
-	public String generateID(AgencyType agencyType) throws RemoteException;
+	public String generateID(String firstPart) throws RemoteException;
 }

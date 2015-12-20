@@ -39,9 +39,9 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	public ResultMessage add(OrderPO po) {
 		// TODO Auto-generated method stub
 		String sql="insert into dingdanorder(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
-				+ "addresseeCompany,addresseePhone,goodName,numOfGoods,weight,size,freight,expressType,numOfCatons,"
-				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,date,expressArrivalStatus)values"
-				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "addresseeCompany,addresseePhone,goodName,numOfGoods,weight,size,freight,expressType,"
+				+ "packingCharge,totalCost,expectedArrivalDate,date,expressArrivalStatus)values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
@@ -59,14 +59,11 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(13, po.getSize());
 			stmt.setDouble(14, po.getFreight());
 			stmt.setString(15, po.getExpressType().toString());
-			stmt.setInt(16, po.getNumOfCartons());
-			stmt.setInt(17, po.getNumOfWoodenBox());
-			stmt.setInt(18, po.getNumOfBags());
-			stmt.setDouble(19, po.getPackingCharge());
-			stmt.setDouble(20, po.getTotalCost());
-			stmt.setString(21, po.getExpectedArrivalDate());
-			stmt.setString(22, po.getDate());
-			stmt.setString(23, po.getExpressArrivalStatus().toString());
+			stmt.setDouble(16, po.getPackingCharge());
+			stmt.setDouble(17, po.getTotalCost());
+			stmt.setString(18, po.getExpectedArrivalDate());
+			stmt.setString(19, po.getDate());
+			stmt.setString(20, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -136,13 +133,10 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setSize(rs.getDouble(14));
 				po.setFreight(rs.getDouble(15));
 				po.setExpressType(ExpressType.valueOf(rs.getString(16)));
-				po.setNumOfCartons(rs.getInt(17));
-				po.setNumOfWoodenBox(rs.getInt(18));
-				po.setNumOfBags(rs.getInt(19));
-				po.setPackingCharge(rs.getDouble(20));
-				po.setTotalCost(rs.getDouble(21));
-				po.setExpectedArrivalDate(rs.getString(22));
-				po.setArrivalDate(rs.getString(23));
+				po.setPackingCharge(rs.getDouble(17));
+				po.setTotalCost(rs.getDouble(18));
+				po.setExpectedArrivalDate(rs.getString(19));
+				po.setArrivalDate(rs.getString(20));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setDate(rs.getString("date"));
 				po.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
@@ -210,11 +204,12 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		String sql="update dingdanorder set senderName=?,senderAdd=?,senderCompany=?,senderPhone=?,"
 				+ "addresseeName=?,addresseeAdd=?,addresseeCompany=?,addresseePhone=?,"
 				+ "trueAddressee=?,goodName=?,numOfGoods=?,"
-				+ "weight=?,size=?,freight=?,expressType=?,numOfCatons=?,numOfWoodenBox=?,numOfBags=?,"
-				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,date=?,expressArrivalStatus=? where ID=?";
+				+ "weight=?,size=?,freight=?,expressType=?,"
+				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,"
+				+ "date=?,expressArrivalStatus=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(25, po.getId());
+			stmt.setString(22, po.getId());
 			stmt.setString(1, po.getSenderName());
 			stmt.setString(2, po.getSenderAdd());
 			stmt.setString(3, po.getSenderCompany());
@@ -230,15 +225,12 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(13, po.getSize());
 			stmt.setDouble(14, po.getFreight());
 			stmt.setString(15, po.getExpressType().toString());
-			stmt.setInt(16, po.getNumOfCartons());
-			stmt.setInt(17, po.getNumOfWoodenBox());
-			stmt.setInt(18, po.getNumOfBags());
-			stmt.setDouble(19, po.getPackingCharge());
-			stmt.setDouble(20, po.getTotalCost());
-			stmt.setString(21, po.getExpectedArrivalDate());
-			stmt.setString(22, po.getArrivalDate());
-			stmt.setString(23, po.getDate());
-			stmt.setString(24, po.getExpressArrivalStatus().toString());
+			stmt.setDouble(16, po.getPackingCharge());
+			stmt.setDouble(17, po.getTotalCost());
+			stmt.setString(18, po.getExpectedArrivalDate());
+			stmt.setString(19, po.getArrivalDate());
+			stmt.setString(20, po.getDate());
+			stmt.setString(21, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

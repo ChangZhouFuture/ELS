@@ -15,7 +15,6 @@ import bean.JavaBean4;
 import bean.JavaBean5;
 import data.userdata.Logindata;
 import data.utility.Database;
-import data.utility.TimeCompare;
 import po.stockPO.StockPO;
 import state.ResultMessage;
 import dataservice.stockdataservice.Stockdataservice;
@@ -45,7 +44,6 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		jb3=new JavaBean3();
 		po=new StockPO();
 		ArrayList<StockPO> pos=new ArrayList<>();
-		TimeCompare tc=new TimeCompare();
 		String sql="select * from batchnum";
 		int batchNum;
 		String lastNum;
@@ -55,7 +53,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				if(tc.dateCompare(date,rs.getString("date"))==2){
+				if(date.equals(rs.getString("date"))){
 					if(Integer.parseInt(rs.getString("batchNum"))>batchNum){
 						batchNum=Integer.parseInt(rs.getString("batchNum"));
 					}	
@@ -229,9 +227,11 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 
 
 	@Override
-	public JavaBean5 stockCheck(String startDate, String endDate) throws RemoteException {
+	public JavaBean5 stockCheck(ArrayList<String> dateList) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
