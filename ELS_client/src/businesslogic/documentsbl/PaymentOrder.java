@@ -2,12 +2,15 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.PaymentOrderPO;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.inforManagementbl.BankAccountInfor;
+import businesslogic.managerAndAccountantbl.StatisAnaly;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
 
@@ -17,6 +20,8 @@ public class PaymentOrder implements PaymentOrderblservice {
 	private PaymentOrderPO paymentOrderPO;
 	private ArrayList<PaymentOrderPO> arrayList;
 	private ArrayList<PaymentOrderVO> arrayList2;
+	private BankAccountInfor bankAccountInfor;
+	private StatisAnaly statisAnaly;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;

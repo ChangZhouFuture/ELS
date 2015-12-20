@@ -46,13 +46,11 @@ public class StorageList implements StorageListblservice {
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateId() {
 		//调用数据层方法
 		return null;
 	}
 
-	@Override
 	public String generateTime() {
 		date = Time.generateDate();
 		return date;
@@ -172,12 +170,6 @@ public class StorageList implements StorageListblservice {
 			
 			arrayList2.add(storageListVO);
 		}
-	}
-
-	@Override
-	public void endSL() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

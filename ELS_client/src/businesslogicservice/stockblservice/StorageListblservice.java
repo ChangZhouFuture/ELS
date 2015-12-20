@@ -21,16 +21,6 @@ public interface StorageListblservice {
 	public OrderlineitemVO addExpress(String expressID);
 	
 	/**
-	 * 自动计算出入库单id
-	 */
-	public String generateId();
-	
-	/**
-	 * 自动计算出生成入库单的日期
-	 */
-	public String generateTime();
-		
-	/**
 	 * 
 	 * @param id4e
 	 * @param id4to
@@ -76,10 +66,4 @@ public interface StorageListblservice {
 	 * @return 根据时间查询某出库单,返回入库单VO信息
 	 */
 	public JavaBean1 inquireB(String date);
-	
-	/**
-	 * 
-	 * 结束此次与出库单相关的业务，持久化更新涉及的领域对象的数据
-	 */
-	public void endSL();
 }

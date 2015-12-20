@@ -3,6 +3,7 @@ package po.orderPO;
 import java.io.Serializable;
 
 import state.ApproState;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 
 public class OrderPO implements Serializable{
@@ -32,8 +33,15 @@ public class OrderPO implements Serializable{
 	private int numOfBags;
 	private ApproState approState;
 	private ExpressType expressType;
+	private ExpressArrivalStatus expressArrivalStatus;
 	private String date;
 	
+	public ExpressArrivalStatus getExpressArrivalStatus() {
+		return expressArrivalStatus;
+	}
+	public void setExpressArrivalStatus(ExpressArrivalStatus expressArrivalStatus) {
+		this.expressArrivalStatus = expressArrivalStatus;
+	}
 	public String getGenerateDate() {
 		return generateDate;
 	}

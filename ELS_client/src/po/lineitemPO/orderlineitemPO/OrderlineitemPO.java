@@ -3,6 +3,7 @@ package po.lineitemPO.orderlineitemPO;
 import java.io.Serializable;
 
 import state.ApproState;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 
 public class OrderlineitemPO implements Serializable{
@@ -13,7 +14,14 @@ public class OrderlineitemPO implements Serializable{
 	private double totalCost;
     private ExpressType expressType;
     private ApproState approState;
+    private ExpressArrivalStatus expressArrivalStatus;
     
+	public ExpressArrivalStatus getExpressArrivalStatus() {
+		return expressArrivalStatus;
+	}
+	public void setExpressArrivalStatus(ExpressArrivalStatus expressArrivalStatus) {
+		this.expressArrivalStatus = expressArrivalStatus;
+	}
 	public ApproState getApproState() {
 		return approState;
 	}

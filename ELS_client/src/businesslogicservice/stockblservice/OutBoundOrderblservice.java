@@ -21,18 +21,6 @@ public interface OutBoundOrderblservice {
 	 * 
 	 */
 	public OrderlineitemVO addExpress(String expressID);
-	
-	/**
-	 * 前置条件：已添加所有出库单信息
-	 * 后置条件：自动计算出出库单id
-	 */
-	public String generateId();
-	
-	/**
-	 * 前置条件：已添加所有出库单信息（不包括时间）
-	 * 后置条件：自动计算出生成出库单的日期和具体时间
-	 */
-	public String generateTime();
 		
 	/**
 	 * 
@@ -91,13 +79,5 @@ public interface OutBoundOrderblservice {
 	 * 后置条件：根据时间查询某出库单,返回出库单VO信息
 	 */
 	public JavaBean1 inquireB(String date);
-	
-	/**
-	 * 
-	 * 前置条件：业务已经处理完成
-	 * 后置条件：结束此次与出库单相关的业务，持久化更新涉及的领域对象的数据
-	 */
-	public void endOBO();
-
 
 }

@@ -47,7 +47,6 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		return orderlineitemVO;
 	}
 
-	@Override
 	public String generateId() {
 		String id = null;
 //		id = "" + outBoundOrderdataservice.gene
@@ -55,7 +54,6 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		return id;
 	}
 
-	@Override
 	public String generateTime() {
 		date = Time.generateDate();
 		return date;
@@ -172,12 +170,6 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 			
 			arrayList2.add(outBoundOrderVO);
 		}
-	}
-	
-	@Override
-	public void endOBO() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

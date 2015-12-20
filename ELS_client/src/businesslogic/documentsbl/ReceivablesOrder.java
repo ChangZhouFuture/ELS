@@ -2,6 +2,7 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.ReceivablesOrderPO;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 import state.ResultMessage;
@@ -9,6 +10,8 @@ import vo.documentsVO.ReceivablesOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.inforManagementbl.BankAccountInfor;
+import businesslogic.managerAndAccountantbl.StatisAnaly;
 import businesslogic.orderbl.Order;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
@@ -25,6 +28,8 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	private OrderlineitemVO orderlineitemVO;
 	private ArrayList<ReceivablesOrderPO> arrayList;
 	private ArrayList<ReceivablesOrderVO> arrayList2;
+	private BankAccountInfor bankAccountInfor;
+	private StatisAnaly statisAnaly;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	private String date;
