@@ -226,7 +226,7 @@ implements BusiHallArrivalOrderdataservice {
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "busihallarrivalorder");
+		return g.generateDocumentId(date, "busihallarrivalorder");
 	}
 
 	@Override

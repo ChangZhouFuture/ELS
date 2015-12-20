@@ -113,7 +113,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	public String generaId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "paymentorder");
+		return g.generateDocumentId(date, "paymentorder");
 	}
 
 	@Override

@@ -101,12 +101,12 @@ public ResultMessage deleteMany(ArrayList<String> names) {
 }
 
 //修改银行账户信息
-public ResultMessage update(BankAccountPO po){
+public ResultMessage update(String oldName,String newName){
 	try {
-		String sql=("UPDATE bankAccount SET amount=? WHERE name=?");
+		String sql=("UPDATE bankAccount SET name=? WHERE name=?");
 		stmt=con.prepareStatement(sql);
-		stmt.setDouble(1, po.getAmount());
-		stmt.setString(2, po.getName());
+		stmt.setString(1, newName);
+		stmt.setString(2, oldName);
 		stmt.executeUpdate();
 		return ResultMessage.Success;
 	} catch (SQLException e) {
@@ -146,7 +146,7 @@ public ResultMessage setInUse(String accountName) throws RemoteException {
 		stmt.setString(1, "InUse");
 		stmt.setString(2, accountName);
 		stmt.executeUpdate();
-		sql="update bankaccount set use=? where name<>?,use='Inuse'";
+		sql="update bankaccount set use=? where name<>?,use='InUse'";
 		stmt=con.prepareStatement(sql);
 		stmt.setString(1, "NotInUse");
 		stmt.setString(2, accountName);
@@ -157,6 +157,24 @@ public ResultMessage setInUse(String accountName) throws RemoteException {
 		e.printStackTrace();
 		return ResultMessage.NotExist;
 	}
+}
+
+@Override
+public String getInUse() throws RemoteException {
+	// TODO Auto-generated method stub
+	String sql="select * from bankaccount where use='InUse'";
+	String accountName=null;
+	try {
+		stmt=con.prepareStatement(sql);
+		ResultSet rs=stmt.executeQuery();
+		if(rs.next()){
+			accountName=rs.getString("name");
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return accountName;
 }
 
 //public static void main(String[] args) {

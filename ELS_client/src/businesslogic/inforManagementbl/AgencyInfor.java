@@ -123,7 +123,7 @@ public class AgencyInfor implements AgencyInforblservice{
 			break;
 		}
 		
-		if (agencyVO.getAgencyType()==AgencyType.BUSIHALL) {
+		if (agencyVO.getAgencyType()==AgencyType.BusinessHall) {
 			id += "1";
 		} else {
 			id += "0";

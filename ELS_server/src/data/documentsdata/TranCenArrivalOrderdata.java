@@ -224,7 +224,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "trancenarrivalorder");
+		return g.generateDocumentId(date, "trancenarrivalorder");
 	}
 
 }

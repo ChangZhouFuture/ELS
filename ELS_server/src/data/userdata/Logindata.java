@@ -48,6 +48,8 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 					if(rs.getString(2).equals(passWord)){
 						bean.setName(rs.getString("name"));
 						bean.setPosition(Position.valueOf(rs.getString("position")));
+						bean.setCity(rs.getString("city"));
+						bean.setRegion(rs.getString("region"));
 						bean.setResultMessage(ResultMessage.Success);
 						bean.setAgencyID(rs.getString("agencyID"));
 						agencyId=rs.getString("agencyID");

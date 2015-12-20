@@ -14,11 +14,13 @@ public interface BankAccountInfordataservice extends Remote{
     
     public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
     
-    public ResultMessage update(BankAccountPO po) throws RemoteException;
+    public ResultMessage update(String oldName,String newName) throws RemoteException;
     
     public JavaBean1 find(String Id) throws RemoteException;
     
     public ResultMessage updateBalance(double amount) throws RemoteException;
     
     public ResultMessage setInUse(String accountName) throws RemoteException;
+    
+    public String getInUse() throws RemoteException;
 }

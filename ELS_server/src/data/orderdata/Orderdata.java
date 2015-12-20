@@ -16,6 +16,7 @@ import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
 import state.ApproState;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 import state.ResultMessage;
 
@@ -38,9 +39,9 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	public ResultMessage add(OrderPO po) {
 		// TODO Auto-generated method stub
 		String sql="insert into dingdanorder(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
-				+ "addresseeCompany,addresseePhone,trueAddressee,goodName,numOfGoods,weight,size,freight,expressType,numOfCatons,"
-				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,trueArrivalDate,date)values"
-				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "addresseeCompany,addresseePhone,goodName,numOfGoods,weight,size,freight,expressType,numOfCatons,"
+				+ "numOfWoodenBox,numOfBags,packingCharge,totalCost,expectedArrivalDate,date,expressArrivalStatus)values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
@@ -51,22 +52,21 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setString(6, po.getAddresseeName());
 			stmt.setString(7, po.getAddresseeAdd());
 			stmt.setString(8, po.getAddresseeCompany());
-			stmt.setString(9, po.getAddresseePhoneNumber());
-			stmt.setString(10, po.getTrueAddressee());
-			stmt.setString(11, po.getGoodsName());
-			stmt.setInt(12, po.getNumOfGoods());
-			stmt.setDouble(13, po.getWeight());
-			stmt.setDouble(14, po.getSize());
-			stmt.setDouble(15, po.getFreight());
-			stmt.setString(16, po.getExpressType().toString());
-			stmt.setInt(17, po.getNumOfCartons());
-			stmt.setInt(18, po.getNumOfWoodenBox());
-			stmt.setInt(19, po.getNumOfBags());
-			stmt.setDouble(20, po.getPackingCharge());
-			stmt.setDouble(21, po.getTotalCost());
-			stmt.setString(22, po.getExpectedArrivalDate());
-			stmt.setString(23, po.getArrivalDate());
-			stmt.setString(24, po.getDate());
+			stmt.setString(9, po.getAddresseePhoneNumber());	
+			stmt.setString(10, po.getGoodsName());
+			stmt.setInt(11, po.getNumOfGoods());
+			stmt.setDouble(12, po.getWeight());
+			stmt.setDouble(13, po.getSize());
+			stmt.setDouble(14, po.getFreight());
+			stmt.setString(15, po.getExpressType().toString());
+			stmt.setInt(16, po.getNumOfCartons());
+			stmt.setInt(17, po.getNumOfWoodenBox());
+			stmt.setInt(18, po.getNumOfBags());
+			stmt.setDouble(19, po.getPackingCharge());
+			stmt.setDouble(20, po.getTotalCost());
+			stmt.setString(21, po.getExpectedArrivalDate());
+			stmt.setString(22, po.getDate());
+			stmt.setString(23, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -145,6 +145,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setArrivalDate(rs.getString(23));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setDate(rs.getString("date"));
+				po.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
 				jb1.setObject(po);
                 jb1.setResultMessage(ResultMessage.Success);
             }
@@ -177,6 +178,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 					llpo.setTotalCost(rs.getDouble("totalCost"));
 					llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
 					llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+					llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
 					llpos.add(llpo);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -189,6 +191,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 					llpo.setTotalCost(rs.getDouble("totalCost"));
 					llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
 					llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+					llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
 					llpos.add(llpo);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -208,10 +211,10 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				+ "addresseeName=?,addresseeAdd=?,addresseeCompany=?,addresseePhone=?,"
 				+ "trueAddressee=?,goodName=?,numOfGoods=?,"
 				+ "weight=?,size=?,freight=?,expressType=?,numOfCatons=?,numOfWoodenBox=?,numOfBags=?,"
-				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,date=? where ID=?";
+				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,date=?,expressArrivalStatus=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(23, po.getId());
+			stmt.setString(25, po.getId());
 			stmt.setString(1, po.getSenderName());
 			stmt.setString(2, po.getSenderAdd());
 			stmt.setString(3, po.getSenderCompany());
@@ -235,6 +238,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setString(21, po.getExpectedArrivalDate());
 			stmt.setString(22, po.getArrivalDate());
 			stmt.setString(23, po.getDate());
+			stmt.setString(24, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -261,6 +265,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				llpo.setTotalCost(rs.getDouble("totalCost"));
 				llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
 				llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+				llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -275,6 +280,23 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		// TODO Auto-generated method stub
 		g=new GenerateId();
 		return g.generateIdOfOrder(date);
+	}
+
+	@Override
+	public ResultMessage receive(String id,String date, String trueAddresseeName) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql="update dingdanorder set trueArrivalDate=?,trueAddressee=? where ID=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(3, id);
+			stmt.setString(1, date);
+			stmt.setString(2, trueAddresseeName);
+			return ResultMessage.Success;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.NotExist;
+		}
 	}
 
 }

@@ -233,7 +233,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "receivablesorder");
+		return g.generateDocumentId(date, "receivablesorder");
 	}
 	
 }

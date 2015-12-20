@@ -189,7 +189,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "deliveryorder");
+		return g.generateDocumentId(date, "deliveryorder");
 	}
 
 }

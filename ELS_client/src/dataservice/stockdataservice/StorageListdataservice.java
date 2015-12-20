@@ -66,4 +66,5 @@ public interface StorageListdataservice extends ParentDocumentsdataservice{
 	 */
 	public JavaBean1 findB(String date) throws RemoteException; 
 	
+	public String generateId(String date) throws RemoteException;
 }

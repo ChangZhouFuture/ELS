@@ -121,9 +121,53 @@ public ResultMessage update(AgencyPO po){
 	}
 }
 @Override
-public String generateID() throws RemoteException {
+public String generateID(AgencyType agencyType) throws RemoteException {
 	// TODO Auto-generated method stub
-	return null;
+	String sql="select * from agency where agencyType=?";
+	int subId=0;
+	int temp=0;
+	try {
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, agencyType.toString());
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next()){
+			subId=Integer.parseInt(rs.getString("ID").substring(4));
+			if(temp<subId){
+				temp=subId;
+			}temp++;
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return String.valueOf(temp);
+}
+@Override
+public JavaBean1 findB(AgencyType agencyType) throws RemoteException {
+	// TODO Auto-generated method stub
+	jb1=new JavaBean1();
+	jb1.setResultMessage(ResultMessage.NotExist);
+	po=new AgencyPO();
+	ArrayList<AgencyPO> pos=new ArrayList<>();
+	String sql="select * from agency where agencyType=?";
+	try {
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, agencyType.toString());
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next()){
+			po.setID(rs.getString("ID"));
+			po.setAgencyType(agencyType);
+			po.setCity(rs.getString("city"));
+			po.setRegion(rs.getString("region"));
+			jb1.setResultMessage(ResultMessage.Success);
+			pos.add(po);
+		}jb1.setObject(pos);
+		return jb1;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return jb1;
+	}
 }
 
 

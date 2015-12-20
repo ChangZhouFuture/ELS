@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
+import data.utility.GenerateId;
 import po.stockPO.OutBoundOrderPO;
 import state.ApproState;
 import state.ResultMessage;
@@ -27,6 +28,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
     PreparedStatement stmt;
     JavaBean1 jb1;
     OutBoundOrderPO po;
+    GenerateId g;
     
 	public OutBoundOrderdata() throws RemoteException {
 		super();
@@ -179,6 +181,13 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			e.printStackTrace();
 			return jb1;
 		}
+	}
+
+	@Override
+	public String generateId(String date) throws RemoteException {
+		// TODO Auto-generated method stub
+		g=new GenerateId();
+		return g.generateDocumentId(date, "outboundorder");
 	}
 
 

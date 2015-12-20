@@ -56,6 +56,8 @@ public interface Orderdataservice extends ParentDocumentsdataservice{
 	 */
 	public ResultMessage update(OrderPO orderPO) throws RemoteException;
 	
+	public ResultMessage receive(String id,String date,String trueAddresseeName) throws RemoteException;
+	
 	public OrderlineitemPO getOrderlineitemPO(String id) throws RemoteException;
 	
 	public String generateId(String date) throws RemoteException;

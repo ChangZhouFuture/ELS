@@ -221,7 +221,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "busihallloadinglist");
+		return g.generateDocumentId(date, "busihallloadinglist");
 	}
 
 	

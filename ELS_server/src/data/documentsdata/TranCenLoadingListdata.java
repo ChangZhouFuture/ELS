@@ -214,7 +214,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 	public String generateId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateOrderId(date, "trancenloadinglist");
+		return g.generateDocumentId(date, "trancenloadinglist");
 	}
 
 }

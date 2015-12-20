@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import bean.JavaBean1;
 import po.inforManagementPO.AgencyPO;
+import state.AgencyType;
 import state.ResultMessage;
 
 public interface AgencyInfordataservice extends Remote{
@@ -18,5 +19,7 @@ public interface AgencyInfordataservice extends Remote{
 	
 	public JavaBean1 find(String Id) throws RemoteException;
 	
-	public String generateID() throws RemoteException;
+	public JavaBean1 findB(AgencyType agencyType) throws RemoteException;;
+	
+	public String generateID(AgencyType agencyType) throws RemoteException;
 }
