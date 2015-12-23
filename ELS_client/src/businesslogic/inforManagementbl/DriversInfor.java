@@ -77,13 +77,11 @@ public class DriversInfor implements DriversInforblservice {
 		
 		driversVO.setID(driversPO.getID());
 		driversVO.setBirthDate(driversPO.getBirthDate());
-//		driversVO.setCity(driversPO.getCity());
 		driversVO.setDriveLimitDate(driversPO.getDriveLimitDate());
 		driversVO.setGender(driversPO.getGender());
 		driversVO.setIdentyNum(driversPO.getIdentyNum());
 		driversVO.setName(driversPO.getName());
 		driversVO.setPhone(driversPO.getPhone());
-//		driversVO.setRegion(driversPO.getRegion());
 		
 		javaBean1.setObject(driversVO);
 		return javaBean1;
@@ -161,19 +159,24 @@ public class DriversInfor implements DriversInforblservice {
 	public String generateID() {
 		//城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
 		//直接截取营业厅编号大部分，后面三位需要数据层生成
+		String id = null;
+		
+//		try {
+//			id = driversInfordataservice.generateID(Login.agencyID);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 
 	public void VOtoPO() {
 		driversPO.setID(driversVO.getID());
-//		driversPO.setCity(driversVO.getCity());
 		driversPO.setBirthDate(driversVO.getBirthDate());
 		driversPO.setDriveLimitDate(driversVO.getDriveLimitDate());
 		driversPO.setGender(driversVO.getGender());
 		driversPO.setIdentyNum(driversVO.getIdentyNum());
 		driversPO.setName(driversVO.getName());
 		driversPO.setPhone(driversVO.getPhone());
-//		driversPO.setRegion(driversVO.getRegion());
 	}
 	
 }

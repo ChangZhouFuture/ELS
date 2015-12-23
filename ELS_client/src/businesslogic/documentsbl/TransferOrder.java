@@ -106,8 +106,9 @@ public class TransferOrder implements TransferOrderblservice {
 		String agencyId = Login.agencyID;
 		String id = null;
 		try {
-			id = Login.agencyID+date+transferOrderdataservice.
+			id = transferOrderdataservice.
 					generateId(date, agencyId);
+			//返回完整的
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -183,8 +184,15 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	public TransferOrderlineitemVO getTransferOrderlineitemVO(String id) {
-//		transferOrderlineitemPO = transferOrderdataservice.
-		return null;
+		try {
+			transferOrderlineitemPO = transferOrderdataservice.getTransferOrderlineitemPO(
+					id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		lineitemPOtolineitemVO(1);
+		return transferOrderlineitemVO;
 	}
 
 	public void VOtoPO() {

@@ -25,12 +25,15 @@ public class OrderVO {
 	private double packingCharge;
 	private double totalCost;
 	private int numOfGoods;
-	private int numOfCartons;
-	private int numOfWoodenBox;
-	private int numOfBags;
 	private ApproState approState;
 	private ExpressType expressType;
 	
+	public int getNumOfGoods() {
+		return numOfGoods;
+	}
+	public void setNumOfGoods(int numOfGoods) {
+		this.numOfGoods = numOfGoods;
+	}
 	public String getGenerateTime() {
 		return generateTime;
 	}
@@ -150,30 +153,6 @@ public class OrderVO {
 	}
 	public void setTotalCost(double totalCost) {
 		this.totalCost = totalCost;
-	}
-	public int getNumOfGoods() {
-		return numOfGoods;
-	}
-	public void setNumOfGoods(int numOfGoods) {
-		this.numOfGoods = numOfGoods;
-	}
-	public int getNumOfCartons() {
-		return numOfCartons;
-	}
-	public void setNumOfCartons(int numOfCartons) {
-		this.numOfCartons = numOfCartons;
-	}
-	public int getNumOfWoodenBox() {
-		return numOfWoodenBox;
-	}
-	public void setNumOfWoodenBox(int numOfWoodenBox) {
-		this.numOfWoodenBox = numOfWoodenBox;
-	}
-	public int getNumOfBags() {
-		return numOfBags;
-	}
-	public void setNumOfBags(int numOfBags) {
-		this.numOfBags = numOfBags;
 	}
 	public ApproState getApproState() {
 		return approState;

@@ -51,7 +51,7 @@ public class Order implements Orderblservice {
 		
 		this.orderVO.setFreight(calculateFreight(orderVO.getAddresseeAdd(), orderVO.
 				getWeight(), orderVO.getExpressType()));
-		this.orderVO.setPackingCharge(calculatePackingCharge());
+//		this.orderVO.setPackingCharge(calculatePackingCharge(orderVO.get));
 		this.orderVO.setTotalCost(totalCost);
 		this.orderVO.setGenerateDate(generateDate());
 		this.orderVO.setGenerateTime(Time.generateTime());
@@ -83,8 +83,17 @@ public class Order implements Orderblservice {
 		//数据层接口增加一个参数，接收日期
 		generateDate();
 		
+		try {
+			resultMessage = orderdataservice.receive(id, date, trueAddresseeName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		updateLogisticsInfor.update(date, id, date + " 订单已被接收");
-		return null;
+		javaBean1.setObject(date);//只返回确认收货日期
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
@@ -198,6 +207,7 @@ public class Order implements Orderblservice {
 	public double calculateFreight(String destination, double weight, ExpressType eType)
 	{
 		//截取字符串的一段
+		//先计算运费再计算包装费
 		freight = CalculateFreight.expressFreight(destination, weight, eType);
 		return freight;
 	}
@@ -208,8 +218,23 @@ public class Order implements Orderblservice {
 		return date;
 	}
 
-	public double calculatePackingCharge() {
+	//该方法可能不需要
+	public double calculatePackingCharge(String packingType) {
 		double packingCharge = 0;
+		
+		switch (packingType) {
+		case "纸箱":
+			packingCharge = 5;
+			break;
+		case "木箱":
+			packingCharge = 10;
+			break;
+		case "快递袋":
+			packingCharge = 1;
+			break;
+		default:
+			break;
+		}
 		
 		totalCost = packingCharge+freight;
 		return packingCharge;

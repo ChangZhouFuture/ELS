@@ -132,8 +132,14 @@ public class Stock implements Stockblservice{
 
 	@Override
 	public ResultMessage outBound(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		//指的是对应快递的id
+		
+		try {
+			resultMessage = stockdataservice.outBound(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return resultMessage;
 	}
 
 }

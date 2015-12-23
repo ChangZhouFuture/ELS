@@ -164,6 +164,14 @@ public class UserManagement implements UserManagementblservice{
 
 	public String generateID(Position position) {
 		//调用数据层方法
+		String id = null;
+		
+//		try {
+//			id = userManagementdataservice.generateID(position);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+		
 		return null;
 	}
     

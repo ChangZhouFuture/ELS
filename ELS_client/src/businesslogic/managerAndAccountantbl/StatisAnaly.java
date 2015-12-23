@@ -3,9 +3,13 @@ package businesslogic.managerAndAccountantbl;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
+
+import po.StatisAnalyPO.CostAndIncomePO;
 import po.documentsPO.PaymentOrderPO;
 import po.documentsPO.ReceivablesOrderPO;
 import state.ResultMessage;
+import vo.StatisAnalyVO.CostAndIncomeVO;
+import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
@@ -16,6 +20,8 @@ public class StatisAnaly implements StatisAnalyblservice {
 	private ParentDocumentsdataservice parentDocumentsdataservice;
 	private ArrayList<ReceivablesOrderPO> receivablesOrderPOs;
 	private ArrayList<PaymentOrderPO> paymentOrderPOs;
+	private CostAndIncomePO costAndIncomePO;
+	private CostAndIncomeVO costAndIncomeVO;
 	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private ArrayList<String> arrayList;
@@ -107,6 +113,8 @@ public class StatisAnaly implements StatisAnalyblservice {
 	@Override
 	public JavaBean1 inquireCostAndIncomeTable() {
 		//调用数据层方法，从表中读取数据（每次生成付款单和收款单都更新表）
+//		javaBean1 = StatisAnalydataservice.
+		
 		return null;
 	}
 	

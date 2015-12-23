@@ -50,7 +50,11 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 
 	public String generateId() {
 		String id = null;
-//		id = "" + outBoundOrderdataservice.gene
+		try {
+			id = outBoundOrderdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		//这里调用数据层的生成id方法
 		return id;
 	}

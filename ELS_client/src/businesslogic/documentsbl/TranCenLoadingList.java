@@ -53,7 +53,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	public String generateId() {
 		String id = null;
 		try {
-			id = date+tranCenLoadingListdataservice.generateId(date);
+			id = tranCenLoadingListdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -66,6 +66,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	}
 
 	public String generateVehieclesId() {
+		//仿造营业厅装车单
 		return null;
 	}
 

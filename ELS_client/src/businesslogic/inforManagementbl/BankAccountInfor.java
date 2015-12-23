@@ -89,6 +89,11 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	@Override
 	public ResultMessage modify(String oldName, String newName) {
 		//调用数据层的修改方法,两个参数都传下去
+		try {
+			resultMessage = bankAccountInfordataservice.update(oldName, newName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
@@ -116,14 +121,20 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	}
 
 	public ResultMessage updateBalance(String operation, double amount) {
-		double newBalance;
+		double change = 0;
 		if (operation=="add") {
-			newBalance = amount;
+			change = amount;
 		} 
 		else if(operation=="deduct") {
-			newBalance = -amount;
+			change = -amount;
 		}
 		//调用数据层，对默认使用的那一套帐做修改
+		
+		try {
+			resultMessage = bankAccountInfordataservice.updateBalance(change);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return resultMessage;
 	}
 
@@ -134,20 +145,30 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	}
 
 	public String whichIsUsing() {
-		
-		return null;
+		String accountName = null;
+		try {
+			accountName = bankAccountInfordataservice.getInUse();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return accountName;
 	}
 	
 	@Override
 	public ResultMessage use(String accountName) {
 		//调用数据层，把选择的账号设置为正在使用（先把所有的设置为没使用）
+		try {
+			resultMessage = bankAccountInfordataservice.setInUse(accountName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Use, "银行账户", accountName, 
 					"财务人员" + Login.id);
 		}
-		return null;
+		return resultMessage;
 	}
 
 }

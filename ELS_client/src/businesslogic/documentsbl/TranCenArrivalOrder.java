@@ -2,6 +2,7 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import po.documentsPO.TranCenArrivalOrderPO;
 import state.ResultMessage;
@@ -9,6 +10,7 @@ import vo.documentsVO.TranCenArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 
@@ -34,12 +36,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
-		String startAdd = null;
-		try {
-			startAdd = tranCenArrivalOrderdataservice.generateId(transferOrderId);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		String startAdd = Login.city;
 		return startAdd;
 	}
 
@@ -81,7 +78,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	public String generateId() {
 		String id = null;
 		try {
-			id = date+tranCenArrivalOrderdataservice.generateId(date);
+			id = tranCenArrivalOrderdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}		

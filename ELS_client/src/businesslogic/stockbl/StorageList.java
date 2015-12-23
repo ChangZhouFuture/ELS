@@ -49,7 +49,14 @@ public class StorageList implements StorageListblservice {
 
 	public String generateId() {
 		//调用数据层方法
-		return null;
+		String id = null;
+		try {
+			id = storageListdataservice.generateId(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 
 	public String generateTime() {

@@ -19,6 +19,8 @@ public class AgencyInfor implements AgencyInforblservice{
 	private AgencyInfordataservice agencyInfordataservice;
 	private AgencyPO agencyPO;
 	private AgencyVO agencyVO;
+	private ArrayList<AgencyPO> arrayList;
+	private ArrayList<AgencyVO> arrayList2;
 	private RecordOperaLog recordOperaLog;
 	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
@@ -147,8 +149,28 @@ public class AgencyInfor implements AgencyInforblservice{
 
 	@Override
 	public JavaBean1 inquireB(AgencyType agencyType) {
-//		resultMessage = agencyInfordataservice.
-		return null;
+		try {
+			javaBean1 = agencyInfordataservice.findB(agencyType);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		arrayList = (ArrayList<AgencyPO>)javaBean1.getObject();
+		int k =arrayList.size();
+		
+		for (int i = 0; i < k; i++) {
+			agencyPO = arrayList.get(i);
+			
+			agencyVO = new AgencyVO();
+			agencyVO.setAgencyType(agencyPO.getAgencyType());
+			agencyVO.setCity(agencyPO.getCity());
+			agencyVO.setID(agencyPO.getID());
+			agencyVO.setRegion(agencyPO.getRegion());
+			
+			arrayList2.add(agencyVO);
+		}
+		javaBean1.setObject(arrayList2);
+		
+		return javaBean1;
 	}
 	
 }

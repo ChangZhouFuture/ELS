@@ -66,7 +66,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		String vehiclesID = null;
 		try {
 			vehiclesID = Login.agencyID +date+busiHallLoadingListdtaservice.
-					generateId(date);
+					generateId(date);//这里要改
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -119,7 +119,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		//调用数据层方法
 		String id = null;
 		try {
-			id = date+busiHallLoadingListdtaservice.generateId(date);
+			id = busiHallLoadingListdtaservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

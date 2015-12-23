@@ -2,11 +2,13 @@ package businesslogic.inforManagementbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.inforManagementdataservice.VehiclesInfordataservice;
 import state.ResultMessage;
 import vo.inforManagementVO.VehiclesVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
 import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
 import po.inforManagementPO.VehiclesPO;
 /**
@@ -114,7 +116,13 @@ public class VehiclesInfor implements VehiclesInforblservice {
 	public String generateID() {
 		//车辆代号（城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
 		//直接截取营业厅编号大部分，后面三位需要数据层生成
-		
+		String id = null;
+		//与司机id生成方式类似
+//		try {
+//			id = vehiclesInfordataservice.generateID(Login.agencyID);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 	

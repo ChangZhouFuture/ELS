@@ -81,7 +81,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	public String generateId() {
 		String id = null;
 		try {
-			id = date+deliveryOrderdataservice.generateId(date);
+			id = deliveryOrderdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -170,7 +170,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 			deliveryOrderVO = new DeliveryOrderVO();
 			deliveryOrderVO.setID(deliveryOrderPO.getID());
 			deliveryOrderVO.setArrivalDate(deliveryOrderPO.getArrivalDate());
-//			deliveryOrderVO.setGenerateTime(deliveryOrderPO.getGenerateTime());
 			deliveryOrderVO.setDeliverier(deliveryOrderPO.getDeliverier());
 			deliveryOrderVO.setOrderID(deliveryOrderPO.getOrderID());
 			

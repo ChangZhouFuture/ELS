@@ -2,7 +2,6 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import po.documentsPO.PaymentOrderPO;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
 import state.ResultMessage;
@@ -34,12 +33,8 @@ public class PaymentOrder implements PaymentOrderblservice {
 		}
 	}
 	
-	public String generatePaymentAccount() {
-//		try {
-//			resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
+	public ResultMessage doesPaymentAccountExist(String accountName) {
+//		resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
 		//添加银行账户只用返回结果信息，不需要PO
 		return null;
 	}
@@ -55,7 +50,15 @@ public class PaymentOrder implements PaymentOrderblservice {
 		VOtoPO();
 		//调用数据层方法，增加一个新的付款单
 		
-		return null;
+		try {
+			resultMessage = paymentOrderdataservice.add(paymentOrderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		javaBean1.setObject(this.paymentOrderVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 
 	@Override
