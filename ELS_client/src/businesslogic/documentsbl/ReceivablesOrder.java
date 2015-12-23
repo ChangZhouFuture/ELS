@@ -58,6 +58,11 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		statisAnaly.updateCostAndIncomeTable(this.receivablesOrderVO.getAmount(),
+				"income");
+		bankAccountInfor.updateBalance("add", this.receivablesOrderVO.getAmount());
+		
 		javaBean1.setObject(this.receivablesOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		

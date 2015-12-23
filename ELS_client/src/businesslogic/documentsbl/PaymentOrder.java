@@ -32,12 +32,6 @@ public class PaymentOrder implements PaymentOrderblservice {
 			e.printStackTrace();
 		}
 	}
-	
-	public ResultMessage doesPaymentAccountExist(String accountName) {
-//		resultMessage = paymentOrderdataservice.
-		//添加银行账户只用返回结果信息，不需要PO
-		return null;
-	}
 
 	@Override
 	public JavaBean1 add(PaymentOrderVO paymentOrderVO) {
@@ -45,8 +39,8 @@ public class PaymentOrder implements PaymentOrderblservice {
 		this.paymentOrderVO = paymentOrderVO;
 		
 		this.paymentOrderVO.setDate(generateDate());
-		this.paymentOrderVO.setGenerateTime(Time.generateTime());
 		this.paymentOrderVO.setID(generateId());
+		this.paymentOrderVO.setBankAccount(bankAccountInfor.whichIsUsing());
 		VOtoPO();
 		//调用数据层方法，增加一个新的付款单
 		
@@ -55,6 +49,10 @@ public class PaymentOrder implements PaymentOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		statisAnaly.updateCostAndIncomeTable(this.paymentOrderVO.getAmount(), "cost");
+		bankAccountInfor.updateBalance("deduct", this.paymentOrderVO.getAmount());
+		
 		javaBean1.setObject(this.paymentOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		

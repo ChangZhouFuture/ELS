@@ -21,6 +21,4 @@ public interface BankAccountInfordataservice extends Remote{
     public ResultMessage setInUse(String accountName) throws RemoteException;
     
     public String getInUse() throws RemoteException;
-    
-    public ResultMessage doesPaymentAccountExist(String accountName) throws RemoteException;
 }

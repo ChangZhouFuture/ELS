@@ -163,26 +163,6 @@ public String getInUse() throws RemoteException {
 	return accountName;
 }
 
-@Override
-public ResultMessage doesPaymentAccountExist(String accountName) throws RemoteException {
-	// TODO Auto-generated method stub
-	String sql="select * from bankaccount where name=?";
-	try {
-		stmt=con.prepareStatement(sql);
-		stmt.setString(1, accountName);
-		ResultSet rs=stmt.executeQuery();
-		if(rs.next()){
-			return ResultMessage.Success;
-		}else{
-			return ResultMessage.NotExist;
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return ResultMessage.NotExist;
-	}
-}
-
 //public static void main(String[] args) {
 //	BankAccountInfordata bank=new BankAccountInfordata();
 //	try {
