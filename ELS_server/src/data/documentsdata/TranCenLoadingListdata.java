@@ -201,4 +201,11 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 		return g.generateDocumentId(date, "trancenloadinglist");
 	}
 
+	@Override
+	public String generateTruckNum(String firstPart) throws RemoteException {
+		// TODO Auto-generated method stub
+		g=new GenerateId();
+		return g.generateTrucksNum(firstPart, "trancenloadinglist");
+	}
+
 }

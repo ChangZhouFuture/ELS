@@ -142,4 +142,38 @@ public class GenerateId {
 		}
 		return firstPart+SecondPart;
 	}
+	
+	public String generateTrucksNum(String firstPart,String loadingListType){ //ÆûÔË±àºÅ
+		String sql="select * from ?";
+		int temp=0;
+		int sub=0;
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, loadingListType);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("trucksNum").substring(0, 15).equals(firstPart)){
+					sub=Integer.parseInt(rs.getString("trucksNum").substring(15));
+					if(sub>temp){
+						temp=sub;
+					}
+				}
+			}temp++;
+			String last=String.valueOf(temp);
+			if(loadingListType=="busihallloadinglist"){
+				for(int i=0;i<5-last.length();i++){
+					last="0"+last;
+				}
+			}else{
+				for(int i=0;i<7-last.length();i++){
+					last="0"+last;
+				}
+			}
+			return firstPart+last;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

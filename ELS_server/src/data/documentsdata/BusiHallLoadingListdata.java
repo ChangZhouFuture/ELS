@@ -208,5 +208,11 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 		return g.generateDocumentId(date, "busihallloadinglist");
 	}
 
-	
+	@Override
+	public String generateTruckNum(String firstPart) throws RemoteException {
+		// TODO Auto-generated method stub
+		GenerateId g=new GenerateId();
+		return g.generateTrucksNum(firstPart, "busihallloadinglist");
+	}
+
 }

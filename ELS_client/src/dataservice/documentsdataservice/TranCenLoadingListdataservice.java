@@ -20,4 +20,6 @@ public interface TranCenLoadingListdataservice extends ParentDocumentsdataservic
 	public JavaBean1 findB(String date) throws RemoteException;
 	
 	public String generateId(String date) throws RemoteException;
+	
+	public String generateTruckNum(String firstPart) throws RemoteException;
 }

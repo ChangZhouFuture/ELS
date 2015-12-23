@@ -63,4 +63,6 @@ import state.ResultMessage;
 	
 	public String generateId(String date) throws RemoteException;
 	
+	public String generateTruckNum(String firstPart) throws RemoteException;
+	
  }
