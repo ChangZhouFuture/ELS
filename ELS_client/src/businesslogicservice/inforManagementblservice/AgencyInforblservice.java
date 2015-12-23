@@ -15,8 +15,6 @@ import vo.inforManagementVO.AgencyVO;
 public interface AgencyInforblservice {
 	public JavaBean1 add(AgencyVO agencyVO);
 	
-	public ResultMessage deleteOne(String ID);
-	
 	public ResultMessage deleteMany(ArrayList<String> IDList);
 	
 	public ResultMessage modify(AgencyVO agencyVO);

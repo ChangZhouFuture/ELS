@@ -86,12 +86,6 @@ public class StorageList implements StorageListblservice {
 	}
 
 	@Override
-	public ResultMessage deleteone(String id4obo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = storageListdataservice.deleteMany(IDList);

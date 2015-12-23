@@ -36,7 +36,13 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	
 	public String generateStartAddress(String transferOrderId) {
 		//根据中转中心的编号来匹配位置
-		String startAdd = Login.city;
+		String startAdd = null;
+		try {
+			startAdd = tranCenArrivalOrderdataservice.generateStartAdd(transferOrderId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		return startAdd;
 	}
 
@@ -98,12 +104,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		}
 		
 		return resultMessage;
-	}
-
-	@Override
-	public ResultMessage deleteone(String id) {
-		return resultMessage;
-		
 	}
 
 	@Override

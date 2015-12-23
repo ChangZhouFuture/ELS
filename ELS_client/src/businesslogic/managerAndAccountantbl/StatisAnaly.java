@@ -3,12 +3,8 @@ package businesslogic.managerAndAccountantbl;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
-
-import po.StatisAnalyPO.CostAndIncomePO;
 import po.documentsPO.PaymentOrderPO;
 import po.documentsPO.ReceivablesOrderPO;
-import state.ResultMessage;
-import vo.StatisAnalyVO.CostAndIncomeVO;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import RMI.RMIHelper;
@@ -17,13 +13,11 @@ import businesslogic.utilitybl.Time;
 import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
 
 public class StatisAnaly implements StatisAnalyblservice {
+	private static StatisAnalydataservice statisAnalydataservice;
 	private ParentDocumentsdataservice parentDocumentsdataservice;
 	private ArrayList<ReceivablesOrderPO> receivablesOrderPOs;
 	private ArrayList<PaymentOrderPO> paymentOrderPOs;
-	private CostAndIncomePO costAndIncomePO;
-	private CostAndIncomeVO costAndIncomeVO;
 	private JavaBean1 javaBean1;
-	private ResultMessage resultMessage;
 	private ArrayList<String> arrayList;
 	
 	@Override
@@ -113,13 +107,22 @@ public class StatisAnaly implements StatisAnalyblservice {
 	@Override
 	public JavaBean1 inquireCostAndIncomeTable() {
 		//调用数据层方法，从表中读取数据（每次生成付款单和收款单都更新表）
-//		javaBean1 = StatisAnalydataservice.
+		try {
+			javaBean1 = statisAnalydataservice.findCostAndIncomeTable();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		//直接返回PO，不管了
 		
-		return null;
+		return javaBean1;
 	}
 	
 	public static void updateCostAndIncomeTable(double amount, String costOrIncome) {
-		
+		try {
+			statisAnalydataservice.updateCostAndIncomeTable(amount, costOrIncome);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

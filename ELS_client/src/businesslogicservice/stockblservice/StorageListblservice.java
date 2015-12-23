@@ -32,13 +32,6 @@ public interface StorageListblservice {
 	/**
 	 * 
 	 * @param id4obo
-	 * 删除一个入库单
-	 */
-	public ResultMessage deleteone(String id4obo);
-	
-	/**
-	 * 
-	 * @param id4obo
 	 * 删除多个入库单
 	 */ 
 	public ResultMessage deleteMany(ArrayList<String> IDList);

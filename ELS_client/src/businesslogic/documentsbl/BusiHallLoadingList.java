@@ -61,16 +61,16 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		return date;
 	}
 
-	public String generatevehiclesID() {
+	public String generateTruckNum() {
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
-		String vehiclesID = null;
+		String truckNum = null;
 		try {
-			vehiclesID = Login.agencyID +date+busiHallLoadingListdtaservice.
+			truckNum = Login.agencyID +date+busiHallLoadingListdtaservice.
 					generateId(date);//这里要改
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return vehiclesID;
+		return truckNum;
 	}
 
 	public double generateFreight(String destination, TransportType tType) 
@@ -87,7 +87,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		this.busiHallLoadingListVO.setBusiHallID(Login.agencyID);
 		this.busiHallLoadingListVO.setLoadingDate(generateDate());
 		this.busiHallLoadingListVO.setGenerateTime(Time.generateTime());
-		this.busiHallLoadingListVO.setVehiclesID(generatevehiclesID());
+		this.busiHallLoadingListVO.setTruckNum(generateTruckNum());
 		this.busiHallLoadingListVO.setCarriage(generateFreight(
 				businessHallLoadingListVO.getDestination(), TransportType.Truck));
 		this.busiHallLoadingListVO.setID(generateId());
@@ -134,17 +134,6 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		VOtoPO();
 		try {
 			resultMessage = busiHallLoadingListdtaservice.update(busiHallLoadingListPO);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
-		return resultMessage;
-	}
-
-	@Override
-	public ResultMessage deleteone(String id) {
-		try {
-			resultMessage = busiHallLoadingListdtaservice.deleteone(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

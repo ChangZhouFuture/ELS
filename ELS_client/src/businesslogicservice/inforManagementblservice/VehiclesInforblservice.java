@@ -14,16 +14,7 @@ public interface VehiclesInforblservice {
 	 * 后置条件：添加新的车辆信息
 	 */
 	public JavaBean1 add(VehiclesVO vehiclesVO);
-		
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * 前置条件：要删除的车辆信息在PO中有记录
-	 * 后置条件：删除一条车辆信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String Id);
+
 	/**
 	 * 
 	 * @param id4Vehicles

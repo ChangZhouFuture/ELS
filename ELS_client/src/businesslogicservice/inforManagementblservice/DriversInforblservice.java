@@ -24,16 +24,6 @@ public interface DriversInforblservice {
 	public JavaBean1 inquireA(String ID);
 	
 	public JavaBean1 inquireB(String busiHallID);
-		
-	/**
-	 * 
-	 * @param Id
-	 * @return
-	 * 前置条件：要删除的司机信息在PO中有记录
-	 * 后置条件：删除一条司机信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String Id);
 
 	/**
 	 * 

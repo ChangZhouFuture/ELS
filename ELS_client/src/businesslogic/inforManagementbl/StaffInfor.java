@@ -1,7 +1,6 @@
 package businesslogic.inforManagementbl;
 
 import java.rmi.RemoteException;
-
 import po.inforManagementPO.SalaryStrategyPO;
 import state.ResultMessage;
 import vo.inforManagementVO.SalaryStrategyVO;
@@ -15,7 +14,6 @@ public class StaffInfor implements StaffInforblservice{
 	private StaffInfordataservice staffInfordataservice;
 	private SalaryStrategyPO salaryStrategyPO;
 	private UserManagement userManagement;
-	private ResultMessage resultMessage;
 	private JavaBean1 javaBean1;
 	
 	public StaffInfor() {

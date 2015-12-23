@@ -112,17 +112,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
-		try {
-			resultMessage = busiHallArrivalOrderdataservice.deleteOne(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
-		return resultMessage;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		try {
 			resultMessage = busiHallArrivalOrderdataservice.deleteMany(idlist);
@@ -160,18 +149,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		POtoVO(k);
 		javaBean1.setObject(arrayList2);
 		return javaBean1;	
-	}
-	
-	public ArrayList<BusiHallArrivalOrderVO> inquireC() {
-		try {
-			arrayList = busiHallArrivalOrderdataservice.findC();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		int k = arrayList.size();
-		
-		POtoVO(k);
-		return arrayList2;
 	}
 
 	public void VOtoPO() {

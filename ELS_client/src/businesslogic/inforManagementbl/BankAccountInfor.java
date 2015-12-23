@@ -62,11 +62,6 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = bankAccountInfordataservice.deleteMany(IDList);

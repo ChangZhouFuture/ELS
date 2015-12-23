@@ -9,8 +9,6 @@ import vo.userVO.UserVO;
 public interface UserManagementblservice {
     public JavaBean1 add(UserVO userVO);
     
-    public ResultMessage deleteOne(String Id);
-    
     public ResultMessage deleteMany(ArrayList<String> IDList);
     
     public ResultMessage modify(UserVO userVO);

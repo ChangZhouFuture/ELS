@@ -116,12 +116,6 @@ public class DriversInfor implements DriversInforblservice {
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = driversInfordataservice.deleteMany(IDList);
@@ -161,12 +155,13 @@ public class DriversInfor implements DriversInforblservice {
 		//直接截取营业厅编号大部分，后面三位需要数据层生成
 		String id = null;
 		
-//		try {
-//			id = driversInfordataservice.generateID(Login.agencyID);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-		return null;
+		try {
+			id = driversInfordataservice.generateID(Login.agencyID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 
 	public void VOtoPO() {

@@ -86,12 +86,6 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public ResultMessage deleteone(String ID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = outBoundOrderdataservice.deleteMany(IDList);

@@ -66,12 +66,6 @@ public class UserManagement implements UserManagementblservice{
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = userManagementdataservice.deleteMany(IDList);
@@ -166,13 +160,13 @@ public class UserManagement implements UserManagementblservice{
 		//调用数据层方法
 		String id = null;
 		
-//		try {
-//			id = userManagementdataservice.generateID(position);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			id = userManagementdataservice.generateID(position);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
-		return null;
+		return id;
 	}
     
 	public void VOtoPO() {

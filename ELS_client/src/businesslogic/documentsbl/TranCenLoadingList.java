@@ -65,8 +65,11 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		return date;
 	}
 
-	public String generateVehieclesId() {
+	public String generateTruckNum() {
 		//仿造营业厅装车单
+		String truckNum = null;
+		
+//		vehiclesID = tranCenLoadingListdataservice.ge
 		return null;
 	}
 
@@ -84,7 +87,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		this.tranCenLoadingListVO.setLoadingDate(generateDate());
 		this.tranCenLoadingListVO.setGenerateTime(Time.generateTime());
 		this.tranCenLoadingListVO.setID(generateId());
-		this.tranCenLoadingListVO.setVehiclesID(generateVehieclesId());
+		this.tranCenLoadingListVO.setTrucksNum(generateTruckNum());
 		this.tranCenLoadingListVO.setCarriage(generateFeight(tranCenLoadingListVO.
 				getDestination(), TransportType.Truck));
 		VOtoPO();

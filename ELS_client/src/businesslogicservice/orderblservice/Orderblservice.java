@@ -37,13 +37,6 @@ public interface Orderblservice {
 	  */
 	 public JavaBean1 receive(String id, String trueAddresseeName);
 	 
-	 /**
-	  * 前置条件：展开一个订单列表
-	  * 后置条件：在订单列表中删除一个订单
-	  * @param orderid
-	  */
-     public ResultMessage deleteOne(String id);
-     
      public ResultMessage deleteMany(ArrayList<String> idList);
      
      /**

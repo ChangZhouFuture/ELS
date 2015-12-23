@@ -53,12 +53,6 @@ public class VehiclesInfor implements VehiclesInforblservice {
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = vehiclesInfordataservice.deleteMany(IDList);
@@ -101,7 +95,7 @@ public class VehiclesInfor implements VehiclesInforblservice {
 	@Override
 	public JavaBean1 inquireB(String busiHallID) {
 		try {
-			javaBean1 = vehiclesInfordataservice.findB();//数据层要改
+			javaBean1 = vehiclesInfordataservice.findB(busiHallID);//数据层要改
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -118,12 +112,13 @@ public class VehiclesInfor implements VehiclesInforblservice {
 		//直接截取营业厅编号大部分，后面三位需要数据层生成
 		String id = null;
 		//与司机id生成方式类似
-//		try {
-//			id = vehiclesInfordataservice.generateID(Login.agencyID);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-		return null;
+		try {
+			id = vehiclesInfordataservice.generateID(Login.agencyID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 	
 	public void VOtoPO() {

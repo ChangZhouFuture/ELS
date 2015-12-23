@@ -104,16 +104,6 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
-		try {
-			resultMessage = deliveryOrderdataservice.deleteone(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return resultMessage;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		try {
 			resultMessage = deliveryOrderdataservice.deleteMany(idList);

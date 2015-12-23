@@ -59,12 +59,6 @@ public class AgencyInfor implements AgencyInforblservice{
 	}
 
 	@Override
-	public ResultMessage deleteOne(String ID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> IDList) {
 		try {
 			resultMessage = agencyInfordataservice.deleteMany(IDList);

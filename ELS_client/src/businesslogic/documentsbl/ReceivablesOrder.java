@@ -65,12 +65,6 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	}
 
 	@Override
-	public ResultMessage deleteOne(String date, String courierId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		try {
 			resultMessage = receivablesOrderdataservice.deleteMany(idList);

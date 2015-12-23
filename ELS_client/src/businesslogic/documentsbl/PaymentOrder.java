@@ -34,7 +34,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 	}
 	
 	public ResultMessage doesPaymentAccountExist(String accountName) {
-//		resultMessage = paymentOrderdataservice.addPaymentAccount(accountName);
+//		resultMessage = paymentOrderdataservice.
 		//添加银行账户只用返回结果信息，不需要PO
 		return null;
 	}
@@ -59,16 +59,6 @@ public class PaymentOrder implements PaymentOrderblservice {
 		javaBean1.setResultMessage(resultMessage);
 		
 		return javaBean1;
-	}
-
-	@Override
-	public ResultMessage deleteOne(String id) {
-		try {
-			resultMessage = paymentOrderdataservice.deleteOne(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return resultMessage;
 	}
 
 	@Override

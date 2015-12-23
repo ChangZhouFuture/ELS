@@ -18,16 +18,6 @@ public interface ReceivablesOrderblservice {
 	 * 后置条件：添加新的收款单信息
 	 */
 	public JavaBean1 add(ReceivablesOrderVO receivablesOrderVO);
-		
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * 前置条件：要删除的收款单信息在PO中有记录
-	 * 后置条件：删除一条收款单信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String date,String courierId);
 
 	/**
 	 * 

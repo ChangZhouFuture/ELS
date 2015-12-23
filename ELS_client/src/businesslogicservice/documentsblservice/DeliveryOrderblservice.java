@@ -47,14 +47,6 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
  	
  	/**
  	 * 前置：要删除的派件单在持久化数据中有记录
- 	 * 后置：删除一个派件单
- 	 * @param id
- 	 */
-
- 	public ResultMessage deleteone(String id);
- 	
- 	/**
- 	 * 前置：要删除的派件单在持久化数据中有记录
  	 * 后置：删除多个派件单
  	 * @param id
  	 */

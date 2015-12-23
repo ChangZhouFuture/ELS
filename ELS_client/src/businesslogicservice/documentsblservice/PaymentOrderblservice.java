@@ -21,16 +21,6 @@ public interface PaymentOrderblservice {
 	 * 后置条件：添加新的付款单信息
 	 */
 	public JavaBean1 add(PaymentOrderVO paymentOrderVO);
-	/**
-	 * 
-	 * @param id
-	 * @param bussinessHall
-	 * @return
-	 * 前置条件：要删除的付款单信息在PO中有记录
-	 * 后置条件：删除一条付款单信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String id);
 
 	/**
 	 * 

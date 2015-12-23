@@ -37,14 +37,6 @@ public interface OutBoundOrderblservice {
 	 * 
 	 * @param id4obo
 	 * 前置条件：要删除的出库单在持久化数据中有记录
-	 * 后置条件：删除一个出库单
-	 */
-	public ResultMessage deleteone(String ID);
-	
-	/**
-	 * 
-	 * @param id4obo
-	 * 前置条件：要删除的出库单在持久化数据中有记录
 	 * 后置条件：删除多个出库单
 	 * 
 	 */ 

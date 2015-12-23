@@ -59,13 +59,6 @@ public interface BusiHallLoadingListblservice {
  	
  	/**
  	 * 前置：要删除的装车单在持久化数据中有记录
- 	 * 后置：删除一个装车单
- 	 * @param id
- 	 */
- 	public ResultMessage deleteone(String id);
- 	
- 	/**
- 	 * 前置：要删除的装车单在持久化数据中有记录
  	 * 后置：删除多个装车单
  	 * @param id
  	 */

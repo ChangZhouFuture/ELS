@@ -51,7 +51,6 @@ public class Order implements Orderblservice {
 		
 		this.orderVO.setFreight(calculateFreight(orderVO.getAddresseeAdd(), orderVO.
 				getWeight(), orderVO.getExpressType()));
-//		this.orderVO.setPackingCharge(calculatePackingCharge(orderVO.get));
 		this.orderVO.setTotalCost(totalCost);
 		this.orderVO.setGenerateDate(generateDate());
 		this.orderVO.setGenerateTime(Time.generateTime());
@@ -94,12 +93,6 @@ public class Order implements Orderblservice {
 		javaBean1.setResultMessage(resultMessage);
 		
 		return javaBean1;
-	}
-
-	@Override
-	public ResultMessage deleteOne(String id) {
-		return null;
-		
 	}
 
 	@Override
