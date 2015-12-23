@@ -36,22 +36,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 
 
 	@Override
-	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		String sql="delete from paymentorder where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		// TODO Auto-generated method stub
 		String sql="delete from paymentorder where ID=?";
@@ -112,16 +96,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt.setString(6, po.getEntry());
 			stmt.setString(7, po.getNote());
 			stmt.executeUpdate();
-			sql="select * from costandincome";
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			double cost=rs.getDouble("cost");
-			double profit=rs.getDouble("profit");
-			sql="update costandincome set cost=?,profit=?";
-			stmt=con.prepareStatement(sql);
-			stmt.setDouble(1, cost+po.getAmount());
-			stmt.setDouble(2, profit-po.getAmount());
-			stmt.executeQuery();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

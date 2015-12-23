@@ -23,14 +23,6 @@ public interface StorageListdataservice extends ParentDocumentsdataservice{
 	/**
 	 * 
 	 * @param id4obo
-	 * 前置条件:要删除的单据在PO中有记录
-	 * 后置条件:删除一个入库单,更新PO数据
-	 */
-	public ResultMessage deleteOne(String id) throws RemoteException;
-	
-	/**
-	 * 
-	 * @param id4obo
 	 * 前置条件：要删除的单据在PO中有记录
 	 * 后置条件：删除多个入库单,更新PO记录
 	 */ 

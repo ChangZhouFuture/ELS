@@ -69,20 +69,6 @@ public JavaBean1 find(String name){
 	}
 }
 
-//删除银行信息
-public ResultMessage deleteOne(String name){
-	try {
-		stmt=con.prepareStatement("DELETE FROM bankAccount WHERE name=?");
-		stmt.setString(1, name);
-		stmt.executeUpdate();
-		return ResultMessage.Success;
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return ResultMessage.NotExist;
-	}
-}
-
 @Override
 public ResultMessage deleteMany(ArrayList<String> names) {
 	// TODO Auto-generated method stub
@@ -175,6 +161,26 @@ public String getInUse() throws RemoteException {
 		e.printStackTrace();
 	}
 	return accountName;
+}
+
+@Override
+public ResultMessage doesPaymentAccountExist(String accountName) throws RemoteException {
+	// TODO Auto-generated method stub
+	String sql="select * from bankaccount where name=?";
+	try {
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, accountName);
+		ResultSet rs=stmt.executeQuery();
+		if(rs.next()){
+			return ResultMessage.Success;
+		}else{
+			return ResultMessage.NotExist;
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return ResultMessage.NotExist;
+	}
 }
 
 //public static void main(String[] args) {

@@ -26,7 +26,7 @@ StatisAnalydataservice{
 	}
 
 	@Override
-	public JavaBean1 CostAndIncome() {
+	public JavaBean1 findCostAndIncomeTable() {
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		costAndIncomePO=new CostAndIncomePO();
@@ -47,6 +47,47 @@ StatisAnalydataservice{
 			e.printStackTrace();
 			return jb1;
 		}	
+	}
+
+	@Override
+	public void updateCostAndIncomeTable(double amount, String costOrIncome) throws RemoteException {
+		// TODO Auto-generated method stub
+		if(costOrIncome=="cost"){
+			String sql="select * from costandincome";
+			try {
+				stmt=con.prepareStatement(sql);
+				ResultSet rs=stmt.executeQuery();
+				double cost=rs.getDouble("cost");
+				double profit=rs.getDouble("profit");
+				sql="update costandincome set cost=?,profit=?";
+				stmt=con.prepareStatement(sql);
+				stmt.setDouble(1, cost+amount);
+				stmt.setDouble(2, profit-amount);
+				stmt.executeQuery();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else if(costOrIncome=="income"){
+			String sql="select * from costandincome";
+			try {
+				stmt=con.prepareStatement(sql);
+				ResultSet rs=stmt.executeQuery();
+				double income=rs.getDouble("income");
+				double profit=rs.getDouble("profit");
+				sql="update costandincome set income=?,profit=?";
+				stmt=con.prepareStatement(sql);
+				stmt.setDouble(1, income+amount);
+				stmt.setDouble(2, profit+amount);
+				stmt.executeQuery();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 

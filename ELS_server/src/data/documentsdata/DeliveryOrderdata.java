@@ -56,23 +56,6 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	}
 
 	@Override
-	public ResultMessage deleteone(String id) {
-		// TODO Auto-generated method stub
-		String sql="delete from deliveryorder where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-		
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
 		String sql="delete from deliveryorder where ID=?";

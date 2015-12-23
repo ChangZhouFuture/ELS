@@ -30,12 +30,6 @@ public class Logindata extends UnicastRemoteObject implements Logindataservice{
 	}
 
 	@Override
-	public void logout() {
-		
-		
-	}
-
-	@Override
 	public JavaBean2 login(String id, String passWord) throws RemoteException{
 		// TODO Auto-generated method stub
 		JavaBean2 bean=new JavaBean2();

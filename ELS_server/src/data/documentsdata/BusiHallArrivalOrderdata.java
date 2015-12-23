@@ -104,21 +104,6 @@ implements BusiHallArrivalOrderdataservice {
 	}
 
 	@Override
-	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		try {
-			stmt=con.prepareStatement("DELETE FROM busihallarrivalorder WHERE ID=?");
-			stmt.setString(1, id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
 		// TODO Auto-generated method stub
 		try {
@@ -214,12 +199,6 @@ implements BusiHallArrivalOrderdataservice {
 		}
 		
 		
-	}
-
-	@Override
-	public ArrayList<BusiHallArrivalOrderPO> findC() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

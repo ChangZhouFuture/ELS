@@ -26,30 +26,12 @@ import state.ResultMessage;
 	public ResultMessage addDeliveryOrder(DeliveryOrderPO deliveryOrderPO) throws RemoteException;
 	
 	/**
-	 * 前置：要删除的派件单在PO有记录
-	 * 后置：删除一个派件单，更新PO数据
-	 * @param id
-	 */
-	public ResultMessage deleteone(String id) throws RemoteException;
-	
-	/**
 	 * 前置：要删除的派件单在PO中有记录
 	 * 后置：删除多个派件单，更新PO数据
 	 * @param id
 	 */
 	public ResultMessage deleteMany(ArrayList<String> idlist) throws RemoteException;
 	
-//	/**
-//	 * 前置：要修改的派件单在PO中有记录
-//	 * 后置：更改一个派件单，更新PO相关信息
-//	 * @param id
-//	 * @param orsderidlist
-//	 * @param dn
-//	 * @param did
-//	 * @param d
-//	 * @return 更改后的派件单
-//	 */
-//	public ResultMessage modify(DeliveryOrderPO deliveryOrderPO);
 	/**
 	 * 前置：要查询的派件单在PO中有记录
 	 * 后置：根据时间查询某派件单,返回派件单PO信息给业务逻辑层

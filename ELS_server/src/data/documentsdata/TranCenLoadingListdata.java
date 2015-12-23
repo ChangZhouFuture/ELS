@@ -64,22 +64,6 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 	}
 
 	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		String sql="delete from trancenloadinglist where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, Id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> Ids) {
 		// TODO Auto-generated method stub
 		String sql="delete from trancenloadinglist where ID=?";

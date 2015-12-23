@@ -225,13 +225,4 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		}
 	}
 
-
-	@Override
-	public JavaBean5 stockCheck(ArrayList<String> dateList) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
 }

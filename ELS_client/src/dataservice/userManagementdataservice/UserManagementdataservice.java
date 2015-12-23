@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import po.userPO.UserPO;
+import state.Position;
 import state.ResultMessage;
 
 public interface UserManagementdataservice extends Remote{
     public ResultMessage add(UserPO po) throws RemoteException;
-    
-    public ResultMessage deleteOne(String Id) throws RemoteException;
     
     public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
     
@@ -21,5 +20,5 @@ public interface UserManagementdataservice extends Remote{
     
     public JavaBean1 findB(String position) throws RemoteException;
     
-    public String generateID() throws RemoteException;
+    public String generateID(Position position) throws RemoteException;
 }

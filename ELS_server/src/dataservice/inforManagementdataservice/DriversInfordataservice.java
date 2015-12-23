@@ -28,16 +28,6 @@ public interface DriversInfordataservice extends Remote{
 	
 	/**
 	 * 
-	 * @param ID
-	 * @return
-	 * 前置条件：要删除的司机信息在PO中有记录
-	 * 后置条件：删除一条信息信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String Id) throws RemoteException;
-	
-	/**
-	 * 
 	 * @param IDs
 	 * 前置条件：要删除的司机信息在持久化数据中有记录
 	 * 后置条件：删除多条司机信息
@@ -54,5 +44,5 @@ public interface DriversInfordataservice extends Remote{
 	 */
 	public ResultMessage update(DriversPO po) throws RemoteException;
 	
-	public String generateID() throws RemoteException;
+	public String generateID(String busiHallId) throws RemoteException;
 }

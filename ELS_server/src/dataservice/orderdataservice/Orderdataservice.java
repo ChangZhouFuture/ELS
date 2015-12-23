@@ -23,13 +23,6 @@ public interface Orderdataservice extends ParentDocumentsdataservice{
 	 * @return
 	 */
 	public ResultMessage add(OrderPO orderPO) throws RemoteException;
-	
-	/**
-	 * 前置条件：要删除的订单在PO中有记录
-	 * 后置条件：删除一个订单，更新PO
-	 * @param orderid
-	 */
-    public ResultMessage deleteOne(String id) throws RemoteException;
     
     public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	

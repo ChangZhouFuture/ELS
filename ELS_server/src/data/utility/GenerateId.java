@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import state.Position;
+
 public class GenerateId {
 
 	Database db=new Database();
@@ -102,11 +104,12 @@ public class GenerateId {
 		}
 	}
 	
-	public String generateUserId(String position){
+	public String generateUserId(Position position1){
 		String sql="select * from user";
 		int temp=0;
 		String firstPart=null;
 		String SecondPart=null;
+		String position=position1.toString();
 		switch(position){
 		case "Accountant1":firstPart="00";break;
 		case "Accountant2":firstPart="01";break;
@@ -129,6 +132,9 @@ public class GenerateId {
 				}
 			}temp++;
 			SecondPart=String.valueOf(temp);
+			for(int i=0;i<6-SecondPart.length();i++){
+				SecondPart="0"+SecondPart;
+			}
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

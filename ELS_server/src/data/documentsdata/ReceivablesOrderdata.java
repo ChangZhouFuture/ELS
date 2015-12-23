@@ -70,22 +70,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	}
 
 	@Override
-	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		String sql="delete from receivablesorder where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-		
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		// TODO Auto-generated method stub
 		String sql="delete from receivablesorder where ID=?";

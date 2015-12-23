@@ -7,6 +7,4 @@ import bean.JavaBean2;
 public interface Logindataservice extends Remote{
 	public JavaBean2 login(String id, String passWord) throws RemoteException;
 	
-	public void logout() throws RemoteException;
-	
 }

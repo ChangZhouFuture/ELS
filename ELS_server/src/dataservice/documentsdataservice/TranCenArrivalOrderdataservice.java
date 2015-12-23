@@ -28,13 +28,6 @@ public interface TranCenArrivalOrderdataservice extends ParentDocumentsdataservi
 	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tanCenArrivalOrderPO)
 	throws RemoteException;
 	
-	/**
-	 * 前置：要删除的中转中心到达单在PO中有记录
-	 * 后置：删除一个中转中心到达单，更新PO数据
-	 * @param id
-	 * @return 
-	 */
-	public ResultMessage deleteOne(String id) throws RemoteException;
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
@@ -58,12 +51,6 @@ public interface TranCenArrivalOrderdataservice extends ParentDocumentsdataservi
 	 * @return 中转中心到达单列表
 	 */
 	public JavaBean1 findB(String time) throws RemoteException;
-	
-	/**
-	 * 后置：查询所有中转中心到达单
-	 * @return
-	 */
-	public ArrayList<TranCenArrivalOrderPO> findC() throws RemoteException;
 	
 	/**
 	 * 前置：行为或操作已经完成

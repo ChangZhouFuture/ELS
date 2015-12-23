@@ -11,8 +11,6 @@ public interface TranCenLoadingListdataservice extends ParentDocumentsdataservic
 
 	public ResultMessage addLoadingList(TranCenLoadingListPO po) throws RemoteException;
 	
-	public ResultMessage deleteOne(String Id) throws RemoteException;
-	
 	public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
 	
 	public ResultMessage update(TranCenLoadingListPO po) throws RemoteException;

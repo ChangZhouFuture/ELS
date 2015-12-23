@@ -74,21 +74,6 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	}
 
 	@Override
-	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		try {
-			stmt=con.prepareStatement("DELETE FROM dingdanorder WHERE ID=?");
-			stmt.setString(1, id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-	}
-
-	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList){
 		// TODO Auto-generated method stub
 		try {

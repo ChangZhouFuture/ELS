@@ -30,12 +30,11 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
     
     public ResultMessage add(VehiclesPO po){
 		try {
-			stmt = con.prepareStatement("INSERT INTO vehicles(ID,plateNum,serviceTime) VALUES(?,?,?)");
+			stmt = con.prepareStatement("INSERT INTO vehicles(ID,plateNum,serviceTime,busiHallID) VALUES(?,?,?,?)");
 			stmt.setString(1, po.getID());
 		    stmt.setString(2, po.getPlateNum());
 		    stmt.setString(3, po.getServiceTime());
-//		    stmt.setString(4, po.getCity());
-//		    stmt.setString(5, po.getRegion());
+		    stmt.setString(4, po.getBusiHallID());
 		    stmt.executeUpdate();
 		    return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -56,8 +55,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			    po.setID(Id);
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getString("serviceTime"));
-//		        po.setCity(rs.getString("city"));
-//		        po.setRegion(rs.getString("region"));
+                po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setObject(po);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -70,30 +68,15 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 		
     }
     
-    public ResultMessage deleteOne(String Id){
-
-		try {
-			stmt=con.prepareStatement("DELETE FROM vehicles WHERE ID=?");
-			stmt.setString(1, Id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-		}
-    }
-    
     public ResultMessage update(VehiclesPO po){
 
 		try {
-			String sql=("UPDATE drivers SET plateNum=?,serviceTime=?,city=?,region=? WHERE ID=?");
+			String sql=("UPDATE drivers SET plateNum=?,serviceTime=?,busiHallID=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
+			stmt.setString(4, po.getID());
 			stmt.setString(1, po.getPlateNum());
 			stmt.setString(2, po.getServiceTime());
-//			stmt.setString(3, po.getCity());
-//			stmt.setString(4, po.getRegion());
-			stmt.setString(5, po.getID());
+            stmt.setString(3, po.getBusiHallID());              
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -123,15 +106,60 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 
 
 	@Override
-	public JavaBean1 findB() throws RemoteException {
+	public JavaBean1 findB(String busiHallId) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from vehicles where busiHallID=?";
+		po=new VehiclesPO();
+		ArrayList<VehiclesPO> pos=new ArrayList<>();
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, busiHallId);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				po.setID(rs.getString("ID"));
+		        po.setPlateNum(rs.getString("plateNum"));
+		        po.setServiceTime(rs.getString("serviceTime"));
+                po.setBusiHallID(rs.getString("busiHallID"));
+                pos.add(po);
+                jb1.setResultMessage(ResultMessage.Success);
+			}jb1.setObject(pos);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jb1;
 	}
 
 	@Override
-	public String generateID() throws RemoteException {
+	public String generateID(String firstPart) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from vehicles";
+		int subId=0;
+		int temp=0;
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("ID").substring(0, 6).equals(firstPart)){
+					subId=Integer.parseInt(rs.getString("ID").substring(6));
+					if(temp<subId){
+						temp=subId;
+					}temp++;
+				}
+			}
+			String last=String.valueOf(temp);
+			for(int i=0;i<3-last.length();i++){
+				last="0"+last;
+			}
+			return firstPart+last;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
     
 }

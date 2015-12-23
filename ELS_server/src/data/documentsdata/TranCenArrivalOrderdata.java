@@ -59,21 +59,6 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 				}
 	}
 
-	@Override
-	public ResultMessage deleteOne(String id) {
-		// TODO Auto-generated method stub
-		String sql="DELETE FROM trancenarrivalorder WHERE ID='"+id+"'";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
-
-		}
-	}
 
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idlist) {
@@ -169,12 +154,6 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 			return jb1;
 		}
 		
-	}
-
-	@Override
-	public ArrayList<TranCenArrivalOrderPO> findC() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

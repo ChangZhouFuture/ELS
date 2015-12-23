@@ -17,16 +17,7 @@ public interface VehiclesInfordataservice extends Remote{
 	 * 后置条件：添加新的车辆信息
 	 */
 	public ResultMessage add(VehiclesPO po) throws RemoteException;
-		
-	/**
-	 * 
-	 * @param Id
-	 * @return
-	 * 前置条件：要删除的车辆信息在PO中有记录
-	 * 后置条件：删除一条车辆信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String Id) throws RemoteException;
+
 	/**
 	 * 
 	 * @param Ids
@@ -54,7 +45,7 @@ public interface VehiclesInfordataservice extends Remote{
 	 */
 	public JavaBean1 findA(String Id) throws RemoteException;
 	
-	public JavaBean1 findB() throws RemoteException;
+	public JavaBean1 findB(String busiHallId) throws RemoteException;
 	
-	public String generateID() throws RemoteException;
+	public String generateID(String firstPart) throws RemoteException;
 }

@@ -22,16 +22,6 @@ public interface ReceivablesOrderdataservice extends ParentDocumentsdataservice{
 	 */
 	public ResultMessage add(ReceivablesOrderPO receivablesOrderPO) throws 
 	RemoteException;
-		
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * 前置条件：要删除的收款单信息在PO中有记录
-	 * 后置条件：删除一条收款单信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String id) throws RemoteException;
 
 	/**
 	 * 
@@ -43,15 +33,6 @@ public interface ReceivablesOrderdataservice extends ParentDocumentsdataservice{
 	 */ 
 	public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	
-//	/**
-//	 * 
-//	 * @param id4courier
-//	 * @param date
-//	 * @return
-//	 * 前置条件：要修改的收款单信息在PO中有记录
-//	 * 后置条件：修改收款单信息，并更新VO和PO
-//	 */
-//	public ReceivablesOrderPO modify(String id4courier,String date);
 	
 	/**
 	 * 

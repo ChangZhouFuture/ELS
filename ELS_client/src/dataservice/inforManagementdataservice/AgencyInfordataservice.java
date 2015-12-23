@@ -11,8 +11,6 @@ import state.ResultMessage;
 public interface AgencyInfordataservice extends Remote{
 	public ResultMessage add(AgencyPO po) throws RemoteException;
 	
-	public ResultMessage deleteOne(String Id) throws RemoteException;
-	
 	public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
 	
 	public ResultMessage update(AgencyPO po) throws RemoteException;

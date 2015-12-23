@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import po.userPO.UserPO;
 import data.utility.Database;
+import data.utility.GenerateId;
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import state.Gender;
 import state.Position;
@@ -53,21 +54,6 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.Fail;
-		}
-	}
-
-	@Override
-	public ResultMessage deleteOne(String Id) {
-		// TODO Auto-generated method stub
-		try {
-			stmt=con.prepareStatement("DELETE FROM user WHERE ID=?");
-			stmt.setString(1, Id);
-			stmt.executeUpdate();
-			return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.NotExist;
 		}
 	}
 
@@ -187,9 +173,10 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	}
 
 	@Override
-	public String generateID() throws RemoteException {
+	public String generateID(Position position) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		GenerateId g=new GenerateId();
+		return g.generateUserId(position);
 	}
 
 }

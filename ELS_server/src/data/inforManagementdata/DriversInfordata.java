@@ -79,19 +79,6 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	}
 	
 	//删除司机信息
-	public ResultMessage deleteOne(String Id){
-		try {
-			stmt=con.prepareStatement("DELETE FROM driver WHERE ID=?");
-			stmt.setString(1, Id);
-			stmt.executeUpdate();
-		    return ResultMessage.Success;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.Fail;
-		}
-	}
-	
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> Ids) {
 		// TODO Auto-generated method stub
@@ -162,8 +149,32 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		}
 	}
 	@Override
-	public String generateID() throws RemoteException {
+	public String generateID(String bisHallId) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		String formatBusiHallId=bisHallId.substring(0, 3)+bisHallId.substring(4);
+		int temp=0;
+		int subId=0;
+		String sql="select * from driver";
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("ID").substring(0, 6).equals(formatBusiHallId)){
+					subId=Integer.parseInt(rs.getString("ID").substring(6));
+					if(subId>temp){
+						temp=subId;
+					}
+				}
+			}temp++;
+			String last=String.valueOf(temp);
+			for(int i=0;i<3-last.length();i++){
+				last="0"+last;
+			}
+			return formatBusiHallId+last;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

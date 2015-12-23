@@ -32,13 +32,6 @@ import state.ResultMessage;
 	
 	/**
 	 * 前置：要删除的中转单在PO中有记录
-	 * 后置：删除一个中转单，更新PO数据
-	 * @param id
-	 */
-	public ResultMessage deleteOne(String id) throws RemoteException;
-	
-	/**
-	 * 前置：要删除的中转单在PO中有记录
 	 * 后置：删除多个中转单，更新PO数据
 	 * @param id
 	 */
@@ -65,7 +58,6 @@ import state.ResultMessage;
 	 * 后置：持久化更新设计的领域对象的数据
 	 */
 	public ResultMessage update(TransferOrderPO po) throws RemoteException;
-
 
 	public String generateId(String date,String trancenId) throws RemoteException;
 	

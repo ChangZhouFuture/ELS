@@ -30,12 +30,6 @@ import state.ResultMessage;
 		public ResultMessage addBusiHallArrivalOrder(BusiHallArrivalOrderPO busiHallArrivalOrder)
 		throws RemoteException;
 		
-		/**
-		 * 前置：要删除的营业厅到达单在PO中有记录
-		 * 后置：删除一个营业厅到达单，更新PO数据
-		 * @param id
-		 */
-		public ResultMessage deleteOne(String id) throws RemoteException;
 		
 		/**
 		 * 前置：要删除的营业厅到达单在持久化数据中有记录
@@ -59,14 +53,7 @@ import state.ResultMessage;
 		 * @return 营业厅到达单列表
 		 */
 		public JavaBean1 findB(String time) throws RemoteException;
-		
-		/**
-		 * 前置：
-		 * 后置：查询所有营业厅到达单
-		 * @param time
-		 * @return
-		 */
-		public ArrayList<BusiHallArrivalOrderPO> findC() throws RemoteException;
+	
 		
 		/**
 		 * 前置：行为或操作已经完成

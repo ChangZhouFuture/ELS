@@ -26,16 +26,6 @@ public interface PaymentOrderdataservice extends ParentDocumentsdataservice{
 	 * 后置条件：添加新的付款单信息
 	 */
 	public ResultMessage add(PaymentOrderPO paymentOrderPO) throws RemoteException;
-	/**
-	 * 
-	 * @param id
-	 * @param bussinessHall
-	 * @return
-	 * 前置条件：要删除的付款单信息在PO中有记录
-	 * 后置条件：删除一条付款单信息
-	 * 
-	 */
-	public ResultMessage deleteOne(String id) throws RemoteException;
 
 	/**
 	 * 
@@ -47,16 +37,7 @@ public interface PaymentOrderdataservice extends ParentDocumentsdataservice{
 	 */ 
 	public ResultMessage deleteMany(ArrayList<String> idList) throws RemoteException;
 	
-//	/**
-//	 * 
-//	 * @param bussinessHall
-//	 * @param date
-//	 * @return
-//	 * 前置条件：要修改的付款单信息在PO中有记录
-//	 * 后置条件：修改付款单信息，并更新VO和PO
-//	 */
-//	public PaymentOrderPO modify(String bussinessHall,String date);
-//	
+
 	/**
 	 * 
 	 * @param keyword

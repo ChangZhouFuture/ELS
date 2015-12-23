@@ -9,8 +9,6 @@ import state.ResultMessage;
 
 public interface BankAccountInfordataservice extends Remote{
     public ResultMessage add(BankAccountPO po) throws RemoteException;
-     
-    public ResultMessage deleteOne(String Id) throws RemoteException;
     
     public ResultMessage deleteMany(ArrayList<String> Ids) throws RemoteException;
     
@@ -23,4 +21,6 @@ public interface BankAccountInfordataservice extends Remote{
     public ResultMessage setInUse(String accountName) throws RemoteException;
     
     public String getInUse() throws RemoteException;
+    
+    public ResultMessage doesPaymentAccountExist(String accountName) throws RemoteException;
 }

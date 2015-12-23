@@ -73,19 +73,6 @@ public JavaBean1 find(String Id){
 }
 
 //删除机构信息
-public ResultMessage deleteOne(String Id){
-	try {
-		stmt=con.prepareStatement("DELETE FROM agency WHERE ID=?");
-		stmt.setString(1, Id);
-		stmt.executeUpdate();
-		return ResultMessage.Success;
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return ResultMessage.NotExist;
-	}
-}
-
 @Override
 public ResultMessage deleteMany(ArrayList<String> Ids) {
 	// TODO Auto-generated method stub
@@ -137,11 +124,16 @@ public String generateID(String firstPart) throws RemoteException {
 				}temp++;
 			}
 		}
+		String last=String.valueOf(temp);
+		for(int i=0;i<3-last.length();i++){
+			last="0"+last;
+		}
+		return firstPart+last;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		return null;
 	}
-	return firstPart+String.valueOf(temp);
 }
 @Override
 public JavaBean1 findB(AgencyType agencyType) throws RemoteException {
