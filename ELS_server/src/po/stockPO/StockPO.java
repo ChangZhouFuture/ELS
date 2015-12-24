@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class StockPO implements Serializable{
 	private String id;
+	private String tranCenID;
 	private String inDate;
-	private String generateTime;
 	private String destination;
 	private String areaNum;                              //ÇøºÅ
 	private String rowNum;                               //ÅÅºÅ
@@ -54,10 +54,10 @@ public class StockPO implements Serializable{
 	public void setPositionNum(String positionNum) {
 		this.positionNum = positionNum;
 	}
-	public String getGenerateTime() {
-		return generateTime;
+	public String getTranCenID() {
+		return tranCenID;
 	}
-	public void setGenerateTime(String generateTime) {
-		this.generateTime = generateTime;
+	public void setTranCenID(String tranCenID) {
+		this.tranCenID = tranCenID;
 	}
 }

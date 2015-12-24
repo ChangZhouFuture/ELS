@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import bean.JavaBean1;
 import bean.JavaBean3;
 import bean.JavaBean4;
-import bean.JavaBean5;
 import data.userdata.Logindata;
 import data.utility.Database;
 import po.stockPO.StockPO;
@@ -20,6 +19,11 @@ import state.ResultMessage;
 import dataservice.stockdataservice.Stockdataservice;
 
 public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
+
+	public Stockdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	static final int Max_Size=2000;
 	static final double percentage=0.9;
@@ -31,13 +35,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
     JavaBean3 jb3;
     JavaBean4 jb4;
     StockPO po;
-    
-	public Stockdata() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
+  
 	@Override
 	public JavaBean3 stockCount(String date) {
 		// TODO Auto-generated method stub
@@ -52,19 +50,25 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
-			while(rs.next()){
-				if(date.equals(rs.getString("date"))){
+		    while(rs.next()){
+			 	if(date.equals(rs.getString("date"))&&rs.getString("tranCenID").equals(Logindata.agencyId)){
 					if(Integer.parseInt(rs.getString("batchNum"))>batchNum){
 						batchNum=Integer.parseInt(rs.getString("batchNum"));
 					}	
 				}
 			}batchNum++;
 			lastNum=String.valueOf(batchNum);
-			sql="insert into batchnum(date,batch,batchNum) values (?,?,?)";
-			stmt=con.prepareStatement(sql);
+			int length=lastNum.length();
+			for(int i=0;i<4-length;i++){
+		     	lastNum="0"+lastNum;
+			}
+			String sql2="insert into batchnum(date,batch,batchNum,tranCenID) values (?,?,?,?)";
+			stmt=con.prepareStatement(sql2);
 			stmt.setString(1, date);
 			stmt.setString(2, batch);
 			stmt.setString(3, lastNum);
+			stmt.setString(4, Logindata.agencyId);
+			stmt.executeUpdate();
 			jb3.setBatch(batch);
 			jb3.setBatchNum(lastNum);
 			sql="select * from stock where tranCenID=?";
@@ -72,23 +76,22 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			stmt.setString(1, Logindata.agencyId);
 			ResultSet rs2=stmt.executeQuery();
 			while(rs2.next()){
-				po.setId(rs.getString(1));
-				po.setInDate(rs.getString(3));
-				po.setDestination(rs.getString(4));
-				po.setAreaNum(rs.getString(5));
-				po.setRowNum(rs.getString(6));
-				po.setFrameNum(rs.getString(7));
-				po.setPositionNum(rs.getString(8));
+				po.setId(rs2.getString(1));
+				po.setInDate(rs2.getString(3));
+				po.setDestination(rs2.getString(4));
+				po.setAreaNum(rs2.getString(5));
+				po.setRowNum(rs2.getString(6));
+				po.setFrameNum(rs2.getString(7));
+				po.setPositionNum(rs2.getString(8));
 				pos.add(po);
 			}
 			jb3.setObject(pos);
-			return jb3;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return jb3;
 		}
-		
+		return jb3;
 		
 	}
 
@@ -172,11 +175,10 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public ResultMessage outBound(String id) {
 		// TODO Auto-generated method stub
-		String sql="delete from stock where ID=?,tranCenID=?";
+		String sql="delete from stock where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, id);
-			stmt.setString(2, Logindata.agencyId);
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 
@@ -224,5 +226,5 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			return ResultMessage.NotExist;
 		}
 	}
-
+	
 }

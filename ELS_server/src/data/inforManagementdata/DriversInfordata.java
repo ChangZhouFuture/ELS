@@ -167,7 +167,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 				}
 			}temp++;
 			String last=String.valueOf(temp);
-			for(int i=0;i<3-last.length();i++){
+			int length=last.length();
+			for(int i=0;i<3-length;i++){
 				last="0"+last;
 			}
 			return formatBusiHallId+last;

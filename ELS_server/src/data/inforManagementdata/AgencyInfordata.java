@@ -125,7 +125,8 @@ public String generateID(String firstPart) throws RemoteException {
 			}
 		}
 		String last=String.valueOf(temp);
-		for(int i=0;i<3-last.length();i++){
+		int length=last.length();
+		for(int i=0;i<3-length;i++){
 			last="0"+last;
 		}
 		return firstPart+last;

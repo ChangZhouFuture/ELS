@@ -33,7 +33,8 @@ public class GenerateId {
 				}
 			}last=last+1;
 			subId=Integer.toString(last);
-			for(int i=0;i<4-subId.length();i++){
+			int length=subId.length();
+			for(int i=0;i<4-length;i++){
 				subId="0"+subId;
 			}
 			return formatDate+subId;
@@ -63,7 +64,8 @@ public class GenerateId {
 				}
 			}last=last+1;
 			subId=Integer.toString(last);
-			for(int i=0;i<7-subId.length();i++){
+			int length=subId.length();
+			for(int i=0;i<7-length;i++){
 				subId="0"+subId;
 			}
 			return trancenId+formatDate+subId;
@@ -93,7 +95,8 @@ public class GenerateId {
 				}
 			}last=last+1;
 			subId=String.valueOf(last);
-			for(int i=0;i<4-subId.length();i++){
+			int length=subId.length();
+			for(int i=0;i<4-length;i++){
 				subId="0"+subId;
 			}
 			return formatDate+subId;
@@ -132,7 +135,8 @@ public class GenerateId {
 				}
 			}temp++;
 			SecondPart=String.valueOf(temp);
-			for(int i=0;i<6-SecondPart.length();i++){
+			int length=SecondPart.length();
+			for(int i=0;i<6-length;i++){
 				SecondPart="0"+SecondPart;
 			}
 		
@@ -160,12 +164,13 @@ public class GenerateId {
 				}
 			}temp++;
 			String last=String.valueOf(temp);
+			int length=last.length();
 			if(loadingListType=="busihallloadinglist"){
-				for(int i=0;i<5-last.length();i++){
+				for(int i=0;i<5-length;i++){
 					last="0"+last;
 				}
 			}else{
-				for(int i=0;i<7-last.length();i++){
+				for(int i=0;i<7-length;i++){
 					last="0"+last;
 				}
 			}
