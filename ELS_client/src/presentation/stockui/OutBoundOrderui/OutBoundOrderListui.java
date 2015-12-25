@@ -27,6 +27,7 @@ import vo.stockVO.OutBoundOrderVO;
 public class OutBoundOrderListui extends Listui{
 	OutBoundOrderblservice outBoundOrderblservice;
 	OutBoundOrderVO oneLine;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		
@@ -46,10 +47,7 @@ public class OutBoundOrderListui extends Listui{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dateString=null;
-				dateString=dateString+yearField.getText()+"-";
-				dateString=dateString+monthField.getText()+"-";
-				dateString=dateString+dayField.getText();
-				JavaBean1 javaBean1;
+				dateString=dateString+showDate.getText();
 				outBoundOrderblservice=new OutBoundOrder();
 				try {
 					javaBean1=outBoundOrderblservice.inquireB(dateString);
@@ -68,7 +66,6 @@ public class OutBoundOrderListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
 		 String[] columnNames = {"选择","ID","目的地","快递编号","装运形式","出库日期","区号","时间"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
@@ -110,13 +107,6 @@ public class OutBoundOrderListui extends Listui{
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();

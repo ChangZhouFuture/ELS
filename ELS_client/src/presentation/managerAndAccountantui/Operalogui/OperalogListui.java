@@ -41,44 +41,21 @@ public class OperalogListui extends Listui{
 		delete.setVisible(false);
 		
 		findByDate.setBounds(30,65,120,24);
-		yearField.setBounds(150,67,48,20);
-		year.setBounds(200,65,24,24);
-		monthField.setBounds(230,67,24,20);
-		month.setBounds(260,65,24,24);
-		dayField.setBounds(290,67,24,20);
-		day.setBounds(320,65,24,24);
 		dateFind.setBounds(360,65,64,24);		
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							operaLogblservice=new InquireOperaLog();
-							try {
-								javaBean1=operaLogblservice.inquireOperaLog(dateString);
-								ArrayList<OperaLogVO> arrayList = (ArrayList<OperaLogVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
-				}
-				else{
-					System.out.println("Error");
+				dateString=dateString+showDate.getText();
+				JavaBean1 javaBean1;
+				operaLogblservice=new InquireOperaLog();
+				try {
+					javaBean1=operaLogblservice.inquireOperaLog(dateString);
+					ArrayList<OperaLogVO> arrayList = (ArrayList<OperaLogVO>)javaBean1.getObject();
+					makeTable(arrayList);
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
 			}
 		});
@@ -90,7 +67,6 @@ public class OperalogListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
 		 String[] columnNames = {"选择","职位","操作者","操作","对象","对象id","操作日期"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);

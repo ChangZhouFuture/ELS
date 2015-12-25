@@ -27,6 +27,7 @@ import vo.lineitemVO.documentslineitemVO.TranCenLoadingListlineitemVO;
 public class TransferCenterLoadingListListui extends Listui{
 	TranCenLoadingListblservice transCenLoadingListblservice;
 	TranCenLoadingListlineitemVO oneLine;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		
@@ -46,32 +47,15 @@ public class TransferCenterLoadingListListui extends Listui{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							transCenLoadingListblservice=new TranCenLoadingList();
-							try {
-								javaBean1=transCenLoadingListblservice.inquireB(dateString);
-								ArrayList<TranCenLoadingListlineitemVO> arrayList = (ArrayList<TranCenLoadingListlineitemVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
-				}
-				else{
-					System.out.println("Error");
+				dateString=dateString+showDate.getText();
+				transCenLoadingListblservice=new TranCenLoadingList();
+				try {
+					javaBean1=transCenLoadingListblservice.inquireB(dateString);
+					ArrayList<TranCenLoadingListlineitemVO> arrayList = 
+							(ArrayList<TranCenLoadingListlineitemVO>)javaBean1.getObject();
+					makeTable(arrayList);
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
 			}
 		});
@@ -83,7 +67,6 @@ public class TransferCenterLoadingListListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
 		 String[] columnNames = {"选择","ID","目的地","车辆代号","运费","装车日期"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
@@ -125,13 +108,6 @@ public class TransferCenterLoadingListListui extends Listui{
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();

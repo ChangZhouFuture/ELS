@@ -31,6 +31,7 @@ import vo.documentsVO.ReceivablesOrderVO;
 public class ReceivablesOrderListui extends Listui{
 	ReceivablesOrderblservice receivablesOrderblservice;
 	ReceivablesOrderVO oneLine;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		
@@ -50,34 +51,16 @@ public class ReceivablesOrderListui extends Listui{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							receivablesOrderblservice=new ReceivablesOrder();
-							try {
-								javaBean1=receivablesOrderblservice.inqurieB(dateString);
-								ArrayList<ReceivablesOrderVO> arrayList = (ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
-				}
-				else{
-					System.out.println("Error");
-				}
-			}
+			    dateString=dateString+showDate.getText();
+			    receivablesOrderblservice=new ReceivablesOrder();
+			    try {
+				    javaBean1=receivablesOrderblservice.inqurieB(dateString);
+				    ArrayList<ReceivablesOrderVO> arrayList = (ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
+				    makeTable(arrayList);
+			    } catch (Exception e2) {
+				    e2.printStackTrace();
+			    }
+			    }
 		});
 	}
 	public void makeTable(ArrayList<ReceivablesOrderVO> arrayList){
@@ -87,7 +70,6 @@ public class ReceivablesOrderListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
 		 String[] columnNames = {"选择","ID","快递员","金额","收款日期","时间"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
@@ -129,13 +111,6 @@ public class ReceivablesOrderListui extends Listui{
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();

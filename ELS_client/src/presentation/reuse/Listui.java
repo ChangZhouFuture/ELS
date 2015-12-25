@@ -1,36 +1,38 @@
 package presentation.reuse;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class Listui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel addText;
-	public JLabel year;
-	public JLabel month;
-	public JLabel day;
+	public DateChooser dateChooser;
+	public JTextField showDate;
 	public JButton add;
 	public JButton idFind;
 	public JButton dateFind;
 	public JTextField idField;
-	public JTextField yearField;
-	public JTextField monthField;
-	public JTextField dayField;
 	public JLabel findById;
 	public JLabel findByDate;
 	public JTable table;
 	public JScrollPane scrollPane;
-	public JButton delete=new JButton();
+	public DefaultTableModel tableModel;
+	public JButton delete;
 	
 	public Listui(){
 		sheetLabel=new JLabel();
@@ -39,14 +41,11 @@ public class Listui extends JPanel{
 		findById=new JLabel();
 		findByDate=new JLabel();
 		idField=new JTextField();
-		yearField=new JTextField();
-		monthField=new JTextField();
-		dayField=new JTextField();
-		year=new JLabel();
-		month=new JLabel();
-		day=new JLabel();
 		idFind=new JButton();
 		dateFind=new JButton();
+		delete=new JButton();
+		dateChooser = DateChooser.getInstance("yyyy-MM-dd");
+		showDate = new JTextField("单击选择日期");
 		
 		this.setLayout(null);
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
@@ -82,29 +81,8 @@ public class Listui extends JPanel{
 		
 		idField.setBounds(150,92,120,20);
 		
-		yearField.setBounds(150,127,48,20);
-		
-		year.setBounds(200,125,24,24);
-		year.setText("年");
-		year.setFont(font2);
-		year.setBackground(Color.WHITE);
-		year.setOpaque(true);
-		
-		monthField.setBounds(230,127,24,20);
-		
-		month.setBounds(260,125,24,24);
-		month.setText("月");
-		month.setFont(font2);
-		month.setBackground(Color.WHITE);
-		month.setOpaque(true);
-		
-		dayField.setBounds(290,127,24,20);
-		
-		day.setBounds(320,125,24,24);
-		day.setText("日");
-		day.setFont(font2);
-		day.setBackground(Color.WHITE);
-		day.setOpaque(true);
+		showDate.setBounds(150,127,120,20);
+		dateChooser.register(showDate);
 		
 		idFind.setBounds(360,90,64,24);
 		idFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -120,20 +98,21 @@ public class Listui extends JPanel{
 		dateFind.setFont(font2);
 		dateFind.setOpaque(true);
 		
+		delete.setBounds(30,420,50,24);
+		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		delete.setBackground(Color.WHITE);
+		delete.setText("删除");
+		delete.setFont(font2);
+		
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);
 		this.add(findById);
 		this.add(findByDate);
 		this.add(idField);
-		this.add(yearField);
-		this.add(year);
-		this.add(monthField);
-		this.add(month);
-		this.add(dayField);
-		this.add(day);
 		this.add(idFind);
 		this.add(dateFind);
+		this.add(showDate);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
