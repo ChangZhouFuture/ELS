@@ -434,7 +434,7 @@ public class Orderui extends ParentDocuments{
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
 				orderVO.setNumOfGoods(Integer.valueOf(goodNumField.getText()));
-				docmID.setText(orderVO.getId());
+				modifyOrder.setEnabled(false);
 				orderblservice.modify(orderVO);
 			}
 		});

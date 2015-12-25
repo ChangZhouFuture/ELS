@@ -116,23 +116,16 @@ public class OrderListui extends Listui{
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-				    int selectedRow = table.getSelectedRow();//获得选中行的索引
-				    if(selectedRow!=-1){
-				     tableModel.removeRow(selectedRow);  //删除行 
-				    }
+					   int selectedRow = table.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				           tableModel.removeRow(selectedRow);  //删除行 
+				       }
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   orderblservice=new Order();
 				   orderblservice.deleteMany(idList);
 				  }});

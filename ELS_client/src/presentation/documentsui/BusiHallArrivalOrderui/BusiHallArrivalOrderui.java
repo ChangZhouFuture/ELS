@@ -2,33 +2,43 @@ package presentation.documentsui.BusiHallArrivalOrderui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+
+import bean.JavaBean1;
+import businesslogic.documentsbl.BusiHallArrivalOrder;
+import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
+import presentation.userui.Loginui;
+import state.GoodState;
+import vo.documentsVO.BusiHallArrivalOrderVO;
+import vo.orderVO.OrderVO;
 
 public class BusiHallArrivalOrderui extends ParentDocuments{
-	JLabel BusiHallArrivalOrder;
-	JLabel TransferOrder;
-	JLabel Departure;
-	JTextField TransferOrderId;
-	JTextField DepartureName;
-	JLabel GoodState;
-	JRadioButton Complete;
-	JRadioButton Damaged;
-	JRadioButton Lost;
-	ButtonGroup GoodStateGroup;
-	JLabel Remarks;
-	JTextArea RemarksArea;
-	JScrollPane scroller;
+	public JLabel busiHallArrivalOrder;
+	public JLabel transferOrder;
+	public JLabel departure;
+	public JTextField transferOrderField;
+	public JTextField departureField;
+	public JLabel goodState;
+	public JComboBox goodStateType;
+	public String goodStateValue="完整";
+	public GoodState goodStateSeletion=GoodState.COMPLETE;
+	public BusiHallArrivalOrderblservice busiHallArrivalOrderblservice;
+	public BusiHallArrivalOrderVO busiHallArrivalOrderVO;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -37,104 +47,141 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		layeredPane.add(uiPanel,0);
 	}
 	public BusiHallArrivalOrderui(){
-		BusiHallArrivalOrder=new JLabel();
-		Departure=new JLabel();
-		TransferOrder=new JLabel();
-		GoodState=new JLabel();
-		TransferOrderId=new JTextField();
-		DepartureName=new JTextField();
-		Complete=new JRadioButton();
-		Damaged=new JRadioButton();
-		Lost=new JRadioButton();
-		GoodStateGroup=new ButtonGroup();
-		Remarks=new JLabel();
-		RemarksArea=new JTextArea();
+		busiHallArrivalOrder=new JLabel();
+		departure=new JLabel();
+		transferOrder=new JLabel();
+		goodState=new JLabel();
+		transferOrderField=new JTextField();
+		departureField=new JTextField();
+		String[] goodStateEntries={"完整","损坏","丢失"};
+		goodStateType=new JComboBox(goodStateEntries);
+		busiHallArrivalOrderVO=new BusiHallArrivalOrderVO();
 		
 		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		BusiHallArrivalOrder.setBounds(218,10,180,30);
-		BusiHallArrivalOrder.setText("营业厅到达单信息");
-		BusiHallArrivalOrder.setHorizontalAlignment(SwingConstants.CENTER);
-		BusiHallArrivalOrder.setFont(font1);
-		BusiHallArrivalOrder.setBackground(Color.WHITE);
-		BusiHallArrivalOrder.setOpaque(true);
+		busiHallArrivalOrder.setBounds(218,10,180,30);
+		busiHallArrivalOrder.setText("营业厅到达单信息");
+		busiHallArrivalOrder.setHorizontalAlignment(SwingConstants.CENTER);
+		busiHallArrivalOrder.setFont(font1);
+		busiHallArrivalOrder.setBackground(Color.WHITE);
+		busiHallArrivalOrder.setOpaque(true);
 		
-		TransferOrder.setBounds(40,50,120,24);
-		TransferOrder.setText("中转单编号：");
-		TransferOrder.setFont(font2);
-		TransferOrder.setBackground(Color.WHITE);
-		TransferOrder.setOpaque(true);
+		transferOrder.setBounds(40,50,100,24);
+		transferOrder.setText("中转单编号：");
+		transferOrder.setFont(font2);
+		transferOrder.setBackground(Color.WHITE);
+		transferOrder.setOpaque(true);
 		
-		TransferOrderId.setBounds(140,52,150,20);
+		transferOrderField.setBounds(140,52,150,20);
 		
-		Departure.setBounds(40,80,120,24);
-		Departure.setText("出发地：");
-		Departure.setFont(font2);
-		Departure.setBackground(Color.WHITE);
-		Departure.setOpaque(true);
+		departure.setBounds(40,80,100,24);
+		departure.setText("出发地：");
+		departure.setFont(font2);
+		departure.setBackground(Color.WHITE);
+		departure.setOpaque(true);
 		
-		DepartureName.setBounds(140,82,150,20);
+		departureField.setBounds(140,82,150,20);
 		
-		GoodState.setBounds(40,110,120,24);
-		GoodState.setText("货物到达状态：");
-		GoodState.setFont(font2);
-		GoodState.setBackground(Color.WHITE);
-		GoodState.setOpaque(true);
+		goodState.setBounds(40,110,120,24);
+		goodState.setText("货物到达状态：");
+		goodState.setFont(font2);
+		goodState.setBackground(Color.WHITE);
+		goodState.setOpaque(true);
 		
-		Complete.setBounds(140,140,150,24);
-		Complete.setText("完整");
-		Complete.setFont(font2);
-		Complete.setBackground(Color.WHITE);
+		goodStateType.setBounds(160,110,100,24);
+		goodStateType.setFont(font2);
+		goodStateType.setBackground(Color.WHITE);
+		goodStateType.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					goodStateValue=(String)goodStateType.getSelectedItem();
+					try {
+						switch(goodStateValue){
+						case "完整":goodStateSeletion=GoodState.COMPLETE;break;
+						case "损坏":goodStateSeletion=GoodState.BROKE;break;
+						case "丢失":goodStateSeletion=GoodState.LOST;break;
+						default:break;
+						}
+					} catch (Exception e) {
+						
+					}
+				} 
+			}
+		});
 		
-		Damaged.setBounds(140,170,150,24);
-		Damaged.setText("损坏");
-		Damaged.setFont(font2);
-		Damaged.setBackground(Color.WHITE);
+		makeOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				approState.setText("未审批");
+				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
+				busiHallArrivalOrderVO.setTransferOrderID(transferOrderField.getText());
+				busiHallArrivalOrderVO.setOrigin(departureField.getText());
+				busiHallArrivalOrderVO.setGoodState(goodStateSeletion);
+				busiHallArrivalOrderVO.setBusiHallID(Loginui.agency);
+				javaBean1=busiHallArrivalOrderblservice.addBusiHallArrivalOrder(busiHallArrivalOrderVO);
+				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
+				docmID.setText(busiHallArrivalOrderVO.getId());
+				makeOrder.setEnabled(false);
+			}
+		});
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				busiHallArrivalOrderVO.setTransferOrderID(transferOrderField.getText());
+				busiHallArrivalOrderVO.setOrigin(departureField.getText());
+				busiHallArrivalOrderVO.setGoodState(goodStateSeletion);
+				busiHallArrivalOrderVO.setBusiHallID(Loginui.agency);
+				modifyOrder.setEnabled(false);
+				busiHallArrivalOrderblservice.modify(busiHallArrivalOrderVO);
+			}
+		});
 		
-		Lost.setBounds(140,200,150,24);
-		Lost.setText("丢失");
-		Lost.setFont(font2);
-		Lost.setBackground(Color.WHITE); 
+		modify.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
 		
-		GoodStateGroup.add(Complete);
-		GoodStateGroup.add(Damaged);
-		GoodStateGroup.add(Lost);
-		
-		Remarks.setBounds(300,110,120,24);
-		Remarks.setText("备注：");
-		Remarks.setFont(font2);
-		Remarks.setBackground(Color.WHITE);
-		Remarks.setOpaque(true);
-		
-		RemarksArea.setBounds(330,140,190,100);
-		RemarksArea.setFont(font2);
-		RemarksArea.setEnabled(true);
-		RemarksArea.setWrapStyleWord(true);
-		RemarksArea.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		RemarksArea.setLineWrap(true);
-		
-		scroller=new JScrollPane(RemarksArea);
-		scroller.setBounds(330,140,190,100);
-		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		
-		this.add(BusiHallArrivalOrder);
-		this.add(TransferOrder);
-		this.add(Departure);
-		this.add(GoodState);
-		this.add(Complete);
-		this.add(Damaged);
-		this.add(Lost);
-		this.add(Remarks);
-		this.add(scroller);
-		this.add(TransferOrderId);
-		this.add(DepartureName);
+		this.add(busiHallArrivalOrder);
+		this.add(transferOrder);
+		this.add(departure);
+		this.add(goodState);
+		this.add(goodStateType);
+		this.add(transferOrderField);
+		this.add(departureField);
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void refresh() {
+		transferOrderField.setEditable(false);
+		departureField.setEditable(false);
+		goodStateType.setEnabled(false);
+		
+		transferOrderField.setBackground(Color.white);
+		departureField.setBackground(Color.white);
+		
+		transferOrderField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		departureField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+	}
+	public void modifying() {
+		transferOrderField.setEditable(true);
+		departureField.setEditable(true);
+		goodStateType.setEnabled(true);
+		modifyOrder.setVisible(true);
+		
+		transferOrderField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		departureField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

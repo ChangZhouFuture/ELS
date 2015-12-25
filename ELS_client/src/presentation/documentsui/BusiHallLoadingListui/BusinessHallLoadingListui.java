@@ -1,18 +1,40 @@
 package presentation.documentsui.BusiHallLoadingListui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.security.auth.Refreshable;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
+import bean.JavaBean1;
+import businesslogic.documentsbl.BusiHallLoadingList;
+import businesslogic.orderbl.Order;
+import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
+import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
+import presentation.userui.Loginui;
+import state.ResultMessage;
+import vo.documentsVO.BusiHallLoadingListVO;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
+import vo.orderVO.OrderVO;
 
 public class BusinessHallLoadingListui extends ParentDocuments{
 	public JLabel busiLoadOrder;
@@ -33,8 +55,14 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 	public JLabel orderId;
 	public JTextField orderIdField;
 	public JButton addOrder;
-	public JTextArea orderList;
+	public JTable orderList;
+	public DefaultTableModel tableModel;
 	public JScrollPane scroller;
+	public JButton deleteOrder;
+	JavaBean1 javaBean1;
+	OrderlineitemVO orderlineitemVO;
+	BusiHallLoadingListblservice busiHallLoadingListblservice;
+	BusiHallLoadingListVO busiHallLoadingListVO;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -61,7 +89,16 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		orderId=new JLabel();
 		orderIdField=new JTextField();
 		addOrder=new JButton();
-		orderList=new JTextArea();
+		busiHallLoadingListVO=new BusiHallLoadingListVO();
+		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		orderList = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
+		 deleteOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -74,29 +111,32 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		busiLoadOrder.setHorizontalAlignment(SwingConstants.CENTER);
 		busiLoadOrder.setFont(font1);
 		busiLoadOrder.setBackground(Color.WHITE);
-		busiLoadOrder.setOpaque(true);
 		
 		busiId.setBounds(40,50,100,24);
 		busiId.setText("营业厅编号：");
 		busiId.setFont(font2);
 		busiId.setBackground(Color.WHITE);
-		busiId.setOpaque(true);
 		
 		busiIdField.setBounds(140,52,120,20);
+		busiIdField.setText(Loginui.agency);
+		busiIdField.setBackground(Color.WHITE);
+		busiIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		busiIdField.setEditable(false);
 		
 		motorId.setBounds(300,50,100,24);
 		motorId.setText("汽运编号：");
 		motorId.setFont(font2);
 		motorId.setBackground(Color.WHITE);
-		motorId.setOpaque(true);
 		
 		motorIdField.setBounds(400,52,120,20);
+		motorIdField.setBackground(Color.WHITE);
+		motorIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		motorIdField.setEditable(false);
 		
 		vehicleId.setBounds(40,80,100,24);
 		vehicleId.setText("车辆代号：");
 		vehicleId.setFont(font2);
 		vehicleId.setBackground(Color.WHITE);
-		vehicleId.setOpaque(true);
 		
 		vehicleIdField.setBounds(140,82,120,20);
 		
@@ -104,7 +144,6 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		arrival.setText("到达地：");
 		arrival.setFont(font2);
 		arrival.setBackground(Color.WHITE);
-		arrival.setOpaque(true);
 		
 		arrivalField.setBounds(400,82,120,20);
 		
@@ -112,7 +151,6 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		jZY.setText("监装员：");
 		jZY.setFont(font2);
 		jZY.setBackground(Color.WHITE);
-		jZY.setOpaque(true);
 		
 		jZYField.setBounds(140,112,120,20);
 		
@@ -120,7 +158,6 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		yYY.setText("押运员：");
 		yYY.setFont(font2);
 		yYY.setBackground(Color.WHITE);
-		yYY.setOpaque(true);
 		
 		yYYField.setBounds(400,112,120,20);
 		
@@ -128,16 +165,16 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		fare.setText("运费：");
 		fare.setFont(font2);
 		fare.setBackground(Color.WHITE);
-		fare.setOpaque(true);
 		
 		fareField.setBounds(140,142,120,20);
+		fareField.setBackground(Color.WHITE);
+		fareField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		fareField.setEditable(false);
 		
 		orderId.setBounds(40,170,200,24);
 		orderId.setText("本次装箱所有订单条形码号：");
 		orderId.setFont(font2);
 		orderId.setBackground(Color.WHITE);
-		orderId.setOpaque(true);
 		
 		orderIdField.setBounds(140,202,120,20);
 		
@@ -146,19 +183,70 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		addOrder.setFont(font2);
 		addOrder.setBackground(Color.WHITE);
 		addOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		addOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				busiHallLoadingListblservice=new BusiHallLoadingList();
+				orderlineitemVO=busiHallLoadingListblservice.addOrder(orderIdField.getText());
+				String[] oneRow={"",orderlineitemVO.getId(),orderlineitemVO.getSenderAdd(),
+						orderlineitemVO.getAddresseeAdd(),orderlineitemVO.getExpressType().toString(),
+						orderlineitemVO.getGenerateDate()};
+			    tableModel.addRow(oneRow);
+			}
+		});
 		
-		orderList.setBounds(40,230,250,150);
-		orderList.setEnabled(false);
+		orderList.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		orderList.setRowHeight(24);
+		orderList.setBackground(Color.WHITE);
+		orderList.setShowVerticalLines(true);
+		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderList.getColumnModel().getColumn(0).setPreferredWidth(40);
+		scroller=new JScrollPane(orderList);
+		scroller.setSize(500,144);
+		scroller.setLocation(40,230);
+		scroller.setViewportView(orderList);
 		orderList.setFont(font2);
 		orderList.setBackground(Color.WHITE);
-		orderList.setWrapStyleWord(true);
 		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		orderList.setLineWrap(true);
-		
-		scroller=new JScrollPane(orderList);
-		scroller.setBounds(40,230,250,150);
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		deleteOrder.setBounds(40,400,50,24);
+		deleteOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		deleteOrder.setBackground(Color.WHITE);
+		deleteOrder.setText("删除");
+		deleteOrder.setFont(font2);
+		deleteOrder.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   for(int i=0;i<orderList.getRowCount();i++){
+				    int selectedRow = orderList.getSelectedRow();//获得选中行的索引
+				    if(selectedRow!=-1){
+				     tableModel.removeRow(selectedRow);  //删除行 
+				    }
+				   }
+				  }});
+		
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				approState.setText("未审批");
+				busiHallLoadingListblservice=new BusiHallLoadingList();
+				
+				busiHallLoadingListVO.setDestination(arrivalField.getText());
+			}
+		});
 		
 		this.add(busiLoadOrder);
 		this.add(busiId);
@@ -179,10 +267,32 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		this.add(orderIdField);
 		this.add(addOrder);
 		this.add(scroller);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
+		this.add(deleteOrder);
+	}
+	public void refresh() {
+		vehicleIdField.setEditable(false);
+		arrivalField.setEditable(false);
+		jZYField.setEditable(false);
+		yYYField.setEditable(false);
+		orderIdField.setEditable(false);
+		addOrder.setEnabled(false);
+		deleteOrder.setEnabled(false);
+		
+		vehicleIdField.setBackground(Color.white);
+		arrivalField.setBackground(Color.white);
+		jZYField.setBackground(Color.white);
+		yYYField.setBackground(Color.white);
+		orderIdField.setBackground(Color.white);
+		
+		vehicleIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		arrivalField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		jZYField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		yYYField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+		
 	}
 }

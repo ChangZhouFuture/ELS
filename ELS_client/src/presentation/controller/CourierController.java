@@ -88,10 +88,6 @@ public class CourierController {
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
 					childPanel = orderui;
-					orderui.modify.setVisible(true);
-					orderui.delete.setVisible(true);
-					orderui.modifyOrder.setVisible(true);
-					orderui.makeOrder.setVisible(false);
 					childPanel.setLocation(0,0);
 					Skip.skip(mainPanel,childPanel);
 					inOrderui();
@@ -105,14 +101,15 @@ public class CourierController {
                 			getValueAt(orderListui.table.getSelectedRow(),1);
                 	System.out.println(id);
                 	try {
+                		orderblservice=new Order();
+                		javaBean1=new JavaBean1();
     					javaBean1=orderblservice.inquireA(id);
+    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+    						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+    					}
     					orderVO=(OrderVO)javaBean1.getObject();
     					orderui=find(orderVO);
     					childPanel = orderui;
-    					orderui.modify.setVisible(true);
-    					orderui.delete.setVisible(true);
-    					orderui.modifyOrder.setVisible(true);
-    					orderui.makeOrder.setVisible(false);
     					Skip.skip(mainPanel,childPanel);
     					inOrderui();
     				} catch (Exception e2) {
@@ -124,6 +121,11 @@ public class CourierController {
 	}
 	public Orderui find(OrderVO orderVO){
 		orderui = new Orderui();
+		orderui.modify.setVisible(true);
+		orderui.delete.setVisible(true);
+		orderui.modifyOrder.setVisible(true);
+		orderui.makeOrder.setVisible(false);
+		
 		orderui.senderNameField.setText(orderVO.getSenderName());
 		orderui.senderNameField.setEditable(false);
 					
@@ -175,6 +177,12 @@ public class CourierController {
 		default:break;
 		}
 		orderui.expressTypeType.setEditable(false);
+		
+		switch(orderVO.getApproState()){
+		case Approve:orderui.approState.setText("已审批");break;
+		case NotApprove:orderui.approState.setText("未审批");break;
+			default:break;
+		}
 
 		orderui.freightField.setText(String.valueOf(orderVO.getFreight()));
 		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
