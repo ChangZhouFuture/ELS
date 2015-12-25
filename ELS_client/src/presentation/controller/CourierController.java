@@ -19,6 +19,7 @@ import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
 import presentation.userui.Courierui;
+import presentation.userui.Loginui;
 import state.ExpressType;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -36,6 +37,7 @@ public class CourierController {
 	
 	public CourierController(){
 		courierui = new Courierui();
+		courierui.userName.setText("快递员："+Loginui.name);
 		orderListui = new OrderListui();
 		orderListui.setLocation(0,0);
 		mainPanel.setLayout(null);
@@ -157,41 +159,38 @@ public class CourierController {
 					
 		orderui.goodSizeField.setText(String.valueOf(orderVO.getSize()));
 		orderui.goodSizeField.setEditable(false);
-					
+		
+		if(orderVO.getPackingCharge()==5.0){
+			orderui.packType.setSelectedIndex(0);
+		}else if(orderVO.getPackingCharge()==10.0){
+			orderui.packType.setSelectedIndex(1);
+		}else if(orderVO.getPackingCharge()==1.0){
+			orderui.packType.setSelectedIndex(2);
+		}
+		orderui.packType.setEditable(false);
+		switch(orderVO.getExpressType()){
+		case Economic:orderui.expressTypeType.setSelectedIndex(0);break;
+		case Standard:orderui.expressTypeType.setSelectedIndex(1);break;
+		case EMS:orderui.expressTypeType.setSelectedIndex(2);break;
+		default:break;
+		}
+		orderui.expressTypeType.setEditable(false);
+
+		orderui.freightField.setText(String.valueOf(orderVO.getFreight()));
 		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
-		orderui.amountField.setEditable(false);
-					
-//		orderui.expectedArrivalDateField.setText(orderVO.getExpectedArrivalDate());
-//		orderui.expectedArrivalDateField.setEditable(false);
-					
-		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
-		orderui.amountField.setEditable(false);
-					
+		orderui.expectedArrivalDate.setText("预计到达时间："+orderVO.getExpectedArrivalDate());
+		
+		orderui.sureReceive.setVisible(true);
 		if(orderVO.getTrueAddressee()!=null){
 			orderui.actualReceiver.setVisible(true);
+			orderui.sureReceive.setVisible(false);
 			orderui.actualReceiverField.setText(String.valueOf(orderVO.getTrueAddressee()));
 		}
-					
 		if(orderVO.getArrivalDate()!=null){
 			orderui.trueArrivalDate.setVisible(true);
 			orderui.trueArrivalDateField.setText(orderVO.getArrivalDate());
 		}
-//		if(orderVO.getNumOfBags()!=0){
-//			orderui.bag.setSelected(true);
-//		}
-//		if(orderVO.getNumOfWoodenBox()!=0){
-//			orderui.wood.setSelected(true);
-//		}
-//		if(orderVO.getNumOfCartons()!=0){
-//			orderui.paper.setSelected(true);
-//		}
-//		if(orderVO.getExpressType()==ExpressType.Economic){
-//			orderui.economic.setSelected(true);
-//		}else if(orderVO.getExpressType()==ExpressType.Standard){
-//			orderui.standard.setSelected(true);
-//		}else if(orderVO.getExpressType()==ExpressType.EMS){
-//			orderui.eMS.setSelected(true);
-//		}
+		orderui.docmID.setText(orderVO.getId());
 		return orderui;
 	}
 	public void inOrderui() {

@@ -21,6 +21,7 @@ import javax.swing.table.TableCellRenderer;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
+import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -28,16 +29,12 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 public class OrderListui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel addText;
-	public JLabel year;
-	public JLabel month;
-	public JLabel day;
+	public DateChooser dateChooser;
+	public JTextField showDate;
 	public JButton add;
 	public JButton idFind;
 	public JButton dateFind;
 	public JTextField idField;
-	public JTextField yearField;
-	public JTextField monthField;
-	public JTextField dayField;
 	public JLabel findById;
 	public JLabel findByDate;
 	public JTable table;
@@ -61,13 +58,9 @@ public class OrderListui extends JPanel{
 		sheetLabel=new JLabel();
 		findById = new JLabel();
 		findByDate = new JLabel();
-		year=new JLabel();
-		month=new JLabel();
-		day=new JLabel();
 		idField=new JTextField();
-		yearField=new JTextField();
-		monthField=new JTextField();
-		dayField=new JTextField();
+		dateChooser = DateChooser.getInstance("yyyy-MM-dd");
+		showDate = new JTextField("单击选择日期");
 		add=new JButton();
 		idFind=new JButton();
 		dateFind=new JButton();
@@ -116,29 +109,8 @@ public class OrderListui extends JPanel{
 		
 		idField.setBounds(150,92,120,20);
 		
-		yearField.setBounds(150,127,48,20);
-		
-		year.setBounds(200,125,24,24);
-		year.setText("年");
-		year.setFont(font2);
-		year.setBackground(Color.WHITE);
-		year.setOpaque(true);
-		
-		monthField.setBounds(230,127,24,20);
-		
-		month.setBounds(260,125,24,24);
-		month.setText("月");
-		month.setFont(font2);
-		month.setBackground(Color.WHITE);
-		month.setOpaque(true);
-		
-		dayField.setBounds(290,127,24,20);
-		
-		day.setBounds(320,125,24,24);
-		day.setText("日");
-		day.setFont(font2);
-		day.setBackground(Color.WHITE);
-		day.setOpaque(true);
+		showDate.setBounds(150,127,120,20);
+		dateChooser.register(showDate);
 		
 		idFind.setBounds(360,90,64,24);
 		idFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -157,17 +129,8 @@ public class OrderListui extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String date = null;
-				int year = Integer.parseInt(yearField.getText());
-				int month = Integer.parseInt(monthField.getText());
-				int day = Integer.parseInt(dayField.getText());
-				
-				if (year < 2015 || month < 0 || month > 12 || day < 0 || day > 31) {
-					System.out.println("请重新输入日期");
-					return ;
-				}
-				date = yearField.getText() + "-" + monthField.getText() + "-" 
-						+ dayField.getText();
+				String date=null;
+				date=showDate.getText();
 				System.out.println(date);
 				orderblservice=new Order();
 				try {
@@ -187,12 +150,7 @@ public class OrderListui extends JPanel{
 		this.add(findById);
 		this.add(findByDate);
 		this.add(idField);
-		this.add(yearField);
-		this.add(year);
-		this.add(monthField);
-		this.add(month);
-		this.add(dayField);
-		this.add(day);
+		this.add(showDate);
 		this.add(idFind);
 		this.add(dateFind);
 		

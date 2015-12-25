@@ -14,6 +14,7 @@ public class ParentDocuments extends JPanel{
 	public JButton modifyOrder;
 	public JButton delete;
 	public JLabel approState;
+	public JLabel docmID;
 	
 	public ParentDocuments(){
 		approState=new JLabel();
@@ -21,11 +22,15 @@ public class ParentDocuments extends JPanel{
 		delete=new JButton();
 		makeOrder=new JButton();
 		modifyOrder=new JButton();
+		docmID=new JLabel();
 		
 		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
+		
+		docmID.setBounds(450,0,160,24);
+		docmID.setBackground(Color.WHITE);
 		
 		makeOrder.setBounds(260,442,96,30);
 		makeOrder.setText("确认生成");
@@ -61,6 +66,7 @@ public class ParentDocuments extends JPanel{
 		this.add(modify);
 		this.add(delete);
 		this.add(modifyOrder);
+		this.add(docmID);
 		this.setLocation(182,30);
 		this.setSize(640,496);
 		this.setBackground(Color.WHITE);

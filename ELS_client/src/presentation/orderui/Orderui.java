@@ -22,6 +22,7 @@ import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.ParentDocuments;
 import presentation.reuse.TextListener;
 import presentation.userui.Courierui;
+import state.ExpressType;
 import vo.orderVO.OrderVO;
 
 public class Orderui extends ParentDocuments{
@@ -70,8 +71,10 @@ public class Orderui extends ParentDocuments{
 	public JComboBox expressTypeType;
 	public JComboBox packType;
 	public JButton sureReceive;
-	String expressValue=null;
-	String packValue=null;
+	String expressValue="经济快递";
+	String packValue="纸箱（5）";
+	double packing=5.0;
+	ExpressType expressTypeSeletion=ExpressType.Economic;
 	Orderblservice orderblservice;
 	OrderVO orderVO;
 	JavaBean1 javaBean1;
@@ -118,10 +121,9 @@ public class Orderui extends ParentDocuments{
 		actualReceiver=new JLabel();
 		actualReceiverField=new JTextField();
 		expectedArrivalDate=new JLabel();
-		
 		trueArrivalDate=new JLabel();
 		trueArrivalDateField=new JTextField();
-		String[] expressTypeEntries={"特快专递","普通快递","EMS"};
+		String[] expressTypeEntries={"经济快递","标准快递","特快专递"};
 		expressTypeType=new JComboBox(expressTypeEntries);
 		String[] packEntries={"纸箱（5）","木箱（10）","纸袋（1）"};
 		packType=new JComboBox(packEntries);
@@ -134,18 +136,15 @@ public class Orderui extends ParentDocuments{
 		order.setHorizontalAlignment(SwingConstants.CENTER);
 		order.setFont(font1);
 		order.setBackground(Color.WHITE);
-		order.setOpaque(true);
 		
 		sender.setBounds(30,50,270,160);
 		sender.setBorder(senderBorder);
 		sender.setBackground(Color.WHITE);
-		sender.setOpaque(true);
 		
 		senderName.setBounds(30,25,60,24);
 		senderName.setText("姓名：");
 		senderName.setFont(font5);
 		senderName.setBackground(Color.WHITE);
-		senderName.setOpaque(true);
 		
 		senderNameField.setBounds(90,27,160,20);
 		
@@ -153,7 +152,6 @@ public class Orderui extends ParentDocuments{
 		senderAddress.setText("住址：");
 		senderAddress.setFont(font5);
 		senderAddress.setBackground(Color.WHITE);
-		senderAddress.setOpaque(true);
 		
 		senderAddressField.setBounds(90,57,160,20);
 		
@@ -161,7 +159,6 @@ public class Orderui extends ParentDocuments{
 		senderCompany.setText("单位：");
 		senderCompany.setFont(font5);
 		senderCompany.setBackground(Color.WHITE);
-		senderCompany.setOpaque(true);
 		
 		senderCompanyField.setBounds(90,87,160,20);
 		
@@ -169,7 +166,6 @@ public class Orderui extends ParentDocuments{
 		senderPhone.setText("电话：");
 		senderPhone.setFont(font5);
 		senderPhone.setBackground(Color.WHITE);
-		senderPhone.setOpaque(true);
 		
 		senderPhoneField.setBounds(90,117,160,20);
 		
@@ -186,13 +182,11 @@ public class Orderui extends ParentDocuments{
 		receiver.setBounds(320,50,270,160);
 		receiver.setBorder(receiverBorder);
 		receiver.setBackground(Color.WHITE);
-		receiver.setOpaque(true);
 		
 		receiverName.setBounds(30,25,60,24);
 		receiverName.setText("姓名：");
 		receiverName.setFont(font5);
 		receiverName.setBackground(Color.WHITE);
-		receiverName.setOpaque(true);
 		
 		receiverNameField.setBounds(90,27,160,20);
 		
@@ -200,7 +194,6 @@ public class Orderui extends ParentDocuments{
 		receiverAddress.setText("住址：");
 		receiverAddress.setFont(font5);
 		receiverAddress.setBackground(Color.WHITE);
-		receiverAddress.setOpaque(true);
 		
 		receiverAddressField.setBounds(90,57,160,20);
 		
@@ -208,7 +201,6 @@ public class Orderui extends ParentDocuments{
 		receiverCompany.setText("单位：");
 		receiverCompany.setFont(font5);
 		receiverCompany.setBackground(Color.WHITE);
-		receiverCompany.setOpaque(true);
 		
 		receiverCompanyField.setBounds(90,87,160,20);
 		
@@ -216,7 +208,6 @@ public class Orderui extends ParentDocuments{
 		receiverPhone.setText("电话：");
 		receiverPhone.setFont(font5);
 		receiverPhone.setBackground(Color.WHITE);
-		receiverPhone.setOpaque(true);
 		
 		receiverPhoneField.setBounds(90,117,160,20);
 		
@@ -233,13 +224,11 @@ public class Orderui extends ParentDocuments{
 		other.setBounds(30,215,560,210);
 		other.setBorder(otherBorder);
 		other.setBackground(Color.WHITE);
-		other.setOpaque(true);
 		
 		goodNum.setBounds(30,20,80,24);
 		goodNum.setText("托运数量：");
 		goodNum.setFont(font5);
 		goodNum.setBackground(Color.WHITE);
-		goodNum.setOpaque(true);
 		
 		goodNumField.setBounds(110,22,80,20);
 		
@@ -247,7 +236,6 @@ public class Orderui extends ParentDocuments{
 		goodName.setText("内件品名：");
 		goodName.setFont(font5);
 		goodName.setBackground(Color.WHITE);
-		goodName.setOpaque(true);
 		
 		goodNameField.setBounds(320,22,120,20);
 		
@@ -255,7 +243,6 @@ public class Orderui extends ParentDocuments{
 		goodWeight.setText("重量(kg)：");
 		goodWeight.setFont(font5);
 		goodWeight.setBackground(Color.WHITE);
-		goodWeight.setOpaque(true);
 		
 		goodWeightField.setBounds(110,52,80,20);
 		goodWeightField.getDocument().addDocumentListener(new TextListener(
@@ -265,7 +252,6 @@ public class Orderui extends ParentDocuments{
 		goodSize.setText("体积（m^3）：");
 		goodSize.setFont(font5);
 		goodSize.setBackground(Color.WHITE);
-		goodSize.setOpaque(true);
 		
 		goodSizeField.setBounds(350,52,90,20);
 		goodSizeField.getDocument().addDocumentListener(new TextListener(
@@ -275,7 +261,6 @@ public class Orderui extends ParentDocuments{
 		pack.setText("包装：");
 		pack.setFont(font5);
 		pack.setBackground(Color.WHITE);
-		pack.setOpaque(true);
 		
 		packType.setBounds(110,80,90,24);
 		packType.setBackground(Color.WHITE);
@@ -284,6 +269,16 @@ public class Orderui extends ParentDocuments{
 			public void itemStateChanged(ItemEvent evt) {
 				if(evt.getStateChange() == ItemEvent.SELECTED){
 					packValue=(String)packType.getSelectedItem();
+					try {
+						switch(packValue){
+						case "纸箱（5）":packing=5.0;break;
+						case "木箱（10）":packing=10.0;break;
+						case "纸袋（1）":packing=1.0;break;
+						default:break;
+						}
+					} catch (Exception e) {
+						
+					}
 				} 
 			}
 		});
@@ -292,7 +287,6 @@ public class Orderui extends ParentDocuments{
 		freight.setText("运费：");
 		freight.setFont(font5);
 		freight.setBackground(Color.WHITE);
-		freight.setOpaque(true);
 
 		freightField.setBounds(300,82,80,20);
 		freightField.setEditable(false);
@@ -303,13 +297,11 @@ public class Orderui extends ParentDocuments{
 		amount.setText("总费用：");
 		amount.setFont(font5);
 		amount.setBackground(Color.WHITE);
-		amount.setOpaque(true);
 		
 		expressType.setBounds(30,110,80,24);
 		expressType.setText("快递类型：");
 		expressType.setFont(font5);
 		expressType.setBackground(Color.WHITE);
-		expressType.setOpaque(true);
 		
 		expressTypeType.setBounds(110,110,90,24);
 		expressTypeType.setBackground(Color.WHITE);
@@ -318,6 +310,15 @@ public class Orderui extends ParentDocuments{
 			public void itemStateChanged(ItemEvent evt) {
 				if(evt.getStateChange() == ItemEvent.SELECTED){
 					expressValue=(String)expressTypeType.getSelectedItem();
+					try {
+						switch(expressValue){
+					    case "经济快递":expressTypeSeletion=ExpressType.Economic;break;
+					    case "标准快递":expressTypeSeletion=ExpressType.Standard;break;
+					    case "特快专递":expressTypeSeletion=ExpressType.EMS;break;
+					    default:break;
+					    }
+					} catch (Exception e) {
+					}
 				} 
 			}
 		});
@@ -348,7 +349,6 @@ public class Orderui extends ParentDocuments{
 		expectedArrivalDate.setText("预计到达时间：");
 		expectedArrivalDate.setFont(font5);
 		expectedArrivalDate.setBackground(Color.WHITE);
-		expectedArrivalDate.setOpaque(true);
 		
 		trueArrivalDate.setBounds(240,140,100,24);
 		trueArrivalDate.setText("实际到达时间：");
@@ -388,11 +388,8 @@ public class Orderui extends ParentDocuments{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refresh();
-//				double packingCharge=0;
-				orderblservice=new Order();
-//				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
-//				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
 				approState.setText("未审批");
+				orderblservice=new Order();
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
@@ -401,15 +398,19 @@ public class Orderui extends ParentDocuments{
 				orderVO.setAddresseeAdd(receiverAddressField.getText());
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
-//				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
-//				orderVO.setExpressType(express);
-//				orderVO.setTotalCost(totalcost);
+				orderVO.setNumOfGoods(Integer.valueOf(goodNumField.getText()));
 				orderVO.setSize(Double.valueOf(goodSizeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
+				orderVO.setPackingCharge(packing);
+				orderVO.setExpressType(expressTypeSeletion);
 				javaBean1=orderblservice.add(orderVO);
 				orderVO=(OrderVO)javaBean1.getObject();
-				expectedArrivalDate.setText("预计到达时间："+orderVO.getExpectedArrivalDate());
+				expectedArrivalDate.setText("预计到达时间："+
+				        orderVO.getExpectedArrivalDate());
+				freightField.setText(String.valueOf(orderVO.getFreight()));
+				amountField.setText(String.valueOf(orderVO.getTotalCost()));
+				docmID.setText(orderVO.getId());
 				makeOrder.setEnabled(false);
 			}
 		});
@@ -418,23 +419,7 @@ public class Orderui extends ParentDocuments{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				senderNameField.setEditable(false);
-				senderAddressField.setEditable(false);
-				senderCompanyField.setEditable(false);
-				senderPhoneField.setEditable(false);
-				receiverNameField.setEditable(false);
-				receiverAddressField.setEditable(false);
-				receiverCompanyField.setEditable(false);
-				receiverPhoneField.setEditable(false);
-				goodNumField.setEditable(false);
-				goodNameField.setEditable(false);
-				goodWeightField.setEditable(false);
-				goodSizeField.setEditable(false);
-				amountField.setEditable(false);
-				double packingCharge=0;
-//				double totalcost=orderblservice.calculateFreight(receiverAddressField.getText())+packingCharge;
-//				carriageField.setText(String.valueOf(totalcost));
-//				expectedArrivalDateField.setText(orderblservice.generateExpectedArrivalDate());
+				refresh();
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
@@ -443,13 +428,13 @@ public class Orderui extends ParentDocuments{
 				orderVO.setAddresseeAdd(receiverAddressField.getText());
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());
-//				orderVO.setExpectedArrivalDate(orderblservice.generateExpectedArrivalDate());
-//				orderVO.setExpressType(express);
-//				orderVO.setTotalCost(totalcost);
+				orderVO.setPackingCharge(packing);
+				orderVO.setExpressType(expressTypeSeletion);
 				orderVO.setSize(Double.valueOf(goodSizeField.getText()));
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
-//				orderVO.setGenerateTime(orderblservice.generateDate());
+				orderVO.setNumOfGoods(Integer.valueOf(goodNumField.getText()));
+				docmID.setText(orderVO.getId());
 				orderblservice.modify(orderVO);
 			}
 		});
@@ -535,6 +520,7 @@ public class Orderui extends ParentDocuments{
 		goodSizeField.setEditable(true);
 		packType.setEnabled(true);
 		expressTypeType.setEnabled(true);
+		modifyOrder.setVisible(true);
 		
 		senderNameField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		senderAddressField.setBorder(BorderFactory.createLineBorder(Color.lightGray));

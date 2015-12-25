@@ -50,6 +50,8 @@ public class Loginui extends JFrame{
 	public TranCenClerkController tranCenClerkController;
 	public static String name;
 	public static String city;
+	public static String region;
+	public static String agency;
 	
 	public static void main(String[] args){
 		Loginui ui=new Loginui();
@@ -144,6 +146,10 @@ public class Loginui extends JFrame{
 				loginAndOutblservice=new Login();
 				javaBean2=loginAndOutblservice.login(userField.getText(),String.valueOf(passwordField.getPassword()));
 				String position=javaBean2.getPosition().toString();
+				name=javaBean2.getName();
+				city=javaBean2.getCity();
+				region=javaBean2.getRegion();
+				agency=javaBean2.getAgencyID();
 				switch (position) {
 				case "Accountant1":
 					dispose();

@@ -25,7 +25,7 @@ public class Courierui extends MainFrame{
 		
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		userName.setBounds(2,80,176,24);
-		userName.setText("快递员："+"***");
+		userName.setText("快递员："+Loginui.name);
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		userName.setFont(font2);
 		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
