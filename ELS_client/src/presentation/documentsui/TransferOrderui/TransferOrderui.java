@@ -17,6 +17,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import presentation.reuse.ParentDocuments;
+import presentation.userui.Loginui;
 import presentation.userui.TranCenClerkui;
 
 public class TransferOrderui extends ParentDocuments{
@@ -47,6 +48,7 @@ public class TransferOrderui extends ParentDocuments{
 	public JButton addOrder;
 	public JTextArea orderList;
 	public JScrollPane scroller;
+	String city = Loginui.city;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();

@@ -5,35 +5,25 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
 import bean.JavaBean1;
-import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
 import presentation.userui.Courierui;
-import state.ResultMessage;
-import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import vo.orderVO.OrderVO;
 
 public class OrderListui extends JPanel{
 	public JLabel sheetLabel;
@@ -56,12 +46,12 @@ public class OrderListui extends JPanel{
 	public DefaultTableModel tableModel;
 	public Orderblservice orderblservice;
 	public OrderlineitemVO oneLine;
+	public JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		
 		Courierui ui=new Courierui();
 		OrderListui uiPanel=new OrderListui();
-		uiPanel.makeTable(null);
 		JLayeredPane layeredPane=ui.getLayeredPane();
 		layeredPane.add(uiPanel,0);
 	}
@@ -163,7 +153,7 @@ public class OrderListui extends JPanel{
 		dateFind.setText("≤È’“");
 		dateFind.setFont(font2);
 		dateFind.setOpaque(true);
-		dateFind.addActionListener(new ActionListener() {
+		dateFind.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -179,16 +169,15 @@ public class OrderListui extends JPanel{
 				date = yearField.getText() + "-" + monthField.getText() + "-" 
 						+ dayField.getText();
 				System.out.println(date);
-//				JavaBean1 javaBean1;
-//				orderblservice=new Order();
-//				try {
-//					javaBean1=orderblservice.inquireB(dateString);
-//					ArrayList<OrderlineitemVO> arrayList = (ArrayList<OrderlineitemVO>)javaBean1.getObject();
-//					makeTable(arrayList);
-//				} catch (Exception e2) {
-//					e2.printStackTrace();
-//				}
-//			}
+				orderblservice=new Order();
+				try {
+					javaBean1=orderblservice.inquireB(date);
+					ArrayList<OrderlineitemVO> arrayList = 
+							(ArrayList<OrderlineitemVO>)javaBean1.getObject();
+					makeTable(arrayList);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 			}
 		});
 		

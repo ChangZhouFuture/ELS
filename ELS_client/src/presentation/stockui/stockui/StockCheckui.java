@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 
 import presentation.reuse.Images;
 import presentation.userui.StockManagerui;
@@ -31,6 +34,8 @@ public class StockCheckui extends JPanel{
 	public JTextField endYearField;
 	public JTextField endMonthField;
 	public JTextField endDayField;
+	public JTable table;
+	public DefaultTableCellRenderer r;
 	
 	public static void main(String[] args){
 		
@@ -56,8 +61,17 @@ public class StockCheckui extends JPanel{
 		endYearField=new JTextField();
 		endMonthField=new JTextField();
 		endDayField=new JTextField();
+		r=new DefaultTableCellRenderer();
+		table=new JTable(6,5){
+			public boolean isCellEditable(int row, int column){
+				 return false;
+		 }
+		};
 		
 		this.setLayout(null);
+		
+		r.setHorizontalAlignment(JLabel.CENTER);   
+		table.setDefaultRenderer(Object.class,r);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -137,6 +151,24 @@ public class StockCheckui extends JPanel{
 		find.setFont(font2);
 		find.setBackground(Color.WHITE);
 		
+		table.setSize(550,144);
+		table.setLocation(30,160);
+		table.setRowHeight(24);
+		table.setBackground(Color.WHITE);
+		table.setShowVerticalLines(true);
+		table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		
+		table.setValueAt("分区",0,0);
+		table.setValueAt("机动区",1,0);
+		table.setValueAt("汽运区",2,0);
+		table.setValueAt("铁运区",3,0);
+		table.setValueAt("航运区",4,0);
+		table.setValueAt("总计",5,0);
+		table.setValueAt("入库数量",0,1);
+		table.setValueAt("出库数量",0,2);
+		table.setValueAt("入库金额",0,3);
+		table.setValueAt("出库金额",0,4);
+		
 		this.add(sheetLabel);
 		this.add(startDate);
 		this.add(endDate);
@@ -153,6 +185,7 @@ public class StockCheckui extends JPanel{
 		this.add(endYearField);
 		this.add(endMonthField);
 		this.add(endDayField);
+		this.add(table);
 		
 		setLocation(184,30);
 		this.setSize(616,496);

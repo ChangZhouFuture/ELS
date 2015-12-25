@@ -48,6 +48,8 @@ public class Loginui extends JFrame{
 	public GeneralManagerController generalManagerController;
 	public StockManagerController stockManagerController;
 	public TranCenClerkController tranCenClerkController;
+	public static String name;
+	public static String city;
 	
 	public static void main(String[] args){
 		Loginui ui=new Loginui();

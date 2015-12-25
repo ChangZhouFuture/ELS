@@ -99,7 +99,9 @@ public class CourierController {
 			 
 			public void mouseClicked(MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
-                	String id=(String)orderListui.tableModel.getValueAt(orderListui.table.getSelectedRow(),1);
+                	String id=(String)orderListui.tableModel.
+                			getValueAt(orderListui.table.getSelectedRow(),1);
+                	System.out.println(id);
                 	try {
     					javaBean1=orderblservice.inquireA(id);
     					orderVO=(OrderVO)javaBean1.getObject();
@@ -109,7 +111,6 @@ public class CourierController {
     					orderui.delete.setVisible(true);
     					orderui.modifyOrder.setVisible(true);
     					orderui.makeOrder.setVisible(false);
-    					childPanel.setLocation(0,0);
     					Skip.skip(mainPanel,childPanel);
     					inOrderui();
     				} catch (Exception e2) {

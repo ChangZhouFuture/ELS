@@ -45,33 +45,23 @@ public class TransferOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							transferOrderblservice=new TransferOrder();
-							try {
-								javaBean1=transferOrderblservice.inquireB(dateString);
-								ArrayList<TransferOrderlineitemVO> arrayList = (ArrayList<TransferOrderlineitemVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
+				String date = null;
+				int year = Integer.parseInt(yearField.getText());
+				int month = Integer.parseInt(monthField.getText());
+				int day = Integer.parseInt(dayField.getText());
+				
+				if (year < 2015 || month < 0 || month > 12 || day < 0 || day > 31) {
+					System.out.println("请重新输入日期");
+					return ;
 				}
-				else{
-					System.out.println("Error");
+				date = yearField.getText() + "-" + monthField.getText() + "-" 
+						+ dayField.getText();
+				try {
+//					javaBean1=transferOrderblservice.inquireB(date);
+//					ArrayList<TransferOrderlineitemVO> arrayList = (ArrayList<TransferOrderlineitemVO>)javaBean1.getObject();
+//					makeTable(arrayList);
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
 			}
 		});
@@ -138,10 +128,10 @@ public class TransferOrderListui extends Listui{
 				   for(int i=0;i<table.getRowCount();i++){
 				    int selectedRow = table.getSelectedRow();//获得选中行的索引
 				    if(selectedRow!=-1){
-				     tableModel.removeRow(selectedRow);  //删除行 
+				    	tableModel.removeRow(selectedRow);  //删除行 
+				    	idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				    }
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   transferOrderblservice=new TransferOrder();
 				   transferOrderblservice.delete(idList);
 				  }});

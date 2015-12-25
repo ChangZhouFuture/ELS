@@ -46,32 +46,17 @@ public class OutBoundOrderListui extends Listui{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dateString=null;
-				if(yearField.getText()!=null){
-					dateString=dateString+yearField.getText()+"-";
-					if(monthField.getText()!=null){
-						dateString=dateString+monthField.getText()+"-";
-						if(dayField.getText()!=null){
-							dateString=dateString+dayField.getText();
-							JavaBean1 javaBean1;
-							outBoundOrderblservice=new OutBoundOrder();
-							try {
-								javaBean1=outBoundOrderblservice.inquireB(dateString);
-								ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
-								makeTable(arrayList);
-							} catch (Exception e2) {
-								e2.printStackTrace();
-							}
-						}
-						else{
-							System.out.println("Error");
-						}
-					}
-					else{
-						System.out.println("Error");
-					}
-				}
-				else{
-					System.out.println("Error");
+				dateString=dateString+yearField.getText()+"-";
+				dateString=dateString+monthField.getText()+"-";
+				dateString=dateString+dayField.getText();
+				JavaBean1 javaBean1;
+				outBoundOrderblservice=new OutBoundOrder();
+				try {
+					javaBean1=outBoundOrderblservice.inquireB(dateString);
+					ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
+					makeTable(arrayList);
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
 			}
 		});

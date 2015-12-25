@@ -121,8 +121,6 @@ public class UserListui extends JPanel{
 				if(evt.getStateChange() == ItemEvent.SELECTED){
 					String positionString=null;
 					positionString=(String)position.getSelectedItem();
-
-					
 					switch(positionString){
 					case"¿ìµÝÔ±":
 						positionbl="Courier";
