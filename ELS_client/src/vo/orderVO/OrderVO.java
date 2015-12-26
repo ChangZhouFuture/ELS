@@ -1,6 +1,7 @@
 package vo.orderVO;
 
 import state.ApproState;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 
 public class OrderVO {
@@ -27,7 +28,14 @@ public class OrderVO {
 	private int numOfGoods;
 	private ApproState approState;
 	private ExpressType expressType;
+	private ExpressArrivalStatus expressArrivalStatus;
 	
+	public ExpressArrivalStatus getExpressArrivalStatus() {
+		return expressArrivalStatus;
+	}
+	public void setExpressArrivalStatus(ExpressArrivalStatus expressArrivalStatus) {
+		this.expressArrivalStatus = expressArrivalStatus;
+	}
 	public int getNumOfGoods() {
 		return numOfGoods;
 	}
