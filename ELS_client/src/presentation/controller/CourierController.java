@@ -96,7 +96,6 @@ public class CourierController {
                 if (evt.getClickCount() == 2) {
                 	String id=(String)orderListui.tableModel.
                 			getValueAt(orderListui.table.getSelectedRow(),1);
-                	System.out.println(id);
                 	try {
                 		orderblservice=new Order();
                 		javaBean1=new JavaBean1();
@@ -118,9 +117,6 @@ public class CourierController {
 	}
 	public Orderui find(OrderVO orderVO){
 		orderui = new Orderui();
-		orderui.modify.setVisible(true);
-		orderui.delete.setVisible(true);
-		orderui.makeOrder.setVisible(false);
 		
 		orderui.refresh();
 		orderui.senderNameField.setText(orderVO.getSenderName());

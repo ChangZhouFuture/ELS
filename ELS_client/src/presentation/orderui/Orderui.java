@@ -339,12 +339,13 @@ public class Orderui extends ParentDocuments{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				actualReceiverField.setEditable(true);
+				makeSure.setVisible(true);
 				actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 				actualReceiverField.setText(receiverNameField.getText());
 			}
 		});
 		
-		makeSure.setBounds(400,170,90,24);
+		makeSure.setBounds(420,170,90,24);
 		makeSure.setText("确认收件");
 		makeSure.setFont(font5);
 		makeSure.setBackground(Color.WHITE);
@@ -360,13 +361,13 @@ public class Orderui extends ParentDocuments{
 			}
 		});
 		
-		actualReceiver.setBounds(240,170,80,24);
-		actualReceiver.setText("代收人：");
+		actualReceiver.setBounds(240,170,100,24);
+		actualReceiver.setText("实际收件人：");
 		actualReceiver.setFont(font5);
 		actualReceiver.setBackground(Color.WHITE);
-		actualReceiver.setVisible(false);
+//		actualReceiver.setVisible(false);
 		
-		actualReceiverField.setBounds(300,142,80,20);
+		actualReceiverField.setBounds(340,142,80,20);
 		actualReceiverField.setEditable(false);
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -463,6 +464,7 @@ public class Orderui extends ParentDocuments{
 				orderVO.setGoodsName(goodNameField.getText());
 				orderVO.setNumOfGoods(Integer.valueOf(goodNumField.getText()));
 				modifyOrder.setEnabled(false);
+				modifyOrder.setVisible(false);
 				orderblservice.modify(orderVO);
 			}
 		});

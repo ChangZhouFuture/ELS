@@ -196,9 +196,6 @@ public class BusiHallClerkController {
 	}
 	public BusinessHallLoadingListui findBusiHallLoadingList(BusiHallLoadingListVO busiHallLoadingListVO){
 		businessHallLoadingListui=new BusinessHallLoadingListui();
-		businessHallLoadingListui.modify.setVisible(true);
-		businessHallLoadingListui.delete.setVisible(true);
-		businessHallLoadingListui.makeOrder.setVisible(false);
 		businessHallLoadingListui.refresh();
 		businessHallLoadingListui.busiIdField.setText(busiHallLoadingListVO.getBusiHallID());
 		businessHallLoadingListui.motorIdField.setText(busiHallLoadingListVO.getTruckNum());
@@ -347,9 +344,6 @@ public class BusiHallClerkController {
 	}
 	public BusiHallArrivalOrderui findBusiHallArrivalOrder(BusiHallArrivalOrderVO busiHallArrivalOrderVO){
 		busiHallArrivalOrderui=new BusiHallArrivalOrderui();
-		busiHallArrivalOrderui.modify.setVisible(true);
-		busiHallArrivalOrderui.delete.setVisible(true);
-		busiHallArrivalOrderui.makeOrder.setVisible(false);
 		busiHallArrivalOrderui.refresh();
 		busiHallArrivalOrderui.transferOrderField.setText(busiHallArrivalOrderVO.getTransferOrderID());
 		busiHallArrivalOrderui.departureField.setText(busiHallArrivalOrderVO.getOrigin());
@@ -397,6 +391,25 @@ public class BusiHallClerkController {
 				inDeliveryOrderui();
 			}
 		});
+		deliveryOrderListui.idFind.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				deliveryOrderblservice=new DeliveryOrder();
+				javaBean1=new JavaBean1();
+				javaBean1=deliveryOrderblservice.inquireA(deliveryOrderListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					JOptionPane.showMessageDialog(null, "¶©µ¥²»´æÔÚ", "´íÎó", JOptionPane.ERROR_MESSAGE);
+				}
+				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
+				deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
+			}
+		});
+	}
+	public DeliveryOrderui findDeliveryOrder(DeliveryOrderVO deliveryOrderVO){
+		deliveryOrderui=new DeliveryOrderui();
+		
+		return deliveryOrderui;
 	}
 	public void inDeliveryOrderui(){
 		
