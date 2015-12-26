@@ -2,10 +2,12 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import po.orderPO.OrderPO;
 import dataservice.orderdataservice.Orderdataservice;
 import state.ApproState;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -177,6 +179,9 @@ public class Order implements Orderblservice {
 		orderPO = new OrderPO();
 		this.orderVO = orderVO;
 		
+		this.orderVO.setFreight(calculateFreight(orderVO.getAddresseeAdd(), orderVO.
+				getWeight(), orderVO.getExpressType()));
+		this.orderVO.setTotalCost(totalCost);
 		VOtoPO();
 		try {
 			resultMessage = orderdataservice.update(orderPO);
@@ -202,6 +207,7 @@ public class Order implements Orderblservice {
 		//截取字符串的一段
 		//先计算运费再计算包装费
 		freight = CalculateFreight.expressFreight(destination, weight, eType);
+		totalCost = freight + this.orderVO.getPackingCharge();
 		return freight;
 	}
 
@@ -212,26 +218,26 @@ public class Order implements Orderblservice {
 	}
 
 	//该方法可能不需要
-	public double calculatePackingCharge(String packingType) {
-		double packingCharge = 0;
-		
-		switch (packingType) {
-		case "纸箱":
-			packingCharge = 5;
-			break;
-		case "木箱":
-			packingCharge = 10;
-			break;
-		case "快递袋":
-			packingCharge = 1;
-			break;
-		default:
-			break;
-		}
-		
-		totalCost = packingCharge+freight;
-		return packingCharge;
-	}
+//	public double calculatePackingCharge(String packingType) {
+//		double packingCharge = 0;
+//		
+//		switch (packingType) {
+//		case "纸箱":
+//			packingCharge = 5;
+//			break;
+//		case "木箱":
+//			packingCharge = 10;
+//			break;
+//		case "快递袋":
+//			packingCharge = 1;
+//			break;
+//		default:
+//			break;
+//		}
+//		
+//		totalCost = packingCharge+freight;
+//		return packingCharge;
+//	}
 
 	public void VOtoPO() {
 		this.orderPO.setAddresseeAdd(orderVO.getAddresseeAdd());
@@ -240,6 +246,7 @@ public class Order implements Orderblservice {
 		this.orderPO.setAddresseePhoneNumber(orderVO.getAddresseePhoneNumber());
 		this.orderPO.setApproState(orderVO.getApproState());
 		this.orderPO.setExpectedArrivalDate(orderVO.getExpectedArrivalDate());
+		this.orderPO.setExpressArrivalStatus(ExpressArrivalStatus.NotArrival);
 		this.orderPO.setExpressType(orderVO.getExpressType());
 		this.orderPO.setFreight(orderVO.getFreight());
 		this.orderPO.setGenerateDate(orderVO.getGenerateDate());

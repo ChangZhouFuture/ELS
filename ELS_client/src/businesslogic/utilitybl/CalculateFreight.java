@@ -1,13 +1,15 @@
 package businesslogic.utilitybl;
 
+import businesslogic.userbl.Login;
 import state.ExpressType;
 import state.TransportType;
 
 public class CalculateFreight {
-	public static String origin;
+	public static String origin = Login.city;
 	
 	public static double expressFreight(String destination, double weight, ExpressType
 			eType) {
+		destination = destination.substring(0, 2);
 		double distance = calculateDistance(destination);
 		double freight = distance / 1000 * 23;
 		if (eType == ExpressType.Economic) {
