@@ -365,7 +365,7 @@ public class Orderui extends ParentDocuments{
 		actualReceiver.setText("实际收件人：");
 		actualReceiver.setFont(font5);
 		actualReceiver.setBackground(Color.WHITE);
-//		actualReceiver.setVisible(false);
+		actualReceiver.setVisible(false);
 		
 		actualReceiverField.setBounds(340,142,80,20);
 		actualReceiverField.setEditable(false);

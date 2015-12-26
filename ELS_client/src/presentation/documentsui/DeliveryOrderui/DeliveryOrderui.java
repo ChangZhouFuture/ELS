@@ -137,6 +137,7 @@ public class DeliveryOrderui extends ParentDocuments{
 	public void modifying() {
 		courierid.setEditable(true);
 		orderid.setEditable(true);
+		modifyOrder.setVisible(true);
 		
 		courierid.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		orderid.setBorder(BorderFactory.createLineBorder(Color.lightGray));

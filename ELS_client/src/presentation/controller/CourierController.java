@@ -20,6 +20,7 @@ import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
 import presentation.userui.Courierui;
 import presentation.userui.Loginui;
+import state.ExpressArrivalStatus;
 import state.ExpressType;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -154,12 +155,10 @@ public class CourierController {
 		orderui.expectedArrivalDate.setText("预计到达时间："+orderVO.getExpectedArrivalDate());
 		
 		orderui.sureReceive.setVisible(true);
-		if(orderVO.getTrueAddressee()!=null){
+		if(orderVO.getExpressArrivalStatus()!=ExpressArrivalStatus.NotArrival){
 			orderui.actualReceiver.setVisible(true);
 			orderui.sureReceive.setVisible(false);
 			orderui.actualReceiverField.setText(String.valueOf(orderVO.getTrueAddressee()));
-		}
-		if(orderVO.getArrivalDate()!=null){
 			orderui.trueArrivalDate.setVisible(true);
 			orderui.trueArrivalDateField.setText(orderVO.getArrivalDate());
 		}

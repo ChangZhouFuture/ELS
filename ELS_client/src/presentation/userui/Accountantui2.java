@@ -27,7 +27,7 @@ public class Accountantui2 extends MainFrame{
 		userName=new JLabel();
 		
 		userName.setBounds(2,76,176,24);
-		userName.setText("财务人员："+"***");
+		userName.setText("财务人员："+Loginui.name);
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		userName.setFont(font2);

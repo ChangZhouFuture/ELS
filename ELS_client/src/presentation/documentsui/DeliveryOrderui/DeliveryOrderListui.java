@@ -64,7 +64,6 @@ public class DeliveryOrderListui extends Listui{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 String[] columnNames = {"选择","ID","派送员","到达地","订单号","时间"}; //列名
 		 String [][]tableVales={}; //数据
@@ -96,7 +95,6 @@ public class DeliveryOrderListui extends Listui{
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);

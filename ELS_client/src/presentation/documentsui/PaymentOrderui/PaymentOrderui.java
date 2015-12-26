@@ -2,10 +2,16 @@ package presentation.documentsui.PaymentOrderui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.security.auth.Refreshable;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -16,19 +22,17 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import bean.JavaBean1;
+import businesslogic.documentsbl.PaymentOrder;
+import businesslogicservice.documentsblservice.PaymentOrderblservice;
+import presentation.reuse.DateChooser;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.Accountantui2;
+import vo.documentsVO.PaymentOrderVO;
 
 
 public class PaymentOrderui extends ParentDocuments{
 	public JLabel paymentOrder;
-	public JLabel paymentDate;
-	public JTextField yearField;
-	public JTextField monthField;
-	public JTextField dayField;
-	public JLabel year;
-	public JLabel month;
-	public JLabel day;
 	public JLabel paymentMoney;
 	public JTextField paymentMoneyField;
 	public JLabel paymentPerson;
@@ -36,14 +40,14 @@ public class PaymentOrderui extends ParentDocuments{
 	public JLabel paymentId;
 	public JTextField paymentIdField;
 	public JLabel entry;
-	public ButtonGroup entryGroup;
-	public JRadioButton carriage;
-	public JRadioButton reward;
-	public JRadioButton wages;
-	public JRadioButton rent;
+	public JComboBox payType;
 	public JLabel remarks;
 	public JTextArea remarksArea;
 	public JScrollPane scroller;
+	String payTypeValue=null;
+	PaymentOrderblservice paymentOrderblservice;
+	PaymentOrderVO paymentOrderVO;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		Accountantui2 ui=new Accountantui2();
@@ -53,13 +57,6 @@ public class PaymentOrderui extends ParentDocuments{
 	}
 	public PaymentOrderui(){
 		paymentOrder=new JLabel();
-		paymentDate=new JLabel();
-		yearField=new JTextField();
-		monthField=new JTextField();
-		dayField=new JTextField();
-		year=new JLabel();
-		month=new JLabel();
-		day=new JLabel();
 		paymentMoney=new JLabel();
 		paymentMoneyField=new JTextField();
 		paymentPerson=new JLabel();
@@ -67,13 +64,11 @@ public class PaymentOrderui extends ParentDocuments{
 		paymentId=new JLabel();
 		paymentIdField=new JTextField();
 		entry=new JLabel();
-		entryGroup=new ButtonGroup();
-		carriage=new JRadioButton();
-		reward=new JRadioButton();
-		wages=new JRadioButton();
-		rent=new JRadioButton();
+		String[] payTypeEntries={"运费（按次计算）","奖励（一次性）","人员工资（按月统计）","租金（按年收）"};
+		payType=new JComboBox(payTypeEntries);
 		remarks=new JLabel();
 		remarksArea=new JTextArea();
+		paymentOrderVO=new PaymentOrderVO();
 		
 		this.setLayout(null);
 		
@@ -87,98 +82,57 @@ public class PaymentOrderui extends ParentDocuments{
 		paymentOrder.setBackground(Color.WHITE);
 		paymentOrder.setOpaque(true);
 		
-		paymentDate.setBounds(40,50,90,24);
-		paymentDate.setText("付款日期：");
-		paymentDate.setFont(font2);
-		paymentDate.setBackground(Color.WHITE);
-		paymentDate.setOpaque(true);
-		
-		yearField.setBounds(130,52,48,20);
-		
-		year.setBounds(180,50,24,24);
-		year.setText("年");
-		year.setFont(font2);
-		year.setBackground(Color.WHITE);
-		year.setOpaque(true);
-		
-		monthField.setBounds(210,52,24,20);
-		
-		month.setBounds(240,50,24,24);
-		month.setText("月");
-		month.setFont(font2);
-		month.setBackground(Color.WHITE);
-		month.setOpaque(true);
-		
-		dayField.setBounds(270,52,24,20);
-		
-		day.setBounds(300,50,24,24);
-		day.setText("日");
-		day.setFont(font2);
-		day.setBackground(Color.WHITE);
-		day.setOpaque(true);
-		
-		paymentMoney.setBounds(40,80,90,24);
+		paymentMoney.setBounds(40,50,90,24);
 		paymentMoney.setText("付款金额：");
 		paymentMoney.setFont(font2);
 		paymentMoney.setBackground(Color.WHITE);
 		paymentMoney.setOpaque(true);
 		
-		paymentMoneyField.setBounds(130,82,100,20);
+		paymentMoneyField.setBounds(130,52,100,20);
 		
-		paymentPerson.setBounds(40,110,90,24);
+		paymentPerson.setBounds(40,80,90,24);
 		paymentPerson.setText("付款人：");
 		paymentPerson.setFont(font2);
 		paymentPerson.setBackground(Color.WHITE);
 		paymentPerson.setOpaque(true);
 		
-		paymentPersonField.setBounds(130,112,100,20);
+		paymentPersonField.setBounds(130,82,100,20);
 		
-		paymentId.setBounds(40,140,90,24);
+		paymentId.setBounds(40,110,90,24);
 		paymentId.setText("付款账号：");
 		paymentId.setFont(font2);
 		paymentId.setBackground(Color.WHITE);
 		paymentId.setOpaque(true);
 		
-		paymentIdField.setBounds(130,142,100,20);
+		paymentIdField.setBounds(130,112,100,20);
+		paymentIdField.setEditable(false);
+		paymentIdField.setBackground(Color.WHITE);
+		paymentIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
-		entry.setBounds(40,170,90,24);
+		entry.setBounds(40,140,90,24);
 		entry.setText("条目：");
 		entry.setFont(font2);
 		entry.setBackground(Color.WHITE);
 		entry.setOpaque(true);
 		
-		carriage.setBounds(130,170,200,24);
-		carriage.setText("运费（按次计算）");
-		carriage.setFont(font2);
-		carriage.setBackground(Color.WHITE);
+		payType.setBounds(130,140,200,24);
+		payType.setFont(font2);
+		payType.setBackground(Color.WHITE);
+		payType.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					payTypeValue=(String)payType.getSelectedItem();
+				} 
+			}
+		});
 		
-		reward.setBounds(340,170,200,24);
-		reward.setText("奖励（一次性）");
-		reward.setFont(font2);
-		reward.setBackground(Color.WHITE);
-		
-		wages.setBounds(130,200,200,24);
-		wages.setText("人员工资（按月统计）");
-		wages.setFont(font2);
-		wages.setBackground(Color.WHITE);
-		
-		rent.setBounds(340,200,200,24);
-		rent.setText("租金（按年收）");
-		rent.setFont(font2);
-		rent.setBackground(Color.WHITE);
-		
-		entryGroup.add(carriage);
-		entryGroup.add(reward);
-		entryGroup.add(wages);
-		entryGroup.add(rent);
-		
-		remarks.setBounds(40,230,90,24);
+		remarks.setBounds(40,170,90,24);
 		remarks.setText("备注：");
 		remarks.setFont(font2);
 		remarks.setBackground(Color.WHITE);
 		remarks.setOpaque(true);
 		
-		remarksArea.setBounds(130,230,250,150);
+		remarksArea.setBounds(130,170,250,150);
 		remarksArea.setFont(font2);
 		remarksArea.setEnabled(true);
 		remarksArea.setWrapStyleWord(true);
@@ -186,18 +140,52 @@ public class PaymentOrderui extends ParentDocuments{
 		remarksArea.setLineWrap(true);
 		
 		scroller=new JScrollPane(remarksArea);
-		scroller.setBounds(130,230,250,150);
+		scroller.setBounds(130,170,250,150);
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				approState.setText("未审批");
+				paymentOrderblservice=new PaymentOrder();
+				paymentOrderVO.setAmount(Double.valueOf(paymentMoneyField.getText()));
+				paymentOrderVO.setPayer(paymentPersonField.getText());
+				paymentOrderVO.setEntry(payTypeValue);
+				paymentOrderVO.setNote(remarksArea.getText());
+				javaBean1=paymentOrderblservice.add(paymentOrderVO);
+				paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
+				docmID.setText(paymentOrderVO.getID());
+				paymentIdField.setText(paymentOrderVO.getBankAccount());
+				makeOrder.setEnabled(false);
+			}
+		});
+		
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				paymentOrderblservice=new PaymentOrder();
+				paymentOrderVO.setAmount(Double.valueOf(paymentMoneyField.getText()));
+				paymentOrderVO.setPayer(paymentPersonField.getText());
+				paymentOrderVO.setEntry(payTypeValue);
+				paymentOrderVO.setNote(remarksArea.getText());
+				modifyOrder.setEnabled(false);
+				modifyOrder.setVisible(false);
+				paymentOrderblservice.modify(paymentOrderVO);
+			}
+		});
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
+		
 		this.add(paymentOrder);
-		this.add(paymentDate);
-		this.add(yearField);
-		this.add(year);
-		this.add(monthField);
-		this.add(month);
-		this.add(dayField);
-		this.add(day);
 		this.add(paymentMoney);
 		this.add(paymentMoneyField);
 		this.add(paymentPerson);
@@ -205,10 +193,7 @@ public class PaymentOrderui extends ParentDocuments{
 		this.add(paymentId);
 		this.add(paymentIdField);
 		this.add(entry);
-		this.add(carriage);
-		this.add(reward);
-		this.add(wages);
-		this.add(rent);
+		this.add(payType);
 		this.add(remarks);
 		this.add(scroller);
 		setLocation(184,30);
@@ -216,5 +201,32 @@ public class PaymentOrderui extends ParentDocuments{
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void refresh(){
+		paymentMoneyField.setEditable(false);
+		paymentPersonField.setEditable(false);
+		payType.setEnabled(false);
+		remarksArea.setEditable(false);
+		
+		paymentMoneyField.setBackground(Color.white);
+		paymentPersonField.setBackground(Color.white);
+		paymentIdField.setBackground(Color.white);
+		
+		paymentMoneyField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		paymentPersonField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+	}
+	public void modifying(){
+		paymentMoneyField.setEditable(true);
+		paymentPersonField.setEditable(true);
+		payType.setEnabled(true);
+		remarksArea.setEditable(true);
+		modifyOrder.setVisible(true);
+		
+		paymentMoneyField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		paymentPersonField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }
