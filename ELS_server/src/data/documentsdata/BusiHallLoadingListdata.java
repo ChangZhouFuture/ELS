@@ -129,7 +129,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		llpo=new BusiHallLoadingListlineitemPO();
+		
         ArrayList<BusiHallLoadingListlineitemPO> llpos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -138,6 +138,7 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				llpo=new BusiHallLoadingListlineitemPO();
 				if(rs.getString("date").equals(date)&&
 						rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);

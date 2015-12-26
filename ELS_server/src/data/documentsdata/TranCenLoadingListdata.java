@@ -155,7 +155,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		llpo=new TranCenLoadingListlineitemPO();
+		
         ArrayList<TranCenLoadingListlineitemPO> llpos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -164,6 +164,7 @@ public class TranCenLoadingListdata extends UnicastRemoteObject implements TranC
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				llpo=new TranCenLoadingListlineitemPO();
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);

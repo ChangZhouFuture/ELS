@@ -134,7 +134,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new StorageListPO();
+		
 		ArrayList<StorageListPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -143,6 +143,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new StorageListPO();
 				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setId(rs.getString(1));
 					po.setInDate(date);

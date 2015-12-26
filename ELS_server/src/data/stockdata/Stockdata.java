@@ -40,7 +40,6 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	public JavaBean3 stockCount(String date) {
 		// TODO Auto-generated method stub
 		jb3=new JavaBean3();
-		po=new StockPO();
 		ArrayList<StockPO> pos=new ArrayList<>();
 		String sql="select * from batchnum";
 		int batchNum;
@@ -76,6 +75,7 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			stmt.setString(1, Logindata.agencyId);
 			ResultSet rs2=stmt.executeQuery();
 			while(rs2.next()){
+				po=new StockPO();
 				po.setId(rs2.getString(1));
 				po.setInDate(rs2.getString(3));
 				po.setDestination(rs2.getString(4));

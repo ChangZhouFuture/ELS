@@ -154,11 +154,10 @@ implements BusiHallArrivalOrderdataservice {
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new BusiHallArrivalOrderPO();
+		
 		jb1=new JavaBean1();
 		ArrayList<BusiHallArrivalOrderPO> pos = new ArrayList<BusiHallArrivalOrderPO>();
 		String sql="SELECT * FROM busihallarrivalorder";
-		String substr;
 		
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
@@ -166,7 +165,8 @@ implements BusiHallArrivalOrderdataservice {
 			ResultSet rs=stmt.executeQuery(); 
 			
 			while(rs.next()){
-				jb1.setResultMessage(ResultMessage.Success);
+				po=new BusiHallArrivalOrderPO();
+				
 				    if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					   po.setId(rs.getString(1));
 					   po.setBusiHallID(rs.getString(2));
@@ -176,6 +176,7 @@ implements BusiHallArrivalOrderdataservice {
 					   po.setGoodState(GoodState.valueOf(rs.getString(6)));
 					   po.setGenerateTime(rs.getString(7));
 					   po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					   jb1.setResultMessage(ResultMessage.Success);
 					   pos.add(po);
 		            }	
 				    if(rs.getString("date").equals(date)&&rs.getString("approState").equals("Approve")){
@@ -187,6 +188,7 @@ implements BusiHallArrivalOrderdataservice {
 						 po.setGoodState(GoodState.valueOf(rs.getString(6)));
 						 po.setGenerateTime(rs.getString(7));
 						 po.setApproState(ApproState.valueOf(rs.getString("approState")));
+						 jb1.setResultMessage(ResultMessage.Success);
 						 pos.add(po);  
 			        }
 		    }

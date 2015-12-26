@@ -114,8 +114,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		ArrayList<TranCenArrivalOrderPO> pos=new ArrayList<TranCenArrivalOrderPO>();
-		po=new TranCenArrivalOrderPO();
+		ArrayList<TranCenArrivalOrderPO> pos=new ArrayList<TranCenArrivalOrderPO>();	
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		String substr;
@@ -123,6 +122,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 			stmt=con.prepareStatement("SELECT * FROM trancenarrivalorder");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new TranCenArrivalOrderPO();
 				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));
 			        po.setTranCenID(rs.getString(2));

@@ -65,7 +65,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 	@Override
 	public JavaBean1 findB(String position) throws RemoteException {
 		// TODO Auto-generated method stub
-		po=new UserPO();
+		
 		ArrayList<UserPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -75,6 +75,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			stmt.setString(1, position.toString());
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new UserPO();
 				po.setId(rs.getString(1));
 		        po.setPassword(rs.getString(2));
 		        po.setName(rs.getString(3));

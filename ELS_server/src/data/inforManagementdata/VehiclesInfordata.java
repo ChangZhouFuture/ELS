@@ -109,7 +109,6 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 	public JavaBean1 findB(String busiHallId) throws RemoteException {
 		// TODO Auto-generated method stub
 		String sql="select * from vehicles where busiHallID=?";
-		po=new VehiclesPO();
 		ArrayList<VehiclesPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -118,6 +117,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 			stmt.setString(1, busiHallId);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new VehiclesPO();
 				po.setID(rs.getString("ID"));
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getString("serviceTime"));

@@ -127,7 +127,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new ReceivablesOrderPO();
+		
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
@@ -139,6 +139,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new ReceivablesOrderPO();
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);

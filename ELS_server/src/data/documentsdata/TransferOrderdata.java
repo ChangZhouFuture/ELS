@@ -127,13 +127,13 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		llpo=new TransferOrderlineitemPO();
 		ArrayList<TransferOrderlineitemPO> llpos=new ArrayList<>();
 		String sql="select * from transferorder";
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				llpo=new TransferOrderlineitemPO();
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);

@@ -140,7 +140,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new PaymentOrderPO();
+		
 		ArrayList<PaymentOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		String sql="select * from paymentorder";
@@ -149,6 +149,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new PaymentOrderPO();
 				if(rs.getString("generateTime").substring(0,10).equals(date)&&
 						rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));

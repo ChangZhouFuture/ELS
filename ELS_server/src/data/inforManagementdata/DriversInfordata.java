@@ -122,7 +122,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	@Override
 	public JavaBean1 findB(String busiHallId) throws RemoteException {
 		// TODO Auto-generated method stub
-		po = new DriversPO();
+		
 		jb1=new JavaBean1();
 			jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
@@ -130,6 +130,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 			stmt.setString(1, busiHallId);
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
+				po = new DriversPO();
 			    po.setID(rs.getString("ID"));
 		        po.setName(rs.getString("name"));
 		        po.setBirthDate(rs.getString("birthDate"));

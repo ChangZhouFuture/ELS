@@ -107,7 +107,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new DeliveryOrderPO();
+		
 		ArrayList<DeliveryOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		String substr;
@@ -118,7 +118,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 			ResultSet rs=stmt.executeQuery();
 			jb1.setResultMessage(ResultMessage.NotExist);
 			while(rs.next()){
-				
+				po=new DeliveryOrderPO();
 				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));
 					po.setArrivalDate(rs.getString(2));

@@ -141,7 +141,6 @@ public JavaBean1 findB(AgencyType agencyType) throws RemoteException {
 	// TODO Auto-generated method stub
 	jb1=new JavaBean1();
 	jb1.setResultMessage(ResultMessage.NotExist);
-	po=new AgencyPO();
 	ArrayList<AgencyPO> pos=new ArrayList<>();
 	String sql="select * from agency where agencyType=?";
 	try {
@@ -149,6 +148,7 @@ public JavaBean1 findB(AgencyType agencyType) throws RemoteException {
 		stmt.setString(1, agencyType.toString());
 		ResultSet rs=stmt.executeQuery();
 		while(rs.next()){
+			po=new AgencyPO();
 			po.setID(rs.getString("ID"));
 			po.setAgencyType(agencyType);
 			po.setCity(rs.getString("city"));

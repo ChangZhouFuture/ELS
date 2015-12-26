@@ -129,7 +129,6 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		po=new OutBoundOrderPO();
 		ArrayList<OutBoundOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -138,6 +137,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new OutBoundOrderPO();
 				if(rs.getString("date").equals(date)&&rs.getString("approState").equals("NotApprove")){
 					po.setId(rs.getString(1));
 					po.setOutDate(date);
