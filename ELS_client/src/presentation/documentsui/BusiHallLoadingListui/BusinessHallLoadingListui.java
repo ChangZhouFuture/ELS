@@ -243,8 +243,29 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 				refresh();
 				approState.setText("Œ¥…Û≈˙");
 				busiHallLoadingListblservice=new BusiHallLoadingList();
-				
+				busiHallLoadingListVO.setVehiclesID(vehicleIdField.getText());
 				busiHallLoadingListVO.setDestination(arrivalField.getText());
+				busiHallLoadingListVO.setEscortMan(yYYField.getText());
+				busiHallLoadingListVO.setSupervisionMan(jZYField.getText());
+				ArrayList<String> idList=null;
+				for(int i=0;i<orderList.getRowCount();i++){
+					idList.add((String)orderList.getValueAt(i,1));
+				}
+				busiHallLoadingListVO.setOrderIDs(idList);
+				javaBean1=new JavaBean1();
+				javaBean1=busiHallLoadingListblservice.addBusinessHallLoadingList(busiHallLoadingListVO);
+				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
+				motorIdField.setText(busiHallLoadingListVO.getTruckNum());
+				docmID.setText(busiHallLoadingListVO.getID());
+				fareField.setText(String.valueOf(busiHallLoadingListVO.getCarriage()));
+				makeOrder.setEnabled(false);
+			}
+		});
+		
+		modifyOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		

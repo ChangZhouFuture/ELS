@@ -206,7 +206,7 @@ public class CourierController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String deleteId=orderVO.getId();
+				String deleteId=orderui.docmID.getText();
 				ArrayList<String> deletearray=null;
 				deletearray.add(deleteId);
 				orderblservice.deleteMany(deletearray);
