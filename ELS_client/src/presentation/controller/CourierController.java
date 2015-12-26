@@ -209,6 +209,7 @@ public class CourierController {
 				String deleteId=orderui.docmID.getText();
 				ArrayList<String> deletearray=null;
 				deletearray.add(deleteId);
+				orderblservice=new Order();
 				orderblservice.deleteMany(deletearray);
 				orderListui = new OrderListui();
 				childPanel = orderListui;
