@@ -73,7 +73,6 @@ public class BusinessHallLoadingListListui extends Listui{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 String[] columnNames = {"选择","ID","目的地","车辆代号","运费","时间"}; //列名
 		 String [][]tableVales={}; //数据
@@ -105,7 +104,6 @@ public class BusinessHallLoadingListListui extends Listui{
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -120,9 +118,9 @@ public class BusinessHallLoadingListListui extends Listui{
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-					   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				       int selectedRow = table.getSelectedRow();//获得选中行的索引
 				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				           tableModel.removeRow(selectedRow);  //删除行 
 				       }
 				   }

@@ -107,9 +107,9 @@ public class BusiHallArrivalOrderListui extends Listui{
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-					   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				       int selectedRow = table.getSelectedRow();//获得选中行的索引
 				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				           tableModel.removeRow(selectedRow);  //删除行 
 				       }
 				   }
