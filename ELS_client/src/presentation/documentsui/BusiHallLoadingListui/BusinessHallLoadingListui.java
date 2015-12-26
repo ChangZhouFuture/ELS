@@ -265,7 +265,27 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		modifyOrder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				refresh();
+				busiHallLoadingListblservice=new BusiHallLoadingList();
+				busiHallLoadingListVO.setVehiclesID(vehicleIdField.getText());
+				busiHallLoadingListVO.setDestination(arrivalField.getText());
+				busiHallLoadingListVO.setEscortMan(yYYField.getText());
+				busiHallLoadingListVO.setSupervisionMan(jZYField.getText());
+				ArrayList<String> idList=null;
+				for(int i=0;i<orderList.getRowCount();i++){
+					idList.add((String)orderList.getValueAt(i,1));
+				}
+				busiHallLoadingListVO.setOrderIDs(idList);
+				modifyOrder.setEnabled(false);
+				busiHallLoadingListblservice.modify(busiHallLoadingListVO);
+			}
+		});
+		
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
 			}
 		});
 		
@@ -315,5 +335,21 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
 		
+	}
+	public void modifying() {
+		vehicleIdField.setEditable(true);
+		arrivalField.setEditable(true);
+		jZYField.setEditable(true);
+		yYYField.setEditable(true);
+		orderIdField.setEditable(true);
+		addOrder.setEnabled(true);
+		deleteOrder.setEnabled(true);
+		modifyOrder.setVisible(true);
+		
+		vehicleIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		arrivalField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		jZYField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		yYYField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

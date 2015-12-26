@@ -420,6 +420,7 @@ public class Orderui extends ParentDocuments{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refresh();
+				orderblservice=new Order();
 				orderVO.setSenderName(senderNameField.getText());
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
@@ -498,13 +499,8 @@ public class Orderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
-		
 	}
 	
-	public void checking(OrderVO orderVO) {
-		//把VO的参数都设置进来
-	}
-
 	public void modifying() {
 		senderNameField.setEditable(true);
 		senderAddressField.setEditable(true);
