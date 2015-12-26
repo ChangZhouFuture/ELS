@@ -123,7 +123,6 @@ public class CourierController {
 		orderui = new Orderui();
 		orderui.modify.setVisible(true);
 		orderui.delete.setVisible(true);
-		orderui.modifyOrder.setVisible(true);
 		orderui.makeOrder.setVisible(false);
 		
 		orderui.senderNameField.setText(orderVO.getSenderName());

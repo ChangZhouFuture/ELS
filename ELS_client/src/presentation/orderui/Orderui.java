@@ -345,7 +345,7 @@ public class Orderui extends ParentDocuments{
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
-		expectedArrivalDate.setBounds(30,140,100,24);
+		expectedArrivalDate.setBounds(30,140,210,24);
 		expectedArrivalDate.setText("预计到达时间：");
 		expectedArrivalDate.setFont(font5);
 		expectedArrivalDate.setBackground(Color.WHITE);

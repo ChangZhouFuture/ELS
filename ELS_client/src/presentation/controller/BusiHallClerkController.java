@@ -253,7 +253,6 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderui=new BusiHallArrivalOrderui();
 		busiHallArrivalOrderui.modify.setVisible(true);
 		busiHallArrivalOrderui.delete.setVisible(true);
-		busiHallArrivalOrderui.modifyOrder.setVisible(true);
 		busiHallArrivalOrderui.makeOrder.setVisible(false);
 		
 		busiHallArrivalOrderui.transferOrderField.setText(busiHallArrivalOrderVO.getTransferOrderID());

@@ -61,7 +61,6 @@ public class BusiHallArrivalOrderListui extends Listui{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态","时间"}; //列名
 		 String [][]tableVales={}; //数据
@@ -93,7 +92,6 @@ public class BusiHallArrivalOrderListui extends Listui{
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 table.setRowHeight(24);
