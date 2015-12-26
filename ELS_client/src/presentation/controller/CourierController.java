@@ -57,7 +57,6 @@ public class CourierController {
 			public void actionPerformed(ActionEvent e) {
 				orderListui = new OrderListui();
 				childPanel = orderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inOrderListui();
 			}
@@ -71,7 +70,6 @@ public class CourierController {
 				orderListui = null;
 				orderui = new Orderui();
 				childPanel = orderui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inOrderui();
 			}
@@ -88,7 +86,6 @@ public class CourierController {
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
 					childPanel = orderui;
-					childPanel.setLocation(0,0);
 					Skip.skip(mainPanel,childPanel);
 					inOrderui();
 			}
@@ -125,42 +122,19 @@ public class CourierController {
 		orderui.delete.setVisible(true);
 		orderui.makeOrder.setVisible(false);
 		
+		orderui.refresh();
 		orderui.senderNameField.setText(orderVO.getSenderName());
-		orderui.senderNameField.setEditable(false);
-					
 		orderui.senderAddressField.setText(orderVO.getSenderAdd());
-		orderui.senderAddressField.setEditable(false);
-					
 		orderui.senderCompanyField.setText(orderVO.getSenderCompany());
-		orderui.senderCompanyField.setEditable(false);
-					
 		orderui.senderPhoneField.setText(orderVO.getSenderPhoneNumber());
-		orderui.senderPhoneField.setEditable(false);
-					
 		orderui.receiverNameField.setText(orderVO.getAddresseeName());
-		orderui.receiverNameField.setEditable(false);
-					
 		orderui.receiverAddressField.setText(orderVO.getAddresseeAdd());
-		orderui.receiverAddressField.setEditable(false);
-					
 		orderui.receiverCompanyField.setText(orderVO.getAddresseeCompany());
-		orderui.receiverCompanyField.setEditable(false);
-					
 		orderui.receiverPhoneField.setText(orderVO.getAddresseePhoneNumber());
-		orderui.receiverPhoneField.setEditable(false);
-					
 		orderui.goodNumField.setText(String.valueOf(orderVO.getNumOfGoods()));
-		orderui.goodNumField.setEditable(false);
-					
 		orderui.goodNameField.setText(orderVO.getGoodsName());
-		orderui.goodNameField.setEditable(false);
-					
 		orderui.goodWeightField.setText(String.valueOf(orderVO.getWeight()));
-		orderui.goodWeightField.setEditable(false);
-					
 		orderui.goodSizeField.setText(String.valueOf(orderVO.getSize()));
-		orderui.goodSizeField.setEditable(false);
-		
 		if(orderVO.getPackingCharge()==5.0){
 			orderui.packType.setSelectedIndex(0);
 		}else if(orderVO.getPackingCharge()==10.0){
@@ -168,21 +142,17 @@ public class CourierController {
 		}else if(orderVO.getPackingCharge()==1.0){
 			orderui.packType.setSelectedIndex(2);
 		}
-		orderui.packType.setEditable(false);
 		switch(orderVO.getExpressType()){
 		case Economic:orderui.expressTypeType.setSelectedIndex(0);break;
 		case Standard:orderui.expressTypeType.setSelectedIndex(1);break;
 		case EMS:orderui.expressTypeType.setSelectedIndex(2);break;
 		default:break;
 		}
-		orderui.expressTypeType.setEditable(false);
-		
 		switch(orderVO.getApproState()){
 		case Approve:orderui.approState.setText("已审批");break;
 		case NotApprove:orderui.approState.setText("未审批");break;
 			default:break;
 		}
-
 		orderui.freightField.setText(String.valueOf(orderVO.getFreight()));
 		orderui.amountField.setText(String.valueOf(orderVO.getTotalCost()));
 		orderui.expectedArrivalDate.setText("预计到达时间："+orderVO.getExpectedArrivalDate());
@@ -205,7 +175,6 @@ public class CourierController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				String deleteId=orderui.docmID.getText();
 				ArrayList<String> deletearray=null;
 				deletearray.add(deleteId);
@@ -213,7 +182,6 @@ public class CourierController {
 				orderblservice.deleteMany(deletearray);
 				orderListui = new OrderListui();
 				childPanel = orderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inOrderListui();
 			}

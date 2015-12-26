@@ -44,7 +44,14 @@ public class TranCenArrivalOrderListui extends Listui{
 	public TranCenArrivalOrderListui(){
 		
 		sheetLabel.setText("中转中心到达单管理");
-		
+		String[] columnNames = {"选择","ID","中转中心编号","中转单编号","出发地","货物状态","到达日期","时间"}; //列名
+		 String [][]tableVales={}; //数据
+		 tableModel = new DefaultTableModel(tableVales,columnNames);
+		 table = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -67,16 +74,7 @@ public class TranCenArrivalOrderListui extends Listui{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
-		 String[] columnNames = {"选择","ID","中转中心编号","中转单编号","出发地","货物状态","到达日期","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -100,7 +98,6 @@ public class TranCenArrivalOrderListui extends Listui{
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);

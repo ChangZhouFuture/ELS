@@ -49,7 +49,14 @@ public class BusinessHallLoadingListListui extends Listui{
 	
 	public BusinessHallLoadingListListui(){
 		sheetLabel.setText("车辆装车管理");
-		
+		String[] columnNames = {"选择","ID","目的地","车辆代号","运费","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		};
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -74,14 +81,6 @@ public class BusinessHallLoadingListListui extends Listui{
 			 this.remove(delete);
 		 }catch(Exception e2){
 		 }
-		 String[] columnNames = {"选择","ID","目的地","车辆代号","运费","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,

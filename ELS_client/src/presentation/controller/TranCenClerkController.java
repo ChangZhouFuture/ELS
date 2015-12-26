@@ -84,7 +84,6 @@ public class TranCenClerkController {
 			public void actionPerformed(ActionEvent e) {
 				tranCenArrivalOrderui= new TranCenArrivalOrderui();
 				childPanel = tranCenArrivalOrderui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inTranCenArrivalOrderui();
 			}	

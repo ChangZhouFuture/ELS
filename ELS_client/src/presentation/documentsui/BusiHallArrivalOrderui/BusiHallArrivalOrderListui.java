@@ -38,7 +38,14 @@ public class BusiHallArrivalOrderListui extends Listui{
 	
 	public BusiHallArrivalOrderListui(){
 		sheetLabel.setText("营业厅到达单管理");
-		
+		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态","时间"}; //列名
+		 String [][]tableVales={}; //数据
+		 tableModel = new DefaultTableModel(tableVales,columnNames);
+		 table = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -62,14 +69,6 @@ public class BusiHallArrivalOrderListui extends Listui{
 			 this.remove(delete);
 		 }catch(Exception e2){
 		 }
-		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,

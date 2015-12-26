@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import bean.JavaBean1;
 import businesslogic.documentsbl.BusiHallArrivalOrder;
+import businesslogic.documentsbl.BusiHallLoadingList;
+import businesslogic.documentsbl.DeliveryOrder;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
+import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
+import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderListui;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderui;
 import presentation.documentsui.BusiHallLoadingListui.BusinessHallLoadingListListui;
@@ -27,13 +29,13 @@ import presentation.inforManagementui.Driversui.DriversListui;
 import presentation.inforManagementui.Driversui.Driversui;
 import presentation.inforManagementui.Vehiclesui.VehiclesListui;
 import presentation.inforManagementui.Vehiclesui.Vehiclesui;
-import presentation.orderui.OrderListui;
 import presentation.reuse.Skip;
 import presentation.userui.BusiHallClerkui;
 import presentation.userui.Loginui;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallArrivalOrderVO;
-import vo.orderVO.OrderVO;
+import vo.documentsVO.BusiHallLoadingListVO;
+import vo.documentsVO.DeliveryOrderVO;
 
 public class BusiHallClerkController {
 	JPanel mainPanel = new JPanel();
@@ -52,7 +54,11 @@ public class BusiHallClerkController {
 	DeliveryOrderui deliveryOrderui;
 	Vehiclesui vehiclesui;
 	BusiHallArrivalOrderblservice busiHallArrivalOrderblservice;
+	BusiHallLoadingListblservice busiHallLoadingListblservice;
+	DeliveryOrderblservice deliveryOrderblservice;
 	BusiHallArrivalOrderVO busiHallArrivalOrderVO;
+	BusiHallLoadingListVO busiHallLoadingListVO;
+	DeliveryOrderVO deliveryOrderVO;
 	JavaBean1 javaBean1;
 	
 	public BusiHallClerkController(){
@@ -77,7 +83,6 @@ public class BusiHallClerkController {
 			public void actionPerformed(ActionEvent e) {
 				businessHallLoadingListListui= new BusinessHallLoadingListListui();
 				childPanel = businessHallLoadingListListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusinessHallLoadingListListui();
 			}
@@ -88,7 +93,6 @@ public class BusiHallClerkController {
 			public void actionPerformed(ActionEvent e) {
 				driversListui= new DriversListui();
 				childPanel = driversListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inDriversListui();
 			}
@@ -99,7 +103,6 @@ public class BusiHallClerkController {
 			public void actionPerformed(ActionEvent e) {
 				receivablesOrderListui= new ReceivablesOrderListui();
 				childPanel = receivablesOrderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inReceivablesOrderListui();
 			}
@@ -110,7 +113,6 @@ public class BusiHallClerkController {
 			public void actionPerformed(ActionEvent e) {
 				busiHallArrivalOrderListui= new BusiHallArrivalOrderListui();
 				childPanel = busiHallArrivalOrderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusiHallArrivalOrderListui();
 			}
@@ -121,7 +123,6 @@ public class BusiHallClerkController {
 			public void actionPerformed(ActionEvent e) {
 				deliveryOrderListui= new DeliveryOrderListui();
 				childPanel = deliveryOrderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inDeliveryOrderListui();
 			}
@@ -146,14 +147,101 @@ public class BusiHallClerkController {
 				businessHallLoadingListListui=null;
 				businessHallLoadingListui= new BusinessHallLoadingListui();
 				childPanel = businessHallLoadingListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusinessHallLoadingListui();
 			}
 		});
+		businessHallLoadingListListui.idFind.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				busiHallLoadingListblservice=new BusiHallLoadingList();
+				javaBean1=new JavaBean1();
+				javaBean1=busiHallLoadingListblservice.inquireA(
+						businessHallLoadingListListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					JOptionPane.showMessageDialog
+					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+				}
+				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
+				businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
+				childPanel = businessHallLoadingListui;
+				Skip.skip(mainPanel,childPanel);
+				inBusinessHallLoadingListui();
+			}
+		});
+		businessHallLoadingListListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+               	String id=(String)businessHallLoadingListListui.tableModel.
+               			getValueAt(businessHallLoadingListListui.table.getSelectedRow(),1);
+               	System.out.println(id);
+               	try {
+               		busiHallLoadingListblservice=new BusiHallLoadingList();
+    				javaBean1=new JavaBean1();
+   					javaBean1=busiHallLoadingListblservice.inquireA(id);
+   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					}
+   					businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
+   					childPanel = businessHallLoadingListui;
+   					Skip.skip(mainPanel,childPanel);
+   					inBusinessHallLoadingListui();
+   				} catch (Exception e2) {
+   				}
+               }
+            }
+       });
+	}
+	public BusinessHallLoadingListui findBusiHallLoadingList(BusiHallLoadingListVO busiHallLoadingListVO){
+		businessHallLoadingListui=new BusinessHallLoadingListui();
+		businessHallLoadingListui.modify.setVisible(true);
+		businessHallLoadingListui.delete.setVisible(true);
+		businessHallLoadingListui.makeOrder.setVisible(false);
+		businessHallLoadingListui.refresh();
+		businessHallLoadingListui.busiIdField.setText(busiHallLoadingListVO.getBusiHallID());
+		businessHallLoadingListui.motorIdField.setText(busiHallLoadingListVO.getTruckNum());
+		businessHallLoadingListui.vehicleIdField.setText(busiHallLoadingListVO.getVehiclesID());
+		businessHallLoadingListui.arrivalField.setText(busiHallLoadingListVO.getDestination());
+		businessHallLoadingListui.jZYField.setText(busiHallLoadingListVO.getSupervisionMan());
+		businessHallLoadingListui.yYYField.setText(busiHallLoadingListVO.getEscortMan());
+		ArrayList<String> idList=null;
+		idList=busiHallLoadingListVO.getOrderIDs();
+		for(int i=0;i<idList.size();i++){
+			busiHallLoadingListblservice=new BusiHallLoadingList();
+			businessHallLoadingListui.orderlineitemVO=busiHallLoadingListblservice.addOrder(idList.get(i));
+			String[] oneRow={"",businessHallLoadingListui.orderlineitemVO.getId(),
+					businessHallLoadingListui.orderlineitemVO.getSenderAdd(),
+					businessHallLoadingListui.orderlineitemVO.getAddresseeAdd(),
+					businessHallLoadingListui.orderlineitemVO.getExpressType().toString(),
+					businessHallLoadingListui.orderlineitemVO.getGenerateDate()};
+			businessHallLoadingListui.tableModel.addRow(oneRow);
+		}
+		switch(busiHallLoadingListVO.getApproState()){
+		case Approve:businessHallLoadingListui.approState.setText("已审批");break;
+		case NotApprove:businessHallLoadingListui.approState.setText("未审批");break;
+			default:break;
+		}
+		businessHallLoadingListui.docmID.setText(busiHallLoadingListVO.getID());
+		return businessHallLoadingListui;
 	}
 	public void inBusinessHallLoadingListui() {
-		
+		businessHallLoadingListui.delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String deleteId=businessHallLoadingListui.docmID.getText();
+				ArrayList<String> deletearray=null;
+				deletearray.add(deleteId);
+				busiHallLoadingListblservice=new BusiHallLoadingList();
+				busiHallLoadingListblservice.deleteMany(deletearray);
+				businessHallLoadingListListui = new BusinessHallLoadingListListui();
+				childPanel = businessHallLoadingListListui;
+				Skip.skip(mainPanel,childPanel);
+				inBusiHallArrivalOrderListui();
+			}
+		});
 	}
 	public void inDriversListui(){
 		driversListui.add.addActionListener(new ActionListener() {
@@ -169,6 +257,20 @@ public class BusiHallClerkController {
 				inDriversui();
 			}
 		});
+		driversListui.idFind.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		driversListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+            	   
+               }
+            }
+       });
 	}
 	public void inDriversui(){
 		
@@ -182,7 +284,6 @@ public class BusiHallClerkController {
 				receivablesOrderListui=null;
 				receivablesOrderui=new ReceivablesOrderui();
 				childPanel=receivablesOrderui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inReceivablesOrderui();
 			}
@@ -195,11 +296,9 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderListui.add.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				busiHallArrivalOrderListui=null;
 				busiHallArrivalOrderui=new BusiHallArrivalOrderui();
 				childPanel=busiHallArrivalOrderui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusiHallArrivalOrderui();
 			}
@@ -207,7 +306,6 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderListui.idFind.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				javaBean1=new JavaBean1();
 				javaBean1=busiHallArrivalOrderblservice.inquireA(
@@ -219,7 +317,6 @@ public class BusiHallClerkController {
 				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
 				busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
 				childPanel = busiHallArrivalOrderui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusiHallArrivalOrderui();
 			}
@@ -243,7 +340,6 @@ public class BusiHallClerkController {
    					Skip.skip(mainPanel,childPanel);
    					inBusiHallArrivalOrderui();
    				} catch (Exception e2) {
-   					e2.printStackTrace();
    				}
                }
             }
@@ -254,14 +350,9 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderui.modify.setVisible(true);
 		busiHallArrivalOrderui.delete.setVisible(true);
 		busiHallArrivalOrderui.makeOrder.setVisible(false);
-		
+		busiHallArrivalOrderui.refresh();
 		busiHallArrivalOrderui.transferOrderField.setText(busiHallArrivalOrderVO.getTransferOrderID());
-		busiHallArrivalOrderui.transferOrderField.setEditable(false);
-		
 		busiHallArrivalOrderui.departureField.setText(busiHallArrivalOrderVO.getOrigin());
-		busiHallArrivalOrderui.departureField.setEditable(false);
-		
-		busiHallArrivalOrderui.goodStateType.setEditable(false);
 		switch(busiHallArrivalOrderVO.getGoodState()){
 		case COMPLETE:busiHallArrivalOrderui.goodStateType.setSelectedIndex(0);break;
 		case BROKE:busiHallArrivalOrderui.goodStateType.setSelectedIndex(1);break;
@@ -281,14 +372,13 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderui.delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String deleteId=busiHallArrivalOrderVO.getId();
+				String deleteId=busiHallArrivalOrderui.docmID.getText();
 				ArrayList<String> deletearray=null;
 				deletearray.add(deleteId);
+				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				busiHallArrivalOrderblservice.deleteMany(deletearray);
 				busiHallArrivalOrderListui = new BusiHallArrivalOrderListui();
 				childPanel = busiHallArrivalOrderListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 				inBusiHallArrivalOrderListui();
 			}
@@ -299,7 +389,6 @@ public class BusiHallClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				deliveryOrderListui=null;
 				deliveryOrderui=new DeliveryOrderui();
 				childPanel=deliveryOrderui;
@@ -317,7 +406,6 @@ public class BusiHallClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				vehiclesListui=null;
 				vehiclesui=new Vehiclesui();
 				childPanel=vehiclesui;

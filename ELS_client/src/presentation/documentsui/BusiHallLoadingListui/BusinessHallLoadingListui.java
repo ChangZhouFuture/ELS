@@ -60,7 +60,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 	public JScrollPane scroller;
 	public JButton deleteOrder;
 	JavaBean1 javaBean1;
-	OrderlineitemVO orderlineitemVO;
+	public OrderlineitemVO orderlineitemVO;
 	BusiHallLoadingListblservice busiHallLoadingListblservice;
 	BusiHallLoadingListVO busiHallLoadingListVO;
 	

@@ -131,6 +131,7 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refresh();
+				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				busiHallArrivalOrderVO.setTransferOrderID(transferOrderField.getText());
 				busiHallArrivalOrderVO.setOrigin(departureField.getText());
 				busiHallArrivalOrderVO.setGoodState(goodStateSeletion);

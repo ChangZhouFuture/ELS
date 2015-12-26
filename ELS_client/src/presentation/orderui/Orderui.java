@@ -71,6 +71,7 @@ public class Orderui extends ParentDocuments{
 	public JComboBox expressTypeType;
 	public JComboBox packType;
 	public JButton sureReceive;
+	public JButton makeSure;
 	String expressValue="经济快递";
 	String packValue="纸箱（5）";
 	double packing=5.0;
@@ -118,6 +119,7 @@ public class Orderui extends ParentDocuments{
 		amount=new JLabel();
 		amountField=new JTextField();
 		sureReceive=new JButton();
+		makeSure=new JButton();
 		actualReceiver=new JLabel();
 		actualReceiverField=new JTextField();
 		expectedArrivalDate=new JLabel();
@@ -329,10 +331,34 @@ public class Orderui extends ParentDocuments{
 		amountField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		sureReceive.setBounds(30,170,90,24);
-		sureReceive.setText("确认收件");
+		sureReceive.setText("收件");
 		sureReceive.setFont(font5);
 		sureReceive.setBackground(Color.WHITE);
 		sureReceive.setVisible(false);
+		sureReceive.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actualReceiverField.setEditable(true);
+				actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+				actualReceiverField.setText(receiverNameField.getText());
+			}
+		});
+		
+		makeSure.setBounds(400,170,90,24);
+		makeSure.setText("确认收件");
+		makeSure.setFont(font5);
+		makeSure.setBackground(Color.WHITE);
+		makeSure.setVisible(false);
+		makeSure.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actualReceiverField.setEditable(false);
+				actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+				orderblservice=new Order();
+				orderblservice.receive(docmID.getText(),actualReceiverField.getText());
+				makeSure.setVisible(false);
+			}
+		});
 		
 		actualReceiver.setBounds(240,170,80,24);
 		actualReceiver.setText("代收人：");
@@ -381,6 +407,7 @@ public class Orderui extends ParentDocuments{
 		other.add(actualReceiver);
 		other.add(expectedArrivalDate);
 		other.add(trueArrivalDate);
+		other.add(makeSure);
 		other.add(trueArrivalDateField);
 		
 		makeOrder.addActionListener(new ActionListener() {
