@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
@@ -22,6 +21,11 @@ import state.ResultMessage;
 
 public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 
+	public Orderdata() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	Database db=new Database();
     Connection con=db.getConnection();
     PreparedStatement stmt;
@@ -30,10 +34,6 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
     OrderlineitemPO llpo;
     GenerateId g;
     
-	public Orderdata() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public ResultMessage add(OrderPO po) {
@@ -139,15 +139,16 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	@Override
 	public JavaBean1 findB(String date) {
 		// TODO Auto-generated method stub
-		llpo=new OrderlineitemPO();
+		
 		ArrayList<OrderlineitemPO> llpos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		String  sql="select * from dingdanorder";
 		try {
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
+		    stmt=con.prepareStatement(sql);
+		    ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				llpo=new OrderlineitemPO();
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					llpo.setId(rs.getString("ID"));
@@ -262,12 +263,13 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	@Override
 	public ResultMessage receive(String id,String date, String trueAddresseeName) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="update dingdanorder set trueArrivalDate=?,trueAddressee=? where ID=?";
+		String sql="update dingdanorder set trueArrivalDate=?,trueAddressee=?,expressArrivalStatus=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(3, id);
+			stmt.setString(4, id);
 			stmt.setString(1, date);
 			stmt.setString(2, trueAddresseeName);
+			stmt.setString(3, "Arrival");
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -275,5 +277,4 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			return ResultMessage.NotExist;
 		}
 	}
-
 }
