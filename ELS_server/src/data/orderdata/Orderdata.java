@@ -41,7 +41,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		String sql="insert into dingdanorder(ID,senderName,senderAdd,senderCompany,senderPhone,addresseeName,addresseeAdd,"
 				+ "addresseeCompany,addresseePhone,goodName,numOfGoods,weight,size,freight,expressType,"
 				+ "packingCharge,totalCost,expectedArrivalDate,date,expressArrivalStatus)values"
-				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
