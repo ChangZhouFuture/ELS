@@ -150,7 +150,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				po=new PaymentOrderPO();
-				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+				if(rs.getString("date").equals(date)&&
 						rs.getString("approState").equals("NotApprove")){
 					po.setID(rs.getString(1));
 					po.setDate(rs.getString(2));
@@ -163,7 +163,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
-				if(rs.getString("generateTime").substring(0,10).equals(date)&&
+				if(rs.getString("date").equals(date)&&
 						rs.getString("approState").equals("Approve")){
 					po.setID(rs.getString(1));
 					po.setDate(rs.getString(2));

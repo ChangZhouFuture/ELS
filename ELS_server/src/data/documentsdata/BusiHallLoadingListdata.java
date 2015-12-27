@@ -9,12 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
-import data.orderdata.Orderdata;
+
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
-import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;

@@ -84,13 +84,14 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		ArrayList<TranCenArrivalOrderPO> pos = new ArrayList<>();
-		po=new TranCenArrivalOrderPO();
+		
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt = con.prepareStatement("SELECT * FROM trancenarrivalorder WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
+				po=new TranCenArrivalOrderPO();
 				jb1.setResultMessage(ResultMessage.Success);
 			    po.setID(id);
 		        po.setTranCenID(rs.getString(2));
@@ -117,7 +118,6 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		ArrayList<TranCenArrivalOrderPO> pos=new ArrayList<TranCenArrivalOrderPO>();	
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		String substr;
 		try {
 			stmt=con.prepareStatement("SELECT * FROM trancenarrivalorder");
 			ResultSet rs=stmt.executeQuery();

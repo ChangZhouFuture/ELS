@@ -62,7 +62,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(16, po.getPackingCharge());
 			stmt.setDouble(17, po.getTotalCost());
 			stmt.setString(18, po.getExpectedArrivalDate());
-			stmt.setString(19, po.getDate());
+			stmt.setString(19, po.getGenerateDate());
 			stmt.setString(20, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
@@ -123,7 +123,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				po.setExpectedArrivalDate(rs.getString(19));
 				po.setArrivalDate(rs.getString(20));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
-				po.setDate(rs.getString("date"));
+				po.setGenerateDate(rs.getString("date"));
 				po.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
 				jb1.setObject(po);
                 jb1.setResultMessage(ResultMessage.Success);
@@ -215,7 +215,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setDouble(17, po.getTotalCost());
 			stmt.setString(18, po.getExpectedArrivalDate());
 			stmt.setString(19, po.getArrivalDate());
-			stmt.setString(20, po.getDate());
+			stmt.setString(20, po.getGenerateDate());
 			stmt.setString(21, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;

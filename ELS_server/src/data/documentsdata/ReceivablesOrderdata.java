@@ -50,16 +50,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			str=str.substring(0, str.length()-1);
 			stmt.setString(4, str);
 			stmt.executeUpdate();
-			sql="select * from costandincome";
-			stmt=con.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
-			double income=rs.getDouble("income");
-			double profit=rs.getDouble("profit");
-			sql="update costandincome set income=?,profit=?";
-			stmt=con.prepareStatement(sql);
-			stmt.setDouble(1, income+po.getAmount());
-			stmt.setDouble(2, profit+po.getAmount());
-			stmt.executeQuery();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

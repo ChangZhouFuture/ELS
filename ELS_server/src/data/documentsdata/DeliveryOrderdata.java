@@ -110,7 +110,6 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 		
 		ArrayList<DeliveryOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
-		String substr;
 		
 		String sql="select * from deliveryorder";
 		try {

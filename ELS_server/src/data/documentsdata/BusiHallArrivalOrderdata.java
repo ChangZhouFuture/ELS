@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import bean.JavaBean1;
 import data.utility.Database;
 import data.utility.GenerateId;
@@ -29,7 +28,6 @@ implements BusiHallArrivalOrderdataservice {
 
 	Database db=new Database();
     Connection con=db.getConnection();
-    Statement sm;
     PreparedStatement stmt;
     JavaBean1 jb1;
     BusiHallArrivalOrderPO po;
@@ -123,14 +121,15 @@ implements BusiHallArrivalOrderdataservice {
 	@Override
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
-		po=new BusiHallArrivalOrderPO();
+		
 		jb1=new JavaBean1();
-		ArrayList<BusiHallArrivalOrderPO> pos=new ArrayList<>();
+		ArrayList<BusiHallArrivalOrderPO> pos = new ArrayList<BusiHallArrivalOrderPO>();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt = con.prepareStatement("SELECT * FROM busihallarrivalorder WHERE ID='"+id+"'");
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
+				po=new BusiHallArrivalOrderPO();
 			    po.setId(id);
 		        po.setBusiHallID(rs.getString(2));
 		        po.setArrivalDate(rs.getString(3));
@@ -138,8 +137,8 @@ implements BusiHallArrivalOrderdataservice {
 		        po.setOrigin(rs.getString(5));
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 		        po.setApproState(ApproState.valueOf(rs.getString("approState")));
-		        pos.add(po);
 		        jb1.setResultMessage(ResultMessage.Success);
+		        pos.add(po);
 		        jb1.setObject(pos);
 			}
 			
