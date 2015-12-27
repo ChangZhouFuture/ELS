@@ -40,7 +40,7 @@ public interface PaymentOrderblservice {
 	 * 前置条件：要修改的付款单信息在PO中有记录
 	 * 后置条件：修改付款单信息，并更新VO和PO
 	 */
-	public ResultMessage modify(PaymentOrderVO paymentOrderVO);
+	public JavaBean1 modify(PaymentOrderVO paymentOrderVO);
 	
 	/**
 	 * 

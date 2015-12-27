@@ -26,9 +26,9 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	private ArrayList<BusiHallArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private TransferOrderlineitemVO transferOrderlineitemVO;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public BusiHallArrivalOrder() {
 		try {
@@ -99,7 +99,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	}
 
 	@Override
-	public ResultMessage modify(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO ) {
+	public JavaBean1 modify(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO ) {
 		busiHallArrivalOrderPO = new BusiHallArrivalOrderPO();
 		this.busiHallArrivalOrderVO = arrivalOrder4BusiHallVO;
 		
@@ -110,8 +110,10 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
-		return resultMessage;
+		javaBean1.setObject(this.busiHallArrivalOrderVO);
+		javaBean1.setResultMessage(resultMessage);
+	
+		return javaBean1;
 	}
 
 	@Override

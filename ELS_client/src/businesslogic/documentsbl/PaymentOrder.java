@@ -23,9 +23,9 @@ public class PaymentOrder implements PaymentOrderblservice {
 	private ArrayList<PaymentOrderVO> arrayList2;
 	private BankAccountInfor bankAccountInfor;
 	private StatisAnaly statisAnaly;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public PaymentOrder() {
 		try {
@@ -73,7 +73,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 	}
 
 	@Override
-	public ResultMessage modify(PaymentOrderVO paymentOrderVO) {
+	public JavaBean1 modify(PaymentOrderVO paymentOrderVO) {
 		paymentOrderPO = new PaymentOrderPO();
 		this.paymentOrderVO = paymentOrderVO;
 		
@@ -83,8 +83,10 @@ public class PaymentOrder implements PaymentOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.paymentOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

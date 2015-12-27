@@ -43,7 +43,7 @@ import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
  	 * @param d
  	 * @return 更改后的派件单
  	 */
- 	public ResultMessage modify(DeliveryOrderVO deliveryOrderVO);
+ 	public JavaBean1 modify(DeliveryOrderVO deliveryOrderVO);
  	
  	/**
  	 * 前置：要删除的派件单在持久化数据中有记录

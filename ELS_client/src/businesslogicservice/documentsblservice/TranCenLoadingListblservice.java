@@ -14,7 +14,7 @@ public interface TranCenLoadingListblservice {
 	
 	public ResultMessage delete(ArrayList<String> idList);
 	
-	public ResultMessage modify(TranCenLoadingListVO tranCenLoadingListVO);
+	public JavaBean1 modify(TranCenLoadingListVO tranCenLoadingListVO);
 	
 	public JavaBean1 inquireA(String id);
 	

@@ -33,10 +33,10 @@ public class Order implements Orderblservice {
 	private ArrayList<OrderlineitemVO> arrayList2;
 	private UpdateLogisticsInfor updateLogisticsInfor;
 	private ResultMessage resultMessage;
-	private JavaBean1 javaBean1;
 	private String date;
 	private double totalCost;
 	private double freight;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public Order() {
 		try {
@@ -59,6 +59,7 @@ public class Order implements Orderblservice {
 		this.orderVO.setId(generateId());
 		this.orderVO.setExpectedArrivalDate(generateExpectedArrivalDate());
 		this.orderVO.setApproState(ApproState.NotApprove);
+		this.orderVO.setExpressArrivalStatus(ExpressArrivalStatus.NotArrival);
 		VOtoPO();
 		
 		try {
@@ -115,7 +116,6 @@ public class Order implements Orderblservice {
 		this.orderVO.setExpectedArrivalDate(orderPO.getExpectedArrivalDate());
 		this.orderVO.setExpressType(orderPO.getExpressType());
 		this.orderVO.setFreight(orderPO.getFreight());
-		this.orderVO.setGenerateDate(orderPO.getGenerateTime());
 		this.orderVO.setGoodsName(orderPO.getGoodsName());
 		this.orderVO.setId(orderPO.getId());
 		this.orderVO.setNumOfGoods(orderPO.getNumOfGoods());
@@ -175,7 +175,7 @@ public class Order implements Orderblservice {
 	}
 
 	@Override
-	public ResultMessage modify(OrderVO orderVO) {
+	public JavaBean1 modify(OrderVO orderVO) {
 		orderPO = new OrderPO();
 		this.orderVO = orderVO;
 		
@@ -189,7 +189,10 @@ public class Order implements Orderblservice {
 			e.printStackTrace();
 		}
 		
-		return resultMessage;
+		javaBean1.setObject(this.orderVO);
+		javaBean1.setResultMessage(resultMessage);
+		
+		return javaBean1;
 	}
 	
 	@Override
@@ -217,28 +220,6 @@ public class Order implements Orderblservice {
 		return date;
 	}
 
-	//该方法可能不需要
-//	public double calculatePackingCharge(String packingType) {
-//		double packingCharge = 0;
-//		
-//		switch (packingType) {
-//		case "纸箱":
-//			packingCharge = 5;
-//			break;
-//		case "木箱":
-//			packingCharge = 10;
-//			break;
-//		case "快递袋":
-//			packingCharge = 1;
-//			break;
-//		default:
-//			break;
-//		}
-//		
-//		totalCost = packingCharge+freight;
-//		return packingCharge;
-//	}
-
 	public void VOtoPO() {
 		this.orderPO.setAddresseeAdd(orderVO.getAddresseeAdd());
 		this.orderPO.setAddresseeCompany(orderVO.getAddresseeCompany());
@@ -250,7 +231,6 @@ public class Order implements Orderblservice {
 		this.orderPO.setExpressType(orderVO.getExpressType());
 		this.orderPO.setFreight(orderVO.getFreight());
 		this.orderPO.setGenerateDate(orderVO.getGenerateDate());
-		this.orderPO.setGenerateTime(orderVO.getGenerateTime());
 		this.orderPO.setGoodsName(orderVO.getGoodsName());
 		this.orderPO.setId(orderVO.getId());
 		this.orderPO.setNumOfGoods(orderVO.getNumOfGoods());

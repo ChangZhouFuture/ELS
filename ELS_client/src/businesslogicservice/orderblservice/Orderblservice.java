@@ -52,7 +52,7 @@ public interface Orderblservice {
       * @param num
       * @return
       */
-     public ResultMessage modify(OrderVO orderVO);
+     public JavaBean1 modify(OrderVO orderVO);
      
      /**
       * 前置条件：输入一个订单编号

@@ -5,7 +5,8 @@ import  java.sql.*;
 public class Database {
 		Connection con;
         
-        final String URL="jdbc:mysql://127.0.0.1:3306/elsdb";
+        final String URL="jdbc:mysql://127.0.0.1:3306/elsdb?"
+        		+ "useUnicode=true&characterEncoding=UTF-8";
 	
 	public Database(){	
         try {

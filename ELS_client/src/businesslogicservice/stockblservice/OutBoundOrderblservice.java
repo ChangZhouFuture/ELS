@@ -52,7 +52,7 @@ public interface OutBoundOrderblservice {
 	 * 前置条件：要修改的出库单在持久化数据中有记录
 	 * 后置条件：修改一个出库单，更新相关信息到VO和PO，把VO信息返回到展示层
 	 */
-	public ResultMessage modify(OutBoundOrderVO outBoundOrderVO);
+	public JavaBean1 modify(OutBoundOrderVO outBoundOrderVO);
 	
 	/**
 	 * 

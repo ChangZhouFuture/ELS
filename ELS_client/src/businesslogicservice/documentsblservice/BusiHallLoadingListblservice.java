@@ -55,7 +55,7 @@ public interface BusiHallLoadingListblservice {
  	 * @param Yyy
  	 * @return 更改后的装车单
  	 */
- 	public ResultMessage modify(BusiHallLoadingListVO businessHallLoadingListVO);
+ 	public JavaBean1 modify(BusiHallLoadingListVO businessHallLoadingListVO);
  	
  	/**
  	 * 前置：要删除的装车单在持久化数据中有记录

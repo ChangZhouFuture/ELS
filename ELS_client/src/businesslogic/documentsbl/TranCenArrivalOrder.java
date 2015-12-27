@@ -94,18 +94,22 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	}
 
 	@Override
-	public ResultMessage modify(TranCenArrivalOrderVO tranCenArrivalOrderVO) {
+	public JavaBean1 modify(TranCenArrivalOrderVO tranCenArrivalOrderVO) {
 		tranCenArrivalOrderPO = new TranCenArrivalOrderPO();
 		this.tranCenArrivalOrderVO = tranCenArrivalOrderVO;
 		
+		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
+				tranCenArrivalOrderVO.getTransferOrderID()));
 		VOtoPO();
 		try {
 			resultMessage = tranCenArrivalOrderdataservice.update(tranCenArrivalOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.tranCenArrivalOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

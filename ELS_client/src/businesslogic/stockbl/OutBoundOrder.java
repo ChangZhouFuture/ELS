@@ -29,8 +29,8 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	private OrderlineitemVO orderlineitemVO;
 	private Stock stock;
 	private ResultMessage resultMessage;
-	private JavaBean1 javaBean1;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public OutBoundOrder() {
 		try {
@@ -96,7 +96,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 
 	@Override
-	public ResultMessage modify(OutBoundOrderVO outBoundOrderVO) {
+	public JavaBean1 modify(OutBoundOrderVO outBoundOrderVO) {
 		outBoundOrderPO = new OutBoundOrderPO();
 		this.outBoundOrderVO = outBoundOrderVO;
 		
@@ -106,8 +106,10 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.outBoundOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

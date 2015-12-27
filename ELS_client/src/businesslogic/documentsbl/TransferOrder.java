@@ -36,9 +36,9 @@ public class TransferOrder implements TransferOrderblservice {
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
 	private UpdateLogisticsInfor updateLogisticsInfor;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public TransferOrder() {
 		try {
@@ -117,18 +117,22 @@ public class TransferOrder implements TransferOrderblservice {
 	}
 
 	@Override
-	public ResultMessage modify(TransferOrderVO transferOrderVO) {
+	public JavaBean1 modify(TransferOrderVO transferOrderVO) {
 		transferOrderPO = new TransferOrderPO();
 		this.transferOrderVO = transferOrderVO;
 		
+		this.transferOrderVO.setCarriage(generateFare(transferOrderVO.
+				getDestination(), transferOrderVO.getTransportType()));
 		VOtoPO();
 		try {
 			resultMessage = transferOrderdataservice.update(transferOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.transferOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

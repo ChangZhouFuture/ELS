@@ -28,8 +28,8 @@ public class StorageList implements StorageListblservice {
 	private OrderlineitemVO orderlineitemVO;
 	private Stock stock;
 	private ResultMessage resultMessage;
-	private JavaBean1 javaBean1;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public StorageList() {
 		try {
@@ -96,7 +96,7 @@ public class StorageList implements StorageListblservice {
 	}
 
 	@Override
-	public ResultMessage modify(StorageListVO storageListVO) {
+	public JavaBean1 modify(StorageListVO storageListVO) {
 		storageListPO = new StorageListPO();
 		this.storageListVO = storageListVO;
 		
@@ -106,8 +106,10 @@ public class StorageList implements StorageListblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.storageListVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

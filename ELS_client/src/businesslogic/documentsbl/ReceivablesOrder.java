@@ -32,8 +32,8 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	private BankAccountInfor bankAccountInfor;
 	private StatisAnaly statisAnaly;
 	private ResultMessage resultMessage;
-	private JavaBean1 javaBean1;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
     public ReceivablesOrder() {
 		 try {
@@ -82,18 +82,21 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	}
 
 	@Override
-	public ResultMessage modify(ReceivablesOrderVO receivablesOrderVO) {
+	public JavaBean1 modify(ReceivablesOrderVO receivablesOrderVO) {
 		receivablesOrderPO = new ReceivablesOrderPO();
 		this.receivablesOrderVO = receivablesOrderVO;
 		
+		this.receivablesOrderVO.setAmount(calculateAmount(receivablesOrderVO.getOrderIDs()));
 		VOtoPO();
 		try {
 			resultMessage = receivablesOrderdataservice.update(receivablesOrderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.receivablesOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

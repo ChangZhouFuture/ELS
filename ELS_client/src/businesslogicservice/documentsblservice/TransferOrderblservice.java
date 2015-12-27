@@ -53,7 +53,7 @@ public interface TransferOrderblservice {
 	 * @param Jzy
 	 * @return 更改后的中转单
 	 */
-	public ResultMessage modify(TransferOrderVO transferOrderVO);
+	public JavaBean1 modify(TransferOrderVO transferOrderVO);
 	
 	/**
 	 * 前置：要删除的中转单在持久化数据中有记录

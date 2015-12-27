@@ -46,11 +46,11 @@ public class CalculateFreight {
 	public static double calculateDistance(String destination) {
 		double distance = 0;
 		
-		if (origin == destination) {
+		if (origin.equals(destination)) {
 			distance = 30;
 		}
 		
-		if (origin == "北京") {
+		if (origin.equals("北京")) {
 			switch (destination) {
 			case "上海":
 				distance = 1064.7;
@@ -65,7 +65,7 @@ public class CalculateFreight {
 				break;
 			}
 		} 
-		else if(origin == "上海") {
+		else if(origin.equals("上海")) {
 			switch (destination) {
 			case "北京":
 				distance = 1064.7;
@@ -80,7 +80,7 @@ public class CalculateFreight {
 				break;
 			}
 		}
-		else if (origin == "广州") {
+		else if (origin.equals("广州")) {
 			switch (destination) {
 			case "北京":
 				distance = 1888.8;
@@ -95,7 +95,7 @@ public class CalculateFreight {
 				break;
 			}
 		}
-		else if (origin == "南京") {
+		else if (origin.equals("南京")) {
 			switch (destination) {
 			case "北京":
 				distance = 900;

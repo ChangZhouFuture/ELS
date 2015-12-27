@@ -37,7 +37,7 @@ public interface ReceivablesOrderblservice {
 	 * 前置条件：要修改的收款单信息在PO中有记录
 	 * 后置条件：修改收款单信息，并更新VO和PO
 	 */
-	public ResultMessage modify(ReceivablesOrderVO receivablesOrderVO);
+	public JavaBean1 modify(ReceivablesOrderVO receivablesOrderVO);
 	
 	/**
 	 * 

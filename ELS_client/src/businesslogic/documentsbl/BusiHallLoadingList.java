@@ -36,9 +36,9 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
 	private UpdateLogisticsInfor updateLogisticsInfor;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	
 	public BusiHallLoadingList() {
@@ -66,8 +66,8 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		//调用数据层方法,自动生成 营业厅编号+20150921日期+00000编码 、五位数字
 		String truckNum = null;
 		try {
-			truckNum = Login.agencyID +date+busiHallLoadingListdtaservice.
-					generateId(date);//这里要改
+			truckNum = busiHallLoadingListdtaservice.
+					generateTruckNum(Login.agencyID + date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -129,18 +129,22 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 	}
 
 	@Override
-	public ResultMessage modify(BusiHallLoadingListVO businessHallLoadingListVO) {
+	public JavaBean1 modify(BusiHallLoadingListVO businessHallLoadingListVO) {
 		busiHallLoadingListPO = new BusiHallLoadingListPO();
 		this.busiHallLoadingListVO = businessHallLoadingListVO;
 		
+		this.busiHallLoadingListVO.setCarriage(generateFreight(
+				businessHallLoadingListVO.getDestination(), TransportType.Truck));
 		VOtoPO();
 		try {
 			resultMessage = busiHallLoadingListdtaservice.update(busiHallLoadingListPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.busiHallLoadingListVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

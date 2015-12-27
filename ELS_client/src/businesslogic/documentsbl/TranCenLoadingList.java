@@ -32,9 +32,9 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
 	private UpdateLogisticsInfor updateLogisticsInfor;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public TranCenLoadingList() {
 		try {
@@ -69,9 +69,13 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	public String generateTruckNum() {
 		//仿造营业厅装车单
 		String truckNum = null;
-		
-//		vehiclesID = tranCenLoadingListdataservice.ge
-		return null;
+		try {
+			truckNum = tranCenLoadingListdataservice.
+					generateTruckNum(Login.agencyID + date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return truckNum;
 	}
 
 	public double generateFeight(String destination, TransportType tType) {
@@ -127,18 +131,22 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 	}
 
 	@Override
-	public ResultMessage modify(TranCenLoadingListVO tranCenLoadingListVO) {
+	public JavaBean1 modify(TranCenLoadingListVO tranCenLoadingListVO) {
 		tranCenLoadingListPO = new TranCenLoadingListPO();
 		this.tranCenLoadingListVO = tranCenLoadingListVO;
 		
+		this.tranCenLoadingListVO.setCarriage(generateFeight(tranCenLoadingListVO.
+				getDestination(), TransportType.Truck));
 		VOtoPO();
 		try {
 			resultMessage = tranCenLoadingListdataservice.update(tranCenLoadingListPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.tranCenLoadingListVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

@@ -29,9 +29,9 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	private ArrayList<DeliveryOrderPO> arrayList;
 	private ArrayList<DeliveryOrderVO> arrayList2;
 	private UpdateLogisticsInfor updateLogisticsInfor;
-	private JavaBean1 javaBean1;
 	private ResultMessage resultMessage;
 	private String date;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	
 	public DeliveryOrder(){
 		try {
@@ -91,7 +91,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 	}
 
 	@Override
-	public ResultMessage modify(DeliveryOrderVO deliveryOrderVO) {
+	public JavaBean1 modify(DeliveryOrderVO deliveryOrderVO) {
 		deliveryOrderPO = new DeliveryOrderPO();
 		this.deliveryOrderVO = deliveryOrderVO;
 		
@@ -101,8 +101,10 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1.setObject(this.deliveryOrderVO);
+		javaBean1.setResultMessage(resultMessage);
 		
-		return resultMessage;
+		return javaBean1;
 	}
 
 	@Override

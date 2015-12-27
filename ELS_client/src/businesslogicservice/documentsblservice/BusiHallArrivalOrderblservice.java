@@ -43,7 +43,7 @@ import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
  	 * @param gs
  	 * @return 更改后的营业厅到达单
  	 */
- 	public ResultMessage modify(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO);
+ 	public JavaBean1 modify(BusiHallArrivalOrderVO arrivalOrder4BusiHallVO);
  	
  	/**
  	 * 前置：要删除的营业厅到达单在持久化数据中有记录

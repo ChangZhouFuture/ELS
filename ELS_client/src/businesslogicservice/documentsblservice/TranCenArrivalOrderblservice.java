@@ -45,7 +45,7 @@ public interface TranCenArrivalOrderblservice {
 	 * @param tcid
 	 * @return 更改后的中转中心到达单
 	 */
-	public ResultMessage modify(TranCenArrivalOrderVO arrivalOrder4TranCenVO);
+	public JavaBean1 modify(TranCenArrivalOrderVO arrivalOrder4TranCenVO);
 	
 	/**
 	 * 前置：要删除的中转中心到达单在持久化数据中有记录
