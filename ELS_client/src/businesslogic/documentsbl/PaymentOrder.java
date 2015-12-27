@@ -2,8 +2,10 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.PaymentOrderPO;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
+import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import RMI.RMIHelper;
@@ -41,6 +43,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 		this.paymentOrderVO.setDate(generateDate());
 		this.paymentOrderVO.setID(generateId());
 		this.paymentOrderVO.setBankAccount(bankAccountInfor.whichIsUsing());
+		this.paymentOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		//调用数据层方法，增加一个新的付款单
 		
@@ -138,6 +141,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 		paymentOrderPO.setEntry(paymentOrderVO.getEntry());
 		paymentOrderPO.setNote(paymentOrderVO.getNote());
 		paymentOrderPO.setPayer(paymentOrderVO.getPayer());
+		paymentOrderPO.setApproState(paymentOrderVO.getApproState());
 	}
 
 	public void POtoVO(int k) {
@@ -152,6 +156,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 			paymentOrderVO.setPayer(paymentOrderPO.getPayer());
 			paymentOrderVO.setBankAccount(paymentOrderPO.getBankAccount());
 			paymentOrderVO.setEntry(paymentOrderPO.getEntry());
+			paymentOrderVO.setApproState(paymentOrderPO.getApproState());
 			
 			arrayList2.add(paymentOrderVO);
 		}

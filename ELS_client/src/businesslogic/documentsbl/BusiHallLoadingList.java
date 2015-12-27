@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import po.documentsPO.BusiHallLoadingListPO;
 import po.lineitemPO.documentslineitemPO.BusiHallLoadingListlineitemPO;
 import dataservice.documentsdataservice.BusiHallLoadingListdataservice;
+import state.ApproState;
 import state.ResultMessage;
 import state.TransportType;
 import vo.documentsVO.BusiHallLoadingListVO;
@@ -91,6 +92,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		this.busiHallLoadingListVO.setCarriage(generateFreight(
 				businessHallLoadingListVO.getDestination(), TransportType.Truck));
 		this.busiHallLoadingListVO.setID(generateId());
+		this.busiHallLoadingListVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -202,6 +204,8 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 					getCarriage());
 			busiHallLoadingListlineitemVO.setTruckNum(busiHallLoadingListlineitemPO.
 					getTruckNum());
+			busiHallLoadingListlineitemVO.setApproState(busiHallLoadingListlineitemPO.
+					getApproState());
 			
 			arrayList2.add(busiHallLoadingListlineitemVO);
 		}

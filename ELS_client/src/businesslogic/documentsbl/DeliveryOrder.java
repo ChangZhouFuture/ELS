@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import po.documentsPO.DeliveryOrderPO;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
+import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -59,6 +60,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		this.deliveryOrderVO.setArrivalDate(generateDate());
 		this.deliveryOrderVO.setGenerateTime(Time.generateTime());
 		this.deliveryOrderVO.setID(generateId());
+		this.deliveryOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -149,6 +151,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		deliveryOrderPO.setDeliverier(deliveryOrderVO.getDeliverier());
 		deliveryOrderPO.setOrderID(deliveryOrderVO.getOrderID());
 		deliveryOrderPO.setID(deliveryOrderVO.getID());
+		deliveryOrderPO.setApproState(deliveryOrderVO.getApproState());
 	}
 
 	public void POtoVO(int k) {
@@ -162,6 +165,7 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 			deliveryOrderVO.setArrivalDate(deliveryOrderPO.getArrivalDate());
 			deliveryOrderVO.setDeliverier(deliveryOrderPO.getDeliverier());
 			deliveryOrderVO.setOrderID(deliveryOrderPO.getOrderID());
+			deliveryOrderVO.setApproState(deliveryOrderPO.getApproState());
 			
 			arrayList2.add(deliveryOrderVO);
 		}

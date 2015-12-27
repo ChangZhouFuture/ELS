@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import po.documentsPO.TranCenLoadingListPO;
 import po.lineitemPO.documentslineitemPO.TranCenLoadingListlineitemPO;
 import dataservice.documentsdataservice.TranCenLoadingListdataservice;
+import state.ApproState;
 import state.ResultMessage;
 import state.TransportType;
 import vo.documentsVO.TranCenLoadingListVO;
@@ -90,6 +91,7 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		this.tranCenLoadingListVO.setTrucksNum(generateTruckNum());
 		this.tranCenLoadingListVO.setCarriage(generateFeight(tranCenLoadingListVO.
 				getDestination(), TransportType.Truck));
+		this.tranCenLoadingListVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -189,6 +191,9 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 					getLoadingDate());
 			tranCenLoadingListlineitemVO.setTruckNum(tranCenLoadingListlineitemPO.
 					getTruckNum());
+			tranCenLoadingListlineitemVO.setApproState(tranCenLoadingListlineitemPO.
+					getApproState());
+			
 			arrayList2.add(tranCenLoadingListlineitemVO);
 		}
 		

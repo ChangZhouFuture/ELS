@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import po.documentsPO.ReceivablesOrderPO;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
+import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.ReceivablesOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -51,6 +52,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		this.receivablesOrderVO.setGenerateTime(Time.generateTime());
 		this.receivablesOrderVO.setID(generateID());
 		this.receivablesOrderVO.setAmount(calculateAmount(receivablesOrderVO.getOrderIDs()));
+		this.receivablesOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -152,6 +154,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		receivablesOrderPO.setAmount(receivablesOrderVO.getAmount());
 		receivablesOrderPO.setCourier(receivablesOrderVO.getCourier());
 		receivablesOrderPO.setOrderIDs(receivablesOrderVO.getOrderIDs());
+		receivablesOrderPO.setApproState(receivablesOrderVO.getApproState());
 	}
 
 	public void POtoVO(int k) {
@@ -165,6 +168,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 			receivablesOrderVO.setDate(receivablesOrderPO.getDate());
 			receivablesOrderVO.setAmount(receivablesOrderPO.getAmount());
 			receivablesOrderVO.setCourier(receivablesOrderPO.getCourier());
+			receivablesOrderVO.setApproState(receivablesOrderPO.getApproState());
 			
 			arrayList2.add(receivablesOrderVO);
 		}

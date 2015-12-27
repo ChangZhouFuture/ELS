@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import po.documentsPO.TranCenArrivalOrderPO;
+import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
@@ -67,6 +68,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		this.tranCenArrivalOrderVO.setID(generateId());
 		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
 				tranCenArrivalOrderVO.getTransferOrderID()));
+		this.tranCenArrivalOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -155,6 +157,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		tranCenArrivalOrderPO.setTranCenID(tranCenArrivalOrderVO.getTranCenID());
 		tranCenArrivalOrderPO.setTransferOrderID(tranCenArrivalOrderVO.
 				getTransferOrderID());
+		tranCenArrivalOrderPO.setApproState(tranCenArrivalOrderVO.getApproState());
 	}
 	
 	public void POtoVO(int k) {
@@ -171,7 +174,8 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 					getTransferOrderID());
 			tranCenArrivalOrderVO.setOrigin(tranCenArrivalOrderPO.getOrigin());
 			tranCenArrivalOrderVO.setGoodState(tranCenArrivalOrderPO.getGoodState());
-		
+			tranCenArrivalOrderVO.setApproState(tranCenArrivalOrderPO.getApproState());
+			
 			arrayList2.add(tranCenArrivalOrderVO);
 		}
 	}

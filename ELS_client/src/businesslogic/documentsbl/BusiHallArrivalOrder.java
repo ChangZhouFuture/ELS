@@ -2,8 +2,10 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 import po.documentsPO.BusiHallArrivalOrderPO;
+import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
@@ -69,6 +71,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.busiHallArrivalOrderVO.setArrivalDate(generateDate());
 		this.busiHallArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.busiHallArrivalOrderVO.setId(generateId());
+		this.busiHallArrivalOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
 		try {
@@ -159,6 +162,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		busiHallArrivalOrderPO.setArrivalDate(busiHallArrivalOrderVO.getArrivalDate());
 		busiHallArrivalOrderPO.setGenerateTime(busiHallArrivalOrderVO.getGenerateTime());
 		busiHallArrivalOrderPO.setId(busiHallArrivalOrderVO.getId());
+		busiHallArrivalOrderPO.setApproState(busiHallArrivalOrderVO.getApproState());
 	}
 
 	public void POtoVO(int k) {
@@ -173,6 +177,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 			busiHallArrivalOrderVO.setOrigin(busiHallArrivalOrderPO.getOrigin());
 			busiHallArrivalOrderVO.setGoodState(busiHallArrivalOrderPO.getGoodState());
 			busiHallArrivalOrderVO.setArrivalDate(busiHallArrivalOrderPO.getArrivalDate());
+			busiHallArrivalOrderVO.setApproState(busiHallArrivalOrderPO.getApproState());
 			
 			arrayList2.add(busiHallArrivalOrderVO);
 		}
