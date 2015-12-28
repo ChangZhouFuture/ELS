@@ -33,9 +33,10 @@ public class BankAccountInfordata extends UnicastRemoteObject implements BankAcc
 //增加新银行账户信息
 public ResultMessage add(BankAccountPO po){
 	try {
-		stmt = con.prepareStatement("INSERT INTO bankAccount(name,amount) VALUES(?,?)");
+		stmt = con.prepareStatement("INSERT INTO bankAccount(name,amount,use) VALUES(?,?,?)");
 		stmt.setString(1, po.getName());
 	    stmt.setDouble(2, po.getAmount());
+	    stmt.setString(3, po.getUseState().toString());
 	    stmt.executeUpdate();
 	    return ResultMessage.Success;
 	} catch (SQLException e) {
