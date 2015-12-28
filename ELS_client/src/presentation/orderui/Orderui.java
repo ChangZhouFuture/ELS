@@ -77,7 +77,7 @@ public class Orderui extends ParentDocuments{
 	double packing=5.0;
 	ExpressType expressTypeSeletion=ExpressType.Economic;
 	Orderblservice orderblservice;
-	OrderVO orderVO;
+	public OrderVO orderVO;
 	JavaBean1 javaBean1;
 	
 	public Orderui() {
@@ -439,6 +439,7 @@ public class Orderui extends ParentDocuments{
 				freightField.setText(String.valueOf(orderVO.getFreight()));
 				amountField.setText(String.valueOf(orderVO.getTotalCost()));
 				docmID.setText(orderVO.getId());
+				docmDate.setText(orderVO.getGenerateDate());
 				makeOrder.setEnabled(false);
 			}
 		});
@@ -463,9 +464,12 @@ public class Orderui extends ParentDocuments{
 				orderVO.setWeight(Double.valueOf(goodWeightField.getText()));
 				orderVO.setGoodsName(goodNameField.getText());
 				orderVO.setNumOfGoods(Integer.valueOf(goodNumField.getText()));
-				modifyOrder.setEnabled(false);
-				modifyOrder.setVisible(false);
-				orderblservice.modify(orderVO);
+				javaBean1=orderblservice.modify(orderVO);
+				orderVO=(OrderVO)javaBean1.getObject();
+				expectedArrivalDate.setText("预计到达时间："+
+				        orderVO.getExpectedArrivalDate());
+				freightField.setText(String.valueOf(orderVO.getFreight()));
+				amountField.setText(String.valueOf(orderVO.getTotalCost()));
 			}
 		});
 		
@@ -528,6 +532,7 @@ public class Orderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	
 	public void modifying() {

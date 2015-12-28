@@ -158,6 +158,7 @@ public class TranCenClerkController {
 	public TranCenArrivalOrderui findTranCenArrivalOrder(TranCenArrivalOrderVO tranCenArrivalOrderVO){
 		tranCenArrivalOrderui=new TranCenArrivalOrderui();
 		tranCenArrivalOrderui.refresh();
+		tranCenArrivalOrderui.tranCenArrivalOrderVO=tranCenArrivalOrderVO;
 		tranCenArrivalOrderui.tranCenId.setText(tranCenArrivalOrderVO.getTranCenID());
 		tranCenArrivalOrderui.transferOrderId.setText(tranCenArrivalOrderVO.getTransferOrderID());
 		tranCenArrivalOrderui.departureField.setText(tranCenArrivalOrderVO.getOrigin());
@@ -173,6 +174,7 @@ public class TranCenClerkController {
 			default:break;
 		}
 		tranCenArrivalOrderui.docmID.setText(tranCenArrivalOrderVO.getID());
+		tranCenArrivalOrderui.docmDate.setText(tranCenArrivalOrderVO.getArrivalDate());
 		return tranCenArrivalOrderui;
 	}
 	public void inTranCenArrivalOrderui(){
@@ -248,6 +250,7 @@ public class TranCenClerkController {
 	public TransferOrderui findTransferOrder(TransferOrderVO transferOrderVO){
 		transferOrderui=new TransferOrderui();
 		transferOrderui.refresh();
+		transferOrderui.transferOrderVO=transferOrderVO;
 		switch(transferOrderVO.getTransportType()){
 		case Truck:transferOrderui.transportTypeType.setSelectedIndex(0);break;
 		case Train:transferOrderui.transportTypeType.setSelectedIndex(1);break;
@@ -278,6 +281,7 @@ public class TranCenClerkController {
 			default:break;
 		}
 		transferOrderui.docmID.setText(transferOrderVO.getID());
+		transferOrderui.docmDate.setText(transferOrderVO.getLoadingDate());
 		return transferOrderui;
 	}
 	public void inTransferOrderui(){
@@ -353,6 +357,7 @@ public class TranCenClerkController {
 	public TransferCenterLoadingListui findTransferCenterLoadingList(TranCenLoadingListVO tranCenLoadingListVO){
 		transferCenterLoadingListui=new TransferCenterLoadingListui();
 		transferCenterLoadingListui.refresh();
+		transferCenterLoadingListui.tranCenLoadingListVO=tranCenLoadingListVO;
 		transferCenterLoadingListui.motorIdField.setText(tranCenLoadingListVO.getTrucksNum());
 		transferCenterLoadingListui.vehicleIdField.setText(tranCenLoadingListVO.getVehiclesID());
 		transferCenterLoadingListui.arrivalField.setText(tranCenLoadingListVO.getDestination());
@@ -377,6 +382,7 @@ public class TranCenClerkController {
 			default:break;
 		}
 		transferCenterLoadingListui.docmID.setText(tranCenLoadingListVO.getID());
+		transferCenterLoadingListui.docmDate.setText(tranCenLoadingListVO.getLoadingDate());
 		return transferCenterLoadingListui;
 	}
 	public void inTransferCenterLoadingListui(){

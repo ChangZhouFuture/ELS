@@ -35,6 +35,7 @@ public class BankAccountListui extends JPanel{
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
+	public DefaultTableModel tableModel;
 	BankAccountInforblservice bankAccountInforblservice;
 	BankAccountVO oneLine;
 	
@@ -45,7 +46,15 @@ public class BankAccountListui extends JPanel{
 		findByName=new JLabel();
 		nameField=new JTextField();
 		nameFind=new JButton();
-		
+		String[] columnNames = {"选择","名称","金额"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
+		 
 		this.setLayout(null);
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -124,16 +133,6 @@ public class BankAccountListui extends JPanel{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
-		 String[] columnNames = {"选择","名称","金额"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
-//		 ButtonGroup checkboxGroup=new ButtonGroup();
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,

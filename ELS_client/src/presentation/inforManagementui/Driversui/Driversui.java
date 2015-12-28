@@ -48,7 +48,7 @@ public class Driversui extends ParentDocuments{
 	public JLabel phone;
 	public JTextField phoneField;
 	DriversInforblservice driversInforblservice;
-	DriversVO driversVO;
+	public DriversVO driversVO;
 	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
@@ -172,7 +172,6 @@ public class Driversui extends ParentDocuments{
 				driversVO.setDriveLimitDate(limitDateField.getText());
 				driversVO.setIdentyNum(idCardField.getText());
 				driversVO.setPhone(phoneField.getText());
-				modifyOrder.setVisible(false);
 				driversInforblservice.modify(driversVO);
 			}
 		});
@@ -221,6 +220,7 @@ public class Driversui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying(){
 		birthDateField.setEditable(true);

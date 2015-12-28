@@ -117,7 +117,7 @@ public class CourierController {
 	}
 	public Orderui find(OrderVO orderVO){
 		orderui = new Orderui();
-		
+		orderui.orderVO=orderVO;
 		orderui.refresh();
 		orderui.senderNameField.setText(orderVO.getSenderName());
 		orderui.senderAddressField.setText(orderVO.getSenderAdd());
@@ -162,6 +162,7 @@ public class CourierController {
 			orderui.trueArrivalDateField.setText(orderVO.getArrivalDate());
 		}
 		orderui.docmID.setText(orderVO.getId());
+		orderui.docmDate.setText(orderVO.getGenerateDate());
 		return orderui;
 	}
 	public void inOrderui() {

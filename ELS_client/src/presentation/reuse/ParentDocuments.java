@@ -15,6 +15,7 @@ public class ParentDocuments extends JPanel{
 	public JButton delete;
 	public JLabel approState;
 	public JLabel docmID;
+	public JLabel docmDate;
 	
 	public ParentDocuments(){
 		approState=new JLabel();
@@ -23,6 +24,7 @@ public class ParentDocuments extends JPanel{
 		makeOrder=new JButton();
 		modifyOrder=new JButton();
 		docmID=new JLabel();
+		docmDate=new JLabel();
 		
 		this.setLayout(null);
 		
@@ -31,6 +33,9 @@ public class ParentDocuments extends JPanel{
 		
 		docmID.setBounds(450,0,160,24);
 		docmID.setBackground(Color.WHITE);
+		
+		docmDate.setBounds(40,0,472,24);
+		docmDate.setBackground(Color.WHITE);
 		
 		makeOrder.setBounds(260,442,96,30);
 		makeOrder.setText("确认生成");
@@ -49,7 +54,6 @@ public class ParentDocuments extends JPanel{
 		approState.setFont(font2);
 		approState.setBackground(Color.WHITE);
 		approState.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		//不显示是因为没有setText
 		
 		modify.setBounds(0,0,24,24);
 		modify.setIcon(Images.MODIFY_IMAGE);
@@ -67,6 +71,7 @@ public class ParentDocuments extends JPanel{
 		this.add(delete);
 		this.add(modifyOrder);
 		this.add(docmID);
+		this.add(docmDate);
 		this.setLocation(182,30);
 		this.setSize(640,496);
 		this.setBackground(Color.WHITE);

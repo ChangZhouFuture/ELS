@@ -37,7 +37,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 	JScrollPane scroller;
 	JavaBean1 javaBean1;
 	TranCenArrivalOrderblservice tranCenArrivalOrderblservice;
-	TranCenArrivalOrderVO tranCenArrivalOrderVO;
+	public TranCenArrivalOrderVO tranCenArrivalOrderVO;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -134,6 +134,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 				javaBean1=tranCenArrivalOrderblservice.addTranCenArivalOrder(tranCenArrivalOrderVO);
 				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
 				docmID.setText(tranCenArrivalOrderVO.getID());
+				docmDate.setText(tranCenArrivalOrderVO.getArrivalDate());
 				departureField.setText(tranCenArrivalOrderVO.getOrigin());
 				makeOrder.setEnabled(false);
 			}
@@ -147,9 +148,10 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 				tranCenArrivalOrderVO.setTranCenID(Loginui.agency);
 				tranCenArrivalOrderVO.setTransferOrderID(tranCenId.getText());
 				tranCenArrivalOrderVO.setGoodState(goodStateSeletion);
-				modifyOrder.setEnabled(false);
-				tranCenArrivalOrderblservice.modify(tranCenArrivalOrderVO);
+				javaBean1=tranCenArrivalOrderblservice.modify(tranCenArrivalOrderVO);
 				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+				docmDate.setText(tranCenArrivalOrderVO.getArrivalDate());
+				departureField.setText(tranCenArrivalOrderVO.getOrigin());
 			}
 		});
 		
@@ -181,6 +183,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
 		transferOrderId.setEditable(true);

@@ -50,7 +50,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 	JavaBean1 javaBean1;
 	public OrderlineitemVO orderlineitemVO;
 	TranCenLoadingListblservice tranCenLoadingListblservice;
-	TranCenLoadingListVO tranCenLoadingListVO;
+	public TranCenLoadingListVO tranCenLoadingListVO;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -231,6 +231,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
 				motorIdField.setText(tranCenLoadingListVO.getTrucksNum());
 				docmID.setText(tranCenLoadingListVO.getID());
+				docmDate.setText(tranCenLoadingListVO.getLoadingDate());
 				fareField.setText(String.valueOf(tranCenLoadingListVO.getCarriage()));
 			}
 		});
@@ -248,8 +249,12 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 					idList.add((String)orderList.getValueAt(i,1));
 				}
 				tranCenLoadingListVO.setOrderIDs(idList);
-				modifyOrder.setVisible(false);
-				tranCenLoadingListblservice.modify(tranCenLoadingListVO);
+				javaBean1=new JavaBean1();
+				javaBean1=tranCenLoadingListblservice.modify(tranCenLoadingListVO);
+				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
+				motorIdField.setText(tranCenLoadingListVO.getTrucksNum());
+				docmDate.setText(tranCenLoadingListVO.getLoadingDate());
+				fareField.setText(String.valueOf(tranCenLoadingListVO.getCarriage()));
 			}
 		});
 		
@@ -304,7 +309,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
-		
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
 		vehicleIdField.setEditable(true);

@@ -1,34 +1,19 @@
 package presentation.controller;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import businesslogic.documentsbl.PaymentOrder;
+import javax.swing.JOptionPane;
+import bean.JavaBean1;
 import businesslogic.inforManagementbl.BankAccountInfor;
-import businesslogic.orderbl.Order;
-import businesslogicservice.documentsblservice.PaymentOrderblservice;
 import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
-import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
-import presentation.documentsui.PaymentOrderui.PaymentOrderui;
-import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderListui;
-import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderui;
 import presentation.inforManagementui.BankAccountui.BankAccountListui;
 import presentation.inforManagementui.BankAccountui.BankAccountui;
-import presentation.managerAndAccountantui.Operalogui.OperalogListui;
-import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
-import presentation.orderui.OrderListui;
 import presentation.reuse.Skip;
-import presentation.userui.Accountantui1;
-import vo.documentsVO.PaymentOrderVO;
+import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
 
 public class Accountant1Controller extends Accountant2Controller{
@@ -65,6 +50,38 @@ public class Accountant1Controller extends Accountant2Controller{
 				inBankAccountui();
 			}
 		});
+		bankAccountListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+               	String id=(String)bankAccountListui.tableModel.
+               			getValueAt(bankAccountListui.table.getSelectedRow(),1);
+               	try {
+               		bankAccountInforblservice=new BankAccountInfor();
+               		javaBean1=new JavaBean1();
+   					javaBean1=bankAccountInforblservice.inquire(id);
+   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+   						JOptionPane.showMessageDialog(null, "¶©µ¥²»´æÔÚ", "´íÎó", JOptionPane.ERROR_MESSAGE);
+   					}
+   					bankAccountVO=(BankAccountVO)javaBean1.getObject();
+   					bankAccountui=findBankAccount(bankAccountVO);
+   					childPanel = bankAccountui;
+   					Skip.skip(mainPanel,childPanel);
+   					inBankAccountui();
+   				} catch (Exception e2) {
+   				}
+               }
+            }
+       });
+	}
+	public BankAccountui findBankAccount(BankAccountVO bankAccountVO){
+		bankAccountui=new BankAccountui();
+		bankAccountui.bankAccountVO=bankAccountVO;
+		bankAccountui.refresh();
+		bankAccountui.nameField.setText(bankAccountVO.getName());
+		bankAccountui.moneyField.setText(String.valueOf(bankAccountVO.getAmount()));
+		bankAccountui.approState.setText(bankAccountVO.getUseState().toString());
+		return bankAccountui;
 	}
 	public void inBankAccountui(){
 		bankAccountui.delete.addActionListener(new ActionListener() {

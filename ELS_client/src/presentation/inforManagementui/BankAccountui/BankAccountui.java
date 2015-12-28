@@ -29,7 +29,7 @@ public class BankAccountui extends ParentDocuments{
 	public JLabel money;
 	public JTextField moneyField;
 	BankAccountInforblservice bankAccountInforblservice;
-	BankAccountVO bankAccountVO;
+	public BankAccountVO bankAccountVO;
 	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
@@ -92,7 +92,6 @@ public class BankAccountui extends ParentDocuments{
 				bankAccountInforblservice=new BankAccountInfor();
 				String oldName=bankAccountVO.getName();
 				String newName=nameField.getText();
-				modifyOrder.setVisible(false);
 				bankAccountInforblservice.modify(oldName,newName);
 			}
 		});
@@ -123,6 +122,7 @@ public class BankAccountui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying(){
 		nameField.setEditable(true);

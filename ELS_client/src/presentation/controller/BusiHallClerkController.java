@@ -211,6 +211,7 @@ public class BusiHallClerkController {
 	public BusinessHallLoadingListui findBusiHallLoadingList(BusiHallLoadingListVO busiHallLoadingListVO){
 		businessHallLoadingListui=new BusinessHallLoadingListui();
 		businessHallLoadingListui.refresh();
+		businessHallLoadingListui.busiHallLoadingListVO=busiHallLoadingListVO;
 		businessHallLoadingListui.busiIdField.setText(busiHallLoadingListVO.getBusiHallID());
 		businessHallLoadingListui.motorIdField.setText(busiHallLoadingListVO.getTruckNum());
 		businessHallLoadingListui.vehicleIdField.setText(busiHallLoadingListVO.getVehiclesID());
@@ -235,6 +236,7 @@ public class BusiHallClerkController {
 			default:break;
 		}
 		businessHallLoadingListui.docmID.setText(busiHallLoadingListVO.getID());
+		businessHallLoadingListui.docmDate.setText(busiHallLoadingListVO.getLoadingDate());
 		return businessHallLoadingListui;
 	}
 	public void inBusinessHallLoadingListui() {
@@ -311,6 +313,7 @@ public class BusiHallClerkController {
 	public Driversui findDriver(DriversVO driversVO){
 		driversui=new Driversui();
 		driversui.refresh();
+		driversui.driversVO=driversVO;
 		driversui.nameField.setText(driversVO.getName());
 		switch(driversVO.getGender()){
 		case MALE:driversui.sexType.setSelectedIndex(0);break;
@@ -400,6 +403,7 @@ public class BusiHallClerkController {
 	public ReceivablesOrderui finReceivablesOrder(ReceivablesOrderVO receivablesOrderVO){
 		receivablesOrderui=new ReceivablesOrderui();
 		receivablesOrderui.refresh();
+		receivablesOrderui.receivablesOrderVO=receivablesOrderVO;
 		receivablesOrderui.moneyField.setText(String.valueOf(receivablesOrderVO.getAmount()));
 		receivablesOrderui.courierId.setText(receivablesOrderVO.getCourier());
 		ArrayList<String> idList=new ArrayList<String>();
@@ -420,6 +424,7 @@ public class BusiHallClerkController {
 			default:break;
 		}
 		receivablesOrderui.docmID.setText(receivablesOrderVO.getID());
+		receivablesOrderui.docmDate.setText(receivablesOrderVO.getDate());
 		return receivablesOrderui;
 	}
 	public void inReceivablesOrderui(){
@@ -493,6 +498,7 @@ public class BusiHallClerkController {
 	public BusiHallArrivalOrderui findBusiHallArrivalOrder(BusiHallArrivalOrderVO busiHallArrivalOrderVO){
 		busiHallArrivalOrderui=new BusiHallArrivalOrderui();
 		busiHallArrivalOrderui.refresh();
+		busiHallArrivalOrderui.busiHallArrivalOrderVO=busiHallArrivalOrderVO;
 		busiHallArrivalOrderui.transferOrderField.setText(busiHallArrivalOrderVO.getTransferOrderID());
 		busiHallArrivalOrderui.departureField.setText(busiHallArrivalOrderVO.getOrigin());
 		switch(busiHallArrivalOrderVO.getGoodState()){
@@ -507,7 +513,7 @@ public class BusiHallClerkController {
 			default:break;
 		}
 		busiHallArrivalOrderui.docmID.setText(busiHallArrivalOrderVO.getId());
-		
+		busiHallArrivalOrderui.docmDate.setText(busiHallArrivalOrderVO.getArrivalDate());
 		return busiHallArrivalOrderui;
 	}
 	public void inBusiHallArrivalOrderui(){
@@ -583,6 +589,7 @@ public class BusiHallClerkController {
 	public DeliveryOrderui findDeliveryOrder(DeliveryOrderVO deliveryOrderVO){
 		deliveryOrderui=new DeliveryOrderui();
 		deliveryOrderui.refresh();
+		deliveryOrderui.deliveryOrderVO=deliveryOrderVO;
 		deliveryOrderui.courierid.setText(deliveryOrderVO.getDeliverier());
 		deliveryOrderui.orderid.setText(deliveryOrderVO.getOrderID());
 		switch(deliveryOrderVO.getApproState()){
@@ -591,6 +598,7 @@ public class BusiHallClerkController {
 			default:break;
 		}
 		deliveryOrderui.docmID.setText(deliveryOrderVO.getID());
+		deliveryOrderui.docmDate.setText(deliveryOrderVO.getArrivalDate());
 		return deliveryOrderui;
 	}
 	public void inDeliveryOrderui(){
@@ -668,6 +676,7 @@ public class BusiHallClerkController {
 	public Vehiclesui findVehicle(VehiclesVO vehiclesVO){
 		vehiclesui=new Vehiclesui();
 		vehiclesui.refresh();
+		vehiclesui.vehiclesVO=vehiclesVO;
 		vehiclesui.plateNumField.setText(vehiclesVO.getPlateNum());
 		vehiclesui.serviceTimeField.setText(vehiclesVO.getServiceTime());
 		vehiclesui.docmID.setText(vehiclesVO.getID());

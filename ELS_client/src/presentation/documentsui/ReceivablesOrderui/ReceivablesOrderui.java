@@ -47,7 +47,7 @@ public class ReceivablesOrderui extends ParentDocuments{
 	JavaBean1 javaBean1;
 	public OrderlineitemVO orderlineitemVO;
 	ReceivablesOrderblservice receivablesOrderblservice;
-	ReceivablesOrderVO receivablesOrderVO;
+	public ReceivablesOrderVO receivablesOrderVO;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -188,6 +188,7 @@ public class ReceivablesOrderui extends ParentDocuments{
 				receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
 				moneyField.setText(String.valueOf(receivablesOrderVO.getAmount()));
 				docmID.setText(receivablesOrderVO.getID());
+				docmDate.setText(receivablesOrderVO.getDate());
 				makeOrder.setEnabled(false);
 			}
 		});
@@ -203,8 +204,10 @@ public class ReceivablesOrderui extends ParentDocuments{
 					idList.add((String)orderList.getValueAt(i,1));
 				}
 				receivablesOrderVO.setOrderIDs(idList);
-				modifyOrder.setEnabled(false);
-				receivablesOrderblservice.modify(receivablesOrderVO);
+				javaBean1=new JavaBean1();
+				javaBean1=receivablesOrderblservice.modify(receivablesOrderVO);
+				receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
+				moneyField.setText(String.valueOf(receivablesOrderVO.getAmount()));
 			}
 		});
 		
@@ -247,7 +250,7 @@ public class ReceivablesOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
-		
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
 		courierId.setEditable(true);

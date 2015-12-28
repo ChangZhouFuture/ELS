@@ -31,7 +31,7 @@ public class Vehiclesui extends ParentDocuments{
 	public JTextField plateNumField;
 	public JTextField serviceTimeField;
 	VehiclesInforblservice vehiclesInforblservice;
-	VehiclesVO vehiclesVO;
+	public VehiclesVO vehiclesVO;
 	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
@@ -94,7 +94,6 @@ public class Vehiclesui extends ParentDocuments{
 				vehiclesVO.setPlateNum(plateNumField.getText());
 				vehiclesVO.setServiceTime(serviceTimeField.getText());
 				vehiclesVO.setBusiHallID(Loginui.agency);
-				modifyOrder.setVisible(false);
 				vehiclesInforblservice.modify(vehiclesVO);
 			}
 		});
@@ -125,6 +124,7 @@ public class Vehiclesui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying(){
 		plateNumField.setEditable(true);

@@ -62,7 +62,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 	JavaBean1 javaBean1;
 	public OrderlineitemVO orderlineitemVO;
 	BusiHallLoadingListblservice busiHallLoadingListblservice;
-	BusiHallLoadingListVO busiHallLoadingListVO;
+	public BusiHallLoadingListVO busiHallLoadingListVO;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -257,6 +257,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
 				motorIdField.setText(busiHallLoadingListVO.getTruckNum());
 				docmID.setText(busiHallLoadingListVO.getID());
+				docmDate.setText(busiHallLoadingListVO.getLoadingDate());
 				fareField.setText(String.valueOf(busiHallLoadingListVO.getCarriage()));
 				makeOrder.setEnabled(false);
 			}
@@ -276,8 +277,12 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 					idList.add((String)orderList.getValueAt(i,1));
 				}
 				busiHallLoadingListVO.setOrderIDs(idList);
-				modifyOrder.setEnabled(false);
-				busiHallLoadingListblservice.modify(busiHallLoadingListVO);
+				javaBean1=new JavaBean1();
+				javaBean1=busiHallLoadingListblservice.modify(busiHallLoadingListVO);
+				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
+				motorIdField.setText(busiHallLoadingListVO.getTruckNum());
+				docmDate.setText(busiHallLoadingListVO.getLoadingDate());
+				fareField.setText(String.valueOf(busiHallLoadingListVO.getCarriage()));
 			}
 		});
 		
@@ -334,6 +339,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 		
 	}
 	public void modifying() {

@@ -60,7 +60,7 @@ public class TransferOrderui extends ParentDocuments{
 	TransportType transportTypeSeletion=TransportType.Truck;
 	String city = Loginui.city;
 	TransferOrderblservice transferOrderblservice;
-	TransferOrderVO transferOrderVO;
+	public TransferOrderVO transferOrderVO;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -108,13 +108,11 @@ public class TransferOrderui extends ParentDocuments{
 		transferOrder.setHorizontalAlignment(SwingConstants.CENTER);
 		transferOrder.setFont(font1);
 		transferOrder.setBackground(Color.WHITE);
-		transferOrder.setOpaque(true);
 		
 		transportType.setBounds(40,50,100,24);
 		transportType.setText("交通方式：");
 		transportType.setFont(font2);
 		transportType.setBackground(Color.WHITE);
-		transportType.setOpaque(true);
 		
 		transportTypeType.setBounds(140,50,100,24);
 		transportTypeType.setFont(font2);
@@ -138,15 +136,17 @@ public class TransferOrderui extends ParentDocuments{
 		departure.setText("出发地：");
 		departure.setFont(font2);
 		departure.setBackground(Color.WHITE);
-		departure.setOpaque(true);
 		
 		departureField.setBounds(140,82,150,20);
+		departureField.setEditable(false);
+		departureField.setFont(font2);
+		departureField.setBackground(Color.WHITE);
+		departureField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		arrival.setBounds(300,80,100,24);
 		arrival.setText("到达地：");
 		arrival.setFont(font2);
 		arrival.setBackground(Color.WHITE);
-		arrival.setOpaque(true);
 		
 		arrivalField.setBounds(400,82,150,20);
 		
@@ -154,7 +154,6 @@ public class TransferOrderui extends ParentDocuments{
 		jZY.setText("监装员：");
 		jZY.setFont(font2);
 		jZY.setBackground(Color.WHITE);
-		jZY.setOpaque(true);
 		
 		jZYField.setBounds(140,112,150,20);
 		
@@ -260,7 +259,6 @@ public class TransferOrderui extends ParentDocuments{
 				approState.setText("未审批");
 				transferOrderblservice=new TransferOrder();
 				transferOrderVO.setTransportType(transportTypeSeletion);
-				transferOrderVO.setOrigin(departureField.getText());
 				transferOrderVO.setDestination(arrivalField.getText());
 				transferOrderVO.setSupervisionMan(jZYField.getText());
 				transferOrderVO.setFlightNum(transportNumField.getText());
@@ -273,6 +271,8 @@ public class TransferOrderui extends ParentDocuments{
 				javaBean1=transferOrderblservice.addTransferOrder(transferOrderVO);
 				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
 				docmID.setText(transferOrderVO.getID());
+				docmDate.setText(transferOrderVO.getLoadingDate());
+				departureField.setText(transferOrderVO.getOrigin());
 				carriageField.setText(String.valueOf(transferOrderVO.getCarriage()));
 			}
 		});
@@ -284,7 +284,6 @@ public class TransferOrderui extends ParentDocuments{
 				refresh();
 				transferOrderblservice=new TransferOrder();
 				transferOrderVO.setTransportType(transportTypeSeletion);
-				transferOrderVO.setOrigin(departureField.getText());
 				transferOrderVO.setDestination(arrivalField.getText());
 				transferOrderVO.setSupervisionMan(jZYField.getText());
 				transferOrderVO.setFlightNum(transportNumField.getText());
@@ -294,8 +293,10 @@ public class TransferOrderui extends ParentDocuments{
 					idList.add((String)orderList.getValueAt(i,1));
 				}
 				transferOrderVO.setOrderIDs(idList);
-				modifyOrder.setVisible(false);
-				transferOrderblservice.modify(transferOrderVO);
+				javaBean1=transferOrderblservice.modify(transferOrderVO);
+				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
+				departureField.setText(transferOrderVO.getOrigin());
+				carriageField.setText(String.valueOf(transferOrderVO.getCarriage()));
 			}
 		});
 		modify.addActionListener(new ActionListener() {
@@ -328,7 +329,6 @@ public class TransferOrderui extends ParentDocuments{
 		this.add(scroller);
 	}
 	public void refresh() {
-		departureField.setEditable(false);
 		arrivalField.setEditable(false);
 		jZYField.setEditable(false);
 		transportNumField.setEditable(false);
@@ -338,14 +338,12 @@ public class TransferOrderui extends ParentDocuments{
 		deleteOrder.setVisible(false);
 		transportTypeType.setEnabled(false);
 		
-		departureField.setBackground(Color.white);
 		arrivalField.setBackground(Color.white);
 		jZYField.setBackground(Color.white);
 		transportNumField.setBackground(Color.white);
 		containerIdField.setBackground(Color.white);
 		orderIdField.setBackground(Color.white);
 		
-		departureField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		arrivalField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		jZYField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		transportNumField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -355,9 +353,9 @@ public class TransferOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
-		departureField.setEditable(true);
 		arrivalField.setEditable(true);
 		jZYField.setEditable(true);
 		transportNumField.setEditable(true);
@@ -368,7 +366,6 @@ public class TransferOrderui extends ParentDocuments{
 		transportTypeType.setEnabled(true);
 		modifyOrder.setVisible(true);
 		
-		departureField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		arrivalField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		jZYField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		transportNumField.setBorder(BorderFactory.createLineBorder(Color.lightGray));

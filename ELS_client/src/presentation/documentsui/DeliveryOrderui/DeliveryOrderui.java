@@ -29,7 +29,7 @@ public class DeliveryOrderui extends ParentDocuments{
 	public JTextField courierid;
 	public JTextField orderid;
 	DeliveryOrderblservice deliveryOrderblservice;
-	DeliveryOrderVO deliveryOrderVO;
+	public DeliveryOrderVO deliveryOrderVO;
 	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
@@ -84,6 +84,7 @@ public class DeliveryOrderui extends ParentDocuments{
 				javaBean1=deliveryOrderblservice.addDeliveryOrder(deliveryOrderVO);
 				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
 				docmID.setText(deliveryOrderVO.getID());
+				docmDate.setText(deliveryOrderVO.getArrivalDate());
 				makeOrder.setEnabled(false);
 			}
 		});
@@ -96,8 +97,8 @@ public class DeliveryOrderui extends ParentDocuments{
 				deliveryOrderblservice=new DeliveryOrder();
 				deliveryOrderVO.setDeliverier(courierid.getText());
 				deliveryOrderVO.setOrderID(orderid.getText());
-				modifyOrder.setEnabled(false);
-				deliveryOrderblservice.modify(deliveryOrderVO);
+				javaBean1=deliveryOrderblservice.modify(deliveryOrderVO);
+				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
 			}
 		});
 		
@@ -133,6 +134,7 @@ public class DeliveryOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
 		courierid.setEditable(true);

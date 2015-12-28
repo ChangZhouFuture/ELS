@@ -172,8 +172,6 @@ public class PaymentOrderui extends ParentDocuments{
 				paymentOrderVO.setPayer(paymentPersonField.getText());
 				paymentOrderVO.setEntry(payTypeValue);
 				paymentOrderVO.setNote(remarksArea.getText());
-				modifyOrder.setEnabled(false);
-				modifyOrder.setVisible(false);
 				paymentOrderblservice.modify(paymentOrderVO);
 			}
 		});
@@ -212,6 +210,7 @@ public class PaymentOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying(){
 		paymentMoneyField.setEditable(true);

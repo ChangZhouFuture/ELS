@@ -123,6 +123,7 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 				javaBean1=busiHallArrivalOrderblservice.addBusiHallArrivalOrder(busiHallArrivalOrderVO);
 				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
 				docmID.setText(busiHallArrivalOrderVO.getId());
+				docmDate.setText(busiHallArrivalOrderVO.getArrivalDate());
 				makeOrder.setEnabled(false);
 			}
 		});
@@ -136,8 +137,8 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 				busiHallArrivalOrderVO.setOrigin(departureField.getText());
 				busiHallArrivalOrderVO.setGoodState(goodStateSeletion);
 				busiHallArrivalOrderVO.setBusiHallID(Loginui.agency);
-				modifyOrder.setEnabled(false);
-				busiHallArrivalOrderblservice.modify(busiHallArrivalOrderVO);
+				javaBean1=busiHallArrivalOrderblservice.modify(busiHallArrivalOrderVO);
+				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
 			}
 		});
 		
@@ -175,6 +176,7 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		modify.setVisible(true);
 		delete.setVisible(true);
 		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
 	}
 	public void modifying() {
 		transferOrderField.setEditable(true);
