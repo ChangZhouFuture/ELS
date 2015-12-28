@@ -13,6 +13,7 @@ import data.utility.GenerateId;
 import po.documentsPO.BusiHallArrivalOrderPO;
 import po.documentsPO.TranCenArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
+import state.AgencyType;
 import state.ApproState;
 import state.GoodState;
 import state.ResultMessage;
@@ -40,8 +41,8 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	@Override
 	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tranCenArrivalOrderPO) {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO trancenarrivalorder(ID,tranCenID,date,transferOrderID,origin,goodState)"+
-				"values(?,?,?,?,?,?)";
+		String sql="INSERT INTO trancenarrivalorder(ID,tranCenID,date,transferOrderID,origin,goodState,agencyType)"+
+				"values(?,?,?,?,?,?,?)";
 				try {
 					stmt=con.prepareStatement(sql);
 					stmt.setString(1, po.getID());
@@ -50,6 +51,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 					stmt.setString(4, po.getTransferOrderID());
 					stmt.setString(5, po.getOrigin());
 					stmt.setString(6, po.getGoodState().toString());
+					stmt.setString(7, po.getAgencyType().toString());
 					stmt.executeUpdate();
 		            return ResultMessage.Success;
 				} catch (SQLException e) {
@@ -100,6 +102,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		        po.setOrigin(rs.getString(5));
 		        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 		        po.setApproState(ApproState.valueOf(rs.getString("approState")));
+		        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 		        pos.add(po);
 			}
 			jb1.setObject(pos);
@@ -131,6 +134,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 			        po.setOrigin(rs.getString(5));
 			        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 			        po.setApproState(ApproState.valueOf(rs.getString("approState")));
+			        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -142,6 +146,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 			        po.setOrigin(rs.getString(5));
 			        po.setGoodState(GoodState.valueOf(rs.getString(6)));
 			        po.setApproState(ApproState.valueOf(rs.getString("approState")));
+			        po.setAgencyType(AgencyType.valueOf(rs.getString("agencyType")));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -161,14 +166,15 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		// TODO Auto-generated method stub
 		try {
 			String sql=("UPDATE trancenarrivalorder SET tranCenID=?,date=?,transferOrderID=?,"
-					+ "origin=?,goodState=? WHERE ID=?");
+					+ "origin=?,goodState=?,agencyType=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getTranCenID());
 			stmt.setString(2, po.getArrivalDate());
 			stmt.setString(3, po.getTransferOrderID());
 			stmt.setString(4, po.getOrigin());
 			stmt.setString(5, po.getGoodState().toString());
-			stmt.setString(6, po.getID());
+			stmt.setString(6, po.getAgencyType().toString());
+			stmt.setString(7, po.getID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
