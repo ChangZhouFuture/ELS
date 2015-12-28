@@ -26,7 +26,7 @@ import presentation.reuse.Images;
 import presentation.userui.BusiHallClerkui;
 import vo.documentsVO.ReceivablesOrderVO;
 
-public class BalanceListui extends JPanel{
+public class SettlementListui extends JPanel{
 	public JLabel sheetLabel;
 	public DateChooser dateChooser;
 	public JTextField showDate;
@@ -45,15 +45,7 @@ public class BalanceListui extends JPanel{
 	JavaBean1 javaBean1;
 	double totalValue=0.0;
 	
-	public static void main(String[] args){
-		
-		BusiHallClerkui ui=new BusiHallClerkui();
-		BalanceListui uiPanel=new BalanceListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	public BalanceListui(){
+	public SettlementListui(){
 		sheetLabel=new JLabel();
 		findByBusiHallID=new JLabel();
 		findByDate=new JLabel();

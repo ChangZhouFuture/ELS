@@ -13,8 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import businesslogic.documentsbl.PaymentOrder;
+import businesslogic.inforManagementbl.BankAccountInfor;
 import businesslogic.orderbl.Order;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
+import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
 import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
 import presentation.documentsui.PaymentOrderui.PaymentOrderui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderListui;
@@ -27,9 +29,12 @@ import presentation.orderui.OrderListui;
 import presentation.reuse.Skip;
 import presentation.userui.Accountantui1;
 import vo.documentsVO.PaymentOrderVO;
+import vo.inforManagementVO.BankAccountVO;
 
 public class Accountant1Controller extends Accountant2Controller{
 	BankAccountListui bankAccountListui;
+	BankAccountInforblservice bankAccountInforblservice;
+	BankAccountVO bankAccountVO;
 	
 	public Accountant1Controller(){
 		accountantui.bankAccount.setVisible(true);
@@ -57,6 +62,24 @@ public class Accountant1Controller extends Accountant2Controller{
 				childPanel=bankAccountui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inBankAccountui();
+			}
+		});
+	}
+	public void inBankAccountui(){
+		bankAccountui.delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String deleteId=bankAccountui.docmID.getText();
+				ArrayList<String> deletearray=new ArrayList<String>();;
+				deletearray.add(deleteId);
+				bankAccountInforblservice=new BankAccountInfor();
+				bankAccountInforblservice.deleteMany(deletearray);
+				bankAccountListui = new BankAccountListui();
+				childPanel = bankAccountListui;
+				Skip.skip(mainPanel,childPanel);
+				inBankAccountListui();
 			}
 		});
 	}

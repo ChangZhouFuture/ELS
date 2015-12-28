@@ -7,33 +7,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import bean.JavaBean1;
 import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
 import presentation.documentsui.PaymentOrderui.PaymentOrderui;
-import presentation.documentsui.ReceivablesOrderui.BalanceListui;
-import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderListui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderui;
+import presentation.documentsui.ReceivablesOrderui.SettlementListui;
 import presentation.inforManagementui.BankAccountui.BankAccountui;
 import presentation.managerAndAccountantui.Operalogui.OperalogListui;
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
 import presentation.reuse.Skip;
 import presentation.userui.Accountantui1;
-import presentation.userui.Accountantui2;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
-import vo.orderVO.OrderVO;
 import businesslogic.documentsbl.PaymentOrder;
 import businesslogic.documentsbl.ReceivablesOrder;
-import businesslogic.orderbl.Order;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 
@@ -41,7 +35,7 @@ public class Accountant2Controller {
 	JPanel mainPanel = new JPanel();
 	JPanel childPanel;
 	Accountantui1 accountantui;
-	BalanceListui balanceListui;
+	SettlementListui settlementListui;
 	PaymentOrderListui paymentOrderListui;
 	StatisAnalyListui statisAnalyListui;
 	OperalogListui operalogListui;
@@ -60,27 +54,27 @@ public class Accountant2Controller {
 	public Accountant2Controller(){
 		accountantui = new Accountantui1();
 		accountantui.bankAccount.setVisible(false);
-		balanceListui = new BalanceListui();
-		balanceListui.setLocation(0,0);
+		settlementListui = new SettlementListui();
+		settlementListui.setLocation(0,0);
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(184,30,616,496);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		mainPanel.setBackground(Color.WHITE);
-		mainPanel.add(balanceListui);
+		mainPanel.add(settlementListui);
 		JLayeredPane layeredPane = accountantui.getLayeredPane();
 		layeredPane.add(mainPanel,0);
 		inAccountant2ui();
-		inBalanceListui();
+		inSettlementListui();
 	}
 	public void inAccountant2ui() {
 		accountantui.receival.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				balanceListui = new BalanceListui();
-				childPanel = balanceListui;
+				settlementListui = new SettlementListui();
+				childPanel = settlementListui;
 				Skip.skip(mainPanel,childPanel);
-				inBalanceListui();
+				inSettlementListui();
 			}
 		});
 		accountantui.payment.addActionListener(new ActionListener() {
@@ -203,14 +197,14 @@ public class Accountant2Controller {
 			}
 		});
 	}
-	public void inBalanceListui() {
-		balanceListui.table.addMouseListener(new MouseAdapter() {
+	public void inSettlementListui() {
+		settlementListui.table.addMouseListener(new MouseAdapter() {
 			
 			@Override
 			public void mouseClicked(MouseEvent evt) {
 	            if (evt.getClickCount() == 2) {
-	               	String id=(String)balanceListui.tableModel.
-	               			getValueAt(balanceListui.table.getSelectedRow(),1);
+	               	String id=(String)settlementListui.tableModel.
+	               			getValueAt(settlementListui.table.getSelectedRow(),1);
 	            	try {
 	            		receivablesOrderblservice=new ReceivablesOrder();
 				        javaBean1=new JavaBean1();
