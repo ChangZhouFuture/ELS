@@ -1,5 +1,5 @@
 package state;
 
-public enum PayType {BYMONTH,BYDAY
-
+public enum PayType {
+	BYMONTH,BYTIME
 }

@@ -4,11 +4,11 @@ import state.PayType;
 import state.Position;
 
 public class SalaryStrategyPO {
-
 	private Position position;
 	private PayType payType;
 	private double payAmount;
 	private String percentage;
+	
 	public Position getPosition() {
 		return position;
 	}

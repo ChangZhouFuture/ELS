@@ -11,6 +11,7 @@ import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.documentslineitemVO.TransferOrderlineitemVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 /**
@@ -38,18 +39,6 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 			e.printStackTrace();
 		}
 	}
-	
-	public String generateStartAddress(String transferOrderId) {
-		//根据中转中心的编号来匹配位置
-		String startAdd;
-		try {
-			startAdd = busiHallArrivalOrderdataservice.generateStartAdd(transferOrderId);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return startAdd;
-	}
 
 	@Override
 	public TransferOrderlineitemVO addTransferOrder(String id) {
@@ -71,6 +60,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 		this.busiHallArrivalOrderVO.setArrivalDate(generateDate());
 		this.busiHallArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.busiHallArrivalOrderVO.setId(generateId());
+		this.busiHallArrivalOrderVO.setOrigin(Login.city);
 		this.busiHallArrivalOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		
@@ -159,7 +149,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 	public void VOtoPO() {
 		String transferOrderId = busiHallArrivalOrderVO.getTransferOrderID();
 		busiHallArrivalOrderPO.setTransferOrderID(transferOrderId);
-		busiHallArrivalOrderPO.setOrigin(generateStartAddress(transferOrderId));
+		busiHallArrivalOrderPO.setOrigin(busiHallArrivalOrderVO.getOrigin());
 		busiHallArrivalOrderPO.setGoodState(busiHallArrivalOrderVO.getGoodState());
 		busiHallArrivalOrderPO.setArrivalDate(busiHallArrivalOrderVO.getArrivalDate());
 		busiHallArrivalOrderPO.setGenerateTime(busiHallArrivalOrderVO.getGenerateTime());

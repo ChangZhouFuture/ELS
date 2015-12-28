@@ -14,13 +14,9 @@ public class UserVO {
     private String identyNum;
     private String phone;
     private String city;
-//    private AgencyType agencyType;
     private String region;
     private String agencyID;
     private Position position;
-//    private PayType payType;
-//    private double payAmount;
-//    private String percentage;
     
 	public String getId() {
 		return Id;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 import po.documentsPO.TranCenArrivalOrderPO;
+import state.AgencyType;
 import state.ApproState;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
@@ -63,11 +64,16 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		tranCenArrivalOrderPO = new TranCenArrivalOrderPO();
 		this.tranCenArrivalOrderVO = tranCenArrivalOrderVO;
 		
+		if (tranCenArrivalOrderVO.getAgencyType() == AgencyType.BusinessHall) {
+			this.tranCenArrivalOrderVO.setOrigin(Login.city);
+		} else {
+			this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
+					tranCenArrivalOrderVO.getTransferOrderID()));
+		}
+		
 		this.tranCenArrivalOrderVO.setArrivalDate(generateDate());
 		this.tranCenArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.tranCenArrivalOrderVO.setID(generateId());
-		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(
-				tranCenArrivalOrderVO.getTransferOrderID()));
 		this.tranCenArrivalOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
 		

@@ -1,4 +1,5 @@
 package vo.documentsVO;
+import state.AgencyType;
 import state.ApproState;
 import state.GoodState;
 
@@ -6,12 +7,19 @@ public class TranCenArrivalOrderVO {
 	private String ID;
     private String tranCenID;
     private String arrivalDate;
-    private String transferOrderID;
+    private String transferOrderID; //中转单编号或营业厅装车编号
     private String origin;
-    private GoodState goodState;
     private String generateTime;
+    private AgencyType agencyType; //从营业厅送来的还是从中转中心送来的
+    private GoodState goodState;
     private ApproState approState;
     
+	public AgencyType getAgencyType() {
+		return agencyType;
+	}
+	public void setAgencyType(AgencyType agencyType) {
+		this.agencyType = agencyType;
+	}
 	public ApproState getApproState() {
 		return approState;
 	}

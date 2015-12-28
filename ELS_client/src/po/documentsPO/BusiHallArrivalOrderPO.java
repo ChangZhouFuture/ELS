@@ -11,7 +11,7 @@ import state.GoodState;
 	 	private String Id;
 		private String busiHallID;
 		private String arrivalDate;
-		private String transferOrderID;
+		private String transferOrderID;//其实是装车单（营业厅或中转中心）编号
 		private String origin;
 		private GoodState goodState;
 		private String generateTime;

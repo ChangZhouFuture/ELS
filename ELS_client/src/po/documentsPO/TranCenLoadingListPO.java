@@ -14,7 +14,7 @@ public class TranCenLoadingListPO implements Serializable{
 	private String vehiclesID;
 	private String supervisionMan;
 	private String escortMan;
-	ArrayList<String>  orderIDs;
+	private ArrayList<String>  orderIDs;
 	private double carriage;
 	private String generateTime;
 	private ApproState approState;

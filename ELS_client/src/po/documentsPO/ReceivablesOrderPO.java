@@ -12,7 +12,7 @@ public class ReceivablesOrderPO implements Serializable{
 	    private String date;
 	    private String generateTime;
 	    private String agencyID;
-	    ArrayList<String> orderIDs;
+	    private ArrayList<String> orderIDs;
 	    private ApproState approState;
 	    
 		public String getAgencyID() {
