@@ -1,17 +1,18 @@
 package po.inforManagementPO;
 
 import java.io.Serializable;
+import state.UseState;
 
 public class BankAccountPO implements Serializable{
 	private String name;
     private double amount;
-    private String usage;
+    private UseState useState;
     
-	public String getUsage() {
-		return usage;
+	public UseState getUseState() {
+		return useState;
 	}
-	public void setUsage(String usage) {
-		this.usage = usage;
+	public void setUseState(UseState useState) {
+		this.useState = useState;
 	}
 	public String getName() {
 		return name;

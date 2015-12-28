@@ -2,6 +2,7 @@ package businesslogic.inforManagementbl;
 
 import state.OperaType;
 import state.ResultMessage;
+import state.UseState;
 import vo.inforManagementVO.BankAccountVO;
 
 import java.rmi.RemoteException;
@@ -40,8 +41,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		bankAccountPO = new BankAccountPO();
 		this.bankAccountVO = bankAccountVO;
 		
-		this.bankAccountVO.setAmount(0);
-		this.bankAccountVO.setUsage("no");
+		this.bankAccountVO.setUseState(UseState.NotInUse);
 		VOtoPO();
 		
 		try {
@@ -136,7 +136,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 	public void VOtoPO() {
 		bankAccountPO.setName(bankAccountVO.getName());
 		bankAccountPO.setAmount(bankAccountVO.getAmount());
-		bankAccountPO.setUsage(bankAccountVO.getUsage());
+		bankAccountPO.setUseState(bankAccountVO.getUseState());
 	}
 
 	public String whichIsUsing() {
