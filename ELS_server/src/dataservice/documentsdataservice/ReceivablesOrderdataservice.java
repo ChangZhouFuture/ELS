@@ -45,6 +45,8 @@ public interface ReceivablesOrderdataservice extends ParentDocumentsdataservice{
 	
 	public JavaBean1 findB(String date) throws RemoteException;
 
+	public JavaBean1 findC(String busiHallID) throws RemoteException;
+
 	/**
 	 * 前置条件：收款单信息处理完成 
 	 * 后置条件：结束这次收款单信息处理，更新数据持久化对象

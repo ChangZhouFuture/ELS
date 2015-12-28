@@ -15,6 +15,7 @@ import po.inforManagementPO.BankAccountPO;
 import data.utility.Database;
 import dataservice.inforManagementdataservice.BankAccountInfordataservice;
 import state.ResultMessage;
+import state.UseState;
 
 public class BankAccountInfordata extends UnicastRemoteObject implements BankAccountInfordataservice {
 	public BankAccountInfordata() throws RemoteException {
@@ -57,7 +58,7 @@ public JavaBean1 find(String name){
 		if(rs.next()){
 		    po.setName(name);
 	        po.setAmount(rs.getDouble("amount"));
-	        po.setUsage(rs.getString("use"));
+	        po.setUseState(UseState.valueOf(rs.getString("use")));
 	        jb1.setResultMessage(ResultMessage.Success);
 	        jb1.setObject(po);
 		}

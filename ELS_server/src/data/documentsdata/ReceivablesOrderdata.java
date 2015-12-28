@@ -35,13 +35,14 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public ResultMessage add(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date)values(?,?,?,?,?)";
+		String sql="insert into receivablesorder(ID,amount,courier,orderIDs,date,busiHallID)values(?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
 			stmt.setDouble(2, po.getAmount());
 			stmt.setString(3, po.getCourier());
 			stmt.setString(5, po.getDate());
+			stmt.setString(6, po.getAgencyID());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -94,6 +95,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			    po.setCourier(rs.getString(3));
 			    po.setDate(rs.getString(5));
 			    po.setApproState(ApproState.valueOf(rs.getString("approState")));
+			    po.setAgencyID(rs.getString("busiHallID"));
 			    String str=rs.getString(4);
 			    String[] s=str.split(";");
 			    ArrayList<String> arr=new ArrayList<>();
@@ -145,6 +147,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					po.setOrderIDs(arr);
 					po.setDate(date);
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					po.setAgencyID(rs.getString("busiHallID"));
 					pos.add(po);
 				}
 				if(rs.getString("date").equals(date)
@@ -162,6 +165,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					po.setOrderIDs(arr);
 					po.setDate(date);
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					po.setAgencyID(rs.getString("busiHallID"));
 					pos.add(po);
 				}
 				
@@ -201,13 +205,14 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public ResultMessage update(ReceivablesOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update receivablesorder set amount=?,courier=?,orderIDs=?,date=? where ID=?";
+		String sql="update receivablesorder set amount=?,courier=?,orderIDs=?,date=?,busiHallID=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setDouble(1, po.getAmount());
 			stmt.setString(2, po.getCourier());
 			stmt.setString(4, po.getDate());
-			stmt.setString(5, po.getID());
+			stmt.setString(5, po.getAgencyID());
+			stmt.setString(6, po.getID());
 			ArrayList<String> arr=po.getOrderIDs();
 			String str="";
 			for(int i=0;i<arr.size();i++){
@@ -229,6 +234,69 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		// TODO Auto-generated method stub
 		g=new GenerateId();
 		return g.generateDocumentId(date, "receivablesorder");
+	}
+
+	@Override
+	public JavaBean1 findC(String busiHallID) throws RemoteException {
+		// TODO Auto-generated method stub
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
+		ArrayList<String> arr;
+		String[] s;
+		String sql="select * from receivablesorder ";
+		
+		try {
+			stmt=con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				po=new ReceivablesOrderPO();
+				if(rs.getString("busiHallID").equals(busiHallID)
+						&&rs.getString("approState").equals("NotApprove")){
+					jb1.setResultMessage(ResultMessage.Success);
+					po.setID(rs.getString(1));
+					po.setAmount(rs.getDouble(2));
+					po.setCourier(rs.getString(3));
+					String str=rs.getString(4);
+					s=str.split(";");
+					arr=new ArrayList<>();
+					for(int i=0;i<s.length;i++){
+						arr.add(i, s[i]);
+					}
+					po.setOrderIDs(arr);
+					po.setDate(rs.getString("date"));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					po.setAgencyID(rs.getString("busiHallID"));
+					pos.add(po);
+				}
+				if(rs.getString("busiHallID").equals(busiHallID)
+						&&rs.getString("approState").equals("Approve")){
+					jb1.setResultMessage(ResultMessage.Success);
+					po.setID(rs.getString(1));
+					po.setAmount(rs.getDouble(2));
+					po.setCourier(rs.getString(3));
+					String str=rs.getString(4);
+					s=str.split(";");
+					arr=new ArrayList<>();
+					for(int i=0;i<s.length;i++){
+						arr.add(i, s[i]);
+					}
+					po.setOrderIDs(arr);
+					po.setDate(rs.getString("date"));
+					po.setApproState(ApproState.valueOf(rs.getString("approState")));
+					po.setAgencyID(rs.getString("busiHallID"));
+					pos.add(po);
+				}
+				
+			}
+			jb1.setObject(pos);
+			
+			return jb1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return jb1;
+		}
 	}
 	
 }
