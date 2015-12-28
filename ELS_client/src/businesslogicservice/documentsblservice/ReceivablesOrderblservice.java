@@ -49,6 +49,8 @@ public interface ReceivablesOrderblservice {
 	public JavaBean1 inquireA(String id);
 	
 	public JavaBean1 inqurieB(String date);
+	
+	public JavaBean1 inquireC(String busiHallID);
 
 	public OrderlineitemVO addOrder(String orderId);
 

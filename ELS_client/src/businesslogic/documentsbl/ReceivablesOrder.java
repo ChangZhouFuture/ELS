@@ -2,6 +2,7 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.documentsPO.ReceivablesOrderPO;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 import state.ApproState;
@@ -121,6 +122,18 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject();
+		int k = arrayList.size();
+		
+		POtoVO(k);
+		javaBean1.setObject(arrayList2);
+		return javaBean1;
+	}
+	
+	@Override
+	public JavaBean1 inquireC(String busiHallID) {
+//		javaBean1 = 
+		//这里调用数据层findC方法
 		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();
 		
