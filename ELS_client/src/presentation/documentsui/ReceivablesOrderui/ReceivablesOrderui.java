@@ -178,7 +178,7 @@ public class ReceivablesOrderui extends ParentDocuments{
 				approState.setText("Œ¥…Û≈˙");
 				receivablesOrderblservice=new ReceivablesOrder();
 				receivablesOrderVO.setCourier(courierId.getText());
-				ArrayList<String> idList=null;
+				ArrayList<String> idList=new ArrayList<String>();
 				for(int i=0;i<orderList.getRowCount();i++){
 					idList.add((String)orderList.getValueAt(i,1));
 				}

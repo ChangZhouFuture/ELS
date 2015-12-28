@@ -247,7 +247,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 				busiHallLoadingListVO.setDestination(arrivalField.getText());
 				busiHallLoadingListVO.setEscortMan(yYYField.getText());
 				busiHallLoadingListVO.setSupervisionMan(jZYField.getText());
-				ArrayList<String> idList=null;
+				ArrayList<String> idList=new ArrayList<String>();
 				for(int i=0;i<orderList.getRowCount();i++){
 					idList.add((String)orderList.getValueAt(i,1));
 				}

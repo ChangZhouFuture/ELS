@@ -44,7 +44,7 @@ public class ReceivablesOrderListui extends Listui{
 	
 	public ReceivablesOrderListui(){
 		
-		sheetLabel.setText("结算管理");
+		sheetLabel.setText("收款单管理");
 		String[] columnNames = {"选择","ID","快递员","金额","收款日期","时间"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);

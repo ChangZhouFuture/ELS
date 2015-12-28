@@ -2,39 +2,42 @@ package presentation.documentsui.TranCenArrivalOrderui;
 
 import java.awt.Color;
 import java.awt.Font;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
+import bean.JavaBean1;
+import businesslogic.documentsbl.TranCenArrivalOrder;
+import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 import presentation.reuse.ParentDocuments;
+import presentation.userui.Loginui;
 import presentation.userui.TranCenClerkui;
+import state.GoodState;
+import vo.documentsVO.TranCenArrivalOrderVO;
 
 public class TranCenArrivalOrderui extends ParentDocuments{
-	JLabel TranCenArrivalOrder;
-	JLabel TranCen;
-	JTextField TranCenId;
-	JLabel TransferOrder;
-	JLabel Departure;
-	JTextField TransferOrderId;
-	JTextField DepartureField;
-	JLabel GoodState;
-	JRadioButton Complete;
-	JRadioButton Damaged;
-	JRadioButton Lost;
-	ButtonGroup GoodStateGroup;
-	JLabel Remarks;
-	JTextArea RemarksArea;
+	public JLabel tranCenArrivalOrder;
+	public JLabel tranCen;
+	public JTextField tranCenId;
+	public JLabel transferOrder;
+	public JLabel departure;
+	public JTextField transferOrderId;
+	public JTextField departureField;
+	public JLabel goodState;
+	public JComboBox goodStateType;
+	public String goodStateValue="完整";
+	public GoodState goodStateSeletion=GoodState.COMPLETE;
 	JScrollPane scroller;
+	JavaBean1 javaBean1;
+	TranCenArrivalOrderblservice tranCenArrivalOrderblservice;
+	TranCenArrivalOrderVO tranCenArrivalOrderVO;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -43,116 +46,147 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 		layeredPane.add(uiPanel,0);
 	}
 	public TranCenArrivalOrderui(){
-		TranCenArrivalOrder=new JLabel();
-		Departure=new JLabel();
-		TransferOrder=new JLabel();
-		TranCen=new JLabel();
-		TranCenId=new JTextField();
-		GoodState=new JLabel();
-		TransferOrderId=new JTextField();
-		DepartureField=new JTextField();
-		Complete=new JRadioButton();
-		Damaged=new JRadioButton();
-		Lost=new JRadioButton();
-		GoodStateGroup=new ButtonGroup();
-		Remarks=new JLabel();
-		RemarksArea=new JTextArea();
+		tranCenArrivalOrder=new JLabel();
+		departure=new JLabel();
+		transferOrder=new JLabel();
+		tranCen=new JLabel();
+		tranCenId=new JTextField();
+		goodState=new JLabel();
+		transferOrderId=new JTextField();
+		departureField=new JTextField();
+		String[] goodStateEntries={"完整","损坏","丢失"};
+		goodStateType=new JComboBox(goodStateEntries);
 		
 		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
-		TranCenArrivalOrder.setBounds(218,10,180,30);
-		TranCenArrivalOrder.setText("中转中心到达单信息");
-		TranCenArrivalOrder.setHorizontalAlignment(SwingConstants.CENTER);
-		TranCenArrivalOrder.setFont(font1);
-		TranCenArrivalOrder.setBackground(Color.WHITE);
-		TranCenArrivalOrder.setOpaque(true);
+		tranCenArrivalOrder.setBounds(218,10,180,30);
+		tranCenArrivalOrder.setText("中转中心到达单信息");
+		tranCenArrivalOrder.setHorizontalAlignment(SwingConstants.CENTER);
+		tranCenArrivalOrder.setFont(font1);
+		tranCenArrivalOrder.setBackground(Color.WHITE);
 		
-		TranCen.setBounds(40,50,120,24);
-		TranCen.setText("中转中心编号：");
-		TranCen.setFont(font2);
-		TranCen.setBackground(Color.WHITE);
-		TranCen.setOpaque(true);
+		tranCen.setBounds(40,50,120,24);
+		tranCen.setText("中转中心编号：");
+		tranCen.setFont(font2);
+		tranCen.setBackground(Color.WHITE);
 		
-		TranCenId.setBounds(140,52,150,20);
+		tranCenId.setBounds(140,52,150,20);
+		tranCenId.setEditable(false);
+		tranCenId.setBackground(Color.WHITE);
+		tranCenId.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		tranCenId.setText(Loginui.agency);
+		tranCenId.setFont(font2);
 		
-		TransferOrder.setBounds(40,80,120,24);
-		TransferOrder.setText("中转单编号：");
-		TransferOrder.setFont(font2);
-		TransferOrder.setBackground(Color.WHITE);
-		TransferOrder.setOpaque(true);
+		transferOrder.setBounds(40,80,120,24);
+		transferOrder.setText("中转单编号：");
+		transferOrder.setFont(font2);
+		transferOrder.setBackground(Color.WHITE);
 		
-		TransferOrderId.setBounds(140,82,150,20);
+		transferOrderId.setBounds(140,82,150,20);
 		
-		Departure.setBounds(40,110,120,24);
-		Departure.setText("出发地：");
-		Departure.setFont(font2);
-		Departure.setBackground(Color.WHITE);
-		Departure.setOpaque(true);
+		departure.setBounds(40,110,120,24);
+		departure.setText("出发地：");
+		departure.setFont(font2);
+		departure.setBackground(Color.WHITE);
 		
-		DepartureField.setBounds(140,112,150,20);
+		departureField.setBounds(140,112,150,20);
+		departureField.setEditable(false);
+		departureField.setBackground(Color.WHITE);
+		departureField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		departureField.setFont(font2);
 		
-		GoodState.setBounds(40,140,120,24);
-		GoodState.setText("货物到达状态：");
-		GoodState.setFont(font2);
-		GoodState.setBackground(Color.WHITE);
-		GoodState.setOpaque(true);
+		goodState.setBounds(40,140,120,24);
+		goodState.setText("货物到达状态：");
+		goodState.setFont(font2);
+		goodState.setBackground(Color.WHITE);
 		
-		Complete.setBounds(140,170,150,24);
-		Complete.setText("完整");
-		Complete.setFont(font2);
-		Complete.setBackground(Color.WHITE);
+		goodStateType.setBounds(160,140,150,24);
+		goodStateType.setFont(font2);
+		goodStateType.setBackground(Color.WHITE);
+		goodStateType.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					goodStateValue=(String)goodStateType.getSelectedItem();
+					try {
+						switch(goodStateValue){
+						case "完整":goodStateSeletion=GoodState.COMPLETE;break;
+						case "损坏":goodStateSeletion=GoodState.BROKE;break;
+						case "丢失":goodStateSeletion=GoodState.LOST;break;
+						default:break;
+						}
+					} catch (Exception e) {
+						
+					}
+				} 
+			}
+		});
 		
-		Damaged.setBounds(140,200,150,24);
-		Damaged.setText("损坏");
-		Damaged.setFont(font2);
-		Damaged.setBackground(Color.WHITE);
+		makeOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				approState.setText("未审批");
+				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
+				tranCenArrivalOrderVO.setTranCenID(Loginui.agency);
+				tranCenArrivalOrderVO.setTransferOrderID(tranCenId.getText());
+				tranCenArrivalOrderVO.setGoodState(goodStateSeletion);
+				javaBean1=tranCenArrivalOrderblservice.addTranCenArivalOrder(tranCenArrivalOrderVO);
+				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+				docmID.setText(tranCenArrivalOrderVO.getID());
+				departureField.setText(tranCenArrivalOrderVO.getOrigin());
+				makeOrder.setEnabled(false);
+			}
+		});
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
+				tranCenArrivalOrderVO.setTranCenID(Loginui.agency);
+				tranCenArrivalOrderVO.setTransferOrderID(tranCenId.getText());
+				tranCenArrivalOrderVO.setGoodState(goodStateSeletion);
+				modifyOrder.setEnabled(false);
+				tranCenArrivalOrderblservice.modify(tranCenArrivalOrderVO);
+				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+			}
+		});
 		
-		Lost.setBounds(140,230,150,24);
-		Lost.setText("丢失");
-		Lost.setFont(font2);
-		Lost.setBackground(Color.WHITE); 
+		modify.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
 		
-		GoodStateGroup.add(Complete);
-		GoodStateGroup.add(Damaged);
-		GoodStateGroup.add(Lost);
+		this.add(tranCenArrivalOrder);
+		this.add(transferOrder);
+		this.add(tranCen);
+		this.add(tranCenId);
+		this.add(departure);
+		this.add(goodState);
+		this.add(goodStateType);
+		this.add(transferOrderId);
+		this.add(departureField);
+	}
+	public void refresh() {
+		transferOrderId.setEditable(false);
+		goodStateType.setEnabled(false);
 		
-		Remarks.setBounds(300,140,120,24);
-		Remarks.setText("备注：");
-		Remarks.setFont(font2);
-		Remarks.setBackground(Color.WHITE);
-		Remarks.setOpaque(true);
+		transferOrderId.setBackground(Color.white);
 		
-		RemarksArea.setBounds(330,170,190,100);
-		RemarksArea.setFont(font2);
-		RemarksArea.setEnabled(true);
-		RemarksArea.setWrapStyleWord(true);
-		RemarksArea.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		RemarksArea.setLineWrap(true);
+		transferOrderId.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+	}
+	public void modifying() {
+		transferOrderId.setEditable(true);
+		goodStateType.setEnabled(true);
+		modifyOrder.setVisible(true);
 		
-		scroller=new JScrollPane(RemarksArea);
-		scroller.setBounds(330,170,190,100);
-		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		
-		this.add(TranCenArrivalOrder);
-		this.add(TransferOrder);
-		this.add(TranCen);
-		this.add(TranCenId);
-		this.add(Departure);
-		this.add(GoodState);
-		this.add(Complete);
-		this.add(Damaged);
-		this.add(Lost);
-		this.add(Remarks);
-		this.add(scroller);
-		this.add(TransferOrderId);
-		this.add(DepartureField);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
+		transferOrderId.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

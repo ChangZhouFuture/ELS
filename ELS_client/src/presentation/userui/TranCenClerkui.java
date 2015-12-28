@@ -27,7 +27,7 @@ public class TranCenClerkui extends MainFrame{
 		userName=new JLabel();
 		
 		userName.setBounds(2,76,176,24);
-		userName.setText("中转中心业务员："+"***");
+		userName.setText("中转中心业务员："+Loginui.name);
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		userName.setFont(font2);

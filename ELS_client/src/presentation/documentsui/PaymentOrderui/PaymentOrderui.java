@@ -44,7 +44,7 @@ public class PaymentOrderui extends ParentDocuments{
 	public JLabel remarks;
 	public JTextArea remarksArea;
 	public JScrollPane scroller;
-	String payTypeValue=null;
+	String payTypeValue="运费（按次计算）";
 	PaymentOrderblservice paymentOrderblservice;
 	PaymentOrderVO paymentOrderVO;
 	JavaBean1 javaBean1;
@@ -196,11 +196,6 @@ public class PaymentOrderui extends ParentDocuments{
 		this.add(payType);
 		this.add(remarks);
 		this.add(scroller);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
 	}
 	public void refresh(){
 		paymentMoneyField.setEditable(false);
@@ -210,7 +205,6 @@ public class PaymentOrderui extends ParentDocuments{
 		
 		paymentMoneyField.setBackground(Color.white);
 		paymentPersonField.setBackground(Color.white);
-		paymentIdField.setBackground(Color.white);
 		
 		paymentMoneyField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		paymentPersonField.setBorder(BorderFactory.createLineBorder(Color.WHITE));

@@ -2,6 +2,8 @@ package presentation.inforManagementui.Vehiclesui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -11,25 +13,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import bean.JavaBean1;
+import businesslogic.inforManagementbl.DriversInfor;
+import businesslogic.inforManagementbl.VehiclesInfor;
+import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
 import presentation.reuse.Images;
+import presentation.reuse.ParentDocuments;
 import presentation.userui.BusiHallClerkui;
+import presentation.userui.Loginui;
+import vo.inforManagementVO.DriversVO;
+import vo.inforManagementVO.VehiclesVO;
 
-public class Vehiclesui extends JPanel{
+public class Vehiclesui extends ParentDocuments{
 	public JLabel vehicles;
-	public JLabel area;
-	public JLabel city;
-	public JLabel region;
 	public JLabel plateNum;
 	public JLabel serviceTime;
-	public JLabel approState;
-	public JTextField cityField;
-	public JTextField regionField;
 	public JTextField plateNumField;
 	public JTextField serviceTimeField;
-	public JButton makeOrder;
-	public JButton modify;
-	public JButton modifyOrder;
-	public JButton delete;
+	VehiclesInforblservice vehiclesInforblservice;
+	VehiclesVO vehiclesVO;
+	JavaBean1 javaBean1;
 	
 	public static void main(String[] args){
 		BusiHallClerkui ui=new BusiHallClerkui();
@@ -39,22 +42,10 @@ public class Vehiclesui extends JPanel{
 	}
 	public Vehiclesui(){
 		vehicles=new JLabel();
-		area=new JLabel();
-		city=new JLabel();
-		region=new JLabel();
 		plateNum=new JLabel();
 		serviceTime=new JLabel();
-		cityField=new JTextField();
-		regionField=new JTextField();
 		plateNumField=new JTextField();
 		serviceTimeField=new JTextField();
-		makeOrder=new JButton();
-		modify=new JButton();
-		modifyOrder=new JButton();
-		delete=new JButton();
-		approState=new JLabel();
-		
-		this.setLayout(null);
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
@@ -64,92 +55,83 @@ public class Vehiclesui extends JPanel{
 		vehicles.setHorizontalAlignment(SwingConstants.CENTER);
 		vehicles.setFont(font1);
 		vehicles.setBackground(Color.WHITE);
-		vehicles.setOpaque(true);
 		
-		plateNum.setBounds(40,50,60,24);
+		plateNum.setBounds(40,50,120,24);
 		plateNum.setText("车牌号：");
 		plateNum.setFont(font2);
 		plateNum.setBackground(Color.WHITE);
-		plateNum.setOpaque(true);
 		
-		plateNumField.setBounds(110,52,80,20);
-		
-		area.setBounds(40,80,60,24);
-		area.setText("地区：");
-		area.setFont(font2);
-		area.setBackground(Color.WHITE);
-		area.setOpaque(true);
-		
-		cityField.setBounds(110,82,80,20);
-		
-		city.setBounds(190,80,24,24);
-		city.setText("市");
-		city.setFont(font2);
-		city.setBackground(Color.WHITE);
-		city.setOpaque(true);
-		
-		regionField.setBounds(220,82,80,20);
-		
-		region.setBounds(300,80,24,24);
-		region.setText("区");
-		region.setFont(font2);
-		region.setBackground(Color.WHITE);
-		region.setOpaque(true);
-		
-		serviceTime.setBounds(40,50,60,24);
+		plateNumField.setBounds(160,52,120,20);
+
+		serviceTime.setBounds(40,80,120,24);
 		serviceTime.setText("服役时间：");
 		serviceTime.setFont(font2);
 		serviceTime.setBackground(Color.WHITE);
-		serviceTime.setOpaque(true);
 		
-		serviceTimeField.setBounds(110,52,80,20);
+		serviceTimeField.setBounds(160,82,120,20);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				vehiclesInforblservice=new VehiclesInfor();
+				vehiclesVO.setPlateNum(plateNumField.getText());
+				vehiclesVO.setServiceTime(serviceTimeField.getText());
+				vehiclesVO.setBusiHallID(Loginui.agency);
+				javaBean1=vehiclesInforblservice.add(vehiclesVO);
+				vehiclesVO=(VehiclesVO)javaBean1.getObject();
+				docmID.setText(vehiclesVO.getID());
+				makeOrder.setEnabled(false);
+			}
+		});
 		
-		modifyOrder.setBounds(260,442,96,30);
-		modifyOrder.setText("确认修改");
-		modifyOrder.setFont(font1);
-		modifyOrder.setBackground(Color.WHITE);
-		modifyOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		modifyOrder.setVisible(false);
-		
-		approState.setBounds(500,445,90,24);
-		approState.setFont(font2);
-		approState.setBackground(Color.WHITE);
-		approState.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		
-		modify.setBounds(0,0,24,24);
-		modify.setIcon(Images.MODIFY_IMAGE);;
-		modify.setBackground(Color.WHITE);
-		modify.setVisible(false);
-		
-		delete.setBounds(24,0,24,24);
-		delete.setIcon(Images.DELETE_IMAGE);;
-		delete.setBackground(Color.WHITE);
-		delete.setVisible(false);
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				vehiclesInforblservice=new VehiclesInfor();
+				vehiclesVO.setPlateNum(plateNumField.getText());
+				vehiclesVO.setServiceTime(serviceTimeField.getText());
+				vehiclesVO.setBusiHallID(Loginui.agency);
+				modifyOrder.setVisible(false);
+				vehiclesInforblservice.modify(vehiclesVO);
+			}
+		});
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
 		
 		this.add(vehicles);
-		this.add(area);
-		this.add(city);
-		this.add(region);
 		this.add(plateNum);
 		this.add(serviceTime);
-		this.add(cityField);
-		this.add(regionField);
 		this.add(plateNumField);
 		this.add(serviceTimeField);
-		this.add(makeOrder);
-		this.add(modify);
-		this.add(modifyOrder);
-		this.add(delete);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
+	}
+	public void refresh(){
+		plateNumField.setEditable(false);
+		serviceTimeField.setEditable(false);
+		
+		plateNumField.setBackground(Color.white);
+		serviceTimeField.setBackground(Color.white);
+		
+		plateNumField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		serviceTimeField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+	}
+	public void modifying(){
+		plateNumField.setEditable(true);
+		serviceTimeField.setEditable(true);
+		modifyOrder.setVisible(true);
+		
+		plateNumField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		serviceTimeField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

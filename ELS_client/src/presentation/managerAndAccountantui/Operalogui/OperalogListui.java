@@ -32,7 +32,14 @@ public class OperalogListui extends Listui{
 	public OperalogListui(){
 		
 		sheetLabel.setText("查询操作日志");
-		
+		String[] columnNames = {"选择","职位","操作者","操作","对象","对象id","操作日期"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		 };
 		add.setVisible(false);
 		addText.setVisible(false);
 		findById.setVisible(false);
@@ -41,6 +48,7 @@ public class OperalogListui extends Listui{
 		delete.setVisible(false);
 		
 		findByDate.setBounds(30,65,120,24);
+		showDate.setBounds(150,67,120,20);
 		dateFind.setBounds(360,65,64,24);		
 		dateFind.addActionListener(new ActionListener() {
 			
@@ -67,14 +75,6 @@ public class OperalogListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 String[] columnNames = {"选择","职位","操作者","操作","对象","对象id","操作日期"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(4).setPreferredWidth(120);
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
@@ -106,7 +106,7 @@ public class OperalogListui extends Listui{
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		 scrollPane = new JScrollPane(table); //支持滚动
 		 scrollPane.setSize(550,241);
-		 scrollPane.setLocation(30,160);
+		 scrollPane.setLocation(30,100);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
 	}

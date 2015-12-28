@@ -29,7 +29,7 @@ public class StockManagerui extends MainFrame{
 		stockCount=new JButton();
 		
 		userName.setBounds(2,76,176,24);
-		userName.setText("库存管理人员："+"***");
+		userName.setText("库存管理人员："+Loginui.name);
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		userName.setFont(font2);

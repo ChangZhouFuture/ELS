@@ -110,7 +110,6 @@ public class CourierController {
     					Skip.skip(mainPanel,childPanel);
     					inOrderui();
     				} catch (Exception e2) {
-    					e2.printStackTrace();
     				}
                 }
              }
@@ -171,7 +170,7 @@ public class CourierController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String deleteId=orderui.docmID.getText();
-				ArrayList<String> deletearray=null;
+				ArrayList<String> deletearray=new ArrayList<String>();;
 				deletearray.add(deleteId);
 				orderblservice=new Order();
 				orderblservice.deleteMany(deletearray);

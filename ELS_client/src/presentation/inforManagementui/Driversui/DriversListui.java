@@ -30,25 +30,24 @@ import businesslogicservice.inforManagementblservice.DriversInforblservice;
 import presentation.documentsui.DeliveryOrderui.DeliveryOrderListui;
 import presentation.reuse.Images;
 import presentation.userui.BusiHallClerkui;
+import presentation.userui.Loginui;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
 
 public class DriversListui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel addText;
-	public JLabel city;
-	public JLabel region;
 	public JButton add;
 	public JButton idFind;
-	public JButton cityFind;
+	public JButton busiHallIDFind;
 	public JTextField idField;
-	public JTextField cityField;
-	public JTextField regionField;
+	public JTextField busiHallIDField;
 	public JLabel findById;
-	public JLabel findByCity;
+	public JLabel findBybusiHallID;
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
+	public DefaultTableModel tableModel;
 	DriversInforblservice driversInforblservice;
 	DriverslineitemVO oneLine;
 	
@@ -64,20 +63,25 @@ public class DriversListui extends JPanel{
 		sheetLabel=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
-		city=new JLabel();
-		region=new JLabel();
 		findById=new JLabel();
-		findByCity=new JLabel();
+		findBybusiHallID=new JLabel();
 		idField=new JTextField();
-		cityField=new JTextField();
-		regionField=new JTextField();
 		idFind=new JButton();
-		cityFind=new JButton();
+		busiHallIDFind=new JButton();
 		
 		this.setLayout(null);
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		Font font3=new Font("TimesRoman",Font.PLAIN,18);
+		
+		String[] columnNames = {"选择","ID","姓名","电话","性别","行驶证期限"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		 };
 		
 		sheetLabel.setBounds(0,0,616,30);
 		sheetLabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -85,7 +89,6 @@ public class DriversListui extends JPanel{
 		sheetLabel.setText("司机信息管理");
 		sheetLabel.setFont(font1);
 		sheetLabel.setIcon(Images.SHEET_IMAGE);
-		sheetLabel.setOpaque(true);
 		
 		add.setBounds(30,45,30,30);
 		add.setIcon(Images.ADD_IMAGE);
@@ -95,86 +98,61 @@ public class DriversListui extends JPanel{
 		addText.setBackground(Color.WHITE);
 		addText.setText("增加单据");
 		addText.setFont(font3);
-		addText.setOpaque(true);
 		
 		findById.setBounds(30,90,120,24);
 		findById.setText("按ID查找:");
 		findById.setFont(font2);
 		findById.setBackground(Color.WHITE);
 		
-		findByCity.setBounds(30,125,120,24);
-		findByCity.setText("按地区查找:");
-		findByCity.setFont(font2);
-		findByCity.setBackground(Color.WHITE);
+		findBybusiHallID.setBounds(30,125,200,24);
+		findBybusiHallID.setText("查找本营业厅司机:");
+		findBybusiHallID.setFont(font2);
+		findBybusiHallID.setBackground(Color.WHITE);
 		
 		idField.setBounds(150,92,120,20);
 		
-		cityField.setBounds(150,127,100,20);
-		
-		city.setBounds(255,125,24,24);
-		city.setBackground(Color.WHITE);
-		city.setText("市");
-		city.setFont(font2);
-		city.setOpaque(true);
-		
-		regionField.setBounds(285,127,48,20);
-		
-		region.setBounds(340,125,24,24);
-		region.setBackground(Color.WHITE);
-		region.setText("区");
-		region.setFont(font2);
-		region.setOpaque(true);
-		
-		idFind.setBounds(380,90,64,24);
+		idFind.setBounds(360,90,64,24);
 		idFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		idFind.setBackground(Color.WHITE);
 		idFind.setText("查找");
 		idFind.setFont(font2);
-		idFind.setOpaque(true);
 		
-		cityFind.setBounds(380,125,64,24);
-		cityFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		cityFind.setBackground(Color.WHITE);
-		cityFind.setText("查找");
-		cityFind.setFont(font2);
-		cityFind.setOpaque(true);
-		cityFind.addActionListener(new ActionListener() {
+		busiHallIDFind.setBounds(360,125,64,24);
+		busiHallIDFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		busiHallIDFind.setBackground(Color.WHITE);
+		busiHallIDFind.setText("查找");
+		busiHallIDFind.setFont(font2);
+		busiHallIDFind.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String cityString=null;
-				String regionString=null;
-				if(cityField.getText()!=null&&regionField.getText()!=null){
-					cityString=cityField.getText();
-					regionString=regionField.getText();
-					JavaBean1 javaBean1;
-					driversInforblservice=new DriversInfor();
-					try {
-//						javaBean1=driversInforblservice.inquireB(cityString,regionString);
-//						ArrayList<DriverslineitemVO> arrayList=(ArrayList<DriverslineitemVO>)javaBean1.getObject();
-//						makeTable(arrayList);
-						} catch (Exception e2) {
-							e2.printStackTrace();
-						}
+				JavaBean1 javaBean1;
+				driversInforblservice=new DriversInfor();
+				try {
+					javaBean1=driversInforblservice.inquireB(Loginui.agency);
+					ArrayList<DriverslineitemVO> arrayList=(ArrayList<DriverslineitemVO>)javaBean1.getObject();
+					makeTable(arrayList);
+					} catch (Exception e2) {
+						e2.printStackTrace();
 					}
-				else{
-					System.out.println("Error");
-				}
 			}
 		});
+		
+		delete=new JButton();
+		delete.setBounds(30,420,50,24);
+		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		delete.setBackground(Color.WHITE);
+		delete.setText("删除");
+		delete.setFont(font2);
 		
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);
 		this.add(findById);
-		this.add(findByCity);
+		this.add(findBybusiHallID);
 		this.add(idField);
-		this.add(cityField);
-		this.add(city);
-		this.add(region);
-		this.add(regionField);
 		this.add(idFind);
-		this.add(cityFind);
+		this.add(busiHallIDFind);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -187,17 +165,7 @@ public class DriversListui extends JPanel{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
-		 String[] columnNames = {"选择","ID","姓名","电话","性别","行驶证期限"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -220,7 +188,6 @@ public class DriversListui extends JPanel{
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -231,23 +198,16 @@ public class DriversListui extends JPanel{
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
 		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-				    int selectedRow = table.getSelectedRow();//获得选中行的索引
-				    if(selectedRow!=-1){
-				     tableModel.removeRow(selectedRow);  //删除行 
-				    }
+				       int selectedRow = table.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				           tableModel.removeRow(selectedRow);  //删除行 
+				       }
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   driversInforblservice=new DriversInfor();
 				   driversInforblservice.deleteMany(idList);
 				  }});

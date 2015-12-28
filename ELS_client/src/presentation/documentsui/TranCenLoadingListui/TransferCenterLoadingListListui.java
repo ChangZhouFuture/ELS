@@ -41,7 +41,14 @@ public class TransferCenterLoadingListListui extends Listui{
 	public TransferCenterLoadingListListui(){
 		
 		sheetLabel.setText("中转中心装车单管理");
-		
+		String[] columnNames = {"选择","ID","目的地","车辆代号","运费","装车日期"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -67,14 +74,6 @@ public class TransferCenterLoadingListListui extends Listui{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 String[] columnNames = {"选择","ID","目的地","车辆代号","运费","装车日期"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -112,12 +111,12 @@ public class TransferCenterLoadingListListui extends Listui{
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-				    int selectedRow = table.getSelectedRow();//获得选中行的索引
-				    if(selectedRow!=-1){
-				     tableModel.removeRow(selectedRow);  //删除行 
-				    }
+				       int selectedRow = table.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				           tableModel.removeRow(selectedRow);  //删除行 
+				       }
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   transCenLoadingListblservice=new TranCenLoadingList();
 				   transCenLoadingListblservice.delete(idList);
 				  }});

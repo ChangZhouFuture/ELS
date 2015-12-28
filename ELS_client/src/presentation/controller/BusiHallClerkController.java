@@ -15,10 +15,14 @@ import businesslogic.documentsbl.BusiHallArrivalOrder;
 import businesslogic.documentsbl.BusiHallLoadingList;
 import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.documentsbl.ReceivablesOrder;
+import businesslogic.inforManagementbl.DriversInfor;
+import businesslogic.inforManagementbl.VehiclesInfor;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
 import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
+import businesslogicservice.inforManagementblservice.DriversInforblservice;
+import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderListui;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderui;
 import presentation.documentsui.BusiHallLoadingListui.BusinessHallLoadingListListui;
@@ -39,6 +43,8 @@ import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.documentsVO.DeliveryOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
+import vo.inforManagementVO.DriversVO;
+import vo.inforManagementVO.VehiclesVO;
 
 public class BusiHallClerkController {
 	JPanel mainPanel = new JPanel();
@@ -60,10 +66,14 @@ public class BusiHallClerkController {
 	BusiHallLoadingListblservice busiHallLoadingListblservice;
 	DeliveryOrderblservice deliveryOrderblservice;
 	ReceivablesOrderblservice receivablesOrderblservice;
+	DriversInforblservice driversInforblservice;
+	VehiclesInforblservice vehiclesInforblservice;
 	BusiHallArrivalOrderVO busiHallArrivalOrderVO;
 	BusiHallLoadingListVO busiHallLoadingListVO;
 	DeliveryOrderVO deliveryOrderVO;
 	ReceivablesOrderVO receivablesOrderVO;
+	DriversVO driversVO;
+	VehiclesVO vehiclesVO;
 	JavaBean1 javaBean1;
 	
 	public BusiHallClerkController(){
@@ -207,7 +217,7 @@ public class BusiHallClerkController {
 		businessHallLoadingListui.arrivalField.setText(busiHallLoadingListVO.getDestination());
 		businessHallLoadingListui.jZYField.setText(busiHallLoadingListVO.getSupervisionMan());
 		businessHallLoadingListui.yYYField.setText(busiHallLoadingListVO.getEscortMan());
-		ArrayList<String> idList=null;
+		ArrayList<String> idList=new ArrayList<String>();
 		idList=busiHallLoadingListVO.getOrderIDs();
 		for(int i=0;i<idList.size();i++){
 			busiHallLoadingListblservice=new BusiHallLoadingList();
@@ -232,7 +242,7 @@ public class BusiHallClerkController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String deleteId=businessHallLoadingListui.docmID.getText();
-				ArrayList<String> deletearray=null;
+				ArrayList<String> deletearray=new ArrayList<String>();
 				deletearray.add(deleteId);
 				busiHallLoadingListblservice=new BusiHallLoadingList();
 				busiHallLoadingListblservice.deleteMany(deletearray);
@@ -259,20 +269,76 @@ public class BusiHallClerkController {
 		driversListui.idFind.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				driversInforblservice=new DriversInfor();
+				javaBean1=new JavaBean1();
+				javaBean1=driversInforblservice.inquireA(driversListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					JOptionPane.showMessageDialog
+					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+				}
+				driversVO=(DriversVO)javaBean1.getObject();
+				driversui=findDriver(driversVO);
+				childPanel = driversui;
+				Skip.skip(mainPanel,childPanel);
+				inReceivablesOrderui();
 			}
 		});
 		driversListui.table.addMouseListener(new MouseAdapter() {
 			 
 			public void mouseClicked(MouseEvent evt) {
                if (evt.getClickCount() == 2) {
-            	   
+            	   String id=(String)driversListui.tableModel.
+	               			getValueAt(driversListui.table.getSelectedRow(),1);
+	            	try {
+	            		driversInforblservice=new DriversInfor();
+	    				javaBean1=new JavaBean1();
+	    				javaBean1=driversInforblservice.inquireA(id);
+	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+	    					JOptionPane.showMessageDialog
+	    					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+	    				}
+	    				driversVO=(DriversVO)javaBean1.getObject();
+	    				driversui=findDriver(driversVO);
+	    				childPanel = driversui;
+	    				Skip.skip(mainPanel,childPanel);
+	    				inReceivablesOrderui();
+	            	}catch(Exception e2){
+	            	}
                }
             }
        });
 	}
+	public Driversui findDriver(DriversVO driversVO){
+		driversui=new Driversui();
+		driversui.refresh();
+		driversui.nameField.setText(driversVO.getName());
+		switch(driversVO.getGender()){
+		case MALE:driversui.sexType.setSelectedIndex(0);break;
+		case FEMALE:driversui.sexType.setSelectedIndex(1);break;
+		default:break;
+		}
+		driversui.birthDateField.setText(driversVO.getBirthDate());
+		driversui.idCardField.setText(driversVO.getIdentyNum());
+		driversui.phoneField.setText(driversVO.getPhone());
+		driversui.limitDateField.setText(driversVO.getDriveLimitDate());
+		driversui.docmID.setText(driversVO.getID());
+		return driversui;
+	}
 	public void inDriversui(){
-		
+		driversui.delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String deleteId=driversui.docmID.getText();
+				ArrayList<String> deletearray=new ArrayList<String>();
+				deletearray.add(deleteId);
+				driversInforblservice=new DriversInfor();
+				driversInforblservice.deleteMany(deletearray);
+				driversListui = new DriversListui();
+				childPanel = driversListui;
+				Skip.skip(mainPanel,childPanel);
+				inDriversListui();
+			}
+		});
 	}
 	public void inReceivablesOrderListui(){
 		receivablesOrderListui.add.addActionListener(new ActionListener() {
@@ -310,8 +376,8 @@ public class BusiHallClerkController {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
 	            if (evt.getClickCount() == 2) {
-	               	String id=(String)busiHallArrivalOrderListui.tableModel.
-	               			getValueAt(busiHallArrivalOrderListui.table.getSelectedRow(),1);
+	               	String id=(String)receivablesOrderListui.tableModel.
+	               			getValueAt(receivablesOrderListui.table.getSelectedRow(),1);
 	            	try {
 	            		receivablesOrderblservice=new ReceivablesOrder();
 				        javaBean1=new JavaBean1();
@@ -336,11 +402,11 @@ public class BusiHallClerkController {
 		receivablesOrderui.refresh();
 		receivablesOrderui.moneyField.setText(String.valueOf(receivablesOrderVO.getAmount()));
 		receivablesOrderui.courierId.setText(receivablesOrderVO.getCourier());
-		ArrayList<String> idList=null;
+		ArrayList<String> idList=new ArrayList<String>();
 		idList=receivablesOrderVO.getOrderIDs();
 		for(int i=0;i<idList.size();i++){
 			receivablesOrderblservice=new ReceivablesOrder();
-			receivablesOrderui.orderlineitemVO=busiHallLoadingListblservice.addOrder(idList.get(i));
+			receivablesOrderui.orderlineitemVO=receivablesOrderblservice.addOrder(idList.get(i));
 			String[] oneRow={"",receivablesOrderui.orderlineitemVO.getId(),
 					receivablesOrderui.orderlineitemVO.getSenderAdd(),
 					receivablesOrderui.orderlineitemVO.getAddresseeAdd(),
@@ -361,7 +427,7 @@ public class BusiHallClerkController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String deleteId=receivablesOrderui.docmID.getText();
-				ArrayList<String> deletearray=null;
+				ArrayList<String> deletearray=new ArrayList<String>();
 				deletearray.add(deleteId);
 				receivablesOrderblservice=new ReceivablesOrder();
 				receivablesOrderblservice.deleteMany(deletearray);
@@ -412,7 +478,7 @@ public class BusiHallClerkController {
     				javaBean1=new JavaBean1();
    					javaBean1=busiHallArrivalOrderblservice.inquireA(id);
    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
 					}
    					busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
    					childPanel = busiHallArrivalOrderui;
@@ -449,7 +515,7 @@ public class BusiHallClerkController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String deleteId=busiHallArrivalOrderui.docmID.getText();
-				ArrayList<String> deletearray=null;
+				ArrayList<String> deletearray=new ArrayList<String>();
 				deletearray.add(deleteId);
 				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				busiHallArrivalOrderblservice.deleteMany(deletearray);
@@ -481,7 +547,7 @@ public class BusiHallClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=deliveryOrderblservice.inquireA(deliveryOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
 				}
 				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
 				deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
@@ -500,7 +566,7 @@ public class BusiHallClerkController {
                 		javaBean1=new JavaBean1();
     					javaBean1=deliveryOrderblservice.inquireA(id);
     					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-    						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+    						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
     					}
     					deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
     					deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
@@ -533,7 +599,7 @@ public class BusiHallClerkController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String deleteId=deliveryOrderui.docmID.getText();
-				ArrayList<String> deletearray=null;
+				ArrayList<String> deletearray=new ArrayList<String>();
 				deletearray.add(deleteId);
 				deliveryOrderblservice=new DeliveryOrder();
 				deliveryOrderblservice.deleteMany(deletearray);
@@ -557,9 +623,72 @@ public class BusiHallClerkController {
 				inVehiclesui();
 			}
 		});
+		vehiclesListui.idFind.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vehiclesInforblservice=new VehiclesInfor();
+				javaBean1=new JavaBean1();
+				javaBean1=vehiclesInforblservice.inquireA(vehiclesListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					JOptionPane.showMessageDialog
+					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+				}
+				vehiclesVO=(VehiclesVO)javaBean1.getObject();
+				vehiclesui=findVehicle(vehiclesVO);
+				childPanel = vehiclesui;
+				Skip.skip(mainPanel,childPanel);
+				inReceivablesOrderui();
+			}
+		});
+		vehiclesListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+            	   String id=(String)vehiclesListui.tableModel.
+	               			getValueAt(vehiclesListui.table.getSelectedRow(),1);
+	            	try {
+	            		vehiclesInforblservice=new VehiclesInfor();
+	    				javaBean1=new JavaBean1();
+	    				javaBean1=vehiclesInforblservice.inquireA(id);
+	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+	    					JOptionPane.showMessageDialog
+	    					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+	    				}
+	    				vehiclesVO=(VehiclesVO)javaBean1.getObject();
+	    				vehiclesui=findVehicle(vehiclesVO);
+	    				childPanel = vehiclesui;
+	    				Skip.skip(mainPanel,childPanel);
+	    				inReceivablesOrderui();
+	            	}catch(Exception e2){
+	            	}
+               }
+            }
+       });
+	}
+	public Vehiclesui findVehicle(VehiclesVO vehiclesVO){
+		vehiclesui=new Vehiclesui();
+		vehiclesui.refresh();
+		vehiclesui.plateNumField.setText(vehiclesVO.getPlateNum());
+		vehiclesui.serviceTimeField.setText(vehiclesVO.getServiceTime());
+		vehiclesui.docmID.setText(vehiclesVO.getID());
+		return vehiclesui;
 	}
 	public void inVehiclesui(){
-		
+		vehiclesui.delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String deleteId=vehiclesui.docmID.getText();
+				ArrayList<String> deletearray=new ArrayList<String>();
+				deletearray.add(deleteId);
+				vehiclesInforblservice=new VehiclesInfor();
+				vehiclesInforblservice.deleteMany(deletearray);
+				vehiclesListui = new VehiclesListui();
+				childPanel = vehiclesListui;
+				Skip.skip(mainPanel,childPanel);
+				inDeliveryOrderListui();
+			}
+		});
 	}
 	public static void main(String[] args) {
 		BusiHallClerkController busiHallClerkController = new BusiHallClerkController();

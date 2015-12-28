@@ -45,13 +45,13 @@ public class TranCenArrivalOrderListui extends Listui{
 		
 		sheetLabel.setText("中转中心到达单管理");
 		String[] columnNames = {"选择","ID","中转中心编号","中转单编号","出发地","货物状态","到达日期","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override

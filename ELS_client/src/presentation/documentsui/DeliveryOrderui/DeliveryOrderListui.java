@@ -41,7 +41,14 @@ public class DeliveryOrderListui extends Listui{
 	public DeliveryOrderListui(){
 		
 		sheetLabel.setText("派件单管理");
-		
+		String[] columnNames = {"选择","ID","派送员","到达地","订单号","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -65,14 +72,6 @@ public class DeliveryOrderListui extends Listui{
 			 this.remove(delete);
 		 }catch(Exception e2){
 		 }
-		 String[] columnNames = {"选择","ID","派送员","到达地","订单号","时间"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,

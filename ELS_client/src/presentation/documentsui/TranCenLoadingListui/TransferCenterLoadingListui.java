@@ -1,18 +1,30 @@
 package presentation.documentsui.TranCenLoadingListui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import bean.JavaBean1;
+import businesslogic.documentsbl.TranCenLoadingList;
+import businesslogicservice.documentsblservice.TranCenLoadingListblservice;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.TranCenClerkui;
+import vo.documentsVO.TranCenLoadingListVO;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 public class TransferCenterLoadingListui extends ParentDocuments{
 	public JLabel busiLoadOrder;
@@ -31,8 +43,14 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 	public JLabel orderId;
 	public JTextField orderIdField;
 	public JButton addOrder;
-	public JTextArea orderList;
+	public JTable orderList;
+	public DefaultTableModel tableModel;
 	public JScrollPane scroller;
+	public JButton deleteOrder;
+	JavaBean1 javaBean1;
+	public OrderlineitemVO orderlineitemVO;
+	TranCenLoadingListblservice tranCenLoadingListblservice;
+	TranCenLoadingListVO tranCenLoadingListVO;
 	
 	public static void main(String[] args){
 		TranCenClerkui ui=new TranCenClerkui();
@@ -57,8 +75,15 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		orderId=new JLabel();
 		orderIdField=new JTextField();
 		addOrder=new JButton();
-		orderList=new JTextArea();
-		makeOrder=new JButton();
+		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		orderList = new JTable(tableModel){  
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
+		 deleteOrder=new JButton();
 		
 		this.setLayout(null);
 		
@@ -71,21 +96,21 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		busiLoadOrder.setHorizontalAlignment(SwingConstants.CENTER);
 		busiLoadOrder.setFont(font1);
 		busiLoadOrder.setBackground(Color.WHITE);
-		busiLoadOrder.setOpaque(true);
 		
 		motorId.setBounds(40,50,180,24);
 		motorId.setText("本中转中心汽运编号：");
 		motorId.setFont(font2);
 		motorId.setBackground(Color.WHITE);
-		motorId.setOpaque(true);
 		
 		motorIdField.setBounds(220,52,120,20);
+		motorIdField.setEditable(false);
+		motorIdField.setBackground(Color.WHITE);
+		motorIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		vehicleId.setBounds(40,80,100,24);
 		vehicleId.setText("车辆代号：");
 		vehicleId.setFont(font2);
 		vehicleId.setBackground(Color.WHITE);
-		vehicleId.setOpaque(true);
 		
 		vehicleIdField.setBounds(140,82,120,20);
 		
@@ -93,7 +118,6 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		arrival.setText("到达地：");
 		arrival.setFont(font2);
 		arrival.setBackground(Color.WHITE);
-		arrival.setOpaque(true);
 		
 		arrivalField.setBounds(400,82,120,20);
 		
@@ -101,7 +125,6 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		jZY.setText("监装员：");
 		jZY.setFont(font2);
 		jZY.setBackground(Color.WHITE);
-		jZY.setOpaque(true);
 		
 		jZYField.setBounds(140,112,120,20);
 		
@@ -109,7 +132,6 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		yYY.setText("押运员：");
 		yYY.setFont(font2);
 		yYY.setBackground(Color.WHITE);
-		yYY.setOpaque(true);
 		
 		yYYField.setBounds(400,112,120,20);
 		
@@ -117,17 +139,16 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		fare.setText("运费：");
 		fare.setFont(font2);
 		fare.setBackground(Color.WHITE);
-		fare.setOpaque(true);
 		
 		fareField.setBounds(140,142,120,20);
 		fareField.setEditable(false);
 		fareField.setBackground(Color.WHITE);
+		fareField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
 		orderId.setBounds(40,170,200,24);
 		orderId.setText("本次装箱所有订单条形码号：");
 		orderId.setFont(font2);
 		orderId.setBackground(Color.WHITE);
-		orderId.setOpaque(true);
 		
 		orderIdField.setBounds(140,202,120,20);
 		
@@ -136,25 +157,109 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		addOrder.setFont(font2);
 		addOrder.setBackground(Color.WHITE);
 		addOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		addOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tranCenLoadingListblservice=new TranCenLoadingList();
+				orderlineitemVO=tranCenLoadingListblservice.addOrder(orderIdField.getText());
+				String[] oneRow={"",orderlineitemVO.getId(),orderlineitemVO.getSenderAdd(),
+						orderlineitemVO.getAddresseeAdd(),orderlineitemVO.getExpressType().toString(),
+						orderlineitemVO.getGenerateDate()};
+			    tableModel.addRow(oneRow);
+			}
+		});
 		
-		orderList.setBounds(40,230,250,150);
-		orderList.setEnabled(false);
+		orderList.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		orderList.setRowHeight(24);
+		orderList.setBackground(Color.WHITE);
+		orderList.setShowVerticalLines(true);
+		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderList.getColumnModel().getColumn(0).setPreferredWidth(40);
+		scroller=new JScrollPane(orderList);
+		scroller.setSize(500,144);
+		scroller.setLocation(40,230);
+		scroller.setViewportView(orderList);
 		orderList.setFont(font2);
 		orderList.setBackground(Color.WHITE);
-		orderList.setWrapStyleWord(true);
 		orderList.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		orderList.setLineWrap(true);
-		
-		scroller=new JScrollPane(orderList);
-		scroller.setBounds(40,230,250,150);
 		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		deleteOrder.setBounds(40,400,50,24);
+		deleteOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		deleteOrder.setBackground(Color.WHITE);
+		deleteOrder.setText("删除");
+		deleteOrder.setFont(font2);
+		deleteOrder.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   for(int i=0;i<orderList.getRowCount();i++){
+				    int selectedRow = orderList.getSelectedRow();//获得选中行的索引
+				    if(selectedRow!=-1){
+				     tableModel.removeRow(selectedRow);  //删除行 
+				    }
+				   }
+				  }});
+		
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				approState.setText("未审批");
+				tranCenLoadingListblservice=new TranCenLoadingList();
+				tranCenLoadingListVO.setVehiclesID(vehicleIdField.getText());
+				tranCenLoadingListVO.setDestination(arrivalField.getText());
+				tranCenLoadingListVO.setEscortMan(yYYField.getText());
+				tranCenLoadingListVO.setSupervisionMan(jZYField.getText());
+				ArrayList<String> idList=new ArrayList<String>();
+				for(int i=0;i<orderList.getRowCount();i++){
+					idList.add((String)orderList.getValueAt(i,1));
+				}
+				tranCenLoadingListVO.setOrderIDs(idList);
+				javaBean1=new JavaBean1();
+				javaBean1=tranCenLoadingListblservice.add(tranCenLoadingListVO);
+				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
+				motorIdField.setText(tranCenLoadingListVO.getTrucksNum());
+				docmID.setText(tranCenLoadingListVO.getID());
+				fareField.setText(String.valueOf(tranCenLoadingListVO.getCarriage()));
+			}
+		});
+		
+		modifyOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e){
+				refresh();
+				tranCenLoadingListVO.setVehiclesID(vehicleIdField.getText());
+				tranCenLoadingListVO.setDestination(arrivalField.getText());
+				tranCenLoadingListVO.setEscortMan(yYYField.getText());
+				tranCenLoadingListVO.setSupervisionMan(jZYField.getText());
+				ArrayList<String> idList=null;
+				for(int i=0;i<orderList.getRowCount();i++){
+					idList.add((String)orderList.getValueAt(i,1));
+				}
+				tranCenLoadingListVO.setOrderIDs(idList);
+				modifyOrder.setVisible(false);
+				tranCenLoadingListblservice.modify(tranCenLoadingListVO);
+			}
+		});
+		
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
 		
 		this.add(busiLoadOrder);
 		this.add(motorId);
@@ -173,11 +278,48 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 		this.add(orderIdField);
 		this.add(addOrder);
 		this.add(scroller);
-		this.add(makeOrder);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
+		this.add(deleteOrder);
+	}
+	public void refresh() {
+		vehicleIdField.setEditable(false);
+		arrivalField.setEditable(false);
+		jZYField.setEditable(false);
+		yYYField.setEditable(false);
+		orderIdField.setEditable(false);
+		addOrder.setVisible(false);
+		deleteOrder.setVisible(false);
+		
+		vehicleIdField.setBackground(Color.white);
+		arrivalField.setBackground(Color.white);
+		jZYField.setBackground(Color.white);
+		yYYField.setBackground(Color.white);
+		orderIdField.setBackground(Color.white);
+		
+		vehicleIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		arrivalField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		jZYField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		yYYField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+		
+	}
+	public void modifying() {
+		vehicleIdField.setEditable(true);
+		arrivalField.setEditable(true);
+		jZYField.setEditable(true);
+		yYYField.setEditable(true);
+		orderIdField.setEditable(true);
+		addOrder.setVisible(true);
+		deleteOrder.setVisible(true);
+		modifyOrder.setVisible(true);
+		
+		vehicleIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		arrivalField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		jZYField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		yYYField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

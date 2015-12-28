@@ -57,7 +57,6 @@ public class Listui extends JPanel{
 		sheetLabel.setBackground(Color.WHITE);
 		sheetLabel.setFont(font1);
 		sheetLabel.setIcon(Images.SHEET_IMAGE);
-		sheetLabel.setOpaque(true);
 		
 		add.setBounds(30,45,30,30);
 		add.setIcon(Images.ADD_IMAGE);
@@ -67,7 +66,6 @@ public class Listui extends JPanel{
 		addText.setBackground(Color.WHITE);
 		addText.setText("增加单据");
 		addText.setFont(font3);
-		addText.setOpaque(true);
 		
 		findById.setBounds(30,90,120,24);
 		findById.setText("按ID查找:");
@@ -89,14 +87,12 @@ public class Listui extends JPanel{
 		idFind.setBackground(Color.WHITE);
 		idFind.setText("查找");
 		idFind.setFont(font2);
-		idFind.setOpaque(true);
 		
 		dateFind.setBounds(360,125,64,24);
 		dateFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		dateFind.setBackground(Color.WHITE);
 		dateFind.setText("查找");
 		dateFind.setFont(font2);
-		dateFind.setOpaque(true);
 		
 		delete.setBounds(30,420,50,24);
 		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -118,6 +114,5 @@ public class Listui extends JPanel{
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
 	}
 }

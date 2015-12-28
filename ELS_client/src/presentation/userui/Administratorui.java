@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
+import businesslogic.userbl.Login;
 import presentation.reuse.MainFrame;
 
 public class Administratorui extends MainFrame{
@@ -23,7 +24,7 @@ public class Administratorui extends MainFrame{
 		userName=new JLabel();
 		
 		userName.setBounds(2,76,176,24);
-		userName.setText("管理员："+"***");
+		userName.setText("管理员："+Loginui.name);
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);
 		userName.setFont(font2);
