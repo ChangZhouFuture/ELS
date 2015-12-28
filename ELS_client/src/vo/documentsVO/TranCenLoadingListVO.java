@@ -14,7 +14,7 @@ public class TranCenLoadingListVO {
 	private String supervisionMan;
 	private String escortMan;
 	private String generateTime;
-	ArrayList<String>  orderIDs=new ArrayList<>();
+	ArrayList<String>  orderIDs;
 	private double carriage;
 	private ApproState approState;
 	

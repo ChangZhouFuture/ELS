@@ -6,13 +6,21 @@ import java.util.ArrayList;
 import state.ApproState;
 
 public class ReceivablesOrderPO implements Serializable{
-	 private String ID;
 	    private double amount;
+	    private String ID;
 	    private String courier;
-	    ArrayList<String> orderIDs=new ArrayList<>();
 	    private String date;
 	    private String generateTime;
+	    private String agencyID;
+	    ArrayList<String> orderIDs;
 	    private ApproState approState;
+	    
+		public String getAgencyID() {
+			return agencyID;
+		}
+		public void setAgencyID(String agencyID) {
+			this.agencyID = agencyID;
+		}
 		public String getID() {
 			return ID;
 		}

@@ -9,10 +9,17 @@ public class ReceivablesOrderVO {
 	    private String date;
 	    private String courier;
 	    private String generateTime;
-	    ArrayList<String> orderIDs=new ArrayList<>();
+	    private String agencyID;
+	    ArrayList<String> orderIDs;
 	    private double amount;
 	    private ApproState approState;
 	    
+		public String getAgencyID() {
+			return agencyID;
+		}
+		public void setAgencyID(String agencyID) {
+			this.agencyID = agencyID;
+		}
 		public String getGenerateTime() {
 			return generateTime;
 		}

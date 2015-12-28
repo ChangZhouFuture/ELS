@@ -2,7 +2,6 @@ package businesslogic.documentsbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import po.documentsPO.ReceivablesOrderPO;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 import state.ApproState;
@@ -14,6 +13,7 @@ import bean.JavaBean1;
 import businesslogic.inforManagementbl.BankAccountInfor;
 import businesslogic.managerAndAccountantbl.StatisAnaly;
 import businesslogic.orderbl.Order;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 /**
@@ -51,6 +51,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		this.receivablesOrderVO.setDate(generateDate());
 		this.receivablesOrderVO.setGenerateTime(Time.generateTime());
 		this.receivablesOrderVO.setID(generateID());
+		this.receivablesOrderVO.setAgencyID(Login.agencyID);
 		this.receivablesOrderVO.setAmount(calculateAmount(receivablesOrderVO.getOrderIDs()));
 		this.receivablesOrderVO.setApproState(ApproState.NotApprove);
 		VOtoPO();
@@ -154,6 +155,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		receivablesOrderPO.setID(receivablesOrderVO.getID());
 		receivablesOrderPO.setDate(receivablesOrderVO.getDate());
 		receivablesOrderPO.setGenerateTime(receivablesOrderVO.getGenerateTime());
+		receivablesOrderPO.setAgencyID(receivablesOrderVO.getAgencyID());
 		receivablesOrderPO.setAmount(receivablesOrderVO.getAmount());
 		receivablesOrderPO.setCourier(receivablesOrderVO.getCourier());
 		receivablesOrderPO.setOrderIDs(receivablesOrderVO.getOrderIDs());
@@ -169,6 +171,8 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 			receivablesOrderVO = new ReceivablesOrderVO();
 			receivablesOrderVO.setID(receivablesOrderPO.getID());
 			receivablesOrderVO.setDate(receivablesOrderPO.getDate());
+			receivablesOrderVO.setAgencyID(receivablesOrderPO.getAgencyID());
+			receivablesOrderVO.setOrderIDs(receivablesOrderPO.getOrderIDs());
 			receivablesOrderVO.setAmount(receivablesOrderPO.getAmount());
 			receivablesOrderVO.setCourier(receivablesOrderPO.getCourier());
 			receivablesOrderVO.setApproState(receivablesOrderPO.getApproState());

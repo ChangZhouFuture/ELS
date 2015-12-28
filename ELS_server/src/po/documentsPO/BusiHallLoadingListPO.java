@@ -14,7 +14,7 @@ import state.ApproState;
 	    private String escortMan;
 	    private String busiHallID;
 	    private String generateTime;
-	    ArrayList<String> orderIDs=new ArrayList<String>();
+	    ArrayList<String> orderIDs;
 	    private double carriage;
 	    private ApproState approState;
 	    

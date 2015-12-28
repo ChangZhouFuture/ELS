@@ -17,7 +17,7 @@ import state.TransportType;
 		private String destination;
 		private String containerNum;
 		private String supervisionMan;
-		ArrayList<String> orderIDs=new ArrayList<>();
+		ArrayList<String> orderIDs;
 		private double carriage;
 		private String generateTime;
 		private ApproState approState;
