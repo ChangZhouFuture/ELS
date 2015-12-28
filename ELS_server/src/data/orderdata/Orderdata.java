@@ -149,31 +149,33 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		    ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				llpo=new OrderlineitemPO();
-				if(rs.getString("date").equals(date)
-						&&rs.getString("approState").equals("NotApprove")){
-					llpo.setId(rs.getString("ID"));
-					llpo.setGenerateDate(rs.getString("date"));
-					llpo.setSenderAdd(rs.getString("senderAdd"));
-					llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
-					llpo.setTotalCost(rs.getDouble("totalCost"));
-					llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
-					llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
-					llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
-					llpos.add(llpo);
-					jb1.setResultMessage(ResultMessage.Success);
-				}
-				if(rs.getString("date").equals(date)
-						&&rs.getString("approState").equals("Approve")){
-					llpo.setId(rs.getString("ID"));
-					llpo.setGenerateDate(rs.getString("date"));
-					llpo.setSenderAdd(rs.getString("senderAdd"));
-					llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
-					llpo.setTotalCost(rs.getDouble("totalCost"));
-					llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
-					llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
-					llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
-					llpos.add(llpo);
-					jb1.setResultMessage(ResultMessage.Success);
+				if(rs.getString("date")!=null){
+					if(rs.getString("date").equals(date)
+							&&rs.getString("approState").equals("NotApprove")){
+						llpo.setId(rs.getString("ID"));
+						llpo.setGenerateDate(rs.getString("date"));
+						llpo.setSenderAdd(rs.getString("senderAdd"));
+						llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
+						llpo.setTotalCost(rs.getDouble("totalCost"));
+						llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
+						llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+						llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
+						llpos.add(llpo);
+						jb1.setResultMessage(ResultMessage.Success);
+					}
+					if(rs.getString("date").equals(date)
+							&&rs.getString("approState").equals("Approve")){
+						llpo.setId(rs.getString("ID"));
+						llpo.setGenerateDate(rs.getString("date"));
+						llpo.setSenderAdd(rs.getString("senderAdd"));
+						llpo.setAddresseeAdd(rs.getString("addresseeAdd"));
+						llpo.setTotalCost(rs.getDouble("totalCost"));
+						llpo.setExpressType(ExpressType.valueOf(rs.getString("expressType")));
+						llpo.setApproState(ApproState.valueOf(rs.getString("approState")));
+						llpo.setExpressArrivalStatus(ExpressArrivalStatus.valueOf(rs.getString("expressArrivalStatus")));
+						llpos.add(llpo);
+						jb1.setResultMessage(ResultMessage.Success);
+					}
 				}
 			}jb1.setObject(llpos);
              return jb1;
@@ -192,10 +194,10 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 				+ "trueAddressee=?,goodName=?,numOfGoods=?,"
 				+ "weight=?,size=?,freight=?,expressType=?,"
 				+ "packingCharge=?,totalCost=?,expectedArrivalDate=?,trueArrivalDate=?,"
-				+ "date=?,expressArrivalStatus=? where ID=?";
+				+ "date=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(22, po.getId());
+			stmt.setString(21, po.getId());
 			stmt.setString(1, po.getSenderName());
 			stmt.setString(2, po.getSenderAdd());
 			stmt.setString(3, po.getSenderCompany());
@@ -216,7 +218,6 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setString(18, po.getExpectedArrivalDate());
 			stmt.setString(19, po.getArrivalDate());
 			stmt.setString(20, po.getGenerateDate());
-			stmt.setString(21, po.getExpressArrivalStatus().toString());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -277,4 +278,26 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			return ResultMessage.NotExist;
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		Orderdata od=new Orderdata();
+//		OrderPO po=new OrderPO();
+//		po.setSenderName("寄件人a");
+//		po.setSenderAdd("无");
+//		po.setSenderCompany("公司a");
+//		po.setSenderPhoneNumber("1323156");
+//		po.setAddresseeName("收件人a");
+//		po.setAddresseeAdd("无");
+//		po.setAddresseeCompany("公司b");
+//		po.setAddresseePhoneNumber("15664655");
+//		po.setGoodsName("XXX");
+//		po.setNumOfGoods(3);
+//		po.setWeight(1);
+//		po.setSize(2);
+//		po.setFreight(1);
+//		po.setId("1512240001");
+//		po.setGenerateDate("2015-12-24");
+//		po.setExpressType(ExpressType.Economic);
+//		ResultMessage r=od.update(po);
+//	}
 }
