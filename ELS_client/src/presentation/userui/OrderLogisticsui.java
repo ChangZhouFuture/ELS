@@ -77,23 +77,25 @@ public class OrderLogisticsui extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				String orderId=orderIdField.getText();
 				orderblservice=new Order();
 				JavaBean1 javaBean1=orderblservice.inquireA(orderId);
 				orderVO=new OrderVO();
 				orderVO=(OrderVO)javaBean1.getObject();
 				
-				String orderInfo=orderVO.getSenderName()+"  "+orderVO.getAddresseeName()+"  "+orderVO.getGoodsName()+" ";
+				String orderInfo=orderVO.getSenderName()+"  "+orderVO.getSenderAdd()+"  "+
+						orderVO.getAddresseeName()+"  "+orderVO.getAddresseeAdd()+"  "+
+				orderVO.getGoodsName();
+				
 			}
 		});
 		
 		logisticsArea.setEditable(false);
-		logisticsArea.setBounds(30,90,300,160);
+		logisticsArea.setBounds(30,90,330,160);
 		logisticsArea.setBackground(Color.WHITE);
 		
 		scroller=new JScrollPane(logisticsArea);
-		scroller.setBounds(30,90,300,160);
+		scroller.setBounds(30,90,330,160);
 		
 		closeButton.setBounds(this.getWidth()-24,0,24,24);
 		closeButton.setIcon(Images.CLOSE_IMAGE);
@@ -101,7 +103,6 @@ public class OrderLogisticsui extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0); 
 			}
 		});

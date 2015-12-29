@@ -454,7 +454,7 @@ public class Orderui extends ParentDocuments{
 				orderVO.setSenderAdd(senderAddressField.getText());
 				orderVO.setSenderCompany(senderCompanyField.getText());
 				orderVO.setSenderPhoneNumber(senderPhoneField.getText());
-				orderVO.setAddresseeName(receiverNameField.getText());;
+				orderVO.setAddresseeName(receiverNameField.getText());
 				orderVO.setAddresseeAdd(receiverAddressField.getText());
 				orderVO.setAddresseeCompany(receiverCompanyField.getText());
 				orderVO.setAddresseePhoneNumber(receiverPhoneField.getText());

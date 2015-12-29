@@ -154,7 +154,7 @@ public class CourierController {
 		orderui.expectedArrivalDate.setText("预计到达时间："+orderVO.getExpectedArrivalDate());
 		
 		orderui.sureReceive.setVisible(true);
-		if(orderVO.getExpressArrivalStatus()!=ExpressArrivalStatus.NotArrival){
+		if(orderVO.getExpressArrivalStatus()==ExpressArrivalStatus.Arrival){
 			orderui.actualReceiver.setVisible(true);
 			orderui.sureReceive.setVisible(false);
 			orderui.actualReceiverField.setText(String.valueOf(orderVO.getTrueAddressee()));
