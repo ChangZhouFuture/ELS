@@ -3,10 +3,14 @@ package data.orderdata;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import bean.JavaBean1;
 import data.utility.Database;
@@ -278,16 +282,86 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			return ResultMessage.NotExist;
 		}
 	}
+
+
+	public int daysBetween(String sDate,String eDate) throws ParseException{
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(sdf.parse(sDate));
+		
+	    long time1=cal.getTimeInMillis();
+	    cal.setTime((sdf.parse(eDate))); 
+	    long time2=cal.getTimeInMillis();
+	    long between_days=(time2-time1)/(1000*24*3600) ;
+	    return Integer.parseInt(String.valueOf(between_days)); 
+	}
 	
-//	public static void main(String[] args) {
+	public String getExpectedArrivalDate(String date,int day) throws ParseException{
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(sdf.parse(date));
+		int Year=cal.get(Calendar.YEAR);
+		int Month=cal.get(Calendar.MONTH);
+		int Day=cal.get(Calendar.DAY_OF_MONTH);
+		int NewDay=Day+day;
+		cal.set(Calendar.YEAR,Year);
+		cal.set(Calendar.MONTH,Month);
+		cal.set(Calendar.DAY_OF_MONTH,NewDay);
+		long time=cal.getTimeInMillis();
+		Date d=new Date(time);
+		return String.valueOf(d);
+	}
+
+	@Override
+	public String expectedArrivalDate(String date, String senderAdd, String addresseeAdd) throws RemoteException, ParseException {
+		// TODO Auto-generated method stub
+  
+		String sql="select * from dingdanorder where senderAdd=?";
+		String generateDate=null;
+		String trueArrivalDate=null;
+		int total=0;
+		int count=0;
+		int average=0;
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, senderAdd);
+			
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("addresseeAdd").equals(addresseeAdd)){
+					if(rs.getString("trueArrivalDate")!=null){
+						trueArrivalDate=rs.getString("trueArrivalDate");
+						generateDate=rs.getString("date");
+						total=total+daysBetween(generateDate, trueArrivalDate);
+						count++;
+					}
+				}
+			}
+			if(count!=0){
+				average=total/count;
+				return getExpectedArrivalDate(date, average);
+			}else{
+				return date;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return date;
+		}	
+	}
+	
+//	public static void main(String[] args) throws RemoteException, ParseException {
 //		Orderdata od=new Orderdata();
 //		OrderPO po=new OrderPO();
-//		po.setSenderName("寄件人a");
-//		po.setSenderAdd("无");
+//		String e=od.expectedArrivalDate("2015-12-29", "上海", "南京");
+//		System.out.println(e);
+//		po.setExpectedArrivalDate(e);
+//		po.setSenderName("寄件人c");
+//		po.setSenderAdd("上海");
 //		po.setSenderCompany("公司a");
 //		po.setSenderPhoneNumber("1323156");
-//		po.setAddresseeName("收件人a");
-//		po.setAddresseeAdd("无");
+//		po.setAddresseeName("收件人c");
+//		po.setAddresseeAdd("南京");
 //		po.setAddresseeCompany("公司b");
 //		po.setAddresseePhoneNumber("15664655");
 //		po.setGoodsName("XXX");
@@ -295,9 +369,9 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 //		po.setWeight(1);
 //		po.setSize(2);
 //		po.setFreight(1);
-//		po.setId("1512240001");
-//		po.setGenerateDate("2015-12-24");
+//		po.setId("1512290001");
+//		po.setGenerateDate("2015-12-29");
 //		po.setExpressType(ExpressType.Economic);
-//		ResultMessage r=od.update(po);
+//		ResultMessage r=od.update(po);	
 //	}
 }

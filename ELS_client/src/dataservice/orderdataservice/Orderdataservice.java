@@ -1,6 +1,7 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import bean.JavaBean1;
@@ -55,4 +56,5 @@ public interface Orderdataservice extends ParentDocumentsdataservice{
 	
 	public String generateId(String date) throws RemoteException;
 
+	public String expectedArrivalDate(String date,String senderAdd,String addresseeAdd) throws RemoteException, ParseException;//参数为订单生成日期
 }
