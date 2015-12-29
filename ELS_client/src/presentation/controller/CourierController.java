@@ -83,12 +83,13 @@ public class CourierController {
 					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
 					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 						JOptionPane.showMessageDialog(null, "¶©µ¥²»´æÔÚ", "´íÎó", JOptionPane.ERROR_MESSAGE);
-					}
+					}else{
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
 					childPanel = orderui;
 					Skip.skip(mainPanel,childPanel);
 					inOrderui();
+					}
 			}
 		});
 		orderListui.table.addMouseListener(new MouseAdapter() {
