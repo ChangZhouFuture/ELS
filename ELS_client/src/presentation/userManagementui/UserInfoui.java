@@ -2,26 +2,24 @@ package presentation.userManagementui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+import bean.JavaBean1;
+import businesslogic.userManagementbl.UserManagement;
+import businesslogicservice.userManagementblservice.UserManagementblservice;
 import presentation.reuse.DateChooser;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.Administratorui;
 import state.Gender;
-import state.PayType;
+import vo.userVO.UserVO;
 
 public class UserInfoui extends ParentDocuments{
 	public JLabel userInfo;
@@ -33,13 +31,11 @@ public class UserInfoui extends ParentDocuments{
 	public DateChooser birthDateChooser;
 	public JLabel identyNum;
 	public JLabel phone;
-	public JLabel agencyType;
 	public JLabel area;
 	public JLabel city;
 	public JLabel region;
 	public JLabel agencyID;
 	public JLabel position;
-	public JLabel payType;
 	public JTextField nameField;
 	public JTextField passwordField;
 	public JTextField identyNumField;
@@ -48,13 +44,14 @@ public class UserInfoui extends ParentDocuments{
 	public JTextField cityField;
 	public JTextField agencyIDField;
 	public JComboBox positionSeleted;
-	public JComboBox agencyTypeSeleted;
+	String positionValue="快递员";
+	state.Position positionSeletion=state.Position.Courier;
 	public JComboBox sexType;
 	String sexTypeValue="男";
 	Gender sexTypeSeletion=Gender.MALE;
-	public JComboBox payTypeType;
-	String payTypevalue="按月";
-	PayType payTypeSeletion=PayType.BYMONTH;
+	JavaBean1 javaBean1;
+	UserManagementblservice userManagementblservice;
+	public UserVO userVO;
 	
 	public static void main(String[] args){
 		Administratorui ui=new Administratorui();
@@ -73,13 +70,11 @@ public class UserInfoui extends ParentDocuments{
 		birthDateField = new JTextField("单击选择日期");
 		identyNum=new JLabel();
 		phone=new JLabel();
-		agencyType=new JLabel();
 		area=new JLabel();
 		city=new JLabel();
 		region=new JLabel();
 		agencyID=new JLabel();
 		position=new JLabel();
-		payType=new JLabel();
 		nameField=new JTextField();
 		passwordField=new JTextField();
 		identyNumField=new JTextField();
@@ -90,12 +85,8 @@ public class UserInfoui extends ParentDocuments{
 		positionSeleted=new JComboBox();
 		String[] sexTypeEntries={"男","女"};
 		sexType=new JComboBox(sexTypeEntries);
-		String[] payTypeEntries={"按月","按次"};
-		payTypeType=new JComboBox(payTypeEntries);
 		String[] positionEntries={"快递员","营业厅业务员","中转中心业务员","库存管理人员","财务人员","财务人员(高)","总经理","管理员"};
 		positionSeleted=new JComboBox(positionEntries);
-		String[] agencyTypeEntries={"营业厅","中转中心","总部"};
-		agencyTypeSeleted=new JComboBox(agencyTypeEntries);
 		
 		this.setLayout(null);
 		
@@ -185,24 +176,15 @@ public class UserInfoui extends ParentDocuments{
 		region.setFont(font2);
 		region.setBackground(Color.WHITE);
 		
-		agencyType.setBounds(40,230,90,24);
-		agencyType.setText("机构：");
-		agencyType.setFont(font2);
-		agencyType.setBackground(Color.WHITE);
-		
-		agencyTypeSeleted.setBackground(Color.WHITE);
-		agencyTypeSeleted.setFont(font2);
-		agencyTypeSeleted.setBounds(130,230,120,24);
-		
-		agencyID.setBounds(40,260,90,24);
+		agencyID.setBounds(40,230,90,24);
 		agencyID.setText("机构编号：");
 		agencyID.setFont(font2);
 		agencyID.setBackground(Color.WHITE);
 		agencyID.setOpaque(true);
 		
-		agencyIDField.setBounds(130,262,120,20);
+		agencyIDField.setBounds(130,232,120,20);
 		
-		position.setBounds(40,290,90,24);
+		position.setBounds(40,260,90,24);
 		position.setText("职位：");
 		position.setFont(font2);
 		position.setBackground(Color.WHITE);
@@ -210,18 +192,77 @@ public class UserInfoui extends ParentDocuments{
 		
 		positionSeleted.setBackground(Color.WHITE);
 		positionSeleted.setFont(font2);
-		positionSeleted.setBounds(130,290,120,24);
+		positionSeleted.setBounds(130,260,120,24);
+		positionSeleted.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					positionValue=(String)positionSeleted.getSelectedItem();
+					switch(positionValue){
+					case "快递员":positionSeletion=state.Position.Courier;break;
+					case "营业厅业务员":positionSeletion=state.Position.BusiHallClerk;break;
+					case "中转中心业务员":positionSeletion=state.Position.TranCenClerk;break;
+					case "库存管理人员":positionSeletion=state.Position.StockManager;break;
+					case "财务人员":positionSeletion=state.Position.Accountant2;break;
+					case "财务人员(高)":positionSeletion=state.Position.Accountant1;break;
+					case "总经理":positionSeletion=state.Position.GeneralManager;break;
+					case "管理员":positionSeletion=state.Position.Administrator;break;
+					default:break;
+					}
+				} 
+			}
+		});
 		
-		payType.setBounds(40,320,90,24);
-		payType.setText("付薪方式：");
-		payType.setFont(font2);
-		payType.setBackground(Color.WHITE);
-		payType.setOpaque(true);
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				userManagementblservice=new UserManagement();
+				userVO.setName(nameField.getText());
+				userVO.setGender(sexTypeSeletion);
+				userVO.setBirthDate(birthDateField.getText());
+				userVO.setPassword(passwordField.getText());
+				userVO.setPhone(phoneField.getText());
+				userVO.setIdentyNum(identyNumField.getText());
+				userVO.setCity(cityField.getText());
+				userVO.setRegion(regionField.getText());
+				userVO.setPhone(phoneField.getText());
+				userVO.setAgencyID(agencyIDField.getText());
+				userVO.setPosition(positionSeletion);
+				javaBean1=userManagementblservice.add(userVO);
+				userVO=(UserVO)javaBean1.getObject();
+				docmID.setText(userVO.getId());
+				makeOrder.setEnabled(false);
+			}
+		});
 		
-		payTypeType.setBounds(130,320,120,24);
-		payTypeType.setBackground(Color.WHITE);
-		payTypeType.setFont(font2);
-
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				userManagementblservice=new UserManagement();
+				userVO.setName(nameField.getText());
+				userVO.setGender(sexTypeSeletion);
+				userVO.setBirthDate(birthDateField.getText());
+				userVO.setPassword(passwordField.getText());
+				userVO.setPhone(phoneField.getText());
+				userVO.setIdentyNum(identyNumField.getText());
+				userVO.setCity(cityField.getText());
+				userVO.setRegion(regionField.getText());
+				userVO.setPhone(phoneField.getText());
+				userVO.setAgencyID(agencyIDField.getText());
+				userVO.setPosition(positionSeletion);
+				userManagementblservice.modify(userVO);
+			}
+		});
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
+		
 		this.add(userInfo);
 		this.add(name);
 		this.add(password);
@@ -230,13 +271,11 @@ public class UserInfoui extends ParentDocuments{
 		this.add(birthDateField);
 		this.add(identyNum);
 		this.add(phone);
-		this.add(agencyType);
 		this.add(area);
 		this.add(city);
 		this.add(region);
 		this.add(agencyID);
 		this.add(position);
-		this.add(payType);
 		this.add(nameField);
 		this.add(passwordField);
 		this.add(identyNumField);
@@ -246,8 +285,63 @@ public class UserInfoui extends ParentDocuments{
 		this.add(cityField);
 		this.add(agencyIDField);
 		this.add(positionSeleted);
-		this.add(agencyTypeSeleted);
 		this.add(sexType);
-		this.add(payTypeType);
+	}
+	public void refresh(){
+		birthDateField.setEditable(false);
+		passwordField.setEditable(false);
+		nameField.setEditable(false);
+		sexType.setEnabled(false);
+		positionSeleted.setEnabled(false);
+		identyNumField.setEditable(false);
+		phoneField.setEditable(false);
+		cityField.setEditable(false);
+		regionField.setEditable(false);
+		agencyIDField.setEditable(false);
+		
+		birthDateField.setBackground(Color.white);
+		passwordField.setBackground(Color.white);
+		nameField.setBackground(Color.white);
+		identyNumField.setBackground(Color.white);
+		phoneField.setBackground(Color.white);
+		cityField.setBackground(Color.white);
+		regionField.setBackground(Color.white);
+		agencyIDField.setBackground(Color.white);
+		
+		birthDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		passwordField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		nameField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		identyNumField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		phoneField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		cityField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		regionField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		agencyIDField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
+	}
+	public void modifying(){
+		birthDateField.setEditable(true);
+		passwordField.setEditable(true);
+		nameField.setEditable(true);
+		sexType.setEnabled(true);
+		positionSeleted.setEnabled(true);
+		identyNumField.setEditable(true);
+		phoneField.setEditable(true);
+		cityField.setEditable(true);
+		regionField.setEditable(true);
+		agencyIDField.setEditable(true);
+		modifyOrder.setVisible(true);
+		
+		birthDateField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		passwordField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		nameField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		identyNumField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		phoneField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		cityField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		regionField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		agencyIDField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

@@ -2,33 +2,39 @@ package presentation.stockui.OutBoundOrderui;
 
 import java.awt.Color;
 import java.awt.Font;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+import bean.JavaBean1;
+import businesslogic.stockbl.OutBoundOrder;
+import businesslogicservice.stockblservice.OutBoundOrderblservice;
 import presentation.reuse.ParentDocuments;
 import presentation.userui.StockManagerui;
+import state.TransportType;
+import vo.stockVO.OutBoundOrderVO;
 
 public class OutBoundOrderui extends ParentDocuments{
-	JLabel outBoundOrder;
-	JLabel transportType;
-	JRadioButton plane;
-	JRadioButton train;
-	JRadioButton truck;
-	ButtonGroup transportTypeGroup;
-	JLabel orderId;
-	JTextField orderIdField;
-	JLabel destination;
-	JTextField destinationField;
-	JList orderType;
+	public JLabel outBoundOrder;
+	public JLabel transportType;
+	public JComboBox transportTypeType;
+	String transportTypeValue="公路";
+	TransportType transportTypeSeletion=TransportType.Truck;
+	public JLabel orderId;
+	public JTextField orderIdField;
+	public JLabel destination;
+	public JTextField destinationField;
+	public JLabel tranOrMotorId;
+	public JTextField tranOrMotorIdField;
+	JavaBean1 javaBean1;
+	OutBoundOrderblservice outBoundOrderblservice;
+	public OutBoundOrderVO outBoundOrderVO;
 	
 	public static void main(String[] args){
 		StockManagerui ui=new StockManagerui();
@@ -39,12 +45,15 @@ public class OutBoundOrderui extends ParentDocuments{
 	
 	public OutBoundOrderui(){
 		outBoundOrder=new JLabel();
-		makeOrder=new JButton();
 		transportType=new JLabel();
-		plane=new JRadioButton();
-		train=new JRadioButton();
-		truck=new JRadioButton();
-		transportTypeGroup=new ButtonGroup();
+		String[] transportTypeEntries={"公路","铁路","飞机"};
+		transportTypeType=new JComboBox(transportTypeEntries);
+		orderId=new JLabel();
+		orderIdField=new JTextField();
+		destination=new JLabel();
+		destinationField=new JTextField();
+		tranOrMotorId=new JLabel();
+		tranOrMotorIdField=new JTextField();
 		
 		this.setLayout(null);
 		
@@ -63,42 +72,123 @@ public class OutBoundOrderui extends ParentDocuments{
 		transportType.setBackground(Color.WHITE);
 		transportType.setOpaque(true);
 		
-		plane.setBounds(140,50,100,24);
-		plane.setText("飞机");
-		plane.setFont(font2);
-		plane.setBackground(Color.WHITE);
+		transportTypeType.setBounds(140,50,100,24);
+		transportTypeType.setFont(font2);
+		transportTypeType.setBackground(Color.WHITE);
+		transportTypeType.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					transportTypeValue=(String)transportTypeType.getSelectedItem();
+					switch(transportTypeValue){
+					case "公路":transportTypeSeletion=TransportType.Truck;break;
+					case "铁路":transportTypeSeletion=TransportType.Train;break;
+					case "飞机":transportTypeSeletion=TransportType.Plane;break;
+						default:break;
+					}
+					System.out.println(transportTypeValue);
+				} 
+			}
+		});
 		
-		train.setBounds(240,50,100,24);
-		train.setText("铁路");
-		train.setFont(font2);
-		train.setBackground(Color.WHITE);
+		orderId.setBounds(40,80,100,24);
+		orderId.setText("快递编号：");
+		orderId.setFont(font2);
+		orderId.setBackground(Color.WHITE);
 		
-		truck.setBounds(340,50,100,24);
-		truck.setText("公路");
-		truck.setFont(font2);
-		truck.setBackground(Color.WHITE); 
-
-		transportTypeGroup.add(plane);
-		transportTypeGroup.add(train);
-		transportTypeGroup.add(truck);
+		orderIdField.setBounds(140,82,150,20);
 		
-		makeOrder.setBounds(260,442,96,30);
-		makeOrder.setText("确认生成");
-		makeOrder.setFont(font1);
-		makeOrder.setBackground(Color.WHITE);
-		makeOrder.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		destination.setBounds(40,110,100,24);
+		destination.setText("目的地：");
+		destination.setFont(font2);
+		destination.setBackground(Color.WHITE);
+		
+		destinationField.setBounds(140,112,150,20);
+		
+		tranOrMotorId.setBounds(40,140,200,24);
+		tranOrMotorId.setText("中转单编号或汽运编号：");
+		tranOrMotorId.setFont(font2);
+		tranOrMotorId.setBackground(Color.WHITE);
+		
+		tranOrMotorIdField.setBounds(140,172,150,20);
+		
+		makeOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(1);
+				refresh();
+				approState.setText("未审批");
+				outBoundOrderblservice=new OutBoundOrder();
+				outBoundOrderVO.setTransportType(transportTypeSeletion);
+				outBoundOrderVO.setDestination(destinationField.getText());
+				outBoundOrderVO.setOrderID(orderIdField.getText());
+				outBoundOrderVO.setTruckNum(tranOrMotorIdField.getText());
+				javaBean1=outBoundOrderblservice.add(outBoundOrderVO);
+				outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+				docmID.setText(outBoundOrderVO.getId());
+				docmDate.setText(outBoundOrderVO.getOutDate());
+			}
+		});
+		
+		modifyOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+				outBoundOrderblservice=new OutBoundOrder();
+				outBoundOrderVO.setTransportType(transportTypeSeletion);
+				outBoundOrderVO.setDestination(destinationField.getText());
+				outBoundOrderVO.setOrderID(orderIdField.getText());
+				outBoundOrderVO.setTruckNum(tranOrMotorIdField.getText());
+				javaBean1=outBoundOrderblservice.modify(outBoundOrderVO);
+				outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+			}
+		});
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifying();
+			}
+		});
 		
 		this.add(outBoundOrder);
-		this.add(makeOrder);
 		this.add(transportType);
-		this.add(plane);
-		this.add(train);
-		this.add(truck);
+		this.add(transportTypeType);
+		this.add(orderId);
+		this.add(orderIdField);
+		this.add(destination);
+		this.add(destinationField);
+		this.add(tranOrMotorId);
+		this.add(tranOrMotorIdField);
+	}
+	public void refresh() {
+		orderIdField.setEditable(false);
+		destinationField.setEditable(false);
+		tranOrMotorIdField.setEditable(false);
+		transportTypeType.setEnabled(false);
 		
-		setLocation(184,30);
-		this.setSize(616,490);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
+		destinationField.setBackground(Color.white);
+		tranOrMotorIdField.setBackground(Color.white);
+		orderIdField.setBackground(Color.white);
+		
+		destinationField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		tranOrMotorIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		modify.setVisible(true);
+		delete.setVisible(true);
+		makeOrder.setVisible(false);
+		modifyOrder.setVisible(false);
+	}
+	public void modifying() {
+		orderIdField.setEditable(true);
+		destinationField.setVisible(true);
+		tranOrMotorIdField.setVisible(true);
+		transportTypeType.setEnabled(true);
+		modifyOrder.setVisible(true);
+		
+		destinationField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		tranOrMotorIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		orderIdField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 }

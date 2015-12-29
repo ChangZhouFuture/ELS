@@ -3,11 +3,21 @@ package presentation.controller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import bean.JavaBean1;
+import businesslogic.orderbl.Order;
+import businesslogic.stockbl.OutBoundOrder;
+import businesslogicservice.stockblservice.OutBoundOrderblservice;
+import presentation.orderui.OrderListui;
+import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderListui;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderui;
@@ -18,6 +28,9 @@ import presentation.userManagementui.UserInfoui;
 import presentation.userManagementui.UserListui;
 import presentation.userui.Administratorui;
 import presentation.userui.StockManagerui;
+import state.ResultMessage;
+import vo.orderVO.OrderVO;
+import vo.stockVO.OutBoundOrderVO;
 
 public class StockManagerController {
 	JPanel mainPanel = new JPanel();
@@ -28,6 +41,9 @@ public class StockManagerController {
 	StockCheckui stockCheckui;
 	StockCountui stockCountui;
 	OutBoundOrderui outBoundOrderui;
+	JavaBean1 javaBean1;
+	OutBoundOrderblservice outBoundOrderblservice;
+	OutBoundOrderVO outBoundOrderVO;
 	
 	public StockManagerController(){
 		stockManagerui = new StockManagerui();
@@ -87,7 +103,90 @@ public class StockManagerController {
 		});
 	}
 	public void inOutBoundOrderListui() {
-		
+		outBoundOrderListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outBoundOrderListui = null;
+				outBoundOrderui = new OutBoundOrderui();
+				childPanel = outBoundOrderui;
+				Skip.skip(mainPanel,childPanel);
+				inOutBoundOrderui();
+			}
+		});
+		outBoundOrderListui.idFind.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				    outBoundOrderblservice=new OutBoundOrder();
+					javaBean1=new JavaBean1();
+					javaBean1=outBoundOrderblservice.inquireA(outBoundOrderListui.idField.getText());
+					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					}
+					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
+					childPanel = outBoundOrderui;
+					Skip.skip(mainPanel,childPanel);
+					inOutBoundOrderui();
+			}
+		});
+		outBoundOrderListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                	String id=(String)outBoundOrderListui.tableModel.
+                			getValueAt(outBoundOrderListui.table.getSelectedRow(),1);
+                	try {
+                		outBoundOrderblservice=new OutBoundOrder();
+                		javaBean1=new JavaBean1();
+    					javaBean1=outBoundOrderblservice.inquireA(id);
+    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+    						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+    					}
+    					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+    					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
+    					childPanel = outBoundOrderui;
+    					Skip.skip(mainPanel,childPanel);
+    					inOutBoundOrderui();
+    				} catch (Exception e2) {
+    				}
+                }
+             }
+        });
+	}
+	public OutBoundOrderui findOutBoundOrder(OutBoundOrderVO outBoundOrderVO){
+		outBoundOrderui=new OutBoundOrderui();
+		outBoundOrderui.refresh();
+		outBoundOrderui.outBoundOrderVO=outBoundOrderVO;
+		outBoundOrderui.orderIdField.setText(outBoundOrderVO.getOrderID());
+		outBoundOrderui.destinationField.setText(outBoundOrderVO.getDestination());
+		outBoundOrderui.tranOrMotorIdField.setText(outBoundOrderVO.getTruckNum());
+		switch (outBoundOrderVO.getTransportType()) {
+		case Truck:outBoundOrderui.transportTypeType.setSelectedIndex(0);break;
+		case Train:outBoundOrderui.transportTypeType.setSelectedIndex(1);break;
+		case Plane:outBoundOrderui.transportTypeType.setSelectedIndex(2);break;
+		default:break;
+		}
+		outBoundOrderui.docmID.setText(outBoundOrderVO.getId());
+		outBoundOrderui.docmDate.setText(outBoundOrderVO.getOutDate());
+		return outBoundOrderui;
+	}
+	public void inOutBoundOrderui(){
+		outBoundOrderui.delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String deleteId=outBoundOrderui.docmID.getText();
+				ArrayList<String> deletearray=new ArrayList<String>();;
+				deletearray.add(deleteId);
+				outBoundOrderblservice=new OutBoundOrder();
+				outBoundOrderblservice.deleteMany(deletearray);
+				outBoundOrderListui = new OutBoundOrderListui();
+				childPanel = outBoundOrderListui;
+				Skip.skip(mainPanel,childPanel);
+				inOutBoundOrderListui();
+			}
+		});
 	}
 	public void inStorageListListui() {
 		

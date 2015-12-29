@@ -52,6 +52,7 @@ public class UserListui extends JPanel{
 	public JComboBox position;
 	public UserlineitemVO oneLine;
 	public UserManagementblservice userManagementblservice;
+	public DefaultTableModel tableModel;
 	String positionbl=null;
 	
 	public static void main(String[] args){
@@ -74,6 +75,14 @@ public class UserListui extends JPanel{
 		positionFind=new JButton();
 		String[] positionEntries={"快递员","营业厅业务员","中转中心业务员","库存管理人员","财务人员","财务人员(高)","总经理","管理员"};
 		position=new JComboBox(positionEntries);
+		String[] columnNames = {"选择","ID","姓名","性别","电话","市","区","职位"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		 };
 		
 		this.setLayout(null);
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
@@ -209,15 +218,6 @@ public class UserListui extends JPanel{
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 
 		 }
-		 DefaultTableModel tableModel;
-		 String[] columnNames = {"选择","ID","姓名","性别","电话","市","区","付薪方式"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -235,10 +235,10 @@ public class UserListui extends JPanel{
 		 try{
 		     for(int i=0;i<arrayList.size();i++){
 		    	oneLine=arrayList.get(i);
-//			     String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
-//			    		 oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
-//			    		 oneLine.getPayType().toString()};
-//			     tableModel.addRow(oneRow);
+			     String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
+			    		 oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
+			    		 oneLine.getPosition().toString()};
+			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
 			 e2.printStackTrace(); 

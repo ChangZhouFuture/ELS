@@ -276,7 +276,7 @@ public class BusiHallClerkController {
 				javaBean1=driversInforblservice.inquireA(driversListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 					JOptionPane.showMessageDialog
-					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					(null, "司机不存在", "错误", JOptionPane.ERROR_MESSAGE);
 				}
 				driversVO=(DriversVO)javaBean1.getObject();
 				driversui=findDriver(driversVO);
@@ -297,7 +297,7 @@ public class BusiHallClerkController {
 	    				javaBean1=driversInforblservice.inquireA(id);
 	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 	    					JOptionPane.showMessageDialog
-	    					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+	    					(null, "司机不存在", "错误", JOptionPane.ERROR_MESSAGE);
 	    				}
 	    				driversVO=(DriversVO)javaBean1.getObject();
 	    				driversui=findDriver(driversVO);
@@ -639,7 +639,7 @@ public class BusiHallClerkController {
 				javaBean1=vehiclesInforblservice.inquireA(vehiclesListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 					JOptionPane.showMessageDialog
-					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					(null, "车辆不存在", "错误", JOptionPane.ERROR_MESSAGE);
 				}
 				vehiclesVO=(VehiclesVO)javaBean1.getObject();
 				vehiclesui=findVehicle(vehiclesVO);
@@ -660,7 +660,7 @@ public class BusiHallClerkController {
 	    				javaBean1=vehiclesInforblservice.inquireA(id);
 	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 	    					JOptionPane.showMessageDialog
-	    					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+	    					(null, "车辆不存在", "错误", JOptionPane.ERROR_MESSAGE);
 	    				}
 	    				vehiclesVO=(VehiclesVO)javaBean1.getObject();
 	    				vehiclesui=findVehicle(vehiclesVO);
