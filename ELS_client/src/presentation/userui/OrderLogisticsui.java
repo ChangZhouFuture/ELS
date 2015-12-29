@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,10 +20,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import bean.JavaBean1;
+import businesslogic.orderbl.InquireLogisticsInforbl;
 import businesslogic.orderbl.Order;
+import businesslogicservice.orderblservice.InquireLogisticsInforblservice;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Images;
 import vo.orderVO.OrderVO;
+import vo.utilityVO.LogisticsInforVO;
 
 public class OrderLogisticsui extends JDialog{ 
 	public JPanel orderLogisticsPanel;
@@ -35,6 +40,8 @@ public class OrderLogisticsui extends JDialog{
 	public JScrollPane scroller;
 	public OrderVO orderVO;
 	public Point origin = new Point();
+	InquireLogisticsInforblservice inquireLogisticsInforblservice;
+	LogisticsInforVO logisticsInforVO;
 	
 	public static void main(String[] args){
 		OrderLogisticsui orderLogisticsui=new OrderLogisticsui();
@@ -79,21 +86,29 @@ public class OrderLogisticsui extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				String orderId=orderIdField.getText();
 				orderblservice=new Order();
-				JavaBean1 javaBean1=orderblservice.inquireA(orderId);
+				javaBean1=orderblservice.inquireA(orderId);
 				orderVO=new OrderVO();
 				orderVO=(OrderVO)javaBean1.getObject();
 				
 				String orderInfo=orderVO.getSenderName()+"  "+orderVO.getSenderAdd()+"  "+
 						orderVO.getAddresseeName()+"  "+orderVO.getAddresseeAdd()+"  "+
 				orderVO.getGoodsName();
-				
+				logisticsArea.append(orderInfo);
+				inquireLogisticsInforblservice=new InquireLogisticsInforbl();
+				javaBean1=inquireLogisticsInforblservice.inquireLogisticsInfor(orderId);
+				ArrayList<LogisticsInforVO> arrayList=(ArrayList<LogisticsInforVO>)javaBean1.getObject();
+				String oneLine="";
+				for(int i=arrayList.size()-1;i>=0;i--){
+					logisticsInforVO=arrayList.get(i);
+					oneLine=logisticsInforVO.getGenerateDate()+":"+logisticsInforVO.getDescripition();
+					logisticsArea.append(oneLine);
+				}
 			}
 		});
 		
 		logisticsArea.setEditable(false);
 		logisticsArea.setBounds(30,90,330,160);
 		logisticsArea.setBackground(Color.WHITE);
-		
 		scroller=new JScrollPane(logisticsArea);
 		scroller.setBounds(30,90,330,160);
 		

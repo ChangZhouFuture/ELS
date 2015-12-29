@@ -330,7 +330,7 @@ public class Orderui extends ParentDocuments{
 		amountField.setBackground(Color.WHITE);
 		amountField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
-		sureReceive.setBounds(30,170,90,24);
+		sureReceive.setBounds(30,170,70,24);
 		sureReceive.setText("收件");
 		sureReceive.setFont(font5);
 		sureReceive.setBackground(Color.WHITE);
@@ -345,7 +345,7 @@ public class Orderui extends ParentDocuments{
 			}
 		});
 		
-		makeSure.setBounds(420,170,90,24);
+		makeSure.setBounds(300,170,90,24);
 		makeSure.setText("确认收件");
 		makeSure.setFont(font5);
 		makeSure.setBackground(Color.WHITE);
@@ -361,13 +361,13 @@ public class Orderui extends ParentDocuments{
 			}
 		});
 		
-		actualReceiver.setBounds(240,170,100,24);
+		actualReceiver.setBounds(120,170,100,24);
 		actualReceiver.setText("实际收件人：");
 		actualReceiver.setFont(font5);
 		actualReceiver.setBackground(Color.WHITE);
 		actualReceiver.setVisible(false);
 		
-		actualReceiverField.setBounds(340,142,80,20);
+		actualReceiverField.setBounds(230,142,80,20);
 		actualReceiverField.setEditable(false);
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
