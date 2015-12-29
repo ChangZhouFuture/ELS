@@ -34,7 +34,7 @@ public class ParentDocuments extends JPanel{
 		docmID.setBounds(450,0,160,24);
 		docmID.setBackground(Color.WHITE);
 		
-		docmDate.setBounds(40,0,472,24);
+		docmDate.setBounds(40,472,200,24);
 		docmDate.setBackground(Color.WHITE);
 		
 		makeOrder.setBounds(260,442,96,30);

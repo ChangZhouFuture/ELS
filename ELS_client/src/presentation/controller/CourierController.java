@@ -17,6 +17,7 @@ import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userui.Courierui;
 import presentation.userui.Loginui;
@@ -82,7 +83,8 @@ public class CourierController {
 					javaBean1=new JavaBean1();
 					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
 					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+						EMSDialog d=new EMSDialog();
+						int n = d.showDialog(courierui,"订单不存在",30);
 					}else{
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
@@ -102,9 +104,6 @@ public class CourierController {
                 		orderblservice=new Order();
                 		javaBean1=new JavaBean1();
     					javaBean1=orderblservice.inquireA(id);
-    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-    						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
-    					}
     					orderVO=(OrderVO)javaBean1.getObject();
     					orderui=find(orderVO);
     					childPanel = orderui;
@@ -171,15 +170,20 @@ public class CourierController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=orderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				orderblservice=new Order();
-				orderblservice.deleteMany(deletearray);
-				orderListui = new OrderListui();
-				childPanel = orderListui;
-				Skip.skip(mainPanel,childPanel);
-				inOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(courierui, "确认删除?",30);  
+		        if (n == 1) { 
+		        	String deleteId=orderui.docmID.getText();
+					ArrayList<String> deletearray=new ArrayList<String>();;
+					deletearray.add(deleteId);
+					orderblservice=new Order();
+					orderblservice.deleteMany(deletearray);
+					orderListui = new OrderListui();
+					childPanel = orderListui;
+					Skip.skip(mainPanel,childPanel);
+					inOrderListui();
+		        } else if (n == 0) {  
+		        } 
 			}
 		});
 	}
