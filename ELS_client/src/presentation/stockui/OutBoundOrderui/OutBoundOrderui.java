@@ -64,13 +64,11 @@ public class OutBoundOrderui extends ParentDocuments{
 		outBoundOrder.setHorizontalAlignment(SwingConstants.CENTER);
 		outBoundOrder.setFont(font1);
 		outBoundOrder.setBackground(Color.WHITE);
-		outBoundOrder.setOpaque(true);
 		
 		transportType.setBounds(40,50,100,24);
 		transportType.setText("装运形式：");
 		transportType.setFont(font2);
 		transportType.setBackground(Color.WHITE);
-		transportType.setOpaque(true);
 		
 		transportTypeType.setBounds(140,50,100,24);
 		transportTypeType.setFont(font2);

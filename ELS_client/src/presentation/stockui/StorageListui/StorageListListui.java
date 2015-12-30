@@ -2,13 +2,10 @@ package presentation.stockui.StorageListui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
@@ -16,15 +13,11 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
 import bean.JavaBean1;
-import businesslogic.documentsbl.DeliveryOrder;
 import businesslogic.stockbl.StorageList;
-import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.stockblservice.StorageListblservice;
 import presentation.reuse.Listui;
 import presentation.userui.StockManagerui;
-import vo.documentsVO.DeliveryOrderVO;
 import vo.stockVO.StorageListVO;
 
 public class StorageListListui extends Listui{
@@ -44,7 +37,14 @@ public class StorageListListui extends Listui{
 	public StorageListListui(){
 		
 		sheetLabel.setText("入库管理");
-		
+		String[] columnNames = {"选择","ID","目的地","快递编号","入库日期","区号","时间"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
 		dateFind.addActionListener(new ActionListener() {
 			
 			@Override
@@ -67,9 +67,8 @@ public class StorageListListui extends Listui{
 			 this.remove(scrollPane);
 			 this.remove(delete);
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
-		 String[] columnNames = {"选择","ID","目的地","快递编号","入库日期","区号","时间"}; //列名
+		 String[] columnNames = {"选择","ID","目的地","快递编号","入库日期","区号","排号"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
 		 table = new JTable(tableModel){  
@@ -95,11 +94,10 @@ public class StorageListListui extends Listui{
 		     for(int i=0;i<arrayList.size();i++){
 			     oneLine=arrayList.get(i);
 			     String[] oneRow={"",oneLine.getId(),oneLine.getDestination(),oneLine.getOrderID(),
-					     oneLine.getInDate(),oneLine.getGenerateTime()};
+					     oneLine.getInDate(),oneLine.getAreaNum(),oneLine.getRowNum()};
 			     tableModel.addRow(oneRow);
 		     }
 		 }catch(Exception e2){
-			 e2.printStackTrace(); 
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -114,12 +112,12 @@ public class StorageListListui extends Listui{
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
 				   for(int i=0;i<table.getRowCount();i++){
-				    int selectedRow = table.getSelectedRow();//获得选中行的索引
-				    if(selectedRow!=-1){
-				     tableModel.removeRow(selectedRow);  //删除行 
-				    }
+				       int selectedRow = table.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				           tableModel.removeRow(selectedRow);  //删除行 
+				       }
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   storageListblservice=new StorageList();
 				   storageListblservice.deleteMany(idList);
 				  }});

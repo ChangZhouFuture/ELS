@@ -15,13 +15,16 @@ import javax.swing.JPanel;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogic.stockbl.OutBoundOrder;
+import businesslogic.stockbl.StorageList;
 import businesslogicservice.stockblservice.OutBoundOrderblservice;
+import businesslogicservice.stockblservice.StorageListblservice;
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
 import presentation.reuse.Skip;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderListui;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderui;
 import presentation.stockui.StorageListui.StorageListListui;
+import presentation.stockui.StorageListui.StorageListui;
 import presentation.stockui.stockui.StockCheckui;
 import presentation.stockui.stockui.StockCountui;
 import presentation.userManagementui.UserInfoui;
@@ -31,6 +34,7 @@ import presentation.userui.StockManagerui;
 import state.ResultMessage;
 import vo.orderVO.OrderVO;
 import vo.stockVO.OutBoundOrderVO;
+import vo.stockVO.StorageListVO;
 
 public class StockManagerController {
 	JPanel mainPanel = new JPanel();
@@ -41,9 +45,12 @@ public class StockManagerController {
 	StockCheckui stockCheckui;
 	StockCountui stockCountui;
 	OutBoundOrderui outBoundOrderui;
+	StorageListui storageListui;
 	JavaBean1 javaBean1;
 	OutBoundOrderblservice outBoundOrderblservice;
 	OutBoundOrderVO outBoundOrderVO;
+	StorageListblservice storageListblservice;
+	StorageListVO storageListVO;
 	
 	public StockManagerController(){
 		stockManagerui = new StockManagerui();
@@ -140,9 +147,6 @@ public class StockManagerController {
                 		outBoundOrderblservice=new OutBoundOrder();
                 		javaBean1=new JavaBean1();
     					javaBean1=outBoundOrderblservice.inquireA(id);
-    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-    						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-    					}
     					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
     					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
     					childPanel = outBoundOrderui;
@@ -167,6 +171,11 @@ public class StockManagerController {
 		case Plane:outBoundOrderui.transportTypeType.setSelectedIndex(2);break;
 		default:break;
 		}
+		switch(outBoundOrderVO.getApproState()){
+		case Approve:outBoundOrderui.approState.setText("已审批");break;
+		case NotApprove:outBoundOrderui.approState.setText("未审批");break;
+			default:break;
+		}
 		outBoundOrderui.docmID.setText(outBoundOrderVO.getId());
 		outBoundOrderui.docmDate.setText(outBoundOrderVO.getOutDate());
 		return outBoundOrderui;
@@ -189,7 +198,90 @@ public class StockManagerController {
 		});
 	}
 	public void inStorageListListui() {
-		
+		storageListListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				storageListListui = null;
+				storageListui = new StorageListui();
+				childPanel = storageListui;
+				Skip.skip(mainPanel,childPanel);
+				inStorageListui();
+			}
+		});
+		storageListListui.idFind.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				storageListblservice=new StorageList();
+				javaBean1=new JavaBean1();
+				javaBean1=storageListblservice.inquireA(storageListListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+				}else{
+					storageListVO=(StorageListVO)javaBean1.getObject();
+					storageListui=findStorageList(storageListVO);
+					childPanel = storageListui;
+					Skip.skip(mainPanel,childPanel);
+					inOutBoundOrderui();
+				}
+			}
+		});
+		storageListListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                	String id=(String)storageListListui.tableModel.
+                			getValueAt(storageListListui.table.getSelectedRow(),1);
+                	try {
+                		storageListblservice=new StorageList();
+                		javaBean1=new JavaBean1();
+    					javaBean1=storageListblservice.inquireA(id);
+    					storageListVO=(StorageListVO)javaBean1.getObject();
+    					storageListui=findStorageList(storageListVO);
+    					childPanel = storageListui;
+    					Skip.skip(mainPanel,childPanel);
+    					inOutBoundOrderui();
+    				} catch (Exception e2) {
+    				}
+                }
+             }
+        });
+	}
+	public StorageListui findStorageList(StorageListVO storageListVO){
+		storageListui=new StorageListui();
+		storageListui.refresh();
+		storageListui.storageListVO=storageListVO;
+		storageListui.orderIdField.setText(storageListVO.getOrderID());
+		storageListui.destinationField.setText(storageListVO.getDestination());
+		storageListui.areaNumField.setText(storageListVO.getAreaNum());
+		storageListui.rowNumField.setText(storageListVO.getRowNum());
+		storageListui.frameNumField.setText(storageListVO.getFrameNum());
+		storageListui.positionNumField.setText(storageListVO.getPositionNum());
+		switch(storageListVO.getApproState()){
+		case Approve:storageListui.approState.setText("已审批");break;
+		case NotApprove:storageListui.approState.setText("未审批");break;
+			default:break;
+		}
+		storageListui.docmID.setText(storageListVO.getId());
+		storageListui.docmDate.setText(storageListVO.getInDate());
+		return storageListui;
+	}
+	public void inStorageListui(){
+		storageListui.delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String deleteId=storageListui.docmID.getText();
+				ArrayList<String> deletearray=new ArrayList<String>();;
+				deletearray.add(deleteId);
+				storageListblservice=new StorageList();
+				storageListblservice.deleteMany(deletearray);
+				storageListListui = new StorageListListui();
+				childPanel = storageListListui;
+				Skip.skip(mainPanel,childPanel);
+				inOutBoundOrderListui();
+			}
+		});
 	}
 	public static void main(String[] args) {
 		StockManagerController stockManagerController = new StockManagerController();

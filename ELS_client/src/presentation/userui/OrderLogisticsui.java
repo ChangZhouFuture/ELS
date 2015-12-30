@@ -92,7 +92,7 @@ public class OrderLogisticsui extends JDialog{
 				
 				String orderInfo=orderVO.getSenderName()+"  "+orderVO.getSenderAdd()+"  "+
 						orderVO.getAddresseeName()+"  "+orderVO.getAddresseeAdd()+"  "+
-				orderVO.getGoodsName();
+				orderVO.getGoodsName()+"\n";
 				logisticsArea.append(orderInfo);
 				inquireLogisticsInforblservice=new InquireLogisticsInforbl();
 				javaBean1=inquireLogisticsInforblservice.inquireLogisticsInfor(orderId);
@@ -100,7 +100,7 @@ public class OrderLogisticsui extends JDialog{
 				String oneLine="";
 				for(int i=arrayList.size()-1;i>=0;i--){
 					logisticsInforVO=arrayList.get(i);
-					oneLine=logisticsInforVO.getGenerateDate()+":"+logisticsInforVO.getDescripition();
+					oneLine=logisticsInforVO.getGenerateDate()+":"+logisticsInforVO.getDescripition()+"\n";
 					logisticsArea.append(oneLine);
 				}
 			}
