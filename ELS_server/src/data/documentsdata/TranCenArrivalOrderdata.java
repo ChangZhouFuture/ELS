@@ -3,21 +3,17 @@ package data.documentsdata;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import bean.JavaBean1;
 import data.utility.Database;
 import data.utility.GenerateId;
-import po.documentsPO.BusiHallArrivalOrderPO;
 import po.documentsPO.TranCenArrivalOrderPO;
 import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.AgencyType;
 import state.ApproState;
 import state.GoodState;
 import state.ResultMessage;
-import state.TransportType;
 import dataservice.documentsdataservice.TranCenArrivalOrderdataservice;
 
 

@@ -33,7 +33,6 @@ implements InquireLogisticsInfordataservice{
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		po=new LogisticsInforPO();
 		ArrayList<LogisticsInforPO> pos=new ArrayList<>();
 		String sql="select * from logistics where ID=?";
 		try {
@@ -41,11 +40,13 @@ implements InquireLogisticsInfordataservice{
 			stmt.setString(1, orderID);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
+				po=new LogisticsInforPO();
 				po.setId(orderID);
 				po.setGenerateDate(rs.getString("generateDate"));
 				po.setDescripition(rs.getString("descripition"));
 				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);
+				jb1.setObject(pos);
 			}
 			return jb1;
 		} catch (SQLException e) {
