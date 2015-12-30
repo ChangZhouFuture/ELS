@@ -1,5 +1,7 @@
 package businesslogic.utilitybl;
 
+import java.text.DecimalFormat;
+
 import businesslogic.userbl.Login;
 import state.ExpressType;
 import state.TransportType;
@@ -19,6 +21,7 @@ public class CalculateFreight {
 			freight = (double)25 / 23 * freight;
 		}
 		
+		freight = Double.valueOf(String.format("%.2f", freight));
 		return freight;
 	}
 	

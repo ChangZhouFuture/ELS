@@ -137,6 +137,9 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		}
 		arrayList1 = (ArrayList<TranCenArrivalOrderPO>)javaBean1.getObject();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		POtoVO(1);
 		javaBean1.setObject(arrayList2);
 		return javaBean1;

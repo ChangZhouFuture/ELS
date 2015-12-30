@@ -168,6 +168,9 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 		busiHallLoadingListPO = (BusiHallLoadingListPO)javaBean1.getObject();
 		busiHallLoadingListVO = new BusiHallLoadingListVO();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		busiHallLoadingListVO.setDestination(busiHallLoadingListPO.getDestination());
 		busiHallLoadingListVO.setEscortMan(busiHallLoadingListPO.getEscortMan());
 		busiHallLoadingListVO.setSupervisionMan(busiHallLoadingListPO.getSupervisionMan());

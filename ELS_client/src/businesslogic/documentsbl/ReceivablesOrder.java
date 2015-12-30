@@ -110,6 +110,9 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 		}
 		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject(); 
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		POtoVO(1);
 		javaBean1.setObject(arrayList2);
 		return javaBean1;

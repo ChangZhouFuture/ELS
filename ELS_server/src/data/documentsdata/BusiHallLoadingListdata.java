@@ -214,5 +214,5 @@ public class BusiHallLoadingListdata extends UnicastRemoteObject  implements Bus
 		GenerateId g=new GenerateId();
 		return g.generateTrucksNum(firstPart, "busihallloadinglist");
 	}
-
+	
 }

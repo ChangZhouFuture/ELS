@@ -155,6 +155,9 @@ public class TransferOrder implements TransferOrderblservice {
 		transferOrderPO = (TransferOrderPO)javaBean1.getObject();
 		this.transferOrderVO = new TransferOrderVO();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		this.transferOrderVO.setID(transferOrderPO.getID());
 		this.transferOrderVO.setLoadingDate(transferOrderPO.getLoadingDate());
 		this.transferOrderVO.setCarriage(transferOrderPO.getCarriage());

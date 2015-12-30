@@ -159,6 +159,9 @@ public class TranCenLoadingList implements TranCenLoadingListblservice{
 		tranCenLoadingListPO = (TranCenLoadingListPO)javaBean1.getObject();
 		tranCenLoadingListVO = new TranCenLoadingListVO();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		tranCenLoadingListVO.setID(tranCenLoadingListPO.getID());
 		tranCenLoadingListVO.setLoadingDate(tranCenLoadingListPO.getLoadingDate());
 		tranCenLoadingListVO.setTranCenID(tranCenLoadingListPO.getTranCenID());

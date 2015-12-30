@@ -12,8 +12,6 @@ import RMI.RMIHelper;
 public class Main {
 	public static void main(String[] args) {
 		RMIHelper.init();
-//		Loginui loginui=new Loginui();
 		Mainui mainui = new Mainui();
-		
 	}
 }

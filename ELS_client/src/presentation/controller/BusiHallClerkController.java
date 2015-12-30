@@ -176,6 +176,7 @@ public class BusiHallClerkController {
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 					JOptionPane.showMessageDialog
 					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
 				businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
@@ -197,6 +198,7 @@ public class BusiHallClerkController {
    					javaBean1=busiHallLoadingListblservice.inquireA(id);
    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
+						return;
 					}
    					businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
    					childPanel = businessHallLoadingListui;

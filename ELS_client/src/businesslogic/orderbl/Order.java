@@ -118,6 +118,8 @@ public class Order implements Orderblservice {
 		this.orderVO.setFreight(orderPO.getFreight());
 		this.orderVO.setGoodsName(orderPO.getGoodsName());
 		this.orderVO.setId(orderPO.getId());
+		this.orderVO.setGenerateDate(orderPO.getGenerateDate());
+		this.orderVO.setExpressArrivalStatus(orderPO.getExpressArrivalStatus());
 		this.orderVO.setNumOfGoods(orderPO.getNumOfGoods());
 		this.orderVO.setPackingCharge(orderPO.getPackingCharge());
 		this.orderVO.setSenderAdd(orderPO.getSenderAdd());
@@ -169,6 +171,8 @@ public class Order implements Orderblservice {
 			e.printStackTrace();
 		}
 		
+		arrayList = new ArrayList<OrderlineitemPO>();
+		arrayList.add(orderlineitemPO);
 		lineitemPOtolineitemVO(1);
 		
 		return orderlineitemVO;
