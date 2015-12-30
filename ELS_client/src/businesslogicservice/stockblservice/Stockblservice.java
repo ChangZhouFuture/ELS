@@ -17,7 +17,7 @@ public interface Stockblservice {
 	 * 前置：库存管理人员已经被识别和授权
 	 * 后置：返回这一时间段内的库存变动信息
 	 */
-	public JavaBean5 stockCheck(String inOrOut, String startDate, String endDate);
+	public JavaBean5 stockCheck(String startDate, String endDate);
 	
 	/**
 	 * 

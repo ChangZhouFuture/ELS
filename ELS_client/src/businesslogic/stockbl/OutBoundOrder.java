@@ -43,6 +43,8 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	@Override
 	public OrderlineitemVO addExpress(String expressID) {
 		order = new Order();
+		//方法要修改，在库存里才行（暂时不修改了）
+		
 		orderlineitemVO = order.getOrderlineitemVO(expressID);
 		
 		return orderlineitemVO;
@@ -72,6 +74,8 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		this.outBoundOrderVO.setOutDate(generateTime());
 		this.outBoundOrderVO.setId(generateId());
 		this.outBoundOrderVO.setApproState(ApproState.NotApprove);
+		this.outBoundOrderVO.setArea(getArea(outBoundOrderVO.getOrderID())); 
+		//用一个方法来帮助自动生成区号，参数：orderID
 		VOtoPO();
 		
 		try {
@@ -100,6 +104,8 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		outBoundOrderPO = new OutBoundOrderPO();
 		this.outBoundOrderVO = outBoundOrderVO;
 		
+		this.outBoundOrderVO.setArea(getArea(outBoundOrderVO.getOrderID())); 
+		//重新设置一遍area
 		VOtoPO();
 		try {
 			resultMessage = outBoundOrderdataservice.update(outBoundOrderPO);
@@ -147,6 +153,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		outBoundOrderPO.setId(outBoundOrderVO.getId());
 		outBoundOrderPO.setOutDate(outBoundOrderVO.getOutDate());
 		outBoundOrderPO.setApproState(outBoundOrderVO.getApproState());
+		outBoundOrderPO.setArea(outBoundOrderVO.getArea());
 		outBoundOrderPO.setDestination(outBoundOrderVO.getDestination());
 		outBoundOrderPO.setGenerateTime(outBoundOrderVO.getGenerateTime());
 		outBoundOrderPO.setOrderID(outBoundOrderVO.getOrderID());
@@ -165,6 +172,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 			outBoundOrderVO.setOutDate(outBoundOrderPO.getOutDate());
 			outBoundOrderVO.setApproState(outBoundOrderPO.getApproState());
 			outBoundOrderVO.setOrderID(outBoundOrderPO.getOrderID());
+			//查的时候不需要看到出库的快件原所在区,不setArea
 			outBoundOrderVO.setTransportType(outBoundOrderPO.getTransportType());
 			outBoundOrderVO.setTruckNum(outBoundOrderPO.getTruckNum());
 			outBoundOrderVO.setDestination(outBoundOrderPO.getDestination());
@@ -173,4 +181,13 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		}
 	}
 	
+	public String getArea(String orderID) {
+		return date;
+	}
+	
+	public JavaBean1 getOrderIDsAndAreaList(String date) {
+		//javabean1里面的object是一个二维数组，包含一一对应的orderID + area
+		
+		return null;
+	}
 }

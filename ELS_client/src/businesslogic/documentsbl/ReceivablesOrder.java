@@ -135,7 +135,11 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	
 	@Override
 	public JavaBean1 inquireC(String busiHallID) {
-//		javaBean1 = 
+		try {
+			javaBean1 = receivablesOrderdataservice.findC(busiHallID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		//这里调用数据层findC方法
 		arrayList = (ArrayList<ReceivablesOrderPO>)javaBean1.getObject();
 		int k = arrayList.size();

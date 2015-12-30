@@ -9,5 +9,8 @@ public interface StaffInforblservice {
     
     public JavaBean1 inquireB(String position);
     
+    public JavaBean1 inquireSalaryStrategy();
+    	
     public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO);
+    
 }

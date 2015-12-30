@@ -1,6 +1,7 @@
 package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
@@ -57,7 +58,8 @@ public class Order implements Orderblservice {
 		this.orderVO.setGenerateDate(generateDate());
 		this.orderVO.setGenerateTime(Time.generateTime());
 		this.orderVO.setId(generateId());
-		this.orderVO.setExpectedArrivalDate(generateExpectedArrivalDate());
+		this.orderVO.setExpectedArrivalDate(generateExpectedArrivalDate(orderVO.
+				getSenderAdd(), orderVO.getAddresseeAdd()));
 		this.orderVO.setApproState(ApproState.NotApprove);
 		this.orderVO.setExpressArrivalStatus(ExpressArrivalStatus.NotArrival);
 		VOtoPO();
@@ -217,10 +219,16 @@ public class Order implements Orderblservice {
 		return freight;
 	}
 
-	public String generateExpectedArrivalDate() {
-		//仅仅是测试用
-//		String expectedArrivalDate = date.substring(date.length()-2, date.length()-1);
-		return date;
+	public String generateExpectedArrivalDate(String senderAdd, String addresseeAdd) {
+		String expectedArrivalDate = null;
+		try {
+			expectedArrivalDate = orderdataservice.expectedArrivalDate(date, 
+					senderAdd, addresseeAdd);
+		} catch (RemoteException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return expectedArrivalDate;
 	}
 
 	public void VOtoPO() {
@@ -270,6 +278,11 @@ public class Order implements Orderblservice {
 	public String generateDate() {
 		date = Time.generateDate();
 		return date;
+	}
+	
+	public double getOrderAmount() {
+		
+		return freight;
 	}
 	
 }

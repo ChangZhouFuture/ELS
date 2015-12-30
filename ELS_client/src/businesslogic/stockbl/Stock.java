@@ -1,16 +1,18 @@
 package businesslogic.stockbl;
 
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
-
 import dataservice.stockdataservice.Stockdataservice;
 import po.lineitemPO.stocklineitemPO.StocklineitemPO;
+import po.stockPO.OutBoundOrderPO;
 import po.stockPO.StockPO;
 import po.stockPO.StorageListPO;
 import state.ResultMessage;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.lineitemVO.stocklineitemVO.StocklineitemVO;
 import RMI.RMIHelper;
+import bean.JavaBean1;
 import bean.JavaBean3;
 import bean.JavaBean4;
 import bean.JavaBean5;
@@ -25,13 +27,24 @@ public class Stock implements Stockblservice{
 	private StocklineitemVO stocklineitemVO;
 	private Order order;
 	private OrderlineitemVO orderlineitemVO;
+	private StorageList storageList;
+	private OutBoundOrder outBoundOrder;
+	private StorageListPO storageListPO;
+	private OutBoundOrderPO outBoundOrderPO;
 	private ArrayList<StocklineitemPO> arrayList;
 	private ArrayList<StocklineitemVO> arrayList2;
 	private ArrayList<OrderlineitemVO> arrayList3;
-	private ResultMessage resultMessage;
+	private ArrayList<StorageListPO> arrayList4;
+	private ArrayList<OutBoundOrderPO> arrayList5;
+	private JavaBean1 javaBean1;
 	private JavaBean3 javaBean3;
 	private JavaBean4 javaBean4;
 	private JavaBean5 javaBean5;
+	private ResultMessage resultMessage;
+	private int[] inNum = new int[4];  //分别是四个区的入库数量计数器,初始都是0
+	private int[] outNum = new int[4];
+	private double[] inAmount = new double[4];  //分别是四个区的入库金额,初始都是0
+	private double[] outAmount = new double[4];
 	
 	public Stock() {
 		try {
@@ -42,14 +55,44 @@ public class Stock implements Stockblservice{
 	}
 	
 	@Override
-	public JavaBean5 stockCheck(String inOrOut, String startDate, String endDate) {
-		if (inOrOut == "入库") {
-			//用time类里面的方法，查看时间段内每一天总共的入库单lineitem
-		} else {
-
+	public JavaBean5 stockCheck(String startDate, String endDate) {
+		ArrayList<String> arrayList = null;
+		try {
+			arrayList = Time.getEveryDay(startDate, endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
-		//要设置现有的库存数量，可能是调用库存盘点方法
-		//要设置总金额，需要根据每个单上的订单id查订单价格，累加。多次调用订单的差多个方法
+		
+		inNum = new int[4];
+		inAmount = new double[4];
+		outNum = new int[4];
+		outAmount = new double[4];
+		
+		int k = arrayList.size();
+		for (int i = 0; i < k; i++) {
+			//时间段循环
+			String date = arrayList.get(i);
+				
+			javaBean1 = storageList.inquireB(date);
+			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
+			
+			String area = "";
+			//for循环条件要改,获取各个area
+			for (int j = 0; j < arrayList4.size(); j++) {
+				//对这一天所有入库单，按区分
+//				area = storageListPO.getAreaNum();
+				increaseNumAndAmount(true, area);
+				
+			}//结束对入库数量、金额的计算
+			
+			javaBean1 = outBoundOrder.inquireB(date);
+			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
+			//再像上面一样用内层for循环
+			
+			
+		}
+		//外层for循环结束
+			
 		
 		return null;
 	}
@@ -142,4 +185,38 @@ public class Stock implements Stockblservice{
 		return resultMessage;
 	}
 
+	public double getOrderAmount(String orderID) {
+		
+		//调用订单类的方法
+		return 0;
+	}
+	
+	public void increaseNumAndAmount(boolean flag, String area) {
+		if (flag) {
+			//计算与入库相关的变量
+			switch (area) {
+			case "机动区":
+//				inAmount[0] += getOrderAmount();
+				//调用获取单据金额的方法，
+				inNum[0]++;
+				break;
+			case "汽运区":
+//				inAmount[1] += getOrderAmount();
+				inNum[1]++;
+				break;
+			case "铁运区":
+//				inAmount[2] += getOrderAmount();
+				inNum[2]++;
+				break;
+			case "航运区":
+//				inAmount[3] += getOrderAmount();
+				inNum[3]++;
+				break;
+			default:
+				break;
+			}
+		} else {
+			//计算与出库相关的变量
+		}
+	}
 }

@@ -1,6 +1,8 @@
 package businesslogic.inforManagementbl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import po.inforManagementPO.SalaryStrategyPO;
 import state.ResultMessage;
 import vo.inforManagementVO.SalaryStrategyVO;
@@ -13,6 +15,9 @@ import businesslogicservice.inforManagementblservice.StaffInforblservice;
 public class StaffInfor implements StaffInforblservice{
 	private StaffInfordataservice staffInfordataservice;
 	private SalaryStrategyPO salaryStrategyPO;
+	private SalaryStrategyVO salaryStrategyVO;
+	private ArrayList<SalaryStrategyPO> salaryStrategyPOs;
+	private ArrayList<SalaryStrategyVO> salaryStrategyVOs;
 	private UserManagement userManagement;
 	private JavaBean1 javaBean1;
 	
@@ -54,4 +59,33 @@ public class StaffInfor implements StaffInforblservice{
 		return null;
 	}
 
+	@Override
+	public JavaBean1 inquireSalaryStrategy() {
+//		javaBean1 = 
+		//调用数据层
+		salaryStrategyPOs = (ArrayList<SalaryStrategyPO>)javaBean1.getObject();
+		salaryStrategyVOs = new ArrayList<SalaryStrategyVO>();
+		
+		if (javaBean1.getResultMessage() == ResultMessage.Fail) {
+			return javaBean1;
+		}
+		
+		int k = salaryStrategyPOs.size();
+		for (int i = 0; i < k; i++) {
+			salaryStrategyPO = salaryStrategyPOs.get(i);
+			
+			salaryStrategyVO = new SalaryStrategyVO();
+			salaryStrategyVO.setPosition(salaryStrategyPO.getPosition());
+			salaryStrategyVO.setPayType(salaryStrategyPO.getPayType());
+			salaryStrategyVO.setPayAmount(salaryStrategyPO.getPayAmount());
+			salaryStrategyVO.setPercentage(salaryStrategyPO.getPercentage());
+			
+			salaryStrategyVOs.add(salaryStrategyVO);
+		}
+		
+		javaBean1.setObject(this.salaryStrategyVOs);
+		return javaBean1;
+	}
+	
+	
 }
