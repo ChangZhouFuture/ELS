@@ -23,7 +23,7 @@ public class UpdateLogisticsInfor {
 		logisticsInforPO = new LogisticsInforPO();
 		logisticsInforPO.setId(id);
 		logisticsInforPO.setGenerateDate(date);
-		logisticsInforPO.setDescripition(description);
+		logisticsInforPO.setDescription(description);
 		
 		try {
 			resultMessage = updateLogisticsInfordataservice.update(logisticsInforPO);

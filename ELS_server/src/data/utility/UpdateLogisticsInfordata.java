@@ -30,7 +30,7 @@ public class UpdateLogisticsInfordata extends UnicastRemoteObject implements Upd
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
 			stmt.setString(2, po.getGenerateDate());
-			stmt.setString(3, po.getDescripition());
+			stmt.setString(3, po.getDescription());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {

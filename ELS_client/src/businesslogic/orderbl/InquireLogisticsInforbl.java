@@ -49,7 +49,7 @@ public class InquireLogisticsInforbl implements InquireLogisticsInforblservice{
 			
 			logisticsInforVO = new LogisticsInforVO();
 			logisticsInforVO.setGenerateDate(logisticsInforPO.getGenerateDate());
-			logisticsInforVO.setDescripition(logisticsInforPO.getDescripition());
+			logisticsInforVO.setDescripition(logisticsInforPO.getDescription());
 			
 			arrayList2.add(logisticsInforVO);
 		}

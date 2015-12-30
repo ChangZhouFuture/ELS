@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class LogisticsInforPO implements Serializable{
 	private String id;
 	private String generateDate;
-	private String descripition;
+	private String description;
 	
 	public String getId() {
 		return id;
@@ -19,12 +19,11 @@ public class LogisticsInforPO implements Serializable{
 	public void setGenerateDate(String generateDate) {
 		this.generateDate = generateDate;
 	}
-	public String getDescripition() {
-		return descripition;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescripition(String descripition) {
-		this.descripition = descripition;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
-	
+
 }

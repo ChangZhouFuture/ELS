@@ -43,7 +43,7 @@ implements InquireLogisticsInfordataservice{
 				po=new LogisticsInforPO();
 				po.setId(orderID);
 				po.setGenerateDate(rs.getString("generateDate"));
-				po.setDescripition(rs.getString("description"));
+				po.setDescription(rs.getString("description"));
 				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);
 				jb1.setObject(pos);
