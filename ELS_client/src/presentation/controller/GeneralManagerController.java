@@ -107,7 +107,6 @@ public class GeneralManagerController {
 			public void actionPerformed(ActionEvent e) {
 				operalogListui = new OperalogListui();
 				childPanel = operalogListui;
-				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
 			}
 		});
@@ -115,7 +114,9 @@ public class GeneralManagerController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				wageStrategyListui=new WageStrategyListui();
+				childPanel=wageStrategyListui;
+				Skip.skip(mainPanel,childPanel);
 			}
 		});
 		
