@@ -71,8 +71,8 @@ public class DeliveryOrder implements DeliveryOrderblservice{
 		
 		if (resultMessage == ResultMessage.Success) {
 			updateLogisticsInfor = new UpdateLogisticsInfor();
-			updateLogisticsInfor.update(date, this.deliveryOrderVO.getOrderID(), date
-				+ " 订单正在派件中...");
+			updateLogisticsInfor.update(date, this.deliveryOrderVO.getOrderID(),
+				" 订单正在派件中...");
 		}
 		javaBean1.setObject(this.deliveryOrderVO);		
 		javaBean1.setResultMessage(resultMessage);

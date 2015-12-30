@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import bean.JavaBean1;
-import businesslogic.orderbl.InquireLogisticsInforbl;
+import businesslogic.orderbl.InquireLogisticsInfor;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.InquireLogisticsInforblservice;
 import businesslogicservice.orderblservice.Orderblservice;
@@ -95,7 +95,7 @@ public class OrderLogisticsui extends JDialog{
 						orderVO.getAddresseeName()+"  "+orderVO.getAddresseeAdd()+"  "+
 				orderVO.getGoodsName()+"\n";
 				logisticsArea.append(orderInfo);
-				inquireLogisticsInforblservice=new InquireLogisticsInforbl();
+				inquireLogisticsInforblservice=new InquireLogisticsInfor();
 				javaBean1=inquireLogisticsInforblservice.inquireLogisticsInfor(orderId);
 				ArrayList<LogisticsInforVO> arrayList=(ArrayList<LogisticsInforVO>)javaBean1.getObject();
 				String oneLine="";

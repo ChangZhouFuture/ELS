@@ -2,14 +2,16 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import po.utilityPO.LogisticsInforPO;
+import state.ResultMessage;
 import vo.utilityVO.LogisticsInforVO;
 import dataservice.orderdataservice.InquireLogisticsInfordataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import businesslogicservice.orderblservice.InquireLogisticsInforblservice;
 
-public class InquireLogisticsInforbl implements InquireLogisticsInforblservice{
+public class InquireLogisticsInfor implements InquireLogisticsInforblservice{
 	private InquireLogisticsInfordataservice inquireLogisticsInfordataservice;
 	private LogisticsInforPO logisticsInforPO;
 	private LogisticsInforVO logisticsInforVO;
@@ -17,7 +19,7 @@ public class InquireLogisticsInforbl implements InquireLogisticsInforblservice{
 	private ArrayList<LogisticsInforVO> arrayList2;
 	private JavaBean1 javaBean1;
 	
-	public InquireLogisticsInforbl() {
+	public InquireLogisticsInfor() {
 		try {
 			inquireLogisticsInfordataservice = RMIHelper.getInquireLogisticsInfordataservice();
 		} catch (Exception e) {
@@ -34,6 +36,10 @@ public class InquireLogisticsInforbl implements InquireLogisticsInforblservice{
 			e.printStackTrace();
 		}
 		arrayList = (ArrayList<LogisticsInforPO>)javaBean1.getObject();
+		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		int k = arrayList.size();
 		
 		POtoVO(k);

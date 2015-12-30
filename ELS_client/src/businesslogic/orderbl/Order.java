@@ -70,8 +70,7 @@ public class Order implements Orderblservice {
 		
 		if (resultMessage == ResultMessage.Success) {
 			updateLogisticsInfor = new UpdateLogisticsInfor();
-			updateLogisticsInfor.update(date, this.orderVO.getId(), date + " "
-					+ "订单已生成");
+			updateLogisticsInfor.update(date, this.orderVO.getId(), "订单已生成");
 		}
 		javaBean1.setObject(this.orderVO);
 		javaBean1.setResultMessage(resultMessage);

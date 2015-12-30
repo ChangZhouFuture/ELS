@@ -107,7 +107,7 @@ public class BusiHallLoadingList implements BusiHallLoadingListblservice{
 			String orderID;
 			for (int i = 0; i < orderIDs.size(); i++) {
 				orderID = orderIDs.get(i);
-				updateLogisticsInfor.update(date, orderID, date + " 订单已在" + 
+				updateLogisticsInfor.update(date, orderID, " 订单已在" + 
 				Login.city + Login.region +"营业厅装车");
 			}
 		}

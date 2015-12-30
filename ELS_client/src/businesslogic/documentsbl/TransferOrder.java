@@ -91,7 +91,7 @@ public class TransferOrder implements TransferOrderblservice {
 			String orderID;
 			for (int i = 0; i < orderIDs.size(); i++) {
 				orderID = orderIDs.get(i);
-				updateLogisticsInfor.update(date, orderID, date + " 订单已从" + 
+				updateLogisticsInfor.update(date, orderID, " 订单已从" + 
 				Login.city + "中转中心发出,下一站： " + this.transferOrderVO.
 				getDestination() + "中转中心");
 			}
