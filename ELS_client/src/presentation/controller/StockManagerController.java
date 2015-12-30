@@ -20,6 +20,7 @@ import businesslogicservice.stockblservice.OutBoundOrderblservice;
 import businesslogicservice.stockblservice.StorageListblservice;
 import presentation.orderui.OrderListui;
 import presentation.orderui.Orderui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderListui;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderui;
@@ -128,7 +129,8 @@ public class StockManagerController {
 					javaBean1=new JavaBean1();
 					javaBean1=outBoundOrderblservice.inquireA(outBoundOrderListui.idField.getText());
 					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+						EMSDialog d=new EMSDialog();
+						int n = d.showDialog(stockManagerui,"单据不存在",30);
 					}
 					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
 					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
@@ -185,15 +187,20 @@ public class StockManagerController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=outBoundOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				outBoundOrderblservice=new OutBoundOrder();
-				outBoundOrderblservice.deleteMany(deletearray);
-				outBoundOrderListui = new OutBoundOrderListui();
-				childPanel = outBoundOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inOutBoundOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(stockManagerui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=outBoundOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    outBoundOrderblservice=new OutBoundOrder();
+				    outBoundOrderblservice.deleteMany(deletearray);
+				    outBoundOrderListui = new OutBoundOrderListui();
+				    childPanel = outBoundOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inOutBoundOrderListui();
+		        } else if (n == 0) {  
+		        }
 			}
 		});
 	}
@@ -216,7 +223,8 @@ public class StockManagerController {
 				javaBean1=new JavaBean1();
 				javaBean1=storageListblservice.inquireA(storageListListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(stockManagerui,"单据不存在",30);
 				}else{
 					storageListVO=(StorageListVO)javaBean1.getObject();
 					storageListui=findStorageList(storageListVO);
@@ -271,15 +279,20 @@ public class StockManagerController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=storageListui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				storageListblservice=new StorageList();
-				storageListblservice.deleteMany(deletearray);
-				storageListListui = new StorageListListui();
-				childPanel = storageListListui;
-				Skip.skip(mainPanel,childPanel);
-				inOutBoundOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(stockManagerui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=storageListui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    storageListblservice=new StorageList();
+				    storageListblservice.deleteMany(deletearray);
+				    storageListListui = new StorageListListui();
+				    childPanel = storageListListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inOutBoundOrderListui();
+		        } else if (n == 0) {  
+		        }
 			}
 		});
 	}

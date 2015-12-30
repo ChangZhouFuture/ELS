@@ -95,7 +95,7 @@ public class BankAccountListui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nameString=null;
+				String nameString="";
 				if(nameField.getText()!=null){
 					nameString=nameField.getText();
 					JavaBean1 javaBean1;

@@ -62,7 +62,7 @@ public class OrderListui extends Listui{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String date=null;
+				String date="";
 				date=showDate.getText();
 				System.out.println(date);
 				orderblservice=new Order();

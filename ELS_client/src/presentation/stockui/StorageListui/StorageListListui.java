@@ -49,8 +49,8 @@ public class StorageListListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				storageListblservice=new StorageList();
 				try {
 					javaBean1=storageListblservice.inquireB(dateString);

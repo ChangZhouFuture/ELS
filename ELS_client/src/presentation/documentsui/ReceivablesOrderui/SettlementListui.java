@@ -69,8 +69,8 @@ public class SettlementListui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-			    dateString=dateString+showDate.getText();
+				String dateString="";
+			    dateString=showDate.getText();
 			    receivablesOrderblservice=new ReceivablesOrder();
 			    try {
 				    javaBean1=receivablesOrderblservice.inqurieB(dateString);

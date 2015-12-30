@@ -56,8 +56,8 @@ public class TranCenArrivalOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
 				try {
 					javaBean1=tranCenArrivalOrderblservice.inquireB(dateString);

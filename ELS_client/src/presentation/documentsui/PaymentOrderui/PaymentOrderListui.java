@@ -59,8 +59,8 @@ public class PaymentOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				paymentOrderblservice=new PaymentOrder();
 				try {
 					javaBean1=paymentOrderblservice.inquireB(dateString);

@@ -53,8 +53,8 @@ public class DeliveryOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				deliveryOrderblservice=new DeliveryOrder();
 				try {
 					javaBean1=deliveryOrderblservice.inquireB(dateString);

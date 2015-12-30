@@ -79,19 +79,19 @@ public class CourierController {
 		orderListui.idFind.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					orderblservice=new Order();
-					javaBean1=new JavaBean1();
-					javaBean1=orderblservice.inquireA(orderListui.idField.getText());
-					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						EMSDialog d=new EMSDialog();
-						int n = d.showDialog(courierui,"订单不存在",30);
-					}else{
+				orderblservice=new Order();
+				javaBean1=new JavaBean1();
+				javaBean1=orderblservice.inquireA(orderListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(courierui,"订单不存在",30);
+				}else{
 					orderVO=(OrderVO)javaBean1.getObject();
 					orderui=find(orderVO);
 					childPanel = orderui;
 					Skip.skip(mainPanel,childPanel);
 					inOrderui();
-					}
+				}
 			}
 		});
 		orderListui.table.addMouseListener(new MouseAdapter() {
@@ -183,7 +183,7 @@ public class CourierController {
 					Skip.skip(mainPanel,childPanel);
 					inOrderListui();
 		        } else if (n == 0) {  
-		        } 
+		        }
 			}
 		});
 	}

@@ -6,18 +6,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import bean.JavaBean1;
-import businesslogic.documentsbl.BusiHallLoadingList;
 import businesslogic.documentsbl.TranCenArrivalOrder;
 import businesslogic.documentsbl.TranCenLoadingList;
 import businesslogic.documentsbl.TransferOrder;
-import businesslogic.orderbl.Order;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 import businesslogicservice.documentsblservice.TranCenLoadingListblservice;
 import businesslogicservice.documentsblservice.TransferOrderblservice;
@@ -27,14 +22,13 @@ import presentation.documentsui.TranCenLoadingListui.TransferCenterLoadingListLi
 import presentation.documentsui.TranCenLoadingListui.TransferCenterLoadingListui;
 import presentation.documentsui.TransferOrderui.TransferOrderListui;
 import presentation.documentsui.TransferOrderui.TransferOrderui;
-import presentation.orderui.OrderListui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userui.TranCenClerkui;
 import state.ResultMessage;
 import vo.documentsVO.TranCenArrivalOrderVO;
 import vo.documentsVO.TranCenLoadingListVO;
 import vo.documentsVO.TransferOrderVO;
-import vo.orderVO.OrderVO;
 
 public class TranCenClerkController {
 	JPanel mainPanel = new JPanel();
@@ -122,7 +116,8 @@ public class TranCenClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=tranCenArrivalOrderblservice.inquireA(tranCenArrivalOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(tranCenClerkui,"单据不存在",30);
 				}
 				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
 				tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
@@ -137,19 +132,16 @@ public class TranCenClerkController {
                if (evt.getClickCount() == 2) {
                	String id=(String)tranCenArrivalOrderListui.tableModel.
                			getValueAt(tranCenArrivalOrderListui.table.getSelectedRow(),1);
-               	try {tranCenArrivalOrderblservice=new TranCenArrivalOrder();
-				javaBean1=new JavaBean1();
-				javaBean1=tranCenArrivalOrderblservice.inquireA(tranCenArrivalOrderListui.idField.getText());
-				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-				}
-				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
-				tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
-				childPanel = tranCenArrivalOrderui;
-				Skip.skip(mainPanel,childPanel);
-				inTransferOrderui();
+               	try {
+               		tranCenArrivalOrderblservice=new TranCenArrivalOrder();
+				    javaBean1=new JavaBean1();
+				    javaBean1=tranCenArrivalOrderblservice.inquireA(tranCenArrivalOrderListui.idField.getText());
+				    tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+				    tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
+				    childPanel = tranCenArrivalOrderui;
+				    Skip.skip(mainPanel,childPanel);
+				    inTransferOrderui();
                	} catch (Exception e2) {
-					e2.printStackTrace();
 				}
             }
          }
@@ -182,15 +174,20 @@ public class TranCenClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=tranCenArrivalOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
-				tranCenArrivalOrderblservice.deleteMany(deletearray);
-				tranCenArrivalOrderListui = new TranCenArrivalOrderListui();
-				childPanel = tranCenArrivalOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inTransferOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(tranCenClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=tranCenArrivalOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    tranCenArrivalOrderblservice=new TranCenArrivalOrder();
+				    tranCenArrivalOrderblservice.deleteMany(deletearray);
+				    tranCenArrivalOrderListui = new TranCenArrivalOrderListui();
+				    childPanel = tranCenArrivalOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inTransferOrderListui();
+		        } else if (n == 0) {  
+		        }
 			}
 		});
 	}
@@ -214,7 +211,8 @@ public class TranCenClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=transferOrderblservice.inquireA(transferOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(tranCenClerkui,"单据不存在",30);
 				}
 				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
 				transferOrderui=findTransferOrder(transferOrderVO);
@@ -232,16 +230,12 @@ public class TranCenClerkController {
                	try {transferOrderblservice=new TransferOrder();
 				javaBean1=new JavaBean1();
 				javaBean1=transferOrderblservice.inquireA(transferOrderListui.idField.getText());
-				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-				}
 				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
 				transferOrderui=findTransferOrder(transferOrderVO);
 				childPanel = transferOrderui;
 				Skip.skip(mainPanel,childPanel);
 				inTransferOrderui();
                	} catch (Exception e2) {
-					e2.printStackTrace();
 				}
             }
          }
@@ -289,15 +283,20 @@ public class TranCenClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=transferOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				transferOrderblservice=new TransferOrder();
-				transferOrderblservice.delete(deletearray);
-				transferOrderListui = new TransferOrderListui();
-				childPanel = transferOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inTransferOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(tranCenClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=transferOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    transferOrderblservice=new TransferOrder();
+				    transferOrderblservice.delete(deletearray);
+				    transferOrderListui = new TransferOrderListui();
+				    childPanel = transferOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inTransferOrderListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -321,7 +320,8 @@ public class TranCenClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=tranCenLoadingListblservice.inquireA(transferCenterLoadingListListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(tranCenClerkui,"单据不存在",30);
 				}
 				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
 				transferCenterLoadingListui=findTransferCenterLoadingList(tranCenLoadingListVO);
@@ -336,19 +336,16 @@ public class TranCenClerkController {
                if (evt.getClickCount() == 2) {
                	String id=(String)transferCenterLoadingListListui.tableModel.
                			getValueAt(transferCenterLoadingListListui.table.getSelectedRow(),1);
-               	try {tranCenLoadingListblservice=new TranCenLoadingList();
-				javaBean1=new JavaBean1();
-				javaBean1=tranCenLoadingListblservice.inquireA(transferCenterLoadingListListui.idField.getText());
-				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-				}
-				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
-				transferCenterLoadingListui=findTransferCenterLoadingList(tranCenLoadingListVO);
-				childPanel = transferCenterLoadingListui;
-				Skip.skip(mainPanel,childPanel);
-				inTransferCenterLoadingListui();
+               	try {
+               		tranCenLoadingListblservice=new TranCenLoadingList();
+				    javaBean1=new JavaBean1();
+				    javaBean1=tranCenLoadingListblservice.inquireA(transferCenterLoadingListListui.idField.getText());
+				    tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
+				    transferCenterLoadingListui=findTransferCenterLoadingList(tranCenLoadingListVO);
+				    childPanel = transferCenterLoadingListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inTransferCenterLoadingListui();
                	} catch (Exception e2) {
-					e2.printStackTrace();
 				}
             }
          }
@@ -390,15 +387,20 @@ public class TranCenClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=transferCenterLoadingListui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				tranCenLoadingListblservice=new TranCenLoadingList();
-				tranCenLoadingListblservice.delete(deletearray);
-				transferCenterLoadingListListui = new TransferCenterLoadingListListui();
-				childPanel = transferCenterLoadingListListui;
-				Skip.skip(mainPanel,childPanel);
-				inTransferCenterLoadingListListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(tranCenClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=transferCenterLoadingListui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    tranCenLoadingListblservice=new TranCenLoadingList();
+				    tranCenLoadingListblservice.delete(deletearray);
+				    transferCenterLoadingListListui = new TransferCenterLoadingListListui();
+				    childPanel = transferCenterLoadingListListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inTransferCenterLoadingListListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}

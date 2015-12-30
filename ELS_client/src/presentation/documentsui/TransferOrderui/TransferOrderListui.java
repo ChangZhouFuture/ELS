@@ -53,8 +53,8 @@ public class TransferOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				transferOrderblservice=new TransferOrder();
 				try {
 					javaBean1=transferOrderblservice.inquireB(dateString);

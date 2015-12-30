@@ -2,6 +2,9 @@ package presentation.inforManagementui.Staffui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -49,6 +52,13 @@ public class WageStrategyListui extends JPanel{
 		modify.setBackground(Color.WHITE);
 		modify.setText("ÐÞ¸Ä");
 		modify.setFont(font2);
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		table.setSize(550,216);
 		table.setLocation(30,100);

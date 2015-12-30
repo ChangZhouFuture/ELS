@@ -17,6 +17,7 @@ import businesslogic.orderbl.Order;
 import businesslogic.userManagementbl.UserManagement;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
 import presentation.orderui.OrderListui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userManagementui.UserInfoui;
 import presentation.userManagementui.UserListui;
@@ -82,7 +83,8 @@ public class AdministratorController {
            		javaBean1=new JavaBean1();
 					javaBean1=userManagementblservice.inquireA(userListui.idField.getText());
 					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "人员不存在", "错误", JOptionPane.ERROR_MESSAGE);
+						EMSDialog d=new EMSDialog();
+						int n = d.showDialog(administratorui,"订单不存在",30);
 					}
 					userVO=(UserVO)javaBean1.getObject();
 					userInfoui=findUser(userVO);
@@ -101,9 +103,6 @@ public class AdministratorController {
                		userManagementblservice=new UserManagement();
                		javaBean1=new JavaBean1();
    					javaBean1=userManagementblservice.inquireA(id);
-   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-   						JOptionPane.showMessageDialog(null, "人员不存在", "错误", JOptionPane.ERROR_MESSAGE);
-   					}
    					userVO=(UserVO)javaBean1.getObject();
    					userInfoui=findUser(userVO);
    					childPanel = userInfoui;
@@ -151,15 +150,20 @@ public class AdministratorController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=userInfoui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				userManagementblservice=new UserManagement();
-				userManagementblservice.deleteMany(deletearray);
-				userListui = new UserListui();
-				childPanel = userListui;
-				Skip.skip(mainPanel,childPanel);
-				inUserListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(administratorui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=userInfoui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    userManagementblservice=new UserManagement();
+				    userManagementblservice.deleteMany(deletearray);
+				    userListui = new UserListui();
+				    childPanel = userListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inUserListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}

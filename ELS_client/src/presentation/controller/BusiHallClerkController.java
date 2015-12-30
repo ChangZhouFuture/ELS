@@ -35,6 +35,7 @@ import presentation.inforManagementui.Driversui.DriversListui;
 import presentation.inforManagementui.Driversui.Driversui;
 import presentation.inforManagementui.Vehiclesui.VehiclesListui;
 import presentation.inforManagementui.Vehiclesui.Vehiclesui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userui.BusiHallClerkui;
 import presentation.userui.Loginui;
@@ -174,9 +175,8 @@ public class BusiHallClerkController {
 				javaBean1=busiHallLoadingListblservice.inquireA(
 						businessHallLoadingListListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog
-					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-					return;
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
 				busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
 				businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
@@ -196,10 +196,7 @@ public class BusiHallClerkController {
                		busiHallLoadingListblservice=new BusiHallLoadingList();
     				javaBean1=new JavaBean1();
    					javaBean1=busiHallLoadingListblservice.inquireA(id);
-   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
+   					busiHallLoadingListVO=(BusiHallLoadingListVO)javaBean1.getObject();
    					businessHallLoadingListui=findBusiHallLoadingList(busiHallLoadingListVO);
    					childPanel = businessHallLoadingListui;
    					Skip.skip(mainPanel,childPanel);
@@ -245,15 +242,20 @@ public class BusiHallClerkController {
 		businessHallLoadingListui.delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=businessHallLoadingListui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				busiHallLoadingListblservice=new BusiHallLoadingList();
-				busiHallLoadingListblservice.deleteMany(deletearray);
-				businessHallLoadingListListui = new BusinessHallLoadingListListui();
-				childPanel = businessHallLoadingListListui;
-				Skip.skip(mainPanel,childPanel);
-				inBusiHallArrivalOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=businessHallLoadingListui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    busiHallLoadingListblservice=new BusiHallLoadingList();
+				    busiHallLoadingListblservice.deleteMany(deletearray);
+				    businessHallLoadingListListui = new BusinessHallLoadingListListui();
+				    childPanel = businessHallLoadingListListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inBusiHallArrivalOrderListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -277,8 +279,8 @@ public class BusiHallClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=driversInforblservice.inquireA(driversListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog
-					(null, "司机不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"司机不存在",30);
 				}
 				driversVO=(DriversVO)javaBean1.getObject();
 				driversui=findDriver(driversVO);
@@ -297,10 +299,6 @@ public class BusiHallClerkController {
 	            		driversInforblservice=new DriversInfor();
 	    				javaBean1=new JavaBean1();
 	    				javaBean1=driversInforblservice.inquireA(id);
-	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-	    					JOptionPane.showMessageDialog
-	    					(null, "司机不存在", "错误", JOptionPane.ERROR_MESSAGE);
-	    				}
 	    				driversVO=(DriversVO)javaBean1.getObject();
 	    				driversui=findDriver(driversVO);
 	    				childPanel = driversui;
@@ -333,15 +331,20 @@ public class BusiHallClerkController {
 		driversui.delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=driversui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				driversInforblservice=new DriversInfor();
-				driversInforblservice.deleteMany(deletearray);
-				driversListui = new DriversListui();
-				childPanel = driversListui;
-				Skip.skip(mainPanel,childPanel);
-				inDriversListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=driversui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    driversInforblservice=new DriversInfor();
+				    driversInforblservice.deleteMany(deletearray);
+				    driversListui = new DriversListui();
+				    childPanel = driversListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inDriversListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -365,8 +368,8 @@ public class BusiHallClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=receivablesOrderblservice.inquireA(receivablesOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog
-					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
 				receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
 				receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
@@ -387,10 +390,6 @@ public class BusiHallClerkController {
 	            		receivablesOrderblservice=new ReceivablesOrder();
 				        javaBean1=new JavaBean1();
 				        javaBean1=receivablesOrderblservice.inquireA(id);
-				        if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					        JOptionPane.showMessageDialog
-					        (null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-				        }
 				        receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
 				        receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
 				        childPanel = receivablesOrderui;
@@ -433,15 +432,20 @@ public class BusiHallClerkController {
 		receivablesOrderui.delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=receivablesOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				receivablesOrderblservice=new ReceivablesOrder();
-				receivablesOrderblservice.deleteMany(deletearray);
-				receivablesOrderListui = new ReceivablesOrderListui();
-				childPanel = receivablesOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inReceivablesOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=receivablesOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    receivablesOrderblservice=new ReceivablesOrder();
+				    receivablesOrderblservice.deleteMany(deletearray);
+				    receivablesOrderListui = new ReceivablesOrderListui();
+				    childPanel = receivablesOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inReceivablesOrderListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -464,8 +468,8 @@ public class BusiHallClerkController {
 				javaBean1=busiHallArrivalOrderblservice.inquireA(
 						busiHallArrivalOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog
-					(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
 				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
 				busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
@@ -484,9 +488,7 @@ public class BusiHallClerkController {
                		busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
     				javaBean1=new JavaBean1();
    					javaBean1=busiHallArrivalOrderblservice.inquireA(id);
-   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-					}
+   					busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
    					busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
    					childPanel = busiHallArrivalOrderui;
    					Skip.skip(mainPanel,childPanel);
@@ -522,15 +524,20 @@ public class BusiHallClerkController {
 		busiHallArrivalOrderui.delete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=busiHallArrivalOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
-				busiHallArrivalOrderblservice.deleteMany(deletearray);
-				busiHallArrivalOrderListui = new BusiHallArrivalOrderListui();
-				childPanel = busiHallArrivalOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inBusiHallArrivalOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=busiHallArrivalOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
+				    busiHallArrivalOrderblservice.deleteMany(deletearray);
+				    busiHallArrivalOrderListui = new BusiHallArrivalOrderListui();
+				    childPanel = busiHallArrivalOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inBusiHallArrivalOrderListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -555,7 +562,8 @@ public class BusiHallClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=deliveryOrderblservice.inquireA(deliveryOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
 				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
 				deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
@@ -573,9 +581,6 @@ public class BusiHallClerkController {
                 		deliveryOrderblservice=new DeliveryOrder();
                 		javaBean1=new JavaBean1();
     					javaBean1=deliveryOrderblservice.inquireA(id);
-    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-    						JOptionPane.showMessageDialog(null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-    					}
     					deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
     					deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
     					childPanel = deliveryOrderui;
@@ -608,15 +613,20 @@ public class BusiHallClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=deliveryOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				deliveryOrderblservice=new DeliveryOrder();
-				deliveryOrderblservice.deleteMany(deletearray);
-				deliveryOrderListui = new DeliveryOrderListui();
-				childPanel = deliveryOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inDeliveryOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=deliveryOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    deliveryOrderblservice=new DeliveryOrder();
+				    deliveryOrderblservice.deleteMany(deletearray);
+				    deliveryOrderListui = new DeliveryOrderListui();
+				    childPanel = deliveryOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inDeliveryOrderListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
@@ -640,8 +650,8 @@ public class BusiHallClerkController {
 				javaBean1=new JavaBean1();
 				javaBean1=vehiclesInforblservice.inquireA(vehiclesListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					JOptionPane.showMessageDialog
-					(null, "车辆不存在", "错误", JOptionPane.ERROR_MESSAGE);
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(busiHallClerkui,"车辆不存在",30);
 				}
 				vehiclesVO=(VehiclesVO)javaBean1.getObject();
 				vehiclesui=findVehicle(vehiclesVO);
@@ -660,10 +670,6 @@ public class BusiHallClerkController {
 	            		vehiclesInforblservice=new VehiclesInfor();
 	    				javaBean1=new JavaBean1();
 	    				javaBean1=vehiclesInforblservice.inquireA(id);
-	    				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-	    					JOptionPane.showMessageDialog
-	    					(null, "车辆不存在", "错误", JOptionPane.ERROR_MESSAGE);
-	    				}
 	    				vehiclesVO=(VehiclesVO)javaBean1.getObject();
 	    				vehiclesui=findVehicle(vehiclesVO);
 	    				childPanel = vehiclesui;
@@ -689,15 +695,20 @@ public class BusiHallClerkController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=vehiclesui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				vehiclesInforblservice=new VehiclesInfor();
-				vehiclesInforblservice.deleteMany(deletearray);
-				vehiclesListui = new VehiclesListui();
-				childPanel = vehiclesListui;
-				Skip.skip(mainPanel,childPanel);
-				inVehiclesListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(busiHallClerkui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=vehiclesui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    vehiclesInforblservice=new VehiclesInfor();
+				    vehiclesInforblservice.deleteMany(deletearray);
+				    vehiclesListui = new VehiclesListui();
+				    childPanel = vehiclesListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inVehiclesListui();
+		        }else if(n==0){
+		        }
 			}
 		});
 	}
