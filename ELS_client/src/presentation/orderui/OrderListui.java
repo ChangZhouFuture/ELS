@@ -78,6 +78,9 @@ public class OrderListui extends Listui{
 		});
 	}
 	public void makeTable(ArrayList<OrderlineitemVO> arrayList){
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+			}
 		try{
 			this.remove(table);
 			this.remove(scrollPane);
