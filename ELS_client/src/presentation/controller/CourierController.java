@@ -172,7 +172,7 @@ public class CourierController {
 			public void actionPerformed(ActionEvent e) {
 				EMSDialog d=new EMSDialog();
 				int n = d.showDialog(courierui, "х╥хои╬ЁЩ?",30);  
-		        if (n == 1) { 
+		        if (n == 1) {
 		        	String deleteId=orderui.docmID.getText();
 					ArrayList<String> deletearray=new ArrayList<String>();;
 					deletearray.add(deleteId);

@@ -647,7 +647,7 @@ public class BusiHallClerkController {
 				vehiclesui=findVehicle(vehiclesVO);
 				childPanel = vehiclesui;
 				Skip.skip(mainPanel,childPanel);
-				inReceivablesOrderui();
+				inVehiclesui();
 			}
 		});
 		vehiclesListui.table.addMouseListener(new MouseAdapter() {
@@ -697,7 +697,7 @@ public class BusiHallClerkController {
 				vehiclesListui = new VehiclesListui();
 				childPanel = vehiclesListui;
 				Skip.skip(mainPanel,childPanel);
-				inDeliveryOrderListui();
+				inVehiclesListui();
 			}
 		});
 	}

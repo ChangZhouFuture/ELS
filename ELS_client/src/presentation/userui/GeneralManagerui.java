@@ -17,7 +17,7 @@ public class GeneralManagerui extends MainFrame{
 	public JButton statisAnaly;
 	public JButton approdocm;
 	public JButton operalog;
-	public JButton salaryStrategy;
+	public JButton wageStrategy;
 	public JLabel userName;
 	
 	public static void main(String[] args){
@@ -29,7 +29,7 @@ public class GeneralManagerui extends MainFrame{
 		statisAnaly=new JButton();
 		approdocm=new JButton();
 		operalog=new JButton();
-		salaryStrategy = new JButton();
+		wageStrategy = new JButton();
 		userName=new JLabel();
 		
 		userName.setBounds(2,76,176,24);
@@ -72,11 +72,11 @@ public class GeneralManagerui extends MainFrame{
 		operalog.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		operalog.setBackground(Color.WHITE);
 		
-		salaryStrategy.setBounds(0,220,180,30);
-		salaryStrategy.setText("工资策略管理");
-		salaryStrategy.setFont(font3);
-		salaryStrategy.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		salaryStrategy.setBackground(Color.WHITE);
+		wageStrategy.setBounds(0,220,180,30);
+		wageStrategy.setText("工资策略管理");
+		wageStrategy.setFont(font3);
+		wageStrategy.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		wageStrategy.setBackground(Color.WHITE);
 		
 		this.left.add(userName);
 		this.left.add(agencyManage);
@@ -84,6 +84,6 @@ public class GeneralManagerui extends MainFrame{
 		this.left.add(statisAnaly);
 		this.left.add(approdocm);
 		this.left.add(operalog);
-		this.left.add(salaryStrategy);
+		this.left.add(wageStrategy);
 	}
 }

@@ -12,6 +12,7 @@ import businesslogic.inforManagementbl.BankAccountInfor;
 import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
 import presentation.inforManagementui.BankAccountui.BankAccountListui;
 import presentation.inforManagementui.BankAccountui.BankAccountui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
@@ -60,9 +61,6 @@ public class Accountant1Controller extends Accountant2Controller{
                		bankAccountInforblservice=new BankAccountInfor();
                		javaBean1=new JavaBean1();
    					javaBean1=bankAccountInforblservice.inquire(id);
-   					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-   						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
-   					}
    					bankAccountVO=(BankAccountVO)javaBean1.getObject();
    					bankAccountui=findBankAccount(bankAccountVO);
    					childPanel = bankAccountui;
@@ -88,15 +86,19 @@ public class Accountant1Controller extends Accountant2Controller{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=bankAccountui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();;
-				deletearray.add(deleteId);
-				bankAccountInforblservice=new BankAccountInfor();
-				bankAccountInforblservice.deleteMany(deletearray);
-				bankAccountListui = new BankAccountListui();
-				childPanel = bankAccountListui;
-				Skip.skip(mainPanel,childPanel);
-				inBankAccountListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(accountantui, "确认删除?",30);  
+		        if (n == 1) { 
+				    String deleteId=bankAccountui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    bankAccountInforblservice=new BankAccountInfor();
+				    bankAccountInforblservice.deleteMany(deletearray);
+				    bankAccountListui = new BankAccountListui();
+				    childPanel = bankAccountListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inBankAccountListui();
+		        }
 			}
 		});
 	}

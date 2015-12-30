@@ -57,7 +57,7 @@ public class ReceivablesOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
+				String dateString="";
 			    dateString=dateString+showDate.getText();
 			    receivablesOrderblservice=new ReceivablesOrder();
 			    try {

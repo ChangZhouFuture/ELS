@@ -44,7 +44,7 @@ public class OrderListui extends Listui{
 		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
-		table = new JTable(tableModel){  
+		table = new JTable(tableModel){
 			 public boolean isCellEditable(int row, int column){
 					 return false;
 			 }
@@ -79,8 +79,9 @@ public class OrderListui extends Listui{
 	}
 	public void makeTable(ArrayList<OrderlineitemVO> arrayList){
 		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
+			this.remove(table);
+			this.remove(scrollPane);
+			this.remove(delete);
 		 }catch(Exception e2){
 		 }
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){

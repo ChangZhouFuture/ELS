@@ -2,9 +2,11 @@ package presentation.managerAndAccountantui.StatisAnalyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,31 +14,43 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import bean.JavaBean1;
+import businesslogic.managerAndAccountantbl.StatisAnaly;
+import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
+import po.StatisAnalyPO.CostAndIncomePO;
+import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Accountantui1;
+import vo.documentsVO.PaymentOrderVO;
+import vo.documentsVO.ReceivablesOrderVO;
 
 public class StatisAnalyListui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel startDate;
 	public JLabel endDate;
-	public JLabel startYear;
-	public JLabel startMonth;
-	public JLabel startDay;
-	public JLabel endYear;
-	public JLabel endMonth;
-	public JLabel endDay;
 	public JButton find;
-	public JTextField startYearField;
-	public JTextField startMonthField;
-	public JTextField startDayField;
-	public JTextField endYearField;
-	public JTextField endMonthField;
-	public JTextField endDayField;
+	public JTextField startDateField;
+	public DateChooser startDateChooser;
+	public JTextField endDateField;
+	public DateChooser endDateChooser;
 	public JComboBox sheetType;
 	public JScrollPane scrollPane;
-	String sheetTypebl=null;
+	public JTable receivablesOrderTable;
+	public JTable paymentOrderTable;
+	public JTable costanIncomeTable;
+	public DefaultTableModel receivablesOrderTableModel;
+	public DefaultTableModel paymentOrderTableModel;
+	public DefaultTableModel costanIncomeTableModel;
+	ReceivablesOrderVO oneReceivablesOrderLine;
+	PaymentOrderVO onePaymentOrderLine;
+	CostAndIncomePO costAndIncomePO;
+	StatisAnalyblservice statisAnalyblservice;
+	JavaBean1 javaBean1;
+	String sheetTypeValue="收款单";
 	
 	public static void main(String[] args){
 		
@@ -49,21 +63,37 @@ public class StatisAnalyListui extends JPanel{
 		sheetLabel=new JLabel();
 		startDate=new JLabel();
 		endDate=new JLabel();
-		startYear=new JLabel();
-		startMonth=new JLabel();
-		startDay=new JLabel();
-		endYear=new JLabel();
-		endMonth=new JLabel();
-		endDay=new JLabel();
 		find=new JButton();
-		startYearField=new JTextField();
-		startMonthField=new JTextField();
-		startDayField=new JTextField();
-		endYearField=new JTextField();
-		endMonthField=new JTextField();
-		endDayField=new JTextField();
+		startDateField=new JTextField();
+		startDateChooser=DateChooser.getInstance("yyyy-MM-dd");
+		endDateField=new JTextField();
+		endDateChooser=DateChooser.getInstance("yyyy-MM-dd");
 		String[] sheetTypeEntries={"收款单","付款单","成本收益表"};
 		sheetType=new JComboBox(sheetTypeEntries);
+		String[] receivablesOrderColumnNames = {"ID","快递员","金额","收款日期","时间"}; //列名
+		String [][]receivablesOrderTableVales={}; //数据
+		receivablesOrderTableModel = new DefaultTableModel(receivablesOrderTableVales,receivablesOrderColumnNames);
+		receivablesOrderTable = new JTable(receivablesOrderTableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
+		String[] paymentOrderColumnNames = {"ID","付款人","付款账号","金额","条目","备注","时间"}; //列名
+		String [][]paymentOrderTableVales={}; //数据
+		paymentOrderTableModel = new DefaultTableModel(paymentOrderTableVales,paymentOrderColumnNames);
+		paymentOrderTable = new JTable(paymentOrderTableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
+		String[] costanIncomeColumnNames = {"总收入","总支出","总利润"}; //列名
+		String [][]costanIncomeTableVales={}; //数据
+		costanIncomeTableModel = new DefaultTableModel(costanIncomeTableVales,costanIncomeColumnNames);
+		costanIncomeTable = new JTable(costanIncomeTableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		};
 		
 		this.setLayout(null);
 		
@@ -85,22 +115,7 @@ public class StatisAnalyListui extends JPanel{
 		sheetType.addItemListener(new ItemListener(){
 			public void  itemStateChanged(ItemEvent evt) {
 				if(evt.getStateChange() == ItemEvent.SELECTED){
-					String sheetTypeString=null;
-					sheetTypeString=(String)sheetType.getSelectedItem();
-					
-					switch(sheetTypeString){
-					case"收款单":
-						sheetTypebl="ReceivablesOrder";
-						break;
-					case"付款单":
-						sheetTypebl="PaymentOrder";
-						break;
-					case"成本收益表":
-						sheetTypebl="CostanIncomeVo";
-						break;
-						default:
-							break;
-					}
+					sheetTypeValue=(String)sheetType.getSelectedItem();
 				} 
 			}     
 		});
@@ -111,29 +126,8 @@ public class StatisAnalyListui extends JPanel{
 		startDate.setBackground(Color.WHITE);
 		startDate.setOpaque(true);
 		
-		startYearField.setBounds(120,77,48,20);
-		
-		startYear.setBounds(170,75,24,24);
-		startYear.setText("年");
-		startYear.setFont(font2);
-		startYear.setBackground(Color.WHITE);
-		startYear.setOpaque(true);
-		
-		startMonthField.setBounds(200,77,24,20);
-		
-		startMonth.setBounds(230,75,24,24);
-		startMonth.setText("月");
-		startMonth.setFont(font2);
-		startMonth.setBackground(Color.WHITE);
-		startMonth.setOpaque(true);
-		
-		startDayField.setBounds(260,77,24,20);
-		
-		startDay.setBounds(290,75,24,24);
-		startDay.setText("日");
-		startDay.setFont(font2);
-		startDay.setBackground(Color.WHITE);
-		startDay.setOpaque(true);
+		startDateField.setBounds(130,77,120,20);
+		startDateChooser.register(startDateField);
 		
 		endDate.setBounds(30,105,100,24);
 		endDate.setText("结束日期:");
@@ -141,52 +135,50 @@ public class StatisAnalyListui extends JPanel{
 		endDate.setBackground(Color.WHITE);
 		endDate.setOpaque(true);
 		
-		endYearField.setBounds(120,107,48,20);
-		
-		endYear.setBounds(170,105,24,24);
-		endYear.setText("年");
-		endYear.setFont(font2);
-		endYear.setBackground(Color.WHITE);
-		endYear.setOpaque(true);
-		
-		endMonthField.setBounds(200,107,24,20);
-		
-		endMonth.setBounds(230,105,24,24);
-		endMonth.setText("月");
-		endMonth.setFont(font2);
-		endMonth.setBackground(Color.WHITE);
-		endMonth.setOpaque(true);
-		
-		endDayField.setBounds(260,107,24,20);
-		
-		endDay.setBounds(290,105,24,24);
-		endDay.setText("日");
-		endDay.setFont(font2);
-		endDay.setBackground(Color.WHITE);
-		endDay.setOpaque(true);
+		endDateField.setBounds(130,107,120,20);
+		endDateChooser.register(endDateField);
 		
 		find.setBounds(330,105,50,24);
 		find.setText("查找");
 		find.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		find.setFont(font2);
 		find.setBackground(Color.WHITE);
+		find.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(sheetTypeValue){
+				case "收款单":
+					statisAnalyblservice=new StatisAnaly();
+					javaBean1=statisAnalyblservice.inquireReceivalblesOrder2(startDateField.getText(),
+							endDateField.getText());
+					ArrayList<ReceivablesOrderVO> arrayReceivablesOrderList=
+							(ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
+					makeReceivablesOrderTable(arrayReceivablesOrderList);
+					break;
+				case "付款单":
+					statisAnalyblservice=new StatisAnaly();
+					javaBean1=statisAnalyblservice.inquirePaymentOrder2(startDateField.getText(),
+							endDateField.getText());
+					ArrayList<PaymentOrderVO> arrayPaymentOrderList = (ArrayList<PaymentOrderVO>)javaBean1.getObject();
+					makePaymentOrderTable(arrayPaymentOrderList);
+					break;
+				case "成本收益表":
+					statisAnalyblservice=new StatisAnaly();
+					javaBean1=statisAnalyblservice.inquireCostAndIncomeTable();
+					costAndIncomePO=(CostAndIncomePO)javaBean1.getObject();
+					makeCostanIncomeTable(costAndIncomePO);
+					break;
+				default:break;
+				}
+			}
+		});
 		
 		this.add(sheetLabel);
 		this.add(startDate);
 		this.add(endDate);
-		this.add(startYear);
-		this.add(startMonth);
-		this.add(startDay);
-		this.add(endYear);
-		this.add(endMonth);
-		this.add(endDay);
+		this.add(startDateField);
+		this.add(endDateField);
 		this.add(find);
-		this.add(startYearField);
-		this.add(startMonthField);
-		this.add(startDayField);
-		this.add(endYearField);
-		this.add(endMonthField);
-		this.add(endDayField);
 		this.add(sheetType);
 		
 		setLocation(184,30);
@@ -194,5 +186,80 @@ public class StatisAnalyListui extends JPanel{
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderVO> arrayReceivablesOrderList){
+		try{
+			 this.remove(scrollPane);
+		 }catch(Exception e2){
+		 }
+		receivablesOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		 String[] Row1={"12345678","张三","200","2015-12-5","2015-12-5"};
+		 try{
+		     for(int i=0;i<arrayReceivablesOrderList.size();i++){
+		    	 oneReceivablesOrderLine=arrayReceivablesOrderList.get(i);
+			     String[] oneRow={oneReceivablesOrderLine.getID(),
+			    		 oneReceivablesOrderLine.getCourier(),
+			    		 String.valueOf(oneReceivablesOrderLine.getAmount()),
+			    		 oneReceivablesOrderLine.getDate(),oneReceivablesOrderLine.getGenerateTime()};
+			     receivablesOrderTableModel.addRow(oneRow);
+		     }
+		 }catch(Exception e2){
+		 }
+		 receivablesOrderTable.setRowHeight(24);
+		 receivablesOrderTable.setBackground(Color.WHITE);
+		 receivablesOrderTable.setShowVerticalLines(true);
+		 receivablesOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 scrollPane = new JScrollPane(receivablesOrderTable); //支持滚动
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(receivablesOrderTable);
+		 this.add(scrollPane);
+	}
+	public void makePaymentOrderTable(ArrayList<PaymentOrderVO> arrayPaymentOrderList){
+		try{
+			 this.remove(scrollPane);
+		 }catch(Exception e2){
+		 }
+		paymentOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		 String[] Row1={"12345678","张三","00000000","1000","工资","无","2015-12-5"};
+		 try{
+		     for(int i=0;i<arrayPaymentOrderList.size();i++){
+		    	 onePaymentOrderLine=arrayPaymentOrderList.get(i);
+			     String[] oneRow={onePaymentOrderLine.getID(),onePaymentOrderLine.getPayer(),
+			    		 onePaymentOrderLine.getBankAccount(),
+					     String.valueOf(onePaymentOrderLine.getAmount()),onePaymentOrderLine.getEntry(),
+					     onePaymentOrderLine.getNote(),onePaymentOrderLine.getDate()};
+			     paymentOrderTableModel.addRow(oneRow);
+		     }
+		 }catch(Exception e2){
+		 }
+		 paymentOrderTable.setRowHeight(24);
+		 paymentOrderTable.setBackground(Color.WHITE);
+		 paymentOrderTable.setShowVerticalLines(true);
+		 paymentOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 scrollPane = new JScrollPane(paymentOrderTable); //支持滚动
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(paymentOrderTable);
+		 this.add(scrollPane);
+	}
+	public void makeCostanIncomeTable(CostAndIncomePO costAndIncomePO){
+		try{
+			 this.remove(scrollPane);
+		 }catch(Exception e2){
+		 }
+		costanIncomeTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		String[] oneRow={String.valueOf(costAndIncomePO.getIncome()),
+				String.valueOf(costAndIncomePO.getCost()),
+				String.valueOf(costAndIncomePO.getProfit())};
+		costanIncomeTableModel.addRow(oneRow);
+		costanIncomeTable.setRowHeight(24);
+		costanIncomeTable.setBackground(Color.WHITE);
+		costanIncomeTable.setShowVerticalLines(true);
+		costanIncomeTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		scrollPane = new JScrollPane(costanIncomeTable); //支持滚动
+		scrollPane.setSize(550,48);
+		scrollPane.setLocation(30,160);
+		scrollPane.setViewportView(costanIncomeTable);
 	}
 }
