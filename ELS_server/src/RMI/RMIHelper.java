@@ -3,10 +3,8 @@ package RMI;
 import java.rmi.Naming;
 import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
-
 import data.datafactory.DataFactory;
 import dataservice.datafactoryservice.DataFactoryservice;
-
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 
