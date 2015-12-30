@@ -84,6 +84,7 @@ public class OrderLogisticsui extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				logisticsArea.setText("");
 				String orderId=orderIdField.getText();
 				orderblservice=new Order();
 				javaBean1=orderblservice.inquireA(orderId);

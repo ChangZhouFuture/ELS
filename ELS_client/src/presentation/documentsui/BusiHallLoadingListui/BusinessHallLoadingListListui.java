@@ -61,8 +61,8 @@ public class BusinessHallLoadingListListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				busiHallLoadingListblservice=new BusiHallLoadingList();
 				try {
 					javaBean1=busiHallLoadingListblservice.inquireB(dateString);

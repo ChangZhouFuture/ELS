@@ -50,8 +50,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString=showDate.getText();
 				busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				try {
 					javaBean1=busiHallArrivalOrderblservice.inquireB(dateString);

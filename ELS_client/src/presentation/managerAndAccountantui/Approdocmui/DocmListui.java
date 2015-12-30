@@ -43,8 +43,7 @@ public class DocmListui extends JPanel{
 	
 	public DocmListui(){
 		String[] sheetTypeEntries={"订单","营业厅到达单","营业厅装车单","派件单",
-				"中转中心到达单","中转中心装车单","中转单","收款单","付款单","入库单","出库单",
-				"银行账户","司机","车辆","员工"};
+				"中转中心到达单","中转中心装车单","中转单","收款单","付款单","入库单","出库单"};
 		sheetType=new JComboBox(sheetTypeEntries);
 		sheetLabel=new JLabel();
 		findByDate=new JLabel();

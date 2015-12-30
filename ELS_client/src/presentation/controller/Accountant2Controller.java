@@ -21,8 +21,10 @@ import presentation.documentsui.ReceivablesOrderui.SettlementListui;
 import presentation.inforManagementui.BankAccountui.BankAccountui;
 import presentation.managerAndAccountantui.Operalogui.OperalogListui;
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userui.Accountantui1;
+import presentation.userui.Accountantui2;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
@@ -48,8 +50,6 @@ public class Accountant2Controller {
 	ReceivablesOrderVO receivablesOrderVO;
 	JavaBean1 javaBean1;
 	JButton totalAmount=new JButton();
-	JTextField totalAmountField=new JTextField();
-	Font font3=new Font("TimesRoman",Font.PLAIN,15);
 	
 	public Accountant2Controller(){
 		accountantui = new Accountantui1();
@@ -106,6 +106,66 @@ public class Accountant2Controller {
 			}
 		});
 	}
+	public void inStatisAnalyListui(){
+		statisAnalyListui.receivablesOrderTable.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent evt) {
+	            if (evt.getClickCount() == 2) {
+	               	String id=(String)statisAnalyListui.receivablesOrderTableModel.
+	               			getValueAt(statisAnalyListui.receivablesOrderTable.getSelectedRow(),1);
+	                receivablesOrderblservice=new ReceivablesOrder();
+				    javaBean1=new JavaBean1();
+				    javaBean1=receivablesOrderblservice.inquireA(id);
+				    receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
+				    receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
+				    childPanel = receivablesOrderui;
+				    Skip.skip(mainPanel,childPanel);
+	            }
+	       }
+		});
+		statisAnalyListui.paymentOrderTable.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+               	    String id=(String)statisAnalyListui.paymentOrderTableModel.
+               			getValueAt(statisAnalyListui.paymentOrderTable.getSelectedRow(),1);
+               	    paymentOrderblservice=new PaymentOrder();
+               	    javaBean1=new JavaBean1();
+   				    javaBean1=paymentOrderblservice.inquireA(id);
+   					paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
+   					paymentOrderui=findPaymentOrderinStatisAnalyListui(paymentOrderVO);
+   					childPanel = paymentOrderui;
+   					Skip.skip(mainPanel,childPanel);
+                }
+			}
+       });
+	}
+	public PaymentOrderui findPaymentOrderinStatisAnalyListui(PaymentOrderVO paymentOrderVO){
+		paymentOrderui=new PaymentOrderui();
+		paymentOrderui.refresh();
+		paymentOrderui.modify.setVisible(false);
+		paymentOrderui.delete.setVisible(false);
+		paymentOrderui.paymentMoneyField.setText(String.valueOf(paymentOrderVO.getAmount()));
+		paymentOrderui.paymentPersonField.setText(paymentOrderVO.getPayer());
+		paymentOrderui.paymentIdField.setText(paymentOrderVO.getBankAccount());
+		switch(paymentOrderVO.getEntry()){
+		case "运费（按次计算）":paymentOrderui.payType.setSelectedIndex(0);break;
+		case "奖励（一次性）":paymentOrderui.payType.setSelectedIndex(1);break;
+		case "人员工资（按月统计）":paymentOrderui.payType.setSelectedIndex(2);break;
+		case "租金（按年收）":paymentOrderui.payType.setSelectedIndex(3);break;
+		default:break;
+		}
+		paymentOrderui.remarksArea.setText(paymentOrderVO.getEntry());
+		switch(paymentOrderVO.getApproState()){
+		case Approve:paymentOrderui.approState.setText("已审批");break;
+		case NotApprove:paymentOrderui.approState.setText("未审批");break;
+			default:break;
+		}
+		paymentOrderui.docmID.setText(paymentOrderVO.getID());
+		paymentOrderui.docmDate.setText(paymentOrderVO.getDate());
+		return paymentOrderui;
+	}
 	public void inPaymentOrderListui(){
 		paymentOrderListui.add.addActionListener(new ActionListener() {
 			
@@ -121,16 +181,18 @@ public class Accountant2Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				paymentOrderblservice=new PaymentOrder();
-					javaBean1=new JavaBean1();
-					javaBean1=paymentOrderblservice.inquireA(paymentOrderListui.idField.getText());
-					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
-					}
+				javaBean1=new JavaBean1();
+				javaBean1=paymentOrderblservice.inquireA(paymentOrderListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+					EMSDialog d=new EMSDialog();
+					int n = d.showDialog(accountantui,"单据不存在",30);
+				}else{
 					paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
 					paymentOrderui=findPaymentOrder(paymentOrderVO);
 					childPanel = paymentOrderui;
 					Skip.skip(mainPanel,childPanel);
 					inPaymentOrderui();
+				}
 			}
 		});
 		paymentOrderListui.table.addMouseListener(new MouseAdapter() {
@@ -143,9 +205,6 @@ public class Accountant2Controller {
                 		paymentOrderblservice=new PaymentOrder();
                 		javaBean1=new JavaBean1();
     					javaBean1=paymentOrderblservice.inquireA(id);
-    					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-    						JOptionPane.showMessageDialog(null, "订单不存在", "错误", JOptionPane.ERROR_MESSAGE);
-    					}
     					paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
     					paymentOrderui=findPaymentOrder(paymentOrderVO);
     					childPanel = paymentOrderui;
@@ -178,6 +237,7 @@ public class Accountant2Controller {
 			default:break;
 		}
 		paymentOrderui.docmID.setText(paymentOrderVO.getID());
+		paymentOrderui.docmDate.setText(paymentOrderVO.getDate());
 		return paymentOrderui;
 	}
 	public void inPaymentOrderui(){
@@ -185,15 +245,19 @@ public class Accountant2Controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String deleteId=paymentOrderui.docmID.getText();
-				ArrayList<String> deletearray=new ArrayList<String>();
-				deletearray.add(deleteId);
-				paymentOrderblservice=new PaymentOrder();
-				paymentOrderblservice.deleteMany(deletearray);
-				paymentOrderListui = new PaymentOrderListui();
-				childPanel = paymentOrderListui;
-				Skip.skip(mainPanel,childPanel);
-				inPaymentOrderListui();
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(accountantui, "确认删除?",30);  
+		        if (n == 1) { 
+				    String deleteId=paymentOrderui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();
+				    deletearray.add(deleteId);
+				    paymentOrderblservice=new PaymentOrder();
+				    paymentOrderblservice.deleteMany(deletearray);
+				    paymentOrderListui = new PaymentOrderListui();
+				    childPanel = paymentOrderListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inPaymentOrderListui();
+		        }
 			}
 		});
 	}
@@ -205,20 +269,13 @@ public class Accountant2Controller {
 	            if (evt.getClickCount() == 2) {
 	               	String id=(String)settlementListui.tableModel.
 	               			getValueAt(settlementListui.table.getSelectedRow(),1);
-	            	try {
-	            		receivablesOrderblservice=new ReceivablesOrder();
-				        javaBean1=new JavaBean1();
-				        javaBean1=receivablesOrderblservice.inquireA(id);
-				        if(javaBean1.getResultMessage()==ResultMessage.NotExist){
-					        JOptionPane.showMessageDialog
-					        (null, "单据不存在", "错误", JOptionPane.ERROR_MESSAGE);
-				        }
-				        receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
-				        receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
-				        childPanel = receivablesOrderui;
-				        Skip.skip(mainPanel,childPanel);
-			        }catch(Exception e2){
-			        }
+	                receivablesOrderblservice=new ReceivablesOrder();
+				    javaBean1=new JavaBean1();
+				    javaBean1=receivablesOrderblservice.inquireA(id);
+				    receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
+				    receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
+				    childPanel = receivablesOrderui;
+				    Skip.skip(mainPanel,childPanel);
 	            }
 	       }
 		});
