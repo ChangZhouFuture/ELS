@@ -194,6 +194,9 @@ public class StatisAnalyListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderPO> arrayReceivablesOrderList){
+		while(receivablesOrderTableModel.getRowCount()>0){
+			receivablesOrderTableModel.removeRow(receivablesOrderTableModel.getRowCount()-1);
+		}
 		receivablesOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] Row1={"12345678","ÕÅÈý","200","2015-12-5","2015-12-5"};
 		for(int i=0;i<arrayReceivablesOrderList.size();i++){
@@ -214,6 +217,9 @@ public class StatisAnalyListui extends JPanel{
 		scrollPane.setViewportView(receivablesOrderTable);
 	}
 	public void makePaymentOrderTable(ArrayList<PaymentOrderPO> arrayPaymentOrderList){
+		while(paymentOrderTableModel.getRowCount()>0){
+			paymentOrderTableModel.removeRow(paymentOrderTableModel.getRowCount()-1);
+		}
 		paymentOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		for(int i=0;i<arrayPaymentOrderList.size();i++){
 		    onePaymentOrderLine=arrayPaymentOrderList.get(i);
@@ -233,6 +239,9 @@ public class StatisAnalyListui extends JPanel{
 		 scrollPane.setViewportView(paymentOrderTable);
 	}
 	public void makeCostanIncomeTable(CostAndIncomePO costAndIncomePO){
+		while(costanIncomeTableModel.getRowCount()>0){
+			costanIncomeTableModel.removeRow(costanIncomeTableModel.getRowCount()-1);
+		}
 		costanIncomeTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] oneRow={String.valueOf(costAndIncomePO.getIncome()),
 				String.valueOf(costAndIncomePO.getCost()),

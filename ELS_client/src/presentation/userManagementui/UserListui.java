@@ -55,14 +55,6 @@ public class UserListui extends JPanel{
 	JavaBean1 javaBean1;
 	String positionbl="快递员";
 	
-	public static void main(String[] args){
-		
-		Administratorui ui=new Administratorui();
-		UserListui uiPanel=new UserListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public UserListui(){
 		sheetLabel=new JLabel();
 		add=new JButton();
@@ -181,6 +173,16 @@ public class UserListui extends JPanel{
 			}
 		});
 		
+		scrollPane = new JScrollPane(table); 
+		
+		delete=new JButton();
+		delete.setBounds(30,420,50,24);
+		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		delete.setBackground(Color.WHITE);
+		delete.setText("删除");
+		delete.setFont(font2);
+		 
+		this.add(scrollPane);
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);
@@ -190,6 +192,7 @@ public class UserListui extends JPanel{
 		this.add(findByPosition);
 		this.add(position);
 		this.add(positionFind);
+		this.add(delete);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -198,12 +201,9 @@ public class UserListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<UserlineitemVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -218,16 +218,12 @@ public class UserListui extends JPanel{
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 String[] Row1={" ","12345678","张三","2015-12-5","12345678","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
-			    		 oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
-			    		 oneLine.getPosition().toString()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
+			    	oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),
+			    	oneLine.getPosition().toString()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -237,14 +233,6 @@ public class UserListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -258,6 +246,5 @@ public class UserListui extends JPanel{
 				   userManagementblservice=new UserManagement();
 				   userManagementblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
 	}
 }

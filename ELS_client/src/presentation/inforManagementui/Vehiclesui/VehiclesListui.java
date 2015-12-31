@@ -146,6 +146,8 @@ public class VehiclesListui extends JPanel{
 		delete.setBackground(Color.WHITE);
 		delete.setText("删除");
 		delete.setFont(font2);
+		
+		scrollPane=new JScrollPane(table);
 		 
 		this.add(sheetLabel);
 		this.add(add);
@@ -155,6 +157,8 @@ public class VehiclesListui extends JPanel{
 		this.add(idField);
 		this.add(idFind);
 		this.add(BusiHallFind);
+		this.add(scrollPane);
+		this.add(delete);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -163,11 +167,9 @@ public class VehiclesListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<VehiclesVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -181,15 +183,11 @@ public class VehiclesListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//		 String[] Row1={" ","12345678","张三","2015-12-5","12345678","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getID(),oneLine.getBusiHallID(),
-					     oneLine.getPlateNum(),oneLine.getServiceTime()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getID(),oneLine.getBusiHallID(),
+					 oneLine.getPlateNum(),oneLine.getServiceTime()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -199,7 +197,6 @@ public class VehiclesListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -213,6 +210,5 @@ public class VehiclesListui extends JPanel{
 				   vehiclesInforblservice=new VehiclesInfor();
 				   vehiclesInforblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
 	}
 }

@@ -6,24 +6,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
 import bean.JavaBean1;
 import businesslogic.documentsbl.PaymentOrder;
 import businesslogic.documentsbl.ReceivablesOrder;
+import businesslogic.inforManagementbl.AgencyInfor;
 import businesslogic.inforManagementbl.StaffInfor;
-import businesslogic.userManagementbl.UserManagement;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
+import businesslogicservice.inforManagementblservice.AgencyInforblservice;
 import businesslogicservice.inforManagementblservice.StaffInforblservice;
 import presentation.documentsui.PaymentOrderui.PaymentOrderui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderui;
 import presentation.inforManagementui.Staffui.StaffListui;
 import presentation.inforManagementui.Staffui.WageStrategyListui;
 import presentation.inforManagementui.agencyui.AgencyListui;
+import presentation.inforManagementui.agencyui.Agencyui;
 import presentation.managerAndAccountantui.Approdocmui.DocmListui;
 import presentation.managerAndAccountantui.Operalogui.OperalogListui;
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
@@ -34,7 +34,7 @@ import presentation.userui.GeneralManagerui;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
-import vo.inforManagementVO.SalaryStrategyVO;
+import vo.inforManagementVO.AgencyVO;
 import vo.userVO.UserVO;
 
 public class GeneralManagerController {
@@ -50,12 +50,15 @@ public class GeneralManagerController {
 	ReceivablesOrderui receivablesOrderui;
 	PaymentOrderui paymentOrderui;
 	UserInfoui userInfoui;
+	Agencyui agencyui;
 	PaymentOrderblservice paymentOrderblservice;
 	ReceivablesOrderblservice receivablesOrderblservice;
 	StaffInforblservice staffInforblservice;
+	AgencyInforblservice agencyInforblservice;
 	PaymentOrderVO paymentOrderVO;
 	ReceivablesOrderVO receivablesOrderVO;
 	UserVO userVO;
+	AgencyVO agencyVO;
 	JavaBean1 javaBean1;
 	
 	public GeneralManagerController(){
@@ -80,6 +83,7 @@ public class GeneralManagerController {
 				childPanel = agencyListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inAgencyListui();
 			}
 		});
 		generalManagerui.stuffManage.addActionListener(new ActionListener() {
@@ -130,6 +134,93 @@ public class GeneralManagerController {
 			}
 		});
 		
+	}
+	public void inAgencyListui(){
+		agencyListui.add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				agencyui = new Agencyui();
+				childPanel = agencyui;
+				childPanel.setLocation(0,0);
+				Skip.skip(mainPanel,childPanel);
+				inAgencyui();
+			}
+		});
+		agencyListui.idFind.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				agencyInforblservice=new AgencyInfor();
+           		javaBean1=new JavaBean1();
+					javaBean1=agencyInforblservice.inquire(agencyListui.idField.getText());
+					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						EMSDialog d=new EMSDialog();
+						int n = d.showDialog(generalManagerui,"人员不存在",30);
+					}
+					agencyVO=(AgencyVO)javaBean1.getObject();
+					agencyui=findAgency(agencyVO);
+					childPanel = agencyui;
+					Skip.skip(mainPanel,childPanel);
+					inAgencyui();
+			}
+		});
+		agencyListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+               	String id=(String)agencyListui.tableModel.
+               			getValueAt(agencyListui.table.getSelectedRow(),1);
+               	try {
+               		agencyInforblservice=new AgencyInfor();
+               		javaBean1=new JavaBean1();
+   					javaBean1=agencyInforblservice.inquire(id);
+   					agencyVO=(AgencyVO)javaBean1.getObject();
+   					agencyui=findAgency(agencyVO);
+   					childPanel = agencyui;
+   					Skip.skip(mainPanel,childPanel);
+   					inAgencyui();
+   				} catch (Exception e2) {
+   				}
+               }
+            }
+       });
+	}
+	public Agencyui findAgency(AgencyVO agencyVO){
+		agencyui=new Agencyui();
+		agencyui.refresh();
+		agencyui.agencyVO=agencyVO;
+		agencyui.cityField.setText(agencyVO.getCity());
+		agencyui.regionField.setText(agencyVO.getRegion());
+		switch(agencyVO.getAgencyType()){
+		case BusinessHall:agencyui.agencyTypeType.setSelectedIndex(0);break;
+		case TransferCenter:agencyui.agencyTypeType.setSelectedIndex(1);break;
+		default:break;
+		}
+		agencyui.docmID.setText(agencyVO.getID());
+		return agencyui;
+	}
+	public void inAgencyui(){
+		agencyui.delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EMSDialog d=new EMSDialog();
+				int n = d.showDialog(generalManagerui, "确认删除?",30);  
+		        if (n == 1) {
+				    String deleteId=agencyui.docmID.getText();
+				    ArrayList<String> deletearray=new ArrayList<String>();;
+				    deletearray.add(deleteId);
+				    agencyInforblservice=new AgencyInfor();
+				    agencyInforblservice.deleteMany(deletearray);
+				    agencyListui = new AgencyListui();
+				    childPanel = agencyListui;
+				    Skip.skip(mainPanel,childPanel);
+				    inAgencyListui();
+		        }else if(n==0){
+		        }
+			}
+		});
 	}
 	public void inStatisAnalyListui(){
 		statisAnalyListui.receivablesOrderTable.addMouseListener(new MouseAdapter() {

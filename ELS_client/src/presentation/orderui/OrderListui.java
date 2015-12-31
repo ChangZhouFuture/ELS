@@ -25,14 +25,6 @@ public class OrderListui extends Listui{
 	public OrderlineitemVO oneLine;
 	public JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		Courierui ui=new Courierui();
-		OrderListui uiPanel=new OrderListui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public OrderListui(){
 		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
 		String [][]tableVales={}; //数据
@@ -68,17 +60,14 @@ public class OrderListui extends Listui{
 				}
 			}
 		});
+		scrollPane=new JScrollPane(table);
+		this.add(scrollPane);
+		this.add(delete);
 	}
 	public void makeTable(ArrayList<OrderlineitemVO> arrayList){
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
-			}
-		try{
-			this.remove(table);
-			this.remove(scrollPane);
-			this.remove(delete);
-		 }catch(Exception e2){
-		 }
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -91,15 +80,11 @@ public class OrderListui extends Listui{
 				 return ck;
 			 }
 		 });
-		 String[] Row1={" ","12345678","张三","李四","被子","未到达","20","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-			     oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getSenderAdd(),oneLine.getAddresseeAdd(),
-			    		 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+			 oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getId(),oneLine.getSenderAdd(),oneLine.getAddresseeAdd(),
+			    	 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -109,7 +94,6 @@ public class OrderListui extends Listui{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -123,6 +107,5 @@ public class OrderListui extends Listui{
 				   orderblservice=new Order();
 				   orderblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
 	}
 }

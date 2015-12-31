@@ -46,6 +46,7 @@ public class StorageListui extends ParentDocuments{
 		frameNumField=new JTextField();
 		positionNum=new JLabel();
 		positionNumField=new JTextField();
+		storageListVO=new StorageListVO();
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);

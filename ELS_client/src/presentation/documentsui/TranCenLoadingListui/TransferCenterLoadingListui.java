@@ -52,12 +52,6 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 	TranCenLoadingListblservice tranCenLoadingListblservice;
 	public TranCenLoadingListVO tranCenLoadingListVO;
 	
-	public static void main(String[] args){
-		TranCenClerkui ui=new TranCenClerkui();
-		TransferCenterLoadingListui uiPanel=new TransferCenterLoadingListui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public TransferCenterLoadingListui(){
 		busiLoadOrder=new JLabel();
 		motorId=new JLabel();
@@ -83,6 +77,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 					 return false;
 			 }
 		 };
+		 tranCenLoadingListVO=new TranCenLoadingListVO();
 		 deleteOrder=new JButton();
 		
 		this.setLayout(null);

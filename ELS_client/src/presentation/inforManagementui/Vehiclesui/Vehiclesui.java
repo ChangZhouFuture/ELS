@@ -34,18 +34,13 @@ public class Vehiclesui extends ParentDocuments{
 	public VehiclesVO vehiclesVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		Vehiclesui uiPanel=new Vehiclesui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public Vehiclesui(){
 		vehicles=new JLabel();
 		plateNum=new JLabel();
 		serviceTime=new JLabel();
 		plateNumField=new JTextField();
 		serviceTimeField=new JTextField();
+		vehiclesVO=new VehiclesVO();
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);

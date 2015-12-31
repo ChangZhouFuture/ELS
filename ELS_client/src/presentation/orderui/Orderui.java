@@ -566,11 +566,4 @@ public class Orderui extends ParentDocuments{
 		goodWeightField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		goodSizeField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
-	
-	public static void main(String[] args){
-		Courierui ui=new Courierui();
-		Orderui uiPanel=new Orderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 }

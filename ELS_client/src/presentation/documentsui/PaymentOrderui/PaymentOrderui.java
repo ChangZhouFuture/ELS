@@ -49,12 +49,6 @@ public class PaymentOrderui extends ParentDocuments{
 	PaymentOrderVO paymentOrderVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		Accountantui2 ui=new Accountantui2();
-		PaymentOrderui uiPanel=new PaymentOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public PaymentOrderui(){
 		paymentOrder=new JLabel();
 		paymentMoney=new JLabel();

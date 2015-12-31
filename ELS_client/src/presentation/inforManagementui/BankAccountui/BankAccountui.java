@@ -32,18 +32,13 @@ public class BankAccountui extends ParentDocuments{
 	public BankAccountVO bankAccountVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		Accountantui1 ui=new Accountantui1();
-		BankAccountui uiPanel=new BankAccountui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public  BankAccountui(){
 		bankAccount=new JLabel();
 		name=new JLabel();
 		nameField=new JTextField();
 		money=new JLabel();
 		moneyField=new JTextField();
+		bankAccountVO=new BankAccountVO();
 		
 		this.setLayout(null);
 		

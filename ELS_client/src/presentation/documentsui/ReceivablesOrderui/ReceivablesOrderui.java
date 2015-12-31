@@ -48,13 +48,7 @@ public class ReceivablesOrderui extends ParentDocuments{
 	public OrderlineitemVO orderlineitemVO;
 	ReceivablesOrderblservice receivablesOrderblservice;
 	public ReceivablesOrderVO receivablesOrderVO;
-	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		ReceivablesOrderui uiPanel=new ReceivablesOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
+
 	public ReceivablesOrderui(){
 		receivablesOrder=new JLabel();
 		money=new JLabel();

@@ -145,6 +145,8 @@ public class StaffListui extends JPanel{
 					makeTable(arrayList);
 				}
 			});
+			scrollPane=new JScrollPane(table);
+			this.add(scrollPane);
 			
 			this.add(sheetLabel);
 			this.add(findById);
@@ -161,10 +163,9 @@ public class StaffListui extends JPanel{
 			this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<UserlineitemVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-		 }catch(Exception e2){
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -197,6 +198,5 @@ public class StaffListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 	}
 }

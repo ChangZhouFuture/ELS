@@ -36,13 +36,6 @@ public class OutBoundOrderui extends ParentDocuments{
 	OutBoundOrderblservice outBoundOrderblservice;
 	public OutBoundOrderVO outBoundOrderVO;
 	
-	public static void main(String[] args){
-		StockManagerui ui=new StockManagerui();
-		OutBoundOrderui uiPanel=new OutBoundOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public OutBoundOrderui(){
 		outBoundOrder=new JLabel();
 		transportType=new JLabel();
@@ -54,6 +47,7 @@ public class OutBoundOrderui extends ParentDocuments{
 		destinationField=new JTextField();
 		tranOrMotorId=new JLabel();
 		tranOrMotorIdField=new JTextField();
+		outBoundOrderVO=new OutBoundOrderVO();
 		
 		this.setLayout(null);
 		

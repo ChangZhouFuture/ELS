@@ -53,13 +53,6 @@ public class UserInfoui extends ParentDocuments{
 	UserManagementblservice userManagementblservice;
 	public UserVO userVO;
 	
-	public static void main(String[] args){
-		Administratorui ui=new Administratorui();
-		UserInfoui uiPanel=new UserInfoui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public UserInfoui(){
 		userInfo=new JLabel();
 		name=new JLabel();
@@ -87,6 +80,7 @@ public class UserInfoui extends ParentDocuments{
 		sexType=new JComboBox(sexTypeEntries);
 		String[] positionEntries={"快递员","营业厅业务员","中转中心业务员","库存管理人员","财务人员","财务人员(高)","总经理","管理员"};
 		positionSeleted=new JComboBox(positionEntries);
+		userVO=new UserVO();
 		
 		this.setLayout(null);
 		

@@ -64,12 +64,6 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 	BusiHallLoadingListblservice busiHallLoadingListblservice;
 	public BusiHallLoadingListVO busiHallLoadingListVO;
 	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		BusinessHallLoadingListui uiPanel=new BusinessHallLoadingListui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public BusinessHallLoadingListui(){
 		busiLoadOrder=new JLabel();
 		busiId=new JLabel();

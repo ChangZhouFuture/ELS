@@ -32,7 +32,7 @@ public class OperalogListui extends Listui{
 	public OperalogListui(){
 		
 		sheetLabel.setText("查询操作日志");
-		String[] columnNames = {"选择","职位","操作者","操作","对象","对象id","操作日期"}; //列名
+		String[] columnNames = {"职位","操作者","操作","对象","对象id","操作日期"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
 		table = new JTable(tableModel){  
@@ -67,38 +67,20 @@ public class OperalogListui extends Listui{
 				}
 			}
 		});
+		scrollPane=new JScrollPane(table);
+		this.add(scrollPane);
 	}
 	public void makeTable(ArrayList<OperaLogVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(4).setPreferredWidth(120);
-		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
-			 @Override
-			 public Component getTableCellRendererComponent(JTable table,
-					 Object value, boolean isSelected, boolean hasFocus,
-					 int row, int column) {
-				 JCheckBox ck=new JCheckBox();
-				 ck.setSelected(isSelected);
-				 ck.setHorizontalAlignment((int) 0.5f);
-				 ck.setBackground(Color.WHITE);
-				 return ck;
-			 }
-		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={" ","12345678","121212","010101","上海","2015-12-5","完整","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getPositon(),oneLine.getOperatorId(),oneLine.getOperaType().toString(),
-			    		 oneLine.getObjectType().toString(),oneLine.getId(),oneLine.getDate()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={oneLine.getPositon(),oneLine.getOperatorId(),oneLine.getOperaType().toString(),
+			    	 oneLine.getObjectType().toString(),oneLine.getId(),oneLine.getDate()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -108,6 +90,5 @@ public class OperalogListui extends Listui{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,100);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 	}
 }

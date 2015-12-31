@@ -62,12 +62,6 @@ public class TransferOrderui extends ParentDocuments{
 	TransferOrderblservice transferOrderblservice;
 	public TransferOrderVO transferOrderVO;
 	
-	public static void main(String[] args){
-		TranCenClerkui ui=new TranCenClerkui();
-		TransferOrderui uiPanel=new TransferOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public TransferOrderui(){
 		transferOrder=new JLabel();
 		transportType=new JLabel();

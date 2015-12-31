@@ -37,7 +37,7 @@ public class StorageListListui extends Listui{
 	public StorageListListui(){
 		
 		sheetLabel.setText("入库管理");
-		String[] columnNames = {"选择","ID","目的地","快递编号","入库日期","区号","时间"}; //列名
+		String[] columnNames = {"选择","ID","目的地","快递编号","区号","排号","入库日期"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
 		table = new JTable(tableModel){  
@@ -61,21 +61,14 @@ public class StorageListListui extends Listui{
 				}
 			}
 		});
+		scrollPane = new JScrollPane(table);
+		this.add(scrollPane);
+		this.add(delete);
 	}
 	public void makeTable(ArrayList<StorageListVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-		 }
-		 String[] columnNames = {"选择","ID","目的地","快递编号","入库日期","区号","排号"}; //列名
-		 String [][]tableVales={}; //数据
-		 tableModel = new DefaultTableModel(tableVales,columnNames);
-		 table = new JTable(tableModel){  
-			 public boolean isCellEditable(int row, int column){
-					 return false;
-			 }
-		 };
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -90,14 +83,11 @@ public class StorageListListui extends Listui{
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 String[] Row1={" ","12345678","张三","2015-12-5","12345678","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-			     oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getDestination(),oneLine.getOrderID(),
-					     oneLine.getInDate(),oneLine.getAreaNum(),oneLine.getRowNum()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+			 oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getId(),oneLine.getDestination(),oneLine.getOrderID(),
+					 oneLine.getAreaNum(),oneLine.getRowNum(),oneLine.getInDate()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -107,7 +97,6 @@ public class StorageListListui extends Listui{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -121,6 +110,5 @@ public class StorageListListui extends Listui{
 				   storageListblservice=new StorageList();
 				   storageListblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
 	}
 }

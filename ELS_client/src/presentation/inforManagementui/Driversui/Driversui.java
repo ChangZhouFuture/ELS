@@ -51,12 +51,6 @@ public class Driversui extends ParentDocuments{
 	public DriversVO driversVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		Driversui uiPanel=new Driversui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public Driversui(){
 		drivers=new JLabel();
 		birthDate=new JLabel();
@@ -74,6 +68,7 @@ public class Driversui extends ParentDocuments{
 		idCardField=new JTextField();
 		phone=new JLabel();
 		phoneField=new JTextField();
+		driversVO=new DriversVO();
 		
 		Font font1=new Font("TimesRoman",Font.BOLD,18);
 		Font font2=new Font("TimesRoman",Font.PLAIN,15);

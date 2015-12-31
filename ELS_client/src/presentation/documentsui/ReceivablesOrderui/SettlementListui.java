@@ -148,6 +148,8 @@ public class SettlementListui extends JPanel{
 		totalAmount.setBackground(Color.WHITE);
 		totalAmount.setFont(font2);
 		
+		scrollPane=new JScrollPane(table);
+		this.add(scrollPane);
 		this.add(sheetLabel);
 		this.add(findByBusiHallID);
 		this.add(findByDate);
@@ -155,6 +157,8 @@ public class SettlementListui extends JPanel{
 		this.add(busiHallIDFind);
 		this.add(dateFind);
 		this.add(showDate);
+		this.add(totalFigure);
+		this.add(totalAmount);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -162,12 +166,9 @@ public class SettlementListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 	public void makeTable(ArrayList<ReceivablesOrderVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(totalFigure);
-			 this.remove(totalAmount);
-		 }catch(Exception e2){
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -181,15 +182,11 @@ public class SettlementListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={" ","12345678","张三","200","2015-12-5","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getID(),oneLine.getCourier(),String.valueOf(oneLine.getAmount()),
-					     oneLine.getDate(),oneLine.getGenerateTime()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getID(),oneLine.getCourier(),String.valueOf(oneLine.getAmount()),
+					 oneLine.getDate(),oneLine.getGenerateTime()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -199,7 +196,6 @@ public class SettlementListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 totalFigure.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   for(int i=0;i<tableModel.getRowCount();i++){
@@ -207,7 +203,6 @@ public class SettlementListui extends JPanel{
 				   }
 				   totalAmount.setText(String.valueOf(totalValue));
 				  }});
-		 this.add(totalFigure);
-		 this.add(totalAmount);
+		 
 	}
 }

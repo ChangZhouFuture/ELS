@@ -39,12 +39,6 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 	TranCenArrivalOrderblservice tranCenArrivalOrderblservice;
 	public TranCenArrivalOrderVO tranCenArrivalOrderVO;
 	
-	public static void main(String[] args){
-		TranCenClerkui ui=new TranCenClerkui();
-		TranCenArrivalOrderui uiPanel=new TranCenArrivalOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public TranCenArrivalOrderui(){
 		tranCenArrivalOrder=new JLabel();
 		departure=new JLabel();
@@ -56,6 +50,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 		departureField=new JTextField();
 		String[] goodStateEntries={"ÍêÕû","Ëð»µ","¶ªÊ§"};
 		goodStateType=new JComboBox(goodStateEntries);
+		tranCenArrivalOrderVO=new TranCenArrivalOrderVO();
 		
 		this.setLayout(null);
 		

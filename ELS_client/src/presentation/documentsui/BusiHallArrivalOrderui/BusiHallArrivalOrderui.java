@@ -40,12 +40,6 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 	public BusiHallArrivalOrderVO busiHallArrivalOrderVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		BusiHallArrivalOrderui uiPanel=new BusiHallArrivalOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public BusiHallArrivalOrderui(){
 		busiHallArrivalOrder=new JLabel();
 		departure=new JLabel();
@@ -66,13 +60,11 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		busiHallArrivalOrder.setHorizontalAlignment(SwingConstants.CENTER);
 		busiHallArrivalOrder.setFont(font1);
 		busiHallArrivalOrder.setBackground(Color.WHITE);
-		busiHallArrivalOrder.setOpaque(true);
 		
 		transferOrder.setBounds(40,50,100,24);
 		transferOrder.setText("中转单编号：");
 		transferOrder.setFont(font2);
 		transferOrder.setBackground(Color.WHITE);
-		transferOrder.setOpaque(true);
 		
 		transferOrderField.setBounds(140,52,150,20);
 		
@@ -80,7 +72,6 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		departure.setText("出发地：");
 		departure.setFont(font2);
 		departure.setBackground(Color.WHITE);
-		departure.setOpaque(true);
 		
 		departureField.setBounds(140,82,150,20);
 		
@@ -88,7 +79,6 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		goodState.setText("货物到达状态：");
 		goodState.setFont(font2);
 		goodState.setBackground(Color.WHITE);
-		goodState.setOpaque(true);
 		
 		goodStateType.setBounds(160,110,100,24);
 		goodStateType.setFont(font2);
@@ -156,11 +146,6 @@ public class BusiHallArrivalOrderui extends ParentDocuments{
 		this.add(goodStateType);
 		this.add(transferOrderField);
 		this.add(departureField);
-		setLocation(184,30);
-		this.setSize(616,496);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
 	}
 	public void refresh() {
 		transferOrderField.setEditable(false);

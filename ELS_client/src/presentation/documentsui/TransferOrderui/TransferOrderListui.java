@@ -65,14 +65,14 @@ public class TransferOrderListui extends Listui{
 				}
 			}
 		});
+		scrollPane=new JScrollPane(table);
+		this.add(scrollPane);
+		this.add(delete);
 	}
 	public void makeTable(ArrayList<TransferOrderlineitemVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -86,16 +86,11 @@ public class TransferOrderListui extends Listui{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={" ","12345678","火车","上海","南京","12345678","2000","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-			     oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getTransportType().toString(),oneLine.getStartingAdd(),
-					     oneLine.getEndAdd(),oneLine.getVehiclesId(),String.valueOf(oneLine.getCarriage()),oneLine.getDate()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
+		 for(int i=0;i<arrayList.size();i++){
+			 oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getId(),oneLine.getTransportType().toString(),oneLine.getStartingAdd(),
+					 oneLine.getEndAdd(),oneLine.getVehiclesId(),String.valueOf(oneLine.getCarriage()),oneLine.getDate()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -105,7 +100,6 @@ public class TransferOrderListui extends Listui{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -119,6 +113,5 @@ public class TransferOrderListui extends Listui{
 				   transferOrderblservice=new TransferOrder();
 				   transferOrderblservice.delete(idList);
 				  }});
-		 this.add(delete);
 	}
 }

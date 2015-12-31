@@ -113,6 +113,16 @@ public class BankAccountListui extends JPanel{
 				}
 			}
 		});
+		scrollPane=new JScrollPane(table);
+		delete=new JButton();
+		delete.setBounds(30,420,50,24);
+		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		delete.setBackground(Color.WHITE);
+		delete.setText("删除");
+		delete.setFont(font2);
+		this.add(scrollPane);
+		this.add(delete);
+		
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);
@@ -127,12 +137,9 @@ public class BankAccountListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<BankAccountVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
-		 }
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -146,15 +153,10 @@ public class BankAccountListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//		 String[] Row1={" ","12345678","张三","00000000","1000","工资","无","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getName(),String.valueOf(oneLine.getAmount())};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
-			 e2.printStackTrace(); 
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getName(),String.valueOf(oneLine.getAmount())};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
@@ -164,14 +166,6 @@ public class BankAccountListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,110);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
-		 delete=new JButton();
-		 delete.setBounds(30,420,50,24);
-		 delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 delete.setBackground(Color.WHITE);
-		 delete.setText("删除");
-		 Font font3=new Font("TimesRoman",Font.PLAIN,15);
-		 delete.setFont(font3);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -185,6 +179,5 @@ public class BankAccountListui extends JPanel{
 				   bankAccountInforblservice=new BankAccountInfor();
 				   bankAccountInforblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
 	}
 }

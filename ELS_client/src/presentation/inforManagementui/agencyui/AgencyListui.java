@@ -1,15 +1,16 @@
 package presentation.inforManagementui.agencyui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -17,33 +18,35 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import bean.JavaBean1;
-import businesslogic.inforManagementbl.DriversInfor;
-import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
+import businesslogic.inforManagementbl.AgencyInfor;
+import businesslogicservice.inforManagementblservice.AgencyInforblservice;
 import presentation.reuse.Images;
-import presentation.userui.Accountantui1;
 import presentation.userui.GeneralManagerui;
-import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
+import state.AgencyType;
+import vo.inforManagementVO.AgencyVO;
 
 public class AgencyListui extends JPanel{
 	public JLabel sheetLabel;
 	public JLabel addText;
-	public JLabel city;
-	public JLabel region;
 	public JButton add;
 	public JButton idFind;
-	public JButton cityFind;
+	public JButton typeFind;
 	public JButton delete;
 	public JTextField idField;
-	public JTextField cityField;
-	public JTextField regionField;
 	public JLabel findById;
-	public JLabel findByCity;
+	public JLabel findByType;
 	public JTable table;
-	public JComboBox sheetType;
+	public DefaultTableModel tableModel;
+	public JComboBox agencyType;
 	public JScrollPane scrollPane;
-	String sheetTypebl=null;
+	String agencyTypeValue="营业厅";
+	AgencyType agencyTypeSeletion=AgencyType.BusinessHall;
+	JavaBean1 javaBean1;
+	AgencyInforblservice agencyInforblservice;
+	AgencyVO oneLine;
 	
 	public static void main(String[] args){
 		
@@ -56,17 +59,22 @@ public class AgencyListui extends JPanel{
 		sheetLabel=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
-		city=new JLabel();
-		region=new JLabel();
 		findById=new JLabel();
-		findByCity=new JLabel();
+		findByType=new JLabel();
 		idField=new JTextField();
-		cityField=new JTextField();
-		regionField=new JTextField();
 		idFind=new JButton();
-		cityFind=new JButton();
-		String[] sheetTypeEntries={"营业厅","中转中心","总部"};
-		sheetType=new JComboBox(sheetTypeEntries);
+		typeFind=new JButton();
+		String[] agencyTypeEntries={"营业厅","中转中心"};
+		agencyType=new JComboBox(agencyTypeEntries);
+		
+		String[] columnNames = {"选择","ID","所在城市","所在区域","机构类型"}; //列名
+		String [][]tableVales={}; //数据
+		tableModel = new DefaultTableModel(tableVales,columnNames);
+		table = new JTable(tableModel){  
+			public boolean isCellEditable(int row, int column){
+					return false;
+			}
+		 };
 		
 		this.setLayout(null);
 		
@@ -82,24 +90,19 @@ public class AgencyListui extends JPanel{
 		sheetLabel.setIcon(Images.SHEET_IMAGE);
 		sheetLabel.setOpaque(true);
 		
-		sheetType.setBackground(Color.WHITE);
-		sheetType.setFont(font2);
-		sheetType.setBounds(30,45,120,24);
-		sheetType.addItemListener(new ItemListener(){
+		agencyType.setBackground(Color.WHITE);
+		agencyType.setFont(font2);
+		agencyType.setBounds(150,115,120,24);
+		agencyType.addItemListener(new ItemListener(){
 			public void  itemStateChanged(ItemEvent evt) {
 				if(evt.getStateChange() == ItemEvent.SELECTED){
-					String sheetTypeString=null;
-					sheetTypeString=(String)sheetType.getSelectedItem();
-					
-					switch(sheetTypeString){
+					agencyTypeValue=(String)agencyType.getSelectedItem();
+					switch(agencyTypeValue){
 					case"营业厅":
-						sheetTypebl="Busi";
+						agencyTypeSeletion=AgencyType.BusinessHall;
 						break;
 					case"中转中心":
-						sheetTypebl="Tran";
-						break;
-					case"总部":
-						sheetTypebl="General";
+						agencyTypeSeletion=AgencyType.TransferCenter;
 						break;
 						default:
 							break;
@@ -107,98 +110,118 @@ public class AgencyListui extends JPanel{
 				} 
 			}     
 		});
-		add.setBounds(30,80,30,30);
+		add.setBounds(30,45,30,30);
 		add.setIcon(Images.ADD_IMAGE);
 		
-		addText.setBounds(60,80,80,30);
+		addText.setBounds(60,45,80,30);
 		addText.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		addText.setBackground(Color.WHITE);
 		addText.setText("增加机构");
 		addText.setFont(font3);
 		addText.setOpaque(true);
 		
-		findById.setBounds(30,115,120,24);
+		findById.setBounds(30,85,120,24);
 		findById.setText("按ID查找:");
 		findById.setFont(font2);
 		findById.setBackground(Color.WHITE);
 		
-		findByCity.setBounds(30,145,120,24);
-		findByCity.setText("按地区查找:");
-		findByCity.setFont(font2);
-		findByCity.setBackground(Color.WHITE);
+		findByType.setBounds(30,115,120,24);
+		findByType.setText("按类型查找:");
+		findByType.setFont(font2);
+		findByType.setBackground(Color.WHITE);
 		
-		idField.setBounds(150,117,120,20);
+		idField.setBounds(150,87,120,20);
 		
-		cityField.setBounds(150,147,100,20);
-		
-		city.setBounds(255,145,24,24);
-		city.setBackground(Color.WHITE);
-		city.setText("市");
-		city.setFont(font2);
-		city.setOpaque(true);
-		
-		regionField.setBounds(285,147,48,20);
-		
-		region.setBounds(340,145,24,24);
-		region.setBackground(Color.WHITE);
-		region.setText("区");
-		region.setFont(font2);
-		region.setOpaque(true);
-		
-		idFind.setBounds(380,115,64,24);
+		idFind.setBounds(380,85,64,24);
 		idFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		idFind.setBackground(Color.WHITE);
 		idFind.setText("查找");
 		idFind.setFont(font2);
 		idFind.setOpaque(true);
 		
-		cityFind.setBounds(380,145,64,24);
-		cityFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		cityFind.setBackground(Color.WHITE);
-		cityFind.setText("查找");
-		cityFind.setFont(font2);
-		cityFind.setOpaque(true);
-		cityFind.addActionListener(new ActionListener() {
+		typeFind.setBounds(380,115,64,24);
+		typeFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		typeFind.setBackground(Color.WHITE);
+		typeFind.setText("查找");
+		typeFind.setFont(font2);
+		typeFind.setOpaque(true);
+		typeFind.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String cityString=null;
-				String regionString=null;
-				if(cityField.getText()!=null&&regionField.getText()!=null){
-					cityString=cityField.getText();
-					regionString=regionField.getText();
-					JavaBean1 javaBean1;
-					
-					try {
-						
-						} catch (Exception e2) {
-							e2.printStackTrace();
-						}
-					}
-				else{
-					System.out.println("Error");
-				}
+				agencyInforblservice=new AgencyInfor();
+				javaBean1=agencyInforblservice.inquireB(agencyTypeSeletion);
+				ArrayList<AgencyVO>  arrayList=(ArrayList<AgencyVO>)javaBean1.getObject();
+				makeTable(arrayList);
 			}
 		});
+		
+		scrollPane=new JScrollPane(table);
 		
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);
 		this.add(findById);
-		this.add(findByCity);
+		this.add(findByType);
 		this.add(idField);
-		this.add(cityField);
-		this.add(city);
-		this.add(region);
-		this.add(regionField);
 		this.add(idFind);
-		this.add(cityFind);
-		this.add(sheetType);
+		this.add(typeFind);
+		this.add(agencyType);
+		this.add(scrollPane);
+		this.add(delete);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void makeTable(ArrayList<AgencyVO>  arrayList){
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
+		table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		 for(int i=0;i<arrayList.size();i++){
+			 oneLine=arrayList.get(i);
+			 String agency="";
+			 switch(oneLine.getAgencyType()){
+			 case BusinessHall:agency="营业厅";break;
+			 case TransferCenter:agency="中转中心";break;
+			 }
+			 String[] oneRow={"",oneLine.getID(),oneLine.getCity(),oneLine.getRegion(),agency};
+			 tableModel.addRow(oneRow);
+		 }
+		 table.setRowHeight(24);
+		 table.setBackground(Color.WHITE);
+		 table.setShowVerticalLines(true);
+		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 scrollPane = new JScrollPane(table); //支持滚动
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(table);
+		 delete.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   ArrayList<String> idList=new ArrayList<String>();
+				   for(int i=0;i<table.getRowCount();i++){
+					   int selectedRow = table.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				           tableModel.removeRow(selectedRow);  //删除行 
+				       }
+				   }
+				   agencyInforblservice=new AgencyInfor();
+				   agencyInforblservice.deleteMany(idList);
+				  }});
 	}
 }

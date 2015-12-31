@@ -32,12 +32,6 @@ public class DeliveryOrderui extends ParentDocuments{
 	public DeliveryOrderVO deliveryOrderVO;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		BusiHallClerkui ui=new BusiHallClerkui();
-		DeliveryOrderui uiPanel=new DeliveryOrderui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public DeliveryOrderui(){
 		deliveryOrder=new JLabel();
 		order=new JLabel();

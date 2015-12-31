@@ -61,13 +61,11 @@ public class BusiHallArrivalOrderListui extends Listui{
 				}
 			}
 		});
+		scrollPane = new JScrollPane(table);
+		this.add(scrollPane);
+		this.add(delete);
 	}
 	public void makeTable(ArrayList<BusiHallArrivalOrderVO> arrayList){
-		try{
-			 this.remove(scrollPane);
-			 this.remove(delete);
-		 }catch(Exception e2){
-		 }
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -80,16 +78,12 @@ public class BusiHallArrivalOrderListui extends Listui{
 				 return ck;
 			 }
 		 });
-		 String[] Row1={" ","12345678","121212","010101","上海","2015-12-5","完整","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-		    	 oneLine=arrayList.get(i);
-			     String[] oneRow={"",oneLine.getId(),oneLine.getBusiHallID(),oneLine.getTransferOrderID(),
-			    		 oneLine.getOrigin(),oneLine.getArrivalDate(),
-					     String.valueOf(oneLine.getGoodState()),oneLine.getGenerateTime()};
-			     tableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+		     oneLine=arrayList.get(i);
+			 String[] oneRow={"",oneLine.getId(),oneLine.getBusiHallID(),oneLine.getTransferOrderID(),
+			    	 oneLine.getOrigin(),oneLine.getArrivalDate(),
+					 String.valueOf(oneLine.getGoodState()),oneLine.getGenerateTime()};
+			 tableModel.addRow(oneRow);
 		 }
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 table.setRowHeight(24);
@@ -100,7 +94,6 @@ public class BusiHallArrivalOrderListui extends Listui{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
-		 this.add(scrollPane);
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
@@ -114,7 +107,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 				   busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
 				   busiHallArrivalOrderblservice.deleteMany(idList);
 				  }});
-		 this.add(delete);
+		 
 	}
 }
 
