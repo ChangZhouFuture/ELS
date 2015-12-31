@@ -11,14 +11,16 @@ import javax.swing.JButton;
 import javax.swing.JDialog;  
 import javax.swing.JFrame;  
 import javax.swing.JLabel;  
+
 public class EMSDialog {
-	 private String message = null;  
-	 private int secends = 0;  
 	 private JLabel label = new JLabel();  
 	 private JButton confirm,cancel;   
 	 private JDialog dialog = null;  
-	 int result = -5; 
-	 Font font2=new Font("ºÚÌå",Font.PLAIN,15);
+	 private Font font2=new Font("ºÚÌå",Font.PLAIN,15);
+	 private int result = -5; 
+	 private int secends = 0;  
+	 private String message = null;  
+	 
 	 public int  showDialog(JFrame father, String message, int sec) {  
 	     this.message = message;  
 	     secends = sec;  
@@ -28,7 +30,7 @@ public class EMSDialog {
 	     ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();  
 	     confirm = new JButton("ÊÇ");  
 	     confirm.setFont(font2);
-	     confirm.setBounds(100,40,60,20);  
+	     confirm.setBounds(100,50,60,20);  
 	     confirm.setBackground(Color.WHITE);
 	     confirm.addActionListener(new ActionListener() {              
 	            @Override  
@@ -40,7 +42,7 @@ public class EMSDialog {
 	     cancel = new JButton("·ñ");
 	     cancel.setFont(font2);
 	     cancel.setBackground(Color.WHITE);
-	     cancel.setBounds(190,40,60,20);  
+	     cancel.setBounds(190,50,60,20);  
 	     cancel.addActionListener(new ActionListener() {  
 	              
 	            @Override  
@@ -68,7 +70,7 @@ public class EMSDialog {
 	        }  
 	    }, 1, 1, TimeUnit.SECONDS);  
 	    dialog.pack();  
-	    dialog.setSize(new Dimension(350,140));  
+	    dialog.setSize(new Dimension(350,130));  
 	    dialog.setLocationRelativeTo(father);  
 	    dialog.setVisible(true);  
 	    return result;  

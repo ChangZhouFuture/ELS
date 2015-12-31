@@ -25,6 +25,4 @@ public class Images {
 	public static final Image LOGIN_BACKGROUND = createImage(
 			 "images/90h58PICgpP_¸±±¾.jpg");
 	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize.png");
-	
-	public static final ImageIcon CLOSE_IMAGE=createImageIcon("images/close.png");
 }

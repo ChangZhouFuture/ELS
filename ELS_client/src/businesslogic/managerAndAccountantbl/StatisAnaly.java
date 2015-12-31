@@ -3,12 +3,15 @@ package businesslogic.managerAndAccountantbl;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
+
 import po.documentsPO.PaymentOrderPO;
 import po.documentsPO.ReceivablesOrderPO;
+import dataservice.documentsdataservice.PaymentOrderdataservice;
 import dataservice.managerAndAccountantdataservice.StatisAnalydataservice;
 import dataservice.utilitydataservice.ParentDocumentsdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.documentsbl.PaymentOrder;
 import businesslogic.utilitybl.Time;
 import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
 
@@ -19,6 +22,14 @@ public class StatisAnaly implements StatisAnalyblservice {
 	private ArrayList<PaymentOrderPO> paymentOrderPOs;
 	private JavaBean1 javaBean1;
 	private ArrayList<String> arrayList;
+	
+	public StatisAnaly() {
+		try {
+			statisAnalydataservice = RMIHelper.getStatisAnalydataservice();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public JavaBean1 inquireReceivalblesOrder(String ID) {

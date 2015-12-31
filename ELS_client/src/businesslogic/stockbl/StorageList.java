@@ -178,7 +178,11 @@ public class StorageList implements StorageListblservice {
 
 	public JavaBean1 getOrderIDsAndAreaList(String date) {
 		//javabean1里面的object是一个二维数组，包含一一对应的orderID + area
-		
+		try {
+			javaBean1 = storageListdataservice.getOrderIDsAndAreaList(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return javaBean1;
 	}
 	

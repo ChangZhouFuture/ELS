@@ -280,9 +280,14 @@ public class Order implements Orderblservice {
 		return date;
 	}
 	
-	public double getOrderAmount() {
-		
-		return freight;
+	public double getOrderAmount(String orderID) {
+		double amount = 0;
+		try {
+			amount = orderdataservice.getOrderAmount(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return amount;
 	}
 	
 }

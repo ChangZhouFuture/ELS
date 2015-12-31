@@ -16,12 +16,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RMIui extends JFrame{
-	public JPanel mainPanel;
-	public JLabel rmiSuccessInit;
-	public JButton exitButton;
-	public JButton minimizeButton;
-	public Point origin = new Point();
 	JFrame thisFrame;
+	JPanel mainPanel;
+	JLabel rmiSuccessInit;
+	JButton exitButton;
+	JButton minimizeButton;
+	Point origin = new Point();
+	RMIHelper rmiHelper = new RMIHelper();
 	
 	public static void main(String[] args){
 		RMIui ui=new RMIui();
@@ -78,6 +79,7 @@ public class RMIui extends JFrame{
 		
 		Font font = new Font("TimesRoman",Font.BOLD,18);
 		
+		rmiHelper.init();
 		rmiSuccessInit.setBounds(95,80,210,24);
 		rmiSuccessInit.setBackground(Color.white);
 		rmiSuccessInit.setText("服务器端已成功链接");
@@ -96,7 +98,6 @@ public class RMIui extends JFrame{
 				int n=dialog.showDialog(null,"是否释放",60);
 		        if (n == 1) {
 		        	thisFrame.dispose();
-				    RMIHelper rmiHelper=new RMIHelper();
 				    rmiHelper.release();
 		        } else if (n == 0) {  
 		        }

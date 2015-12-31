@@ -170,6 +170,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		tranCenArrivalOrderPO.setTranCenID(tranCenArrivalOrderVO.getTranCenID());
 		tranCenArrivalOrderPO.setTransferOrderID(tranCenArrivalOrderVO.
 				getTransferOrderID());
+		tranCenArrivalOrderPO.setAgencyType(tranCenArrivalOrderVO.getAgencyType());
 		tranCenArrivalOrderPO.setApproState(tranCenArrivalOrderVO.getApproState());
 	}
 	
@@ -185,6 +186,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 			tranCenArrivalOrderVO.setTranCenID(tranCenArrivalOrderPO.getTranCenID());
 			tranCenArrivalOrderVO.setTransferOrderID(tranCenArrivalOrderPO.
 					getTransferOrderID());
+			tranCenArrivalOrderVO.setAgencyType(tranCenArrivalOrderPO.getAgencyType());
 			tranCenArrivalOrderVO.setOrigin(tranCenArrivalOrderPO.getOrigin());
 			tranCenArrivalOrderVO.setGoodState(tranCenArrivalOrderPO.getGoodState());
 			tranCenArrivalOrderVO.setApproState(tranCenArrivalOrderPO.getApproState());

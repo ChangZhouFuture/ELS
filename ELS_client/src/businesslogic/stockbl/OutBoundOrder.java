@@ -182,12 +182,23 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 	}
 	
 	public String getArea(String orderID) {
-		return date;
+		String area = null;
+		try {
+			area = outBoundOrderdataservice.getArea(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return area;
 	}
 	
 	public JavaBean1 getOrderIDsAndAreaList(String date) {
 		//javabean1里面的object是一个二维数组，包含一一对应的orderID + area
+		try {
+			javaBean1 = outBoundOrderdataservice.getOrderIDsAndAreaList(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
-		return null;
+		return javaBean1;
 	}
 }

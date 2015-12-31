@@ -25,21 +25,16 @@ public class Stock implements Stockblservice{
 	private StockPO stockPO;
 	private StocklineitemPO stocklineitemPO;
 	private StocklineitemVO stocklineitemVO;
-	private Order order;
-	private OrderlineitemVO orderlineitemVO;
 	private StorageList storageList;
 	private OutBoundOrder outBoundOrder;
-	private StorageListPO storageListPO;
-	private OutBoundOrderPO outBoundOrderPO;
-	private ArrayList<StocklineitemPO> arrayList;
-	private ArrayList<StocklineitemVO> arrayList2;
-	private ArrayList<OrderlineitemVO> arrayList3;
-	private ArrayList<StorageListPO> arrayList4;
-	private ArrayList<OutBoundOrderPO> arrayList5;
+	private Order order;
 	private JavaBean1 javaBean1;
 	private JavaBean3 javaBean3;
 	private JavaBean4 javaBean4;
 	private JavaBean5 javaBean5;
+	private ArrayList<StocklineitemPO> arrayList;
+	private ArrayList<StocklineitemVO> arrayList2;
+	private ArrayList<JavaBean5> arrayList3;
 	private ResultMessage resultMessage;
 	private int[] inNum = new int[4];  //分别是四个区的入库数量计数器,初始都是0
 	private int[] outNum = new int[4];
@@ -55,7 +50,7 @@ public class Stock implements Stockblservice{
 	}
 	
 	@Override
-	public JavaBean5 stockCheck(String startDate, String endDate) {
+	public ArrayList<JavaBean5> stockCheck(String startDate, String endDate) {
 		ArrayList<String> arrayList = null;
 		try {
 			arrayList = Time.getEveryDay(startDate, endDate);
@@ -73,28 +68,55 @@ public class Stock implements Stockblservice{
 			//时间段循环
 			String date = arrayList.get(i);
 				
-			javaBean1 = storageList.inquireB(date);
+			String area;
+			String orderID;
+			String[][] areaListAndOrderIDs;
+			int m;
+			
+			javaBean1 = storageList.getOrderIDsAndAreaList(date);
 			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
+			areaListAndOrderIDs = (String[][])javaBean1.getObject();
+			m = areaListAndOrderIDs[0].length;
 			
-			String area = "";
-			//for循环条件要改,获取各个area
-			for (int j = 0; j < arrayList4.size(); j++) {
-				//对这一天所有入库单，按区分
-//				area = storageListPO.getAreaNum();
-				increaseNumAndAmount(true, area);
-				
-			}//结束对入库数量、金额的计算
+			//for循环条件,获取各个area
+			for (int j = 0; j < m; j++) {
+				area = areaListAndOrderIDs[0][j];
+				orderID = areaListAndOrderIDs[1][j];
+				increaseNumAndAmount(true, area, orderID);
+			}
+			//结束对入库数量、金额的计算
 			
-			javaBean1 = outBoundOrder.inquireB(date);
+			javaBean1 = outBoundOrder.getOrderIDsAndAreaList(date);
 			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
-			//再像上面一样用内层for循环
+			areaListAndOrderIDs = (String[][])javaBean1.getObject();
+			m = areaListAndOrderIDs[0].length;
 			
+			for (int j = 0; j < m; j++) {
+				area = areaListAndOrderIDs[0][j];
+				orderID = areaListAndOrderIDs[1][j];
+				increaseNumAndAmount(false, area, orderID);
+			}
 			
 		}
 		//外层for循环结束
-			
 		
-		return null;
+		String[] areas = {"机动区", "汽运区", "铁运区", "航运区"};
+		arrayList3 = new ArrayList<JavaBean5>();
+		
+		for (int i = 0; i < 4; i++) {
+			javaBean5 = new JavaBean5();
+			
+			javaBean5.setArea(areas[i]);
+			javaBean5.setInNum(inNum[i]);
+			javaBean5.setInAmount(inNum[i]);
+			javaBean5.setOutNum(outNum[i]);
+			javaBean5.setOutAmount(outAmount[i]);
+			javaBean5.setResultMessage(ResultMessage.Success);
+			
+			arrayList3.add(javaBean5);
+		}
+		
+		return arrayList3;
 	}
 
 	@Override
@@ -186,30 +208,29 @@ public class Stock implements Stockblservice{
 	}
 
 	public double getOrderAmount(String orderID) {
-		
+		double amount = order.getOrderAmount(orderID);
 		//调用订单类的方法
-		return 0;
+		return amount;
 	}
 	
-	public void increaseNumAndAmount(boolean flag, String area) {
+	public void increaseNumAndAmount(boolean flag, String area, String orderID) {
 		if (flag) {
 			//计算与入库相关的变量
 			switch (area) {
 			case "机动区":
-//				inAmount[0] += getOrderAmount();
-				//调用获取单据金额的方法，
+				inAmount[0] += getOrderAmount(orderID);
 				inNum[0]++;
 				break;
 			case "汽运区":
-//				inAmount[1] += getOrderAmount();
+				inAmount[1] += getOrderAmount(orderID);
 				inNum[1]++;
 				break;
 			case "铁运区":
-//				inAmount[2] += getOrderAmount();
+				inAmount[2] += getOrderAmount(orderID);
 				inNum[2]++;
 				break;
 			case "航运区":
-//				inAmount[3] += getOrderAmount();
+				inAmount[3] += getOrderAmount(orderID);
 				inNum[3]++;
 				break;
 			default:
@@ -217,6 +238,30 @@ public class Stock implements Stockblservice{
 			}
 		} else {
 			//计算与出库相关的变量
+			switch (area) {
+			case "机动区":
+				outAmount[0] += getOrderAmount(orderID);
+				outNum[0]++;
+				break;
+			case "汽运区":
+				outAmount[1] += getOrderAmount(orderID);
+				outNum[1]++;
+				break;
+			case "铁运区":
+				outAmount[2] += getOrderAmount(orderID);
+				outNum[2]++;
+				break;
+			case "航运区":
+				outAmount[3] += getOrderAmount(orderID);
+				outNum[3]++;
+				break;
+			default:
+				break;
+			}
+			
 		}
+		
 	}
+	
+	
 }
