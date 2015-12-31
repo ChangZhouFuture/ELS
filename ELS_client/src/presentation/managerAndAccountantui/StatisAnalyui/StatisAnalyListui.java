@@ -194,7 +194,6 @@ public class StatisAnalyListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderPO> arrayReceivablesOrderList){
-		this.remove(scrollPane);
 		receivablesOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] Row1={"12345678","уехЩ","200","2015-12-5","2015-12-5"};
 		for(int i=0;i<arrayReceivablesOrderList.size();i++){
@@ -213,10 +212,8 @@ public class StatisAnalyListui extends JPanel{
 		scrollPane.setSize(550,241);
 		scrollPane.setLocation(30,160);
 		scrollPane.setViewportView(receivablesOrderTable);
-	    this.add(scrollPane);
 	}
 	public void makePaymentOrderTable(ArrayList<PaymentOrderPO> arrayPaymentOrderList){
-		this.remove(scrollPane);
 		paymentOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		for(int i=0;i<arrayPaymentOrderList.size();i++){
 		    onePaymentOrderLine=arrayPaymentOrderList.get(i);
@@ -234,10 +231,8 @@ public class StatisAnalyListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(paymentOrderTable);
-		 this.add(scrollPane);
 	}
 	public void makeCostanIncomeTable(CostAndIncomePO costAndIncomePO){
-		this.remove(scrollPane);
 		costanIncomeTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] oneRow={String.valueOf(costAndIncomePO.getIncome()),
 				String.valueOf(costAndIncomePO.getCost()),
@@ -251,6 +246,5 @@ public class StatisAnalyListui extends JPanel{
 		scrollPane.setSize(550,48);
 		scrollPane.setLocation(30,160);
 		scrollPane.setViewportView(costanIncomeTable);
-		this.add(scrollPane);
 	}
 }

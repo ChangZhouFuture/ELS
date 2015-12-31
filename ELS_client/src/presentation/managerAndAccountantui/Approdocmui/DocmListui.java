@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,11 +20,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
 import bean.JavaBean1;
 import businesslogic.managerAndAccountantbl.ApproDocm;
 import businesslogic.orderbl.Order;
 import businesslogicservice.managerAndAccountantblservice.ApproDocmblservice;
+import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.GeneralManagerui;
@@ -65,7 +64,7 @@ public class DocmListui extends JPanel{
 	public DefaultTableModel storageListTableModel;
 	ApproDocmblservice approDocmblservice;
 	JavaBean1 javaBean1;
-	OrderlineitemVO orderlineitemVO;
+	OrderlineitemPO orderlineitemPO;
 	
 	public JScrollPane scrollPane;
 	
@@ -162,8 +161,8 @@ public class DocmListui extends JPanel{
 				switch(documentsType){
 				case Order:
 					javaBean1=approDocmblservice.inquireB(documentsType,date);
-					ArrayList<OrderlineitemVO> arrayList = 
-							(ArrayList<OrderlineitemVO>)javaBean1.getObject();
+					ArrayList<OrderlineitemPO> arrayList = 
+							(ArrayList<OrderlineitemPO>)javaBean1.getObject();
 					makeOrderTable(arrayList);
 					break;
 				case BusiHallArrivalOrder:
@@ -200,12 +199,14 @@ public class DocmListui extends JPanel{
 				}
 			}
 		});
+		scrollPane = new JScrollPane(orderTable);
 		
 		this.add(sheetLabel);
 		this.add(findByDate);
 		this.add(dateFind);
 		this.add(dateField);
 		this.add(sheetType);
+		this.add(scrollPane);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -213,16 +214,10 @@ public class DocmListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
 	}
-	public void makeOrderTable(ArrayList<OrderlineitemVO> arrayList){
+	public void makeOrderTable(ArrayList<OrderlineitemPO> arrayList){
 		while(orderTableModel.getRowCount()>0){
 			orderTableModel.removeRow(orderTableModel.getRowCount()-1);
-			}
-		try{
-			this.remove(orderTable);
-			this.remove(scrollPane);
-			this.remove(approDocm);
-		 }catch(Exception e2){
-		 }
+		}
 		orderTable.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -235,16 +230,13 @@ public class DocmListui extends JPanel{
 				 return ck;
 			 }
 		 });
-		 try{
-		     for(int i=0;i<arrayList.size();i++){
-			     orderlineitemVO=arrayList.get(i);
-			     String[] oneRow={"",orderlineitemVO.getId(),orderlineitemVO.getSenderAdd(),
-			    		 orderlineitemVO.getAddresseeAdd(),orderlineitemVO.getExpressType().toString(),
-			    		 String.valueOf(orderlineitemVO.getTotalCost()),
-			    		 orderlineitemVO.getApproState().toString()};
-			     orderTableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		 for(int i=0;i<arrayList.size();i++){
+			 orderlineitemPO=arrayList.get(i);
+			 String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
+			    orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),
+			    	String.valueOf(orderlineitemPO.getTotalCost()),
+			    	orderlineitemPO.getApproState().toString()};
+			 orderTableModel.addRow(oneRow);
 		 }
 		 orderTable.setRowHeight(24);
 		 orderTable.setBackground(Color.WHITE);
@@ -254,7 +246,6 @@ public class DocmListui extends JPanel{
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(orderTable);
-		 this.add(scrollPane);
 		 approDocm.addActionListener(new ActionListener(){//Ìí¼ÓÊÂ¼þ
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
