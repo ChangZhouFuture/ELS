@@ -177,7 +177,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 					jb1.setResultMessage(ResultMessage.Success);
 				}
 			}
-			jb1.setResultMessage(ResultMessage.Success);
+			jb1.setObject(pos);
 			 return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

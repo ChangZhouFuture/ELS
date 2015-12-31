@@ -123,7 +123,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
-		ArrayList<String> arr;
+		
 		String[] s;
 		String sql="select * from receivablesorder ";
 		
@@ -140,7 +140,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					po.setCourier(rs.getString(3));
 					String str=rs.getString(4);
 					s=str.split(";");
-					arr=new ArrayList<>();
+					ArrayList<String> arr=new ArrayList<>();
 					for(int i=0;i<s.length;i++){
 						arr.add(i, s[i]);
 					}
@@ -158,11 +158,11 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 					po.setCourier(rs.getString(3));
 					String str=rs.getString(4);
 					s=str.split(";");
-					arr=new ArrayList<>();
+					ArrayList<String> arr1=new ArrayList<>();
 					for(int i=0;i<s.length;i++){
-						arr.add(i, s[i]);
+						arr1.add(i, s[i]);
 					}
-					po.setOrderIDs(arr);
+					po.setOrderIDs(arr1);
 					po.setDate(date);
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					po.setAgencyID(rs.getString("busiHallID"));
