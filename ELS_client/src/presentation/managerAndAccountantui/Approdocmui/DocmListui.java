@@ -32,6 +32,27 @@ public class DocmListui extends JPanel{
 	public JButton approDocm;
 	public JTable orderTable;
 	public DefaultTableModel orderTableModel;
+	public JTable busiHallArrivalOrderTable;
+	public DefaultTableModel busiHallArrivalOrderTableModel;
+	public JTable busiHallLoadingListTable;
+	public DefaultTableModel busiHallLoadingListTableModel;
+	public JTable deliveryOrderTable;
+	public DefaultTableModel deliveryOrderTableModel;
+	public JTable tranCenArrivalOrderTable;
+	public DefaultTableModel tranCenArrivalOrderTableModel;
+	public JTable tranCenLoadingListTable;
+	public DefaultTableModel tranCenLoadingListTableModel;
+	public JTable transferOrderTable;
+	public DefaultTableModel transferOrderTableModel;
+	public JTable receivablesOrderTable;
+	public DefaultTableModel receivablesOrderTableModel;
+	public JTable paymentOrderTable;
+	public DefaultTableModel paymentOrderTableModel;
+	public JTable outBoundOrderTable;
+	public DefaultTableModel outBoundOrderTableModel;
+	public JTable storageListTable;
+	public DefaultTableModel storageListTableModel;
+	
 	public JScrollPane scrollPane;
 	
 	String documentsValue="¶©µ¥";

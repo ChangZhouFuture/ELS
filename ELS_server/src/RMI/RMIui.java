@@ -1,4 +1,4 @@
-package presentation.userui;
+package RMI;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -9,29 +9,28 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import presentation.reuse.Images;
 
-public class Mainui extends JFrame{
+import RMI.RMIHelper;
+
+public class RMIui extends JFrame{
 	public JPanel mainPanel;
-	public JButton findOrder;
-	public JButton login;
+	public JLabel rmiSuccessInit;
+	public JButton exitButton;
 	public JButton minimizeButton;
-	public JButton closeButton;
 	public Point origin = new Point();
-	public OrderLogisticsui orderLogisticsui;
 	
 	public static void main(String[] args){
-		Mainui ui=new Mainui();
+		RMIui ui=new RMIui();
 	}
-	public Mainui(){
-		findOrder=new JButton();
-		login=new JButton();
-		minimizeButton=new JButton();
-		closeButton=new JButton();
+	public RMIui(){
 		
+		exitButton=new JButton();
+		minimizeButton=new JButton();
 		mainPanel=new JPanel(){
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
@@ -49,7 +48,7 @@ public class Mainui extends JFrame{
 		this.setLocation((screenSize.width - this.getWidth()) / 2,
 				(screenSize.height - this.getHeight()) / 2);
 		
-		minimizeButton.setBounds(this.getWidth()-24*2,0,24,24);
+		minimizeButton.setBounds(this.getWidth()-24,0,24,24);
 		minimizeButton.setIcon(Images.MINIMIZE_IMAGE);
 		minimizeButton.addActionListener(new ActionListener(){
 			
@@ -59,15 +58,6 @@ public class Mainui extends JFrame{
 			}
 		});
 		
-		closeButton.setBounds(this.getWidth()-24,0,24,24);
-		closeButton.setIcon(Images.CLOSE_IMAGE);
-		closeButton.addActionListener(new ActionListener(){
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0); 
-			}
-		});
 		this.addMouseListener(new MouseAdapter() {
 			// 按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
 			public void mousePressed(MouseEvent e) {
@@ -86,39 +76,31 @@ public class Mainui extends JFrame{
 			}
 		});
 		
-		findOrder.setBounds(125,110,150,24);
-		findOrder.setBackground(Color.white);
-		findOrder.setText("查询订单物流");
 		Font font = new Font("TimesRoman",Font.BOLD,18);
-		findOrder.setFont(font);
-		findOrder.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				OrderLogisticsui orderLogisticsui=new OrderLogisticsui(); 
-			}
-		});
 		
-		login.setBounds(125,170,150,24);
-		login.setBackground(Color.white);
-		login.setText("工作人员登陆");
-		login.setFont(font);
-		login.addActionListener(new ActionListener() {
+		exitButton.setBounds(125,170,150,24);
+		exitButton.setBackground(Color.white);
+		exitButton.setText("工作人员登陆");
+		exitButton.setFont(font);
+		exitButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Loginui loginui=new Loginui();
+				EMSDialog dialog=new EMSDialog();
+				int n = dialog.showDialog(this, "确认删除?",30);  
+		        if (n == 1) {
+				    RMIHelper rmiHelper=new RMIHelper();
+				    rmiHelper.release();
+				    dispose();
+		        } else if (n == 0) {  
+		        }
 			}
 		});
 		
 		mainPanel.setLocation(0, 0);
 		mainPanel.setSize(this.getWidth(),this.getHeight());
 		mainPanel.add(minimizeButton);
-		mainPanel.add(closeButton);
-		mainPanel.add(findOrder);
-		mainPanel.add(login);
+		mainPanel.add(exitButton);
 		this.add(mainPanel);
 		this.setVisible(true);
 		this.validate();

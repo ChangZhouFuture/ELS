@@ -261,5 +261,6 @@ public class StatisAnalyListui extends JPanel{
 		scrollPane.setSize(550,48);
 		scrollPane.setLocation(30,160);
 		scrollPane.setViewportView(costanIncomeTable);
+		this.add(scrollPane);
 	}
 }
