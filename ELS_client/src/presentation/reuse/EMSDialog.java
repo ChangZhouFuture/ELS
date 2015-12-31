@@ -34,7 +34,7 @@ public class EMSDialog {
 	     confirm.addActionListener(new ActionListener() {              
 	            @Override  
 	         public void actionPerformed(ActionEvent e) {  
-	             result = 0;  
+	             result = 1;  
 	             EMSDialog.this.dialog.dispose();  
 	         }  
 	     });  
@@ -46,7 +46,7 @@ public class EMSDialog {
 	              
 	            @Override  
 	         public void actionPerformed(ActionEvent e) {  
-	             result = 1;  
+	             result = 0;  
 	             EMSDialog.this.dialog.dispose();  
 	         }  
 	     });  

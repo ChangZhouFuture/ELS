@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.Executors;  
 import java.util.concurrent.ScheduledExecutorService;  
 import java.util.concurrent.TimeUnit;  
-  
 import javax.swing.JButton;  
 import javax.swing.JDialog;  
 import javax.swing.JFrame;  
@@ -34,7 +33,7 @@ public class EMSDialog {
 	     confirm.addActionListener(new ActionListener() {              
 	            @Override  
 	         public void actionPerformed(ActionEvent e) {  
-	             result = 0;  
+	             result = 1;  
 	             EMSDialog.this.dialog.dispose();  
 	         }  
 	     });  
@@ -46,7 +45,7 @@ public class EMSDialog {
 	              
 	            @Override  
 	         public void actionPerformed(ActionEvent e) {  
-	             result = 1;  
+	             result = 0;  
 	             EMSDialog.this.dialog.dispose();  
 	         }  
 	     });  

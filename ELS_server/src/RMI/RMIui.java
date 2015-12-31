@@ -1,5 +1,4 @@
 package RMI;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -9,13 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.rmi.server.UID;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import RMI.RMIHelper;
 
 public class RMIui extends JFrame{
 	public JPanel mainPanel;
@@ -23,12 +21,14 @@ public class RMIui extends JFrame{
 	public JButton exitButton;
 	public JButton minimizeButton;
 	public Point origin = new Point();
+	JFrame thisFrame;
 	
 	public static void main(String[] args){
 		RMIui ui=new RMIui();
 	}
 	public RMIui(){
-		
+		thisFrame=this;
+		rmiSuccessInit=new JLabel();
 		exitButton=new JButton();
 		minimizeButton=new JButton();
 		mainPanel=new JPanel(){
@@ -78,20 +78,26 @@ public class RMIui extends JFrame{
 		
 		Font font = new Font("TimesRoman",Font.BOLD,18);
 		
-		exitButton.setBounds(125,170,150,24);
+		rmiSuccessInit.setBounds(95,80,210,24);
+		rmiSuccessInit.setBackground(Color.white);
+		rmiSuccessInit.setText("服务器端已成功链接");
+		rmiSuccessInit.setHorizontalAlignment(0);
+		rmiSuccessInit.setFont(font);
+		
+		exitButton.setBounds(115,170,170,24);
 		exitButton.setBackground(Color.white);
-		exitButton.setText("工作人员登陆");
+		exitButton.setText("释放服务器端口");
 		exitButton.setFont(font);
 		exitButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				EMSDialog dialog=new EMSDialog();
-				int n = dialog.showDialog(this, "确认删除?",30);  
+				int n=dialog.showDialog(null,"是否释放",60);
 		        if (n == 1) {
+		        	thisFrame.dispose();
 				    RMIHelper rmiHelper=new RMIHelper();
 				    rmiHelper.release();
-				    dispose();
 		        } else if (n == 0) {  
 		        }
 			}
@@ -101,6 +107,7 @@ public class RMIui extends JFrame{
 		mainPanel.setSize(this.getWidth(),this.getHeight());
 		mainPanel.add(minimizeButton);
 		mainPanel.add(exitButton);
+		mainPanel.add(rmiSuccessInit);
 		this.add(mainPanel);
 		this.setVisible(true);
 		this.validate();
