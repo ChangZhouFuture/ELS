@@ -148,7 +148,6 @@ public class Loginui extends JFrame{
 			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				loginAndOutblservice=new Login();
 				javaBean2=loginAndOutblservice.login(userField.getText(),String.valueOf(passwordField.getPassword()));
 				if((ResultMessage)javaBean2.getResultMessage()==ResultMessage.Success){
