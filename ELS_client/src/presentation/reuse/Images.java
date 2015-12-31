@@ -23,9 +23,6 @@ public class Images {
 	}
 	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/p1616770564 (1).jpg");				
 	
-
-	public static final Image BACKGROUND_IMAGE = createImage("images/background.jpg");
-
 	public static final Image LOGIN_BACKGROUND = createImage(
 			 "images/90h58PICgpP_¸±±¾.jpg");
 

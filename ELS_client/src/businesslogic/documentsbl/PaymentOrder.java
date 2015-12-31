@@ -168,4 +168,9 @@ public class PaymentOrder implements PaymentOrderblservice {
 		
 	}
 
+	public static void main(String[] args) {
+		RMIHelper.init();
+		PaymentOrder paymentOrder = new PaymentOrder();
+		System.out.println(paymentOrder.inquireB("2015-12-24"));
+	}
 }

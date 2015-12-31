@@ -33,9 +33,4 @@ public class RMIHelper {
 		System.out.println("服务器端端口已释放");
 	}
 	
-	public static void main(String[] args) {
-		RMIHelper rmiHelper = new RMIHelper();
-		rmiHelper.init();
-//		rmiHelper.release();
-	}
 }

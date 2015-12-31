@@ -81,8 +81,7 @@ public class RMIui extends JFrame{
 		
 		rmiHelper.init();
 		rmiSuccessInit.setBounds(95,80,210,24);
-		rmiSuccessInit.setBackground(Color.white);
-		rmiSuccessInit.setText("服务器端已成功链接");
+		rmiSuccessInit.setText("服务器端已成功链接!");
 		rmiSuccessInit.setHorizontalAlignment(0);
 		rmiSuccessInit.setFont(font);
 		
