@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
+import bean.JavaBean5;
+import businesslogic.stockbl.Stock;
+import businesslogicservice.stockblservice.Stockblservice;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.StockManagerui;
@@ -31,14 +35,9 @@ public class StockCheckui extends JPanel{
 	public DateChooser endDateChooser;
 	public JTable table;
 	public DefaultTableCellRenderer r;
+	Stockblservice stockblservice;
+	JavaBean5 javaBean5;
 	
-	public static void main(String[] args){
-		
-		StockManagerui ui=new StockManagerui();
-		StockCheckui uiPanel=new StockCheckui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public StockCheckui(){
 		sheetLabel=new JLabel();
 		startDate=new JLabel();
@@ -97,7 +96,27 @@ public class StockCheckui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				stockblservice=new Stock();
+				ArrayList<JavaBean5> arrayList=stockblservice.stockCheck(startDateField.getText(),
+						endDateField.getText());
+				int inNum=0;
+				int outNum=0;
+				double inAmount=0.0;
+				double outAmount=0.0;
+				for(int i=0;i<4;i++){
+					inNum=inNum+arrayList.get(i).getInNum();
+					table.setValueAt(arrayList.get(i).getInNum(),i+1,1);
+					outNum=outNum+arrayList.get(i).getOutNum();
+					table.setValueAt(arrayList.get(i).getOutNum(),i+1,2);
+					inAmount=inAmount+arrayList.get(i).getInAmount();
+					table.setValueAt(arrayList.get(i).getInAmount(),i+1,3);
+					outAmount=outAmount+arrayList.get(i).getOutAmount();
+					table.setValueAt(arrayList.get(i).getOutAmount(),i+1,4);
+				}
+				table.setValueAt(inNum,5,1);
+				table.setValueAt(outNum,5,2);
+				table.setValueAt(inAmount,5,3);
+				table.setValueAt(outAmount,5,4);
 			}
 		});
 		
@@ -131,6 +150,5 @@ public class StockCheckui extends JPanel{
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		this.setOpaque(true);
 	}
 }
