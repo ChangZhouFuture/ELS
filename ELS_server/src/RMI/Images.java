@@ -21,7 +21,6 @@ public class Images {
 		}
 		return null;
 	}
-	public static final ImageIcon MAIN_FRAME_BACKGROUND = createImageIcon("images/p1616770564 (1).jpg");				
 	public static final Image LOGIN_BACKGROUND = createImage(
 			 "images/90h58PICgpP_¸±±¾.jpg");
 	public static final ImageIcon MINIMIZE_IMAGE=createImageIcon("images/minimize.png");

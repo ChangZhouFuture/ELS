@@ -61,5 +61,5 @@ import state.ResultMessage;
 
 	public String generateId(String date,String trancenId) throws RemoteException;
 	
-	public TransferOrderlineitemPO getTransferOrderlineitemPO(String id) throws RemoteException;;
+	public TransferOrderlineitemPO getTransferOrderlineitemPO(String id) throws RemoteException;
  }

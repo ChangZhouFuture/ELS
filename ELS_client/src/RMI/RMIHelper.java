@@ -1,5 +1,8 @@
 package RMI;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import dataservice.datafactoryservice.DataFactoryservice;
@@ -30,12 +33,19 @@ import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
 public class RMIHelper {
+	private static String fileName = "服务器IP地址.txt";
+	private static String URL;
 	public static DataFactoryservice dataFactoryservice;
 	
 	public static void init() {
 		try {
+			File file = new File(fileName);
+			BufferedReader bf = new BufferedReader(new FileReader(file));
+			URL = bf.readLine();
+			bf.close();
+			
 			dataFactoryservice = (DataFactoryservice)Naming.lookup
-					("rmi://127.0.0.1:6602/dataFactoryservice");
+					("rmi://" + URL + ":6602/dataFactoryservice");
 			System.out.println("客户端已连接至服务器端");
 		} catch (Exception e) {
 			e.printStackTrace();

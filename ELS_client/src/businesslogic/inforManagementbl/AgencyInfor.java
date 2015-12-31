@@ -95,7 +95,24 @@ public class AgencyInfor implements AgencyInforblservice{
 
 	@Override
 	public JavaBean1 inquire(String ID) {
+		try {
+			javaBean1 = agencyInfordataservice.find(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		agencyPO = (AgencyPO)javaBean1.getObject();
+		agencyVO = new AgencyVO();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
+		
+		agencyVO.setAgencyType(agencyPO.getAgencyType());
+		agencyVO.setCity(agencyPO.getCity());
+		agencyVO.setID(agencyPO.getID());
+		agencyVO.setRegion(agencyPO.getRegion());
+		
+		javaBean1.setObject(this.agencyVO);
 		return null;
 	}
 
