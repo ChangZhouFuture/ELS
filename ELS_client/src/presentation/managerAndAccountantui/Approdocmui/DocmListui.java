@@ -1,13 +1,17 @@
 package presentation.managerAndAccountantui.Approdocmui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -16,10 +20,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
+import bean.JavaBean1;
+import businesslogic.managerAndAccountantbl.ApproDocm;
+import businesslogic.orderbl.Order;
+import businesslogicservice.managerAndAccountantblservice.ApproDocmblservice;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.GeneralManagerui;
 import state.DocumentsType;
+import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 public class DocmListui extends JPanel{
 	public JComboBox sheetType;
@@ -52,6 +63,9 @@ public class DocmListui extends JPanel{
 	public DefaultTableModel outBoundOrderTableModel;
 	public JTable storageListTable;
 	public DefaultTableModel storageListTableModel;
+	ApproDocmblservice approDocmblservice;
+	JavaBean1 javaBean1;
+	OrderlineitemVO orderlineitemVO;
 	
 	public JScrollPane scrollPane;
 	
@@ -76,7 +90,14 @@ public class DocmListui extends JPanel{
 		approDocm=new JButton();
 		dateField=new JTextField("单击选择日期");
 		dateChooser = DateChooser.getInstance("yyyy-MM-dd");
-		
+		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","审批状态"}; //列名
+		String [][]tableVales={}; //数据
+		orderTableModel = new DefaultTableModel(tableVales,columnNames);
+		orderTable = new JTable(orderTableModel){
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
 		
 		this.setLayout(null);
 		
@@ -135,7 +156,48 @@ public class DocmListui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				String date="";
+				date=dateField.getText();
+				approDocmblservice=new ApproDocm();
+				switch(documentsType){
+				case Order:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					ArrayList<OrderlineitemVO> arrayList = 
+							(ArrayList<OrderlineitemVO>)javaBean1.getObject();
+					makeOrderTable(arrayList);
+					break;
+				case BusiHallArrivalOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case BusiHallLoadingList:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case DeliveryOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case TranCenArrivalOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case TranCenLoadingList:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case TransferOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case ReceivablesOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case PaymentOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case OutBoundOrder:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				case StorageList:
+					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					break;
+				default:break;
+				}
 			}
 		});
 		
@@ -150,5 +212,62 @@ public class DocmListui extends JPanel{
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
+	}
+	public void makeOrderTable(ArrayList<OrderlineitemVO> arrayList){
+		while(orderTableModel.getRowCount()>0){
+			orderTableModel.removeRow(orderTableModel.getRowCount()-1);
+			}
+		try{
+			this.remove(orderTable);
+			this.remove(scrollPane);
+			this.remove(approDocm);
+		 }catch(Exception e2){
+		 }
+		orderTable.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		 try{
+		     for(int i=0;i<arrayList.size();i++){
+			     orderlineitemVO=arrayList.get(i);
+			     String[] oneRow={"",orderlineitemVO.getId(),orderlineitemVO.getSenderAdd(),
+			    		 orderlineitemVO.getAddresseeAdd(),orderlineitemVO.getExpressType().toString(),
+			    		 String.valueOf(orderlineitemVO.getTotalCost()),
+			    		 orderlineitemVO.getApproState().toString()};
+			     orderTableModel.addRow(oneRow);
+		     }
+		 }catch(Exception e2){
+		 }
+		 orderTable.setRowHeight(24);
+		 orderTable.setBackground(Color.WHITE);
+		 orderTable.setShowVerticalLines(true);
+		 orderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 scrollPane = new JScrollPane(orderTable); //支持滚动
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(orderTable);
+		 this.add(scrollPane);
+		 approDocm.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   ArrayList<String> idList=new ArrayList<String>();
+				   for(int i=0;i<orderTable.getRowCount();i++){
+					   int selectedRow = orderTable.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)orderTable.getValueAt(orderTable.getSelectedRow(),1));
+				       }
+				   }
+				   approDocmblservice=new ApproDocm();
+				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
+				   
+				  }});
+		 this.add(approDocm);
 	}
 }

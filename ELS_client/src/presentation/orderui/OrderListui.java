@@ -6,23 +6,16 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
-import presentation.reuse.DateChooser;
-import presentation.reuse.Images;
 import presentation.reuse.Listui;
 import presentation.userui.Courierui;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -64,7 +57,6 @@ public class OrderListui extends Listui{
 			public void actionPerformed(ActionEvent e) {
 				String date="";
 				date=showDate.getText();
-				System.out.println(date);
 				orderblservice=new Order();
 				try {
 					javaBean1=orderblservice.inquireB(date);

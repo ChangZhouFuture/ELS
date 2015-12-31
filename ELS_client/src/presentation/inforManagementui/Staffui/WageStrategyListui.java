@@ -95,7 +95,8 @@ public class WageStrategyListui extends JPanel{
 		table.setBackground(Color.WHITE);
 		table.setShowVerticalLines(true);
 		table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		scrollPane = new JScrollPane(table);
+		scrollPane = new JScrollPane();
+		scrollPane.getViewport().add(table);
 		scrollPane.setSize(550,217);
 		scrollPane.setLocation(30,100);
 		scrollPane.setViewportView(table);
@@ -109,17 +110,18 @@ public class WageStrategyListui extends JPanel{
 		};
 		
 		modifyTableColumn = modifyTable.getColumn("¸¶Ð½·½Ê½");
-		modifyTableColumn.setCellEditor(new DefaultCellEditor(cbx));
+		DefaultCellEditor cellEditor=new DefaultCellEditor(cbx);
+		modifyTableColumn.setCellEditor(cellEditor);
 		cbx.setVisible(true);
 		modifyTable.setDefaultRenderer(Object.class,r);
 		modifyTable.setRowHeight(24);
 		modifyTable.setBackground(Color.WHITE);
 		modifyTable.setShowVerticalLines(true);
 		modifyTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		modifyScrollPane = new JScrollPane(modifyTable);
+		modifyScrollPane = new JScrollPane();
+		modifyScrollPane.getViewport().add(modifyTable);
 		modifyScrollPane.setSize(550,217);
 		modifyScrollPane.setLocation(30,100);
-		modifyScrollPane.setViewportView(modifyTable);
 		
 		modify.setBounds(30,50,70,24);
 		modify.setBorder(BorderFactory.createLineBorder(Color.lightGray));
