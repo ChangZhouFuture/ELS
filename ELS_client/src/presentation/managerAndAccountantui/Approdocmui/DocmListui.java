@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,11 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
-import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
-import presentation.userui.Accountantui1;
 import presentation.userui.GeneralManagerui;
 import state.DocumentsType;
 
@@ -37,6 +33,7 @@ public class DocmListui extends JPanel{
 	public JTable orderTable;
 	public DefaultTableModel orderTableModel;
 	public JScrollPane scrollPane;
+	
 	String documentsValue="¶©µ¥";
 	DocumentsType documentsType=DocumentsType.Order;
 	

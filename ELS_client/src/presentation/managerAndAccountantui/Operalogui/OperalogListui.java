@@ -54,8 +54,8 @@ public class OperalogListui extends Listui{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String dateString=null;
-				dateString=dateString+showDate.getText();
+				String dateString="";
+				dateString=showDate.getText();
 				JavaBean1 javaBean1;
 				operaLogblservice=new InquireOperaLog();
 				try {
