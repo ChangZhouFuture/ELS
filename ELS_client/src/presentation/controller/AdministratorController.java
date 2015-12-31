@@ -84,7 +84,7 @@ public class AdministratorController {
 					javaBean1=userManagementblservice.inquireA(userListui.idField.getText());
 					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 						EMSDialog d=new EMSDialog();
-						int n = d.showDialog(administratorui,"订单不存在",30);
+						int n = d.showDialog(administratorui,"人员不存在",30);
 					}
 					userVO=(UserVO)javaBean1.getObject();
 					userInfoui=findUser(userVO);

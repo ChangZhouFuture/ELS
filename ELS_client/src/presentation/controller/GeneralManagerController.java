@@ -14,8 +14,11 @@ import javax.swing.JPanel;
 import bean.JavaBean1;
 import businesslogic.documentsbl.PaymentOrder;
 import businesslogic.documentsbl.ReceivablesOrder;
+import businesslogic.inforManagementbl.StaffInfor;
+import businesslogic.userManagementbl.UserManagement;
 import businesslogicservice.documentsblservice.PaymentOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
+import businesslogicservice.inforManagementblservice.StaffInforblservice;
 import presentation.documentsui.PaymentOrderui.PaymentOrderui;
 import presentation.documentsui.ReceivablesOrderui.ReceivablesOrderui;
 import presentation.inforManagementui.Staffui.StaffListui;
@@ -24,11 +27,15 @@ import presentation.inforManagementui.agencyui.AgencyListui;
 import presentation.managerAndAccountantui.Approdocmui.DocmListui;
 import presentation.managerAndAccountantui.Operalogui.OperalogListui;
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
+import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userManagementui.UserInfoui;
 import presentation.userui.GeneralManagerui;
+import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
+import vo.inforManagementVO.SalaryStrategyVO;
+import vo.userVO.UserVO;
 
 public class GeneralManagerController {
 	JPanel mainPanel = new JPanel();
@@ -42,10 +49,13 @@ public class GeneralManagerController {
 	WageStrategyListui wageStrategyListui;
 	ReceivablesOrderui receivablesOrderui;
 	PaymentOrderui paymentOrderui;
+	UserInfoui userInfoui;
 	PaymentOrderblservice paymentOrderblservice;
 	ReceivablesOrderblservice receivablesOrderblservice;
+	StaffInforblservice staffInforblservice;
 	PaymentOrderVO paymentOrderVO;
 	ReceivablesOrderVO receivablesOrderVO;
+	UserVO userVO;
 	JavaBean1 javaBean1;
 	
 	public GeneralManagerController(){
@@ -207,6 +217,77 @@ public class GeneralManagerController {
 		}
 		receivablesOrderui.docmID.setText(receivablesOrderVO.getID());
 		return receivablesOrderui;
+	}
+	public void inStaffListui(){
+		staffListui.idFind.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				staffInforblservice=new StaffInfor();
+           		javaBean1=new JavaBean1();
+					javaBean1=staffInforblservice.inquireA(staffListui.idField.getText());
+					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+						EMSDialog d=new EMSDialog();
+						int n = d.showDialog(generalManagerui,"人员不存在",30);
+					}
+					userVO=(UserVO)javaBean1.getObject();
+					userInfoui=findUser(userVO);
+					childPanel = userInfoui;
+					Skip.skip(mainPanel,childPanel);
+			}
+		});
+		staffListui.table.addMouseListener(new MouseAdapter() {
+			 
+			public void mouseClicked(MouseEvent evt) {
+               if (evt.getClickCount() == 2) {
+               	String id=(String)staffListui.tableModel.
+               			getValueAt(staffListui.table.getSelectedRow(),1);
+               	try {
+               		staffInforblservice=new StaffInfor();
+               		javaBean1=new JavaBean1();
+   					javaBean1=staffInforblservice.inquireA(id);
+   					userVO=(UserVO)javaBean1.getObject();
+   					userInfoui=findUser(userVO);
+   					childPanel = userInfoui;
+   					Skip.skip(mainPanel,childPanel);
+   				} catch (Exception e2) {
+   				}
+               }
+            }
+       });
+	}
+	public UserInfoui findUser(UserVO userVO){
+		userInfoui=new UserInfoui();
+		userInfoui.refresh();
+		userInfoui.delete.setVisible(false);
+		userInfoui.modify.setVisible(false);
+		userInfoui.userVO=userVO;
+		userInfoui.nameField.setText(userVO.getName());
+		userInfoui.passwordField.setText(userVO.getPassword());
+		userInfoui.birthDateField.setText(userVO.getBirthDate());
+		userInfoui.identyNumField.setText(userVO.getIdentyNum());
+		userInfoui.phoneField.setText(userVO.getPhone());
+		userInfoui.cityField.setText(userVO.getCity());
+		userInfoui.regionField.setText(userVO.getRegion());
+		userInfoui.agencyIDField.setText(userVO.getAgencyID());
+		switch(userVO.getGender()){
+		case MALE:userInfoui.sexType.setSelectedIndex(0);break;
+		case FEMALE:userInfoui.sexType.setSelectedIndex(1);break;
+		default:break;
+		}
+		switch(userVO.getPosition()){
+		case Courier:userInfoui.positionSeleted.setSelectedIndex(0);break;
+		case BusiHallClerk:userInfoui.positionSeleted.setSelectedIndex(1);break;
+		case TranCenClerk:userInfoui.positionSeleted.setSelectedIndex(2);break;
+		case StockManager:userInfoui.positionSeleted.setSelectedIndex(3);break;
+		case Accountant2:userInfoui.positionSeleted.setSelectedIndex(4);break;
+		case Accountant1:userInfoui.positionSeleted.setSelectedIndex(5);break;
+		case GeneralManager:userInfoui.positionSeleted.setSelectedIndex(6);break;
+		case Administrator:userInfoui.positionSeleted.setSelectedIndex(7);break;
+		default:break;
+		}
+		userInfoui.docmID.setText(userVO.getId());
+		return userInfoui;
 	}
 	public static void main(String[] args) {
 		GeneralManagerController generalManagerController = new GeneralManagerController();

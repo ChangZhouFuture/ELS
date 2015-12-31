@@ -2,6 +2,7 @@ package presentation.managerAndAccountantui.StatisAnalyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -22,6 +23,8 @@ import bean.JavaBean1;
 import businesslogic.managerAndAccountantbl.StatisAnaly;
 import businesslogicservice.managerAndAccountantblservice.StatisAnalyblservice;
 import po.StatisAnalyPO.CostAndIncomePO;
+import po.documentsPO.PaymentOrderPO;
+import po.documentsPO.ReceivablesOrderPO;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Accountantui1;
@@ -45,8 +48,8 @@ public class StatisAnalyListui extends JPanel{
 	public DefaultTableModel receivablesOrderTableModel;
 	public DefaultTableModel paymentOrderTableModel;
 	public DefaultTableModel costanIncomeTableModel;
-	ReceivablesOrderVO oneReceivablesOrderLine;
-	PaymentOrderVO onePaymentOrderLine;
+	ReceivablesOrderPO oneReceivablesOrderLine;
+	PaymentOrderPO onePaymentOrderLine;
 	CostAndIncomePO costAndIncomePO;
 	StatisAnalyblservice statisAnalyblservice;
 	JavaBean1 javaBean1;
@@ -57,6 +60,7 @@ public class StatisAnalyListui extends JPanel{
 		Accountantui1 ui=new Accountantui1();
 		StatisAnalyListui uiPanel=new StatisAnalyListui();
 		JLayeredPane layeredPane=ui.getLayeredPane();
+		uiPanel.makePaymentOrderTable(null);
 		layeredPane.add(uiPanel,0);
 	}
 	public StatisAnalyListui(){
@@ -151,15 +155,15 @@ public class StatisAnalyListui extends JPanel{
 					statisAnalyblservice=new StatisAnaly();
 					javaBean1=statisAnalyblservice.inquireReceivalblesOrder2(startDateField.getText(),
 							endDateField.getText());
-					ArrayList<ReceivablesOrderVO> arrayReceivablesOrderList=
-							(ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
+					ArrayList<ReceivablesOrderPO> arrayReceivablesOrderList=
+							(ArrayList<ReceivablesOrderPO>)javaBean1.getObject();
 					makeReceivablesOrderTable(arrayReceivablesOrderList);
 					break;
 				case "付款单":
 					statisAnalyblservice=new StatisAnaly();
 					javaBean1=statisAnalyblservice.inquirePaymentOrder2(startDateField.getText(),
 							endDateField.getText());
-					ArrayList<PaymentOrderVO> arrayPaymentOrderList = (ArrayList<PaymentOrderVO>)javaBean1.getObject();
+					ArrayList<PaymentOrderPO> arrayPaymentOrderList = (ArrayList<PaymentOrderPO>)javaBean1.getObject();
 					makePaymentOrderTable(arrayPaymentOrderList);
 					break;
 				case "成本收益表":
@@ -172,6 +176,7 @@ public class StatisAnalyListui extends JPanel{
 				}
 			}
 		});
+		scrollPane=new JScrollPane(paymentOrderTable);
 		
 		this.add(sheetLabel);
 		this.add(startDate);
@@ -180,6 +185,7 @@ public class StatisAnalyListui extends JPanel{
 		this.add(endDateField);
 		this.add(find);
 		this.add(sheetType);
+		this.add(scrollPane);
 		
 		setLocation(184,30);
 		this.setSize(616,496);
@@ -187,51 +193,38 @@ public class StatisAnalyListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
 	}
-	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderVO> arrayReceivablesOrderList){
-		try{
-			 this.remove(scrollPane);
-		 }catch(Exception e2){
-		 }
+	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderPO> arrayReceivablesOrderList){
+		this.remove(scrollPane);
 		receivablesOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={"12345678","张三","200","2015-12-5","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayReceivablesOrderList.size();i++){
-		    	 oneReceivablesOrderLine=arrayReceivablesOrderList.get(i);
-			     String[] oneRow={oneReceivablesOrderLine.getID(),
-			    		 oneReceivablesOrderLine.getCourier(),
-			    		 String.valueOf(oneReceivablesOrderLine.getAmount()),
-			    		 oneReceivablesOrderLine.getDate(),oneReceivablesOrderLine.getGenerateTime()};
-			     receivablesOrderTableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
-		 }
-		 receivablesOrderTable.setRowHeight(24);
-		 receivablesOrderTable.setBackground(Color.WHITE);
-		 receivablesOrderTable.setShowVerticalLines(true);
-		 receivablesOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 scrollPane = new JScrollPane(receivablesOrderTable); //支持滚动
-		 scrollPane.setSize(550,241);
-		 scrollPane.setLocation(30,160);
-		 scrollPane.setViewportView(receivablesOrderTable);
-		 this.add(scrollPane);
+		String[] Row1={"12345678","张三","200","2015-12-5","2015-12-5"};
+		for(int i=0;i<arrayReceivablesOrderList.size();i++){
+		    oneReceivablesOrderLine=arrayReceivablesOrderList.get(i);
+			String[] oneRow={oneReceivablesOrderLine.getID(),
+			    	oneReceivablesOrderLine.getCourier(),
+			    	String.valueOf(oneReceivablesOrderLine.getAmount()),
+			    	oneReceivablesOrderLine.getDate(),oneReceivablesOrderLine.getGenerateTime()};
+			receivablesOrderTableModel.addRow(oneRow);
+		}
+		receivablesOrderTable.setRowHeight(24);
+		receivablesOrderTable.setBackground(Color.WHITE);
+		receivablesOrderTable.setShowVerticalLines(true);
+		receivablesOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		scrollPane = new JScrollPane(receivablesOrderTable); //支持滚动
+		scrollPane.setSize(550,241);
+		scrollPane.setLocation(30,160);
+		scrollPane.setViewportView(receivablesOrderTable);
+	    this.add(scrollPane);
 	}
-	public void makePaymentOrderTable(ArrayList<PaymentOrderVO> arrayPaymentOrderList){
-		try{
-			 this.remove(scrollPane);
-		 }catch(Exception e2){
-		 }
+	public void makePaymentOrderTable(ArrayList<PaymentOrderPO> arrayPaymentOrderList){
+		this.remove(scrollPane);
 		paymentOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={"12345678","张三","00000000","1000","工资","无","2015-12-5"};
-		 try{
-		     for(int i=0;i<arrayPaymentOrderList.size();i++){
-		    	 onePaymentOrderLine=arrayPaymentOrderList.get(i);
-			     String[] oneRow={onePaymentOrderLine.getID(),onePaymentOrderLine.getPayer(),
-			    		 onePaymentOrderLine.getBankAccount(),
-					     String.valueOf(onePaymentOrderLine.getAmount()),onePaymentOrderLine.getEntry(),
-					     onePaymentOrderLine.getNote(),onePaymentOrderLine.getDate()};
-			     paymentOrderTableModel.addRow(oneRow);
-		     }
-		 }catch(Exception e2){
+		for(int i=0;i<arrayPaymentOrderList.size();i++){
+		    onePaymentOrderLine=arrayPaymentOrderList.get(i);
+			String[] oneRow={onePaymentOrderLine.getID(),onePaymentOrderLine.getPayer(),
+			    onePaymentOrderLine.getBankAccount(),
+			    String.valueOf(onePaymentOrderLine.getAmount()),onePaymentOrderLine.getEntry(),
+				onePaymentOrderLine.getNote(),onePaymentOrderLine.getDate()};
+			paymentOrderTableModel.addRow(oneRow);
 		 }
 		 paymentOrderTable.setRowHeight(24);
 		 paymentOrderTable.setBackground(Color.WHITE);
@@ -244,10 +237,7 @@ public class StatisAnalyListui extends JPanel{
 		 this.add(scrollPane);
 	}
 	public void makeCostanIncomeTable(CostAndIncomePO costAndIncomePO){
-		try{
-			 this.remove(scrollPane);
-		 }catch(Exception e2){
-		 }
+		this.remove(scrollPane);
 		costanIncomeTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] oneRow={String.valueOf(costAndIncomePO.getIncome()),
 				String.valueOf(costAndIncomePO.getCost()),

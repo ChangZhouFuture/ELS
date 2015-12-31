@@ -43,9 +43,8 @@ public class UserListui extends JPanel{
 	public JButton idFind;
 	public JButton positionFind;
 	public JTextField idField;
-	public JRadioButton findById;
-	public JRadioButton findByPosition;
-	public ButtonGroup findGroup;
+	public JLabel findById;
+	public JLabel findByPosition;
 	public JTable table;
 	public JScrollPane scrollPane;
 	public JButton delete;
@@ -53,7 +52,8 @@ public class UserListui extends JPanel{
 	public UserlineitemVO oneLine;
 	public UserManagementblservice userManagementblservice;
 	public DefaultTableModel tableModel;
-	String positionbl=null;
+	JavaBean1 javaBean1;
+	String positionbl="快递员";
 	
 	public static void main(String[] args){
 		
@@ -67,9 +67,8 @@ public class UserListui extends JPanel{
 		sheetLabel=new JLabel();
 		add=new JButton();
 		addText=new JLabel();
-		findById=new JRadioButton();
-		findByPosition=new JRadioButton();
-		findGroup=new ButtonGroup();
+		findById=new JLabel();
+		findByPosition=new JLabel();
 		idField=new JTextField();
 		idFind=new JButton();
 		positionFind=new JButton();
@@ -116,9 +115,6 @@ public class UserListui extends JPanel{
 		findByPosition.setText("按职位查找:");
 		findByPosition.setFont(font2);
 		findByPosition.setBackground(Color.WHITE);
-		
-		findGroup.add(findById);
-		findGroup.add(findByPosition);
 		
 		idField.setBounds(150,92,120,20);
 		
@@ -178,20 +174,10 @@ public class UserListui extends JPanel{
 		positionFind.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				if(positionbl!=null){
-					JavaBean1 javaBean1;
-					userManagementblservice=new UserManagement();
-					try {
-						javaBean1=userManagementblservice.inquireB(positionbl);
-						ArrayList<UserlineitemVO> arrayList=(ArrayList<UserlineitemVO>)javaBean1.getObject();
-						makeTable(arrayList);
-						} catch (Exception e2) {
-							e2.printStackTrace();
-						}
-					}
-				else{
-					System.out.println("Error");
-				}
+				userManagementblservice=new UserManagement();
+				javaBean1=userManagementblservice.inquireB(positionbl);
+				ArrayList<UserlineitemVO> arrayList=(ArrayList<UserlineitemVO>)javaBean1.getObject();
+				makeTable(arrayList);
 			}
 		});
 		
