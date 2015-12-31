@@ -152,12 +152,12 @@ public class Loginui extends JFrame{
 				agency=javaBean2.getAgencyID();
 				switch (position) {
 				case "Accountant1":
-					dispose();
 					accountant1Controller=new Accountant1Controller();
+					dispose();
 					break;
 				case "Accountant2":
-					dispose();
 					accountant2Controller=new Accountant2Controller();
+					dispose();
 					break;
 				case "Administrator":
 					dispose();
