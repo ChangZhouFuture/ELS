@@ -123,7 +123,8 @@ public class Loginui extends JFrame{
 				System.exit(0); 
 			}
 		});
-		
+		result.setBounds(0,this.getHeight()-24,this.getWidth(),24);
+		result.setFont(font);
 		this.addMouseListener(new MouseAdapter() {
 			// 按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
 			public void mousePressed(MouseEvent e) {
@@ -193,7 +194,8 @@ public class Loginui extends JFrame{
 					break;
 				}
 				}else{
-					
+					result.setText("用户名或密码错误，请重新登录！");
+					result.setBackground(Color.WHITE);
 				}
 			}
 		});
@@ -207,6 +209,7 @@ public class Loginui extends JFrame{
 		loginPanel.add(userField);
 		loginPanel.add(passwordField);
 		loginPanel.add(loginButton);
+		loginPanel.add(result);
 		
 		this.add(loginPanel);
 		this.setVisible(true);

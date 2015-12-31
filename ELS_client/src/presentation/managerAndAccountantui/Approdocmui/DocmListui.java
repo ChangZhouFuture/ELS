@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,6 +23,7 @@ import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Accountantui1;
 import presentation.userui.GeneralManagerui;
+import state.DocumentsType;
 
 public class DocmListui extends JPanel{
 	public JComboBox sheetType;
@@ -34,6 +37,8 @@ public class DocmListui extends JPanel{
 	public JTable orderTable;
 	public DefaultTableModel orderTableModel;
 	public JScrollPane scrollPane;
+	String documentsValue="订单";
+	DocumentsType documentsType=DocumentsType.Order;
 	
 	public static void main(String[] args){
 		GeneralManagerui ui=new GeneralManagerui();
@@ -72,6 +77,27 @@ public class DocmListui extends JPanel{
 		sheetType.setBackground(Color.WHITE);
 		sheetType.setFont(font2);
 		sheetType.setBounds(30,45,160,24);
+		sheetType.addItemListener(new ItemListener(){
+			public void  itemStateChanged(ItemEvent evt) {
+				if(evt.getStateChange() == ItemEvent.SELECTED){
+					documentsValue=(String)sheetType.getSelectedItem();
+				}
+				switch(documentsValue){
+				case "订单":documentsType=DocumentsType.Order;break;
+				case "营业厅到达单":documentsType=DocumentsType.BusiHallArrivalOrder;break;
+				case "营业厅装车单":documentsType=DocumentsType.BusiHallLoadingList;break;
+				case "派件单":documentsType=DocumentsType.DeliveryOrder;break;
+				case "中转中心到达单":documentsType=DocumentsType.TranCenArrivalOrder;break;
+				case "中转中心装车单":documentsType=DocumentsType.TranCenLoadingList;break;
+				case "中转单":documentsType=DocumentsType.TransferOrder;break;
+				case "收款单":documentsType=DocumentsType.ReceivablesOrder;break;
+				case "付款单":documentsType=DocumentsType.PaymentOrder;break;
+				case "入库单":documentsType=DocumentsType.OutBoundOrder;break;
+				case "出库单":documentsType=DocumentsType.StorageList;break;
+				default:break;
+				}
+			}     
+		});
 		
 		findByDate.setBounds(30,75,90,24);
 		findByDate.setText("日期:");
