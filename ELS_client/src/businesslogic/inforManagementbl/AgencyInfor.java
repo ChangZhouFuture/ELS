@@ -113,7 +113,7 @@ public class AgencyInfor implements AgencyInforblservice{
 		agencyVO.setRegion(agencyPO.getRegion());
 		
 		javaBean1.setObject(this.agencyVO);
-		return null;
+		return javaBean1;
 	}
 
 	public String generateID() {

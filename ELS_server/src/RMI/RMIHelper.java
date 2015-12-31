@@ -28,7 +28,6 @@ public class RMIHelper {
 			dataFactoryservice = new DataFactory();
 			Naming.rebind("rmi://" + URL + ":6602/dataFactoryservice", 
 					dataFactoryservice);
-			System.out.println(URL);
 			System.out.println("服务器端已提供连接");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,8 +44,4 @@ public class RMIHelper {
 		System.out.println("服务器端端口已释放");
 	}
 	
-	public static void main(String[] args) {
-		RMIHelper rmiHelper = new RMIHelper();
-		rmiHelper.init();
-	}
 }

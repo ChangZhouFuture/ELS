@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.rmi.server.UID;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -83,7 +81,7 @@ public class RMIui extends JFrame{
 		rmiSuccessInit.setBounds(95,80,210,24);
 		rmiSuccessInit.setText("服务器端已成功链接!");
 		rmiSuccessInit.setHorizontalAlignment(0);
-		rmiSuccessInit.setFont(font);
+		rmiSuccessInit.setFont(new Font("微软雅黑", Font.BOLD, 19));
 		
 		exitButton.setBounds(115,170,170,24);
 		exitButton.setBackground(Color.white);
