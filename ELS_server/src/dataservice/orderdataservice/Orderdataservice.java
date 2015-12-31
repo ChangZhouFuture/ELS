@@ -57,4 +57,6 @@ public interface Orderdataservice extends ParentDocumentsdataservice{
 	public String generateId(String date) throws RemoteException;
 
 	public String expectedArrivalDate(String date,String senderAdd,String addresseeAdd) throws RemoteException, ParseException;//参数为订单生成日期
+	
+	public double getOrderAmount(String orderID) throws RemoteException;
 }

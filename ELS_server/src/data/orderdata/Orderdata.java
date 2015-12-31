@@ -349,6 +349,25 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			return date;
 		}	
 	}
+
+	@Override
+	public double getOrderAmount(String orderID) throws RemoteException {
+		String sql="select totalCost from dingdanorder where ID=?";
+		double amount=0;
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, orderID);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				amount=rs.getDouble("totalCost");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return amount;
+	}
 	
 //	public static void main(String[] args) throws RemoteException, ParseException {
 //		Orderdata od=new Orderdata();
