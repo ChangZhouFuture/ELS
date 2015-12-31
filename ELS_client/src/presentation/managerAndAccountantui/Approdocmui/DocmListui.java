@@ -2,6 +2,8 @@ package presentation.managerAndAccountantui.Approdocmui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -49,7 +51,8 @@ public class DocmListui extends JPanel{
 		dateFind=new JButton();
 		sheetTypeFind=new JButton();
 		approDocm=new JButton();
-		dateField=new JTextField();
+		dateField=new JTextField("单击选择日期");
+		dateChooser = DateChooser.getInstance("yyyy-MM-dd");
 		
 		
 		this.setLayout(null);
@@ -77,12 +80,20 @@ public class DocmListui extends JPanel{
 		findByDate.setOpaque(true);
 		
 		dateField.setBounds(120,77,120,20);
+		dateChooser.register(dateField);
 		
 		dateFind.setBounds(330,75,50,24);
 		dateFind.setText("查找");
 		dateFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		dateFind.setFont(font2);
 		dateFind.setBackground(Color.WHITE);
+		dateFind.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		this.add(sheetLabel);
 		this.add(findByDate);

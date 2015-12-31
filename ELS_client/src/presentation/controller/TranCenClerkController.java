@@ -227,7 +227,7 @@ public class TranCenClerkController {
                if (evt.getClickCount() == 2) {
                	String id=(String)transferOrderListui.tableModel.
                			getValueAt(transferOrderListui.table.getSelectedRow(),1);
-               	try {transferOrderblservice=new TransferOrder();
+               	transferOrderblservice=new TransferOrder();
 				javaBean1=new JavaBean1();
 				javaBean1=transferOrderblservice.inquireA(transferOrderListui.idField.getText());
 				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
@@ -235,8 +235,6 @@ public class TranCenClerkController {
 				childPanel = transferOrderui;
 				Skip.skip(mainPanel,childPanel);
 				inTransferOrderui();
-               	} catch (Exception e2) {
-				}
             }
          }
     });

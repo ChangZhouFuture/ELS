@@ -27,11 +27,14 @@ import presentation.controller.GeneralManagerController;
 import presentation.controller.StockManagerController;
 import presentation.controller.TranCenClerkController;
 import presentation.reuse.Images;
+import state.Position;
+import state.ResultMessage;
 
 public class Loginui extends JFrame{
 	public JPanel loginPanel;
 	public JLabel loginUser;
 	public JLabel loginPassword;
+	public JLabel result;
 	public JButton loginButton;
 	public JTextField userField;
 	public JPasswordField passwordField;
@@ -48,6 +51,7 @@ public class Loginui extends JFrame{
 	public GeneralManagerController generalManagerController;
 	public StockManagerController stockManagerController;
 	public TranCenClerkController tranCenClerkController;
+	Position position;
 	public static String name;
 	public static String city;
 	public static String region;
@@ -60,6 +64,7 @@ public class Loginui extends JFrame{
 	public Loginui(){
 		loginUser=new JLabel();
 		loginPassword=new JLabel();
+		result=new JLabel();
 		loginButton=new JButton();
 		userField=new JTextField();
 		passwordField=new JPasswordField();
@@ -113,12 +118,12 @@ public class Loginui extends JFrame{
 		closeButton.setBounds(this.getWidth()-24,0,24,24);
 		closeButton.setIcon(Images.CLOSE_IMAGE);
 		closeButton.addActionListener(new ActionListener(){
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0); 
 			}
 		});
+		
 		this.addMouseListener(new MouseAdapter() {
 			// 按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
 			public void mousePressed(MouseEvent e) {
@@ -145,46 +150,50 @@ public class Loginui extends JFrame{
 				dispose();
 				loginAndOutblservice=new Login();
 				javaBean2=loginAndOutblservice.login(userField.getText(),String.valueOf(passwordField.getPassword()));
-				String position=javaBean2.getPosition().toString();
+				if((ResultMessage)javaBean2.getResultMessage()==ResultMessage.Success){
+				position=javaBean2.getPosition();
 				name=javaBean2.getName();
 				city=javaBean2.getCity();
 				region=javaBean2.getRegion();
 				agency=javaBean2.getAgencyID();
 				switch (position) {
-				case "Accountant1":
+				case Accountant1:
 					accountant1Controller=new Accountant1Controller();
 					dispose();
 					break;
-				case "Accountant2":
+				case Accountant2:
 					accountant2Controller=new Accountant2Controller();
 					dispose();
 					break;
-				case "Administrator":
-					dispose();
+				case Administrator:
 					administratorController=new AdministratorController();
-					break;
-				case "BusiHallClerk":
 					dispose();
+					break;
+				case BusiHallClerk:
 					busiHallClerkController=new BusiHallClerkController();
-					break;
-				case "Courier":
 					dispose();
+					break;
+				case Courier:
 					courierController=new CourierController();
-					break;
-				case "GeneralManager":
 					dispose();
+					break;
+				case GeneralManager:
 					generalManagerController=new GeneralManagerController();
-					break;
-				case "StockManager":
 					dispose();
+					break;
+				case StockManager:
 					stockManagerController=new StockManagerController();
-					break;
-				case "TranCenClerk":
 					dispose();
+					break;
+				case TranCenClerk:
 					tranCenClerkController=new TranCenClerkController();
+					dispose();
 					break;
 				default:
 					break;
+				}
+				}else{
+					
 				}
 			}
 		});
