@@ -37,8 +37,8 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	@Override
 	public ResultMessage add(OutBoundOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into outboundorder(ID,date,destination,transportType,truckNum)"
-				+ "values(?,?,?,?,?,?)";
+		String sql="insert into outboundorder(ID,date,destination,transportType,truckNum,area,orderID)"
+				+ "values(?,?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
@@ -46,6 +46,8 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			stmt.setString(3, po.getDestination());
 			stmt.setString(4, po.getTransportType().toString());
 			stmt.setString(5, po.getTruckNum());
+			stmt.setString(6, po.getArea());
+			stmt.setString(7, po.getOrderID());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -77,7 +79,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	public ResultMessage update(OutBoundOrderPO po) {
 		// TODO Auto-generated method stub
 		po=new OutBoundOrderPO();
-		String sql="update outboundorder set date=?,destination=?,transportType=?,truckNum=?,area=?"
+		String sql="update outboundorder set date=?,destination=?,transportType=?,truckNum=?,area=?,orderID=?"
 				+ "where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -85,8 +87,9 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			stmt.setString(2, po.getDestination());
 			stmt.setString(3, po.getTransportType().toString());
 			stmt.setString(4, po.getTruckNum());
-			stmt.setString(5, po.getId());
-			stmt.setString(6, po.getArea());
+			stmt.setString(5, po.getArea());
+			stmt.setString(6, po.getOrderID());
+			stmt.setString(7, po.getId());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
@@ -116,6 +119,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 				po.setTruckNum(rs.getString(5));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setArea(rs.getString("area"));
+				po.setOrderID(rs.getString("orderID"));
 				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
 			}
@@ -147,6 +151,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 					po.setTruckNum(rs.getString(5));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					po.setArea(rs.getString("area"));
+					po.setOrderID(rs.getString("orderID"));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
@@ -158,6 +163,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 					po.setTruckNum(rs.getString(5));
 					po.setApproState(ApproState.valueOf(rs.getString("approState")));
 					po.setArea(rs.getString("area"));
+					po.setOrderID(rs.getString("orderID"));
 					pos.add(po);
 					jb1.setResultMessage(ResultMessage.Success);
 				}
