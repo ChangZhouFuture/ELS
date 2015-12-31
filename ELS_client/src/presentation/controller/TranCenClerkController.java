@@ -119,7 +119,8 @@ public class TranCenClerkController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(tranCenClerkui,"单据不存在",30);
 				}
-				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+				ArrayList<TranCenArrivalOrderVO> arrayList=(ArrayList<TranCenArrivalOrderVO>)javaBean1.getObject();
+				tranCenArrivalOrderVO=arrayList.get(0);
 				tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
 				childPanel = tranCenArrivalOrderui;
 				Skip.skip(mainPanel,childPanel);
@@ -135,7 +136,7 @@ public class TranCenClerkController {
                	try {
                		tranCenArrivalOrderblservice=new TranCenArrivalOrder();
 				    javaBean1=new JavaBean1();
-				    javaBean1=tranCenArrivalOrderblservice.inquireA(tranCenArrivalOrderListui.idField.getText());
+				    javaBean1=tranCenArrivalOrderblservice.inquireA(id);
 				    tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
 				    tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
 				    childPanel = tranCenArrivalOrderui;
@@ -229,7 +230,7 @@ public class TranCenClerkController {
                			getValueAt(transferOrderListui.table.getSelectedRow(),1);
                	transferOrderblservice=new TransferOrder();
 				javaBean1=new JavaBean1();
-				javaBean1=transferOrderblservice.inquireA(transferOrderListui.idField.getText());
+				javaBean1=transferOrderblservice.inquireA(id);
 				transferOrderVO=(TransferOrderVO)javaBean1.getObject();
 				transferOrderui=findTransferOrder(transferOrderVO);
 				childPanel = transferOrderui;
@@ -337,7 +338,7 @@ public class TranCenClerkController {
                	try {
                		tranCenLoadingListblservice=new TranCenLoadingList();
 				    javaBean1=new JavaBean1();
-				    javaBean1=tranCenLoadingListblservice.inquireA(transferCenterLoadingListListui.idField.getText());
+				    javaBean1=tranCenLoadingListblservice.inquireA(id);
 				    tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
 				    transferCenterLoadingListui=findTransferCenterLoadingList(tranCenLoadingListVO);
 				    childPanel = transferCenterLoadingListui;
