@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
@@ -286,7 +287,7 @@ public class BusiHallClerkController {
 				driversui=findDriver(driversVO);
 				childPanel = driversui;
 				Skip.skip(mainPanel,childPanel);
-				inReceivablesOrderui();
+				inDriversui();
 			}
 		});
 		driversListui.table.addMouseListener(new MouseAdapter() {
@@ -303,7 +304,7 @@ public class BusiHallClerkController {
 	    				driversui=findDriver(driversVO);
 	    				childPanel = driversui;
 	    				Skip.skip(mainPanel,childPanel);
-	    				inReceivablesOrderui();
+	    				inDriversui();
 	            	}catch(Exception e2){
 	            	}
                }
@@ -471,7 +472,8 @@ public class BusiHallClerkController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
-				busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
+				ArrayList<BusiHallArrivalOrderVO> arrayList=(ArrayList<BusiHallArrivalOrderVO>)javaBean1.getObject();
+					busiHallArrivalOrderVO=arrayList.get(0);
 				busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
 				childPanel = busiHallArrivalOrderui;
 				Skip.skip(mainPanel,childPanel);
@@ -488,7 +490,8 @@ public class BusiHallClerkController {
                		busiHallArrivalOrderblservice=new BusiHallArrivalOrder();
     				javaBean1=new JavaBean1();
    					javaBean1=busiHallArrivalOrderblservice.inquireA(id);
-   					busiHallArrivalOrderVO=(BusiHallArrivalOrderVO)javaBean1.getObject();
+   					ArrayList<BusiHallArrivalOrderVO> arrayList=(ArrayList<BusiHallArrivalOrderVO>)javaBean1.getObject();
+   					busiHallArrivalOrderVO=arrayList.get(0);
    					busiHallArrivalOrderui=findBusiHallArrivalOrder(busiHallArrivalOrderVO);
    					childPanel = busiHallArrivalOrderui;
    					Skip.skip(mainPanel,childPanel);
@@ -565,7 +568,8 @@ public class BusiHallClerkController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
-				deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
+				ArrayList<DeliveryOrderVO> arrayList=(ArrayList<DeliveryOrderVO>)javaBean1.getObject();
+				deliveryOrderVO=arrayList.get(0);
 				deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
 				childPanel = deliveryOrderui;
 				Skip.skip(mainPanel,childPanel);
@@ -581,13 +585,13 @@ public class BusiHallClerkController {
                 		deliveryOrderblservice=new DeliveryOrder();
                 		javaBean1=new JavaBean1();
     					javaBean1=deliveryOrderblservice.inquireA(id);
-    					deliveryOrderVO=(DeliveryOrderVO)javaBean1.getObject();
+    					ArrayList<DeliveryOrderVO> arrayList=(ArrayList<DeliveryOrderVO>)javaBean1.getObject();
+    					deliveryOrderVO=arrayList.get(0);
     					deliveryOrderui=findDeliveryOrder(deliveryOrderVO);
     					childPanel = deliveryOrderui;
     					Skip.skip(mainPanel,childPanel);
     					inDeliveryOrderui();
     				} catch (Exception e2) {
-    					e2.printStackTrace();
     				}
                 }
              }

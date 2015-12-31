@@ -334,10 +334,11 @@ public class Orderui extends ParentDocuments{
 		sureReceive.setText("ÊÕ¼þ");
 		sureReceive.setFont(font5);
 		sureReceive.setBackground(Color.WHITE);
-		sureReceive.setVisible(false);
+//		sureReceive.setVisible(false);
 		sureReceive.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				actualReceiver.setVisible(true);
 				actualReceiverField.setEditable(true);
 				makeSure.setVisible(true);
 				actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.lightGray));

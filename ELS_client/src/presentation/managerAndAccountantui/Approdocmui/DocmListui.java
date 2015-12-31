@@ -12,8 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
+import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Accountantui1;
 import presentation.userui.GeneralManagerui;
@@ -22,16 +24,13 @@ public class DocmListui extends JPanel{
 	public JComboBox sheetType;
 	public JLabel sheetLabel;
 	public JLabel findByDate;
-	public JLabel year;
-	public JLabel month;
-	public JLabel day;
-	public JTextField yearField;
-	public JTextField monthField;
-	public JTextField dayField;
+	public JTextField dateField;
+	public DateChooser dateChooser;
 	public JButton dateFind;
 	public JButton sheetTypeFind;
 	public JButton approDocm;
-	public JTable table;
+	public JTable orderTable;
+	public DefaultTableModel orderTableModel;
 	public JScrollPane scrollPane;
 	
 	public static void main(String[] args){
@@ -47,15 +46,11 @@ public class DocmListui extends JPanel{
 		sheetType=new JComboBox(sheetTypeEntries);
 		sheetLabel=new JLabel();
 		findByDate=new JLabel();
-		year=new JLabel();
-		month=new JLabel();
-		day=new JLabel();
 		dateFind=new JButton();
 		sheetTypeFind=new JButton();
 		approDocm=new JButton();
-		yearField=new JTextField();
-		monthField=new JTextField();
-		dayField=new JTextField();
+		dateField=new JTextField();
+		
 		
 		this.setLayout(null);
 		
@@ -81,29 +76,7 @@ public class DocmListui extends JPanel{
 		findByDate.setBackground(Color.WHITE);
 		findByDate.setOpaque(true);
 		
-		yearField.setBounds(120,77,48,20);
-		
-		year.setBounds(170,75,24,24);
-		year.setText("年");
-		year.setFont(font2);
-		year.setBackground(Color.WHITE);
-		year.setOpaque(true);
-		
-		monthField.setBounds(200,77,24,20);
-		
-		month.setBounds(230,75,24,24);
-		month.setText("月");
-		month.setFont(font2);
-		month.setBackground(Color.WHITE);
-		month.setOpaque(true);
-		
-		dayField.setBounds(260,77,24,20);
-		
-		day.setBounds(290,75,24,24);
-		day.setText("日");
-		day.setFont(font2);
-		day.setBackground(Color.WHITE);
-		day.setOpaque(true);
+		dateField.setBounds(120,77,120,20);
 		
 		dateFind.setBounds(330,75,50,24);
 		dateFind.setText("查找");
@@ -113,13 +86,8 @@ public class DocmListui extends JPanel{
 		
 		this.add(sheetLabel);
 		this.add(findByDate);
-		this.add(year);
-		this.add(month);
-		this.add(day);
 		this.add(dateFind);
-		this.add(yearField);
-		this.add(monthField);
-		this.add(dayField);
+		this.add(dateField);
 		this.add(sheetType);
 		
 		setLocation(184,30);
