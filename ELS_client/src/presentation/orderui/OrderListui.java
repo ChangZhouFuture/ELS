@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
-import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +16,6 @@ import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Listui;
-import presentation.userui.Courierui;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 public class OrderListui extends Listui{
@@ -90,7 +88,6 @@ public class OrderListui extends Listui{
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-//		 scrollPane = new JScrollPane(table); //Ö§³Ö¹ö¶¯
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);

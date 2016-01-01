@@ -86,7 +86,6 @@ public class OperalogListui extends Listui{
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 scrollPane = new JScrollPane(table); //Ö§³Ö¹ö¶¯
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,100);
 		 scrollPane.setViewportView(table);

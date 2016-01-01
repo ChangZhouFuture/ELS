@@ -2,7 +2,6 @@ package presentation.managerAndAccountantui.StatisAnalyui;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -28,8 +27,6 @@ import po.documentsPO.ReceivablesOrderPO;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.Accountantui1;
-import vo.documentsVO.PaymentOrderVO;
-import vo.documentsVO.ReceivablesOrderVO;
 
 public class StatisAnalyListui extends JPanel{
 	public JLabel sheetLabel;
@@ -211,7 +208,6 @@ public class StatisAnalyListui extends JPanel{
 		receivablesOrderTable.setBackground(Color.WHITE);
 		receivablesOrderTable.setShowVerticalLines(true);
 		receivablesOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		scrollPane = new JScrollPane(receivablesOrderTable); //支持滚动
 		scrollPane.setSize(550,241);
 		scrollPane.setLocation(30,160);
 		scrollPane.setViewportView(receivablesOrderTable);
@@ -233,7 +229,6 @@ public class StatisAnalyListui extends JPanel{
 		 paymentOrderTable.setBackground(Color.WHITE);
 		 paymentOrderTable.setShowVerticalLines(true);
 		 paymentOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 scrollPane = new JScrollPane(paymentOrderTable); //支持滚动
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(paymentOrderTable);
@@ -251,7 +246,6 @@ public class StatisAnalyListui extends JPanel{
 		costanIncomeTable.setBackground(Color.WHITE);
 		costanIncomeTable.setShowVerticalLines(true);
 		costanIncomeTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		scrollPane = new JScrollPane(costanIncomeTable); //支持滚动
 		scrollPane.setSize(550,48);
 		scrollPane.setLocation(30,160);
 		scrollPane.setViewportView(costanIncomeTable);
