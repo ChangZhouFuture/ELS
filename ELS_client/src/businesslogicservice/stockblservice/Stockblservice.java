@@ -7,6 +7,7 @@ import bean.JavaBean3;
 import bean.JavaBean4;
 import bean.JavaBean5;
 import state.ResultMessage;
+import vo.stockVO.StorageListVO;
 
 public interface Stockblservice {
 	/**
@@ -42,7 +43,7 @@ public interface Stockblservice {
 	 * 后置：入库，记录新的架位状态
 	 * 
 	 */
-	public JavaBean4 storage(StorageListPO po);
+	public JavaBean4 storage(StorageListVO storageListVO);
 	
 	/**
 	 * 

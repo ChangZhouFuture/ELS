@@ -5,12 +5,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import dataservice.stockdataservice.Stockdataservice;
 import po.lineitemPO.stocklineitemPO.StocklineitemPO;
-import po.stockPO.OutBoundOrderPO;
 import po.stockPO.StockPO;
-import po.stockPO.StorageListPO;
 import state.ResultMessage;
-import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.lineitemVO.stocklineitemVO.StocklineitemVO;
+import vo.stockVO.StorageListVO;
 import RMI.RMIHelper;
 import bean.JavaBean1;
 import bean.JavaBean3;
@@ -174,14 +172,16 @@ public class Stock implements Stockblservice{
 
 
 	@Override
-	public JavaBean4 storage(StorageListPO storageListPO) {
-		stockPO.setId(storageListPO.getOrderID());
-		stockPO.setInDate(storageListPO.getInDate());
-		stockPO.setAreaNum(storageListPO.getAreaNum());
-		stockPO.setFrameNum(storageListPO.getFrameNum());
-		stockPO.setRowNum(storageListPO.getRowNum());
-		stockPO.setPositionNum(storageListPO.getPositionNum());
-		stockPO.setDestination(storageListPO.getDestination());
+	public JavaBean4 storage(StorageListVO storageListVO) {
+		stockPO = new StockPO();
+		
+		stockPO.setId(storageListVO.getOrderID());
+		stockPO.setInDate(storageListVO.getInDate());
+		stockPO.setAreaNum(storageListVO.getAreaNum());
+		stockPO.setFrameNum(storageListVO.getFrameNum());
+		stockPO.setRowNum(storageListVO.getRowNum());
+		stockPO.setPositionNum(storageListVO.getPositionNum());
+		stockPO.setDestination(storageListVO.getDestination());
 		
 		try {
 			resultMessage = stockdataservice.storage(stockPO);
