@@ -13,7 +13,6 @@ import bean.JavaBean1;
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.ReceivablesOrderPO;
-import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
@@ -83,10 +82,11 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		// TODO Auto-generated method stub
 		po=new ReceivablesOrderPO();
 		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
-		String sql="select * from receivablesorder where ID='"+id+"'";
+		String sql="select * from receivablesorder where ID=?";
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
 		    ResultSet rs=stmt.executeQuery();
 		    if(rs.next()){ 
 		    	jb1.setResultMessage(ResultMessage.Success);
