@@ -71,6 +71,7 @@ public class Stock implements Stockblservice{
 			String[][] areaListAndOrderIDs;
 			int m;
 			
+			storageList = new StorageList();
 			javaBean1 = storageList.getOrderIDsAndAreaList(date);
 			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
 			areaListAndOrderIDs = (String[][])javaBean1.getObject();

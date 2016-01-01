@@ -112,6 +112,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.tranCenArrivalOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		

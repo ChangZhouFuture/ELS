@@ -12,7 +12,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class RMIHelper {
-	private String fileName = "·þÎñÆ÷IPµØÖ·.txt";
+	private String fileName = "IP Address Of Server.txt";
 	private String URL;
 	private DataFactoryservice dataFactoryservice;
 	private Remote reg;

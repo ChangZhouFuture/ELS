@@ -33,7 +33,7 @@ import dataservice.utilitydataservice.RecordOperaLogdataservice;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 
 public class RMIHelper {
-	private static String fileName = "·þÎñÆ÷IPµØÖ·.txt";
+	private static String fileName = "IP Address Of Server.txt";
 	private static String URL;
 	public static DataFactoryservice dataFactoryservice;
 	
