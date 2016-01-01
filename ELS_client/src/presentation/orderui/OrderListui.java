@@ -90,7 +90,7 @@ public class OrderListui extends Listui{
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 scrollPane = new JScrollPane(table); //支持滚动
+//		 scrollPane = new JScrollPane(table); //支持滚动
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(table);
