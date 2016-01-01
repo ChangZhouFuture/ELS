@@ -239,7 +239,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 				tranCenLoadingListVO.setDestination(arrivalField.getText());
 				tranCenLoadingListVO.setEscortMan(yYYField.getText());
 				tranCenLoadingListVO.setSupervisionMan(jZYField.getText());
-				ArrayList<String> idList=null;
+				ArrayList<String> idList=new ArrayList<String>();
 				for(int i=0;i<orderList.getRowCount();i++){
 					idList.add((String)orderList.getValueAt(i,1));
 				}

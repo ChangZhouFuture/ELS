@@ -9,22 +9,15 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
 import bean.JavaBean1;
 import businesslogic.documentsbl.BusiHallArrivalOrder;
 import businesslogicservice.documentsblservice.BusiHallArrivalOrderblservice;
 import presentation.reuse.ParentDocuments;
-import presentation.userui.BusiHallClerkui;
 import presentation.userui.Loginui;
 import state.GoodState;
 import vo.documentsVO.BusiHallArrivalOrderVO;
-import vo.orderVO.OrderVO;
 
 public class BusiHallArrivalOrderui extends ParentDocuments{
 	public JLabel busiHallArrivalOrder;

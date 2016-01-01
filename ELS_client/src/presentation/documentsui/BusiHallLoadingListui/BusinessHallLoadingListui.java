@@ -6,35 +6,24 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.security.auth.Refreshable;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
 import bean.JavaBean1;
 import businesslogic.documentsbl.BusiHallLoadingList;
-import businesslogic.orderbl.Order;
 import businesslogicservice.documentsblservice.BusiHallLoadingListblservice;
-import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.ParentDocuments;
-import presentation.userui.BusiHallClerkui;
 import presentation.userui.Loginui;
-import state.ResultMessage;
 import vo.documentsVO.BusiHallLoadingListVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
-import vo.orderVO.OrderVO;
 
 public class BusinessHallLoadingListui extends ParentDocuments{
 	public JLabel busiLoadOrder;
@@ -266,7 +255,7 @@ public class BusinessHallLoadingListui extends ParentDocuments{
 				busiHallLoadingListVO.setDestination(arrivalField.getText());
 				busiHallLoadingListVO.setEscortMan(yYYField.getText());
 				busiHallLoadingListVO.setSupervisionMan(jZYField.getText());
-				ArrayList<String> idList=null;
+				ArrayList<String> idList=new ArrayList<String>();
 				for(int i=0;i<orderList.getRowCount();i++){
 					idList.add((String)orderList.getValueAt(i,1));
 				}
