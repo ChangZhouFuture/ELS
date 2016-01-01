@@ -69,31 +69,31 @@ public class Stock implements Stockblservice{
 			String area;
 			String orderID;
 			String[][] areaListAndOrderIDs;
-			int m;
 			
 			storageList = new StorageList();
 			javaBean1 = storageList.getOrderIDsAndAreaList(date);
 			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
+			
 			areaListAndOrderIDs = (String[][])javaBean1.getObject();
-			m = areaListAndOrderIDs[0].length;
 			
 			//for循环条件,获取各个area
-			for (int j = 0; j < m; j++) {
-				area = areaListAndOrderIDs[0][j];
-				orderID = areaListAndOrderIDs[1][j];
-				increaseNumAndAmount(true, area, orderID);
+			for (int j = 0; j < 50; j++) {
+					area = areaListAndOrderIDs[0][j];
+					orderID = areaListAndOrderIDs[1][j];
+					increaseNumAndAmount(true, area, orderID);
 			}
 			//结束对入库数量、金额的计算
 			
+			outBoundOrder = new OutBoundOrder();
 			javaBean1 = outBoundOrder.getOrderIDsAndAreaList(date);
 			//要改，不要调用查B，调用一个新方法，返回值是areaList + orderIDs
-			areaListAndOrderIDs = (String[][])javaBean1.getObject();
-			m = areaListAndOrderIDs[0].length;
 			
-			for (int j = 0; j < m; j++) {
-				area = areaListAndOrderIDs[0][j];
-				orderID = areaListAndOrderIDs[1][j];
-				increaseNumAndAmount(false, area, orderID);
+			areaListAndOrderIDs = (String[][])javaBean1.getObject();
+			
+			for (int j = 0; j < 50; j++) {
+					area = areaListAndOrderIDs[0][j];
+					orderID = areaListAndOrderIDs[1][j];
+					increaseNumAndAmount(false, area, orderID);
 			}
 			
 		}
@@ -107,7 +107,7 @@ public class Stock implements Stockblservice{
 			
 			javaBean5.setArea(areas[i]);
 			javaBean5.setInNum(inNum[i]);
-			javaBean5.setInAmount(inNum[i]);
+			javaBean5.setInAmount(inAmount[i]);
 			javaBean5.setOutNum(outNum[i]);
 			javaBean5.setOutAmount(outAmount[i]);
 			javaBean5.setResultMessage(ResultMessage.Success);
@@ -208,12 +208,17 @@ public class Stock implements Stockblservice{
 	}
 
 	public double getOrderAmount(String orderID) {
+		order = new Order();
 		double amount = order.getOrderAmount(orderID);
 		//调用订单类的方法
 		return amount;
 	}
 	
 	public void increaseNumAndAmount(boolean flag, String area, String orderID) {
+		if (area == null) {
+			return;
+		}
+		
 		if (flag) {
 			//计算与入库相关的变量
 			switch (area) {
@@ -263,9 +268,4 @@ public class Stock implements Stockblservice{
 		
 	}
 	
-	public static void main(String[] args) {
-		RMIHelper.init();
-		Stock stock = new Stock();
-		stock.stockCheck("2015-12-22", "2015-12-31");
-	}
 }
