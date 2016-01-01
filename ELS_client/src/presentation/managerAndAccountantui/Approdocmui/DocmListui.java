@@ -200,7 +200,13 @@ public class DocmListui extends JPanel{
 			}
 		});
 		scrollPane = new JScrollPane(orderTable);
+		approDocm.setBounds(30,420,50,24);
+		approDocm.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		approDocm.setBackground(Color.WHITE);
+		approDocm.setText("审批");
+		approDocm.setFont(font2);
 		
+		this.add(approDocm);
 		this.add(sheetLabel);
 		this.add(findByDate);
 		this.add(dateFind);
@@ -242,7 +248,6 @@ public class DocmListui extends JPanel{
 		 orderTable.setBackground(Color.WHITE);
 		 orderTable.setShowVerticalLines(true);
 		 orderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		 scrollPane = new JScrollPane(orderTable); //支持滚动
 		 scrollPane.setSize(550,241);
 		 scrollPane.setLocation(30,160);
 		 scrollPane.setViewportView(orderTable);
@@ -259,6 +264,5 @@ public class DocmListui extends JPanel{
 				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
 				   
 				  }});
-		 this.add(approDocm);
 	}
 }
