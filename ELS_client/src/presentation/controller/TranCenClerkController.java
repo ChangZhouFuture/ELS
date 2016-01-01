@@ -16,6 +16,7 @@ import businesslogic.documentsbl.TransferOrder;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 import businesslogicservice.documentsblservice.TranCenLoadingListblservice;
 import businesslogicservice.documentsblservice.TransferOrderblservice;
+import po.documentsPO.TranCenArrivalOrderPO;
 import presentation.documentsui.TranCenArrivalOrderui.TranCenArrivalOrderListui;
 import presentation.documentsui.TranCenArrivalOrderui.TranCenArrivalOrderui;
 import presentation.documentsui.TranCenLoadingListui.TransferCenterLoadingListListui;
@@ -137,12 +138,14 @@ public class TranCenClerkController {
                		tranCenArrivalOrderblservice=new TranCenArrivalOrder();
 				    javaBean1=new JavaBean1();
 				    javaBean1=tranCenArrivalOrderblservice.inquireA(id);
-				    tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
+				    ArrayList<TranCenArrivalOrderVO> arrayList=(ArrayList<TranCenArrivalOrderVO>)javaBean1.getObject();
+				    tranCenArrivalOrderVO=arrayList.get(0);
 				    tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
 				    childPanel = tranCenArrivalOrderui;
 				    Skip.skip(mainPanel,childPanel);
 				    inTransferOrderui();
                	} catch (Exception e2) {
+               		e2.printStackTrace();
 				}
             }
          }
@@ -345,6 +348,7 @@ public class TranCenClerkController {
 				    Skip.skip(mainPanel,childPanel);
 				    inTransferCenterLoadingListui();
                	} catch (Exception e2) {
+               		e2.printStackTrace();
 				}
             }
          }

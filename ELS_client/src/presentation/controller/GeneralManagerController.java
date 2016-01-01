@@ -181,6 +181,7 @@ public class GeneralManagerController {
    					Skip.skip(mainPanel,childPanel);
    					inAgencyui();
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }
@@ -342,6 +343,7 @@ public class GeneralManagerController {
    					childPanel = userInfoui;
    					Skip.skip(mainPanel,childPanel);
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }

@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 
+import presentation.reuse.Images;
 import presentation.reuse.MainFrame;
 
 public class StockManagerui extends MainFrame{
@@ -17,16 +18,19 @@ public class StockManagerui extends MainFrame{
 	public JButton stockCheck;
 	public JButton stockCount;
 	public JLabel userName;
+	public JLabel stockBell;
 	
-	public static void main(String[] args){
-		StockManagerui ui=new StockManagerui();
-	}
 	public StockManagerui(){
 		storageManage=new JButton();
 		userName=new JLabel();
 		outBoundManage=new JButton();
 		stockCheck=new JButton();
 		stockCount=new JButton();
+		stockBell=new JLabel();
+		
+		stockBell.setBounds(124,46,24,24);
+		stockBell.setIcon(Images.BELL_IMAGE);
+		stockBell.setVisible(false);
 		
 		userName.setBounds(2,76,176,24);
 		userName.setText("库存管理人员："+Loginui.name);
@@ -67,5 +71,6 @@ public class StockManagerui extends MainFrame{
 		this.left.add(outBoundManage);
 		this.left.add(stockCheck);
 		this.left.add(stockCount);
+		this.left.add(stockBell);
 	}
 }

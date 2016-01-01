@@ -109,6 +109,7 @@ public class AdministratorController {
    					Skip.skip(mainPanel,childPanel);
    					inUserInfoui();
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }

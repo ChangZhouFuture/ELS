@@ -155,6 +155,7 @@ public class StockManagerController {
     					Skip.skip(mainPanel,childPanel);
     					inOutBoundOrderui();
     				} catch (Exception e2) {
+    					e2.printStackTrace();
     				}
                 }
              }
@@ -250,6 +251,7 @@ public class StockManagerController {
     					Skip.skip(mainPanel,childPanel);
     					inOutBoundOrderui();
     				} catch (Exception e2) {
+    					e2.printStackTrace();
     				}
                 }
              }

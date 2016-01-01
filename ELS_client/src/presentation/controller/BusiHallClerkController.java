@@ -203,6 +203,7 @@ public class BusiHallClerkController {
    					Skip.skip(mainPanel,childPanel);
    					inBusinessHallLoadingListui();
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }
@@ -306,6 +307,7 @@ public class BusiHallClerkController {
 	    				Skip.skip(mainPanel,childPanel);
 	    				inDriversui();
 	            	}catch(Exception e2){
+	            		e2.printStackTrace();
 	            	}
                }
             }
@@ -397,6 +399,7 @@ public class BusiHallClerkController {
 				        Skip.skip(mainPanel,childPanel);
 				        inReceivablesOrderui();
 			        }catch(Exception e2){
+			        	e2.printStackTrace();
 			        }
 	            }
 	       }
@@ -497,6 +500,7 @@ public class BusiHallClerkController {
    					Skip.skip(mainPanel,childPanel);
    					inBusiHallArrivalOrderui();
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }
@@ -592,6 +596,7 @@ public class BusiHallClerkController {
     					Skip.skip(mainPanel,childPanel);
     					inDeliveryOrderui();
     				} catch (Exception e2) {
+    					e2.printStackTrace();
     				}
                 }
              }
@@ -680,6 +685,7 @@ public class BusiHallClerkController {
 	    				Skip.skip(mainPanel,childPanel);
 	    				inReceivablesOrderui();
 	            	}catch(Exception e2){
+	            		e2.printStackTrace();
 	            	}
                }
             }

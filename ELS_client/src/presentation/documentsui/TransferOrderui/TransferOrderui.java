@@ -173,7 +173,7 @@ public class TransferOrderui extends ParentDocuments{
 		carriage.setBackground(Color.WHITE);
 		carriage.setOpaque(true);
 		
-		carriageField.setBounds(200,172,80,20);
+		carriageField.setBounds(140,172,80,20);
 		carriageField.setEditable(false);
 		carriageField.setBackground(Color.WHITE);
 		carriageField.setBorder(BorderFactory.createLineBorder(Color.WHITE));

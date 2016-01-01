@@ -69,7 +69,7 @@ public class MainFrame extends JFrame{
 		left.setBackground(Color.white);
 		left.setOpaque(true);
 		
-		userLogo.setBounds((left.getWidth()-72)/2,0,70,70);
+		userLogo.setBounds(54,0,70,70);
 		userLogo.setIcon(Images.USERLOGO_IMAGE);
 		
 		Font font2 = new Font("TimesRoman",Font.BOLD,18);

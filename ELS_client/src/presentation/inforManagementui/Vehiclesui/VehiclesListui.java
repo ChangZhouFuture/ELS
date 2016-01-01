@@ -136,6 +136,7 @@ public class VehiclesListui extends JPanel{
 					ArrayList<VehiclesVO> arrayList=(ArrayList<VehiclesVO>)javaBean1.getObject();
 					makeTable(arrayList);
 					} catch (Exception e2) {
+						e2.printStackTrace();
 					}
 			}
 		});

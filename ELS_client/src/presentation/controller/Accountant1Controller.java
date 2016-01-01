@@ -67,6 +67,7 @@ public class Accountant1Controller extends Accountant2Controller{
    					Skip.skip(mainPanel,childPanel);
    					inBankAccountui();
    				} catch (Exception e2) {
+   					e2.printStackTrace();
    				}
                }
             }
