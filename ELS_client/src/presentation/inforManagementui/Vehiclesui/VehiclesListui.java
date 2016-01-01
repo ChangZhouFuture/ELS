@@ -6,32 +6,25 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
 import bean.JavaBean1;
-import businesslogic.inforManagementbl.DriversInfor;
 import businesslogic.inforManagementbl.VehiclesInfor;
 import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
-import presentation.inforManagementui.Driversui.DriversListui;
 import presentation.reuse.Images;
 import presentation.userui.BusiHallClerkui;
 import presentation.userui.Loginui;
 import vo.inforManagementVO.VehiclesVO;
-import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
 
 public class VehiclesListui extends JPanel{
 	public JLabel sheetLabel;

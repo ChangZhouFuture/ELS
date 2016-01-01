@@ -24,6 +24,7 @@ import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 import businesslogicservice.inforManagementblservice.DriversInforblservice;
 import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
+import po.inforManagementPO.VehiclesPO;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderListui;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderui;
 import presentation.documentsui.BusiHallLoadingListui.BusinessHallLoadingListListui;

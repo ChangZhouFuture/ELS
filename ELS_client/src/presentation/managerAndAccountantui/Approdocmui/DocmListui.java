@@ -30,6 +30,7 @@ import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.GeneralManagerui;
+import state.ApproState;
 import state.DocumentsType;
 import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
@@ -101,7 +102,7 @@ public class DocmListui extends JPanel{
 					 return false;
 			 }
 		 };
-		 String[] busiHallArrivalColumnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态"}; //列名
+		 String[] busiHallArrivalColumnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态","审批状态"}; //列名
 		 busiHallArrivalOrderTableModel = new DefaultTableModel(tableVales,busiHallArrivalColumnNames);
 		 busiHallArrivalOrderTable = new JTable(busiHallArrivalOrderTableModel){  
 			 public boolean isCellEditable(int row, int column){
@@ -252,11 +253,21 @@ public class DocmListui extends JPanel{
 		 });
 		 for(int i=arrayList.size()-1;i>=0;i--){
 			 orderlineitemPO=arrayList.get(i);
-			 String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
-			    orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),
-			    	String.valueOf(orderlineitemPO.getTotalCost()),
-			    	orderlineitemPO.getApproState().toString()};
-			 orderTableModel.addRow(oneRow);
+			 if(orderlineitemPO.getApproState()==ApproState.NotApprove){
+			     String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
+			        orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),
+			    	String.valueOf(orderlineitemPO.getTotalCost()),"未审"};
+			     orderTableModel.addRow(oneRow);
+			 }
+		 }
+		 for(int i=arrayList.size()-1;i>=0;i--){
+			 orderlineitemPO=arrayList.get(i);
+			 if(orderlineitemPO.getApproState()==ApproState.Approve){
+			     String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
+			        orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),
+			    	String.valueOf(orderlineitemPO.getTotalCost()),"未审"};
+			     orderTableModel.addRow(oneRow);
+			 }
 		 }
 		 orderTable.setRowHeight(24);
 		 orderTable.setBackground(Color.WHITE);
@@ -297,10 +308,23 @@ public class DocmListui extends JPanel{
 		 });
 		 for(int i=arrayList.size()-1;i>=0;i--){
 		     busiHallArrivalOrderPO=arrayList.get(i);
-			 String[] oneRow={"",busiHallArrivalOrderPO.getId(),busiHallArrivalOrderPO.getBusiHallID(),
+		     if(busiHallArrivalOrderPO.getApproState()==ApproState.NotApprove){
+			       String[] oneRow={"",busiHallArrivalOrderPO.getId(),busiHallArrivalOrderPO.getBusiHallID(),
 					 busiHallArrivalOrderPO.getTransferOrderID(),busiHallArrivalOrderPO.getOrigin(),
-					 busiHallArrivalOrderPO.getArrivalDate(),busiHallArrivalOrderPO.getGoodState().toString()};
-			 busiHallArrivalOrderTableModel.addRow(oneRow);
+					 busiHallArrivalOrderPO.getArrivalDate(),busiHallArrivalOrderPO.getGoodState().toString(),
+					 "未审"};
+			    busiHallArrivalOrderTableModel.addRow(oneRow);
+			 }
+		 }
+		 for(int i=arrayList.size()-1;i>=0;i--){
+		     busiHallArrivalOrderPO=arrayList.get(i);
+		     if(busiHallArrivalOrderPO.getApproState()==ApproState.Approve){
+			       String[] oneRow={"",busiHallArrivalOrderPO.getId(),busiHallArrivalOrderPO.getBusiHallID(),
+					 busiHallArrivalOrderPO.getTransferOrderID(),busiHallArrivalOrderPO.getOrigin(),
+					 busiHallArrivalOrderPO.getArrivalDate(),busiHallArrivalOrderPO.getGoodState().toString(),
+					 "已审"};
+			    busiHallArrivalOrderTableModel.addRow(oneRow);
+			 }
 		 }
 		 busiHallArrivalOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 busiHallArrivalOrderTable.setRowHeight(24);

@@ -181,13 +181,13 @@ public class Accountant2Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				paymentOrderblservice=new PaymentOrder();
-				javaBean1=new JavaBean1();
 				javaBean1=paymentOrderblservice.inquireA(paymentOrderListui.idField.getText());
 				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(accountantui,"单据不存在",30);
 				}else{
-					paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
+					ArrayList<PaymentOrderVO> arrayList=(ArrayList<PaymentOrderVO>)javaBean1.getObject();
+					paymentOrderVO=arrayList.get(0);
 					paymentOrderui=findPaymentOrder(paymentOrderVO);
 					childPanel = paymentOrderui;
 					Skip.skip(mainPanel,childPanel);
@@ -203,9 +203,9 @@ public class Accountant2Controller {
                 			getValueAt(paymentOrderListui.table.getSelectedRow(),1);
                 	try {
                 		paymentOrderblservice=new PaymentOrder();
-                		javaBean1=new JavaBean1();
     					javaBean1=paymentOrderblservice.inquireA(id);
-    					paymentOrderVO=(PaymentOrderVO)javaBean1.getObject();
+    					ArrayList<PaymentOrderVO> arrayList=(ArrayList<PaymentOrderVO>)javaBean1.getObject();
+    					paymentOrderVO=arrayList.get(0);
     					paymentOrderui=findPaymentOrder(paymentOrderVO);
     					childPanel = paymentOrderui;
     					Skip.skip(mainPanel,childPanel);
