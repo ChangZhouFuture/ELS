@@ -1,7 +1,6 @@
 package businesslogicservice.userManagementblservice;
 
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import state.ResultMessage;
 import vo.userVO.UserVO;

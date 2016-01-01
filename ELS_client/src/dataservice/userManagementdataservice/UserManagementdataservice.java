@@ -3,10 +3,8 @@ package dataservice.userManagementdataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.userPO.UserPO;
-import state.Position;
 import state.ResultMessage;
 
 public interface UserManagementdataservice extends Remote{
@@ -20,5 +18,5 @@ public interface UserManagementdataservice extends Remote{
     
     public JavaBean1 findB(String position) throws RemoteException;
     
-    public String generateID(Position position) throws RemoteException;
+    public String generateID(String position) throws RemoteException;
 }

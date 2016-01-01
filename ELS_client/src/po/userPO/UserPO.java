@@ -1,9 +1,7 @@
 package po.userPO;
 
 import java.io.Serializable;
-
 import state.Gender;
-import state.Position;
 
 public class UserPO implements Serializable{
     private String Id;
@@ -16,7 +14,7 @@ public class UserPO implements Serializable{
     private String city;
     private String region;
     private String agencyID;
-    private Position position;
+    private String position;
     
 	public String getName() {
 		return name;
@@ -66,10 +64,10 @@ public class UserPO implements Serializable{
 	public void setAgencyID(String agencyID) {
 		this.agencyID = agencyID;
 	}
-	public Position getPosition() {
+	public String getPosition() {
 		return position;
 	}
-	public void setPosition(Position position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	public String getId() {

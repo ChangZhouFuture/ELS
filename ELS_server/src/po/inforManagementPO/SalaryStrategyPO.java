@@ -1,18 +1,17 @@
 package po.inforManagementPO;
 
 import state.PayType;
-import state.Position;
 
 public class SalaryStrategyPO {
-	private Position position;
+	private String position;
 	private PayType payType;
 	private double payAmount;
 	private String percentage;
 	
-	public Position getPosition() {
+	public String getPosition() {
 		return position;
 	}
-	public void setPosition(Position position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	public PayType getPayType() {
