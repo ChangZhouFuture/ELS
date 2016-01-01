@@ -28,12 +28,16 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 	@Override
 	public ResultMessage updateApproState(DocumentsType documentsType, ArrayList<String> IDList) throws RemoteException {
 		// TODO Auto-generated method stub
+		String orderName=documentsType.toString().toLowerCase();
+		if(documentsType.equals(DocumentsType.Order)){
+			orderName="dingdanorder";
+		}
 		String sql="select * from ? where ID=?";
 		String state="NotApprove";
 		try {
 			for(int i=0;i<IDList.size();i++){
 				stmt=con.prepareStatement(sql);
-				stmt.setString(1, documentsType.toString().toLowerCase());
+				stmt.setString(1, orderName);
 				stmt.setString(2, IDList.get(i));
 				ResultSet rs=stmt.executeQuery();
 				if(rs.next()){
