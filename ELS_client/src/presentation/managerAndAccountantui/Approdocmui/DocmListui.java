@@ -279,11 +279,8 @@ public class DocmListui extends JPanel{
 		 approDocm.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
-				   for(int i=0;i<orderTable.getRowCount();i++){
-					   int selectedRow = orderTable.getSelectedRow();//获得选中行的索引
-				       if(selectedRow!=-1){
-				    	   idList.add((String)orderTable.getValueAt(orderTable.getSelectedRow(),1));
-				       }
+				   while(orderTable.getSelectedRow()>=0){
+				       idList.add((String)orderTable.getValueAt(orderTable.getSelectedRow(),1));
 				   }
 				   approDocmblservice=new ApproDocm();
 				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
