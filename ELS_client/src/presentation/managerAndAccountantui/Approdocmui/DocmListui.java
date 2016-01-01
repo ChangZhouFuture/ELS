@@ -236,7 +236,7 @@ public class DocmListui extends JPanel{
 				 return ck;
 			 }
 		 });
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 			 orderlineitemPO=arrayList.get(i);
 			 String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
 			    orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),

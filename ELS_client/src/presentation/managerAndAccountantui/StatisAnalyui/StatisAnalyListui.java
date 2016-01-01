@@ -196,7 +196,7 @@ public class StatisAnalyListui extends JPanel{
 		}
 		receivablesOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		String[] Row1={"12345678","ÕÅÈý","200","2015-12-5","2015-12-5"};
-		for(int i=0;i<arrayReceivablesOrderList.size();i++){
+		for(int i=arrayReceivablesOrderList.size()-1;i>=0;i--){
 		    oneReceivablesOrderLine=arrayReceivablesOrderList.get(i);
 			String[] oneRow={oneReceivablesOrderLine.getID(),
 			    	oneReceivablesOrderLine.getCourier(),
@@ -217,7 +217,7 @@ public class StatisAnalyListui extends JPanel{
 			paymentOrderTableModel.removeRow(paymentOrderTableModel.getRowCount()-1);
 		}
 		paymentOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		for(int i=0;i<arrayPaymentOrderList.size();i++){
+		for(int i=arrayPaymentOrderList.size()-1;i>=0;i--){
 		    onePaymentOrderLine=arrayPaymentOrderList.get(i);
 			String[] oneRow={onePaymentOrderLine.getID(),onePaymentOrderLine.getPayer(),
 			    onePaymentOrderLine.getBankAccount(),

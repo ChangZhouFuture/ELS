@@ -217,8 +217,7 @@ public class UserListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 String[] Row1={" ","12345678","уехЩ","2015-12-5","12345678","2015-12-5"};
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getId(),oneLine.getName(),oneLine.getGender().toString(),
 			    	oneLine.getPhone(),oneLine.getCity(),oneLine.getRegion(),

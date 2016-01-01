@@ -71,7 +71,7 @@ public class StockCountui extends JPanel{
 		stockblservice=new Stock();
 		javaBean3=stockblservice.stockCount();
 		ArrayList<StocklineitemVO> arrayList=(ArrayList<StocklineitemVO>)javaBean3.getObject();
-		for(int i=0;i<arrayList.size();i++){
+		for(int i=arrayList.size()-1;i>=0;i--){
 			stocklineitemVO=arrayList.get(i);
 			String[] oneRow={"",stocklineitemVO.getId(),stocklineitemVO.getDestination(),
 					stocklineitemVO.getAreaNum(),stocklineitemVO.getRowNum(),

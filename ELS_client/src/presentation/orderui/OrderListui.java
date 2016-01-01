@@ -78,7 +78,7 @@ public class OrderListui extends Listui{
 				 return ck;
 			 }
 		 });
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 			 oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getId(),oneLine.getSenderAdd(),oneLine.getAddresseeAdd(),
 			    	 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};

@@ -184,7 +184,7 @@ public class VehiclesListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getID(),oneLine.getBusiHallID(),
 					 oneLine.getPlateNum(),oneLine.getServiceTime()};
