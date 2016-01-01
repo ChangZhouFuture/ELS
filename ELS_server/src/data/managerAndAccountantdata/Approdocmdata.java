@@ -13,7 +13,7 @@ import state.DocumentsType;
 import state.ResultMessage;
 
 
-public class Approdocmdata  extends UnicastRemoteObject implements Approdocmdataservice{
+public class Approdocmdata extends UnicastRemoteObject implements Approdocmdataservice{
 
 	public Approdocmdata() throws RemoteException {
 		super();
@@ -68,7 +68,6 @@ public class Approdocmdata  extends UnicastRemoteObject implements Approdocmdata
 			stmt.setString(1, Id);
 			ResultSet rs=stmt.executeQuery();
 			if(rs.next()){
-				System.out.println(rs.getString("approState"));
 				r=ResultMessage.Success;
 				
 				if(rs.getString("approState").equals("NotApprove")){
@@ -76,7 +75,6 @@ public class Approdocmdata  extends UnicastRemoteObject implements Approdocmdata
 				}else{
 					state="NotApprove";
 				}
-				System.out.println(state);
 			}
 			if(documentsType==DocumentsType.Order){
 				sql="update dingdanorder set approState=? where ID=?";
@@ -114,11 +112,12 @@ public class Approdocmdata  extends UnicastRemoteObject implements Approdocmdata
 		}
 	}
 	
-//	public static void main(String[] args) {
+//	public static void main(String[] args) throws RemoteException {
 //		Approdocmdata a=new Approdocmdata();
 //		ArrayList<String> IDList=new ArrayList<>();
 //		IDList.add("1512240002");
-//		a.singleUpdateApproState(DocumentsType.Order, "1512270001");
+//		IDList.add("1512290001");
+//		a.updateApproState(DocumentsType.Order, IDList);
 //		
 //	}
 }
