@@ -204,6 +204,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				jb1.setResultMessage(ResultMessage.Success);
+				count++;
 				orderIDsAndAreaList[0][count]=rs.getString("areaNum");
 				orderIDsAndAreaList[1][count]=rs.getString("ID");
 			}

@@ -28,38 +28,47 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 	@Override
 	public ResultMessage updateApproState(DocumentsType documentsType, ArrayList<String> IDList) throws RemoteException {
 		// TODO Auto-generated method stub
+		ResultMessage r=ResultMessage.NotExist;
+		for(int i=0;i<IDList.size();i++){
+			r=singleUpdateApproState(documentsType, IDList.get(i));
+		}
+		return r;
+	}
+	
+	public ResultMessage singleUpdateApproState(DocumentsType documentsType,String Id){
 		String orderName=documentsType.toString().toLowerCase();
+		ResultMessage r=ResultMessage.NotExist;
 		if(documentsType.equals(DocumentsType.Order)){
 			orderName="dingdanorder";
 		}
-		String sql="select * from ? where ID=?";
+		String sql="select * from ?";
 		String state="NotApprove";
 		try {
-			for(int i=0;i<IDList.size();i++){
-				stmt=con.prepareStatement(sql);
-				stmt.setString(1, orderName);
-				stmt.setString(2, IDList.get(i));
-				ResultSet rs=stmt.executeQuery();
-				if(rs.next()){
-					if(rs.getString("approState").equals("NotApprove")){
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, orderName);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString(1).equals(Id)){
+					r=ResultMessage.Success;
+					if(rs.getString("approState")=="NotApprove"){
 						state="Approve";
 					}else{
 						state="NotApprove";
 					}
 				}
-				sql="update ? set approState=? where ID=?";
-				stmt.setString(1, documentsType.toString().toLowerCase());
-				stmt.setString(2, state);
-				stmt.setString(3, IDList.get(i));
-				stmt.executeUpdate();
 			}
-			return ResultMessage.Success;
-			
+			sql="update ? set approState=? where ID=?";
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, orderName);
+			stmt.setString(2, state);
+			stmt.setString(3, Id);
+			stmt.executeUpdate();
+			return r;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.NotExist;
+			return r;
 		}
 	}
-
+	
 }
