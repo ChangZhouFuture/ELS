@@ -113,7 +113,7 @@ public class Accountant2Controller {
 			public void mouseClicked(MouseEvent evt) {
 	            if (evt.getClickCount() == 2) {
 	               	String id=(String)statisAnalyListui.receivablesOrderTableModel.
-	               			getValueAt(statisAnalyListui.receivablesOrderTable.getSelectedRow(),1);
+	               			getValueAt(statisAnalyListui.receivablesOrderTable.getSelectedRow(),0);
 	                receivablesOrderblservice=new ReceivablesOrder();
 				    javaBean1=new JavaBean1();
 				    javaBean1=receivablesOrderblservice.inquireA(id);
@@ -129,7 +129,7 @@ public class Accountant2Controller {
 			public void mouseClicked(MouseEvent evt) {
                if (evt.getClickCount() == 2) {
                	    String id=(String)statisAnalyListui.paymentOrderTableModel.
-               			getValueAt(statisAnalyListui.paymentOrderTable.getSelectedRow(),1);
+               			getValueAt(statisAnalyListui.paymentOrderTable.getSelectedRow(),0);
                	    paymentOrderblservice=new PaymentOrder();
                	    javaBean1=new JavaBean1();
    				    javaBean1=paymentOrderblservice.inquireA(id);

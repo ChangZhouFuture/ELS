@@ -157,7 +157,12 @@ public class AgencyListui extends JPanel{
 		});
 		
 		scrollPane=new JScrollPane(table);
-		
+		delete=new JButton();
+		delete.setBounds(30,420,50,24);
+		delete.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		delete.setBackground(Color.WHITE);
+		delete.setText("É¾³ý");
+		delete.setFont(font2);
 		this.add(sheetLabel);
 		this.add(add);
 		this.add(addText);

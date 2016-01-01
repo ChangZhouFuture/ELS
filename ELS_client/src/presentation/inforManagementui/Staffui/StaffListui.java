@@ -66,7 +66,7 @@ public class StaffListui extends JPanel{
 			sheetLabel.setBounds(0,0,616,30);
 			sheetLabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 			sheetLabel.setBackground(Color.WHITE);
-			sheetLabel.setText("用户管理");
+			sheetLabel.setText("人员管理");
 			sheetLabel.setFont(font1);
 			sheetLabel.setIcon(Images.SHEET_IMAGE);
 			sheetLabel.setOpaque(true);
