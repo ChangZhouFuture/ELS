@@ -81,7 +81,8 @@ public class RMIui extends JFrame{
 		rmiSuccessInit.setBounds(95,80,210,24);
 		rmiSuccessInit.setText("服务器端已成功链接!");
 		rmiSuccessInit.setHorizontalAlignment(0);
-		rmiSuccessInit.setFont(new Font("微软雅黑", Font.BOLD, 19));
+		rmiSuccessInit.setFont(new Font("微软雅黑", Font.CENTER_BASELINE, 19));
+		rmiSuccessInit.setForeground(Color.white);
 		
 		exitButton.setBounds(115,170,170,24);
 		exitButton.setBackground(Color.white);

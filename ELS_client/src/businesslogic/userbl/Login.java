@@ -35,6 +35,7 @@ public class Login implements Loginblservice{
 		this.id = id;
 		city = javaBean2.getCity();
 		region = javaBean2.getRegion();
+		agencyID = javaBean2.getAgencyID();
 		
 		return javaBean2;
 	}

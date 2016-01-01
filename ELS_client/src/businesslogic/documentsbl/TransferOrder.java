@@ -224,13 +224,17 @@ public class TransferOrder implements TransferOrderblservice {
 			transferOrderlineitemPO = arrayList.get(i);
 			
 			transferOrderlineitemVO = new TransferOrderlineitemVO();
-			transferOrderlineitemVO.setApproState(transferOrderlineitemPO.getApproState());
+			transferOrderlineitemVO.setApproState(transferOrderlineitemPO.
+					getApproState());
 			transferOrderlineitemVO.setCarriage(transferOrderlineitemPO.getCarriage());
-			transferOrderlineitemVO.setDate(transferOrderlineitemPO.getLoadingDate());
-			transferOrderlineitemVO.setEndAdd(transferOrderlineitemPO.getDestination());
-			transferOrderlineitemVO.setId(transferOrderlineitemPO.getID());
-			transferOrderlineitemVO.setTransportType(transferOrderlineitemPO.getTranType());
-			transferOrderlineitemVO.setVehiclesId(transferOrderlineitemPO.getVehicleNum());
+			transferOrderlineitemVO.setDate(transferOrderlineitemPO.getDate());
+			transferOrderlineitemVO.setEndAdd(transferOrderlineitemPO.getEndAdd());
+			transferOrderlineitemVO.setId(transferOrderlineitemPO.getId());
+			transferOrderlineitemVO.setTransportType(transferOrderlineitemPO.
+					getTransportType());
+			transferOrderlineitemVO.setVehiclesId(transferOrderlineitemPO.getVehiclesId());
+			transferOrderlineitemVO.setStartingAdd(transferOrderlineitemPO.
+					getStartingAdd());
 			
 			arrayList2.add(transferOrderlineitemVO);
 		}

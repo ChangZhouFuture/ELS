@@ -78,8 +78,9 @@ public class OperalogListui extends Listui{
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 for(int i=0;i<arrayList.size();i++){
 		     oneLine=arrayList.get(i);
-			 String[] oneRow={oneLine.getPositon(),oneLine.getOperatorId(),oneLine.getOperaType().toString(),
-			    	 oneLine.getObjectType().toString(),oneLine.getId(),oneLine.getDate()};
+			 String[] oneRow={oneLine.getPositon().toString(),oneLine.getOperatorId(),
+					 oneLine.getOperaType().toString(),oneLine.getObjectType().
+					 toString(),oneLine.getId(),oneLine.getDate()};
 			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);

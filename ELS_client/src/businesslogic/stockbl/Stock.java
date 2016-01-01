@@ -162,7 +162,6 @@ public class Stock implements Stockblservice{
 		return javaBean4;
 	}
 	
-	@Override
 	public JavaBean4 stockAlarm() {
 		try {
 			javaBean4 = stockdataservice.stockAlarm();

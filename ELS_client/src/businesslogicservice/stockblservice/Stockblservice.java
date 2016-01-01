@@ -37,11 +37,6 @@ public interface Stockblservice {
 	public JavaBean4 adjustPartition(ArrayList<String> IDList, String area);
 	
 	/**
-	 * 后置：发出警报
-	 */
-	public JavaBean4 stockAlarm();
-	
-	/**
 	 * 
 	 * 前置：库存管理人员已经把快递放在货物架上
 	 * 后置：入库，记录新的架位状态
