@@ -195,7 +195,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		int count=0;
+		int count=-1;
 		String orderIDsAndAreaList[][]=new String[2][50];
 		String sql="select ID,areaNum from storagelist where date=?";
 		try {
