@@ -206,15 +206,8 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	public JavaBean1 getOrderIDsAndAreaList(String date) throws RemoteException {
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		int count1=0;
-		int count2=0;
-		int count3=0;
-		int count4=0;
-		String orderIDsAndAreaList[][]=new String[4][];
-		orderIDsAndAreaList[0][0]="机动区";
-		orderIDsAndAreaList[1][0]="汽运区";
-		orderIDsAndAreaList[2][0]="铁运区";
-		orderIDsAndAreaList[3][0]="航运区";
+		int count=-1;
+		String orderIDsAndAreaList[][]=new String[2][];
 		String sql="select ID,area from outboundorder where date=?";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -222,19 +215,9 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				jb1.setResultMessage(ResultMessage.Success);
-				if(rs.getString("area")=="机动区"){
-					count1++;
-					orderIDsAndAreaList[0][count1]=rs.getString("ID");
-				}else if(rs.getString("area")=="汽运区"){
-					count2++;
-					orderIDsAndAreaList[1][count2]=rs.getString("ID");
-				}else if(rs.getString("area")=="航运区"){
-					count3++;
-					orderIDsAndAreaList[2][count3]=rs.getString("ID");
-				}else{
-					count4++;
-					orderIDsAndAreaList[3][count4]=rs.getString("ID");
-				}		
+				count++;
+				orderIDsAndAreaList[0][count]=rs.getString("area");
+				orderIDsAndAreaList[1][count]=rs.getString("ID");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

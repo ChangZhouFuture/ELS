@@ -195,15 +195,8 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		int count1=0;
-		int count2=0;
-		int count3=0;
-		int count4=0;
+		int count=0;
 		String orderIDsAndAreaList[][]=new String[4][];
-		orderIDsAndAreaList[0][0]="机动区";
-		orderIDsAndAreaList[1][0]="汽运区";
-		orderIDsAndAreaList[2][0]="铁运区";
-		orderIDsAndAreaList[3][0]="航运区";
 		String sql="select ID,areaNum from storagelist where date=?";
 		try {
 			stmt=con.prepareStatement(sql);
@@ -211,19 +204,8 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				jb1.setResultMessage(ResultMessage.Success);
-				if(rs.getString("areaNum")=="机动区"){
-					count1++;
-					orderIDsAndAreaList[0][count1]=rs.getString("ID");
-				}else if(rs.getString("areaNum")=="汽运区"){
-					count2++;
-					orderIDsAndAreaList[1][count2]=rs.getString("ID");
-				}else if(rs.getString("areaNum")=="航运区"){
-					count3++;
-					orderIDsAndAreaList[2][count3]=rs.getString("ID");
-				}else{
-					count4++;
-					orderIDsAndAreaList[3][count4]=rs.getString("ID");
-				}		
+				orderIDsAndAreaList[0][count]=rs.getString("areaNum");
+				orderIDsAndAreaList[1][count]=rs.getString("ID");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
