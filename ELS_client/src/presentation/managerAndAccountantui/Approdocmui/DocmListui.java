@@ -18,17 +18,20 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import bean.JavaBean1;
 import businesslogic.managerAndAccountantbl.ApproDocm;
 import businesslogic.orderbl.Order;
 import businesslogicservice.managerAndAccountantblservice.ApproDocmblservice;
+import po.documentsPO.BusiHallArrivalOrderPO;
 import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import presentation.reuse.DateChooser;
 import presentation.reuse.Images;
 import presentation.userui.GeneralManagerui;
 import state.DocumentsType;
+import vo.documentsVO.BusiHallArrivalOrderVO;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 public class DocmListui extends JPanel{
@@ -65,6 +68,7 @@ public class DocmListui extends JPanel{
 	ApproDocmblservice approDocmblservice;
 	JavaBean1 javaBean1;
 	OrderlineitemPO orderlineitemPO;
+	BusiHallArrivalOrderPO busiHallArrivalOrderPO;
 	
 	public JScrollPane scrollPane;
 	
@@ -89,10 +93,17 @@ public class DocmListui extends JPanel{
 		approDocm=new JButton();
 		dateField=new JTextField("单击选择日期");
 		dateChooser = DateChooser.getInstance("yyyy-MM-dd");
-		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","审批状态"}; //列名
+		String[] orderColumnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","审批状态"}; //列名
 		String [][]tableVales={}; //数据
-		orderTableModel = new DefaultTableModel(tableVales,columnNames);
+		orderTableModel = new DefaultTableModel(tableVales,orderColumnNames);
 		orderTable = new JTable(orderTableModel){
+			 public boolean isCellEditable(int row, int column){
+					 return false;
+			 }
+		 };
+		 String[] busiHallArrivalColumnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态"}; //列名
+		 busiHallArrivalOrderTableModel = new DefaultTableModel(tableVales,busiHallArrivalColumnNames);
+		 busiHallArrivalOrderTable = new JTable(busiHallArrivalOrderTableModel){  
 			 public boolean isCellEditable(int row, int column){
 					 return false;
 			 }
@@ -161,12 +172,15 @@ public class DocmListui extends JPanel{
 				switch(documentsType){
 				case Order:
 					javaBean1=approDocmblservice.inquireB(documentsType,date);
-					ArrayList<OrderlineitemPO> arrayList = 
+					ArrayList<OrderlineitemPO> orderArrayList = 
 							(ArrayList<OrderlineitemPO>)javaBean1.getObject();
-					makeOrderTable(arrayList);
+					makeOrderTable(orderArrayList);
 					break;
 				case BusiHallArrivalOrder:
 					javaBean1=approDocmblservice.inquireB(documentsType,date);
+					ArrayList<BusiHallArrivalOrderPO> busiHallArrivalOrderArrayList=
+							(ArrayList<BusiHallArrivalOrderPO>)javaBean1.getObject();
+					makeBusiHallArrivalOrderTable(busiHallArrivalOrderArrayList);
 					break;
 				case BusiHallLoadingList:
 					javaBean1=approDocmblservice.inquireB(documentsType,date);
@@ -262,6 +276,52 @@ public class DocmListui extends JPanel{
 				   }
 				   approDocmblservice=new ApproDocm();
 				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
+				   
+				  }});
+	}
+	public void makeBusiHallArrivalOrderTable(ArrayList<BusiHallArrivalOrderPO> arrayList){
+		while(busiHallArrivalOrderTableModel.getRowCount()>0){
+			busiHallArrivalOrderTableModel.removeRow(busiHallArrivalOrderTableModel.getRowCount()-1);
+		}
+		busiHallArrivalOrderTable.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
+			 @Override
+			 public Component getTableCellRendererComponent(JTable table,
+					 Object value, boolean isSelected, boolean hasFocus,
+					 int row, int column) {
+				 JCheckBox ck=new JCheckBox();
+				 ck.setSelected(isSelected);
+				 ck.setHorizontalAlignment((int) 0.5f);
+				 ck.setBackground(Color.WHITE);
+				 return ck;
+			 }
+		 });
+		 for(int i=arrayList.size()-1;i>=0;i--){
+		     busiHallArrivalOrderPO=arrayList.get(i);
+			 String[] oneRow={"",busiHallArrivalOrderPO.getId(),busiHallArrivalOrderPO.getBusiHallID(),
+					 busiHallArrivalOrderPO.getTransferOrderID(),busiHallArrivalOrderPO.getOrigin(),
+					 busiHallArrivalOrderPO.getArrivalDate(),busiHallArrivalOrderPO.getGoodState().toString()};
+			 busiHallArrivalOrderTableModel.addRow(oneRow);
+		 }
+		 busiHallArrivalOrderTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		 busiHallArrivalOrderTable.setRowHeight(24);
+		 busiHallArrivalOrderTable.setBackground(Color.WHITE);
+		 busiHallArrivalOrderTable.setShowVerticalLines(true);
+		 busiHallArrivalOrderTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		 scrollPane.setSize(550,241);
+		 scrollPane.setLocation(30,160);
+		 scrollPane.setViewportView(busiHallArrivalOrderTable);
+		 approDocm.addActionListener(new ActionListener(){//添加事件
+			   public void actionPerformed(ActionEvent e){
+				   ArrayList<String> idList=new ArrayList<String>();
+				   for(int i=0;i<busiHallArrivalOrderTable.getRowCount();i++){
+					   int selectedRow = busiHallArrivalOrderTable.getSelectedRow();//获得选中行的索引
+				       if(selectedRow!=-1){
+				    	   idList.add((String)busiHallArrivalOrderTable.getValueAt
+				    			   (busiHallArrivalOrderTable.getSelectedRow(),1));
+				       }
+				   }
+				   approDocmblservice=new ApproDocm();
+				   approDocmblservice.approveDocuments(idList,DocumentsType.BusiHallArrivalOrder);
 				   
 				  }});
 	}

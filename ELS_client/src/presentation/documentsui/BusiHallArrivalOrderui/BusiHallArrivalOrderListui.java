@@ -38,7 +38,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 	
 	public BusiHallArrivalOrderListui(){
 		sheetLabel.setText("营业厅到达单管理");
-		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态","时间"}; //列名
+		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态"}; //列名
 		 String [][]tableVales={}; //数据
 		 tableModel = new DefaultTableModel(tableVales,columnNames);
 		 table = new JTable(tableModel){  
@@ -66,6 +66,9 @@ public class BusiHallArrivalOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<BusiHallArrivalOrderVO> arrayList){
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
 		 table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer(){
 			 @Override
 			 public Component getTableCellRendererComponent(JTable table,
@@ -82,7 +85,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getId(),oneLine.getBusiHallID(),oneLine.getTransferOrderID(),
 			    	 oneLine.getOrigin(),oneLine.getArrivalDate(),
-					 String.valueOf(oneLine.getGoodState()),oneLine.getGenerateTime()};
+					 String.valueOf(oneLine.getGoodState())};
 			 tableModel.addRow(oneRow);
 		 }
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
