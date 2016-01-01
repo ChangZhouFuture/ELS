@@ -166,6 +166,7 @@ public class AgencyInfor implements AgencyInforblservice{
 			e.printStackTrace();
 		}
 		arrayList = (ArrayList<AgencyPO>)javaBean1.getObject();
+		arrayList2 = new ArrayList<AgencyVO>();
 		int k =arrayList.size();
 		
 		for (int i = 0; i < k; i++) {

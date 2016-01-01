@@ -144,4 +144,11 @@ public class ApproDocm implements ApproDocmblservice{
 		}
 	}
 	
+	public static void main(String[] args) {
+		ArrayList<String> arrayList = new ArrayList<>();
+		arrayList.add("1512240001");
+		RMIHelper.init();
+		ApproDocm approDocm = new ApproDocm();
+		approDocm.approveDocuments(arrayList, DocumentsType.Order);
+	}
 }
