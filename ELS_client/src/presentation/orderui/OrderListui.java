@@ -16,6 +16,7 @@ import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
 import presentation.reuse.Listui;
+import presentation.userui.Courierui;
 import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 
 public class OrderListui extends Listui{
@@ -23,6 +24,12 @@ public class OrderListui extends Listui{
 	public OrderlineitemVO oneLine;
 	public JavaBean1 javaBean1;
 	
+	public static void main(String[] args){
+		Courierui courierui=new Courierui();
+		OrderListui uiPanel=new OrderListui();
+		uiPanel.makeTable(null);
+		courierui.add(uiPanel,0);
+	}
 	public OrderListui(){
 		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
 		String [][]tableVales={}; //数据
@@ -84,6 +91,11 @@ public class OrderListui extends Listui{
 			    	 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};
 			 tableModel.addRow(oneRow);
 		 }
+		 String[] row={"","1","2","3"};
+		 tableModel.addRow(row);
+		 tableModel.addRow(row);
+		 tableModel.addRow(row);
+		 tableModel.addRow(row);
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
@@ -94,12 +106,9 @@ public class OrderListui extends Listui{
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
-				   for(int i=0;i<table.getRowCount();i++){
-					   int selectedRow = table.getSelectedRow();//获得选中行的索引
-				       if(selectedRow!=-1){
-				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-				           tableModel.removeRow(selectedRow);  //删除行 
-				       }
+				   while(table.getSelectedRow()>=0){
+				       idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				       tableModel.removeRow(table.getSelectedRow());  //删除行 
 				   }
 				   orderblservice=new Order();
 				   orderblservice.deleteMany(idList);

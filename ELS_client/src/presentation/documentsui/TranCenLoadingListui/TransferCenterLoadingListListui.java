@@ -103,12 +103,9 @@ public class TransferCenterLoadingListListui extends Listui{
 		 delete.addActionListener(new ActionListener(){//添加事件
 			   public void actionPerformed(ActionEvent e){
 				   ArrayList<String> idList=new ArrayList<String>();
-				   for(int i=0;i<table.getRowCount();i++){
-				       int selectedRow = table.getSelectedRow();//获得选中行的索引
-				       if(selectedRow!=-1){
-				    	   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
-				           tableModel.removeRow(selectedRow);  //删除行 
-				       }
+				   while(table.getSelectedRow()>=0){
+				       idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				       tableModel.removeRow(table.getSelectedRow());  //删除行 
 				   }
 				   transCenLoadingListblservice=new TranCenLoadingList();
 				   transCenLoadingListblservice.delete(idList);
