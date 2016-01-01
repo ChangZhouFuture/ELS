@@ -40,7 +40,8 @@ public class StaffListui extends JPanel{
 	public StaffInforblservice staffInforblservice;
 	public DefaultTableModel tableModel;
 	JavaBean1 javaBean1;
-	String positionbl="快递员";
+	state.Position positionSeletion=state.Position.Courier;
+	
 	public StaffListui(){
 		sheetLabel=new JLabel();
 		findById=new JLabel();
@@ -89,32 +90,32 @@ public class StaffListui extends JPanel{
 			position.addItemListener(new ItemListener(){
 				public void  itemStateChanged(ItemEvent evt) {
 					if(evt.getStateChange() == ItemEvent.SELECTED){
-						String positionString=null;
+						String positionString="";
 						positionString=(String)position.getSelectedItem();
 						switch(positionString){
 						case"快递员":
-							positionbl="Courier";
+							positionSeletion=state.Position.Courier;
 							break;
 						case"营业厅业务员":
-							positionbl="BusiHallClerk";
+							positionSeletion=state.Position.BusiHallClerk;
 							break;
 						case"中转中心业务员":
-							positionbl="TranCenClerk";
+							positionSeletion=state.Position.TranCenClerk;
 							break;
 						case"库存管理人员":
-							positionbl="StockManager";
+							positionSeletion=state.Position.StockManager;
 							break;
 						case"财务人员":
-							positionbl="Accountant2";
+							positionSeletion=state.Position.Accountant2;
 							break;
 						case"财务人员(高)":
-							positionbl="Accountant1";
+							positionSeletion=state.Position.Accountant1;
 							break;
 						case"总经理":
-							positionbl="GeneralManager";
+							positionSeletion=state.Position.GeneralManager;
 							break;
 						case"管理员":
-							positionbl="Administrator";
+							positionSeletion=state.Position.Administrator;
 							break;
 							default:
 								break;
@@ -140,7 +141,7 @@ public class StaffListui extends JPanel{
 				
 				public void actionPerformed(ActionEvent e) {
 					staffInforblservice=new StaffInfor();
-					javaBean1=staffInforblservice.inquireB(positionbl);
+					javaBean1=staffInforblservice.inquireB(positionSeletion);
 					ArrayList<UserlineitemVO> arrayList=(ArrayList<UserlineitemVO>)javaBean1.getObject();
 					makeTable(arrayList);
 				}

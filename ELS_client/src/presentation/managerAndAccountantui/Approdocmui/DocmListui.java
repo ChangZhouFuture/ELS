@@ -281,6 +281,7 @@ public class DocmListui extends JPanel{
 				   ArrayList<String> idList=new ArrayList<String>();
 				   while(orderTable.getSelectedRow()>=0){
 				       idList.add((String)orderTable.getValueAt(orderTable.getSelectedRow(),1));
+				       orderTableModel.setValueAt(false,orderTable.getSelectedRow(),0);
 				   }
 				   approDocmblservice=new ApproDocm();
 				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
