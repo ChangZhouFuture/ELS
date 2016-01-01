@@ -124,7 +124,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		// TODO Auto-generated method stub
 		
 		jb1=new JavaBean1();
-			jb1.setResultMessage(ResultMessage.NotExist);	
+		ArrayList<DriversPO> pos=new ArrayList<>();
+		jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
 			stmt = con.prepareStatement("SELECT * FROM driver WHERE busiHallId=?");
 			stmt.setString(1, busiHallId);
@@ -140,8 +141,9 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
 		        po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        jb1.setObject(po);
+		        pos.add(po);
 			}
+			jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
