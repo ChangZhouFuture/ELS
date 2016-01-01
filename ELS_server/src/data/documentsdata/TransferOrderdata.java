@@ -137,10 +137,11 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("NotApprove")){
 					jb1.setResultMessage(ResultMessage.Success);
-					llpo.setID(rs.getString(1));
-					llpo.setLoadingDate(rs.getString(2));
-					llpo.setTranType(TransportType.valueOf(rs.getString(3)));
-					llpo.setVehicleNum(rs.getString(4));
+					llpo.setId(rs.getString(1));
+					llpo.setDate(rs.getString(2));
+					llpo.setTransportType(TransportType.valueOf(rs.getString(3)));
+					llpo.setVehiclesNum(rs.getString(4));
+					llpo.setOrigin(rs.getString(5));
 					llpo.setDestination(rs.getString(6));
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
@@ -148,10 +149,11 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 				if(rs.getString("date").equals(date)
 						&&rs.getString("approState").equals("Approve")){
 					jb1.setResultMessage(ResultMessage.Success);
-					llpo.setID(rs.getString(1));
-					llpo.setLoadingDate(rs.getString(2));
-					llpo.setTranType(TransportType.valueOf(rs.getString(3)));
-					llpo.setVehicleNum(rs.getString(4));
+					llpo.setId(rs.getString(1));
+					llpo.setDate(rs.getString(2));
+					llpo.setTransportType(TransportType.valueOf(rs.getString(3)));
+					llpo.setVehiclesNum(rs.getString(4));
+					llpo.setOrigin(rs.getString(5));
 					llpo.setDestination(rs.getString(6));
 					llpo.setCarriage(rs.getDouble(10));
 					llpos.add(llpo);
@@ -214,10 +216,11 @@ public class TransferOrderdata extends UnicastRemoteObject implements TransferOr
 			stmt.setString(1, id);
 			ResultSet rs=stmt.executeQuery();
 			if(rs.next()){
-				llpo.setID(id);
-			    llpo.setLoadingDate(rs.getString(2));
-			    llpo.setTranType(TransportType.valueOf(rs.getString(3)));
-			    llpo.setVehicleNum(rs.getString(4));
+				llpo.setId(id);
+			    llpo.setDate(rs.getString(2));
+			    llpo.setTransportType(TransportType.valueOf(rs.getString(3)));
+			    llpo.setVehiclesNum(rs.getString(4));
+			    llpo.setOrigin(rs.getString(5));
 			    llpo.setDestination(rs.getString(6));
 			    llpo.setCarriage(rs.getDouble(10));
 			}

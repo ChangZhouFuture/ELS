@@ -7,9 +7,9 @@ import state.TransportType;
 public class TransferOrderlineitemPO implements Serializable{
 	private String id;
 	private String date;
-	private String startingAdd;
-	private String endAdd;
-	private String vehiclesId;
+	private String origin;
+	private String destination;
+	private String vehiclesNum;
 	private double carriage;
 	private TransportType transportType;
 	private ApproState approState;
@@ -32,23 +32,23 @@ public class TransferOrderlineitemPO implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getStartingAdd() {
-		return startingAdd;
+	public String getOrigin() {
+		return origin;
 	}
-	public void setStartingAdd(String startingAdd) {
-		this.startingAdd = startingAdd;
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
-	public String getEndAdd() {
-		return endAdd;
+	public String getDestination() {
+		return destination;
 	}
-	public void setEndAdd(String endAdd) {
-		this.endAdd = endAdd;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
-	public String getVehiclesId() {
-		return vehiclesId;
+	public String getVehiclesNum() {
+		return vehiclesNum;
 	}
-	public void setVehiclesId(String vehiclesId) {
-		this.vehiclesId = vehiclesId;
+	public void setVehiclesNum(String vehiclesNum) {
+		this.vehiclesNum = vehiclesNum;
 	}
 	public double getCarriage() {
 		return carriage;

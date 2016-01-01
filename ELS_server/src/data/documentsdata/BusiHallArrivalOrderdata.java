@@ -15,7 +15,6 @@ import po.lineitemPO.documentslineitemPO.TransferOrderlineitemPO;
 import state.ApproState;
 import state.GoodState;
 import state.ResultMessage;
-import state.TransportType;
 import dataservice.documentsdataservice.BusiHallArrivalOrderdataservice;
 
 public class BusiHallArrivalOrderdata extends UnicastRemoteObject  
@@ -33,30 +32,6 @@ implements BusiHallArrivalOrderdataservice {
     BusiHallArrivalOrderPO po;
     TransferOrderlineitemPO llpo;
     GenerateId g;
-    
-	public TransferOrderlineitemPO addTransferOrder(String id) {    //ÖÐ×ªµ¥ID
-		// TODO Auto-generated method stub
-		llpo=new TransferOrderlineitemPO();	
-		String sql="SELECT * FROM transferorder where ID=?";
-		try {
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, id);
-			ResultSet rs=stmt.executeQuery();
-			if(rs.next()){
-				llpo.setID(rs.getString(1));
-				llpo.setLoadingDate(rs.getString(2));
-				llpo.setTranType(TransportType.valueOf(rs.getString(3)));
-				llpo.setVehicleNum(rs.getString(4));
-				llpo.setDestination(rs.getString(6));
-				llpo.setCarriage(rs.getDouble(10));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return llpo;
-	}
 
 	@Override
 	public ResultMessage addBusiHallArrivalOrder(BusiHallArrivalOrderPO po) {
