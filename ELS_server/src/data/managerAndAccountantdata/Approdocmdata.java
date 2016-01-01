@@ -72,9 +72,8 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 				
 				if(rs.getString("approState").equals("NotApprove")){
 					state="Approve";
-				}else{
-					state="NotApprove";
-				}
+					}
+		
 			}
 			if(documentsType==DocumentsType.Order){
 				sql="update dingdanorder set approState=? where ID=?";
