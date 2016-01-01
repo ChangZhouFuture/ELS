@@ -1,9 +1,11 @@
 package po.lineitemPO.userlineitemPO;
 
 import java.io.Serializable;
+
 import state.AgencyType;
 import state.Gender;
 import state.PayType;
+import state.Position;
 
 public class UserlineitemPO implements Serializable{
 	private String Id;
@@ -13,7 +15,7 @@ public class UserlineitemPO implements Serializable{
     private String city;
     private String region;
     private AgencyType agencyType;
-    private String position;
+    private Position position;
     private PayType payType;
     private double payAmount;
     private String percentage;
@@ -60,10 +62,10 @@ public class UserlineitemPO implements Serializable{
 	public void setAgencyType(AgencyType agencyType) {
 		this.agencyType = agencyType;
 	}
-	public String getPosition() {
+	public Position getPosition() {
 		return position;
 	}
-	public void setPosition(String position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
 	public PayType getPayType() {

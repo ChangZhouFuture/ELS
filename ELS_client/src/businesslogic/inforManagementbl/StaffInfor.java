@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.inforManagementPO.SalaryStrategyPO;
+import state.Position;
 import state.ResultMessage;
 import vo.inforManagementVO.SalaryStrategyVO;
 import dataservice.inforManagementdataservice.StaffInfordataservice;
@@ -37,7 +38,7 @@ public class StaffInfor implements StaffInforblservice{
 	}
 
 	@Override
-	public JavaBean1 inquireB(String position) {
+	public JavaBean1 inquireB(Position position) {
 		//把这一职位的所有人查出来会不会太多了，待定，可能要改
 		userManagement = new UserManagement();
 		javaBean1 = userManagement.inquireB(position);

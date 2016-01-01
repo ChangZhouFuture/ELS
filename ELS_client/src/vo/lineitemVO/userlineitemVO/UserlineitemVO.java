@@ -1,6 +1,7 @@
 package vo.lineitemVO.userlineitemVO;
 
 import state.Gender;
+import state.Position;
 
 public class UserlineitemVO {
 	private String Id;
@@ -9,7 +10,7 @@ public class UserlineitemVO {
     private String phone;
     private String city;
     private String region;
-    private String position;
+    private Position position;
     
 	public String getId() {
 		return Id;
@@ -47,11 +48,10 @@ public class UserlineitemVO {
 	public void setRegion(String region) {
 		this.region = region;
 	}
-	public String getPosition() {
+	public Position getPosition() {
 		return position;
 	}
-	public void setPosition(String position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
 }

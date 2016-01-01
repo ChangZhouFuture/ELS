@@ -1,6 +1,8 @@
 package bean;
 
 import java.io.Serializable;
+
+import state.Position;
 import state.ResultMessage;
 
 public class JavaBean2 implements Serializable{
@@ -8,7 +10,7 @@ public class JavaBean2 implements Serializable{
 	private String agencyID;
 	private String city;
 	private String region;
-	private String position;
+	private Position position;
 	private ResultMessage resultMessage;
 	
 	public String getCity() {
@@ -41,11 +43,10 @@ public class JavaBean2 implements Serializable{
 	public void setAgencyID(String agencyID) {
 		this.agencyID = agencyID;
 	}
-	public String getPosition() {
+	public Position getPosition() {
 		return position;
 	}
-	public void setPosition(String position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
 }

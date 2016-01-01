@@ -10,6 +10,7 @@ import businesslogicservice.userManagementblservice.UserManagementblservice;
 import po.lineitemPO.userlineitemPO.UserlineitemPO;
 import po.userPO.UserPO;
 import state.OperaType;
+import state.Position;
 import state.ResultMessage;
 import vo.lineitemVO.userlineitemVO.UserlineitemVO;
 import vo.userVO.UserVO;
@@ -125,9 +126,7 @@ public class UserManagement implements UserManagementblservice{
 	}
 
 	@Override
-	public JavaBean1 inquireB(String position) {
-		position = transferPosition(position);
-		
+	public JavaBean1 inquireB(Position position) {
 		try {
 			javaBean1 = userManagementdataservice.findB(position);
 		} catch (RemoteException e) {
@@ -156,7 +155,7 @@ public class UserManagement implements UserManagementblservice{
 		return javaBean1;
 	}
 
-	public String generateID(String position) {
+	public String generateID(Position position) {
 		//调用数据层方法
 		String id = null;
 		
@@ -183,17 +182,4 @@ public class UserManagement implements UserManagementblservice{
 		userPO.setRegion(userVO.getRegion());
 	}
 	
-	public String transferPosition(String position) {
-		
-		switch (position) {
-		case "快递员":
-			
-			break;
-			
-		default:
-			break;
-		}
-		
-		return position;
-	}
 }

@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import bean.JavaBean1;
 import po.userPO.UserPO;
 import data.utility.Database;
@@ -137,7 +136,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 
 
 	@Override
-	public JavaBean1 findB(String position) throws RemoteException {
+	public JavaBean1 findB(Position position) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		ArrayList<UserPO> pos=new ArrayList<>();

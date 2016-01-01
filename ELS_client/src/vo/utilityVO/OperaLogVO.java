@@ -1,13 +1,14 @@
 package vo.utilityVO;
 
 import state.OperaType;
+import state.Position;
 
 public class OperaLogVO {
 	private OperaType operaType;
 	private String date;
 	private String objectType;
 	private String id;
-	private String positon;
+	private Position positon;
 	private String operatorId;
 	private String generateTime;
 	
@@ -35,10 +36,10 @@ public class OperaLogVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPositon() {
+	public Position getPositon() {
 		return positon;
 	}
-	public void setPositon(String positon) {
+	public void setPositon(Position positon) {
 		this.positon = positon;
 	}
 	public String getOperatorId() {

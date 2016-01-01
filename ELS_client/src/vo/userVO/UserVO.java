@@ -3,6 +3,7 @@ package vo.userVO;
 import state.AgencyType;
 import state.Gender;
 import state.PayType;
+import state.Position;
 
 public class UserVO {
 	private String Id;
@@ -15,7 +16,7 @@ public class UserVO {
     private String city;
     private String region;
     private String agencyID;
-    private String position;
+    private Position position;
     
 	public String getId() {
 		return Id;
@@ -77,12 +78,11 @@ public class UserVO {
 	public void setAgencyID(String agencyID) {
 		this.agencyID = agencyID;
 	}
-	public String getPosition() {
+	public Position getPosition() {
 		return position;
 	}
-	public void setPosition(String position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
     
 }
