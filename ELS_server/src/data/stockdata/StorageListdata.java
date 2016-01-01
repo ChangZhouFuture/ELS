@@ -196,7 +196,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		int count=0;
-		String orderIDsAndAreaList[][]=new String[4][];
+		String orderIDsAndAreaList[][]=new String[2][50];
 		String sql="select ID,areaNum from storagelist where date=?";
 		try {
 			stmt=con.prepareStatement(sql);

@@ -207,7 +207,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		int count=-1;
-		String orderIDsAndAreaList[][]=new String[2][];
+		String orderIDsAndAreaList[][]=new String[2][50];
 		String sql="select ID,area from outboundorder where date=?";
 		try {
 			stmt=con.prepareStatement(sql);

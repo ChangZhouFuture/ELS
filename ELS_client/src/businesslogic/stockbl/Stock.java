@@ -263,5 +263,9 @@ public class Stock implements Stockblservice{
 		
 	}
 	
-	
+	public static void main(String[] args) {
+		RMIHelper.init();
+		Stock stock = new Stock();
+		stock.stockCheck("2015-12-22", "2015-12-31");
+	}
 }
