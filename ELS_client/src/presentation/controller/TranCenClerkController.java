@@ -125,7 +125,7 @@ public class TranCenClerkController {
 				tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
 				childPanel = tranCenArrivalOrderui;
 				Skip.skip(mainPanel,childPanel);
-				inTransferOrderui();
+				inTranCenArrivalOrderui();
 			}
 		});
 		tranCenArrivalOrderListui.table.addMouseListener(new MouseAdapter() {
@@ -143,7 +143,7 @@ public class TranCenClerkController {
 				    tranCenArrivalOrderui=findTranCenArrivalOrder(tranCenArrivalOrderVO);
 				    childPanel = tranCenArrivalOrderui;
 				    Skip.skip(mainPanel,childPanel);
-				    inTransferOrderui();
+				    inTranCenArrivalOrderui();
                	} catch (Exception e2) {
                		e2.printStackTrace();
 				}
@@ -311,7 +311,7 @@ public class TranCenClerkController {
 				childPanel = transferCenterLoadingListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
-				inTransferOrderui();
+				inTransferCenterLoadingListui();
 			}	
 		});
 		transferCenterLoadingListListui.idFind.addActionListener(new ActionListener() {

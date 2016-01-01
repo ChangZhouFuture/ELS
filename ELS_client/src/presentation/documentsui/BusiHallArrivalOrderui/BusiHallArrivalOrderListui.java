@@ -78,7 +78,7 @@ public class BusiHallArrivalOrderListui extends Listui{
 				 return ck;
 			 }
 		 });
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getId(),oneLine.getBusiHallID(),oneLine.getTransferOrderID(),
 			    	 oneLine.getOrigin(),oneLine.getArrivalDate(),

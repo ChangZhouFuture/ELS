@@ -90,7 +90,7 @@ public class TranCenArrivalOrderListui extends Listui{
 		 });
 		 table.getColumnModel().getColumn(2).setPreferredWidth(90);
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 			 oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getID(),oneLine.getTranCenID(),oneLine.getTransferOrderID(),oneLine.getOrigin(),
 			    	 oneLine.getGoodState().toString(),oneLine.getArrivalDate(),oneLine.getGenerateTime()};

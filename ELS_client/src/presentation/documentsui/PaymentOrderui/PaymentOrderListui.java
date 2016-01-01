@@ -92,7 +92,7 @@ public class PaymentOrderListui extends Listui{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 for(int i=0;i<arrayList.size();i++){
+		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getID(),oneLine.getPayer(),oneLine.getBankAccount(),
 					String.valueOf(oneLine.getAmount()),oneLine.getEntry(),
