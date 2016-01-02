@@ -13,6 +13,7 @@ import bean.JavaBean1;
 import po.inforManagementPO.SalaryStrategyPO;
 import po.userPO.UserPO;
 import state.Gender;
+import state.PayType;
 import state.Position;
 import state.ResultMessage;
 import data.utility.Database;
@@ -108,7 +109,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			stmt=con.prepareStatement(sql);
 			stmt.setString(4, po.getPosition().toString());
 			stmt.setString(1, po.getPayType().toString());
-			stmt.setDouble(1, po.getPayAmount());
+			stmt.setDouble(2, po.getPayAmount());
 			stmt.setString(3, po.getPercentage());
 			stmt.executeUpdate();
 			return ResultMessage.Success;
@@ -117,6 +118,32 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			e.printStackTrace();
 			return ResultMessage.Fail;
 		}
+	}
+
+
+	@Override
+	public JavaBean1 getSalaryStrategy(String position) throws RemoteException {
+		// TODO Auto-generated method stub
+		jb1=new JavaBean1();
+		jb1.setResultMessage(ResultMessage.NotExist);
+		String sql="select * from salarystrategy where position=?";
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, position);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				SalaryStrategyPO po=new SalaryStrategyPO();
+				po.setPosition(Position.valueOf(position));
+				po.setPayType(PayType.valueOf(rs.getString(2)));
+				po.setPayAmount(rs.getDouble(3));
+				po.setPercentage(rs.getString(4));
+				jb1.setResultMessage(ResultMessage.Success);
+			}jb1.setObject(po);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jb1;
 	}
 }
 
