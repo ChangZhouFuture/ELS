@@ -110,7 +110,7 @@ public ResultMessage update(AgencyPO po){
 @Override
 public String generateID(String firstPart) throws RemoteException {
 	// TODO Auto-generated method stub
-	String sql="select * from agency where agencyType=?";
+	String sql="select * from agency";
 	int subId=0;
 	int temp=0;
 	try {
@@ -121,9 +121,9 @@ public String generateID(String firstPart) throws RemoteException {
 				subId=Integer.parseInt(rs.getString("ID").substring(4));
 				if(temp<subId){
 					temp=subId;
-				}temp++;
+				}
 			}
-		}
+		}temp++;
 		String last=String.valueOf(temp);
 		int length=last.length();
 		for(int i=0;i<3-length;i++){
