@@ -1,6 +1,7 @@
 package businesslogic.inforManagementbl;
 
 import state.OperaType;
+import state.Position;
 import state.ResultMessage;
 import state.UseState;
 import vo.inforManagementVO.BankAccountVO;
@@ -53,7 +54,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Add, "银行账户", this.bankAccountVO
-					.getName(), "财务人员" + Login.id);
+					.getName(), Position.Accountant1, Login.id);
 		}
 		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.bankAccountVO);
@@ -76,7 +77,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 			for (int i = 0; i < IDList.size(); i++) {
 				name = IDList.get(i);
 				recordOperaLog.recordOperaLog(OperaType.Delete, "银行账户", name, 
-						"财务人员" + Login.id);
+					Position.Accountant1, Login.id);
 			}
 		}
 		return resultMessage;
@@ -94,7 +95,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Modify, "银行账户", oldName + "->" +
-			newName, "财务人员" + Login.id);
+			newName, Position.Accountant1, Login.id);
 		}
 		return resultMessage;
 	}
@@ -162,7 +163,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Use, "银行账户", accountName, 
-					"财务人员" + Login.id);
+					Position.Accountant1, Login.id);
 		}
 		return resultMessage;
 	}

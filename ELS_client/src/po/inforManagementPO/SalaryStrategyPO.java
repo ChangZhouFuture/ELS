@@ -1,9 +1,10 @@
 package po.inforManagementPO;
 
+import java.io.Serializable;
 import state.PayType;
 import state.Position;
 
-public class SalaryStrategyPO {
+public class SalaryStrategyPO implements Serializable{
 	private Position position;
 	private PayType payType;
 	private double payAmount;

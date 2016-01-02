@@ -12,6 +12,7 @@ import businesslogicservice.inforManagementblservice.AgencyInforblservice;
 import po.inforManagementPO.AgencyPO;
 import state.AgencyType;
 import state.OperaType;
+import state.Position;
 import state.ResultMessage;
 import vo.inforManagementVO.AgencyVO;
 
@@ -50,7 +51,8 @@ public class AgencyInfor implements AgencyInforblservice{
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Add, this.agencyVO.getAgencyType().
-					toString(), this.agencyVO.getID(), "总经理" + Login.id);
+					toString(), this.agencyVO.getID() , Position.GeneralManager,
+					Login.id);
 		}
 		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.agencyVO);
@@ -70,10 +72,19 @@ public class AgencyInfor implements AgencyInforblservice{
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			String agencyID;
+			AgencyType agencyType;
+			
 			for (int i = 0; i < IDList.size(); i++) {
 				agencyID = IDList.get(i);
-				recordOperaLog.recordOperaLog(OperaType.Delete, this.agencyVO.
-				getAgencyType().toString(), agencyID, "总经理" + Login.id);
+				
+				if (agencyID.charAt(3) == '1') {
+					agencyType = AgencyType.BusinessHall;
+				} else {
+					agencyType = AgencyType.TransferCenter;
+				}
+				
+				recordOperaLog.recordOperaLog(OperaType.Delete, agencyType.toString(), 
+						agencyID, Position.GeneralManager, Login.id);
 			}
 		}
 		return resultMessage;
@@ -118,7 +129,7 @@ public class AgencyInfor implements AgencyInforblservice{
 	}
 
 	public String generateID() {
-		String id = null;
+		String id = "";
 		
 		switch (agencyVO.getCity()) {
 		case "北京":

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dataservice.inforManagementdataservice.DriversInfordataservice;
 import state.OperaType;
+import state.Position;
 import state.ResultMessage;
 import vo.inforManagementVO.DriversVO;
 import vo.lineitemVO.inforManagementlineitemVO.DriverslineitemVO;
@@ -57,7 +58,7 @@ public class DriversInfor implements DriversInforblservice {
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Add, "司机", this.driversVO.getID()
-					, "营业厅业务员" + Login.id);
+				, Position.BusiHallClerk, Login.id);
 		}
 		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.driversVO);
@@ -130,7 +131,7 @@ public class DriversInfor implements DriversInforblservice {
 			for (int i = 0; i < IDList.size(); i++) {
 				driverID = IDList.get(i);
 				recordOperaLog.recordOperaLog(OperaType.Delete, "司机", this.driversVO.
-					getID(), "营业厅业务员" + Login.id);
+					getID(), Position.BusiHallClerk, Login.id);
 			}
 		}
 		return resultMessage;

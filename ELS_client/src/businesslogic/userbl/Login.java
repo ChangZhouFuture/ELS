@@ -1,7 +1,7 @@
 package businesslogic.userbl;
 
 import java.rmi.RemoteException;
-
+import state.Position;
 import dataservice.userdataservice.Logindataservice;
 import RMI.RMIHelper;
 import bean.JavaBean2;
@@ -14,6 +14,7 @@ public class Login implements Loginblservice{
 	public static String agencyID;
 	public static String city;
 	public static String region;
+	public static Position position;
 	
 	public Login() {
 		try {
@@ -36,6 +37,7 @@ public class Login implements Loginblservice{
 		city = javaBean2.getCity();
 		region = javaBean2.getRegion();
 		agencyID = javaBean2.getAgencyID();
+		position = javaBean2.getPosition();
 		
 		return javaBean2;
 	}

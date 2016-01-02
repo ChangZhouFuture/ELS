@@ -2,9 +2,11 @@ package businesslogic.userManagementbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;
+import businesslogic.userbl.Login;
 import businesslogic.utilitybl.RecordOperaLog;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
 import po.lineitemPO.userlineitemPO.UserlineitemPO;
@@ -56,7 +58,8 @@ public class UserManagement implements UserManagementblservice{
 		if (resultMessage == ResultMessage.Success) {
 			recordOperaLog = new RecordOperaLog();
 			recordOperaLog.recordOperaLog(OperaType.Add, this.userVO.getPosition().
-					toString(), this.userVO.getId(), "管理员");
+					toString(), this.userVO.getId(), Position.Administrator, Login.
+					id);
 		}
 		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.userVO);
@@ -79,7 +82,8 @@ public class UserManagement implements UserManagementblservice{
 			for (int i = 0; i < IDList.size(); i++) {
 				id = IDList.get(i);
 				recordOperaLog.recordOperaLog(OperaType.Delete, this.userVO.
-						getPosition().toString(), id, "管理员");
+						getPosition().toString(), id, Position.Administrator, Login.
+						id);
 			}
 		}
 		return resultMessage;
