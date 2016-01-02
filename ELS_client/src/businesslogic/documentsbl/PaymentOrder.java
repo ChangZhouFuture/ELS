@@ -39,6 +39,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 	public JavaBean1 add(PaymentOrderVO paymentOrderVO) {
 		paymentOrderPO = new PaymentOrderPO();
 		this.paymentOrderVO = paymentOrderVO;
+		bankAccountInfor = new BankAccountInfor();
 		
 		this.paymentOrderVO.setDate(generateDate());
 		this.paymentOrderVO.setID(generateId());
@@ -156,6 +157,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 			paymentOrderPO = arrayList.get(i);
 			
 			paymentOrderVO = new PaymentOrderVO();
+			paymentOrderVO.setID(paymentOrderPO.getID());
 			paymentOrderVO.setDate(paymentOrderPO.getDate());
 			paymentOrderVO.setAmount(paymentOrderPO.getAmount());
 			paymentOrderVO.setPayer(paymentOrderPO.getPayer());
