@@ -136,7 +136,7 @@ public class GenerateId {
 			}temp++;
 			SecondPart=String.valueOf(temp);
 			int length=SecondPart.length();
-			for(int i=0;i<6-length;i++){
+			for(int i=0;i<4-length;i++){
 				SecondPart="0"+SecondPart;
 			}
 		
