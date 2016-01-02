@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import bean.JavaBean1;
+import po.lineitemPO.userlineitemPO.UserlineitemPO;
 import po.userPO.UserPO;
 import data.utility.Database;
 import data.utility.GenerateId;
@@ -35,7 +36,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		// TODO Auto-generated method stub
 		try {
 			stmt = con.prepareStatement("INSERT INTO user(ID,password,name,gender,birthDate,identyNum,phone,city,region,agencyID,position) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, po.getId());
 			stmt.setString(2, po.getPassword());
 		    stmt.setString(3, po.getName());
@@ -107,10 +108,10 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE ID='"+Id+"'");
-			
+			PreparedStatement stmt = con.prepareStatement("SELECT * FROM user WHERE ID=?");
+			stmt.setString(1, Id);
 			 //大小写无区别，此处大写为区别表的名字，where表示条件
-			ResultSet rs=ps.executeQuery(); 
+			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
 			    po.setId(Id);
 		        po.setPassword(rs.getString(2));
@@ -139,7 +140,7 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 	public JavaBean1 findB(Position position) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		ArrayList<UserPO> pos=new ArrayList<>();
+		ArrayList<UserlineitemPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		String sql="select * from user where position=?";
@@ -148,19 +149,19 @@ public class UserManagementdata extends UnicastRemoteObject implements UserManag
 			stmt.setString(1, position.toString());
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				po=new UserPO();
-				po.setId(rs.getString(1));
-		        po.setPassword(rs.getString(2));
-		        po.setName(rs.getString(3));
-		        po.setGender(Gender.valueOf(rs.getString(4)));
-		        po.setBirthDate(rs.getString(5));
-		        po.setIdentyNum(rs.getString(6));
-		        po.setPhone(rs.getString(7));
-		        po.setCity(rs.getString(8));
-		        po.setRegion(rs.getString(9));
-		        po.setAgencyID(rs.getString(10));
-		        po.setPosition(Position.valueOf(rs.getString(11)));
-		        pos.add(po);
+				UserlineitemPO llpo=new UserlineitemPO();
+				llpo.setId(rs.getString(1));
+		        llpo.setPassword(rs.getString(2));
+		        llpo.setName(rs.getString(3));
+		        llpo.setGender(Gender.valueOf(rs.getString(4)));
+		        llpo.setBirthDate(rs.getString(5));
+		        llpo.setIdentyNum(rs.getString(6));
+		        llpo.setPhone(rs.getString(7));
+		        llpo.setCity(rs.getString(8));
+		        llpo.setRegion(rs.getString(9));
+		        llpo.setAgencyID(rs.getString(10));
+		        llpo.setPosition(Position.valueOf(rs.getString(11)));
+		        pos.add(llpo);
 		        jb1.setResultMessage(ResultMessage.Success);
 			}
 			jb1.setObject(pos);
