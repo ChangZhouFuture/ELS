@@ -35,7 +35,7 @@ import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 public class RMIHelper {
 	private static String fileName = "IP Address Of Server.txt";
 	private static String URL;
-	public static DataFactoryservice dataFactoryservice;
+	private static DataFactoryservice dataFactoryservice;
 	
 	public static void init() {
 		try {

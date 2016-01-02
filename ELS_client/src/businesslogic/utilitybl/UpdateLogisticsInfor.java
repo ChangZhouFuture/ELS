@@ -1,8 +1,9 @@
 package businesslogic.utilitybl;
 
 import java.rmi.RemoteException;
-import po.utilityPO.LogisticsInforPO;
+
 import RMI.RMIHelper;
+import po.utilityPO.LogisticsInforPO;
 import dataservice.utilitydataservice.UpdateLogisticsInfordataservice;
 import state.ResultMessage;
 
