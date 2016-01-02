@@ -102,8 +102,8 @@ public class BankAccountListui extends JPanel{
 					bankAccountInforblservice=new BankAccountInfor();
 					try {
 						javaBean1=bankAccountInforblservice.inquire(nameString);
-						ArrayList<BankAccountVO> arrayList = (ArrayList<BankAccountVO>)javaBean1.getObject();
-						makeTable(arrayList);
+						oneLine =(BankAccountVO)javaBean1.getObject();
+						makeTable(oneLine);
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -136,7 +136,7 @@ public class BankAccountListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		this.setOpaque(true);
 	}
-	public void makeTable(ArrayList<BankAccountVO> arrayList){
+	public void makeTable(BankAccountVO oneLine){
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
@@ -153,11 +153,11 @@ public class BankAccountListui extends JPanel{
 			 }
 		 });
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		 for(int i=arrayList.size()-1;i>=0;i--){
-		     oneLine=arrayList.get(i);
+//		 for(int i=arrayList.size()-1;i>=0;i--){
+//		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getName(),String.valueOf(oneLine.getAmount())};
 			 tableModel.addRow(oneRow);
-		 }
+//		 }
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);

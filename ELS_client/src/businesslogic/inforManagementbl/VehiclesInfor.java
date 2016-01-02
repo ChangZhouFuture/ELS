@@ -46,6 +46,7 @@ public class VehiclesInfor implements VehiclesInforblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.vehiclesVO);
 		javaBean1.setResultMessage(resultMessage);
 		

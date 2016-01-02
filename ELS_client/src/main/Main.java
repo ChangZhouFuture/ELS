@@ -1,7 +1,7 @@
 package main;
 
-import presentation.userui.Mainui;
 import RMI.RMIHelper;
+import presentation.userui.Mainui;
 
 /**
  * 

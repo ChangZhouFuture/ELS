@@ -1,7 +1,5 @@
 package businesslogic.utilitybl;
 
-import java.text.DecimalFormat;
-
 import businesslogic.userbl.Login;
 import state.ExpressType;
 import state.TransportType;
@@ -117,8 +115,4 @@ public class CalculateFreight {
 		return distance;
 	}
 	
-	public static void main(String[] args) {
-		CalculateFreight calculateFreight = new CalculateFreight();
-		calculateFreight.origin = "±±¾©";
-	}
 }

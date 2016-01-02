@@ -55,6 +55,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 			recordOperaLog.recordOperaLog(OperaType.Add, "银行账户", this.bankAccountVO
 					.getName(), "财务人员" + Login.id);
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.bankAccountVO);
 		javaBean1.setResultMessage(resultMessage);
 		

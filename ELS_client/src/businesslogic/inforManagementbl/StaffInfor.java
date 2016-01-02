@@ -62,7 +62,7 @@ public class StaffInfor implements StaffInforblservice{
 
 	@Override
 	public JavaBean1 inquireSalaryStrategy() {
-//		javaBean1 = 
+//		javaBean1 = staffInfordataservice.
 		//调用数据层
 		salaryStrategyPOs = (ArrayList<SalaryStrategyPO>)javaBean1.getObject();
 		salaryStrategyVOs = new ArrayList<SalaryStrategyVO>();

@@ -40,9 +40,4 @@ public class Login implements Loginblservice{
 		return javaBean2;
 	}
 
-	public static void main(String[] args) {
-		RMIHelper.init();
-		Login loginAndOut = new Login();
-		loginAndOut.login("12345678", "12345678");
-	}
 }
