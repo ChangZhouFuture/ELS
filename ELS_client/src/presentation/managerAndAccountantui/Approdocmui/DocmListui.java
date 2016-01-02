@@ -251,6 +251,7 @@ public class DocmListui extends JPanel{
 				 return ck;
 			 }
 		 });
+		String dateString=arrayList.get(arrayList.size()-1).getGenerateDate();
 		 for(int i=arrayList.size()-1;i>=0;i--){
 			 orderlineitemPO=arrayList.get(i);
 			 if(orderlineitemPO.getApproState()==ApproState.NotApprove){
@@ -281,11 +282,14 @@ public class DocmListui extends JPanel{
 				   ArrayList<String> idList=new ArrayList<String>();
 				   while(orderTable.getSelectedRow()>=0){
 				       idList.add((String)orderTable.getValueAt(orderTable.getSelectedRow(),1));
-				       orderTableModel.setValueAt(false,orderTable.getSelectedRow(),0);
+				       orderTableModel.removeRow(orderTable.getSelectedRow());
 				   }
 				   approDocmblservice=new ApproDocm();
 				   approDocmblservice.approveDocuments(idList,DocumentsType.Order);
-				   
+				   javaBean1=approDocmblservice.inquireB(documentsType,dateString);
+				   ArrayList<OrderlineitemPO> orderArrayList = 
+							(ArrayList<OrderlineitemPO>)javaBean1.getObject();
+					makeOrderTable(orderArrayList);
 				  }});
 	}
 	public void makeBusiHallArrivalOrderTable(ArrayList<BusiHallArrivalOrderPO> arrayList){
