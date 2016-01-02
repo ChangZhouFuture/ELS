@@ -58,6 +58,7 @@ public class UserManagement implements UserManagementblservice{
 			recordOperaLog.recordOperaLog(OperaType.Add, this.userVO.getPosition().
 					toString(), this.userVO.getId(), "π‹¿Ì‘±");
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.userVO);
 		javaBean1.setResultMessage(resultMessage);
 		
