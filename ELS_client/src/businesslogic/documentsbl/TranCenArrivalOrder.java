@@ -25,7 +25,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 	private ArrayList<TranCenArrivalOrderVO> arrayList2;
 	private TransferOrder transferOrder;
 	private ResultMessage resultMessage;
-	private JavaBean1 javaBean1;
+	private JavaBean1 javaBean1 = new JavaBean1();
 	private String date;
 	
 	public TranCenArrivalOrder(){
@@ -50,6 +50,7 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 
 	@Override
 	public TransferOrderlineitemVO addTransferOrder(String id) {
+		transferOrder = new TransferOrder();
 		transferOrderlineitemVO = transferOrder.getTransferOrderlineitemVO(id);
 		return transferOrderlineitemVO;
 	}
@@ -112,7 +113,6 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.tranCenArrivalOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		

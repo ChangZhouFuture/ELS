@@ -83,6 +83,12 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if (resultMessage == ResultMessage.Success) {
+			stock = new Stock();
+			stock.outBound(this.outBoundOrderVO.getId());
+		}
+		
 		javaBean1.setObject(this.outBoundOrderVO);
 		javaBean1.setResultMessage(resultMessage);
 		

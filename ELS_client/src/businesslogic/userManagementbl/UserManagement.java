@@ -2,7 +2,6 @@ package businesslogic.userManagementbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import dataservice.userManagementdataservice.UserManagementdataservice;
 import RMI.RMIHelper;
 import bean.JavaBean1;

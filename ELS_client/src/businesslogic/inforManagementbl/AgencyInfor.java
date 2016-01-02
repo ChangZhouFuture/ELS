@@ -52,6 +52,7 @@ public class AgencyInfor implements AgencyInforblservice{
 			recordOperaLog.recordOperaLog(OperaType.Add, this.agencyVO.getAgencyType().
 					toString(), this.agencyVO.getID(), "×Ü¾­Àí" + Login.id);
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.agencyVO);
 		javaBean1.setResultMessage(resultMessage);
 		

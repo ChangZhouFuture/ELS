@@ -42,6 +42,7 @@ public class BusiHallArrivalOrder implements BusiHallArrivalOrderblservice{
 
 	@Override
 	public TransferOrderlineitemVO addTransferOrder(String id) {
+		transferOrder = new TransferOrder();
 		transferOrderlineitemVO = transferOrder.getTransferOrderlineitemVO(id);
 		
 		return transferOrderlineitemVO;

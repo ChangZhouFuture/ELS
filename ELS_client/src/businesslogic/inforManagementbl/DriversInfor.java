@@ -59,6 +59,7 @@ public class DriversInfor implements DriversInforblservice {
 			recordOperaLog.recordOperaLog(OperaType.Add, "司机", this.driversVO.getID()
 					, "营业厅业务员" + Login.id);
 		}
+		javaBean1 = new JavaBean1();
 		javaBean1.setObject(this.driversVO);
 		javaBean1.setResultMessage(resultMessage);
 		
