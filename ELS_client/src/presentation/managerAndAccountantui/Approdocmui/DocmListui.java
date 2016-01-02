@@ -266,7 +266,7 @@ public class DocmListui extends JPanel{
 			 if(orderlineitemPO.getApproState()==ApproState.Approve){
 			     String[] oneRow={"",orderlineitemPO.getId(),orderlineitemPO.getSenderAdd(),
 			        orderlineitemPO.getAddresseeAdd(),orderlineitemPO.getExpressType().toString(),
-			    	String.valueOf(orderlineitemPO.getTotalCost()),"Œ¥…Û"};
+			    	String.valueOf(orderlineitemPO.getTotalCost()),"“—…Û"};
 			     orderTableModel.addRow(oneRow);
 			 }
 		 }
