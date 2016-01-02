@@ -6,14 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.PaymentOrderPO;
-import po.inforManagementPO.BankAccountPO;
 import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.PaymentOrderdataservice;
@@ -28,7 +26,6 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	
 	Database db=new Database();
     Connection con=db.getConnection();
-    Statement sm;
     PreparedStatement stmt;
     JavaBean1 jb1;
     PaymentOrderPO po;
@@ -38,7 +35,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public ResultMessage deleteMany(ArrayList<String> idList) {
 		// TODO Auto-generated method stub
-		String sql="delete from paymentorder where ID=?";
+		String sql="delete from paymentlist where ID=?";
 		try {
 			for(int i=0;i<idList.size();i++){
 			stmt=con.prepareStatement(sql);
@@ -56,7 +53,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	@Override
 	public ResultMessage update(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update paymentorder set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=? where ID=?";
+		String sql="update paymentlist set date=?,amount=?,payer=?,bankaccount=?,entry=?,note=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getDate());
@@ -79,13 +76,13 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 	public String generaId(String date) {
 		// TODO Auto-generated method stub
 		g=new GenerateId();
-		return g.generateDocumentId(date, "paymentorder");
+		return g.generateDocumentId(date, "paymentlist");
 	}
 
 	@Override
 	public ResultMessage add(PaymentOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into paymentorder(ID,date,amount,payer,bankaccount,entry,note)values(?,?,?,?,?,?,?)";
+		String sql="insert into paymentlist(ID,date,amount,payer,bankaccount,entry,note)values(?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -110,10 +107,11 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 		po=new PaymentOrderPO();
 		ArrayList<PaymentOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
-		String sql="select * from paymentorder where ID='"+id+"'";
+		String sql="select * from paymentlist where ID=?";
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt=con.prepareStatement(sql);
+			stmt.setString(1, id);
 			ResultSet rs=stmt.executeQuery();
 			if(rs.next()){
 				po.setID(id);
@@ -143,7 +141,7 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 		
 		ArrayList<PaymentOrderPO> pos=new ArrayList<>();
 		jb1=new JavaBean1();
-		String sql="select * from paymentorder";
+		String sql="select * from paymentlist";
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			stmt=con.prepareStatement(sql);
@@ -186,4 +184,15 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 		}
 	}
 
+//	public static void main(String[] args) {
+//		PaymentOrderdata pd=new PaymentOrderdata();
+//		PaymentOrderPO po=new PaymentOrderPO();
+//		po.setID("201601020001");
+//		po.setAmount(400);
+//		po.setBankAccount("00001");
+//		po.setDate("2016-01-02");
+//		po.setPayer("∏∂øÓ»Àb");
+//		pd.add(po);
+//		System.out.println(pd.generaId("2016-01-02"));
+//	}
 }

@@ -14,14 +14,13 @@ public class GenerateId {
 	PreparedStatement stmt;
 	
 	public String generateDocumentId(String date,String documentName){
-		String sql="select * from ?";
+		String sql="select * from "+documentName;
 		String subId;
 		int temp;
 		int last=0;
 		String formatDate=date.substring(0, 4)+date.substring(5, 7)+date.substring(8, 10);
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, documentName);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				if(rs.getString(1).substring(0, 8).equals(formatDate)){

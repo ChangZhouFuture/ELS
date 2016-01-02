@@ -49,7 +49,7 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 		}else if(documentsType==DocumentsType.OutBoundOrder){
 			sql="select * from outboundorder where ID=?";
 		}else if(documentsType==DocumentsType.PaymentOrder){
-			sql="select * from paymentorder where ID=?";
+			sql="select * from paymentlist where ID=?";
 		}else if(documentsType==DocumentsType.ReceivablesOrder){
 			sql="select * from receivablesorder where ID=?";
 		}else if(documentsType==DocumentsType.StorageList){
@@ -86,7 +86,7 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 			}else if(documentsType==DocumentsType.OutBoundOrder){
 				sql="update outboundorder set approState=? where ID=?";
 			}else if(documentsType==DocumentsType.PaymentOrder){
-				sql="update paymentorder set approState=? where ID=?";
+				sql="update paymentlist set approState=? where ID=?";
 			}else if(documentsType==DocumentsType.ReceivablesOrder){
 				sql="update receivablesorder set approState=? where ID=?";
 			}else if(documentsType==DocumentsType.StorageList){

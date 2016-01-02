@@ -33,10 +33,9 @@ public class BankAccountInfordata extends UnicastRemoteObject implements BankAcc
 //增加新银行账户信息
 public ResultMessage add(BankAccountPO po){
 	try {
-		stmt = con.prepareStatement("INSERT INTO bankAccount(name,amount,use) VALUES(?,?,?)");
+		stmt = con.prepareStatement("INSERT INTO bankAccount(name,amount) VALUES(?,?)");
 		stmt.setString(1, po.getName());
 	    stmt.setDouble(2, po.getAmount());
-	    stmt.setString(3, po.getUseState().toString());
 	    stmt.executeUpdate();
 	    return ResultMessage.Success;
 	} catch (SQLException e) {
@@ -52,14 +51,14 @@ public JavaBean1 find(String name){
 	jb1=new JavaBean1();
 	jb1.setResultMessage(ResultMessage.NotExist);
 	try {
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM bankAccount WHERE name='"+name+"'");
-		
+		PreparedStatement stmt = con.prepareStatement("SELECT * FROM bankAccount WHERE name=?");
+		stmt.setString(1, name);
 		 //大小写无区别，此处大写为区别表的名字，where表示条件
-		ResultSet rs=ps.executeQuery(); 
+		ResultSet rs=stmt.executeQuery(); 
 		if(rs.next()){
 		    po.setName(name);
 	        po.setAmount(rs.getDouble("amount"));
-	        po.setUseState(UseState.valueOf(rs.getString("use")));
+	        po.setUseState(UseState.valueOf(rs.getString("useState")));
 	        jb1.setResultMessage(ResultMessage.Success);
 	        jb1.setObject(po);
 		}
@@ -104,17 +103,17 @@ public ResultMessage update(String oldName,String newName){
 	}
 }
 @Override
-public ResultMessage updateBalance(double amount) throws RemoteException {
+public ResultMessage updateBalance(double num) throws RemoteException {
 	// TODO Auto-generated method stub
-	String sql="select * from bankaccount where use='InUse'";
+	String sql="select * from bankaccount where useState='InUse'";
 	double bankAmount=0;
 	try {
 		stmt=con.prepareStatement(sql);
 		ResultSet rs=stmt.executeQuery();
-		if(rs.next()){
-			bankAmount=rs.getDouble(rs.getString("amount"));
-		}bankAmount=bankAmount+amount;
-		sql="update bankaccount set amount=? where use='InUse'";
+		while(rs.next()){
+			bankAmount=rs.getDouble("amount");
+		}bankAmount=bankAmount+num;
+		sql="update bankaccount set amount=? where useState='InUse'";
 		stmt=con.prepareStatement(sql);
 		stmt.setDouble(1, bankAmount);
 		stmt.executeUpdate();
@@ -128,15 +127,15 @@ public ResultMessage updateBalance(double amount) throws RemoteException {
 @Override
 public ResultMessage setInUse(String accountName) throws RemoteException {
 	// TODO Auto-generated method stub
-	String sql="update bankaccount set use=? where name=?";
+	String sql="update bankaccount set useState=? where useState=?";
 	try {
 		stmt=con.prepareStatement(sql);
-		stmt.setString(1, "InUse");
-		stmt.setString(2, accountName);
-		stmt.executeUpdate();
-		sql="update bankaccount set use=? where name<>?,use='InUse'";
-		stmt=con.prepareStatement(sql);
 		stmt.setString(1, "NotInUse");
+		stmt.setString(2, "InUse");
+		stmt.executeUpdate();
+		sql="update bankaccount set useState=? where name=?";
+		stmt=con.prepareStatement(sql);
+		stmt.setString(1, "InUse");
 		stmt.setString(2, accountName);
 		stmt.executeUpdate();
 		return ResultMessage.Success;
@@ -150,13 +149,15 @@ public ResultMessage setInUse(String accountName) throws RemoteException {
 @Override
 public String getInUse() throws RemoteException {
 	// TODO Auto-generated method stub
-	String sql="select * from bankaccount where use='InUse'";
+	String sql="select * from bankaccount ";
 	String accountName=null;
 	try {
 		stmt=con.prepareStatement(sql);
 		ResultSet rs=stmt.executeQuery();
-		if(rs.next()){
-			accountName=rs.getString("name");
+		while(rs.next()){
+			if(rs.getString("useState").equals("InUse")){
+				accountName=rs.getString("name");
+			}
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -169,7 +170,11 @@ public String getInUse() throws RemoteException {
 //	BankAccountInfordata bank=new BankAccountInfordata();
 //	try {
 //		bank.setInUse("00001");
-//		bank.updateBalance(200);
+//		BankAccountPO po=new BankAccountPO();
+//		po.setName("00003");
+//		po.setAmount(500);
+//		bank.updateBalance(10);
+//		System.out.println(bank.getInUse());
 //	} catch (RemoteException e) {
 //		// TODO Auto-generated catch block
 //		e.printStackTrace();
