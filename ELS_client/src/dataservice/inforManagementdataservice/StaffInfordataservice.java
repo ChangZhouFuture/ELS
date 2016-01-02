@@ -13,7 +13,7 @@ public interface StaffInfordataservice extends Remote{
 	    
 	    public JavaBean1 findB(String position) throws RemoteException;
 	    
-	    public JavaBean1 getSalaryStrategy(String position) throws RemoteException;
+	    public JavaBean1 getSalaryStrategy() throws RemoteException;
 	    
         public ResultMessage updateSalaryStrategy(SalaryStrategyPO po) throws RemoteException;
 }

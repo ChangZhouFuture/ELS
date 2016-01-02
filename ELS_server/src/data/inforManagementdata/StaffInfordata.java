@@ -122,23 +122,24 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 
 
 	@Override
-	public JavaBean1 getSalaryStrategy(String position) throws RemoteException {
+	public JavaBean1 getSalaryStrategy() throws RemoteException {
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
-		String sql="select * from salarystrategy where position=?";
+		ArrayList<SalaryStrategyPO> pos=new ArrayList<>();
+		String sql="select * from salarystrategy";
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, position);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				SalaryStrategyPO po=new SalaryStrategyPO();
-				po.setPosition(Position.valueOf(position));
+				po.setPosition(Position.valueOf(rs.getString(1)));
 				po.setPayType(PayType.valueOf(rs.getString(2)));
 				po.setPayAmount(rs.getDouble(3));
 				po.setPercentage(rs.getString(4));
 				jb1.setResultMessage(ResultMessage.Success);
-			}jb1.setObject(po);
+				pos.add(po);
+			}jb1.setObject(pos);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
