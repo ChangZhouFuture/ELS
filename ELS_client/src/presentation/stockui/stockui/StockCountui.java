@@ -74,17 +74,7 @@ public class StockCountui extends JPanel{
 				 return ck;
 			 }
 		 });
-		stockblservice=new Stock();
-		javaBean3=stockblservice.stockCount();
-		ArrayList<StocklineitemVO> arrayList=(ArrayList<StocklineitemVO>)javaBean3.getObject();
-		for(int i=arrayList.size()-1;i>=0;i--){
-			stocklineitemVO=arrayList.get(i);
-			String[] oneRow={"",stocklineitemVO.getId(),stocklineitemVO.getDestination(),
-					stocklineitemVO.getAreaNum(),stocklineitemVO.getRowNum(),
-					stocklineitemVO.getFrameNum(),stocklineitemVO.getPositionNum(),
-					stocklineitemVO.getInDate()};
-			tableModel.addRow(oneRow);
-		}
+		
 		table.setRowHeight(24);
 		table.setBackground(Color.WHITE);
 		table.setShowVerticalLines(true);
@@ -93,6 +83,8 @@ public class StockCountui extends JPanel{
 		scrollPane.setSize(550,361);
 		scrollPane.setLocation(30,50);
 		scrollPane.setViewportView(table);
+		
+		refresh();
 		
 		areaType.setBounds(30,430,100,24);
 		areaType.setBackground(Color.WHITE);
@@ -117,8 +109,10 @@ public class StockCountui extends JPanel{
 				   ArrayList<String> idList=new ArrayList<String>();
 				   while(table.getSelectedRow()>=0){
 				       idList.add((String)table.getValueAt(table.getSelectedRow(),1));
+				       tableModel.removeRow(table.getSelectedRow());
 				   }
 				   stockblservice.adjustPartition(idList,areaTypeValue);
+				   refresh();
 				  }});
 		
 		this.add(sheetLabel);
@@ -129,5 +123,24 @@ public class StockCountui extends JPanel{
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+	}
+	public void refresh(){
+		while(tableModel.getRowCount()>0){
+			tableModel.removeRow(tableModel.getRowCount()-1);
+		}
+		stockblservice=new Stock();
+		javaBean3=stockblservice.stockCount();
+		ArrayList<StocklineitemVO> arrayList=(ArrayList<StocklineitemVO>)javaBean3.getObject();
+		if(arrayList.size()==0){
+			 return;
+		 }
+		for(int i=arrayList.size()-1;i>=0;i--){
+			stocklineitemVO=arrayList.get(i);
+			String[] oneRow={"",stocklineitemVO.getId(),stocklineitemVO.getDestination(),
+					stocklineitemVO.getAreaNum(),stocklineitemVO.getRowNum(),
+					stocklineitemVO.getFrameNum(),stocklineitemVO.getPositionNum(),
+					stocklineitemVO.getInDate()};
+			tableModel.addRow(oneRow);
+		}
 	}
 }

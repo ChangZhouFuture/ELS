@@ -191,6 +191,9 @@ public class StatisAnalyListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeReceivablesOrderTable(ArrayList<ReceivablesOrderPO> arrayReceivablesOrderList){
+		if(arrayReceivablesOrderList.size()==0){
+			 return;
+		 }
 		while(receivablesOrderTableModel.getRowCount()>0){
 			receivablesOrderTableModel.removeRow(receivablesOrderTableModel.getRowCount()-1);
 		}
@@ -213,6 +216,9 @@ public class StatisAnalyListui extends JPanel{
 		scrollPane.setViewportView(receivablesOrderTable);
 	}
 	public void makePaymentOrderTable(ArrayList<PaymentOrderPO> arrayPaymentOrderList){
+		if(arrayPaymentOrderList.size()==0){
+			 return;
+		 }
 		while(paymentOrderTableModel.getRowCount()>0){
 			paymentOrderTableModel.removeRow(paymentOrderTableModel.getRowCount()-1);
 		}

@@ -71,6 +71,9 @@ public class OperalogListui extends Listui{
 		this.add(scrollPane);
 	}
 	public void makeTable(ArrayList<OperaLogVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}

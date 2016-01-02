@@ -37,7 +37,7 @@ public class OutBoundOrderListui extends Listui{
 	public OutBoundOrderListui(){
 		
 		sheetLabel.setText("出库管理");
-		String[] columnNames = {"选择","ID","目的地","快递编号","装运形式","出库日期","区号","时间"}; //列名
+		String[] columnNames = {"选择","ID","目的地","快递编号","装运形式","出库日期","区号"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
 		table = new JTable(tableModel){  
@@ -66,6 +66,9 @@ public class OutBoundOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<OutBoundOrderVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
@@ -85,7 +88,7 @@ public class OutBoundOrderListui extends Listui{
 		 for(int i=arrayList.size()-1;i>=0;i--){
 			 oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getId(),oneLine.getDestination(),oneLine.getOrderID(),
-			    	 oneLine.getTransportType().toString(), oneLine.getId(),oneLine.getGenerateTime()};
+			    	 oneLine.getTransportType().toString(), oneLine.getOutDate(),oneLine.getArea()};
 			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);

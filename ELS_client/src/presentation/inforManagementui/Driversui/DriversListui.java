@@ -164,6 +164,9 @@ public class DriversListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<DriverslineitemVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}

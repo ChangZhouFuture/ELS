@@ -73,6 +73,9 @@ public class TranCenArrivalOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<TranCenArrivalOrderVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}

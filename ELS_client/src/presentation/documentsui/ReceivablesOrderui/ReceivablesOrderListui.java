@@ -45,7 +45,7 @@ public class ReceivablesOrderListui extends Listui{
 	public ReceivablesOrderListui(){
 		
 		sheetLabel.setText("收款单管理");
-		String[] columnNames = {"选择","ID","快递员","金额","收款日期","时间"}; //列名
+		String[] columnNames = {"选择","ID","快递员","金额","收款日期"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
 		table = new JTable(tableModel){  
@@ -74,6 +74,9 @@ public class ReceivablesOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<ReceivablesOrderVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
@@ -93,7 +96,7 @@ public class ReceivablesOrderListui extends Listui{
 		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getID(),oneLine.getCourier(),String.valueOf(oneLine.getAmount()),
-					 oneLine.getDate(),oneLine.getGenerateTime()};
+					 oneLine.getDate()};
 			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);

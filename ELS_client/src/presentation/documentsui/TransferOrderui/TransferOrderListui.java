@@ -70,6 +70,9 @@ public class TransferOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<TransferOrderlineitemVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
@@ -85,6 +88,7 @@ public class TransferOrderListui extends Listui{
 				 return ck;
 			 }
 		 });
+		 table.getColumnModel().getColumn(1).setPreferredWidth(160);
 		 table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		 for(int i=arrayList.size()-1;i>=0;i--){
 			 oneLine=arrayList.get(i);

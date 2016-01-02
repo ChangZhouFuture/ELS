@@ -182,6 +182,9 @@ public class AgencyListui extends JPanel{
 		this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<AgencyVO>  arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}

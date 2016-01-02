@@ -47,7 +47,7 @@ public class PaymentOrderListui extends Listui{
 	public PaymentOrderListui(){
 		
 		sheetLabel.setText("成本管理");
-		String[] columnNames = {"选择","ID","付款人","付款账号","金额","条目","备注","时间"}; //列名
+		String[] columnNames = {"选择","ID","付款人","付款账号","金额","条目","时间"}; //列名
 		String [][]tableVales={}; //数据
 		tableModel = new DefaultTableModel(tableVales,columnNames);
 		table = new JTable(tableModel){  
@@ -76,6 +76,9 @@ public class PaymentOrderListui extends Listui{
 		this.add(delete);
 	}
 	public void makeTable(ArrayList<PaymentOrderVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
@@ -95,8 +98,7 @@ public class PaymentOrderListui extends Listui{
 		 for(int i=arrayList.size()-1;i>=0;i--){
 		     oneLine=arrayList.get(i);
 			 String[] oneRow={"",oneLine.getID(),oneLine.getPayer(),oneLine.getBankAccount(),
-					String.valueOf(oneLine.getAmount()),oneLine.getEntry(),
-					oneLine.getNote(),oneLine.getDate()};
+					String.valueOf(oneLine.getAmount()),oneLine.getEntry(),oneLine.getDate()};
 			 tableModel.addRow(oneRow);
 		 }
 		 table.setRowHeight(24);

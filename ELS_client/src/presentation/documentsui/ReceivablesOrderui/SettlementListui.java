@@ -166,6 +166,9 @@ public class SettlementListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 	public void makeTable(ArrayList<ReceivablesOrderVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}

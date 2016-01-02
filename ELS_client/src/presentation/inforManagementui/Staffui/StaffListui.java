@@ -164,6 +164,9 @@ public class StaffListui extends JPanel{
 			this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<UserlineitemVO> arrayList){
+		if(arrayList.size()==0){
+			 return;
+		 }
 		while(tableModel.getRowCount()>0){
 			tableModel.removeRow(tableModel.getRowCount()-1);
 		}
