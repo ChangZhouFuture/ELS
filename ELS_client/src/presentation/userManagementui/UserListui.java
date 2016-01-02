@@ -239,7 +239,6 @@ public class UserListui extends JPanel{
 				       idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				       tableModel.removeRow(table.getSelectedRow());  //É¾³ýÐÐ 
 				   }
-				   idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				   userManagementblservice=new UserManagement();
 				   userManagementblservice.deleteMany(idList);
 				  }});
