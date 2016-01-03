@@ -24,7 +24,6 @@ import vo.userVO.UserVO;
 public class UserInfoui extends ParentDocuments{
 	public JLabel userInfo;
 	public JLabel name;
-	public JLabel password;
 	public JLabel gender;
 	public JLabel birthDate;
 	public JTextField birthDateField;
@@ -37,7 +36,6 @@ public class UserInfoui extends ParentDocuments{
 	public JLabel agencyID;
 	public JLabel position;
 	public JTextField nameField;
-	public JTextField passwordField;
 	public JTextField identyNumField;
 	public JTextField phoneField;
 	public JTextField regionField;
@@ -56,7 +54,6 @@ public class UserInfoui extends ParentDocuments{
 	public UserInfoui(){
 		userInfo=new JLabel();
 		name=new JLabel();
-		password=new JLabel();
 		gender=new JLabel();
 		birthDate=new JLabel();
 		birthDateChooser = DateChooser.getInstance("yyyy-MM-dd");
@@ -69,7 +66,6 @@ public class UserInfoui extends ParentDocuments{
 		agencyID=new JLabel();
 		position=new JLabel();
 		nameField=new JTextField();
-		passwordField=new JTextField();
 		identyNumField=new JTextField();
 		phoneField=new JTextField();
 		regionField=new JTextField();
@@ -99,13 +95,6 @@ public class UserInfoui extends ParentDocuments{
 		name.setBackground(Color.WHITE);
 		
 		nameField.setBounds(130,52,120,20);
-		
-		password.setBounds(300,50,90,24);
-		password.setText("ÃÜÂë£º");
-		password.setFont(font2);
-		password.setBackground(Color.WHITE);
-		
-		passwordField.setBounds(390,52,120,20);
 		
 		gender.setBounds(40,80,90,24);
 		gender.setText("ÐÔ±ð£º");
@@ -214,7 +203,6 @@ public class UserInfoui extends ParentDocuments{
 				userVO.setName(nameField.getText());
 				userVO.setGender(sexTypeSeletion);
 				userVO.setBirthDate(birthDateField.getText());
-				userVO.setPassword(passwordField.getText());
 				userVO.setPhone(phoneField.getText());
 				userVO.setIdentyNum(identyNumField.getText());
 				userVO.setCity(cityField.getText());
@@ -238,7 +226,6 @@ public class UserInfoui extends ParentDocuments{
 				userVO.setName(nameField.getText());
 				userVO.setGender(sexTypeSeletion);
 				userVO.setBirthDate(birthDateField.getText());
-				userVO.setPassword(passwordField.getText());
 				userVO.setPhone(phoneField.getText());
 				userVO.setIdentyNum(identyNumField.getText());
 				userVO.setCity(cityField.getText());
@@ -259,7 +246,6 @@ public class UserInfoui extends ParentDocuments{
 		
 		this.add(userInfo);
 		this.add(name);
-		this.add(password);
 		this.add(gender);
 		this.add(birthDate);
 		this.add(birthDateField);
@@ -271,7 +257,6 @@ public class UserInfoui extends ParentDocuments{
 		this.add(agencyID);
 		this.add(position);
 		this.add(nameField);
-		this.add(passwordField);
 		this.add(identyNumField);
 		this.add(nameField);
 		this.add(phoneField);
@@ -283,7 +268,6 @@ public class UserInfoui extends ParentDocuments{
 	}
 	public void refresh(){
 		birthDateField.setEditable(false);
-		passwordField.setEditable(false);
 		nameField.setEditable(false);
 		sexType.setEnabled(false);
 		positionSeleted.setEnabled(false);
@@ -294,7 +278,6 @@ public class UserInfoui extends ParentDocuments{
 		agencyIDField.setEditable(false);
 		
 		birthDateField.setBackground(Color.white);
-		passwordField.setBackground(Color.white);
 		nameField.setBackground(Color.white);
 		identyNumField.setBackground(Color.white);
 		phoneField.setBackground(Color.white);
@@ -303,7 +286,6 @@ public class UserInfoui extends ParentDocuments{
 		agencyIDField.setBackground(Color.white);
 		
 		birthDateField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		passwordField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		nameField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		identyNumField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		phoneField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -318,7 +300,6 @@ public class UserInfoui extends ParentDocuments{
 	}
 	public void modifying(){
 		birthDateField.setEditable(true);
-		passwordField.setEditable(true);
 		nameField.setEditable(true);
 		sexType.setEnabled(true);
 		positionSeleted.setEnabled(true);
@@ -330,7 +311,6 @@ public class UserInfoui extends ParentDocuments{
 		modifyOrder.setVisible(true);
 		
 		birthDateField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		passwordField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		nameField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		identyNumField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		phoneField.setBorder(BorderFactory.createLineBorder(Color.lightGray));

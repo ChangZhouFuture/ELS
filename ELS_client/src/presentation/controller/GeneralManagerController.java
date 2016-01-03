@@ -356,7 +356,6 @@ public class GeneralManagerController {
 		userInfoui.modify.setVisible(false);
 		userInfoui.userVO=userVO;
 		userInfoui.nameField.setText(userVO.getName());
-		userInfoui.passwordField.setText(userVO.getPassword());
 		userInfoui.birthDateField.setText(userVO.getBirthDate());
 		userInfoui.identyNumField.setText(userVO.getIdentyNum());
 		userInfoui.phoneField.setText(userVO.getPhone());

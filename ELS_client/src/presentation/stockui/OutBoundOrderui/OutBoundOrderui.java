@@ -174,8 +174,8 @@ public class OutBoundOrderui extends ParentDocuments{
 	}
 	public void modifying() {
 		orderIdField.setEditable(true);
-		destinationField.setVisible(true);
-		tranOrMotorIdField.setVisible(true);
+		destinationField.setEditable(true);
+		tranOrMotorIdField.setEditable(true);
 		transportTypeType.setEnabled(true);
 		modifyOrder.setVisible(true);
 		

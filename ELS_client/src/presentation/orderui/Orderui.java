@@ -339,6 +339,7 @@ public class Orderui extends ParentDocuments{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				actualReceiver.setVisible(true);
+				actualReceiverField.setVisible(true);
 				actualReceiverField.setEditable(true);
 				makeSure.setVisible(true);
 				actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.lightGray));

@@ -96,7 +96,7 @@ public class DriversListui extends JPanel{
 		addText.setBounds(60,45,80,30);
 		addText.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		addText.setBackground(Color.WHITE);
-		addText.setText("增加单据");
+		addText.setText("增加司机");
 		addText.setFont(font3);
 		
 		findById.setBounds(30,90,120,24);

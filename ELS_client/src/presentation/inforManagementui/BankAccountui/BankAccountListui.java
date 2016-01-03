@@ -163,7 +163,7 @@ public class BankAccountListui extends JPanel{
 		 table.setShowVerticalLines(true);
 		 table.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		 scrollPane.setSize(550,241);
-		 scrollPane.setLocation(30,110);
+		 scrollPane.setLocation(30,140);
 		 scrollPane.setViewportView(table);
 		 delete.addActionListener(new ActionListener(){//Ìí¼ÓÊÂ¼þ
 			   public void actionPerformed(ActionEvent e){

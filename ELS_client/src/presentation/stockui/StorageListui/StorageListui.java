@@ -185,11 +185,11 @@ public class StorageListui extends ParentDocuments{
 	}
 	public void modifying() {
 		orderIdField.setEditable(true);
-		destinationField.setVisible(true);
-		areaNumField.setVisible(true);
-		rowNumField.setVisible(true);
-		frameNumField.setVisible(true);
-		positionNumField.setVisible(true);
+		destinationField.setEditable(true);
+		areaNumField.setEditable(true);
+		rowNumField.setEditable(true);
+		frameNumField.setEditable(true);
+		positionNumField.setEditable(true);
 		modifyOrder.setVisible(true);
 		
 		destinationField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
