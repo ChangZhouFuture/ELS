@@ -194,31 +194,17 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 	@Override
 	public ResultMessage adjustPartition(ArrayList<String> IDList, String area) throws RemoteException {
 		// TODO Auto-generated method stub
-		int count=0;
 		try {
-			stmt=con.prepareStatement("select * from stock where tranCenID=?");
-			stmt.setString(1, Logindata.agencyId);
-			ResultSet rs=stmt.executeQuery();
-			while(rs.next()){
-				if(rs.getString("areaNum").equals(area)){
-					count++;
-				}
+		    String sql="update stock set areaNum=? where ID=?";
+		    
+		    for(int i=0;i<IDList.size();i++){
+		    	System.out.println(IDList.get(i));
+		    	System.out.println(area);
+				 stmt=con.prepareStatement(sql);
+				 stmt.setString(1, area);
+				 stmt.setString(2, IDList.get(i));
+				 stmt.executeUpdate();
 			}
-			if(count+IDList.size()>Max_Size){
-				return ResultMessage.Fail;
-			}
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String sql="update stock set areaNum=? where ID=?";
-		try {
-			for(int i=0;i<IDList.size();i++){
-				stmt=con.prepareStatement(sql);
-				stmt.setString(1, area);
-				stmt.setString(2, IDList.get(i));
-			}
-			
 			return ResultMessage.Success;
 					
 		} catch (SQLException e) {
@@ -227,5 +213,12 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 			return ResultMessage.NotExist;
 		}
 	}
+
 	
+//	public static void main(String[] args) throws RemoteException {
+//		Stockdata sd=new Stockdata();
+//		ArrayList<String> IDList=new ArrayList<>();
+//		IDList.add("1512290001");
+//		sd.adjustPartition(IDList, "»ú¶¯Çø");
+//	}
 }

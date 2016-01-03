@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import bean.JavaBean1;
 import po.inforManagementPO.DriversPO;
+import po.lineitemPO.inforManagementlineitemPO.DriverslineitemPO;
 import state.Gender;
 import state.ResultMessage;
 import data.utility.Database;
@@ -15,7 +16,6 @@ import dataservice.inforManagementdataservice.DriversInfordataservice;
 public class DriversInfordata extends UnicastRemoteObject implements DriversInfordataservice {
 		Database db=new Database();
 	    Connection con=db.getConnection();
-	    Statement sm;
 	    PreparedStatement stmt;
 	    DriversPO po;
 	    JavaBean1 jb1;
@@ -50,8 +50,9 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	//查找司机信息
 	public JavaBean1 findA(String Id){
 		po = new DriversPO();
+		ArrayList<DriversPO> arr=new ArrayList<>();
 		jb1=new JavaBean1();
-			jb1.setResultMessage(ResultMessage.NotExist);	
+		jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM driver WHERE ID='"+Id+"'");
 			
@@ -67,8 +68,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
 		        po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        jb1.setObject(po);
-			}
+		        arr.add(po);
+			}jb1.setObject(arr);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -100,7 +101,7 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	public ResultMessage update(DriversPO po){
 		con=db.getConnection();
 		try {
-			String sql=("UPDATE drivers SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=?,busiHallID=? WHERE ID=?");
+			String sql=("UPDATE driver SET name=?,birthDate=?,identyNum=?,phone=?,gender=?,driveLimitDate=?,busiHallID=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getName());
 			stmt.setString(2, po.getBirthDate());
@@ -124,24 +125,21 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		// TODO Auto-generated method stub
 		
 		jb1=new JavaBean1();
-		ArrayList<DriversPO> pos=new ArrayList<>();
+		ArrayList<DriverslineitemPO> pos=new ArrayList<>();
 		jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
 			stmt = con.prepareStatement("SELECT * FROM driver WHERE busiHallId=?");
 			stmt.setString(1, busiHallId);
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
-				po = new DriversPO();
-			    po.setID(rs.getString("ID"));
-		        po.setName(rs.getString("name"));
-		        po.setBirthDate(rs.getString("birthDate"));
-		        po.setIdentyNum(rs.getString("identyNum"));
-		        po.setPhone(rs.getString("phone"));
-		        po.setGender(Gender.valueOf(rs.getString("gender")));
-		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
-		        po.setBusiHallID(rs.getString("busiHallID"));
+				DriverslineitemPO llpo=new DriverslineitemPO();
+			    llpo.setID(rs.getString("ID"));
+		        llpo.setName(rs.getString("name"));
+		        llpo.setPhone(rs.getString("phone"));
+		        llpo.setGender(Gender.valueOf(rs.getString("gender")));
+		        llpo.setDriveLimitDate(rs.getString("driveLimitDate"));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        pos.add(po);
+		        pos.add(llpo);
 			}
 			jb1.setObject(pos);
 			return jb1;
@@ -181,4 +179,26 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 			return null;
 		}
 	}
+	
+//	public static void main(String[] args) throws RemoteException {
+//		DriversPO po=new DriversPO();
+//		DriversInfordata df=new DriversInfordata();
+//		po.setID("010001001");
+//		po.setName("司机1");
+//		po.setBirthDate("1991-01-01");
+//		po.setPhone("12345678");
+//		po.setBusiHallID("0101001");
+//		po.setGender(Gender.MALE);
+//		po.setDriveLimitDate("2016-09");
+//		po.setIdentyNum("320212199101010511");
+//		df.update(po);
+//		JavaBean1 jb1=df.findA("010001001");
+//		ArrayList<DriversPO> arr=(ArrayList<DriversPO>)jb1.getObject();
+//		DriversPO po1=arr.get(0);
+//		System.out.println(po.getBirthDate());
+//		JavaBean1 jb11=df.findB("0101001");
+//		ArrayList<DriverslineitemPO> arr2=(ArrayList<DriverslineitemPO>)jb11.getObject();
+//		DriverslineitemPO llpo=arr2.get(0);
+//		System.out.println(llpo.getName());
+//	}
 }

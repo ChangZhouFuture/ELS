@@ -38,7 +38,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	public ResultMessage add(OutBoundOrderPO po) {
 		// TODO Auto-generated method stub
 		String sql="insert into outboundorder(ID,date,destination,transportType,truckNum,area,orderID)"
-				+ "values(?,?,?,?,?,?,?,?)";
+				+ "values(?,?,?,?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getId());
@@ -104,6 +104,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
 		po=new OutBoundOrderPO();
+		ArrayList<OutBoundOrderPO> arr=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		String sql="select * from outboundorder where ID=?";
@@ -120,9 +121,9 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
 				po.setArea(rs.getString("area"));
 				po.setOrderID(rs.getString("orderID"));
-				jb1.setObject(po);
 				jb1.setResultMessage(ResultMessage.Success);
-			}
+				arr.add(po);
+			}jb1.setObject(arr);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -217,7 +218,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 				jb1.setResultMessage(ResultMessage.Success);
 				count++;
 				orderIDsAndAreaList[0][count]=rs.getString("area");
-				orderIDsAndAreaList[1][count]=rs.getString("ID");
+				orderIDsAndAreaList[1][count]=rs.getString("orderID");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -227,6 +228,16 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 		return jb1;
 	}
 
+//	public static void main(String[] args) {
+//		OutBoundOrderdata od=new OutBoundOrderdata();
+//		OutBoundOrderPO po=new OutBoundOrderPO();
+//        po.setId("201601030001");
+//        po.setDestination("ÄÏ¾©");
+//        po.setOutDate("2016-01-03");
+//        po.setTransportType(TransportType.Train);
+//        po.setOrderID("1512240001");
+//		od.add(po);
+//	}
 
 
 }

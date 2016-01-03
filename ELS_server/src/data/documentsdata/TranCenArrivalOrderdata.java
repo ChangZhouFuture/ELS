@@ -86,7 +86,8 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		try {
-			stmt = con.prepareStatement("SELECT * FROM trancenarrivalorder WHERE ID='"+id+"'");
+			stmt = con.prepareStatement("SELECT * FROM trancenarrivalorder WHERE ID=?");
+			stmt.setString(1, id);
 			ResultSet rs=stmt.executeQuery(); 
 			if(rs.next()){
 				po=new TranCenArrivalOrderPO();

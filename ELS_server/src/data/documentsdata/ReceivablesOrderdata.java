@@ -17,7 +17,7 @@ import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 
-public class ReceivablesOrderdata extends UnicastRemoteObject implements ReceivablesOrderdataservice{
+public class ReceivablesOrderdata  extends UnicastRemoteObject implements ReceivablesOrderdataservice{
 
 	public ReceivablesOrderdata() throws RemoteException {
 		super();
@@ -80,7 +80,7 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 	@Override
 	public JavaBean1 findA(String id) {
 		// TODO Auto-generated method stub
-		po=new ReceivablesOrderPO();
+		jb1=new JavaBean1();
 		ArrayList<ReceivablesOrderPO> pos=new ArrayList<>();
 		String sql="select * from receivablesorder where ID=?";
 		jb1.setResultMessage(ResultMessage.NotExist);
@@ -88,11 +88,12 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, id);
 		    ResultSet rs=stmt.executeQuery();
-		    if(rs.next()){ 
-		    	jb1.setResultMessage(ResultMessage.Success);
-		    	po.setID(id);
+		    while(rs.next()){ 
+			    po=new ReceivablesOrderPO();
+			    jb1.setResultMessage(ResultMessage.Success);
+			   	po.setID(id);
 			    po.setAmount(rs.getDouble(2));
-			    po.setCourier(rs.getString(3));
+		        po.setCourier(rs.getString(3));
 			    po.setDate(rs.getString(5));
 			    po.setApproState(ApproState.valueOf(rs.getString("approState")));
 			    po.setAgencyID(rs.getString("busiHallID"));
@@ -104,7 +105,8 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 			    }
 			    po.setOrderIDs(arr);
 			    pos.add(po);
-			    
+				    
+		    	
 		    }jb1.setObject(pos);
 		    
 		    return jb1;
@@ -245,7 +247,6 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		ArrayList<String> arr;
 		String[] s;
 		String sql="select * from receivablesorder ";
-		
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
@@ -299,4 +300,11 @@ public class ReceivablesOrderdata extends UnicastRemoteObject implements Receiva
 		}
 	}
 	
+//	public static void main(String[] args) throws RemoteException {
+//		ReceivablesOrderdata rd=new ReceivablesOrderdata();
+//		JavaBean1 jb1=rd.findC("0101001");
+//		ArrayList<ReceivablesOrderPO> arr=(ArrayList<ReceivablesOrderPO>)jb1.getObject();
+//		ReceivablesOrderPO po=arr.get(0);
+//		System.out.println(po.getID());
+//	}
 }
