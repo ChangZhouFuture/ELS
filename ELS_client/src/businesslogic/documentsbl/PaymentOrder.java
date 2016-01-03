@@ -54,6 +54,8 @@ public class PaymentOrder implements PaymentOrderblservice {
 			e.printStackTrace();
 		}
 		
+		statisAnaly = new StatisAnaly();
+		bankAccountInfor = new BankAccountInfor();
 		statisAnaly.updateCostAndIncomeTable(this.paymentOrderVO.getAmount(), "cost");
 		bankAccountInfor.updateBalance("deduct", this.paymentOrderVO.getAmount());
 		
@@ -127,7 +129,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 	public String generateId() {
 		String id = null;
 		try {
-			id = date+paymentOrderdataservice.generaId(date);
+			id = paymentOrderdataservice.generaId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -140,6 +142,7 @@ public class PaymentOrder implements PaymentOrderblservice {
 	}
 
 	public void VOtoPO() {
+		paymentOrderPO.setID(paymentOrderVO.getID());
 		paymentOrderPO.setAmount(paymentOrderVO.getAmount());
 		paymentOrderPO.setBankAccount(paymentOrderVO.getBankAccount());
 		paymentOrderPO.setDate(paymentOrderVO.getDate());

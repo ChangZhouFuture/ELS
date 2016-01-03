@@ -63,6 +63,8 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 			e.printStackTrace();
 		}
 		
+		statisAnaly = new StatisAnaly();
+		bankAccountInfor = new BankAccountInfor();
 		statisAnaly.updateCostAndIncomeTable(this.receivablesOrderVO.getAmount(),
 				"income");
 		bankAccountInfor.updateBalance("add", this.receivablesOrderVO.getAmount());
@@ -157,7 +159,7 @@ public class ReceivablesOrder implements ReceivablesOrderblservice{
 	public String generateID() {
 		String id = null;
 		try {
-			id = date+ receivablesOrderdataservice.generateId(date);
+			id = receivablesOrderdataservice.generateId(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

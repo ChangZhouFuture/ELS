@@ -128,7 +128,7 @@ public class StatisAnaly implements StatisAnalyblservice {
 		return javaBean1;
 	}
 	
-	public static void updateCostAndIncomeTable(double amount, String costOrIncome) {
+	public void updateCostAndIncomeTable(double amount, String costOrIncome) {
 		try {
 			statisAnalydataservice.updateCostAndIncomeTable(amount, costOrIncome);
 		} catch (RemoteException e) {

@@ -47,6 +47,7 @@ public class DriversInfor implements DriversInforblservice {
 		this.driversVO = driversVO;
 		
 		this.driversVO.setID(generateID());
+		this.driversVO.setBusiHallID(Login.agencyID);
 		VOtoPO();
 		
 		try {
@@ -168,6 +169,7 @@ public class DriversInfor implements DriversInforblservice {
 
 	public void VOtoPO() {
 		driversPO.setID(driversVO.getID());
+		driversPO.setBusiHallID(driversVO.getBusiHallID());
 		driversPO.setBirthDate(driversVO.getBirthDate());
 		driversPO.setDriveLimitDate(driversVO.getDriveLimitDate());
 		driversPO.setGender(driversVO.getGender());

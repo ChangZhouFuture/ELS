@@ -81,8 +81,9 @@ public class UserManagement implements UserManagementblservice{
 			String id;
 			for (int i = 0; i < IDList.size(); i++) {
 				id = IDList.get(i);
-				recordOperaLog.recordOperaLog(OperaType.Delete, this.userVO.
-						getPosition().toString(), id, Position.Administrator, Login.
+				Position position = whichPosition(id);
+				recordOperaLog.recordOperaLog(OperaType.Delete, position.toString(), id,
+						Position.Administrator, Login.
 						id);
 			}
 		}
@@ -187,4 +188,35 @@ public class UserManagement implements UserManagementblservice{
 		userPO.setRegion(userVO.getRegion());
 	}
 	
+	public Position whichPosition(String userID) {
+		Position position = null;
+		
+		switch (userID.substring(0, 2)) {
+		case "00":
+			position = Position.Accountant1;
+			break;
+		case "01":
+			position = Position.Accountant2;
+			break;
+		case "03":
+			position = Position.BusiHallClerk;
+			break;
+		case "04":
+			position = Position.Courier;
+			break;
+		case "05":
+			position = Position.GeneralManager;
+			break;
+		case "06":
+			position = Position.StockManager;
+			break;
+		case "07":
+			position = Position.TranCenClerk;
+			break;
+		default:
+			break;
+		}
+		
+		return position;
+	}
 }

@@ -55,6 +55,7 @@ public class InquireOperaLog implements OperaLogblservice{
 			operaLogVO.setOperaType(operaLogPO.getOperaType());
 			operaLogVO.setObjectType(operaLogPO.getObjectType());
 			operaLogVO.setId(operaLogPO.getId());
+			operaLogVO.setDate(operaLogPO.getDate());
 			
 			arrayList2.add(operaLogVO);
 		}

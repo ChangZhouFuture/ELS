@@ -112,6 +112,7 @@ public class BankAccountInfor implements BankAccountInforblservice {
 		
 		bankAccountVO.setName(bankAccountPO.getName());
 		bankAccountVO.setAmount(bankAccountPO.getAmount());
+		bankAccountVO.setUseState(bankAccountPO.getUseState());
 		
 		javaBean1.setObject(bankAccountVO);
 		return javaBean1;

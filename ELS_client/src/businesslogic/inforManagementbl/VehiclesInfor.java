@@ -39,6 +39,7 @@ public class VehiclesInfor implements VehiclesInforblservice {
 		this.vehiclesVO = vehiclesVO;
 		
 		this.vehiclesVO.setID(generateID());
+		this.vehiclesVO.setBusiHallID(Login.agencyID);
 		VOtoPO();
 		
 		try {

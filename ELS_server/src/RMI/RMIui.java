@@ -79,7 +79,7 @@ public class RMIui extends JFrame{
 		
 		rmiHelper.init();
 		rmiSuccessInit.setBounds(95,80,210,24);
-		rmiSuccessInit.setText("服务器端已成功链接!");
+		rmiSuccessInit.setText("服务器端已提供链接!");
 		rmiSuccessInit.setHorizontalAlignment(0);
 		rmiSuccessInit.setFont(new Font("微软雅黑", Font.CENTER_BASELINE, 19));
 		rmiSuccessInit.setForeground(Color.white);
@@ -109,7 +109,5 @@ public class RMIui extends JFrame{
 		mainPanel.add(rmiSuccessInit);
 		this.add(mainPanel);
 		this.setVisible(true);
-		this.validate();
-		this.repaint();
 	}
 }

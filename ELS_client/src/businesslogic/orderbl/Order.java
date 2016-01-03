@@ -109,6 +109,9 @@ public class Order implements Orderblservice {
 		orderPO = (OrderPO)javaBean1.getObject();
 		orderVO = new OrderVO();
 		
+		if (javaBean1.getResultMessage() == ResultMessage.NotExist) {
+			return javaBean1;
+		}
 		this.orderVO.setAddresseeAdd(orderPO.getAddresseeAdd());
 		this.orderVO.setAddresseeCompany(orderPO.getAddresseeCompany());
 		this.orderVO.setAddresseeName(orderPO.getAddresseeName());

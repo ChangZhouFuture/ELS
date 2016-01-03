@@ -230,7 +230,7 @@ public class Accountant2Controller {
 		case "租金（按年收）":paymentOrderui.payType.setSelectedIndex(3);break;
 		default:break;
 		}
-		paymentOrderui.remarksArea.setText(paymentOrderVO.getEntry());
+		paymentOrderui.remarksArea.setText(paymentOrderVO.getNote());
 		switch(paymentOrderVO.getApproState()){
 		case Approve:paymentOrderui.approState.setText("已审批");break;
 		case NotApprove:paymentOrderui.approState.setText("未审批");break;
