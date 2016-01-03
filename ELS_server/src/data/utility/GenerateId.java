@@ -147,12 +147,11 @@ public class GenerateId {
 	}
 	
 	public String generateTrucksNum(String firstPart,String loadingListType){ //ÆûÔË±àºÅ
-		String sql="select * from ?";
+		String sql="select * from "+loadingListType.toLowerCase();
 		int temp=0;
 		int sub=0;
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setString(1, loadingListType);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				if(rs.getString("trucksNum").substring(0, 15).equals(firstPart)){

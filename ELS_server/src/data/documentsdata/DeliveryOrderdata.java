@@ -38,7 +38,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public ResultMessage addDeliveryOrder(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into deliveryorder(ID,date,orderIDs,deliverier)values(?,?,?,?))";
+		String sql="insert into deliveryorder(ID,date,orderIDs,deliverier)values(?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -150,7 +150,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public ResultMessage update(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update deliveryorder se arrivalDate=?,orderIDs=?,deliverier=? where ID=?";
+		String sql="update deliveryorder set date=?,orderIDs=?,deliverier=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getArrivalDate());
