@@ -9,7 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import bean.JavaBean1;
+import bean.JavaBean4;
+import businesslogic.stockbl.Stock;
 import businesslogic.stockbl.StorageList;
+import businesslogicservice.stockblservice.Stockblservice;
 import businesslogicservice.stockblservice.StorageListblservice;
 import presentation.reuse.ParentDocuments;
 import vo.stockVO.StorageListVO;
@@ -30,6 +33,9 @@ public class StorageListui extends ParentDocuments{
 	public JTextField positionNumField;
 	StorageListblservice storageListblservice;
 	JavaBean1 javaBean1;
+	JavaBean4 javaBean4;
+	Stockblservice stockblservice;
+	public boolean isAlarm;
 	public StorageListVO storageListVO;
 	
 	public StorageListui(){
@@ -113,6 +119,9 @@ public class StorageListui extends ParentDocuments{
 				storageListVO.setPositionNum(positionNumField.getText());
 				javaBean1=storageListblservice.add(storageListVO);
 				storageListVO=(StorageListVO)javaBean1.getObject();
+				stockblservice=new Stock();
+				javaBean4=stockblservice.storage(storageListVO);
+				isAlarm=javaBean4.isAlarm();
 				docmID.setText(storageListVO.getId());
 				docmDate.setText(storageListVO.getInDate());
 			}
@@ -122,6 +131,7 @@ public class StorageListui extends ParentDocuments{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				isAlarm=true;
 				refresh();
 				storageListblservice=new StorageList();
 				storageListVO.setDestination(destinationField.getText());

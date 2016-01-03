@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import bean.JavaBean3;
+import bean.JavaBean4;
 import businesslogic.stockbl.Stock;
 import businesslogicservice.stockblservice.Stockblservice;
 import presentation.reuse.Images;
@@ -36,6 +37,9 @@ public class StockCountui extends JPanel{
 	JavaBean3 javaBean3;
 	Stockblservice stockblservice;
 	StocklineitemVO stocklineitemVO;
+	JavaBean4 javaBean4;
+	public boolean isAlarm;
+	
 	public StockCountui(){
 		sheetLabel=new JLabel();
 		adjust=new JButton();
@@ -111,7 +115,8 @@ public class StockCountui extends JPanel{
 				       idList.add((String)table.getValueAt(table.getSelectedRow(),1));
 				       tableModel.removeRow(table.getSelectedRow());
 				   }
-				   stockblservice.adjustPartition(idList,areaTypeValue);
+				   javaBean4=stockblservice.adjustPartition(idList,areaTypeValue);
+				   isAlarm=javaBean4.isAlarm();
 				   refresh();
 				  }});
 		

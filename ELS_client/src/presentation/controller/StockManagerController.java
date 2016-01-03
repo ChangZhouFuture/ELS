@@ -1,5 +1,6 @@
 package presentation.controller;
 
+import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,6 +108,7 @@ public class StockManagerController {
 				childPanel = stockCountui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inStockCountui();
 			}
 		});
 	}
@@ -295,6 +297,30 @@ public class StockManagerController {
 				    inOutBoundOrderListui();
 		        } else if (n == 0) {  
 		        }
+			}
+		});
+		storageListui.makeOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(storageListui.isAlarm==true){
+					stockManagerui.stockBell.setVisible(true);
+				}else if(storageListui.isAlarm==false){
+					stockManagerui.stockBell.setVisible(false);
+				}
+			}
+		});
+	}
+	public void inStockCountui(){
+		stockCountui.adjust.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(stockCountui.isAlarm==true){
+					stockManagerui.stockBell.setVisible(true);
+				}else if(stockCountui.isAlarm==false){
+					stockManagerui.stockBell.setVisible(false);
+				}
 			}
 		});
 	}

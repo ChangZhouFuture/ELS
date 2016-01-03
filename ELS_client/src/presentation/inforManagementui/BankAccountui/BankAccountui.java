@@ -28,6 +28,8 @@ public class BankAccountui extends ParentDocuments{
 	public JTextField nameField;
 	public JLabel money;
 	public JTextField moneyField;
+	public JButton useThis;
+	public JLabel useState;
 	BankAccountInforblservice bankAccountInforblservice;
 	public BankAccountVO bankAccountVO;
 	JavaBean1 javaBean1;
@@ -38,6 +40,8 @@ public class BankAccountui extends ParentDocuments{
 		nameField=new JTextField();
 		money=new JLabel();
 		moneyField=new JTextField();
+		useThis=new JButton();
+		useState=new JLabel();
 		bankAccountVO=new BankAccountVO();
 		
 		this.setLayout(null);
@@ -65,6 +69,25 @@ public class BankAccountui extends ParentDocuments{
 		money.setBackground(Color.WHITE);
 		
 		moneyField.setBounds(140,82,120,20);
+		
+		useThis.setBounds(40,110,100,24);
+		useThis.setText("更改使用");
+		useThis.setFont(font2);
+		useThis.setBackground(Color.WHITE);
+		useThis.setEnabled(false);
+		useThis.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bankAccountInforblservice=new BankAccountInfor();
+				bankAccountInforblservice.use(nameField.getText());
+			}
+		});
+		
+		useState.setBounds(160,110,100,24);
+		useState.setText("不使用");
+		useState.setFont(font2);
+		useState.setBackground(Color.WHITE);
 		
 		makeOrder.addActionListener(new ActionListener() {
 			@Override
@@ -103,6 +126,8 @@ public class BankAccountui extends ParentDocuments{
 		this.add(nameField);
 		this.add(money);
 		this.add(moneyField);
+		this.add(useThis);
+		this.add(useState);
 	}
 	public void refresh(){
 		nameField.setEditable(false);
@@ -122,6 +147,7 @@ public class BankAccountui extends ParentDocuments{
 	public void modifying(){
 		nameField.setEditable(true);
 		modifyOrder.setVisible(true);
+		useThis.setEnabled(true);
 		
 		nameField.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
