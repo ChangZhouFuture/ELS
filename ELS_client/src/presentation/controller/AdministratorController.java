@@ -6,24 +6,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import bean.JavaBean1;
-import businesslogic.orderbl.Order;
 import businesslogic.userManagementbl.UserManagement;
 import businesslogicservice.userManagementblservice.UserManagementblservice;
-import presentation.orderui.OrderListui;
 import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userManagementui.UserInfoui;
 import presentation.userManagementui.UserListui;
 import presentation.userui.Administratorui;
 import state.ResultMessage;
-import vo.orderVO.OrderVO;
 import vo.userVO.UserVO;
 
 public class AdministratorController {
@@ -166,8 +160,5 @@ public class AdministratorController {
 		        }
 			}
 		});
-	}
-	public static void main(String[] args) {
-		AdministratorController administratorController = new AdministratorController();
 	}
 }

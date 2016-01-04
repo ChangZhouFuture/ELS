@@ -16,9 +16,6 @@ public class Accountantui2 extends MainFrame{
 	public JButton operalog;
 	public JLabel userName;
 	
-	public static void main(String[] args){
-		Accountantui2 ui=new Accountantui2();
-	}
 	public Accountantui2(){
 		receival=new JButton();
 		payment=new JButton();

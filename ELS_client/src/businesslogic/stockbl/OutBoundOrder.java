@@ -176,6 +176,7 @@ public class OutBoundOrder implements OutBoundOrderblservice {
 			outBoundOrderVO = new OutBoundOrderVO();
 			outBoundOrderVO.setId(outBoundOrderPO.getId());
 			outBoundOrderVO.setOutDate(outBoundOrderPO.getOutDate());
+			outBoundOrderVO.setArea(outBoundOrderPO.getArea());
 			outBoundOrderVO.setApproState(outBoundOrderPO.getApproState());
 			outBoundOrderVO.setOrderID(outBoundOrderPO.getOrderID());
 			//查的时候不需要看到出库的快件原所在区,不setArea

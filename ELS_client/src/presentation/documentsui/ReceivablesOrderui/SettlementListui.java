@@ -10,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -119,7 +118,7 @@ public class SettlementListui extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String busiHallIDString=null;
-				busiHallIDString=busiHallIDString+busiHallIDField.getText();
+				busiHallIDString=busiHallIDField.getText();
 			    receivablesOrderblservice=new ReceivablesOrder();
 			    try {
 				    javaBean1=receivablesOrderblservice.inquireC(busiHallIDString);

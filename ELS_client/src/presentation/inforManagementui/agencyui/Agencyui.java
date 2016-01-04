@@ -34,12 +34,7 @@ public class Agencyui extends ParentDocuments{
 	AgencyInforblservice agencyInforblservice;
 	public AgencyVO agencyVO;
 	JavaBean1 javaBean1;
-	public static void main(String[] args){
-		GeneralManagerui ui=new GeneralManagerui();
-		Agencyui uiPanel=new Agencyui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
+
 	public Agencyui(){
 		agencyInfo=new JLabel();
 		city=new JLabel();

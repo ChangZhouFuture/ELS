@@ -51,14 +51,6 @@ public class DriversListui extends JPanel{
 	DriversInforblservice driversInforblservice;
 	DriverslineitemVO oneLine;
 	
-	public static void main(String[] args){
-		
-		BusiHallClerkui ui=new BusiHallClerkui();
-		DriversListui uiPanel=new DriversListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	public DriversListui(){
 		sheetLabel=new JLabel();
 		add=new JButton();

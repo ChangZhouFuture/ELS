@@ -42,15 +42,6 @@ public class VehiclesListui extends JPanel{
 	public VehiclesInforblservice vehiclesInforblservice;
 	public VehiclesVO oneLine;
 	
-	public static void main(String[] args){
-		
-		BusiHallClerkui ui=new BusiHallClerkui();
-		VehiclesListui uiPanel=new VehiclesListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public VehiclesListui(){
 		sheetLabel=new JLabel();
 		add=new JButton();

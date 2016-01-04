@@ -6,12 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import bean.JavaBean1;
 import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.Orderblservice;
@@ -22,9 +19,7 @@ import presentation.reuse.Skip;
 import presentation.userui.Courierui;
 import presentation.userui.Loginui;
 import state.ExpressArrivalStatus;
-import state.ExpressType;
 import state.ResultMessage;
-import vo.lineitemVO.orderlineitemVO.OrderlineitemVO;
 import vo.orderVO.OrderVO;
 
 public class CourierController {
@@ -188,8 +183,6 @@ public class CourierController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		CourierController courierController = new CourierController();
-	}
+	
 }
 

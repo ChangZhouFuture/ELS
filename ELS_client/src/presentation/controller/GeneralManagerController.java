@@ -383,7 +383,4 @@ public class GeneralManagerController {
 		userInfoui.docmID.setText(userVO.getId());
 		return userInfoui;
 	}
-	public static void main(String[] args) {
-		GeneralManagerController generalManagerController = new GeneralManagerController();
-	}
 }

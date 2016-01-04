@@ -1,7 +1,6 @@
 package presentation.controller;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -10,9 +9,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import bean.JavaBean1;
 import presentation.documentsui.PaymentOrderui.PaymentOrderListui;
 import presentation.documentsui.PaymentOrderui.PaymentOrderui;
@@ -24,7 +21,6 @@ import presentation.managerAndAccountantui.StatisAnalyui.StatisAnalyListui;
 import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.userui.Accountantui1;
-import presentation.userui.Accountantui2;
 import state.ResultMessage;
 import vo.documentsVO.PaymentOrderVO;
 import vo.documentsVO.ReceivablesOrderVO;
@@ -272,7 +268,8 @@ public class Accountant2Controller {
 	                receivablesOrderblservice=new ReceivablesOrder();
 				    javaBean1=new JavaBean1();
 				    javaBean1=receivablesOrderblservice.inquireA(id);
-				    receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
+				    ArrayList<ReceivablesOrderVO> arrayList = (ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
+				    receivablesOrderVO=arrayList.get(0);
 				    receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
 				    childPanel = receivablesOrderui;
 				    Skip.skip(mainPanel,childPanel);
@@ -306,8 +303,5 @@ public class Accountant2Controller {
 		}
 		receivablesOrderui.docmID.setText(receivablesOrderVO.getID());
 		return receivablesOrderui;
-	}
-	public static void main(String[] args) {
-		Accountant2Controller accountant2Controller = new Accountant2Controller();
 	}
 }

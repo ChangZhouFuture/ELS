@@ -17,9 +17,6 @@ public class TranCenClerkui extends MainFrame{
 	public JButton transferCenterLoadingList;
 	public JLabel userName;
 	
-	public static void main(String[] args){
-		TranCenClerkui ui=new TranCenClerkui();
-	}
 	public TranCenClerkui(){
 		tranCenArraivalOrderManage=new JButton();
 		trensferOrderManage=new JButton();

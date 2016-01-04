@@ -29,15 +29,6 @@ public class TransferOrderListui extends Listui{
 	TransferOrderlineitemVO oneLine;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		TranCenClerkui ui=new TranCenClerkui();
-		TransferOrderListui uiPanel=new TransferOrderListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public TransferOrderListui(){
 		
 		sheetLabel.setText("中转单管理");

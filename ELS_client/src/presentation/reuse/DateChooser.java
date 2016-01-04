@@ -674,16 +674,4 @@ public class DateChooser extends JPanel {
 		}
 	}
  
-	public static void main(String[] args) {
-		DateChooser dateChooser1 = DateChooser.getInstance("yyyy-MM-dd");
-		JTextField showDate1 = new JTextField("单击选择日期");
-		dateChooser1.register(showDate1);
- 
-		JFrame jf = new JFrame("测试日期选择器");
-		jf.add(showDate1, BorderLayout.NORTH);
-		jf.pack();
-		jf.setLocationRelativeTo(null);
-		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
 }

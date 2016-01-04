@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 import bean.JavaBean1;
 import businesslogic.inforManagementbl.BankAccountInfor;
 import businesslogicservice.inforManagementblservice.BankAccountInforblservice;
@@ -14,7 +12,6 @@ import presentation.inforManagementui.BankAccountui.BankAccountListui;
 import presentation.inforManagementui.BankAccountui.BankAccountui;
 import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
-import state.ResultMessage;
 import vo.inforManagementVO.BankAccountVO;
 
 public class Accountant1Controller extends Accountant2Controller{
@@ -102,8 +99,5 @@ public class Accountant1Controller extends Accountant2Controller{
 		        }
 			}
 		});
-	}
-	public static void main(String[] args) {
-		Accountant1Controller accountant1Controller = new Accountant1Controller();
 	}
 }

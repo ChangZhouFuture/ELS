@@ -20,9 +20,6 @@ public class GeneralManagerui extends MainFrame{
 	public JButton wageStrategy;
 	public JLabel userName;
 	
-	public static void main(String[] args){
-		GeneralManagerui ui=new GeneralManagerui();
-	}
 	public GeneralManagerui(){
 		agencyManage=new JButton();
 		stuffManage=new JButton();

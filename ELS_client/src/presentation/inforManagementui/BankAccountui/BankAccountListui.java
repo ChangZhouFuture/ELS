@@ -79,7 +79,7 @@ public class BankAccountListui extends JPanel{
 		
 
 		findByName.setBounds(30,95,120,24);
-		findByName.setText("按关键字查找:");
+		findByName.setText("按账户名查找:");
 		findByName.setFont(font2);
 		findByName.setBackground(Color.WHITE);
 		
