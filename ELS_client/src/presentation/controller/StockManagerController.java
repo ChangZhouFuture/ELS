@@ -88,6 +88,7 @@ public class StockManagerController {
 				childPanel = storageListListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inStorageListListui();
 			}
 		});
 		stockManagerui.stockCheck.addActionListener(new ActionListener() {
