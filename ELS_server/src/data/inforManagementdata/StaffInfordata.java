@@ -143,6 +143,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		SalaryStrategyPO salaryStrategyPO=new SalaryStrategyPO();
 		try {
 			stmt=con.prepareStatement(sql);
+			stmt.setString(1, position);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
 				salaryStrategyPO.setPosition(Position.valueOf(rs.getString(1)));
