@@ -35,7 +35,7 @@ public class TranCenArrivalOrderdata extends UnicastRemoteObject  implements Tra
 	
 
 	@Override
-	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO tranCenArrivalOrderPO) {
+	public ResultMessage addTranCenArrivalOrder(TranCenArrivalOrderPO po) {
 		// TODO Auto-generated method stub
 		String sql="INSERT INTO trancenarrivalorder(ID,tranCenID,date,transferOrderID,origin,goodState,agencyType)"+
 				"values(?,?,?,?,?,?,?)";

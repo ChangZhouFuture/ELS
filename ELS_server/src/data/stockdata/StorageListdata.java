@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
+
 import bean.JavaBean1;
 import data.utility.Database;
 import data.utility.GenerateId;
@@ -107,6 +109,7 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 		// TODO Auto-generated method stub
 		po=new StorageListPO();
 		jb1=new JavaBean1();
+		ArrayList<StorageListPO> pos=new ArrayList<>();
 		jb1.setResultMessage(ResultMessage.NotExist);
 		String sql="select * from storagelist where ID=?";
 		try {
@@ -123,9 +126,10 @@ public class StorageListdata extends UnicastRemoteObject implements StorageListd
 				po.setPositionNum(rs.getString(7));
 				po.setOrderID(rs.getString("orderID"));
 				po.setApproState(ApproState.valueOf(rs.getString("approState")));
-				jb1.setObject(po);
+				pos.add(po);
 				jb1.setResultMessage(ResultMessage.Success);
-			}return jb1;
+			}jb1.setObject(pos);
+			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

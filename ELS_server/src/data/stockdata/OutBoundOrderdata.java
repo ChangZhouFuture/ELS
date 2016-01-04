@@ -78,7 +78,6 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	@Override
 	public ResultMessage update(OutBoundOrderPO po) {
 		// TODO Auto-generated method stub
-		po=new OutBoundOrderPO();
 		String sql="update outboundorder set date=?,destination=?,transportType=?,truckNum=?,area=?,orderID=?"
 				+ "where ID=?";
 		try {
@@ -187,7 +186,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	@Override
 	public String getArea(String orderID) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="select area from outboundorder where ID=?";
+		String sql="select area from outboundorder where orderID=?";
 		String area=null;
 		try {
 			stmt=con.prepareStatement(sql);
@@ -228,8 +227,9 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 		return jb1;
 	}
 
-//	public static void main(String[] args) {
+//	public static void main(String[] args) throws RemoteException {
 //		OutBoundOrderdata od=new OutBoundOrderdata();
+//		System.out.println(od.getArea("1512240001"));
 //		OutBoundOrderPO po=new OutBoundOrderPO();
 //        po.setId("201601030001");
 //        po.setDestination("ÄÏ¾©");
