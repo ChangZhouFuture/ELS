@@ -90,9 +90,9 @@ public class OrderLogisticsui extends JDialog{
 				orderVO=new OrderVO();
 				orderVO=(OrderVO)javaBean1.getObject();
 				
-				String orderInfo=orderVO.getSenderName()+"  "+orderVO.getSenderAdd()+"  "+
-						orderVO.getAddresseeName()+"  "+orderVO.getAddresseeAdd()+"  "+
-				orderVO.getGoodsName()+"\n";
+				String orderInfo="寄件人："+orderVO.getSenderName()+"  "+"寄件地址："+orderVO.getSenderAdd()
+				+"  "+"收件人"+orderVO.getAddresseeName()+"  "+"收件地址："+orderVO.getAddresseeAdd()
+				+"  "+"内件品名："+orderVO.getGoodsName()+"\n";
 				logisticsArea.append(orderInfo);
 				inquireLogisticsInforblservice=new InquireLogisticsInfor();
 				javaBean1=inquireLogisticsInforblservice.inquireLogisticsInfor(orderId);
