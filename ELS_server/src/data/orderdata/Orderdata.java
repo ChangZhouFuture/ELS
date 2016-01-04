@@ -275,6 +275,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setString(1, date);
 			stmt.setString(2, trueAddresseeName);
 			stmt.setString(3, "Arrival");
+			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
