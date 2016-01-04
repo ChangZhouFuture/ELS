@@ -72,7 +72,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
     public ResultMessage update(VehiclesPO po){
 
 		try {
-			String sql=("UPDATE drivers SET plateNum=?,serviceTime=?,busiHallID=? WHERE ID=?");
+			String sql=("UPDATE vehicles SET plateNum=?,serviceTime=?,busiHallID=? WHERE ID=?");
 			stmt=con.prepareStatement(sql);
 			stmt.setString(4, po.getID());
 			stmt.setString(1, po.getPlateNum());
