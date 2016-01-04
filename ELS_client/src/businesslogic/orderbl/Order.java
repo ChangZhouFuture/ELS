@@ -92,6 +92,7 @@ public class Order implements Orderblservice {
 			e.printStackTrace();
 		}
 		
+		updateLogisticsInfor = new UpdateLogisticsInfor();
 		updateLogisticsInfor.update(date, id, date + " 订单已被接收");
 		javaBean1.setObject(date);//只返回确认收货日期
 		javaBean1.setResultMessage(resultMessage);

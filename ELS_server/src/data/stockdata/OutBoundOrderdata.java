@@ -227,17 +227,4 @@ public class OutBoundOrderdata  extends UnicastRemoteObject implements OutBoundO
 		return jb1;
 	}
 
-//	public static void main(String[] args) throws RemoteException {
-//		OutBoundOrderdata od=new OutBoundOrderdata();
-//		System.out.println(od.getArea("1512240002"));
-//		OutBoundOrderPO po=new OutBoundOrderPO();
-//        po.setId("201601030001");
-//        po.setDestination("ÄÏ¾©");
-//        po.setOutDate("2016-01-03");
-//        po.setTransportType(TransportType.Train);
-//        po.setOrderID("1512240001");
-//		od.add(po);
-//	}
-
-
 }

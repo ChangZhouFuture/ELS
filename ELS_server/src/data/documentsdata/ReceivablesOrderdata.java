@@ -300,11 +300,4 @@ public class ReceivablesOrderdata  extends UnicastRemoteObject implements Receiv
 		}
 	}
 	
-//	public static void main(String[] args) throws RemoteException {
-//		ReceivablesOrderdata rd=new ReceivablesOrderdata();
-//		JavaBean1 jb1=rd.findC("0101001");
-//		ArrayList<ReceivablesOrderPO> arr=(ArrayList<ReceivablesOrderPO>)jb1.getObject();
-//		ReceivablesOrderPO po=arr.get(0);
-//		System.out.println(po.getID());
-//	}
 }

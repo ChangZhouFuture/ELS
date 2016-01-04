@@ -124,7 +124,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 				approState.setText("Œ¥…Û≈˙");
 				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
 				tranCenArrivalOrderVO.setTranCenID(Loginui.agency);
-				tranCenArrivalOrderVO.setTransferOrderID(tranCenId.getText());
+				tranCenArrivalOrderVO.setTransferOrderID(transferOrderId.getText());
 				tranCenArrivalOrderVO.setGoodState(goodStateSeletion);
 				javaBean1=tranCenArrivalOrderblservice.addTranCenArivalOrder(tranCenArrivalOrderVO);
 				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();
@@ -141,7 +141,7 @@ public class TranCenArrivalOrderui extends ParentDocuments{
 				refresh();
 				tranCenArrivalOrderblservice=new TranCenArrivalOrder();
 				tranCenArrivalOrderVO.setTranCenID(Loginui.agency);
-				tranCenArrivalOrderVO.setTransferOrderID(tranCenId.getText());
+				tranCenArrivalOrderVO.setTransferOrderID(transferOrderId.getText());
 				tranCenArrivalOrderVO.setGoodState(goodStateSeletion);
 				javaBean1=tranCenArrivalOrderblservice.modify(tranCenArrivalOrderVO);
 				tranCenArrivalOrderVO=(TranCenArrivalOrderVO)javaBean1.getObject();

@@ -370,28 +370,4 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 		return amount;
 	}
 	
-//	public static void main(String[] args) throws RemoteException, ParseException {
-//		Orderdata od=new Orderdata();
-//		OrderPO po=new OrderPO();
-//		String e=od.expectedArrivalDate("2015-12-29", "上海", "南京");
-//		System.out.println(e);
-//		po.setExpectedArrivalDate(e);
-//		po.setSenderName("寄件人c");
-//		po.setSenderAdd("上海");
-//		po.setSenderCompany("公司a");
-//		po.setSenderPhoneNumber("1323156");
-//		po.setAddresseeName("收件人c");
-//		po.setAddresseeAdd("南京");
-//		po.setAddresseeCompany("公司b");
-//		po.setAddresseePhoneNumber("15664655");
-//		po.setGoodsName("XXX");
-//		po.setNumOfGoods(3);
-//		po.setWeight(1);
-//		po.setSize(2);
-//		po.setFreight(1);
-//		po.setId("1512290001");
-//		po.setGenerateDate("2015-12-29");
-//		po.setExpressType(ExpressType.Economic);
-//		ResultMessage r=od.update(po);	
-//	}
 }

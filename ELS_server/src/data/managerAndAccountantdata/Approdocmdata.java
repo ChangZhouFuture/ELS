@@ -111,12 +111,4 @@ public class Approdocmdata extends UnicastRemoteObject implements Approdocmdatas
 		}
 	}
 	
-//	public static void main(String[] args) throws RemoteException {
-//		Approdocmdata a=new Approdocmdata();
-//		ArrayList<String> IDList=new ArrayList<>();
-//		IDList.add("1512240002");
-//		IDList.add("1512290001");
-//		a.updateApproState(DocumentsType.Order, IDList);
-//		
-//	}
 }

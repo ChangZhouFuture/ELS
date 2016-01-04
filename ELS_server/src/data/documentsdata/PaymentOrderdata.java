@@ -184,15 +184,4 @@ public class PaymentOrderdata extends UnicastRemoteObject implements PaymentOrde
 		}
 	}
 
-//	public static void main(String[] args) {
-//		PaymentOrderdata pd=new PaymentOrderdata();
-//		PaymentOrderPO po=new PaymentOrderPO();
-//		po.setID("201601020001");
-//		po.setAmount(400);
-//		po.setBankAccount("00001");
-//		po.setDate("2016-01-02");
-//		po.setPayer("∏∂øÓ»Àb");
-//		pd.add(po);
-//		System.out.println(pd.generaId("2016-01-02"));
-//	}
 }

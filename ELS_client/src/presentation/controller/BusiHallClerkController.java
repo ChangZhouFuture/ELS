@@ -663,7 +663,8 @@ public class BusiHallClerkController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(busiHallClerkui,"³µÁ¾²»´æÔÚ",30);
 				}
-				vehiclesVO=(VehiclesVO)javaBean1.getObject();
+				ArrayList<VehiclesVO> arrayList = (ArrayList<VehiclesVO>)javaBean1.getObject();
+				vehiclesVO=arrayList.get(0);
 				vehiclesui=findVehicle(vehiclesVO);
 				childPanel = vehiclesui;
 				Skip.skip(mainPanel,childPanel);

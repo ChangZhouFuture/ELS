@@ -166,19 +166,4 @@ public String getInUse() throws RemoteException {
 	return accountName;
 }
 
-//public static void main(String[] args) {
-//	BankAccountInfordata bank=new BankAccountInfordata();
-//	try {
-//		bank.setInUse("00001");
-//		BankAccountPO po=new BankAccountPO();
-//		po.setName("00003");
-//		po.setAmount(500);
-//		bank.updateBalance(10);
-//		System.out.println(bank.getInUse());
-//	} catch (RemoteException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//	
-//}
 }

@@ -204,15 +204,4 @@ implements BusiHallArrivalOrderdataservice {
 		return destination;
 	}
 
-//	public static void main(String[] args) {
-//		BusiHallArrivalOrderdata bd=new BusiHallArrivalOrderdata();
-//		BusiHallArrivalOrderPO po=new BusiHallArrivalOrderPO();
-//		po.setId("201512240001");
-//		po.setOrigin("ÄÏ¾©");
-//		po.setBusiHallID("0101001");
-//		po.setTransferOrderID("0210001201512240000001");
-//		po.setGoodState(GoodState.COMPLETE);
-//		po.setArrivalDate("2015-12-24");
-//		bd.update(po);
-//	}
 }

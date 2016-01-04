@@ -135,7 +135,8 @@ public class StockManagerController {
 						EMSDialog d=new EMSDialog();
 						int n = d.showDialog(stockManagerui,"单据不存在",30);
 					}
-					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+					ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
+					outBoundOrderVO=arrayList.get(0);
 					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
 					childPanel = outBoundOrderui;
 					Skip.skip(mainPanel,childPanel);
@@ -150,9 +151,9 @@ public class StockManagerController {
                 			getValueAt(outBoundOrderListui.table.getSelectedRow(),1);
                 	try {
                 		outBoundOrderblservice=new OutBoundOrder();
-                		javaBean1=new JavaBean1();
     					javaBean1=outBoundOrderblservice.inquireA(id);
-    					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
+    					ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
+    					outBoundOrderVO=arrayList.get(0);
     					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
     					childPanel = outBoundOrderui;
     					Skip.skip(mainPanel,childPanel);

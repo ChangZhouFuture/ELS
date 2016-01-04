@@ -214,11 +214,4 @@ public class Stockdata extends UnicastRemoteObject implements Stockdataservice{
 		}
 	}
 
-	
-//	public static void main(String[] args) throws RemoteException {
-//		Stockdata sd=new Stockdata();
-//		ArrayList<String> IDList=new ArrayList<>();
-//		IDList.add("1512290001");
-//		sd.adjustPartition(IDList, "»ú¶¯Çø");
-//	}
 }

@@ -169,15 +169,5 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 		return r;
 	}
 	
-//	public static void main(String[] args) throws RemoteException {
-//		StaffInfordata sd=new StaffInfordata();
-//		SalaryStrategyPO po1=new SalaryStrategyPO();
-//		po1.setPosition(Position.Accountant1);
-//		po1.setPayType(PayType.BYMONTH);
-//		po1.setPayAmount(7500);
-//		ArrayList<SalaryStrategyPO> pos=new ArrayList<>();
-//		pos.add(po1);
-//		sd.updateSalaryStrategy(pos);
-//	}
 }
 

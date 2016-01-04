@@ -76,6 +76,9 @@ public class TranCenArrivalOrder implements TranCenArrivalOrderblservice {
 		this.tranCenArrivalOrderVO.setGenerateTime(Time.generateTime());
 		this.tranCenArrivalOrderVO.setID(generateId());
 		this.tranCenArrivalOrderVO.setApproState(ApproState.NotApprove);
+		this.tranCenArrivalOrderVO.setOrigin(generateStartAddress(this.
+				tranCenArrivalOrderVO.getTransferOrderID()));
+		this.tranCenArrivalOrderVO.setAgencyType(AgencyType.TransferCenter);
 		VOtoPO();
 		
 		try {

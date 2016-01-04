@@ -178,25 +178,4 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		}
 	}
 	
-//	public static void main(String[] args) throws RemoteException {
-//		DriversPO po=new DriversPO();
-//		DriversInfordata df=new DriversInfordata();
-//		po.setID("010001001");
-//		po.setName("Ë¾»ú1");
-//		po.setBirthDate("1991-01-01");
-//		po.setPhone("12345678");
-//		po.setBusiHallID("0101001");
-//		po.setGender(Gender.MALE);
-//		po.setDriveLimitDate("2016-09");
-//		po.setIdentyNum("320212199101010511");
-//		df.update(po);
-//		JavaBean1 jb1=df.findA("010001001");
-//		ArrayList<DriversPO> arr=(ArrayList<DriversPO>)jb1.getObject();
-//		DriversPO po1=arr.get(0);
-//		System.out.println(po.getBirthDate());
-//		JavaBean1 jb11=df.findB("0101001");
-//		ArrayList<DriverslineitemPO> arr2=(ArrayList<DriverslineitemPO>)jb11.getObject();
-//		DriverslineitemPO llpo=arr2.get(0);
-//		System.out.println(llpo.getName());
-//	}
 }
