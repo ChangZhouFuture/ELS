@@ -26,15 +26,6 @@ public class BusiHallArrivalOrderListui extends Listui{
 	 BusiHallArrivalOrderblservice busiHallArrivalOrderblservice;
 	 BusiHallArrivalOrderVO oneLine;
 	 JavaBean1 javaBean1;
-	 
-	public static void main(String[] args){
-		
-		BusiHallClerkui ui=new BusiHallClerkui();
-		BusiHallArrivalOrderListui uiPanel=new BusiHallArrivalOrderListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
 	
 	public BusiHallArrivalOrderListui(){
 		sheetLabel.setText("营业厅到达单管理");

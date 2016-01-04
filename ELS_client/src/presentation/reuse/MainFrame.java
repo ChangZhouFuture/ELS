@@ -146,7 +146,4 @@ public class MainFrame extends JFrame{
 		jp.setOpaque(false);
 	}
 	
-	public static void main(String[] args){
-		MainFrame ui=new MainFrame();
-	}
 }

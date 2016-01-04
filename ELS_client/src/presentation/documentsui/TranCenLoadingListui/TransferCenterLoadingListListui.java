@@ -29,15 +29,6 @@ public class TransferCenterLoadingListListui extends Listui{
 	TranCenLoadingListlineitemVO oneLine;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		TranCenClerkui ui=new TranCenClerkui();
-		TransferCenterLoadingListListui uiPanel=new TransferCenterLoadingListListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public TransferCenterLoadingListListui(){
 		
 		sheetLabel.setText("中转中心装车单管理");

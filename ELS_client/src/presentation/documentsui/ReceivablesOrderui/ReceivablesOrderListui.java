@@ -33,15 +33,6 @@ public class ReceivablesOrderListui extends Listui{
 	ReceivablesOrderVO oneLine;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		BusiHallClerkui ui=new BusiHallClerkui();
-		ReceivablesOrderListui uiPanel=new ReceivablesOrderListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public ReceivablesOrderListui(){
 		
 		sheetLabel.setText("收款单管理");

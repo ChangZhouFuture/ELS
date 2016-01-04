@@ -103,7 +103,5 @@ public class Accountant1Controller extends Accountant2Controller{
 			}
 		});
 	}
-	public static void main(String[] args) {
-		Accountant1Controller accountant1Controller = new Accountant1Controller();
-	}
+	
 }

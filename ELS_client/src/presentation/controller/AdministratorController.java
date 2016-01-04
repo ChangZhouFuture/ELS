@@ -167,7 +167,5 @@ public class AdministratorController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		AdministratorController administratorController = new AdministratorController();
-	}
+	
 }

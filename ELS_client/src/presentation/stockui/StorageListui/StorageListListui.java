@@ -25,15 +25,6 @@ public class StorageListListui extends Listui{
 	StorageListVO oneLine;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		StockManagerui ui=new StockManagerui();
-		StorageListListui uiPanel=new StorageListListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public StorageListListui(){
 		
 		sheetLabel.setText("»Îø‚π‹¿Ì");

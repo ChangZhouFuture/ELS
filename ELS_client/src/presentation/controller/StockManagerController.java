@@ -328,7 +328,5 @@ public class StockManagerController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		StockManagerController stockManagerController = new StockManagerController();
-	}
+	
 }

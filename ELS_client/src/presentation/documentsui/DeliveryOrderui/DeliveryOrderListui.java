@@ -28,16 +28,7 @@ public class DeliveryOrderListui extends Listui{
 	DeliveryOrderblservice deliveryOrderblservice;
 	DeliveryOrderVO oneLine;
 	JavaBean1 javaBean1;
-	
-	public static void main(String[] args){
-	
-		BusiHallClerkui ui=new BusiHallClerkui();
-		DeliveryOrderListui uiPanel=new DeliveryOrderListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
+
 	public DeliveryOrderListui(){
 		
 		sheetLabel.setText("派件单管理");

@@ -32,15 +32,6 @@ public class TranCenArrivalOrderListui extends Listui{
 	TranCenArrivalOrderVO oneLine;
 	JavaBean1 javaBean1;
 	
-	public static void main(String[] args){
-		
-		TranCenClerkui ui=new TranCenClerkui();
-		TranCenArrivalOrderListui uiPanel=new TranCenArrivalOrderListui();
-		uiPanel.makeTable(null);
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		layeredPane.add(uiPanel,0);
-	}
-	
 	public TranCenArrivalOrderListui(){
 		
 		sheetLabel.setText("中转中心到达单管理");

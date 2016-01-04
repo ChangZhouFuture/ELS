@@ -23,9 +23,6 @@ public class Mainui extends JFrame{
 	public Point origin = new Point();
 	public OrderLogisticsui orderLogisticsui;
 	
-	public static void main(String[] args){
-		Mainui ui=new Mainui();
-	}
 	public Mainui(){
 		findOrder=new JButton();
 		login=new JButton();

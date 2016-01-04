@@ -52,14 +52,6 @@ public class StatisAnalyListui extends JPanel{
 	JavaBean1 javaBean1;
 	String sheetTypeValue="�տ";
 	
-	public static void main(String[] args){
-		
-		Accountantui1 ui=new Accountantui1();
-		StatisAnalyListui uiPanel=new StatisAnalyListui();
-		JLayeredPane layeredPane=ui.getLayeredPane();
-		uiPanel.makePaymentOrderTable(null);
-		layeredPane.add(uiPanel,0);
-	}
 	public StatisAnalyListui(){
 		sheetLabel=new JLabel();
 		startDate=new JLabel();

@@ -724,7 +724,5 @@ public class BusiHallClerkController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		BusiHallClerkController busiHallClerkController = new BusiHallClerkController();
-	}
+	
 }

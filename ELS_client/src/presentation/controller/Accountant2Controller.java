@@ -307,7 +307,5 @@ public class Accountant2Controller {
 		receivablesOrderui.docmID.setText(receivablesOrderVO.getID());
 		return receivablesOrderui;
 	}
-	public static void main(String[] args) {
-		Accountant2Controller accountant2Controller = new Accountant2Controller();
-	}
+	
 }

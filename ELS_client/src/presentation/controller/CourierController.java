@@ -188,8 +188,6 @@ public class CourierController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		CourierController courierController = new CourierController();
-	}
+	
 }
 

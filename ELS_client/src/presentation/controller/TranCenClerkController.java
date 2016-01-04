@@ -407,7 +407,5 @@ public class TranCenClerkController {
 			}
 		});
 	}
-	public static void main(String[] args) {
-		TranCenClerkController tranCenClerkController = new TranCenClerkController();
-	}
+	
 }
