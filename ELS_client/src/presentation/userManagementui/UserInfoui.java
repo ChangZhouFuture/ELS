@@ -268,6 +268,7 @@ public class UserInfoui extends ParentDocuments{
 	}
 	public void refresh(){
 		birthDateField.setEditable(false);
+		birthDateField.setEnabled(false);
 		nameField.setEditable(false);
 		sexType.setEnabled(false);
 		positionSeleted.setEnabled(false);
@@ -300,6 +301,7 @@ public class UserInfoui extends ParentDocuments{
 	}
 	public void modifying(){
 		birthDateField.setEditable(true);
+		birthDateField.setEnabled(true);
 		nameField.setEditable(true);
 		sexType.setEnabled(true);
 		positionSeleted.setEnabled(true);
