@@ -23,8 +23,11 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import bean.JavaBean1;
+import businesslogic.inforManagementbl.StaffInfor;
 import businesslogicservice.inforManagementblservice.StaffInforblservice;
 import presentation.reuse.Images;
+import state.PayType;
+import state.Position;
 import vo.inforManagementVO.SalaryStrategyVO;
 
 public class WageStrategyListui extends JPanel{
@@ -43,6 +46,9 @@ public class WageStrategyListui extends JPanel{
 	JScrollPane modifyScrollPane;
 	JavaBean1 javaBean1;
 	StaffInforblservice staffInforblservice;
+	SalaryStrategyVO salaryStrategyVO;
+	Position position;
+	PayType payTypeType;
 	
 	public WageStrategyListui(){
 		sheetLabel=new JLabel();
@@ -133,7 +139,36 @@ public class WageStrategyListui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				ArrayList<SalaryStrategyVO> arrayList=new ArrayList<SalaryStrategyVO>();
+				for(int i=0;i<8;i++){
+					salaryStrategyVO=new SalaryStrategyVO();
+					switch(String.valueOf(tableModel.getValueAt(i,0))){
+					case "快递员":position=Position.Courier;break;
+				    case "营业厅业务员":position=Position.BusiHallClerk;break;
+				    case "中转中心业务员":position=Position.TranCenClerk;break;
+				    case "库存管理人员":position=Position.StockManager;break;
+				    case "财务人员":position=Position.Accountant2;break;
+				    case "高级财务人员":position=Position.Accountant1;break;
+				    case "管理员":position=Position.Administrator;break;
+				    case "司机":position=Position.Driver;break;
+				    default:break;
+					}
+					switch(String.valueOf(tableModel.getValueAt(i,1))){
+				    case "按月":payTypeType=PayType.BYMONTH;break;
+				    case "按次":payTypeType=PayType.BYTIME;break;
+				    default:break;
+				    }
+					salaryStrategyVO.setPosition(position);
+					salaryStrategyVO.setPayType(payTypeType);
+					salaryStrategyVO.setPayAmount(Double.valueOf(String.valueOf(tableModel.getValueAt(i,2))));
+					salaryStrategyVO.setPercentage(String.valueOf(tableModel.getValueAt(i,3)));
+					arrayList.add(salaryStrategyVO);
+				}
+				staffInforblservice=new StaffInfor();
+				staffInforblservice.modifySalaryStrategy(arrayList);
+				makeModify.setVisible(false);
+				scrollPane.getViewport().add(table);
+				makeTable();
 			}
 		});
 		
