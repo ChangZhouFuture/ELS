@@ -17,7 +17,7 @@ import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.ReceivablesOrderdataservice;
 
-public class ReceivablesOrderdata  extends UnicastRemoteObject implements ReceivablesOrderdataservice{
+public class ReceivablesOrderdata extends UnicastRemoteObject implements ReceivablesOrderdataservice{
 
 	public ReceivablesOrderdata() throws RemoteException {
 		super();
@@ -305,6 +305,6 @@ public class ReceivablesOrderdata  extends UnicastRemoteObject implements Receiv
 //		JavaBean1 jb1=rd.findC("0101001");
 //		ArrayList<ReceivablesOrderPO> arr=(ArrayList<ReceivablesOrderPO>)jb1.getObject();
 //		ReceivablesOrderPO po=arr.get(0);
-//		System.out.println(po.getID());
+//		System.out.println(po.getCourier());
 //	}
 }

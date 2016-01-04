@@ -47,6 +47,7 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
     public JavaBean1 findA(String Id){
     	po = new VehiclesPO();
     	jb1=new JavaBean1();
+    	ArrayList<VehiclesPO> pos=new ArrayList<>();
     	jb1.setResultMessage(ResultMessage.NotExist);
 		try {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM vehicles WHERE ID='"+Id+"'");
@@ -56,9 +57,9 @@ public class VehiclesInfordata extends UnicastRemoteObject implements VehiclesIn
 		        po.setPlateNum(rs.getString("plateNum"));
 		        po.setServiceTime(rs.getString("serviceTime"));
                 po.setBusiHallID(rs.getString("busiHallID"));
-		        jb1.setObject(po);
+		        pos.add(po);
 		        jb1.setResultMessage(ResultMessage.Success);
-			}
+			}jb1.setObject(pos);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

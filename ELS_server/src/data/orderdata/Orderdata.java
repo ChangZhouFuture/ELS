@@ -275,6 +275,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 			stmt.setString(1, date);
 			stmt.setString(2, trueAddresseeName);
 			stmt.setString(3, "Arrival");
+			stmt.executeUpdate();
 			return ResultMessage.Success;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -371,6 +372,7 @@ public class Orderdata extends UnicastRemoteObject implements Orderdataservice{
 	
 //	public static void main(String[] args) throws RemoteException, ParseException {
 //		Orderdata od=new Orderdata();
+//		od.receive("1512240002", "2015-12-27", "实际收件人2");
 //		OrderPO po=new OrderPO();
 //		String e=od.expectedArrivalDate("2015-12-29", "上海", "南京");
 //		System.out.println(e);

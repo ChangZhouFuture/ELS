@@ -10,11 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import bean.JavaBean1;
-import data.orderdata.Orderdata;
 import data.utility.Database;
 import data.utility.GenerateId;
 import po.documentsPO.DeliveryOrderPO;
-import po.lineitemPO.orderlineitemPO.OrderlineitemPO;
 import state.ApproState;
 import state.ResultMessage;
 import dataservice.documentsdataservice.DeliveryOrderdataservice;
@@ -38,7 +36,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public ResultMessage addDeliveryOrder(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="insert into deliveryorder(ID,date,orderIDs,deliverier)values(?,?,?,?)";
+		String sql="insert into deliveryorder(ID,date,orderID,deliverier)values(?,?,?,?)";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getID());
@@ -150,7 +148,7 @@ public class DeliveryOrderdata extends UnicastRemoteObject implements DeliveryOr
 	@Override
 	public ResultMessage update(DeliveryOrderPO po) {
 		// TODO Auto-generated method stub
-		String sql="update deliveryorder set date=?,orderIDs=?,deliverier=? where ID=?";
+		String sql="update deliveryorder set date=?,orderID=?,deliverier=? where ID=?";
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, po.getArrivalDate());

@@ -50,7 +50,6 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 	//查找司机信息
 	public JavaBean1 findA(String Id){
 		po = new DriversPO();
-		ArrayList<DriversPO> arr=new ArrayList<>();
 		jb1=new JavaBean1();
 		jb1.setResultMessage(ResultMessage.NotExist);	
 		try {
@@ -68,8 +67,8 @@ public class DriversInfordata extends UnicastRemoteObject implements DriversInfo
 		        po.setDriveLimitDate(rs.getString("driveLimitDate"));
 		        po.setBusiHallID(rs.getString("busiHallID"));
 		        jb1.setResultMessage(ResultMessage.Success);
-		        arr.add(po);
-			}jb1.setObject(arr);
+		       
+			}jb1.setObject(po);
 			return jb1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
