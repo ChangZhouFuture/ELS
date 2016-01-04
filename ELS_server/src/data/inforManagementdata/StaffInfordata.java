@@ -101,8 +101,7 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 	}
 
 
-	@Override
-	public ResultMessage updateSalaryStrategy(SalaryStrategyPO po) throws RemoteException {
+	public ResultMessage SingleUpdateSalaryStrategy(SalaryStrategyPO po){
 		// TODO Auto-generated method stub
 		String sql="update salarystrategy set payType=?,payAmount=?,percentage=? where position=?";
 		try {
@@ -156,6 +155,17 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 			e.printStackTrace();
 		}
 		return salaryStrategyPO;
+	}
+
+
+	@Override
+	public ResultMessage updateSalaryStrategy(ArrayList<SalaryStrategyPO> salaryStrategyPOs) throws RemoteException {
+		// TODO Auto-generated method stub
+		ResultMessage r=ResultMessage.Success;
+		for(int i=0;i<salaryStrategyPOs.size();i++){
+			r=SingleUpdateSalaryStrategy(salaryStrategyPOs.get(i));
+		}
+		return r;
 	}
 }
 
