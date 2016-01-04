@@ -24,6 +24,12 @@ public class OrderListui extends Listui{
 	public OrderlineitemVO oneLine;
 	public JavaBean1 javaBean1;
 	
+	public static void main(String[] args){
+		Courierui courierui=new Courierui();
+		OrderListui uiPanel=new OrderListui();
+		uiPanel.makeTable(null);
+		courierui.add(uiPanel,0);
+	}
 	public OrderListui(){
 		String[] columnNames = {"选择","ID","寄件地址","收件地址","快递类型","总费用","时间"}; //列名
 		String [][]tableVales={}; //数据

@@ -228,13 +228,8 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 		return jb1;
 	}
 
-	public static void main(String[] args) {
-		try {
-			OutBoundOrderdata od=new OutBoundOrderdata();
-			System.out.println(od.getArea("1512270001"));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//	public static void main(String[] args) {
+//		OutBoundOrderdata od=new OutBoundOrderdata();
 //		OutBoundOrderPO po=new OutBoundOrderPO();
 //        po.setId("201601030001");
 //        po.setDestination("ÄÏ¾©");
@@ -242,7 +237,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 //        po.setTransportType(TransportType.Train);
 //        po.setOrderID("1512240001");
 //		od.add(po);
-	}
+//	}
 
 
 }

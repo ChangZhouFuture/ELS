@@ -5,9 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import bean.JavaBean1;
 import businesslogic.documentsbl.BusiHallArrivalOrder;
@@ -22,6 +24,7 @@ import businesslogicservice.documentsblservice.DeliveryOrderblservice;
 import businesslogicservice.documentsblservice.ReceivablesOrderblservice;
 import businesslogicservice.inforManagementblservice.DriversInforblservice;
 import businesslogicservice.inforManagementblservice.VehiclesInforblservice;
+import po.inforManagementPO.VehiclesPO;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderListui;
 import presentation.documentsui.BusiHallArrivalOrderui.BusiHallArrivalOrderui;
 import presentation.documentsui.BusiHallLoadingListui.BusinessHallLoadingListListui;
@@ -372,8 +375,7 @@ public class BusiHallClerkController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(busiHallClerkui,"单据不存在",30);
 				}
-				ArrayList<ReceivablesOrderVO> arrayList = (ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
-				receivablesOrderVO=arrayList.get(0);
+				receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
 				receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
 				childPanel = receivablesOrderui;
 				Skip.skip(mainPanel,childPanel);
@@ -392,8 +394,7 @@ public class BusiHallClerkController {
 	            		receivablesOrderblservice=new ReceivablesOrder();
 				        javaBean1=new JavaBean1();
 				        javaBean1=receivablesOrderblservice.inquireA(id);
-				        ArrayList<ReceivablesOrderVO> arrayList = (ArrayList<ReceivablesOrderVO>)javaBean1.getObject();
-				        receivablesOrderVO=arrayList.get(0);
+				        receivablesOrderVO=(ReceivablesOrderVO)javaBean1.getObject();
 				        receivablesOrderui=finReceivablesOrder(receivablesOrderVO);
 				        childPanel = receivablesOrderui;
 				        Skip.skip(mainPanel,childPanel);
@@ -721,5 +722,8 @@ public class BusiHallClerkController {
 		        }
 			}
 		});
+	}
+	public static void main(String[] args) {
+		BusiHallClerkController busiHallClerkController = new BusiHallClerkController();
 	}
 }

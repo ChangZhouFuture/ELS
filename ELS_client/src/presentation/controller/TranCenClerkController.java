@@ -16,6 +16,7 @@ import businesslogic.documentsbl.TransferOrder;
 import businesslogicservice.documentsblservice.TranCenArrivalOrderblservice;
 import businesslogicservice.documentsblservice.TranCenLoadingListblservice;
 import businesslogicservice.documentsblservice.TransferOrderblservice;
+import po.documentsPO.TranCenArrivalOrderPO;
 import presentation.documentsui.TranCenArrivalOrderui.TranCenArrivalOrderListui;
 import presentation.documentsui.TranCenArrivalOrderui.TranCenArrivalOrderui;
 import presentation.documentsui.TranCenLoadingListui.TransferCenterLoadingListListui;
@@ -406,5 +407,7 @@ public class TranCenClerkController {
 			}
 		});
 	}
-	
+	public static void main(String[] args) {
+		TranCenClerkController tranCenClerkController = new TranCenClerkController();
+	}
 }

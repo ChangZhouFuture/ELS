@@ -91,6 +91,13 @@ public class DocmListui extends JPanel{
 	String documentsValue="订单";
 	DocumentsType documentsType=DocumentsType.Order;
 	
+	public static void main(String[] args){
+		GeneralManagerui ui=new GeneralManagerui();
+		DocmListui uiPanel=new DocmListui();
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
+	
 	public DocmListui(){
 		String[] sheetTypeEntries={"订单","营业厅到达单","营业厅装车单","派件单",
 				"中转中心到达单","中转中心装车单","中转单","收款单","付款单","入库单","出库单"};

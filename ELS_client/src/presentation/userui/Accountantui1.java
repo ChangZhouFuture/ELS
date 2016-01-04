@@ -23,4 +23,7 @@ public class Accountantui1 extends Accountantui2{
 		this.left.add(bankAccount);
 	}
 	
+	public static void main(String[] args){
+		Accountantui1 ui=new Accountantui1();
+	}
 }

@@ -25,6 +25,15 @@ public class OutBoundOrderListui extends Listui{
 	OutBoundOrderVO oneLine;
 	JavaBean1 javaBean1;
 	
+	public static void main(String[] args){
+		
+		StockManagerui ui=new StockManagerui();
+		OutBoundOrderListui uiPanel=new OutBoundOrderListui();
+		uiPanel.makeTable(null);
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
+	
 	public OutBoundOrderListui(){
 		
 		sheetLabel.setText("³ö¿â¹ÜÀí");

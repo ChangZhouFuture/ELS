@@ -38,6 +38,15 @@ public class BusinessHallLoadingListListui extends Listui{
 	BusiHallLoadingListblservice busiHallLoadingListblservice;
 	BusiHallLoadingListlineitemVO oneLine;
 	
+	public static void main(String[] args){
+		
+		BusiHallClerkui ui=new BusiHallClerkui();
+		BusinessHallLoadingListListui uiPanel=new BusinessHallLoadingListListui();
+		uiPanel.makeTable(null);
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
+	
 	public BusinessHallLoadingListListui(){
 		sheetLabel.setText("车辆装车管理");
 		String[] columnNames = {"选择","ID","目的地","车辆代号","运费","时间"}; //列名

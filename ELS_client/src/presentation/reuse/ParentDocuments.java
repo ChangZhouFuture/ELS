@@ -79,4 +79,9 @@ public class ParentDocuments extends JPanel{
 		this.setOpaque(true);
 	}
 	
+	public static void main(String[] args) {
+		ParentDocuments parentDocuments = new ParentDocuments();
+		MainFrame mainFrame = new MainFrame();
+		mainFrame.add(parentDocuments);
+	}
 }

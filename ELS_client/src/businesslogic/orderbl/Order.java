@@ -84,7 +84,7 @@ public class Order implements Orderblservice {
 	public JavaBean1 receive(String id, String trueAddresseeName) {
 		//直接调用数据层方法，由数据层来设置trueAddresseeName
 		//数据层接口增加一个参数，接收日期
-		date = generateDate();
+		generateDate();
 		
 		try {
 			resultMessage = orderdataservice.receive(id, date, trueAddresseeName);
@@ -92,7 +92,6 @@ public class Order implements Orderblservice {
 			e.printStackTrace();
 		}
 		
-		updateLogisticsInfor = new UpdateLogisticsInfor();
 		updateLogisticsInfor.update(date, id, date + " 订单已被接收");
 		javaBean1.setObject(date);//只返回确认收货日期
 		javaBean1.setResultMessage(resultMessage);

@@ -20,6 +20,9 @@ public class BusiHallClerkui extends MainFrame{
 	public JButton vehicleManage;
 	public JLabel userName;
 	
+	public static void main(String[] args){
+		BusiHallClerkui ui=new BusiHallClerkui();
+	}
 	public BusiHallClerkui(){
 		busiLoad=new JButton();
 		userName=new JLabel();

@@ -27,6 +27,15 @@ public class BusiHallArrivalOrderListui extends Listui{
 	 BusiHallArrivalOrderVO oneLine;
 	 JavaBean1 javaBean1;
 	 
+	public static void main(String[] args){
+		
+		BusiHallClerkui ui=new BusiHallClerkui();
+		BusiHallArrivalOrderListui uiPanel=new BusiHallArrivalOrderListui();
+		uiPanel.makeTable(null);
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
+	
 	public BusiHallArrivalOrderListui(){
 		sheetLabel.setText("营业厅到达单管理");
 		 String[] columnNames = {"选择","ID","营业厅编号","中转单编号","出发地","到达日期","货物状态"}; //列名

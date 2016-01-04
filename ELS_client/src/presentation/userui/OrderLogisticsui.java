@@ -42,6 +42,10 @@ public class OrderLogisticsui extends JDialog{
 	InquireLogisticsInforblservice inquireLogisticsInforblservice;
 	LogisticsInforVO logisticsInforVO;
 	
+	public static void main(String[] args){
+		OrderLogisticsui orderLogisticsui=new OrderLogisticsui();
+	}
+	
 	public OrderLogisticsui(){
 		findOrder=new JLabel();
 		orderIdField=new JTextField();

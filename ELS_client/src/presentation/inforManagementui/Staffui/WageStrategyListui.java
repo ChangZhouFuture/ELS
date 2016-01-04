@@ -183,7 +183,6 @@ public class WageStrategyListui extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 	public void makeTable(){
-		staffInforblservice = new StaffInfor();
 		javaBean1=staffInforblservice.inquireSalaryStrategy();
 		ArrayList<SalaryStrategyVO> arrayList=(ArrayList<SalaryStrategyVO>)javaBean1.getObject();
 		String payType="";

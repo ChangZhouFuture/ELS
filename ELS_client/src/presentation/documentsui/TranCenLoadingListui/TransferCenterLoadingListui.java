@@ -244,7 +244,7 @@ public class TransferCenterLoadingListui extends ParentDocuments{
 					idList.add((String)orderList.getValueAt(i,1));
 				}
 				tranCenLoadingListVO.setOrderIDs(idList);
-				tranCenLoadingListblservice = new TranCenLoadingList();
+				javaBean1=new JavaBean1();
 				javaBean1=tranCenLoadingListblservice.modify(tranCenLoadingListVO);
 				tranCenLoadingListVO=(TranCenLoadingListVO)javaBean1.getObject();
 				motorIdField.setText(tranCenLoadingListVO.getTrucksNum());

@@ -16,6 +16,9 @@ public class Courierui extends MainFrame{
 	public JButton orderManage;
 	public JLabel userName;
 	
+	public static void main(String[] args){
+		Courierui ui=new Courierui();
+	}
 	public Courierui(){
 		orderManage=new JButton();
 		userName=new JLabel();

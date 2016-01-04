@@ -1,19 +1,26 @@
 package presentation.controller;
 
+import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import bean.JavaBean1;
+import businesslogic.orderbl.Order;
 import businesslogic.stockbl.OutBoundOrder;
 import businesslogic.stockbl.StorageList;
 import businesslogicservice.stockblservice.OutBoundOrderblservice;
 import businesslogicservice.stockblservice.StorageListblservice;
+import presentation.orderui.OrderListui;
+import presentation.orderui.Orderui;
 import presentation.reuse.EMSDialog;
 import presentation.reuse.Skip;
 import presentation.stockui.OutBoundOrderui.OutBoundOrderListui;
@@ -22,8 +29,12 @@ import presentation.stockui.StorageListui.StorageListListui;
 import presentation.stockui.StorageListui.StorageListui;
 import presentation.stockui.stockui.StockCheckui;
 import presentation.stockui.stockui.StockCountui;
+import presentation.userManagementui.UserInfoui;
+import presentation.userManagementui.UserListui;
+import presentation.userui.Administratorui;
 import presentation.userui.StockManagerui;
 import state.ResultMessage;
+import vo.orderVO.OrderVO;
 import vo.stockVO.OutBoundOrderVO;
 import vo.stockVO.StorageListVO;
 
@@ -123,8 +134,7 @@ public class StockManagerController {
 						EMSDialog d=new EMSDialog();
 						int n = d.showDialog(stockManagerui,"单据不存在",30);
 					}
-					ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
-					outBoundOrderVO=arrayList.get(0);
+					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
 					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
 					childPanel = outBoundOrderui;
 					Skip.skip(mainPanel,childPanel);
@@ -141,8 +151,7 @@ public class StockManagerController {
                 		outBoundOrderblservice=new OutBoundOrder();
                 		javaBean1=new JavaBean1();
     					javaBean1=outBoundOrderblservice.inquireA(id);
-    					ArrayList<OutBoundOrderVO> arrayList = (ArrayList<OutBoundOrderVO>)javaBean1.getObject();
-    					outBoundOrderVO=arrayList.get(0);
+    					outBoundOrderVO=(OutBoundOrderVO)javaBean1.getObject();
     					outBoundOrderui=findOutBoundOrder(outBoundOrderVO);
     					childPanel = outBoundOrderui;
     					Skip.skip(mainPanel,childPanel);
@@ -315,5 +324,7 @@ public class StockManagerController {
 			}
 		});
 	}
-	
+	public static void main(String[] args) {
+		StockManagerController stockManagerController = new StockManagerController();
+	}
 }

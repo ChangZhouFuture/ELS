@@ -16,6 +16,9 @@ public class Administratorui extends MainFrame{
 	public JButton userManage;
 	public JLabel userName;
 	
+	public static void main(String[] args){
+		Administratorui ui=new Administratorui();
+	}
 	public Administratorui(){
 		userManage=new JButton();
 		userName=new JLabel();

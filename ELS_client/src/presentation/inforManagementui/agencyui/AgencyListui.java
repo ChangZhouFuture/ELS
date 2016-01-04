@@ -48,6 +48,13 @@ public class AgencyListui extends JPanel{
 	AgencyInforblservice agencyInforblservice;
 	AgencyVO oneLine;
 	
+	public static void main(String[] args){
+		
+		GeneralManagerui ui=new GeneralManagerui();
+		AgencyListui uiPanel=new AgencyListui();
+		JLayeredPane layeredPane=ui.getLayeredPane();
+		layeredPane.add(uiPanel,0);
+	}
 	public AgencyListui(){
 		sheetLabel=new JLabel();
 		add=new JButton();

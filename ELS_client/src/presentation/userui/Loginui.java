@@ -57,6 +57,10 @@ public class Loginui extends JFrame{
 	public static String region;
 	public static String agency;
 	
+	public static void main(String[] args){
+		Loginui ui=new Loginui();
+	}
+	
 	public Loginui(){
 		loginUser=new JLabel();
 		loginPassword=new JLabel();
