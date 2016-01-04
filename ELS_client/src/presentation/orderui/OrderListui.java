@@ -94,11 +94,6 @@ public class OrderListui extends Listui{
 			    	 oneLine.getExpressType().toString(),String.valueOf(oneLine.getTotalCost()),oneLine.getGenerateDate()};
 			 tableModel.addRow(oneRow);
 		 }
-		 String[] row={"","1","2","3"};
-		 tableModel.addRow(row);
-		 tableModel.addRow(row);
-		 tableModel.addRow(row);
-		 tableModel.addRow(row);
 		 table.setRowHeight(24);
 		 table.setBackground(Color.WHITE);
 		 table.setShowVerticalLines(true);
