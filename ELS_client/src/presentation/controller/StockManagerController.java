@@ -230,11 +230,12 @@ public class StockManagerController {
 					EMSDialog d=new EMSDialog();
 					int n = d.showDialog(stockManagerui,"单据不存在",30);
 				}else{
-					storageListVO=(StorageListVO)javaBean1.getObject();
+					ArrayList<StorageListVO> arrayList = (ArrayList<StorageListVO>)javaBean1.getObject();
+					storageListVO=arrayList.get(0);
 					storageListui=findStorageList(storageListVO);
 					childPanel = storageListui;
 					Skip.skip(mainPanel,childPanel);
-					inOutBoundOrderui();
+					inStorageListui();
 				}
 			}
 		});
@@ -248,11 +249,12 @@ public class StockManagerController {
                 		storageListblservice=new StorageList();
                 		javaBean1=new JavaBean1();
     					javaBean1=storageListblservice.inquireA(id);
-    					storageListVO=(StorageListVO)javaBean1.getObject();
+    					ArrayList<StorageListVO> arrayList = (ArrayList<StorageListVO>)javaBean1.getObject();
+    					storageListVO=arrayList.get(0);
     					storageListui=findStorageList(storageListVO);
     					childPanel = storageListui;
     					Skip.skip(mainPanel,childPanel);
-    					inOutBoundOrderui();
+    					inStorageListui();
     				} catch (Exception e2) {
     					e2.printStackTrace();
     				}
