@@ -129,14 +129,12 @@ public class StaffListui extends JPanel{
 			idFind.setBackground(Color.WHITE);
 			idFind.setText("≤È’“");
 			idFind.setFont(font2);
-			idFind.setOpaque(true);
 			
 			positionFind.setBounds(380,95,64,24);
 			positionFind.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 			positionFind.setBackground(Color.WHITE);
 			positionFind.setText("≤È’“");
 			positionFind.setFont(font2);
-			positionFind.setOpaque(true);
 			positionFind.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
@@ -161,7 +159,6 @@ public class StaffListui extends JPanel{
 			this.setSize(616,496);
 			this.setBackground(Color.WHITE);
 			this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-			this.setOpaque(true);
 	}
 	public void makeTable(ArrayList<UserlineitemVO> arrayList){
 		if(arrayList.size()==0){

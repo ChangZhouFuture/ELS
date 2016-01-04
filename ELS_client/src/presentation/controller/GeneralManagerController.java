@@ -94,6 +94,7 @@ public class GeneralManagerController {
 				childPanel = staffListui;
 				childPanel.setLocation(0,0);
 				Skip.skip(mainPanel,childPanel);
+				inStaffListui();
 			}
 		});
 		generalManagerui.statisAnaly.addActionListener(new ActionListener() {
@@ -315,17 +316,18 @@ public class GeneralManagerController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(1234);
 				staffInforblservice=new StaffInfor();
-           		javaBean1=new JavaBean1();
-					javaBean1=staffInforblservice.inquireA(staffListui.idField.getText());
-					if(javaBean1.getResultMessage()==ResultMessage.NotExist){
+				javaBean1=staffInforblservice.inquireA(staffListui.idField.getText());
+				if(javaBean1.getResultMessage()==ResultMessage.NotExist){
 						EMSDialog d=new EMSDialog();
 						int n = d.showDialog(generalManagerui,"人员不存在",30);
-					}
+				}else{
 					userVO=(UserVO)javaBean1.getObject();
 					userInfoui=findUser(userVO);
 					childPanel = userInfoui;
 					Skip.skip(mainPanel,childPanel);
+				}
 			}
 		});
 		staffListui.table.addMouseListener(new MouseAdapter() {
