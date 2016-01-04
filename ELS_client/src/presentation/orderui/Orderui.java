@@ -334,7 +334,7 @@ public class Orderui extends ParentDocuments{
 		sureReceive.setText("ÊÕ¼þ");
 		sureReceive.setFont(font5);
 		sureReceive.setBackground(Color.WHITE);
-//		sureReceive.setVisible(false);
+		sureReceive.setVisible(false);
 		sureReceive.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -369,8 +369,7 @@ public class Orderui extends ParentDocuments{
 		actualReceiver.setBackground(Color.WHITE);
 		actualReceiver.setVisible(false);
 		
-		actualReceiverField.setBounds(230,142,80,20);
-		actualReceiverField.setEditable(false);
+		actualReceiverField.setBounds(210,172,80,20);
 		actualReceiverField.setBackground(Color.WHITE);
 		actualReceiverField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		
@@ -408,6 +407,7 @@ public class Orderui extends ParentDocuments{
 		other.add(amountField);
 		other.add(sureReceive);
 		other.add(actualReceiver);
+		other.add(actualReceiverField);
 		other.add(expectedArrivalDate);
 		other.add(trueArrivalDate);
 		other.add(makeSure);

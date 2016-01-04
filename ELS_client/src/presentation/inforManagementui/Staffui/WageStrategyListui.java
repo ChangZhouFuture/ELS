@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
@@ -21,8 +22,10 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
-
+import bean.JavaBean1;
+import businesslogicservice.inforManagementblservice.StaffInforblservice;
 import presentation.reuse.Images;
+import vo.inforManagementVO.SalaryStrategyVO;
 
 public class WageStrategyListui extends JPanel{
 	public JLabel sheetLabel;
@@ -38,6 +41,8 @@ public class WageStrategyListui extends JPanel{
 	TableCellEditor tce;
 	JScrollPane scrollPane;
 	JScrollPane modifyScrollPane;
+	JavaBean1 javaBean1;
+	StaffInforblservice staffInforblservice;
 	
 	public WageStrategyListui(){
 		sheetLabel=new JLabel();
@@ -55,23 +60,6 @@ public class WageStrategyListui extends JPanel{
 				 return false;
 		    }
 		};
-		
-		String[] line1={"快递员","","",""};
-		tableModel.addRow(line1);
-		String[] line2={"营业厅业务员","","",""};
-		tableModel.addRow(line2);
-		String[] line3={"中转中心业务员","","",""};
-		tableModel.addRow(line3);
-		String[] line4={"库存管理人员","","",""};
-		tableModel.addRow(line4);
-		String[] line5={"财务人员","","",""};
-		tableModel.addRow(line5);
-		String[] line6={"高级财务人员","","",""};
-		tableModel.addRow(line6);
-		String[] line7={"总经理","","",""};
-		tableModel.addRow(line7);
-		String[] line8={"管理员","","",""};
-		tableModel.addRow(line8);
 		
 		r.setHorizontalAlignment(JLabel.CENTER);   
 		table.setDefaultRenderer(Object.class,r);
@@ -91,6 +79,7 @@ public class WageStrategyListui extends JPanel{
 		sheetLabel.setIcon(Images.SHEET_IMAGE);
 		sheetLabel.setText("工资策略管理");
 		
+		makeTable();
 		table.setRowHeight(24);
 		table.setBackground(Color.WHITE);
 		table.setShowVerticalLines(true);
@@ -118,10 +107,6 @@ public class WageStrategyListui extends JPanel{
 		modifyTable.setBackground(Color.WHITE);
 		modifyTable.setShowVerticalLines(true);
 		modifyTable.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-		modifyScrollPane = new JScrollPane();
-		modifyScrollPane.getViewport().add(modifyTable);
-		modifyScrollPane.setSize(550,217);
-		modifyScrollPane.setLocation(30,100);
 		
 		modify.setBounds(30,50,70,24);
 		modify.setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -132,9 +117,8 @@ public class WageStrategyListui extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				remove(scrollPane);
 				makeModify.setVisible(true);
-				add(modifyScrollPane);
+				scrollPane.getViewport().add(modifyTable);
 				repaint();
 			}
 		});
@@ -162,5 +146,31 @@ public class WageStrategyListui extends JPanel{
 		this.setSize(616,496);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+	}
+	public void makeTable(){
+		javaBean1=staffInforblservice.inquireSalaryStrategy();
+		ArrayList<SalaryStrategyVO> arrayList=(ArrayList<SalaryStrategyVO>)javaBean1.getObject();
+		String payType="";
+		String positionType="";
+		for(int i=0;i<8;i++){
+		    switch(arrayList.get(i).getPayType()){
+		    case BYMONTH:payType="按月";break;
+		    case BYTIME:payType="按次";break;
+		    default:break;
+		    }
+		    switch(arrayList.get(i).getPosition()){
+		    case Courier:positionType="快递员";break;
+		    case BusiHallClerk:positionType="营业厅业务员";break;
+		    case TranCenClerk:positionType="中转中心业务员";break;
+		    case StockManager:positionType="库存管理人员";break;
+		    case Accountant2:positionType="财务人员";break;
+		    case Accountant1:positionType="高级财务人员";break;
+		    case Administrator:positionType="管理员";break;
+		    case Driver:positionType="司机";break;
+		    }
+		    String[] line={positionType,payType,String.valueOf(arrayList.get(i).getPayAmount()),
+					String.valueOf(arrayList.get(i).getPercentage())};
+		    tableModel.addRow(line);
+		}
 	}
 }
