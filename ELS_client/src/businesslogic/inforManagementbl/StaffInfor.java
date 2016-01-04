@@ -21,6 +21,7 @@ public class StaffInfor implements StaffInforblservice{
 	private ArrayList<SalaryStrategyVO> salaryStrategyVOs;
 	private UserManagement userManagement;
 	private JavaBean1 javaBean1;
+	private ResultMessage resultMessage;
 	
 	public StaffInfor() {
 		try {
@@ -46,18 +47,31 @@ public class StaffInfor implements StaffInforblservice{
 	}
 
 	@Override
-	public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO) {
-		salaryStrategyPO.setPayType(salaryStrategyVO.getPayType());
-		salaryStrategyPO.setPayAmount(salaryStrategyVO.getPayAmount());//基本工资
-		salaryStrategyPO.setPercentage(salaryStrategyVO.getPercentage());//提成策略
-		salaryStrategyPO.setPosition(salaryStrategyVO.getPosition());
+	public ResultMessage modifySalaryStrategy(ArrayList<SalaryStrategyVO> 
+	salaryStrategyVOs) {
+		this.salaryStrategyVOs = salaryStrategyVOs;
+		salaryStrategyPOs = new ArrayList<SalaryStrategyPO>();
+		int k = salaryStrategyVOs.size();
+		
+		for (int i = 0; i < k; i++) {
+			salaryStrategyVO = salaryStrategyVOs.get(i);
+			
+			salaryStrategyPO = new SalaryStrategyPO();
+			salaryStrategyPO.setPosition(salaryStrategyVO.getPosition());
+			salaryStrategyPO.setPayType(salaryStrategyVO.getPayType());
+			salaryStrategyPO.setPayAmount(salaryStrategyVO.getPayAmount());
+			salaryStrategyPO.setPercentage(salaryStrategyVO.getPercentage());
+			
+			salaryStrategyPOs.add(salaryStrategyPO);
+		}
+		
 		try {
-			staffInfordataservice.updateSalaryStrategy(salaryStrategyPO);
+			resultMessage = staffInfordataservice.updateSalaryStrategy(salaryStrategyPOs);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		//调用数据层方法，修改工资策略
-		return null;
+		return resultMessage;
 	}
 
 	@Override

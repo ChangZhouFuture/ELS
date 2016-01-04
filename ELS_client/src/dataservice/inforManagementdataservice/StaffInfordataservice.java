@@ -2,7 +2,7 @@ package dataservice.inforManagementdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
+import java.util.ArrayList;
 import bean.JavaBean1;
 import po.inforManagementPO.SalaryStrategyPO;
 import state.ResultMessage;
@@ -15,5 +15,6 @@ public interface StaffInfordataservice extends Remote{
 	    
 	    public JavaBean1 getSalaryStrategy() throws RemoteException;
 	    
-        public ResultMessage updateSalaryStrategy(SalaryStrategyPO po) throws RemoteException;
+        public ResultMessage updateSalaryStrategy(ArrayList<SalaryStrategyPO>
+        salaryStrategyPOs) throws RemoteException;
 }

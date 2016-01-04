@@ -1,5 +1,6 @@
 package businesslogicservice.inforManagementblservice;
 
+import java.util.ArrayList;
 import state.Position;
 import state.ResultMessage;
 import vo.inforManagementVO.SalaryStrategyVO;
@@ -12,6 +13,7 @@ public interface StaffInforblservice {
     
     public JavaBean1 inquireSalaryStrategy();
     	
-    public ResultMessage modifySalaryStrategy(SalaryStrategyVO salaryStrategyVO);
+    public ResultMessage modifySalaryStrategy(ArrayList<SalaryStrategyVO>
+    salaryStrategyVOs);
     
 }
