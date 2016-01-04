@@ -132,6 +132,7 @@ public class BankAccountui extends ParentDocuments{
 	public void refresh(){
 		nameField.setEditable(false);
 		moneyField.setEditable(false);
+		useThis.setEnabled(false);
 		
 		nameField.setBackground(Color.white);
 		moneyField.setBackground(Color.white);

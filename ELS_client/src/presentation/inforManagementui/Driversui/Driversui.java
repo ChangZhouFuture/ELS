@@ -194,7 +194,9 @@ public class Driversui extends ParentDocuments{
 	}
 	public void refresh(){
 		birthDateField.setEditable(false);
+		birthDateField.setEnabled(false);
 		limitDateField.setEditable(false);
+		limitDateField.setEnabled(false);
 		nameField.setEditable(false);
 		sexType.setEnabled(false);
 		idCardField.setEditable(false);
@@ -219,7 +221,9 @@ public class Driversui extends ParentDocuments{
 	}
 	public void modifying(){
 		birthDateField.setEditable(true);
+		birthDateField.setEnabled(true);
 		limitDateField.setEditable(true);
+		limitDateField.setEnabled(true);
 		nameField.setEditable(true);
 		sexType.setEnabled(true);
 		idCardField.setEditable(true);
