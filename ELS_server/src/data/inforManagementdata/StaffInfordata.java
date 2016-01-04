@@ -125,26 +125,37 @@ public class StaffInfordata extends UnicastRemoteObject implements StaffInfordat
 	public JavaBean1 getSalaryStrategy() throws RemoteException {
 		// TODO Auto-generated method stub
 		jb1=new JavaBean1();
-		jb1.setResultMessage(ResultMessage.NotExist);
+		jb1.setResultMessage(ResultMessage.Success);
 		ArrayList<SalaryStrategyPO> pos=new ArrayList<>();
-		String sql="select * from salarystrategy";
+        pos.add(getSingleSalaryStrategy("Courier"));
+        pos.add(getSingleSalaryStrategy("BusiHallClerk"));
+        pos.add(getSingleSalaryStrategy("TranCenClerk"));
+        pos.add(getSingleSalaryStrategy("StockManager"));
+        pos.add(getSingleSalaryStrategy("Accountant2"));
+        pos.add(getSingleSalaryStrategy("Accountant1"));
+        pos.add(getSingleSalaryStrategy("Administrator"));
+        pos.add(getSingleSalaryStrategy("Driver"));
+        jb1.setObject(pos);
+		return jb1;
+	}
+	
+	public SalaryStrategyPO getSingleSalaryStrategy(String position){
+		String sql="select * from salarystrategy where position=?";
+		SalaryStrategyPO salaryStrategyPO=new SalaryStrategyPO();
 		try {
 			stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				SalaryStrategyPO po=new SalaryStrategyPO();
-				po.setPosition(Position.valueOf(rs.getString(1)));
-				po.setPayType(PayType.valueOf(rs.getString(2)));
-				po.setPayAmount(rs.getDouble(3));
-				po.setPercentage(rs.getString(4));
-				jb1.setResultMessage(ResultMessage.Success);
-				pos.add(po);
-			}jb1.setObject(pos);
+				salaryStrategyPO.setPosition(Position.valueOf(rs.getString(1)));
+				salaryStrategyPO.setPayType(PayType.valueOf(rs.getString(2)));
+				salaryStrategyPO.setPayAmount(rs.getDouble(3));
+				salaryStrategyPO.setPercentage(rs.getString(4));		
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return jb1;
+		return salaryStrategyPO;
 	}
 }
 
