@@ -18,7 +18,7 @@ import state.ResultMessage;
 import state.TransportType;
 import dataservice.stockdataservice.OutBoundOrderdataservice;
 
-public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOrderdataservice {
+public class OutBoundOrderdata  extends UnicastRemoteObject implements OutBoundOrderdataservice {
 
 
 	Database db=new Database();
@@ -186,14 +186,14 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 	@Override
 	public String getArea(String orderID) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql="select area from outboundorder where orderID=?";
+		String sql="select areaNum from stock where ID=?";
 		String area=null;
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, orderID);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				area=rs.getString("area");
+				area=rs.getString("areaNum");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -229,7 +229,7 @@ public class OutBoundOrderdata extends UnicastRemoteObject implements OutBoundOr
 
 //	public static void main(String[] args) throws RemoteException {
 //		OutBoundOrderdata od=new OutBoundOrderdata();
-//		System.out.println(od.getArea("1512240001"));
+//		System.out.println(od.getArea("1512240002"));
 //		OutBoundOrderPO po=new OutBoundOrderPO();
 //        po.setId("201601030001");
 //        po.setDestination("ÄÏ¾©");
