@@ -20,7 +20,7 @@ import data.utility.Database;
 import dataservice.inforManagementdataservice.StaffInfordataservice;
 
 
-public class StaffInfordata implements StaffInfordataservice{
+public class StaffInfordata extends UnicastRemoteObject implements StaffInfordataservice{
 	Database db=new Database();
     Connection con=db.getConnection();
     Statement sm;
@@ -28,10 +28,10 @@ public class StaffInfordata implements StaffInfordataservice{
     UserPO po;
     JavaBean1 jb1;
     
-//    public StaffInfordata() throws RemoteException {
-//    	super();
-//    	// TODO Auto-generated constructor stub
-//    }
+    public StaffInfordata() throws RemoteException {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
     
     
     public JavaBean1 findA(String Id){
@@ -169,18 +169,18 @@ public class StaffInfordata implements StaffInfordataservice{
 		return r;
 	}
 	
-	public static void main(String[] args) throws RemoteException {
-		StaffInfordata sd=new StaffInfordata();
-		SalaryStrategyPO po2=new SalaryStrategyPO();
-		po2=sd.getSingleSalaryStrategy("Driver");
-		System.out.println(po2.getPayAmount());
-//		SalaryStrategyPO po1=new SalaryStrategyPO();
-//		po1.setPosition(Position.Accountant1);
-//		po1.setPayType(PayType.BYMONTH);
-//		po1.setPayAmount(7500);
-//		ArrayList<SalaryStrategyPO> pos=new ArrayList<>();
-//		pos.add(po1);
-//		sd.updateSalaryStrategy(pos);
-	}
+//	public static void main(String[] args) throws RemoteException {
+//		StaffInfordata sd=new StaffInfordata();
+//		SalaryStrategyPO po2=new SalaryStrategyPO();
+//		po2=sd.getSingleSalaryStrategy("Driver");
+//		System.out.println(po2.getPayAmount());
+////		SalaryStrategyPO po1=new SalaryStrategyPO();
+////		po1.setPosition(Position.Accountant1);
+////		po1.setPayType(PayType.BYMONTH);
+////		po1.setPayAmount(7500);
+////		ArrayList<SalaryStrategyPO> pos=new ArrayList<>();
+////		pos.add(po1);
+////		sd.updateSalaryStrategy(pos);
+//	}
 }
 
